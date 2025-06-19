@@ -59,7 +59,7 @@ export function createApiFunction(
       } else if (['get', 'delete'].includes(finalMethod)) {
         axiosConfig.params = payload;
       }
-     const response = await apiClient(axiosConfig);
+      const response = await apiClient(axiosConfig);
 
       // if(eventContext){
       //   const events = EVENTS_BY_ACTION[action] || [];

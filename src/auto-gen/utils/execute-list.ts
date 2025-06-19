@@ -12,7 +12,13 @@ import {
 } from './declarations';
 import { EVENTS_BY_ACTION } from './event-action';
 import { extractDates } from './extract-data';
-import { getDmStatus, getEventLengths, isScenarioConfig, resolveVariables, transformApiData } from './helper';
+import {
+  getDmStatus,
+  getEventLengths,
+  isScenarioConfig,
+  resolveVariables,
+  transformApiData,
+} from './helper';
 import { EventContext, ResumeContext, TestContext } from './text-context';
 import { API_EVENT } from './ws-config';
 import { WebSocketEventCollector } from './ws-event-collector';
@@ -163,7 +169,14 @@ export async function executeStepWS(
     isValid: true,
     errors: [],
   };
-  const { title, author: stepAuthor, action, body, headers, expect: expectConfig } = step;
+  const {
+    title,
+    author: stepAuthor,
+    action,
+    body,
+    headers,
+    expect: expectConfig,
+  } = step;
 
   const actionInfo = ACTION_CONFIG[action as keyof typeof ACTION_CONFIG];
   const payload = body ? body : actionInfo?.body;
@@ -200,10 +213,12 @@ export async function executeStepWS(
     const events = await collector.collectEventsAfterAction();
 
     // Tag events with appropriate action
-    const taggedEvents = events.map(event => ({
+    const taggedEvents = events.map((event) => ({
       ...event,
       action: event.type.includes('com.halome.chat.v3')
-        ? (eventAuthor === VAR.recipient ? action : action)
+        ? eventAuthor === VAR.recipient
+          ? action
+          : action
         : event.action || action,
     }));
 
@@ -276,8 +291,12 @@ export async function executeEvents(
     const { title, author, action, eventList } = step;
 
     // Calculate total events per author
-    const actorTotalEvents = eventList.filter(e => e.author === VAR.actor || !e.author).length;
-    const recipientTotalEvents = eventList.filter(e => e.author === VAR.recipient).length;
+    const actorTotalEvents = eventList.filter(
+      (e) => e.author === VAR.actor || !e.author,
+    ).length;
+    const recipientTotalEvents = eventList.filter(
+      (e) => e.author === VAR.recipient,
+    ).length;
 
     const allEvent = eventContext.getValue();
 
@@ -333,31 +352,35 @@ export async function executeEvents(
     };
 
     // Get expected events from EVENTS_BY_ACTION
-    const { actorEvents: expectedActorEvents, recipientEvents: expectedRecipientEvents } = getExpectedEvents(action, dmStatus);
-
+    const {
+      actorEvents: expectedActorEvents,
+      recipientEvents: expectedRecipientEvents,
+    } = getExpectedEvents(action, dmStatus);
 
     // Check missing expected events in eventList compared to EVENTS_BY_ACTION
     const eventListActorTypes = eventList
-      .filter(e => (e.author || VAR.actor) === VAR.actor)
-      .map(e => e.type?.expectedValue);
+      .filter((e) => (e.author || VAR.actor) === VAR.actor)
+      .map((e) => e.type?.expectedValue);
     const eventListRecipientTypes = eventList
-      .filter(e => e.author === VAR.recipient)
-      .map(e => e.type?.expectedValue);
+      .filter((e) => e.author === VAR.recipient)
+      .map((e) => e.type?.expectedValue);
 
     const missingExpectedActorEvents = expectedActorEvents.filter(
-      (expected) => !eventListActorTypes.includes(expected)
+      (expected) => !eventListActorTypes.includes(expected),
     );
     if (missingExpectedActorEvents.length > 0) {
-
-      stepResult.actorResults.missingEventExpected.push(...missingExpectedActorEvents.map((event) => `Actor:${event}`));
+      stepResult.actorResults.missingEventExpected.push(
+        ...missingExpectedActorEvents.map((event) => `Actor:${event}`),
+      );
     }
 
     const missingExpectedRecipientEvents = expectedRecipientEvents.filter(
-      (expected) => !eventListRecipientTypes.includes(expected)
+      (expected) => !eventListRecipientTypes.includes(expected),
     );
     if (missingExpectedRecipientEvents.length > 0) {
-
-      stepResult.recipientResults.missingEventExpected.push(...missingExpectedRecipientEvents.map((event) => `Recipient:${event}`));
+      stepResult.recipientResults.missingEventExpected.push(
+        ...missingExpectedRecipientEvents.map((event) => `Recipient:${event}`),
+      );
     }
 
     // Check extra events for Actor (WebSocket events)
@@ -366,8 +389,9 @@ export async function executeEvents(
       return !expectedActorEvents.includes(actual.type);
     });
     if (actorExtraEvents.length > 0) {
-      stepResult.actorResults.extraEvents.push(...actorExtraEvents.map((e) => e.type));
-
+      stepResult.actorResults.extraEvents.push(
+        ...actorExtraEvents.map((e) => e.type),
+      );
     }
 
     // Check extra events for Recipient (WebSocket events) - FIXED
@@ -377,23 +401,26 @@ export async function executeEvents(
     });
 
     if (recipientExtraEvents.length > 0) {
-      stepResult.recipientResults.extraEvents.push(...recipientExtraEvents.map((e) => e.type));
-
+      stepResult.recipientResults.extraEvents.push(
+        ...recipientExtraEvents.map((e) => e.type),
+      );
     }
 
     // Check for duplicate events (WebSocket events)
-    const actorEventIds = actorEvents.map(e => e.id);
-    const actorDuplicates = actorEventIds.filter((id, idx) => actorEventIds.indexOf(id) !== idx);
+    const actorEventIds = actorEvents.map((e) => e.id);
+    const actorDuplicates = actorEventIds.filter(
+      (id, idx) => actorEventIds.indexOf(id) !== idx,
+    );
     if (actorDuplicates.length > 0) {
       stepResult.actorResults.duplicateEvents.push(...actorDuplicates);
-
     }
 
-    const recipientEventIds = recipientEvents.map(e => e.id);
-    const recipientDuplicates = recipientEventIds.filter((id, idx) => recipientEventIds.indexOf(id) !== idx);
+    const recipientEventIds = recipientEvents.map((e) => e.id);
+    const recipientDuplicates = recipientEventIds.filter(
+      (id, idx) => recipientEventIds.indexOf(id) !== idx,
+    );
     if (recipientDuplicates.length > 0) {
       stepResult.recipientResults.duplicateEvents.push(...recipientDuplicates);
-
     }
 
     for (let i = 0; i < eventList.length; i++) {
@@ -401,11 +428,20 @@ export async function executeEvents(
       const expectedEventType = expectedEvent.type?.expectedValue;
       const eventAuthor = expectedEvent.author || VAR.actor; // Default to Actor if not specified
 
-      const targetEvents = eventAuthor === VAR.actor ? actorEvents : recipientEvents;
-      const expectedEvents = eventAuthor === VAR.actor ? expectedActorEvents : expectedRecipientEvents;
-      const resultContainer = eventAuthor === VAR.actor ? stepResult.actorResults : stepResult.recipientResults;
+      const targetEvents =
+        eventAuthor === VAR.actor ? actorEvents : recipientEvents;
+      const expectedEvents =
+        eventAuthor === VAR.actor
+          ? expectedActorEvents
+          : expectedRecipientEvents;
+      const resultContainer =
+        eventAuthor === VAR.actor
+          ? stepResult.actorResults
+          : stepResult.recipientResults;
 
-      const actualEvent = targetEvents.find((e) => e.type === expectedEventType);
+      const actualEvent = targetEvents.find(
+        (e) => e.type === expectedEventType,
+      );
       const eventType = expectedEventType || `Unknown event at index ${i}`;
       const eventResult: EventValidation = {
         eventIndex: i,
@@ -415,7 +451,6 @@ export async function executeEvents(
       };
 
       if (!actualEvent) {
-
         resultContainer.missingEvents.push(`${eventAuthor}:${eventType}`);
         resultContainer.failedEvents++;
         resultContainer.events.push(eventResult);
@@ -455,11 +490,13 @@ export async function executeEvents(
       resultContainer.events.push(eventResult);
 
       // Check order validity
-      const receivedTypes = targetEvents.map(e => e.type);
+      const receivedTypes = targetEvents.map((e) => e.type);
       const expectedTypes = eventList
-        .filter(e => (e.author || VAR.actor) === eventAuthor)
-        .map(e => e.type?.expectedValue);
-      resultContainer.orderIsValid = receivedTypes.every((type, idx) => !expectedTypes[idx] || type === expectedTypes[idx]);
+        .filter((e) => (e.author || VAR.actor) === eventAuthor)
+        .map((e) => e.type?.expectedValue);
+      resultContainer.orderIsValid = receivedTypes.every(
+        (type, idx) => !expectedTypes[idx] || type === expectedTypes[idx],
+      );
     }
 
     stepResults.push(stepResult);
@@ -505,27 +542,34 @@ async function debugCompare(
   }
 }
 
-export function executeAfterAll(step, context: TestContext) { }
+export function executeAfterAll(step, context: TestContext) {}
 
 export function executeBeforeEach(step, context: TestContext) {
   console.log(step);
 }
 
-export function executeAfterEach(step, context: TestContext) { }
+export function executeAfterEach(step, context: TestContext) {}
 
-export function getExpectedEvents(action: string, scenarioType?: 'NEW_CONTACT' | 'EXISTING_CONTACT' | 'DEFAULT') {
+export function getExpectedEvents(
+  action: string,
+  scenarioType?: 'NEW_CONTACT' | 'EXISTING_CONTACT' | 'DEFAULT',
+) {
   const config = EVENTS_BY_ACTION[action];
   if (isScenarioConfig(config) && scenarioType !== 'DEFAULT') {
     return {
       actorEvents: config.scenarios[scenarioType].actor,
       recipientEvents: config.scenarios[scenarioType].recipient,
-      minCount: config.scenarios[scenarioType].minCount || config.scenarios[scenarioType].actor.length
+      minCount:
+        config.scenarios[scenarioType].minCount ||
+        config.scenarios[scenarioType].actor.length,
     };
   } else {
     return {
       actorEvents: config.scenarios[scenarioType].actor,
       recipientEvents: config.scenarios[scenarioType].recipient,
-      minCount: config.scenarios[scenarioType].minCount || config.scenarios[scenarioType].actor.length
+      minCount:
+        config.scenarios[scenarioType].minCount ||
+        config.scenarios[scenarioType].actor.length,
     };
   }
 }
@@ -537,14 +581,12 @@ export async function executeResume(
   resumeContext: ResumeContext,
   collectors: Record<string, WebSocketEventCollector>,
 ) {
-
   // Continuous resume loop
   let isResumeComplete = false;
-  let lastTotal = Infinity;
+  const lastTotal = Infinity;
   let currentEventIndex = 0;
 
-
-  // Create report 
+  // Create report
   const resumeReport = {
     startTime: new Date().toISOString(),
     stepInfo: {
@@ -577,8 +619,10 @@ export async function executeResume(
     }
 
     const allEvents = [
-      ...(eventContext.events.find((e) => e.author === VAR.actor)?.events || []),
-      ...(eventContext.events.find((e) => e.author === VAR.recipient)?.events || []),
+      ...(eventContext.events.find((e) => e.author === VAR.actor)?.events ||
+        []),
+      ...(eventContext.events.find((e) => e.author === VAR.recipient)?.events ||
+        []),
     ];
     return allEvents.find((event) => event.id === eventId);
   };
@@ -598,7 +642,12 @@ export async function executeResume(
     currentTokenResume = data;
   } else {
     const resumeDates = resumeContext.getEventToken(author, title, data, type);
-    resumePoint = resumeContext.findResumePoint(author, resumeDates[data], data, type);
+    resumePoint = resumeContext.findResumePoint(
+      author,
+      resumeDates[data],
+      data,
+      type,
+    );
 
     if (!resumePoint) {
       resumeReport.errors.push({
@@ -668,7 +717,6 @@ export async function executeResume(
     const reconnectionEvents = [];
 
     for (const event of events) {
-
       if (eventIds.has(event.id)) {
         resumeReport.duplicates.push({
           eventId: event.id,
@@ -691,12 +739,13 @@ export async function executeResume(
         timestamp: event.time || new Date().toISOString(),
         data: event.data,
         matched: !!matchedEvent,
-        dataConsistent: matchedEvent ? compareEventData(event, matchedEvent) : false,
+        dataConsistent: matchedEvent
+          ? compareEventData(event, matchedEvent)
+          : false,
         resumeRound: resumeReport.summary.resumeRounds,
         isReconnectedEvent:
-          event.type === API_EVENT.halome.v3.webSocket.RECONNECTION_ENDED
+          event.type === API_EVENT.halome.v3.webSocket.RECONNECTION_ENDED,
       };
-
 
       // Categorize events
       if (event.type === API_EVENT.halome.v3.webSocket.RECONNECTION_ENDED) {
@@ -730,15 +779,15 @@ export async function executeResume(
 
           break;
         }
-      } else if (event.type !== API_EVENT.halome.v3.webSocket.RECONNECTION_STARTED) {
+      } else if (
+        event.type !== API_EVENT.halome.v3.webSocket.RECONNECTION_STARTED
+      ) {
         resumeReport.events.push(eventEntry);
         regularEvents.push(event);
-
       }
     }
 
     if (regularEvents.length > 0) {
-
       const nextEvent = regularEvents[0];
 
       if (data === 'time') {
@@ -771,31 +820,31 @@ export async function executeResume(
       });
       isResumeComplete = true;
     }
-
   }
 
   // console.log(JSON.stringify(eventContext, null, 2));
-  const authorEvents = eventContext.events?.find(e => e.author === author)?.events || [];
+  const authorEvents =
+    eventContext.events?.find((e) => e.author === author)?.events || [];
   const comparisonResults = compareResumeWithNormalEventsDetailed(
-    resumeReport.events.filter(e => e.type !== 'ResumePoint'),
+    resumeReport.events.filter((e) => e.type !== 'ResumePoint'),
     authorEvents,
-    author
+    author,
   );
   // console.log(JSON.stringify(resumeReport, null, 2));
   // console.log(JSON.stringify(comparisonResults, null, 2))
-  console.log(comparisonResults)
+  console.log(comparisonResults);
   return comparisonResults;
 }
 
 function compareResumeWithNormalEventsDetailed(
   resumeEvents: any[],
   normalEvents: any[],
-  author: VAR.actor | VAR.recipient
+  author: VAR.actor | VAR.recipient,
 ): ResumeComparisonResult {
   const adjustedNormalEvents = normalEvents.slice(1);
 
   const filteredResumeEvents = resumeEvents.filter(
-    e => e.type !== 'ResumePoint' && !e.isReconnectedEvent
+    (e) => e.type !== 'ResumePoint' && !e.isReconnectedEvent,
   );
 
   // Initialize result
@@ -808,20 +857,22 @@ function compareResumeWithNormalEventsDetailed(
       extraEventsResume: [],
       orderEventsResume: true,
       duplicateEventsResume: [],
-      events: []
-    }
+      events: [],
+    },
   };
 
   const resultsKey = author === VAR.actor ? 'actorResults' : 'recipientResults';
   const results = result[resultsKey]!;
 
   // Create lookup maps
-  const normalEventMap = new Map(normalEvents.map(e => [e.id, e]));
-  const resumeEventMap = new Map(filteredResumeEvents.map(e => [e.eventId || e.id, e]));
+  const normalEventMap = new Map(normalEvents.map((e) => [e.id, e]));
+  const resumeEventMap = new Map(
+    filteredResumeEvents.map((e) => [e.eventId || e.id, e]),
+  );
 
   // check each round resume
   const eventsByRound = new Map<number, any[]>();
-  filteredResumeEvents.forEach(event => {
+  filteredResumeEvents.forEach((event) => {
     const round = event.resumeRound;
     if (!eventsByRound.has(round)) {
       eventsByRound.set(round, []);
@@ -832,60 +883,62 @@ function compareResumeWithNormalEventsDetailed(
   // Check for missing/extra events
   results.missingEventsResume = [];
   results.extraEventsResume = [];
-  results.orderEventsResume = Array.from(eventsByRound.entries()).every(([round, roundEvents]) => {
-    if (roundEvents.length === 0) return true;
+  results.orderEventsResume = Array.from(eventsByRound.entries()).every(
+    ([round, roundEvents]) => {
+      if (roundEvents.length === 0) return true;
 
-    const firstEvent = roundEvents[0];
-    const firstEventIndex = adjustedNormalEvents.findIndex(
-      e => e.id === (firstEvent.eventId || firstEvent.id)
-    );
+      const firstEvent = roundEvents[0];
+      const firstEventIndex = adjustedNormalEvents.findIndex(
+        (e) => e.id === (firstEvent.eventId || firstEvent.id),
+      );
 
-    if (firstEventIndex === -1) {
-      results.extraEventsResume.push(...roundEvents.map(e => e.eventId || e.id));
-      return false;
-    }
+      if (firstEventIndex === -1) {
+        results.extraEventsResume.push(
+          ...roundEvents.map((e) => e.eventId || e.id),
+        );
+        return false;
+      }
 
-    const expectedEvents = adjustedNormalEvents.slice(
-      firstEventIndex,
-      firstEventIndex + roundEvents.length
-    );
+      const expectedEvents = adjustedNormalEvents.slice(
+        firstEventIndex,
+        firstEventIndex + roundEvents.length,
+      );
 
-    // Kiểm tra missing events
-    const roundEventIds = new Set(roundEvents.map(e => e.eventId || e.id));
-    const missingInRound = expectedEvents
-      .filter(e => !roundEventIds.has(e.id))
-      .map(e => e.id);
-    if (missingInRound.length > 0) {
+      // Kiểm tra missing events
+      const roundEventIds = new Set(roundEvents.map((e) => e.eventId || e.id));
+      const missingInRound = expectedEvents
+        .filter((e) => !roundEventIds.has(e.id))
+        .map((e) => e.id);
+      if (missingInRound.length > 0) {
+        results.missingEventsResume.push(...missingInRound);
+      }
 
-      results.missingEventsResume.push(...missingInRound);
-    }
+      // Kiểm tra extra events
+      const expectedEventIds = new Set(expectedEvents.map((e) => e.id));
+      const extraInRound = roundEvents
+        .filter((e) => !expectedEventIds.has(e.eventId || e.id))
+        .map((e) => e.eventId || e.id);
+      if (extraInRound.length > 0) {
+        results.extraEventsResume.push(...extraInRound);
+      }
 
-    // Kiểm tra extra events
-    const expectedEventIds = new Set(expectedEvents.map(e => e.id));
-    const extraInRound = roundEvents
-      .filter(e => !expectedEventIds.has(e.eventId || e.id))
-      .map(e => e.eventId || e.id);
-    if (extraInRound.length > 0) {
+      // Kiểm tra thứ tự trong round
+      const isValid = roundEvents.every((resumeEvent, index) => {
+        const normalEvent = expectedEvents[index];
 
-      results.extraEventsResume.push(...extraInRound);
-    }
+        return normalEvent && resumeEvent.type === normalEvent.type;
+      });
 
-    // Kiểm tra thứ tự trong round
-    const isValid = roundEvents.every((resumeEvent, index) => {
-      const normalEvent = expectedEvents[index];
-
-      return normalEvent && resumeEvent.type === normalEvent.type;
-    });
-
-    return isValid;
-  });
+      return isValid;
+    },
+  );
   // Check order
 
   // check duplicate resume event
   results.duplicateEventsResume = [];
   Array.from(eventsByRound.entries()).forEach(([round, roundEvents]) => {
     const eventIdCounts = new Map<string, number>();
-    roundEvents.forEach(e => {
+    roundEvents.forEach((e) => {
       const id = e.eventId || e.id;
       eventIdCounts.set(id, (eventIdCounts.get(id) || 0) + 1);
     });
@@ -895,18 +948,15 @@ function compareResumeWithNormalEventsDetailed(
       .map(([id]) => id);
 
     if (duplicatesInRound.length > 0) {
-
       results.duplicateEventsResume.push(...duplicatesInRound);
     }
   });
 
-
   // Compare each event
   resumeEvents
-    .filter(e => e.type !== 'ResumePoint')
+    .filter((e) => e.type !== 'ResumePoint')
     .forEach((resumeEvent, index) => {
       if (resumeEvent.isReconnectedEvent) {
-
         const eventResult: EventResult = {
           eventIndex: index,
           resumeRound: resumeEvent.resumeRound,
@@ -922,7 +972,6 @@ function compareResumeWithNormalEventsDetailed(
         results.events.push(eventResult);
         results.passedEventsResume++;
       } else {
-
         const normalEvent = normalEventMap.get(resumeEvent.eventId);
         const eventResult: EventResult = {
           eventIndex: index,
@@ -930,11 +979,23 @@ function compareResumeWithNormalEventsDetailed(
           eventType: resumeEvent.type,
           eventAuthor: author,
           isPassed: false,
-          specversionResult: compareField(resumeEvent.specversion, normalEvent?.specversion, 'specversion'),
-          versionResult: compareField(resumeEvent.version, normalEvent?.version, 'version'),
-          sourceResult: compareField(resumeEvent.source, normalEvent?.source, 'source'),
+          specversionResult: compareField(
+            resumeEvent.specversion,
+            normalEvent?.specversion,
+            'specversion',
+          ),
+          versionResult: compareField(
+            resumeEvent.version,
+            normalEvent?.version,
+            'version',
+          ),
+          sourceResult: compareField(
+            resumeEvent.source,
+            normalEvent?.source,
+            'source',
+          ),
           typeResult: compareField(resumeEvent.type, normalEvent?.type, 'type'),
-          dataResult: deepCompareData(resumeEvent.data, normalEvent?.data)
+          dataResult: deepCompareData(resumeEvent.data, normalEvent?.data),
         };
 
         eventResult.isPassed = [
@@ -942,7 +1003,7 @@ function compareResumeWithNormalEventsDetailed(
           eventResult.versionResult.isEqual,
           eventResult.sourceResult.isEqual,
           eventResult.typeResult.isEqual,
-          eventResult.dataResult.isEqual
+          eventResult.dataResult.isEqual,
         ].every(Boolean);
 
         if (eventResult.isPassed) {
@@ -958,31 +1019,45 @@ function compareResumeWithNormalEventsDetailed(
   return result;
 }
 // Helper functions remain the same
-function compareField(actual: any, expected: any, fieldName: string): EventComparisonDetail {
+function compareField(
+  actual: any,
+  expected: any,
+  fieldName: string,
+): EventComparisonDetail {
   if (actual === expected) {
     return { isEqual: true, allDifferences: [] };
   }
   return {
     isEqual: false,
-    allDifferences: [`${fieldName} => actual: ${JSON.stringify(actual)} !== expected: ${JSON.stringify(expected)}`]
+    allDifferences: [
+      `${fieldName} => actual: ${JSON.stringify(actual)} !== expected: ${JSON.stringify(expected)}`,
+    ],
   };
 }
 
-function deepCompareData(actualData: any, expectedData: any, path = ''): EventComparisonDetail {
+function deepCompareData(
+  actualData: any,
+  expectedData: any,
+  path = '',
+): EventComparisonDetail {
   const result: EventComparisonDetail = {
     isEqual: true,
-    allDifferences: []
+    allDifferences: [],
   };
 
   if (actualData === expectedData) {
     return result;
   }
 
-  if (typeof actualData !== 'object' || typeof expectedData !== 'object' ||
-    actualData === null || expectedData === null) {
+  if (
+    typeof actualData !== 'object' ||
+    typeof expectedData !== 'object' ||
+    actualData === null ||
+    expectedData === null
+  ) {
     result.isEqual = false;
     result.allDifferences.push(
-      `${path} => actual: ${JSON.stringify(actualData)} !== expected: ${JSON.stringify(expectedData)}`
+      `${path} => actual: ${JSON.stringify(actualData)} !== expected: ${JSON.stringify(expectedData)}`,
     );
     return result;
   }
@@ -993,12 +1068,16 @@ function deepCompareData(actualData: any, expectedData: any, path = ''): EventCo
     if (!(key in actualData)) {
       result.isEqual = false;
       result.allDifferences.push(
-        `${currentPath}: missing in actual (expected has ${JSON.stringify(expectedData[key])})`
+        `${currentPath}: missing in actual (expected has ${JSON.stringify(expectedData[key])})`,
       );
       continue;
     }
 
-    const fieldResult = deepCompareData(actualData[key], expectedData[key], currentPath);
+    const fieldResult = deepCompareData(
+      actualData[key],
+      expectedData[key],
+      currentPath,
+    );
     if (!fieldResult.isEqual) {
       result.isEqual = false;
       result.allDifferences.push(...fieldResult.allDifferences);
@@ -1024,13 +1103,12 @@ function checkDuplicateEvent(collectedEvents): string[] {
 }
 
 function checkOrderEvent(collectedEvents, action: string, dmStatus): boolean {
-  const { actorEvents, recipientEvents, minCount } = getExpectedEvents(action, dmStatus)
+  const { actorEvents, recipientEvents, minCount } = getExpectedEvents(
+    action,
+    dmStatus,
+  );
   let orderIsValid = true;
-  for (
-    let i = 0;
-    i < actorEvents.length && i < collectedEvents.length;
-    i++
-  ) {
+  for (let i = 0; i < actorEvents.length && i < collectedEvents.length; i++) {
     const expectedEventType = actorEvents[i];
     const actualEvent = collectedEvents[i];
     if (actualEvent && actualEvent.type !== expectedEventType) {

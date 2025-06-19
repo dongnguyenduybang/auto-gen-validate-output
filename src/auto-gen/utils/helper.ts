@@ -519,7 +519,6 @@ export async function checkResponse(
 }
 
 export async function callAPIForSystem(body, header, action) {
-
   const actionInfo = ACTION_CONFIG[action as keyof typeof ACTION_CONFIG];
 
   const apiFunction = getApiFunctions(action, null, null);
@@ -549,24 +548,29 @@ export function transformApiData(apiData) {
 }
 
 export function isScenarioConfig(config: any): config is ScenarioEventConfig {
-  return config && 
-         typeof config === 'object' && 
-         'scenarios' in config && 
-         typeof config.scenarios === 'object';
+  return (
+    config &&
+    typeof config === 'object' &&
+    'scenarios' in config &&
+    typeof config.scenarios === 'object'
+  );
 }
 
 export function getDmStatus(events: any[]): number | undefined {
   if (!events || events.length === 0) return undefined;
-  
+
   // Thử lấy từ event data trước
   const fromEventData = events[0]?.data?.channel?.dmStatus;
   if (fromEventData !== undefined) return fromEventData;
-  
+
   // Nếu không có thì thử lấy từ API data
   return events[0]?.apiData?.data?.includes?.channels?.[0]?.dmStatus;
 }
 
-export function getEventLengths(action: string, isExiting: number): { actorLength: number; recipientLength: number } {
+export function getEventLengths(
+  action: string,
+  isExiting: number,
+): { actorLength: number; recipientLength: number } {
   // Map isExiting to dmStatus
   let dmStatus: 'NEW_CONTACT' | 'EXISTING_CONTACT' | 'DEFAULT';
   if (isExiting === 0) {

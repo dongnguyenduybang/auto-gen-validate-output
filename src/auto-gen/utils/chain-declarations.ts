@@ -41,12 +41,7 @@ export class WSBuilder {
     return this;
   }
 
-  addResume(
-    title: string,
-    author: string,
-    type: string,
-    data: string,
-  ) {
+  addResume(title: string, author: string, type: string, data: string) {
     this.currentOption.resume.push({
       title,
       author,
@@ -86,7 +81,7 @@ export class WSBuilder {
     action: string,
     eventList: {
       type: any;
-      author:string;
+      author: string;
       source: any;
       specversion?: any;
       version?: any;

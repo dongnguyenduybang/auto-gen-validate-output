@@ -22,7 +22,7 @@ export async function executeWS(
   collectors: Record<string, WebSocketEventCollector> = {},
 ) {
   const results: any[] = []; // Changed from [] to any[] to store actual results
-  
+
   for (const [index, step] of steps.entries()) {
     try {
       switch (type) {
@@ -91,15 +91,15 @@ export async function executeWS(
         error: error instanceof Error ? error.message : String(error),
         stack: error instanceof Error ? error.stack : undefined,
         success: false,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       };
       results.push(errorResult);
-      
+
       // You can decide whether to continue or throw based on your needs
       // throw error; // Uncomment if you want to stop execution on error
     }
   }
-  
+
   // eventContext.debug();
   // resumeContext.debug();
   return results;

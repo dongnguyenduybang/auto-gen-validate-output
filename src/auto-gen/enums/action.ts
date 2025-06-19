@@ -3,7 +3,7 @@ import { APIPath } from './path.enum';
 import { VAR } from './var-placeholder.enum';
 
 export enum ACTION {
-SUBSCRIBE_ALL = 'subscribeAll',
+  SUBSCRIBE_ALL = 'subscribeAll',
   TURNON_GLOBAL_NOTIFICATION = 'turnonGlobalNotification',
   TURNOFF_GLOBAL_NOTIFICATION = 'turnoffGlobalNotification',
   UNSUBSCRIBE_ALL = 'unsubscribeAll',

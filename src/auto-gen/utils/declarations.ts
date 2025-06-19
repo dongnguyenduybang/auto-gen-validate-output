@@ -323,8 +323,8 @@ export interface BuilderMatcherResult {
 
 export interface DataContainer {
   data: unknown;
+  type: string;
 }
-
 
 export type SimpleEventConfig = {
   scenarios: {
@@ -332,8 +332,8 @@ export type SimpleEventConfig = {
       actor: string[];
       recipient: string[];
       minCount?: number;
-    }
-  }
+    };
+  };
 };
 
 export type ScenarioEventConfig = {
@@ -364,7 +364,6 @@ export type DeepEqualResult = {
   nonMatchingActual?: any;
   path: string;
 };
-
 
 export interface EventComparisonDetail {
   isEqual: boolean;

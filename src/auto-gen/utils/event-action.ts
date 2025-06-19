@@ -19,20 +19,16 @@ export const EVENTS_BY_ACTION: Record<
         actor: string[];
         recipient: string[];
         minCount?: number;
-      }
+      };
     };
   }
 > = {
   [ACTION.OPEN_CONNECTION_WS]: {
     scenarios: {
       DEFAULT: {
-        actor: [
-          API_EVENT.halome.v3.realTime.GATEWAY_CONNECTED
-        ],
-        recipient: [
-          API_EVENT.halome.v3.realTime.GATEWAY_CONNECTED
-        ],
-      }
+        actor: [API_EVENT.halome.v3.realTime.GATEWAY_CONNECTED],
+        recipient: [API_EVENT.halome.v3.realTime.GATEWAY_CONNECTED],
+      },
     },
   },
   [ACTION.CREATE_CHANNEL]: {
@@ -40,12 +36,10 @@ export const EVENTS_BY_ACTION: Record<
       DEFAULT: {
         actor: [
           API_EVENT.halome.v3.chat.CHANNEL_CREATED,
-          API_EVENT.halome.v3.chat.MESSAGE_CREATED
+          API_EVENT.halome.v3.chat.MESSAGE_CREATED,
         ],
-        recipient: [
-          API_EVENT.halome.v3.chat.MEMBER_JOINED
-        ],
-      }
+        recipient: [API_EVENT.halome.v3.chat.MEMBER_JOINED],
+      },
     },
   },
   [ACTION.ACCEPT_INVITATION]: {
@@ -53,12 +47,10 @@ export const EVENTS_BY_ACTION: Record<
       DEFAULT: {
         actor: [
           API_EVENT.halome.v3.chat.MEMBER_JOINED,
-          API_EVENT.halome.v3.chat.MESSAGE_CREATED
+          API_EVENT.halome.v3.chat.MESSAGE_CREATED,
         ],
-        recipient: [
-          API_EVENT.halome.v3.chat.MESSAGE_CREATED
-        ],
-      }
+        recipient: [API_EVENT.halome.v3.chat.MESSAGE_CREATED],
+      },
     },
   },
 
@@ -68,24 +60,22 @@ export const EVENTS_BY_ACTION: Record<
         actor: [
           API_EVENT.halome.v3.chat.OUTGOING_MESSAGE_REQUEST_CREATED,
           API_EVENT.halome.v3.chat.MESSAGE_CREATED,
-          API_EVENT.halome.v3.chat.USER_UNREAD_MESSAGE_UPDATED
+          API_EVENT.halome.v3.chat.USER_UNREAD_MESSAGE_UPDATED,
         ],
         recipient: [
           API_EVENT.halome.v3.chat.INCOMING_MESSAGE_REQUEST_CREATED,
           API_EVENT.halome.v3.chat.MESSAGE_CREATED,
-
         ],
       },
       EXISTING_CONTACT: {
         actor: [
           API_EVENT.halome.v3.chat.DM_CHANNEL_CREATED,
           API_EVENT.halome.v3.chat.MESSAGE_CREATED,
-          API_EVENT.halome.v3.chat.USER_UNREAD_MESSAGE_UPDATED
+          API_EVENT.halome.v3.chat.USER_UNREAD_MESSAGE_UPDATED,
         ],
         recipient: [
           API_EVENT.halome.v3.chat.DM_CHANNEL_CREATED,
           API_EVENT.halome.v3.chat.MESSAGE_CREATED,
-
         ],
       },
     },
@@ -93,43 +83,27 @@ export const EVENTS_BY_ACTION: Record<
   [ACTION.ADD_DM_MESSAGE_REACTION]: {
     scenarios: {
       NEW_CONTACT: {
-        actor: [
-          API_EVENT.halome.v3.chat.USER_MESSAGE_REACTION_UPDATED
-        ],
-        recipient: [
-          API_EVENT.halome.v3.chat.MESSAGE_REACTION_UPDATED
-        ]
+        actor: [API_EVENT.halome.v3.chat.USER_MESSAGE_REACTION_UPDATED],
+        recipient: [API_EVENT.halome.v3.chat.MESSAGE_REACTION_UPDATED],
       },
       EXISTING_CONTACT: {
-        actor: [
-          API_EVENT.halome.v3.chat.USER_MESSAGE_REACTION_UPDATED
-        ],
-        recipient: [
-          API_EVENT.halome.v3.chat.MESSAGE_REACTION_UPDATED
-        ]
-      }
-    }
+        actor: [API_EVENT.halome.v3.chat.USER_MESSAGE_REACTION_UPDATED],
+        recipient: [API_EVENT.halome.v3.chat.MESSAGE_REACTION_UPDATED],
+      },
+    },
   },
   [ACTION.REVOKE_DM_MESSAGE_REACTION]: {
     scenarios: {
       NEW_CONTACT: {
-        actor: [
-          API_EVENT.halome.v3.chat.USER_MESSAGE_REACTION_UPDATED
-        ],
-        recipient: [
-          API_EVENT.halome.v3.chat.MESSAGE_REACTION_UPDATED
-        ]
+        actor: [API_EVENT.halome.v3.chat.USER_MESSAGE_REACTION_UPDATED],
+        recipient: [API_EVENT.halome.v3.chat.MESSAGE_REACTION_UPDATED],
       },
       EXISTING_CONTACT: {
-        actor: [
-          API_EVENT.halome.v3.chat.USER_MESSAGE_REACTION_UPDATED
-        ],
-        recipient: [
-          API_EVENT.halome.v3.chat.MESSAGE_REACTION_UPDATED
-        ]
-      }
-    }
-  }
+        actor: [API_EVENT.halome.v3.chat.USER_MESSAGE_REACTION_UPDATED],
+        recipient: [API_EVENT.halome.v3.chat.MESSAGE_REACTION_UPDATED],
+      },
+    },
+  },
   // [ACTION.SEND_MESSAGE]: {
   //   types: [
   //     'com.halome.chat.v3.message.created',

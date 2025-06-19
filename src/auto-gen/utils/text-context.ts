@@ -181,9 +181,7 @@ export class ResumeContext {
     if (!entry) {
       return null;
     }
-    const event = entry.resume.find(
-      (e) => e.type === type,
-    );
+    const event = entry.resume.find((e) => e.type === type);
     return event ? event.data : null;
   }
   public getEventToken(
@@ -203,7 +201,12 @@ export class ResumeContext {
     return dataEvent;
   }
 
-  public findResumePoint(author: string, eventId: string, data: string, type?: string) {
+  public findResumePoint(
+    author: string,
+    eventId: string,
+    data: string,
+    type?: string,
+  ) {
     // Find the entry matching the author
     const entry = this.entries.find((e) => e.author === author);
     if (!entry) {
@@ -214,7 +217,7 @@ export class ResumeContext {
     // Find all matching resume points (could be multiple if same eventId appears in different contexts)
     const matchingResumes = entry.resume
       .map((r, index) => ({ ...r, originalIndex: index }))
-      .filter(r => {
+      .filter((r) => {
         // Basic match on data field
         const dataMatch = r.data[data] === eventId;
 
@@ -225,8 +228,10 @@ export class ResumeContext {
       });
 
     if (matchingResumes.length === 0) {
-      console.warn(`No resume point found for author ${author} with ${data}=${eventId}` +
-        (type ? ` and type=${type}` : ''));
+      console.warn(
+        `No resume point found for author ${author} with ${data}=${eventId}` +
+          (type ? ` and type=${type}` : ''),
+      );
       return null;
     }
 
@@ -239,7 +244,7 @@ export class ResumeContext {
       events: entry.resume.slice(selectedResume.originalIndex),
       startIndex: selectedResume.originalIndex,
       matchedResume: selectedResume, // Include the actual matched resume point
-      totalMatches: matchingResumes.length // Useful for debugging
+      totalMatches: matchingResumes.length, // Useful for debugging
     };
   }
 

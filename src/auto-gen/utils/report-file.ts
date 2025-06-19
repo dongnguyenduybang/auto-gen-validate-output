@@ -163,13 +163,13 @@ const responseReportTemplate = (
         `   ├─ Error: ${test.error || 'No details'}`,
         ...(test.expected
           ? [
-            `   ├─ Expected: ${JSON.stringify(test.expected, null, 2).split('\n').join('\n      ')}`,
-          ]
+              `   ├─ Expected: ${JSON.stringify(test.expected, null, 2).split('\n').join('\n      ')}`,
+            ]
           : []),
         ...(test.actual
           ? [
-            `   └─ Actual: ${JSON.stringify(test.actual, null, 2).split('\n').join('\n      ')}`,
-          ]
+              `   └─ Actual: ${JSON.stringify(test.actual, null, 2).split('\n').join('\n      ')}`,
+            ]
           : []),
       ].join('\n'),
     ),
@@ -231,51 +231,51 @@ const sagaReportTemplate = (
     '',
     ...(beforeAllFailures.length > 0
       ? [
-        '=== BeforeAll Failures ===',
-        ...beforeAllFailures.map((step, i) => formatStep(step, i)),
-      ]
+          '=== BeforeAll Failures ===',
+          ...beforeAllFailures.map((step, i) => formatStep(step, i)),
+        ]
       : []),
     '',
     ...(Object.keys(beforeEachGroups).length > 0
       ? [
-        '=== BeforeEach Failures ===',
-        ...Object.entries(beforeEachGroups).flatMap(
-          ([caseTitle, failures]) => [
-            `📄 Case: ${caseTitle}`,
-            ...(failures as any[]).map((step, i) => formatStep(step, i)),
-            '',
-          ],
-        ),
-      ]
+          '=== BeforeEach Failures ===',
+          ...Object.entries(beforeEachGroups).flatMap(
+            ([caseTitle, failures]) => [
+              `📄 Case: ${caseTitle}`,
+              ...(failures as any[]).map((step, i) => formatStep(step, i)),
+              '',
+            ],
+          ),
+        ]
       : []),
     '',
     '=== Test Case ===',
     ...(Object.keys(testCaseGroups).length > 0
       ? Object.entries(testCaseGroups).flatMap(([caseTitle, failures]) => [
-        `📄 Case: ${caseTitle}`,
-        ...(failures as any[]).map((step, i) => formatStep(step, i)),
-        '',
-      ])
+          `📄 Case: ${caseTitle}`,
+          ...(failures as any[]).map((step, i) => formatStep(step, i)),
+          '',
+        ])
       : ['✅ All test cases passed']),
     '',
     ...(Object.keys(afterEachGroups).length > 0
       ? [
-        '=== AfterEach Failures ===',
-        ...Object.entries(afterEachGroups).flatMap(
-          ([caseTitle, failures]) => [
-            `📄 Case: ${caseTitle}`,
-            ...(failures as any[]).map((step, i) => formatStep(step, i)),
-            '',
-          ],
-        ),
-      ]
+          '=== AfterEach Failures ===',
+          ...Object.entries(afterEachGroups).flatMap(
+            ([caseTitle, failures]) => [
+              `📄 Case: ${caseTitle}`,
+              ...(failures as any[]).map((step, i) => formatStep(step, i)),
+              '',
+            ],
+          ),
+        ]
       : []),
     '',
     ...(afterAllFailures.length > 0
       ? [
-        '=== AfterAll Failures ===',
-        ...afterAllFailures.map((step, i) => formatStep(step, i)),
-      ]
+          '=== AfterAll Failures ===',
+          ...afterAllFailures.map((step, i) => formatStep(step, i)),
+        ]
       : []),
     '',
     '=== End of Report ===',
@@ -318,7 +318,7 @@ export const wsReportTemplate = (
   report += `• Generated: ${new Date().toISOString()}\n`;
 
   // Process event steps
-  const eventSteps = steps.filter(step => step.phase === 'events');
+  const eventSteps = steps.filter((step) => step.phase === 'events');
 
   if (eventSteps.length > 0) {
     report += sectionHeader('EVENT TEST RESULTS');
@@ -342,6 +342,29 @@ export const wsReportTemplate = (
             if (!event.isPassed) {
               report += `\n  ▸ Event ${event.eventIndex + 1}: ${event.eventType}\n`;
               report += `    Author: ${event.eventAuthor}\n`;
+
+              if (event.specversionResult && !event.specversionResult.isEqual) {
+                report += `    [!] Specversion Differences:\n`;
+                event.specversionResult.allDifferences.forEach(
+                  (diff: string) => {
+                    report += `      ‣ ${diff}\n`;
+                  },
+                );
+              }
+
+              if (event.versionResult && !event.versionResult.isEqual) {
+                report += `    [!] Version Differences:\n`;
+                event.versionResult.allDifferences.forEach((diff: string) => {
+                  report += `      ‣ ${diff}\n`;
+                });
+              }
+
+              if (event.typeResult && !event.typeResult.isEqual) {
+                report += `    [!] Type Differences:\n`;
+                event.typeResult.allDifferences.forEach((diff: string) => {
+                  report += `      ‣ ${diff}\n`;
+                });
+              }
 
               if (event.sourceResult && !event.sourceResult.isEqual) {
                 report += `    [!] Source Differences:\n`;
@@ -373,6 +396,29 @@ export const wsReportTemplate = (
               report += `\n  ▸ Event ${event.eventIndex + 1}: ${event.eventType}\n`;
               report += `    Author: ${event.eventAuthor}\n`;
 
+              if (event.specversionResult && !event.specversionResult.isEqual) {
+                report += `    [!] Specversion Differences:\n`;
+                event.specversionResult.allDifferences.forEach(
+                  (diff: string) => {
+                    report += `      ‣ ${diff}\n`;
+                  },
+                );
+              }
+
+              if (event.versionResult && !event.versionResult.isEqual) {
+                report += `    [!] Version Differences:\n`;
+                event.versionResult.allDifferences.forEach((diff: string) => {
+                  report += `      ‣ ${diff}\n`;
+                });
+              }
+
+              if (event.typeResult && !event.typeResult.isEqual) {
+                report += `    [!] Type Differences:\n`;
+                event.typeResult.allDifferences.forEach((diff: string) => {
+                  report += `      ‣ ${diff}\n`;
+                });
+              }
+
               if (event.sourceResult && !event.sourceResult.isEqual) {
                 report += `    [!] Source Differences:\n`;
                 event.sourceResult.allDifferences.forEach((diff: string) => {
@@ -395,7 +441,7 @@ export const wsReportTemplate = (
     });
   }
 
-  const resumeSteps = steps.filter(step => step.phase === 'resume');
+  const resumeSteps = steps.filter((step) => step.phase === 'resume');
   if (resumeSteps.length > 0) {
     report += sectionHeader('RESUME TEST RESULTS');
 
@@ -517,8 +563,11 @@ export const wsReportTemplate = (
   return report;
 };
 
-
-function formatStepReport(step: any, stepNumber: number, prefix: string): string {
+function formatStepReport(
+  step: any,
+  stepNumber: number,
+  prefix: string,
+): string {
   let stepReport = `\n[${prefix} ${stepNumber}] ${step.caseTitle || 'Unknown'}\n`;
 
   // Step basic info
@@ -599,7 +648,6 @@ function formatStepReport(step: any, stepNumber: number, prefix: string): string
   stepReport += `${'-'.repeat(40)}\n`;
   return stepReport;
 }
-
 
 // format từng step
 const formatStep = (step: any, index: number) => {
