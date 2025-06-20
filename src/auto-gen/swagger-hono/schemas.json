@@ -117,6 +117,7 @@
       "channelId"
     ],
     "$id": "V3DeleteChannelAvatarRequest"
+    
   },
   "V3UpdateChannelAvatarRequest": {
     "type": "object",

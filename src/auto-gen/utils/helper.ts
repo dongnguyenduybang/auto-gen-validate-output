@@ -602,3 +602,7 @@ export const getFilesSwagger = (dirPath: string): string[] => {
 
   return jsonFiles;
 };
+
+export function kebabToCamel(str) {
+  return str.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase());
+}

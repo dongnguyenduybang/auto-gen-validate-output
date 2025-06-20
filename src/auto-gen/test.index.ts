@@ -1,87 +1,83 @@
 import fs from 'fs';
 import path from 'path';
 import 'reflect-metadata';
-import { genBodyRequest } from './utils/gen-body-request';
-import { genTestRequest } from './utils/gen-test-request';
 import { execSync } from 'child_process';
+
 import { genTestResponse } from './utils/gen-test-response';
 import { genTestSaga } from './utils/gen-test-saga';
 import { ActionHandler } from './utils/declarations';
 import { generateAllReports } from './utils/combine-report';
 import { findTestPath } from './utils/helper';
 import { genClientSwagger } from './swagger/gen-client-swagger';
-import { generateRequest } from './utils/swagger-help';
+import { genBodyRequests } from './utils/swagger-help';
+import { genTestRequest } from './utils/gen-test-request';
 
-const args = process.argv.slice(2);
-if (args.length < 2) {
-  console.error(
-    'Usage: pnpm <action> <type> <dtoName>\nExample: pnpm gen request UserDTO',
-  );
+const rawArgs = process.argv.slice(2);
+
+// --------- Parse Flags ---------
+function getFlag(flagName: string): string | undefined {
+  const index = rawArgs.indexOf(flagName);
+  return index !== -1 && rawArgs.length > index + 1 ? rawArgs[index + 1] : undefined;
+}
+
+const optionsString = getFlag('--options');
+const cluster = getFlag('--cluster');
+
+const args = rawArgs.filter((arg, i) => {
+  return !arg.startsWith('--') && !rawArgs[i - 1]?.startsWith('--');
+});
+
+if (args.length < 3) {
+  console.error('Usage: pnpm <action> <type> <dtoName>\nExample: pnpm gen request UserDTO\nFor interface: pnpm gen interface <subType> <dtoName>');
   process.exit(1);
 }
 
 const [action, type, ...restArgs] = args;
-let subType, dtoName, optionsString;
 
-if (type === 'report') {
-  [subType, dtoName] = restArgs;
-} else if (type === 'interface') {
-  [subType, dtoName, , optionsString] = restArgs; // Lấy options từ restArgs
-} else if (type !== 'reports') {
-  dtoName = restArgs[0];
+let subType: string | undefined;
+let dtoName: string;
+
+if (type === 'report' || type === 'interface') {
+  [ dtoName] = restArgs;
 } else {
   dtoName = restArgs[0];
 }
-const validTypes = ['request', 'response', 'saga', 'report', 'reports', 'swagger', 'interface'];
 
+const validTypes = ['request', 'response', 'saga', 'report', 'reports', 'swagger', 'interface'];
 if (!validTypes.includes(type)) {
   console.error(`Invalid type. Valid types: ${validTypes.join(', ')}`);
   process.exit(1);
 }
+
 function parseOptions(optionString: string | undefined): Record<string, string[]> {
   const result: Record<string, string[]> = {};
-  if (!optionString) {
-    console.log('No options provided'); // Debug
-    return result;
-  }
+  if (!optionString) return result;
 
-  // Loại bỏ --options và chuẩn hóa chuỗi
   const cleanOption = optionString.replace('--options', '').trim();
-  console.log('cleanOption:', cleanOption); // Debug
-
-  // Tách các hook bằng dấu ;
   const pairs = cleanOption.split(';').filter(pair => pair.trim());
-  console.log('pairs:', pairs); // Debug
 
   for (const pair of pairs) {
     const [key, value] = pair.split(':').map(s => s.trim());
     if (key && value) {
-      // Tách actions bằng dấu phẩy hoặc khoảng trắng
-      const actions = value
-        .split(/[,|\s]+/)
-        .map(v => v.trim())
-        .filter(v => v);
-      console.log(`key: ${key}, actions:`, actions); // Debug
+      const actions = value.split(/[,|\s]+/).map(v => v.trim()).filter(Boolean);
       result[key] = actions;
-    } else {
-      console.warn(`Invalid pair: ${pair}`); // Debug
     }
   }
 
-  console.log('parseOptions result:', result); // Debug
   return result;
 }
+
 const actionHandlers: Record<string, Record<string, ActionHandler[]>> = {
   gen: {
-    request: [
-      (dto) => Promise.resolve(genBodyRequest(dto)),
-      (dto) => Promise.resolve(genTestRequest(dto)),
-    ],
+    // request: [(dto) => Promise.resolve(genTestRequest(dto))],
     response: [(dto) => Promise.resolve(genTestResponse(dto))],
     saga: [(dto) => Promise.resolve(genTestSaga(dto))],
     reports: [(dto) => generateAllReports(dto)],
     swagger: [() => genClientSwagger()],
-    interface: [(dto, options) => Promise.resolve(generateRequest(dto, options ? parseOptions(options) : {}))],
+    interface: [
+      (dto, cluster, options) => Promise.resolve(genBodyRequests(dto, cluster, options)),
+      (dto, cluster ) => Promise.resolve(genTestRequest(dto, cluster)),
+    ],
   },
   test: {
     request: [runTests('test-requests')],
@@ -103,20 +99,13 @@ const actionHandlers: Record<string, Record<string, ActionHandler[]>> = {
 
 async function handleBulkAction(basePath: string, handlers: ActionHandler[]) {
   const fullPath = path.join(__dirname, basePath);
-  console.log(`Processing bulk action in directory: ${fullPath}`);
-
-  // Lấy danh sách thư mục con, loại bỏ thư mục reports
-  const directories = getSubDirectories(fullPath).filter(
-    (dir) => !dir.includes('reports'),
-  );
-
-  console.log(`Found ${directories.length} DTO directories:`, directories);
+  const directories = getSubDirectories(fullPath).filter((dir) => !dir.includes('reports'));
 
   for (const dir of directories) {
     for (const handler of handlers) {
       try {
         await handler(dir);
-      } catch (error) {
+      } catch (error: any) {
         console.error(`Handler failed: ${error.message}`);
       }
     }
@@ -126,16 +115,12 @@ async function handleBulkAction(basePath: string, handlers: ActionHandler[]) {
 function getSubDirectories(dirPath: string): string[] {
   return fs
     .readdirSync(dirPath, { withFileTypes: true })
-    .filter(
-      (dirent) =>
-        dirent.isDirectory() && !dirent.name.toLowerCase().includes('report'), // Loại bỏ thư mục report
-    )
+    .filter((dirent) => dirent.isDirectory() && !dirent.name.toLowerCase().includes('report'))
     .map((dirent) => dirent.name);
 }
 
 function runTests(testType: string): ActionHandler {
   return async (dtoName) => {
-    console.log(`Running test for ${testType} "${dtoName}"...`);
     try {
       const basePath = path.resolve(__dirname, testType);
       const testPaths = findTestPath(basePath, dtoName);
@@ -145,11 +130,9 @@ function runTests(testType: string): ActionHandler {
         process.exit(1);
       }
 
-      const normalizedPaths = testPaths
-        .map((p) => `"${p.replace(/\\/g, '/')}"`)
-        .join(' ');
+      const normalizedPaths = testPaths.map((p) => `"${p.replace(/\\/g, '/')}"`).join(' ');
       execSync(`jest ${normalizedPaths}`, { stdio: 'inherit' });
-    } catch (error) {
+    } catch (error: any) {
       console.error(`Test failed for ${dtoName}:`, error.message);
       process.exit(1);
     }
@@ -159,17 +142,12 @@ function runTests(testType: string): ActionHandler {
 function clearFiles(testType: string): ActionHandler {
   return async (dtoName) => {
     const basePath = path.join(__dirname, testType);
-    if (!fs.existsSync(basePath)) {
-      console.error(`${testType} directory not found: ${basePath}`);
-      return;
-    }
+    if (!fs.existsSync(basePath)) return;
 
     function clearDirectory(dir: string) {
       const entries = fs.readdirSync(dir, { withFileTypes: true });
-
       for (const entry of entries) {
         const fullPath = path.join(dir, entry.name);
-
         if (entry.isDirectory()) {
           clearDirectory(fullPath);
         } else if (
@@ -189,10 +167,7 @@ function clearFiles(testType: string): ActionHandler {
 function clearReports(reportType: string): ActionHandler {
   return async (dtoName) => {
     const targetDir = path.join(__dirname, reportType, dtoName);
-    if (!fs.existsSync(targetDir)) {
-      console.error(`Report directory not found: ${targetDir}`);
-      return;
-    }
+    if (!fs.existsSync(targetDir)) return;
 
     fs.readdirSync(targetDir)
       .filter((file) => file.endsWith('.txt'))
@@ -206,9 +181,13 @@ function clearReports(reportType: string): ActionHandler {
 
 async function main() {
   console.log(
-    `Processing "${type}${subType ? ` ${subType}` : ''}"${dtoName ? ` for: ${dtoName}` : ''
-    }`,
+    `Processing "${type}${subType ? ` ${subType}` : ''}"${dtoName ? ` for: ${dtoName}` : ''}`,
   );
+
+  if (type === 'interface' && !cluster) {
+    console.error('Error: --branch is required for interface type');
+    process.exit(1);
+  }
 
   try {
     const handlers = actionHandlers[action]?.[type];
@@ -225,23 +204,19 @@ async function main() {
           dtoName.includes('-responses') ||
           dtoName.includes('-sagas'));
 
-      // if (!dtoName) {
-      //   throw new Error('Missing dtoName parameter');
-      // }
-
       if (isBulkAction) {
         await handleBulkAction(dtoName, handlers);
       } else {
         for (const handler of handlers) {
           if (type === 'interface') {
-            await handler(dtoName, optionsString)
+            await handler(dtoName, cluster, parseOptions(optionsString));
           } else {
-            await handler(dtoName)
+            await handler(dtoName);
           }
         }
       }
     }
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error:', error.message);
     process.exit(1);
   }

@@ -2501,7 +2501,7 @@ export class HttpClient<SecurityDataType = unknown> {
     const queryString = query && this.toQueryString(query);
     const payloadFormatter = this.contentFormatters[type || ContentType.Json];
     const responseFormat = format || requestParams.format;
-
+    console.log(requestParams.headers)
     return this.customFetch(
       `${baseUrl || this.baseUrl || ""}${path}${queryString ? `?${queryString}` : ""}`,
       {
@@ -2529,18 +2529,18 @@ export class HttpClient<SecurityDataType = unknown> {
       const data = !responseFormat
         ? r
         : await response[responseFormat]()
-            .then((data) => {
-              if (r.ok) {
-                r.data = data;
-              } else {
-                r.error = data;
-              }
-              return r;
-            })
-            .catch((e) => {
-              r.error = e;
-              return r;
-            });
+          .then((data) => {
+            if (r.ok) {
+              r.data = data;
+            } else {
+              r.error = data;
+            }
+            return r;
+          })
+          .catch((e) => {
+            r.error = e;
+            return r;
+          });
 
       if (cancelToken) {
         this.abortControllers.delete(cancelToken);
@@ -2558,7 +2558,7 @@ export class HttpClient<SecurityDataType = unknown> {
  *
  * Commands message ajv decorator swagger
  */
-export class commandsMessageHttpClient<SecurityDataType extends unknown> {
+export class commandsMessageHttpClient<SecurityDataType extends any> {
   http: HttpClient<SecurityDataType>;
 
   constructor(http: HttpClient<SecurityDataType>) {
@@ -3229,6 +3229,1103 @@ export class commandsMessageHttpClient<SecurityDataType extends unknown> {
     updateMessage: (data: V3UpdateMessageRequest, params: RequestParams = {}) =>
       this.http.request<V3UpdateMessageResponse, any>({
         path: `/Message/UpdateMessage`,
+        method: "PUT",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+  };
+  friend = {
+    /**
+     * No description
+     *
+     * @name AddFriend
+     * @request POST:/Friend/AddFriend
+     */
+    addFriend: (data: V3AddFriendRequest, params: RequestParams = {}) =>
+      this.http.request<V3AddFriendResponse, any>({
+        path: `/Friend/AddFriend`,
+        method: "POST",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name AcceptFriendRequest
+     * @request POST:/Friend/AcceptFriendRequest
+     */
+    acceptFriendRequest: (
+      data: V3AcceptFriendRequestRequest,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3AcceptFriendRequestResponse, any>({
+        path: `/Friend/AcceptFriendRequest`,
+        method: "POST",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name CancelFriendRequest
+     * @request POST:/Friend/CancelFriendRequest
+     */
+    cancelFriendRequest: (
+      data: V3CancelFriendRequestRequest,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3CancelFriendRequestResponse, any>({
+        path: `/Friend/CancelFriendRequest`,
+        method: "POST",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name Unfriend
+     * @request POST:/Friend/Unfriend
+     */
+    unfriend: (data: V3UnfriendRequest, params: RequestParams = {}) =>
+      this.http.request<V3UnfriendResponse, any>({
+        path: `/Friend/Unfriend`,
+        method: "POST",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name DeleteFriendRequest
+     * @request DELETE:/Friend/DeleteFriendRequest
+     */
+    deleteFriendRequest: (
+      query: DeleteFriendRequestParams,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3DeleteFriendRequestResponse, any>({
+        path: `/Friend/DeleteFriendRequest`,
+        method: "DELETE",
+        query: query,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name MarkAllAsRead
+     * @request POST:/Friend/MarkAllAsRead
+     */
+    markAllAsRead: (data: V3MarkAllAsReadRequest, params: RequestParams = {}) =>
+      this.http.request<V3MarkAllAsReadResponse, any>({
+        path: `/Friend/MarkAllAsRead`,
+        method: "POST",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+  };
+  channel = {
+    /**
+     * No description
+     *
+     * @name CreateChannel
+     * @request POST:/Channel/CreateChannel
+     */
+    createChannel: (data: V3CreateChannelRequest, params: RequestParams = {}) =>
+      this.http.request<V3CreateChannelResponse, any>({
+        path: `/Channel/CreateChannel`,
+        method: "POST",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name UpdateChannelName
+     * @request PUT:/Channel/UpdateChannelName
+     */
+    updateChannelName: (
+      data: V3UpdateChannelNameRequest,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3UpdateChannelNameResponse, any>({
+        path: `/Channel/UpdateChannelName`,
+        method: "PUT",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name UpdateChannelAvatar
+     * @request PUT:/Channel/UpdateChannelAvatar
+     */
+    updateChannelAvatar: (
+      data: V3UpdateChannelAvatarRequest,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3UpdateChannelAvatarResponse, any>({
+        path: `/Channel/UpdateChannelAvatar`,
+        method: "PUT",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name DeleteChannel
+     * @request DELETE:/Channel/DeleteChannel
+     */
+    deleteChannel: (query: DeleteChannelParams, params: RequestParams = {}) =>
+      this.http.request<V3DeleteChannelResponse, any>({
+        path: `/Channel/DeleteChannel`,
+        method: "DELETE",
+        query: query,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name DeleteChannelAvatar
+     * @request DELETE:/Channel/DeleteChannelAvatar
+     */
+    deleteChannelAvatar: (
+      query: DeleteChannelAvatarParams,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3DeleteChannelAvatarResponse, any>({
+        path: `/Channel/DeleteChannelAvatar`,
+        method: "DELETE",
+        query: query,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name AcceptMessageRequest
+     * @request POST:/Channel/AcceptMessageRequest
+     */
+    acceptMessageRequest: (
+      data: V3AcceptMessageRequestRequest,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3AcceptMessageRequestResponse, any>({
+        path: `/Channel/AcceptMessageRequest`,
+        method: "POST",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name RejectMessageRequest
+     * @request POST:/Channel/RejectMessageRequest
+     */
+    rejectMessageRequest: (
+      data: V3RejectMessageRequestRequest,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3RejectMessageRequestResponse, any>({
+        path: `/Channel/RejectMessageRequest`,
+        method: "POST",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name UpdateDmMediaPermissionSetting
+     * @request PUT:/Channel/UpdateDMMediaPermissionSetting
+     */
+    updateDmMediaPermissionSetting: (
+      data: V3UpdateDMMediaPermissionSettingRequest,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3UpdateDMMediaPermissionSettingResponse, any>({
+        path: `/Channel/UpdateDMMediaPermissionSetting`,
+        method: "PUT",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+  };
+  invitation = {
+    /**
+     * No description
+     *
+     * @name SendInvitation
+     * @request POST:/Invitation/SendInvitation
+     */
+    sendInvitation: (
+      data: V3SendInvitationRequest,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3SendInvitationResponse, any>({
+        path: `/Invitation/SendInvitation`,
+        method: "POST",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name AcceptInvitation
+     * @request POST:/Invitation/AcceptInvitation
+     */
+    acceptInvitation: (
+      data: V3AcceptInvitationRequest,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3AcceptInvitationResponse, any>({
+        path: `/Invitation/AcceptInvitation`,
+        method: "POST",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name CreateInvitation
+     * @request POST:/Invitation/CreateInvitation
+     */
+    createInvitation: (
+      data: V3CreateInvitationRequest,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3CreateInvitationResponse, any>({
+        path: `/Invitation/CreateInvitation`,
+        method: "POST",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name RevokeInvitation
+     * @request DELETE:/Invitation/RevokeInvitation
+     */
+    revokeInvitation: (
+      query: RevokeInvitationParams,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3RevokeInvitationResponse, any>({
+        path: `/Invitation/RevokeInvitation`,
+        method: "DELETE",
+        query: query,
+        format: "json",
+        ...params,
+      }),
+  };
+  member = {
+    /**
+     * No description
+     *
+     * @name AssignAsAdmin
+     * @request POST:/Member/AssignAsAdmin
+     */
+    assignAsAdmin: (data: V3AssignAsAdminRequest, params: RequestParams = {}) =>
+      this.http.request<V3AssignAsAdminResponse, any>({
+        path: `/Member/AssignAsAdmin`,
+        method: "POST",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name BanFromChannel
+     * @request POST:/Member/BanFromChannel
+     */
+    banFromChannel: (
+      data: V3BanFromChannelRequest,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3BanFromChannelResponse, any>({
+        path: `/Member/BanFromChannel`,
+        method: "POST",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name DismissAsAdmin
+     * @request POST:/Member/DismissAsAdmin
+     */
+    dismissAsAdmin: (
+      data: V3DismissAsAdminRequest,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3DismissAsAdminResponse, any>({
+        path: `/Member/DismissAsAdmin`,
+        method: "POST",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name LeaveChannel
+     * @request POST:/Member/LeaveChannel
+     */
+    leaveChannel: (data: V3LeaveChannelRequest, params: RequestParams = {}) =>
+      this.http.request<V3LeaveChannelResponse, any>({
+        path: `/Member/LeaveChannel`,
+        method: "POST",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name RemoveFromChannel
+     * @request DELETE:/Member/RemoveFromChannel
+     */
+    removeFromChannel: (
+      query: RemoveFromChannelParams,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3RemoveFromChannelResponse, any>({
+        path: `/Member/RemoveFromChannel`,
+        method: "DELETE",
+        query: query,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name UpdateNickname
+     * @request PUT:/Member/UpdateNickname
+     */
+    updateNickname: (
+      data: V3UpdateNicknameRequest,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3UpdateNicknameResponse, any>({
+        path: `/Member/UpdateNickname`,
+        method: "PUT",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name UnbanFromChannel
+     * @request POST:/Member/UnbanFromChannel
+     */
+    unbanFromChannel: (
+      data: V3UnbanFromChannelRequest,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3UnbanFromChannelResponse, any>({
+        path: `/Member/UnbanFromChannel`,
+        method: "POST",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name TransferOwnership
+     * @request POST:/Member/TransferOwnership
+     */
+    transferOwnership: (
+      data: V3TransferOwnershipRequest,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3TransferOwnershipResponse, any>({
+        path: `/Member/TransferOwnership`,
+        method: "POST",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name TransferOwnershipAndLeaveChannel
+     * @request POST:/Member/TransferOwnershipAndLeaveChannel
+     */
+    transferOwnershipAndLeaveChannel: (
+      data: V3TransferOwnershipAndLeaveRequest,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3TransferOwnershipAndLeaveResponse, any>({
+        path: `/Member/TransferOwnershipAndLeaveChannel`,
+        method: "POST",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+  };
+  ringbackTone = {
+    /**
+     * No description
+     *
+     * @name RingbackToneCreate
+     * @request POST:/RingbackTone/RingbackToneCreate
+     */
+    ringbackToneCreate: (
+      data: V3RingbackToneCreateRequest,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3RingbackToneCreateResponse, any>({
+        path: `/RingbackTone/RingbackToneCreate`,
+        method: "POST",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name RingbackToneRename
+     * @request PUT:/RingbackTone/RingbackToneRename
+     */
+    ringbackToneRename: (
+      data: V3RingbackToneRenameRequest,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3RingbackToneRenameResponse, any>({
+        path: `/RingbackTone/RingbackToneRename`,
+        method: "PUT",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name SetRingbackTone
+     * @request PUT:/RingbackTone/SetRingbackTone
+     */
+    setRingbackTone: (
+      data: V3SetRingbackToneRequest,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3SetRingbackToneResponse, any>({
+        path: `/RingbackTone/SetRingbackTone`,
+        method: "PUT",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name RingbackToneDelete
+     * @request DELETE:/RingbackTone/RingbackToneDelete
+     */
+    ringbackToneDelete: (
+      query: RingbackToneDeleteParams,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3RingbackToneDeleteResponse, any>({
+        path: `/RingbackTone/RingbackToneDelete`,
+        method: "DELETE",
+        query: query,
+        format: "json",
+        ...params,
+      }),
+  };
+  avatarFrame = {
+    /**
+     * No description
+     *
+     * @name CreateAvatarFrame
+     * @request POST:/AvatarFrame/CreateAvatarFrame
+     */
+    createAvatarFrame: (
+      data: V3CreateUserAvatarFrameRequest,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3CreateUserAvatarFrameResponse, any>({
+        path: `/AvatarFrame/CreateAvatarFrame`,
+        method: "POST",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name DeleteAvatarFrame
+     * @request DELETE:/AvatarFrame/DeleteAvatarFrame
+     */
+    deleteAvatarFrame: (
+      query: DeleteAvatarFrameParams,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3DeleteUserAvatarFrameResponse, any>({
+        path: `/AvatarFrame/DeleteAvatarFrame`,
+        method: "DELETE",
+        query: query,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name UploadDecoratedAvatar
+     * @request POST:/AvatarFrame/UploadDecoratedAvatar
+     */
+    uploadDecoratedAvatar: (
+      data: V3UploadDecoratedAvatarRequest,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3UploadDecoratedAvatarResponse, any>({
+        path: `/AvatarFrame/UploadDecoratedAvatar`,
+        method: "POST",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name RemoveDecoratedAvatar
+     * @request DELETE:/AvatarFrame/RemoveDecoratedAvatar
+     */
+    removeDecoratedAvatar: (params: RequestParams = {}) =>
+      this.http.request<V3RemoveDecoratedAvatarResponse, any>({
+        path: `/AvatarFrame/RemoveDecoratedAvatar`,
+        method: "DELETE",
+        format: "json",
+        ...params,
+      }),
+  };
+  userConnect = {
+    /**
+     * No description
+     *
+     * @name GenerateUserConnectLink
+     * @request POST:/UserConnect/GenerateUserConnectLink
+     */
+    generateUserConnectLink: (
+      query: GenerateUserConnectLinkParams,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3GenerateUserConnectLinkResponse, any>({
+        path: `/UserConnect/GenerateUserConnectLink`,
+        method: "POST",
+        query: query,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name DecodeUserConnectLink
+     * @request POST:/UserConnect/DecodeUserConnectLink
+     */
+    decodeUserConnectLink: (
+      data: V3DecodeUserConnectLinkRequest,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3DecodeUserConnectLinkResponse, any>({
+        path: `/UserConnect/DecodeUserConnectLink`,
+        method: "POST",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+  };
+  userReport = {
+    /**
+     * No description
+     *
+     * @name ReportUser
+     * @request POST:/UserReport/ReportUser
+     */
+    reportUser: (
+      data: V3ReportUserRequestRequest,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3ReportUserRequestResponse, any>({
+        path: `/UserReport/ReportUser`,
+        method: "POST",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+  };
+  userProfile = {
+    /**
+     * No description
+     *
+     * @name AddCoverPhoto
+     * @request POST:/UserProfile/AddCoverPhoto
+     */
+    addCoverPhoto: (data: V3AddCoverPhotoRequest, params: RequestParams = {}) =>
+      this.http.request<V3AddCoverPhotoResponse, any>({
+        path: `/UserProfile/AddCoverPhoto`,
+        method: "POST",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name UpdateCoverPhoto
+     * @request PUT:/UserProfile/UpdateCoverPhoto
+     */
+    updateCoverPhoto: (
+      data: V3UpdateCoverPhotoRequest,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3UpdateCoverPhotoResponse, any>({
+        path: `/UserProfile/UpdateCoverPhoto`,
+        method: "PUT",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name DeleteCoverPhoto
+     * @request DELETE:/UserProfile/DeleteCoverPhoto
+     */
+    deleteCoverPhoto: (params: RequestParams = {}) =>
+      this.http.request<V3DeleteCoverPhotoResponse, any>({
+        path: `/UserProfile/DeleteCoverPhoto`,
+        method: "DELETE",
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name AddUserStatus
+     * @request POST:/UserProfile/AddUserStatus
+     */
+    addUserStatus: (data: V3AddUserStatusRequest, params: RequestParams = {}) =>
+      this.http.request<V3AddUserStatusResponse, any>({
+        path: `/UserProfile/AddUserStatus`,
+        method: "POST",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name UpdateUserStatus
+     * @request PUT:/UserProfile/UpdateUserStatus
+     */
+    updateUserStatus: (
+      data: V3UpdateUserStatusRequest,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3UpdateUserStatusResponse, any>({
+        path: `/UserProfile/UpdateUserStatus`,
+        method: "PUT",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name DeleteUserStatus
+     * @request DELETE:/UserProfile/DeleteUserStatus
+     */
+    deleteUserStatus: (params: RequestParams = {}) =>
+      this.http.request<V3DeleteUserStatusResponse, any>({
+        path: `/UserProfile/DeleteUserStatus`,
+        method: "DELETE",
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name UpdateUserDisplayName
+     * @request PUT:/UserProfile/UpdateUserDisplayName
+     */
+    updateUserDisplayName: (
+      data: V3UpdateUserDisplayNameRequest,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3UpdateUserDisplayNameResponse, any>({
+        path: `/UserProfile/UpdateUserDisplayName`,
+        method: "PUT",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name UpdateUserAvatar
+     * @request PUT:/UserProfile/UpdateUserAvatar
+     */
+    updateUserAvatar: (
+      data: V3UpdateUserAvatarRequest,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3UpdateUserAvatarResponse, any>({
+        path: `/UserProfile/UpdateUserAvatar`,
+        method: "PUT",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name UpdateUserVideoAvatar
+     * @request PUT:/UserProfile/UpdateUserVideoAvatar
+     */
+    updateUserVideoAvatar: (
+      data: V3UpdateUserVideoAvatarRequest,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3UpdateUserVideoAvatarResponse, any>({
+        path: `/UserProfile/UpdateUserVideoAvatar`,
+        method: "PUT",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name UpdateUserEmail
+     * @request PUT:/UserProfile/UpdateUserEmail
+     */
+    updateUserEmail: (
+      data: V3UpdateUserEmailRequest,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3UpdateUserEmailResponse, any>({
+        path: `/UserProfile/UpdateUserEmail`,
+        method: "PUT",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name UpdateUserPhone
+     * @request PUT:/UserProfile/UpdateUserPhone
+     */
+    updateUserPhone: (
+      data: V3UpdateUserPhoneRequest,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3UpdateUserPhoneResponse, any>({
+        path: `/UserProfile/UpdateUserPhone`,
+        method: "PUT",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name VisitedProfile
+     * @request POST:/UserProfile/VisitedProfile
+     */
+    visitedProfile: (
+      data: V3VisitedProfileRequest,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3VisitedProfileResponse, any>({
+        path: `/UserProfile/VisitedProfile`,
+        method: "POST",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name ClearUserVisitedProfileNotifications
+     * @request DELETE:/UserProfile/ClearUserVisitedProfileNotifications
+     */
+    clearUserVisitedProfileNotifications: (params: RequestParams = {}) =>
+      this.http.request<V3ClearUserVisitedProfileNotificationsResponse, any>({
+        path: `/UserProfile/ClearUserVisitedProfileNotifications`,
+        method: "DELETE",
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name DeleteUserVisitedProfile
+     * @request DELETE:/UserProfile/DeleteUserVisitedProfile
+     */
+    deleteUserVisitedProfile: (
+      query: DeleteUserVisitedProfileParams,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3DeleteUserVisitedProfileResponse, any>({
+        path: `/UserProfile/DeleteUserVisitedProfile`,
+        method: "DELETE",
+        query: query,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name DeleteUserAvatar
+     * @request DELETE:/UserProfile/DeleteUserAvatar
+     */
+    deleteUserAvatar: (params: RequestParams = {}) =>
+      this.http.request<V3DeleteUserAvatarResponse, any>({
+        path: `/UserProfile/DeleteUserAvatar`,
+        method: "DELETE",
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name DeleteUserVideoAvatar
+     * @request DELETE:/UserProfile/DeleteUserVideoAvatar
+     */
+    deleteUserVideoAvatar: (params: RequestParams = {}) =>
+      this.http.request<V3DeleteUserVideoAvatarResponse, any>({
+        path: `/UserProfile/DeleteUserVideoAvatar`,
+        method: "DELETE",
+        format: "json",
+        ...params,
+      }),
+  };
+  userSetting = {
+    /**
+     * No description
+     *
+     * @name BlockUser
+     * @request POST:/UserSetting/BlockUser
+     */
+    blockUser: (data: V3BlockUserRequest, params: RequestParams = {}) =>
+      this.http.request<V3BlockUserResponse, any>({
+        path: `/UserSetting/BlockUser`,
+        method: "POST",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name UnblockUser
+     * @request POST:/UserSetting/UnblockUser
+     */
+    unblockUser: (data: V3UnblockUserRequest, params: RequestParams = {}) =>
+      this.http.request<V3UnblockUserResponse, any>({
+        path: `/UserSetting/UnblockUser`,
+        method: "POST",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name UpdateMediaPermissionSetting
+     * @request PUT:/UserSetting/UpdateMediaPermissionSetting
+     */
+    updateMediaPermissionSetting: (
+      data: V3UpdateMediaPermissionSettingRequest,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3UpdateMediaPermissionSettingResponse, any>({
+        path: `/UserSetting/UpdateMediaPermissionSetting`,
+        method: "PUT",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name UpdateRecoveryCodeSetting
+     * @request PUT:/UserSetting/UpdateRecoveryCodeSetting
+     */
+    updateRecoveryCodeSetting: (
+      data: V3UpdateRecoveryCodeSettingRequest,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3UpdateRecoveryCodeSettingResponse, any>({
+        path: `/UserSetting/UpdateRecoveryCodeSetting`,
+        method: "PUT",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name UpdateUserScopeForCall
+     * @request PUT:/UserSetting/UpdateUserScopeForCall
+     */
+    updateUserScopeForCall: (
+      data: V3UpdateUserScopeForCallRequest,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3UpdateUserScopeForCallResponse, any>({
+        path: `/UserSetting/UpdateUserScopeForCall`,
+        method: "PUT",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name UpdateUserScopeForMessage
+     * @request PUT:/UserSetting/UpdateUserScopeForMessage
+     */
+    updateUserScopeForMessage: (
+      data: V3UpdateUserScopeForMessageRequest,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3UpdateUserScopeForMessageResponse, any>({
+        path: `/UserSetting/UpdateUserScopeForMessage`,
+        method: "PUT",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name UpdateSmartOtpSetting
+     * @request PUT:/UserSetting/UpdateSmartOtpSetting
+     */
+    updateSmartOtpSetting: (
+      data: V3UpdateSmartOtpSettingRequest,
+      params: RequestParams = {},
+    ) =>
+      this.http.request<V3UpdateSmartOtpSettingResponse, any>({
+        path: `/UserSetting/UpdateSmartOtpSetting`,
         method: "PUT",
         body: data,
         type: ContentType.Json,

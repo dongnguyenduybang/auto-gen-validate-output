@@ -39,6 +39,12 @@ export enum VAR {
   ringBackTone = 'https://fs.ugc.ziicdn.net/01JEZJ0GPMSHH2RVX9QTSJJNRX/heic_300kB.heic',
   ringBackToneId = '{{ringbackToneId}}',
   defaultEmoji = '🚀',
-  defaultCollectionId =  '01JPPHQFHCC697M93K6PTZTZ8Q',
-  defaultChannelName = 'channelname1'
+  defaultCollectionId = '01JPPHQFHCC697M93K6PTZTZ8Q',
+  defaultChannelName = 'channelname1',
+  content = 'default content',
+  ref = 'default ref',
+
+  status = '🚀',
+
+  versionSwagger = 'V3$Request'
 }

@@ -2,9 +2,9 @@
     {
         "body": {
             "workspaceId": 123,
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
+            "name": "{{name}}",
+            "avatar": "",
+            "channelType": 0
         },
         "expects": [
             "Could not resolve permission type"
@@ -14,19 +14,8 @@
         "body": {
             "workspaceId": 123,
             "name": 123,
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": 123,
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
+            "avatar": "",
+            "channelType": 0
         },
         "expects": [
             "Could not resolve permission type"
@@ -36,8 +25,8 @@
         "body": {
             "workspaceId": 123,
             "name": "aa",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
+            "avatar": "",
+            "channelType": 0
         },
         "expects": [
             "Could not resolve permission type"
@@ -47,8 +36,8 @@
         "body": {
             "workspaceId": 123,
             "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
+            "avatar": "",
+            "channelType": 0
         },
         "expects": [
             "Could not resolve permission type"
@@ -57,8 +46,8 @@
     {
         "body": {
             "workspaceId": 123,
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
+            "avatar": "",
+            "channelType": 0
         },
         "expects": [
             "Could not resolve permission type"
@@ -68,41 +57,8 @@
         "body": {
             "workspaceId": 123,
             "name": "",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": 123,
-            "name": "channel1",
-            "avatar": 123,
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": 123,
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": 123,
-            "name": "channel1",
             "avatar": "",
-            "channelType": 1
+            "channelType": 0
         },
         "expects": [
             "Could not resolve permission type"
@@ -111,8 +67,19 @@
     {
         "body": {
             "workspaceId": 123,
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+            "name": "{{name}}",
+            "avatar": 123,
+            "channelType": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "name": "{{name}}",
+            "avatar": "",
             "channelType": "invalid_enum_value"
         },
         "expects": [
@@ -122,920 +89,37 @@
     {
         "body": {
             "workspaceId": 123,
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": 123,
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": ""
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": []
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": 123,
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "name expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": []
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "aa",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "name string must contain at least 3 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "name string must contain at most 50 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "name required"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "name should not be empty",
-            "name string must contain at least 3 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": 123,
-            "channelType": 1
-        },
-        "expects": [
-            "avatar expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": []
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
+            "name": "{{name}}",
             "avatar": "",
-            "channelType": 1
-        },
-        "expects": [
-            "avatar should not be empty"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": "invalid_enum_value"
-        },
-        "expects": [
-            "channelType invalid enum value. Expected 0 | 1 | 2, received 'invalid_enum_value'"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": []
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
             "channelType": ""
         },
         "expects": [
-            "channelType should not be empty",
-            "channelType invalid enum value. Expected 0 | 1 | 2, received ''"
-        ]
-    },
-    {
-        "body": {
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
             "Could not resolve permission type"
         ]
     },
     {
         "body": {
-            "name": 123,
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "name": "aa",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "name": "",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "name": "channel1",
-            "avatar": 123,
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "name": "channel1",
+            "workspaceId": "0",
+            "name": "{{name}}",
             "avatar": "",
-            "channelType": 1
+            "channelType": 0
         },
         "expects": [
-            "Could not resolve permission type"
+            "avatar should not be empty",
+            "channelType is not accept DM Channel"
         ]
     },
     {
         "body": {
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": "invalid_enum_value"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": ""
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "",
+            "workspaceId": "0",
             "name": 123,
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "",
-            "name": "aa",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "",
-            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "",
-            "name": "",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "",
-            "name": "channel1",
-            "avatar": 123,
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "",
-            "name": "channel1",
             "avatar": "",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": "invalid_enum_value"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": ""
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "invalid_value",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "invalid_value",
-            "name": 123,
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "invalid_value",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "invalid_value",
-            "name": "aa",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "invalid_value",
-            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "invalid_value",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "invalid_value",
-            "name": "",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "invalid_value",
-            "name": "channel1",
-            "avatar": 123,
-            "channelType": 1
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "invalid_value",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "invalid_value",
-            "name": "channel1",
-            "avatar": "",
-            "channelType": 1
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "invalid_value",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": "invalid_enum_value"
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "invalid_value",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "invalid_value",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": ""
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": 123,
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "name expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": 123,
-            "name": 123,
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": 123,
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "name expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "name": 123,
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "",
-            "name": 123,
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "invalid_value",
-            "name": 123,
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": 123,
-            "avatar": 123,
-            "channelType": 1
+            "channelType": 0
         },
         "expects": [
             "name expected string, received number",
-            "avatar expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": 123,
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "name expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": 123,
-            "avatar": "",
-            "channelType": 1
-        },
-        "expects": [
-            "name expected string, received number",
-            "avatar should not be empty"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": 123,
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": "invalid_enum_value"
-        },
-        "expects": [
-            "name expected string, received number",
-            "channelType invalid enum value. Expected 0 | 1 | 2, received 'invalid_enum_value'"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": 123,
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "name expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": 123,
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": ""
-        },
-        "expects": [
-            "name expected string, received number",
-            "channelType should not be empty",
-            "channelType invalid enum value. Expected 0 | 1 | 2, received ''"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": []
-    },
-    {
-        "body": {
-            "workspaceId": 123,
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": []
-    },
-    {
-        "body": {
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "invalid_value",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": 123,
-            "channelType": 1
-        },
-        "expects": [
-            "avatar expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": []
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": "",
-            "channelType": 1
-        },
-        "expects": [
-            "avatar should not be empty"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": "invalid_enum_value"
-        },
-        "expects": [
-            "channelType invalid enum value. Expected 0 | 1 | 2, received 'invalid_enum_value'"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": []
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": ""
-        },
-        "expects": [
-            "channelType should not be empty",
-            "channelType invalid enum value. Expected 0 | 1 | 2, received ''"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "aa",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "name string must contain at least 3 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": 123,
-            "name": "aa",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "aa",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "name string must contain at least 3 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "name": "aa",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "",
-            "name": "aa",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "invalid_value",
-            "name": "aa",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "aa",
-            "avatar": 123,
-            "channelType": 1
-        },
-        "expects": [
-            "name string must contain at least 3 character(s)",
-            "avatar expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "aa",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "name string must contain at least 3 character(s)"
+            "avatar should not be empty",
+            "channelType is not accept DM Channel"
         ]
     },
     {
@@ -1043,399 +127,37 @@
             "workspaceId": "0",
             "name": "aa",
             "avatar": "",
-            "channelType": 1
+            "channelType": 0
         },
         "expects": [
             "name string must contain at least 3 character(s)",
-            "avatar should not be empty"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "aa",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": "invalid_enum_value"
-        },
-        "expects": [
-            "name string must contain at least 3 character(s)",
-            "channelType invalid enum value. Expected 0 | 1 | 2, received 'invalid_enum_value'"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "aa",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "name string must contain at least 3 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "aa",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": ""
-        },
-        "expects": [
-            "name string must contain at least 3 character(s)",
-            "channelType should not be empty",
-            "channelType invalid enum value. Expected 0 | 1 | 2, received ''"
+            "avatar should not be empty",
+            "channelType is not accept DM Channel"
         ]
     },
     {
         "body": {
             "workspaceId": "0",
             "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "name string must contain at most 50 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": 123,
-            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "name string must contain at most 50 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "",
-            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "invalid_value",
-            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "avatar": 123,
-            "channelType": 1
+            "avatar": "",
+            "channelType": 0
         },
         "expects": [
             "name string must contain at most 50 character(s)",
-            "avatar expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "name string must contain at most 50 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "avatar": "",
-            "channelType": 1
-        },
-        "expects": [
-            "name string must contain at most 50 character(s)",
-            "avatar should not be empty"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": "invalid_enum_value"
-        },
-        "expects": [
-            "name string must contain at most 50 character(s)",
-            "channelType invalid enum value. Expected 0 | 1 | 2, received 'invalid_enum_value'"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "name string must contain at most 50 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": ""
-        },
-        "expects": [
-            "name string must contain at most 50 character(s)",
-            "channelType should not be empty",
-            "channelType invalid enum value. Expected 0 | 1 | 2, received ''"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "name required"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": 123,
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "name required"
-        ]
-    },
-    {
-        "body": {
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "invalid_value",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "avatar": 123,
-            "channelType": 1
-        },
-        "expects": [
-            "name required",
-            "avatar expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "name required"
+            "avatar should not be empty",
+            "channelType is not accept DM Channel"
         ]
     },
     {
         "body": {
             "workspaceId": "0",
             "avatar": "",
-            "channelType": 1
+            "channelType": 0
         },
         "expects": [
             "name required",
-            "avatar should not be empty"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": "invalid_enum_value"
-        },
-        "expects": [
-            "name required",
-            "channelType invalid enum value. Expected 0 | 1 | 2, received 'invalid_enum_value'"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "name required"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": ""
-        },
-        "expects": [
-            "name required",
-            "channelType should not be empty",
-            "channelType invalid enum value. Expected 0 | 1 | 2, received ''"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "name should not be empty",
-            "name string must contain at least 3 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": 123,
-            "name": "",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "name should not be empty",
-            "name string must contain at least 3 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "name": "",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "",
-            "name": "",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "invalid_value",
-            "name": "",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "",
-            "avatar": 123,
-            "channelType": 1
-        },
-        "expects": [
-            "name should not be empty",
-            "name string must contain at least 3 character(s)",
-            "avatar expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "name should not be empty",
-            "name string must contain at least 3 character(s)"
+            "avatar should not be empty",
+            "channelType is not accept DM Channel"
         ]
     },
     {
@@ -1443,522 +165,31 @@
             "workspaceId": "0",
             "name": "",
             "avatar": "",
-            "channelType": 1
+            "channelType": 0
         },
         "expects": [
             "name should not be empty",
             "name string must contain at least 3 character(s)",
-            "avatar should not be empty"
+            "avatar should not be empty",
+            "channelType is not accept DM Channel"
         ]
     },
     {
         "body": {
             "workspaceId": "0",
-            "name": "",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": "invalid_enum_value"
-        },
-        "expects": [
-            "name should not be empty",
-            "name string must contain at least 3 character(s)",
-            "channelType invalid enum value. Expected 0 | 1 | 2, received 'invalid_enum_value'"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "name should not be empty",
-            "name string must contain at least 3 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": ""
-        },
-        "expects": [
-            "name should not be empty",
-            "name string must contain at least 3 character(s)",
-            "channelType should not be empty",
-            "channelType invalid enum value. Expected 0 | 1 | 2, received ''"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
+            "name": "{{name}}",
             "avatar": 123,
-            "channelType": 1
-        },
-        "expects": [
-            "avatar expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": 123,
-            "name": "channel1",
-            "avatar": 123,
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": 123,
-            "channelType": 1
-        },
-        "expects": [
-            "avatar expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "name": "channel1",
-            "avatar": 123,
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "",
-            "name": "channel1",
-            "avatar": 123,
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "invalid_value",
-            "name": "channel1",
-            "avatar": 123,
-            "channelType": 1
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": 123,
-            "avatar": 123,
-            "channelType": 1
-        },
-        "expects": [
-            "name expected string, received number",
-            "avatar expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": 123,
-            "channelType": 1
-        },
-        "expects": [
-            "avatar expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "aa",
-            "avatar": 123,
-            "channelType": 1
-        },
-        "expects": [
-            "name string must contain at least 3 character(s)",
-            "avatar expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "avatar": 123,
-            "channelType": 1
-        },
-        "expects": [
-            "name string must contain at most 50 character(s)",
-            "avatar expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "avatar": 123,
-            "channelType": 1
-        },
-        "expects": [
-            "name required",
-            "avatar expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "",
-            "avatar": 123,
-            "channelType": 1
-        },
-        "expects": [
-            "name should not be empty",
-            "name string must contain at least 3 character(s)",
-            "avatar expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": 123,
-            "channelType": "invalid_enum_value"
+            "channelType": 0
         },
         "expects": [
             "avatar expected string, received number",
-            "channelType invalid enum value. Expected 0 | 1 | 2, received 'invalid_enum_value'"
+            "channelType is not accept DM Channel"
         ]
     },
     {
         "body": {
             "workspaceId": "0",
-            "name": "channel1",
-            "avatar": 123,
-            "channelType": 1
-        },
-        "expects": [
-            "avatar expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": 123,
-            "channelType": ""
-        },
-        "expects": [
-            "avatar expected string, received number",
-            "channelType should not be empty",
-            "channelType invalid enum value. Expected 0 | 1 | 2, received ''"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": []
-    },
-    {
-        "body": {
-            "workspaceId": 123,
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": []
-    },
-    {
-        "body": {
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "invalid_value",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": 123,
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "name expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": []
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "aa",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "name string must contain at least 3 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "name string must contain at most 50 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "name required"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "name should not be empty",
-            "name string must contain at least 3 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": "invalid_enum_value"
-        },
-        "expects": [
-            "channelType invalid enum value. Expected 0 | 1 | 2, received 'invalid_enum_value'"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": []
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": ""
-        },
-        "expects": [
-            "channelType should not be empty",
-            "channelType invalid enum value. Expected 0 | 1 | 2, received ''"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": "",
-            "channelType": 1
-        },
-        "expects": [
-            "avatar should not be empty"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": 123,
-            "name": "channel1",
-            "avatar": "",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": "",
-            "channelType": 1
-        },
-        "expects": [
-            "avatar should not be empty"
-        ]
-    },
-    {
-        "body": {
-            "name": "channel1",
-            "avatar": "",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "",
-            "name": "channel1",
-            "avatar": "",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "invalid_value",
-            "name": "channel1",
-            "avatar": "",
-            "channelType": 1
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": 123,
-            "avatar": "",
-            "channelType": 1
-        },
-        "expects": [
-            "name expected string, received number",
-            "avatar should not be empty"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": "",
-            "channelType": 1
-        },
-        "expects": [
-            "avatar should not be empty"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "aa",
-            "avatar": "",
-            "channelType": 1
-        },
-        "expects": [
-            "name string must contain at least 3 character(s)",
-            "avatar should not be empty"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "avatar": "",
-            "channelType": 1
-        },
-        "expects": [
-            "name string must contain at most 50 character(s)",
-            "avatar should not be empty"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "avatar": "",
-            "channelType": 1
-        },
-        "expects": [
-            "name required",
-            "avatar should not be empty"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "",
-            "avatar": "",
-            "channelType": 1
-        },
-        "expects": [
-            "name should not be empty",
-            "name string must contain at least 3 character(s)",
-            "avatar should not be empty"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
+            "name": "{{name}}",
             "avatar": "",
             "channelType": "invalid_enum_value"
         },
@@ -1970,18 +201,7 @@
     {
         "body": {
             "workspaceId": "0",
-            "name": "channel1",
-            "avatar": "",
-            "channelType": 1
-        },
-        "expects": [
-            "avatar should not be empty"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
+            "name": "{{name}}",
             "avatar": "",
             "channelType": ""
         },
@@ -1993,20 +213,77 @@
     },
     {
         "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": "invalid_enum_value"
+            "name": "{{name}}",
+            "avatar": "",
+            "channelType": 0
         },
         "expects": [
-            "channelType invalid enum value. Expected 0 | 1 | 2, received 'invalid_enum_value'"
+            "Could not resolve permission type"
         ]
     },
     {
         "body": {
-            "workspaceId": 123,
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+            "name": 123,
+            "avatar": "",
+            "channelType": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "name": "aa",
+            "avatar": "",
+            "channelType": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "avatar": "",
+            "channelType": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "avatar": "",
+            "channelType": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "name": "",
+            "avatar": "",
+            "channelType": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "name": "{{name}}",
+            "avatar": 123,
+            "channelType": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "name": "{{name}}",
+            "avatar": "",
             "channelType": "invalid_enum_value"
         },
         "expects": [
@@ -2015,19 +292,95 @@
     },
     {
         "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": "invalid_enum_value"
+            "name": "{{name}}",
+            "avatar": "",
+            "channelType": ""
         },
         "expects": [
-            "channelType invalid enum value. Expected 0 | 1 | 2, received 'invalid_enum_value'"
+            "Could not resolve permission type"
         ]
     },
     {
         "body": {
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+            "workspaceId": "",
+            "name": "{{name}}",
+            "avatar": "",
+            "channelType": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "name": 123,
+            "avatar": "",
+            "channelType": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "name": "aa",
+            "avatar": "",
+            "channelType": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "avatar": "",
+            "channelType": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "avatar": "",
+            "channelType": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "name": "",
+            "avatar": "",
+            "channelType": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "name": "{{name}}",
+            "avatar": 123,
+            "channelType": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "name": "{{name}}",
+            "avatar": "",
             "channelType": "invalid_enum_value"
         },
         "expects": [
@@ -2037,8 +390,95 @@
     {
         "body": {
             "workspaceId": "",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+            "name": "{{name}}",
+            "avatar": "",
+            "channelType": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": null,
+            "name": "{{name}}",
+            "avatar": "",
+            "channelType": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": null,
+            "name": 123,
+            "avatar": "",
+            "channelType": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": null,
+            "name": "aa",
+            "avatar": "",
+            "channelType": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": null,
+            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "avatar": "",
+            "channelType": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": null,
+            "avatar": "",
+            "channelType": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": null,
+            "name": "",
+            "avatar": "",
+            "channelType": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": null,
+            "name": "{{name}}",
+            "avatar": 123,
+            "channelType": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": null,
+            "name": "{{name}}",
+            "avatar": "",
             "channelType": "invalid_enum_value"
         },
         "expects": [
@@ -2047,10 +487,108 @@
     },
     {
         "body": {
+            "workspaceId": null,
+            "name": "{{name}}",
+            "avatar": "",
+            "channelType": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
             "workspaceId": "invalid_value",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+            "name": "{{name}}",
+            "avatar": "",
+            "channelType": 0
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "invalid_value",
+            "name": 123,
+            "avatar": "",
+            "channelType": 0
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "invalid_value",
+            "name": "aa",
+            "avatar": "",
+            "channelType": 0
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "invalid_value",
+            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "avatar": "",
+            "channelType": 0
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "invalid_value",
+            "avatar": "",
+            "channelType": 0
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "invalid_value",
+            "name": "",
+            "avatar": "",
+            "channelType": 0
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "invalid_value",
+            "name": "{{name}}",
+            "avatar": 123,
+            "channelType": 0
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "invalid_value",
+            "name": "{{name}}",
+            "avatar": "",
             "channelType": "invalid_enum_value"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "invalid_value",
+            "name": "{{name}}",
+            "avatar": "",
+            "channelType": ""
         },
         "expects": [
             "Invalid channel"
@@ -2060,22 +598,65 @@
         "body": {
             "workspaceId": "0",
             "name": 123,
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+            "avatar": 123,
+            "channelType": 0
+        },
+        "expects": [
+            "name expected string, received number",
+            "avatar expected string, received number",
+            "channelType is not accept DM Channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "name": 123,
+            "avatar": "",
             "channelType": "invalid_enum_value"
         },
         "expects": [
             "name expected string, received number",
+            "avatar should not be empty",
             "channelType invalid enum value. Expected 0 | 1 | 2, received 'invalid_enum_value'"
         ]
     },
     {
         "body": {
             "workspaceId": "0",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
+            "name": 123,
+            "avatar": "",
+            "channelType": ""
+        },
+        "expects": [
+            "name expected string, received number",
+            "avatar should not be empty",
+            "channelType should not be empty",
+            "channelType invalid enum value. Expected 0 | 1 | 2, received ''"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "name": "aa",
+            "avatar": 123,
+            "channelType": 0
+        },
+        "expects": [
+            "name string must contain at least 3 character(s)",
+            "avatar expected string, received number",
+            "channelType is not accept DM Channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "name": "aa",
+            "avatar": "",
             "channelType": "invalid_enum_value"
         },
         "expects": [
+            "name string must contain at least 3 character(s)",
+            "avatar should not be empty",
             "channelType invalid enum value. Expected 0 | 1 | 2, received 'invalid_enum_value'"
         ]
     },
@@ -2083,11 +664,39 @@
         "body": {
             "workspaceId": "0",
             "name": "aa",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": "invalid_enum_value"
+            "avatar": "",
+            "channelType": ""
         },
         "expects": [
             "name string must contain at least 3 character(s)",
+            "avatar should not be empty",
+            "channelType should not be empty",
+            "channelType invalid enum value. Expected 0 | 1 | 2, received ''"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "avatar": 123,
+            "channelType": 0
+        },
+        "expects": [
+            "name string must contain at most 50 character(s)",
+            "avatar expected string, received number",
+            "channelType is not accept DM Channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "avatar": "",
+            "channelType": "invalid_enum_value"
+        },
+        "expects": [
+            "name string must contain at most 50 character(s)",
+            "avatar should not be empty",
             "channelType invalid enum value. Expected 0 | 1 | 2, received 'invalid_enum_value'"
         ]
     },
@@ -2095,22 +704,78 @@
         "body": {
             "workspaceId": "0",
             "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": "invalid_enum_value"
+            "avatar": "",
+            "channelType": ""
         },
         "expects": [
             "name string must contain at most 50 character(s)",
+            "avatar should not be empty",
+            "channelType should not be empty",
+            "channelType invalid enum value. Expected 0 | 1 | 2, received ''"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "avatar": 123,
+            "channelType": 0
+        },
+        "expects": [
+            "name required",
+            "avatar expected string, received number",
+            "channelType is not accept DM Channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "avatar": "",
+            "channelType": "invalid_enum_value"
+        },
+        "expects": [
+            "name required",
+            "avatar should not be empty",
             "channelType invalid enum value. Expected 0 | 1 | 2, received 'invalid_enum_value'"
         ]
     },
     {
         "body": {
             "workspaceId": "0",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": "invalid_enum_value"
+            "avatar": "",
+            "channelType": ""
         },
         "expects": [
             "name required",
+            "avatar should not be empty",
+            "channelType should not be empty",
+            "channelType invalid enum value. Expected 0 | 1 | 2, received ''"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "name": "",
+            "avatar": 123,
+            "channelType": 0
+        },
+        "expects": [
+            "name should not be empty",
+            "name string must contain at least 3 character(s)",
+            "avatar expected string, received number",
+            "channelType is not accept DM Channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "name": "",
+            "avatar": "",
+            "channelType": "invalid_enum_value"
+        },
+        "expects": [
+            "name should not be empty",
+            "name string must contain at least 3 character(s)",
+            "avatar should not be empty",
             "channelType invalid enum value. Expected 0 | 1 | 2, received 'invalid_enum_value'"
         ]
     },
@@ -2118,19 +783,21 @@
         "body": {
             "workspaceId": "0",
             "name": "",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": "invalid_enum_value"
+            "avatar": "",
+            "channelType": ""
         },
         "expects": [
             "name should not be empty",
             "name string must contain at least 3 character(s)",
-            "channelType invalid enum value. Expected 0 | 1 | 2, received 'invalid_enum_value'"
+            "avatar should not be empty",
+            "channelType should not be empty",
+            "channelType invalid enum value. Expected 0 | 1 | 2, received ''"
         ]
     },
     {
         "body": {
             "workspaceId": "0",
-            "name": "channel1",
+            "name": "{{name}}",
             "avatar": 123,
             "channelType": "invalid_enum_value"
         },
@@ -2142,330 +809,7 @@
     {
         "body": {
             "workspaceId": "0",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": "invalid_enum_value"
-        },
-        "expects": [
-            "channelType invalid enum value. Expected 0 | 1 | 2, received 'invalid_enum_value'"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": "",
-            "channelType": "invalid_enum_value"
-        },
-        "expects": [
-            "avatar should not be empty",
-            "channelType invalid enum value. Expected 0 | 1 | 2, received 'invalid_enum_value'"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": []
-    },
-    {
-        "body": {
-            "workspaceId": 123,
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": []
-    },
-    {
-        "body": {
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "invalid_value",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": 123,
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "name expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": []
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "aa",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "name string must contain at least 3 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "name string must contain at most 50 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "name required"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": [
-            "name should not be empty",
-            "name string must contain at least 3 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": 123,
-            "channelType": 1
-        },
-        "expects": [
-            "avatar expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": []
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": "",
-            "channelType": 1
-        },
-        "expects": [
-            "avatar should not be empty"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": ""
-        },
-        "expects": [
-            "channelType should not be empty",
-            "channelType invalid enum value. Expected 0 | 1 | 2, received ''"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": 123,
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": ""
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": ""
-        },
-        "expects": [
-            "channelType should not be empty",
-            "channelType invalid enum value. Expected 0 | 1 | 2, received ''"
-        ]
-    },
-    {
-        "body": {
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": ""
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": ""
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "invalid_value",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": ""
-        },
-        "expects": [
-            "Invalid channel"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": 123,
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": ""
-        },
-        "expects": [
-            "name expected string, received number",
-            "channelType should not be empty",
-            "channelType invalid enum value. Expected 0 | 1 | 2, received ''"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": ""
-        },
-        "expects": [
-            "channelType should not be empty",
-            "channelType invalid enum value. Expected 0 | 1 | 2, received ''"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "aa",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": ""
-        },
-        "expects": [
-            "name string must contain at least 3 character(s)",
-            "channelType should not be empty",
-            "channelType invalid enum value. Expected 0 | 1 | 2, received ''"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": ""
-        },
-        "expects": [
-            "name string must contain at most 50 character(s)",
-            "channelType should not be empty",
-            "channelType invalid enum value. Expected 0 | 1 | 2, received ''"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": ""
-        },
-        "expects": [
-            "name required",
-            "channelType should not be empty",
-            "channelType invalid enum value. Expected 0 | 1 | 2, received ''"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": ""
-        },
-        "expects": [
-            "name should not be empty",
-            "name string must contain at least 3 character(s)",
-            "channelType should not be empty",
-            "channelType invalid enum value. Expected 0 | 1 | 2, received ''"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
+            "name": "{{name}}",
             "avatar": 123,
             "channelType": ""
         },
@@ -2474,39 +818,5 @@
             "channelType should not be empty",
             "channelType invalid enum value. Expected 0 | 1 | 2, received ''"
         ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": ""
-        },
-        "expects": [
-            "channelType should not be empty",
-            "channelType invalid enum value. Expected 0 | 1 | 2, received ''"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": "",
-            "channelType": ""
-        },
-        "expects": [
-            "avatar should not be empty",
-            "channelType should not be empty",
-            "channelType invalid enum value. Expected 0 | 1 | 2, received ''"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "name": "channel1",
-            "avatar": "https://cdn.discordapp.com/avatars/942052395175800845/14725a9ab236a5e10dae9fc123ac500e.png?size=1024",
-            "channelType": 1
-        },
-        "expects": []
     }
 ]

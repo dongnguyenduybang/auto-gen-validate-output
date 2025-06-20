@@ -3,8 +3,8 @@
         "body": {
             "workspaceId": 123,
             "channelId": "{{channelId}}",
-            "content": "test DTO send message",
-            "ref": "ref"
+            "content": "default content",
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -14,8 +14,8 @@
         "body": {
             "workspaceId": 123,
             "channelId": 123,
-            "content": "test DTO send message",
-            "ref": "ref"
+            "content": "default content",
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -24,8 +24,8 @@
     {
         "body": {
             "workspaceId": 123,
-            "content": "test DTO send message",
-            "ref": "ref"
+            "content": "default content",
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -35,8 +35,8 @@
         "body": {
             "workspaceId": 123,
             "channelId": "",
-            "content": "test DTO send message",
-            "ref": "ref"
+            "content": "default content",
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -46,8 +46,8 @@
         "body": {
             "workspaceId": 123,
             "channelId": null,
-            "content": "test DTO send message",
-            "ref": "ref"
+            "content": "default content",
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -57,8 +57,8 @@
         "body": {
             "workspaceId": 123,
             "channelId": "invalid_value",
-            "content": "test DTO send message",
-            "ref": "ref"
+            "content": "default content",
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -69,7 +69,7 @@
             "workspaceId": 123,
             "channelId": "{{channelId}}",
             "content": 123,
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -80,7 +80,7 @@
             "workspaceId": 123,
             "channelId": "{{channelId}}",
             "content": "",
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -91,7 +91,7 @@
             "workspaceId": 123,
             "channelId": "{{channelId}}",
             "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -101,7 +101,7 @@
         "body": {
             "workspaceId": 123,
             "channelId": "{{channelId}}",
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -112,7 +112,7 @@
             "workspaceId": 123,
             "channelId": "{{channelId}}",
             "content": null,
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -122,7 +122,7 @@
         "body": {
             "workspaceId": 123,
             "channelId": "{{channelId}}",
-            "content": "test DTO send message",
+            "content": "default content",
             "ref": 123
         },
         "expects": [
@@ -133,7 +133,7 @@
         "body": {
             "workspaceId": 123,
             "channelId": "{{channelId}}",
-            "content": "test DTO send message",
+            "content": "default content",
             "ref": ""
         },
         "expects": [
@@ -144,7 +144,7 @@
         "body": {
             "workspaceId": 123,
             "channelId": "{{channelId}}",
-            "content": "test DTO send message"
+            "content": "default content"
         },
         "expects": [
             "Could not resolve permission type"
@@ -154,8 +154,8 @@
         "body": {
             "workspaceId": "0",
             "channelId": "{{channelId}}",
-            "content": "test DTO send message",
-            "ref": "ref"
+            "content": "default content",
+            "ref": "default ref"
         },
         "expects": []
     },
@@ -163,8 +163,8 @@
         "body": {
             "workspaceId": "0",
             "channelId": 123,
-            "content": "test DTO send message",
-            "ref": "ref"
+            "content": "default content",
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -173,8 +173,8 @@
     {
         "body": {
             "workspaceId": "0",
-            "content": "test DTO send message",
-            "ref": "ref"
+            "content": "default content",
+            "ref": "default ref"
         },
         "expects": [
             "Unsupported permission type"
@@ -184,8 +184,8 @@
         "body": {
             "workspaceId": "0",
             "channelId": "",
-            "content": "test DTO send message",
-            "ref": "ref"
+            "content": "default content",
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -195,8 +195,8 @@
         "body": {
             "workspaceId": "0",
             "channelId": null,
-            "content": "test DTO send message",
-            "ref": "ref"
+            "content": "default content",
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -206,8 +206,8 @@
         "body": {
             "workspaceId": "0",
             "channelId": "invalid_value",
-            "content": "test DTO send message",
-            "ref": "ref"
+            "content": "default content",
+            "ref": "default ref"
         },
         "expects": [
             "Invalid channel"
@@ -218,7 +218,7 @@
             "workspaceId": "0",
             "channelId": "{{channelId}}",
             "content": 123,
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "content expected string, received number"
@@ -229,7 +229,7 @@
             "workspaceId": "0",
             "channelId": "{{channelId}}",
             "content": "",
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "content should not be empty",
@@ -241,7 +241,7 @@
             "workspaceId": "0",
             "channelId": "{{channelId}}",
             "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "content string must contain at most 2000 character(s)"
@@ -251,7 +251,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": "{{channelId}}",
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "content required"
@@ -262,7 +262,7 @@
             "workspaceId": "0",
             "channelId": "{{channelId}}",
             "content": null,
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "content expected string, received null"
@@ -272,7 +272,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": "{{channelId}}",
-            "content": "test DTO send message",
+            "content": "default content",
             "ref": 123
         },
         "expects": [
@@ -283,7 +283,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": "{{channelId}}",
-            "content": "test DTO send message",
+            "content": "default content",
             "ref": ""
         },
         "expects": [
@@ -294,7 +294,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": "{{channelId}}",
-            "content": "test DTO send message"
+            "content": "default content"
         },
         "expects": [
             "ref required"
@@ -303,8 +303,8 @@
     {
         "body": {
             "channelId": "{{channelId}}",
-            "content": "test DTO send message",
-            "ref": "ref"
+            "content": "default content",
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -313,8 +313,8 @@
     {
         "body": {
             "channelId": 123,
-            "content": "test DTO send message",
-            "ref": "ref"
+            "content": "default content",
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -322,8 +322,8 @@
     },
     {
         "body": {
-            "content": "test DTO send message",
-            "ref": "ref"
+            "content": "default content",
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -332,8 +332,8 @@
     {
         "body": {
             "channelId": "",
-            "content": "test DTO send message",
-            "ref": "ref"
+            "content": "default content",
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -342,8 +342,8 @@
     {
         "body": {
             "channelId": null,
-            "content": "test DTO send message",
-            "ref": "ref"
+            "content": "default content",
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -352,8 +352,8 @@
     {
         "body": {
             "channelId": "invalid_value",
-            "content": "test DTO send message",
-            "ref": "ref"
+            "content": "default content",
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -363,7 +363,7 @@
         "body": {
             "channelId": "{{channelId}}",
             "content": 123,
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -373,7 +373,7 @@
         "body": {
             "channelId": "{{channelId}}",
             "content": "",
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -383,7 +383,7 @@
         "body": {
             "channelId": "{{channelId}}",
             "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -392,7 +392,7 @@
     {
         "body": {
             "channelId": "{{channelId}}",
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -402,7 +402,7 @@
         "body": {
             "channelId": "{{channelId}}",
             "content": null,
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -411,7 +411,7 @@
     {
         "body": {
             "channelId": "{{channelId}}",
-            "content": "test DTO send message",
+            "content": "default content",
             "ref": 123
         },
         "expects": [
@@ -421,7 +421,7 @@
     {
         "body": {
             "channelId": "{{channelId}}",
-            "content": "test DTO send message",
+            "content": "default content",
             "ref": ""
         },
         "expects": [
@@ -431,7 +431,7 @@
     {
         "body": {
             "channelId": "{{channelId}}",
-            "content": "test DTO send message"
+            "content": "default content"
         },
         "expects": [
             "Could not resolve permission type"
@@ -441,8 +441,8 @@
         "body": {
             "workspaceId": "",
             "channelId": "{{channelId}}",
-            "content": "test DTO send message",
-            "ref": "ref"
+            "content": "default content",
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -452,8 +452,8 @@
         "body": {
             "workspaceId": "",
             "channelId": 123,
-            "content": "test DTO send message",
-            "ref": "ref"
+            "content": "default content",
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -462,8 +462,8 @@
     {
         "body": {
             "workspaceId": "",
-            "content": "test DTO send message",
-            "ref": "ref"
+            "content": "default content",
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -473,8 +473,8 @@
         "body": {
             "workspaceId": "",
             "channelId": "",
-            "content": "test DTO send message",
-            "ref": "ref"
+            "content": "default content",
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -484,8 +484,8 @@
         "body": {
             "workspaceId": "",
             "channelId": null,
-            "content": "test DTO send message",
-            "ref": "ref"
+            "content": "default content",
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -495,8 +495,8 @@
         "body": {
             "workspaceId": "",
             "channelId": "invalid_value",
-            "content": "test DTO send message",
-            "ref": "ref"
+            "content": "default content",
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -507,7 +507,7 @@
             "workspaceId": "",
             "channelId": "{{channelId}}",
             "content": 123,
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -518,7 +518,7 @@
             "workspaceId": "",
             "channelId": "{{channelId}}",
             "content": "",
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -529,7 +529,7 @@
             "workspaceId": "",
             "channelId": "{{channelId}}",
             "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -539,7 +539,7 @@
         "body": {
             "workspaceId": "",
             "channelId": "{{channelId}}",
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -550,7 +550,7 @@
             "workspaceId": "",
             "channelId": "{{channelId}}",
             "content": null,
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -560,7 +560,7 @@
         "body": {
             "workspaceId": "",
             "channelId": "{{channelId}}",
-            "content": "test DTO send message",
+            "content": "default content",
             "ref": 123
         },
         "expects": [
@@ -571,7 +571,7 @@
         "body": {
             "workspaceId": "",
             "channelId": "{{channelId}}",
-            "content": "test DTO send message",
+            "content": "default content",
             "ref": ""
         },
         "expects": [
@@ -582,7 +582,7 @@
         "body": {
             "workspaceId": "",
             "channelId": "{{channelId}}",
-            "content": "test DTO send message"
+            "content": "default content"
         },
         "expects": [
             "Could not resolve permission type"
@@ -592,8 +592,8 @@
         "body": {
             "workspaceId": null,
             "channelId": "{{channelId}}",
-            "content": "test DTO send message",
-            "ref": "ref"
+            "content": "default content",
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -603,8 +603,8 @@
         "body": {
             "workspaceId": null,
             "channelId": 123,
-            "content": "test DTO send message",
-            "ref": "ref"
+            "content": "default content",
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -613,8 +613,8 @@
     {
         "body": {
             "workspaceId": null,
-            "content": "test DTO send message",
-            "ref": "ref"
+            "content": "default content",
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -624,8 +624,8 @@
         "body": {
             "workspaceId": null,
             "channelId": "",
-            "content": "test DTO send message",
-            "ref": "ref"
+            "content": "default content",
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -635,8 +635,8 @@
         "body": {
             "workspaceId": null,
             "channelId": null,
-            "content": "test DTO send message",
-            "ref": "ref"
+            "content": "default content",
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -646,8 +646,8 @@
         "body": {
             "workspaceId": null,
             "channelId": "invalid_value",
-            "content": "test DTO send message",
-            "ref": "ref"
+            "content": "default content",
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -658,7 +658,7 @@
             "workspaceId": null,
             "channelId": "{{channelId}}",
             "content": 123,
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -669,7 +669,7 @@
             "workspaceId": null,
             "channelId": "{{channelId}}",
             "content": "",
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -680,7 +680,7 @@
             "workspaceId": null,
             "channelId": "{{channelId}}",
             "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -690,7 +690,7 @@
         "body": {
             "workspaceId": null,
             "channelId": "{{channelId}}",
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -701,7 +701,7 @@
             "workspaceId": null,
             "channelId": "{{channelId}}",
             "content": null,
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -711,7 +711,7 @@
         "body": {
             "workspaceId": null,
             "channelId": "{{channelId}}",
-            "content": "test DTO send message",
+            "content": "default content",
             "ref": 123
         },
         "expects": [
@@ -722,7 +722,7 @@
         "body": {
             "workspaceId": null,
             "channelId": "{{channelId}}",
-            "content": "test DTO send message",
+            "content": "default content",
             "ref": ""
         },
         "expects": [
@@ -733,7 +733,7 @@
         "body": {
             "workspaceId": null,
             "channelId": "{{channelId}}",
-            "content": "test DTO send message"
+            "content": "default content"
         },
         "expects": [
             "Could not resolve permission type"
@@ -743,8 +743,8 @@
         "body": {
             "workspaceId": "invalid_value",
             "channelId": "{{channelId}}",
-            "content": "test DTO send message",
-            "ref": "ref"
+            "content": "default content",
+            "ref": "default ref"
         },
         "expects": [
             "Invalid channel"
@@ -754,8 +754,8 @@
         "body": {
             "workspaceId": "invalid_value",
             "channelId": 123,
-            "content": "test DTO send message",
-            "ref": "ref"
+            "content": "default content",
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -764,8 +764,8 @@
     {
         "body": {
             "workspaceId": "invalid_value",
-            "content": "test DTO send message",
-            "ref": "ref"
+            "content": "default content",
+            "ref": "default ref"
         },
         "expects": [
             "Unsupported permission type"
@@ -775,8 +775,8 @@
         "body": {
             "workspaceId": "invalid_value",
             "channelId": "",
-            "content": "test DTO send message",
-            "ref": "ref"
+            "content": "default content",
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -786,8 +786,8 @@
         "body": {
             "workspaceId": "invalid_value",
             "channelId": null,
-            "content": "test DTO send message",
-            "ref": "ref"
+            "content": "default content",
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -797,8 +797,8 @@
         "body": {
             "workspaceId": "invalid_value",
             "channelId": "invalid_value",
-            "content": "test DTO send message",
-            "ref": "ref"
+            "content": "default content",
+            "ref": "default ref"
         },
         "expects": [
             "Invalid channel"
@@ -809,7 +809,7 @@
             "workspaceId": "invalid_value",
             "channelId": "{{channelId}}",
             "content": 123,
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Invalid channel"
@@ -820,7 +820,7 @@
             "workspaceId": "invalid_value",
             "channelId": "{{channelId}}",
             "content": "",
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Invalid channel"
@@ -831,7 +831,7 @@
             "workspaceId": "invalid_value",
             "channelId": "{{channelId}}",
             "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Invalid channel"
@@ -841,7 +841,7 @@
         "body": {
             "workspaceId": "invalid_value",
             "channelId": "{{channelId}}",
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Invalid channel"
@@ -852,7 +852,7 @@
             "workspaceId": "invalid_value",
             "channelId": "{{channelId}}",
             "content": null,
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Invalid channel"
@@ -862,7 +862,7 @@
         "body": {
             "workspaceId": "invalid_value",
             "channelId": "{{channelId}}",
-            "content": "test DTO send message",
+            "content": "default content",
             "ref": 123
         },
         "expects": [
@@ -873,7 +873,7 @@
         "body": {
             "workspaceId": "invalid_value",
             "channelId": "{{channelId}}",
-            "content": "test DTO send message",
+            "content": "default content",
             "ref": ""
         },
         "expects": [
@@ -884,7 +884,7 @@
         "body": {
             "workspaceId": "invalid_value",
             "channelId": "{{channelId}}",
-            "content": "test DTO send message"
+            "content": "default content"
         },
         "expects": [
             "Invalid channel"
@@ -895,7 +895,7 @@
             "workspaceId": "0",
             "channelId": 123,
             "content": 123,
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -906,7 +906,7 @@
             "workspaceId": "0",
             "channelId": 123,
             "content": "",
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -917,7 +917,7 @@
             "workspaceId": "0",
             "channelId": 123,
             "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -927,7 +927,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": 123,
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -938,7 +938,7 @@
             "workspaceId": "0",
             "channelId": 123,
             "content": null,
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -948,7 +948,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": 123,
-            "content": "test DTO send message",
+            "content": "default content",
             "ref": 123
         },
         "expects": [
@@ -959,7 +959,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": 123,
-            "content": "test DTO send message",
+            "content": "default content",
             "ref": ""
         },
         "expects": [
@@ -970,7 +970,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": 123,
-            "content": "test DTO send message"
+            "content": "default content"
         },
         "expects": [
             "Could not resolve permission type"
@@ -980,7 +980,7 @@
         "body": {
             "workspaceId": "0",
             "content": 123,
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Unsupported permission type"
@@ -990,7 +990,7 @@
         "body": {
             "workspaceId": "0",
             "content": "",
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Unsupported permission type"
@@ -1000,7 +1000,7 @@
         "body": {
             "workspaceId": "0",
             "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Unsupported permission type"
@@ -1009,7 +1009,7 @@
     {
         "body": {
             "workspaceId": "0",
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Unsupported permission type"
@@ -1019,7 +1019,7 @@
         "body": {
             "workspaceId": "0",
             "content": null,
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Unsupported permission type"
@@ -1028,7 +1028,7 @@
     {
         "body": {
             "workspaceId": "0",
-            "content": "test DTO send message",
+            "content": "default content",
             "ref": 123
         },
         "expects": [
@@ -1038,7 +1038,7 @@
     {
         "body": {
             "workspaceId": "0",
-            "content": "test DTO send message",
+            "content": "default content",
             "ref": ""
         },
         "expects": [
@@ -1048,7 +1048,7 @@
     {
         "body": {
             "workspaceId": "0",
-            "content": "test DTO send message"
+            "content": "default content"
         },
         "expects": [
             "Unsupported permission type"
@@ -1059,7 +1059,7 @@
             "workspaceId": "0",
             "channelId": "",
             "content": 123,
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -1070,7 +1070,7 @@
             "workspaceId": "0",
             "channelId": "",
             "content": "",
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -1081,7 +1081,7 @@
             "workspaceId": "0",
             "channelId": "",
             "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -1091,7 +1091,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": "",
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -1102,7 +1102,7 @@
             "workspaceId": "0",
             "channelId": "",
             "content": null,
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -1112,7 +1112,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": "",
-            "content": "test DTO send message",
+            "content": "default content",
             "ref": 123
         },
         "expects": [
@@ -1123,7 +1123,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": "",
-            "content": "test DTO send message",
+            "content": "default content",
             "ref": ""
         },
         "expects": [
@@ -1134,7 +1134,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": "",
-            "content": "test DTO send message"
+            "content": "default content"
         },
         "expects": [
             "Could not resolve permission type"
@@ -1145,7 +1145,7 @@
             "workspaceId": "0",
             "channelId": null,
             "content": 123,
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -1156,7 +1156,7 @@
             "workspaceId": "0",
             "channelId": null,
             "content": "",
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -1167,7 +1167,7 @@
             "workspaceId": "0",
             "channelId": null,
             "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -1177,7 +1177,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": null,
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -1188,7 +1188,7 @@
             "workspaceId": "0",
             "channelId": null,
             "content": null,
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Could not resolve permission type"
@@ -1198,7 +1198,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": null,
-            "content": "test DTO send message",
+            "content": "default content",
             "ref": 123
         },
         "expects": [
@@ -1209,7 +1209,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": null,
-            "content": "test DTO send message",
+            "content": "default content",
             "ref": ""
         },
         "expects": [
@@ -1220,7 +1220,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": null,
-            "content": "test DTO send message"
+            "content": "default content"
         },
         "expects": [
             "Could not resolve permission type"
@@ -1231,7 +1231,7 @@
             "workspaceId": "0",
             "channelId": "invalid_value",
             "content": 123,
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Invalid channel"
@@ -1242,7 +1242,7 @@
             "workspaceId": "0",
             "channelId": "invalid_value",
             "content": "",
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Invalid channel"
@@ -1253,7 +1253,7 @@
             "workspaceId": "0",
             "channelId": "invalid_value",
             "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Invalid channel"
@@ -1263,7 +1263,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": "invalid_value",
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Invalid channel"
@@ -1274,7 +1274,7 @@
             "workspaceId": "0",
             "channelId": "invalid_value",
             "content": null,
-            "ref": "ref"
+            "ref": "default ref"
         },
         "expects": [
             "Invalid channel"
@@ -1284,7 +1284,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": "invalid_value",
-            "content": "test DTO send message",
+            "content": "default content",
             "ref": 123
         },
         "expects": [
@@ -1295,7 +1295,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": "invalid_value",
-            "content": "test DTO send message",
+            "content": "default content",
             "ref": ""
         },
         "expects": [
@@ -1306,7 +1306,7 @@
         "body": {
             "workspaceId": "0",
             "channelId": "invalid_value",
-            "content": "test DTO send message"
+            "content": "default content"
         },
         "expects": [
             "Invalid channel"

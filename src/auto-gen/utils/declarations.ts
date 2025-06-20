@@ -43,7 +43,7 @@ export interface ExpectResult {
   expectedValue?: string;
 }
 export interface Step<T = any> {
-  action: string;
+  action?: string;
   body?: T;
   headers?: Record<string, string>;
   expect?: Expect;
@@ -57,7 +57,7 @@ export interface SagaTestSuite {
 
 export interface RequestTestSuite {
   action: string;
-  headers: Record<string, string>;
+  headers: object;
   body: Object;
   options: FirstStep[];
 }
@@ -145,7 +145,7 @@ export interface TestResult {
   passed201?: number;
 }
 
-export type ActionHandler = (dtoName: string, options?: string) => any | Promise<void> | void;
+export type ActionHandler = (dtoName: string, branch?:string,   options?: Record<string, string[]>) => any | Promise<void> | void;
 export type ApiRegistry = Record<string, ApiConfig>;
 export type FieldValueObject = Record<string, any>;
 
