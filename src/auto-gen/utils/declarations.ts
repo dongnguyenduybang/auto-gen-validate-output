@@ -52,7 +52,7 @@ export interface MatcherResult {
 }
 
 export interface CustomMatcher extends Function {
-  (actual: any, context?: TestContext): Promise<MatcherResult>;
+  (actual: any, author: any, context?: TestContext): Promise<MatcherResult>;
   matcherType: string;
   expectedValue: any;
   toString(): string;

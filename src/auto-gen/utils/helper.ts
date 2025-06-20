@@ -520,7 +520,9 @@ export async function checkResponse(
 
 export async function callAPIForSystem(body, header, action) {
   const actionInfo = ACTION_CONFIG[action as keyof typeof ACTION_CONFIG];
-
+  if (typeof header !== 'object') {
+    header = { 'x-session-token': header }
+  }
   const apiFunction = getApiFunctions(action, null, null);
   const response = await apiFunction({
     method: actionInfo?.method,

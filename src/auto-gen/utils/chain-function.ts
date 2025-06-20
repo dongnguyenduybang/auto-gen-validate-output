@@ -13,7 +13,7 @@ export const chain = {
     exact: <T extends DataContainer & { type: string }>(
       expected: T['data'],
     ): CustomMatcher => {
-      const fn = (actual: T, context?: TestContext) => {
+      const fn = (actual: T, author?: any, context?: TestContext) => {
         const resolvedExpected = context
           ? resolveVariables(expected, context)
           : expected;
@@ -51,6 +51,7 @@ export const chain = {
       const expected = builder.build();
       const fn = async (
         actual: ReturnType<T['build']>,
+        author: any,
         context: TestContext,
       ): Promise<MatcherResult> => {
         const resolvedExpected = context
@@ -62,7 +63,7 @@ export const chain = {
         };
 
         let body: any, action: string;
-
+        console.log(author)
         const result = deepEqual(
           actual.data,
           resolvedExpected.data,
@@ -83,15 +84,22 @@ export const chain = {
           ].includes(actual?.type);
 
           if (isEventTypeMatch) {
+            let resolveHeader;
+            if (actual.type === API_EVENT.halome.v3.chat.INCOMING_MESSAGE_REQUEST_CREATED) {
+              resolveHeader = resolveVariables('{{token1}}', context)
+            } else {
+              resolveHeader = actual.body.resolveHeader;
+            }
             const getLastUserId = actual.data.includes.channelMetadata[0].dmId;
-            const resultLastUserId = getLastUserId.split('_')[1];
+            const resultLastUserId = getLastUserId.split('_')[0];
             body = {
               userId: resultLastUserId,
             };
+
             action = 'getDmChannel';
             const responseApiSystem = await callAPIForSystem(
               body,
-              actual.body.resolveHeader,
+              resolveHeader,
               action,
             );
 
@@ -189,6 +197,7 @@ export const chain = {
 function createMatcher(
   fn: (
     actual: any,
+    author: any,
     context?: TestContext,
   ) => boolean | Promise<boolean> | MatcherResult | Promise<MatcherResult>,
   meta: any,
@@ -196,10 +205,11 @@ function createMatcher(
   // Create the base async function
   const matcher = async (
     actual: any,
+    author: any,
     context?: TestContext,
   ): Promise<MatcherResult> => {
     try {
-      const result = await fn(actual, context);
+      const result = await fn(actual, author, context);
       if (typeof result === 'boolean') {
         return {
           isEqual: result,

@@ -449,7 +449,7 @@ export async function executeEvents(
         eventAuthor,
         isPassed: true,
       };
-
+      console.log(expectedEvents)
       if (!actualEvent) {
         resultContainer.missingEvents.push(`${eventAuthor}:${eventType}`);
         resultContainer.failedEvents++;
@@ -478,6 +478,7 @@ export async function executeEvents(
             context,
             i,
             step.title,
+            author
           );
           eventResult[`${key.toLowerCase()}Result`] = result;
           eventResult.isPassed = eventResult.isPassed && result.isEqual;
@@ -525,9 +526,10 @@ async function debugCompare(
   context: TestContext,
   eventIndex?: number,
   eventLabel?: string,
+  author?: string,
 ): Promise<MatcherResult> {
   try {
-    const result = await matcher(actualValue, context);
+    const result = await matcher(actualValue, author, context);
     const response = {
       isEqual: result.isEqual,
       allDifferences: result.allDifferences,

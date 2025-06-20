@@ -4,7 +4,7 @@
 • Class    : send-dm-message
 • URL      : N/A
 • Path     : SendDmMessageWS
-• Generated: 2025-06-19T05:21:42.301Z
+• Generated: 2025-06-20T02:06:57.218Z
 
 ┌──────────────────────┐
 │  EVENT TEST RESULTS  │
@@ -19,60 +19,26 @@
 ACTOR RESULTS:
   ✔ Total Events: 3
   ✔ Passed     : 0
-  ✖ Failed     : 3
-
-  ❗ FAILED ACTOR EVENTS:
-
-  ▸ Event 1: com.halome.chat.v3.outgoing_message_request.created
-    Author: Actor
-    [!] Source Differences:
-      ‣ deviceId => actual: "01JY3A54CJMQPBZPS10QXV7HFG" !== expected: "deviceId"
-    [!] Data Differences:
-      ‣ includes.users[0].presenceData.lastUpdateInSeconds => actual: 7 !== expected: 86400
-      ‣ includes.users[0].presenceData.lastUpdateTime => actual: "2025-06-19T05:21:30.496Z" !== expected: "2025-06-19T05:21:34.307Z"
-      ‣ includes.users[1].presenceData.lastUpdateInSeconds => actual: 7 !== expected: 86400
-      ‣ includes.users[1].presenceData.lastUpdateTime => actual: "2025-06-19T05:21:30.637Z" !== expected: "2025-06-19T05:21:34.308Z"
-
-  ▸ Event 2: com.halome.chat.v3.message.created
-    Author: Actor
-    [!] Specversion Differences:
-      ‣  => actual: "1.0" !== expected: "1"
-    [!] Version Differences:
-      ‣  => actual: "2.0" !== expected: "2"
-    [!] Source Differences:
-      ‣ deviceId => actual: "01JY3A54CJMQPBZPS10QXV7HFG" !== expected: "deviceId"
-
-  ▸ Event 3: com.halome.chat.v3.unread_messages.updated
-    Author: Actor
-    [!] Source Differences:
-      ‣ deviceId => actual: "01JY3A54CJMQPBZPS10QXV7HFG" !== expected: "deviceId"
+  ✖ Failed     : 0
 
 RECIPIENT RESULTS:
   ✔ Total Events: 2
   ✔ Passed     : 0
-  ✖ Failed     : 2
+  ✖ Failed     : 1
 
   ❗ FAILED RECIPIENT EVENTS:
 
-  ▸ Event 4: com.halome.chat.v3.incoming_message_request.created
+  ▸ Event 1: com.halome.chat.v3.incoming_message_request.created
     Author: Recipient
     [!] Source Differences:
-      ‣ userId => actual: "01JY3A54BZWBR1AJW634JFDRRF" !== expected: "01JY3A54GDGPYS6BN6FAK3H8ME"
-      ‣ deviceId => actual: "01JY3A54CJMQPBZPS10QXV7HFG" !== expected: "deviceId1"
+      ‣ userId => actual: "01JY5HD7DHHXZ12WV4ZHGY2RTC" !== expected: "01JY5HD7HJJCN2N8DBSZG0DZ3D"
+      ‣ deviceId => actual: "01JY5HD7DZ47J2T68T8BAK77YR" !== expected: "deviceId1"
     [!] Data Differences:
-      ‣ channel.name => actual: "vulnus temeritas vester" !== expected: "decerno antiquus"
-      ‣ channel.avatar => actual: "https://avatars.githubusercontent.com/u/65585033" !== expected: "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/29.jpg"
-      ‣ channel.originalAvatar => actual: "https://avatars.githubusercontent.com/u/65585033" !== expected: "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/29.jpg"
       ‣ includes.users[0].presenceData.lastUpdateInSeconds => actual: 7 !== expected: 86400
-      ‣ includes.users[0].presenceData.lastUpdateTime => actual: "2025-06-19T05:21:30.496Z" !== expected: "2025-06-19T05:21:34.307Z"
+      ‣ includes.users[0].presenceData.lastUpdateTime => actual: "2025-06-20T02:06:44.657Z" !== expected: "2025-06-20T02:06:48.540Z"
       ‣ includes.users[1].presenceData.lastUpdateInSeconds => actual: 7 !== expected: 86400
-      ‣ includes.users[1].presenceData.lastUpdateTime => actual: "2025-06-19T05:21:30.637Z" !== expected: "2025-06-19T05:21:34.308Z"
-
-  ▸ Event 5: com.halome.chat.v3.message.created
-    Author: Recipient
-    [!] Source Differences:
-      ‣ userId => actual: "01JY3A54BZWBR1AJW634JFDRRF" !== expected: "01JY3A54GDGPYS6BN6FAK3H8ME"
-      ‣ deviceId => actual: "01JY3A54CJMQPBZPS10QXV7HFG" !== expected: "deviceId1"
+      ‣ includes.users[1].presenceData.lastUpdateTime => actual: "2025-06-20T02:06:44.787Z" !== expected: "2025-06-20T02:06:48.541Z"
+      ‣ includes.channelMetadata[0].unreadCount => actual: 1 !== expected: 0
 
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 

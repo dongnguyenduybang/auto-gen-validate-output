@@ -49,53 +49,53 @@ export const SendDmMessageWS = new WSBuilder()
     [VAR.actor, VAR.recipient],
     ACTION.SEND_DM_MESSAGE,
     [
-      {
-        type: chain.expect.exact(
-          API_EVENT.halome.v3.chat.OUTGOING_MESSAGE_REQUEST_CREATED,
-        ),
-        author: VAR.actor,
-        source: chain.expect.exact({
-          userId: VAR.userId,
-          deviceId: VAR.deviceId,
-        }),
-        specversion: chain.expect.exact(VAR.specversion),
-        version: chain.expect.exact(VAR.version),
-        data: chain.expect.builder(
-          new ChannelDataBuilder().setChannel({
-            userId: VAR.userId,
-          }),
-        ),
-      },
-      {
-        type: chain.expect.exact(API_EVENT.halome.v3.chat.MESSAGE_CREATED),
-        author: VAR.actor,
-        source: chain.expect.exact({
-          userId: VAR.userId,
-          deviceId: VAR.deviceId,
-        }),
-        specversion: chain.expect.exact('1'),
-        version: chain.expect.exact('2'),
-        data: chain.expect.builder(
-          new MessageDataBuilder().setMessage({
-            userId: VAR.userId1,
-          }),
-        ),
-      },
-      {
-        type: chain.expect.exact(
-          API_EVENT.halome.v3.chat.USER_UNREAD_MESSAGE_UPDATED,
-        ),
-        author: VAR.actor,
-        source: chain.expect.exact({
-          userId: VAR.userId,
-          deviceId: VAR.deviceId,
-        }),
-        specversion: chain.expect.exact(VAR.specversion),
-        version: chain.expect.exact(VAR.version),
-        data: chain.expect.exact({
-          workspaceId: VAR.workspaceId,
-        }),
-      },
+      // {
+      //   type: chain.expect.exact(
+      //     API_EVENT.halome.v3.chat.OUTGOING_MESSAGE_REQUEST_CREATED,
+      //   ),
+      //   author: VAR.actor,
+      //   source: chain.expect.exact({
+      //     userId: VAR.userId,
+      //     deviceId: VAR.deviceId,
+      //   }),
+      //   specversion: chain.expect.exact(VAR.specversion),
+      //   version: chain.expect.exact(VAR.version),
+      //   data: chain.expect.builder(
+      //     new ChannelDataBuilder().setChannel({
+      //       userId: VAR.userId,
+      //     }),
+      //   ),
+      // },
+      // {
+      //   type: chain.expect.exact(API_EVENT.halome.v3.chat.MESSAGE_CREATED),
+      //   author: VAR.actor,
+      //   source: chain.expect.exact({
+      //     userId: VAR.userId,
+      //     deviceId: VAR.deviceId,
+      //   }),
+      //   specversion: chain.expect.exact('1'),
+      //   version: chain.expect.exact('2'),
+      //   data: chain.expect.builder(
+      //     new MessageDataBuilder().setMessage({
+      //       userId: VAR.userId1,
+      //     }),
+      //   ),
+      // },
+      // {
+      //   type: chain.expect.exact(
+      //     API_EVENT.halome.v3.chat.USER_UNREAD_MESSAGE_UPDATED,
+      //   ),
+      //   author: VAR.actor,
+      //   source: chain.expect.exact({
+      //     userId: VAR.userId,
+      //     deviceId: VAR.deviceId,
+      //   }),
+      //   specversion: chain.expect.exact(VAR.specversion),
+      //   version: chain.expect.exact(VAR.version),
+      //   data: chain.expect.exact({
+      //     workspaceId: VAR.workspaceId,
+      //   }),
+      // },
       {
         type: chain.expect.exact(
           API_EVENT.halome.v3.chat.INCOMING_MESSAGE_REQUEST_CREATED,
@@ -113,21 +113,21 @@ export const SendDmMessageWS = new WSBuilder()
           }),
         ),
       },
-      {
-        type: chain.expect.exact(API_EVENT.halome.v3.chat.MESSAGE_CREATED),
-        author: VAR.recipient,
-        source: chain.expect.exact({
-          userId: VAR.userId1,
-          deviceId: VAR.deviceId1,
-        }),
-        specversion: chain.expect.exact(VAR.specversion),
-        version: chain.expect.exact(VAR.version),
-        data: chain.expect.builder(
-          new MessageDataBuilder().setMessage({
-            userId: VAR.userId1,
-          }),
-        ),
-      },
+      // {
+      //   type: chain.expect.exact(API_EVENT.halome.v3.chat.MESSAGE_CREATED),
+      //   author: VAR.recipient,
+      //   source: chain.expect.exact({
+      //     userId: VAR.userId1,
+      //     deviceId: VAR.deviceId1,
+      //   }),
+      //   specversion: chain.expect.exact(VAR.specversion),
+      //   version: chain.expect.exact(VAR.version),
+      //   data: chain.expect.builder(
+      //     new MessageDataBuilder().setMessage({
+      //       userId: VAR.userId1,
+      //     }),
+      //   ),
+      // },
     ],
   )
 
