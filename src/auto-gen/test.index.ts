@@ -76,7 +76,7 @@ const actionHandlers: Record<string, Record<string, ActionHandler[]>> = {
     swagger: [() => genClientSwagger()],
     interface: [
       (dto, cluster, options) => Promise.resolve(genBodyRequests(dto, cluster, options)),
-      (dto, cluster ) => Promise.resolve(genTestRequest(dto, cluster)),
+      // (dto, cluster ) => Promise.resolve(genTestRequest(dto, cluster)),
     ],
   },
   test: {

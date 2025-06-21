@@ -68,35 +68,9 @@ function findInterface(requestName: string): any {
     return schema;
 }
 
-// function createBodyFromInterface(requestName: string[] | string): Record<string, any> {
-//     const schema = findInterface(requestName);
-//     const body: Record<string, any> = {};
-
-//     for (const [key, value] of Object.entries(schema.properties) as [string, any][]) {
-//         if (schema.required?.includes(key) || schema.anyOf?.includes(key)) {
-//             if (value.type === 'string') {
-//                 if (key in VAR) {
-//                     body[key] = VAR[key];
-//                 } else {
-//                     body[key] = `VAR.${key}`;
-//                 }
-//             } else if (value.type === 'array') {
-//                 body[key] = [];
-//             } else if (value.enum) {
-//                 body[key] = value.enum[0];
-//             } else {
-//                 body[key] = null;
-//             }
-//         } else {
-//             body[key] = undefined;
-//         }
-//     }
-
-//     return body;
-// }
-
 // Hàm phụ để tạo giá trị từ schema (hỗ trợ đệ quy)
 function generateValueFromSchema(value: any, key: string): any {
+    console.log(value)
     if (value.type === 'string') {
         if (key in VAR) {
             return VAR[key];
@@ -146,11 +120,6 @@ export async function generateRequestTestSuite(requestName: string, options: Tes
 
     const beforeAll = options.beforeAll || [];
     const updatedBeforeAll = [...beforeAll];
-
-    if (beforeAll) {
-        const channelBody = createBodyFromInterface('create-channel');
-        updatedBeforeAll.push(channelBody);
-    }
 
     return {
         action: `ACTION.${requestName.toUpperCase().replace(/-/g, '_')}`,
