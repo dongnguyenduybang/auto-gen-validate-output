@@ -8,6 +8,7 @@ import {
   IsNotEmpty,
   IsULID,
   IsNotNull,
+  IsOptional,
 } from '../../../../decorator/index';
 
 export class UpdateDmMessageDTO {
@@ -34,6 +35,7 @@ export class UpdateDmMessageDTO {
   messageId: string = '';
 
   @IsString()
+  @IsOptional()
   @IsDefined()
   @MinLength(1)
   ref: string = '';

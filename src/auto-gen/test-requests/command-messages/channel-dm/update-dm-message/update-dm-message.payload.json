@@ -2,7 +2,7 @@
     {
         "body": {
             "userId": 123,
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": "{{messageId}}",
             "ref": "ref"
         },
@@ -67,7 +67,7 @@
     {
         "body": {
             "userId": 123,
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": 123,
             "ref": "ref"
         },
@@ -78,7 +78,7 @@
     {
         "body": {
             "userId": 123,
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": "",
             "ref": "ref"
         },
@@ -89,7 +89,7 @@
     {
         "body": {
             "userId": 123,
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "ref": "ref"
         },
         "expects": [
@@ -99,7 +99,7 @@
     {
         "body": {
             "userId": 123,
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": "invalid_ULID",
             "ref": "ref"
         },
@@ -110,7 +110,7 @@
     {
         "body": {
             "userId": 123,
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": "{{messageId}}",
             "ref": 123
         },
@@ -121,7 +121,7 @@
     {
         "body": {
             "userId": 123,
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": "{{messageId}}",
             "ref": ""
         },
@@ -131,18 +131,8 @@
     },
     {
         "body": {
-            "userId": 123,
-            "content": "test update send dm message",
-            "messageId": "{{messageId}}"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
             "userId": "{{userId1}}",
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": "{{messageId}}",
             "ref": "ref"
         },
@@ -206,7 +196,7 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": 123,
             "ref": "ref"
         },
@@ -217,7 +207,7 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": "",
             "ref": "ref"
         },
@@ -230,7 +220,7 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "ref": "ref"
         },
         "expects": [
@@ -240,7 +230,7 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": "invalid_ULID",
             "ref": "ref"
         },
@@ -251,7 +241,7 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": "{{messageId}}",
             "ref": 123
         },
@@ -262,7 +252,7 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": "{{messageId}}",
             "ref": ""
         },
@@ -272,17 +262,7 @@
     },
     {
         "body": {
-            "userId": "{{userId1}}",
-            "content": "test update send dm message",
-            "messageId": "{{messageId}}"
-        },
-        "expects": [
-            "ref required"
-        ]
-    },
-    {
-        "body": {
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": "{{messageId}}",
             "ref": "ref"
         },
@@ -341,7 +321,7 @@
     },
     {
         "body": {
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": 123,
             "ref": "ref"
         },
@@ -351,7 +331,7 @@
     },
     {
         "body": {
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": "",
             "ref": "ref"
         },
@@ -361,7 +341,7 @@
     },
     {
         "body": {
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "ref": "ref"
         },
         "expects": [
@@ -370,7 +350,7 @@
     },
     {
         "body": {
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": "invalid_ULID",
             "ref": "ref"
         },
@@ -380,7 +360,7 @@
     },
     {
         "body": {
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": "{{messageId}}",
             "ref": 123
         },
@@ -390,7 +370,7 @@
     },
     {
         "body": {
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": "{{messageId}}",
             "ref": ""
         },
@@ -400,17 +380,8 @@
     },
     {
         "body": {
-            "content": "test update send dm message",
-            "messageId": "{{messageId}}"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
             "userId": "",
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": "{{messageId}}",
             "ref": "ref"
         },
@@ -475,7 +446,7 @@
     {
         "body": {
             "userId": "",
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": 123,
             "ref": "ref"
         },
@@ -486,7 +457,7 @@
     {
         "body": {
             "userId": "",
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": "",
             "ref": "ref"
         },
@@ -497,7 +468,7 @@
     {
         "body": {
             "userId": "",
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "ref": "ref"
         },
         "expects": [
@@ -507,7 +478,7 @@
     {
         "body": {
             "userId": "",
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": "invalid_ULID",
             "ref": "ref"
         },
@@ -518,7 +489,7 @@
     {
         "body": {
             "userId": "",
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": "{{messageId}}",
             "ref": 123
         },
@@ -529,7 +500,7 @@
     {
         "body": {
             "userId": "",
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": "{{messageId}}",
             "ref": ""
         },
@@ -539,18 +510,8 @@
     },
     {
         "body": {
-            "userId": "",
-            "content": "test update send dm message",
-            "messageId": "{{messageId}}"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
             "userId": null,
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": "{{messageId}}",
             "ref": "ref"
         },
@@ -615,7 +576,7 @@
     {
         "body": {
             "userId": null,
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": 123,
             "ref": "ref"
         },
@@ -626,7 +587,7 @@
     {
         "body": {
             "userId": null,
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": "",
             "ref": "ref"
         },
@@ -637,7 +598,7 @@
     {
         "body": {
             "userId": null,
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "ref": "ref"
         },
         "expects": [
@@ -647,7 +608,7 @@
     {
         "body": {
             "userId": null,
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": "invalid_ULID",
             "ref": "ref"
         },
@@ -658,7 +619,7 @@
     {
         "body": {
             "userId": null,
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": "{{messageId}}",
             "ref": 123
         },
@@ -669,7 +630,7 @@
     {
         "body": {
             "userId": null,
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": "{{messageId}}",
             "ref": ""
         },
@@ -679,18 +640,8 @@
     },
     {
         "body": {
-            "userId": null,
-            "content": "test update send dm message",
-            "messageId": "{{messageId}}"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
             "userId": "invalid_value",
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": "{{messageId}}",
             "ref": "ref"
         },
@@ -755,7 +706,7 @@
     {
         "body": {
             "userId": "invalid_value",
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": 123,
             "ref": "ref"
         },
@@ -766,7 +717,7 @@
     {
         "body": {
             "userId": "invalid_value",
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": "",
             "ref": "ref"
         },
@@ -777,7 +728,7 @@
     {
         "body": {
             "userId": "invalid_value",
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "ref": "ref"
         },
         "expects": [
@@ -787,7 +738,7 @@
     {
         "body": {
             "userId": "invalid_value",
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": "invalid_ULID",
             "ref": "ref"
         },
@@ -798,7 +749,7 @@
     {
         "body": {
             "userId": "invalid_value",
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": "{{messageId}}",
             "ref": 123
         },
@@ -809,19 +760,9 @@
     {
         "body": {
             "userId": "invalid_value",
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": "{{messageId}}",
             "ref": ""
-        },
-        "expects": [
-            "Unauthorized request"
-        ]
-    },
-    {
-        "body": {
-            "userId": "invalid_value",
-            "content": "test update send dm message",
-            "messageId": "{{messageId}}"
         },
         "expects": [
             "Unauthorized request"
@@ -898,17 +839,6 @@
         "expects": [
             "content expected string, received number",
             "ref string must contain at least 1 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "content": 123,
-            "messageId": "{{messageId}}"
-        },
-        "expects": [
-            "content expected string, received number",
-            "ref required"
         ]
     },
     {
@@ -993,18 +923,6 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "content": "",
-            "messageId": "{{messageId}}"
-        },
-        "expects": [
-            "content should not be empty",
-            "content string must contain at least 1 character(s)",
-            "ref required"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
             "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
             "messageId": 123,
             "ref": "ref"
@@ -1078,17 +996,6 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "messageId": "{{messageId}}"
-        },
-        "expects": [
-            "content string must contain at most 2000 character(s)",
-            "ref required"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
             "messageId": 123,
             "ref": "ref"
         },
@@ -1151,16 +1058,6 @@
         "expects": [
             "content required",
             "ref string must contain at least 1 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "messageId": "{{messageId}}"
-        },
-        "expects": [
-            "content required",
-            "ref required"
         ]
     },
     {
@@ -1239,18 +1136,7 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "content": null,
-            "messageId": "{{messageId}}"
-        },
-        "expects": [
-            "content expected string, received null",
-            "ref required"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": 123,
             "ref": 123
         },
@@ -1262,7 +1148,7 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": 123,
             "ref": ""
         },
@@ -1274,18 +1160,7 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "content": "test update send dm message",
-            "messageId": 123
-        },
-        "expects": [
-            "messageId expected string, received number",
-            "ref required"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": "",
             "ref": 123
         },
@@ -1299,7 +1174,7 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": "",
             "ref": ""
         },
@@ -1313,20 +1188,7 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "content": "test update send dm message",
-            "messageId": ""
-        },
-        "expects": [
-            "messageId should not be empty",
-            "messageId invalid ulid",
-            "messageId string must contain at least 1 character(s)",
-            "ref required"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "ref": 123
         },
         "expects": [
@@ -1337,7 +1199,7 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "ref": ""
         },
         "expects": [
@@ -1348,17 +1210,7 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "content": "test update send dm message"
-        },
-        "expects": [
-            "messageId required",
-            "ref required"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": "invalid_ULID",
             "ref": 123
         },
@@ -1370,24 +1222,13 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "content": "test update send dm message",
+            "content": "dm message chain update",
             "messageId": "invalid_ULID",
             "ref": ""
         },
         "expects": [
             "messageId invalid ulid",
             "ref string must contain at least 1 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "content": "test update send dm message",
-            "messageId": "invalid_ULID"
-        },
-        "expects": [
-            "messageId invalid ulid",
-            "ref required"
         ]
     }
 ]

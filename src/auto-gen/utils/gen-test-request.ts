@@ -36,6 +36,11 @@ async function generateSpecContent(
   const utilsImportPath =
     getRelativeImportPath(outputPath, utilsPath) || '@utils';
 
+  // Assume the first step's first action is the primary action to test
+  const primaryStep = requestConfig.options[0]?.steps[0]?.step[0] || {};
+  const primaryAction = primaryStep.action || '';
+  const primaryHeaders = primaryStep.headers || {};
+
   return `
     import fs from 'fs';
     import path from 'path';
@@ -43,7 +48,7 @@ async function generateSpecContent(
     import { TestResult } from '${utilsImportPath}/declarations';
     import { executeSteps } from '${utilsImportPath}/text-execute-test';
     import { TestContext } from '${utilsImportPath}/text-context';
-    import { ${classNameCapitalized}Request } from './${requestImportPath}';
+    import { ${classNameCapitalized} } from './${requestImportPath}';
     describe('Testcase for ${className}${chunkNumber ? ` (Chunk ${chunkNumber})` : ''}', () => {
         let totalTests = 0;
         let allSteps = [];
@@ -57,17 +62,15 @@ async function generateSpecContent(
         let resolvedData: any;
         let globalContext: any;
         let testCaseNumber = 0;
-        let currentTestCaseTitle = ''
+        let currentTestCaseTitle = '';
         let context, contextData;
-        let warnings: any[] = []
+        let warnings: any[] = [];
         
         beforeAll(async () => {
           testType = 'request';
           globalContext = globalThis.globalContext;
           context = new TestContext();
-          const beforeAllSteps = ${classNameCapitalized}Request.options
-            ?.find((option) => option.beforeAll)
-            ?.beforeAll || [];
+          const beforeAllSteps = ${classNameCapitalized}.options[0]?.beforeAll || [];
 
           if (beforeAllSteps.length > 0) {
             contextData = context.clone();
@@ -79,15 +82,13 @@ async function generateSpecContent(
                 phase: 'beforeAll',
               });
             });
-          }else {
-            contextData = globalContext
+          } else {
+            contextData = globalContext;
           }
         });
         beforeEach(async () => {
           testCaseNumber++;
-          const beforeEachSteps = ${classNameCapitalized}Request.options
-            ?.find((option) => option.beforeEach)
-            ?.beforeEach || [];
+          const beforeEachSteps = ${classNameCapitalized}.options[0]?.beforeEach || [];
 
           if (beforeEachSteps.length > 0) {
             contextData = context.clone();
@@ -99,8 +100,8 @@ async function generateSpecContent(
                 phase: 'beforeEach',
               });
             });
-          }else {
-            contextData = globalContext
+          } else {
+            contextData = globalContext;
           }
         });
 
@@ -115,8 +116,8 @@ async function generateSpecContent(
     
     try {
         const response = await resolveCallAPI(
-            ${JSON.stringify(requestConfig.action)},
-            ${JSON.stringify(requestConfig.headers)},
+            '${primaryAction}',
+            ${JSON.stringify(primaryHeaders)},
             ${JSON.stringify(testCase.body)},
             contextData
         );
@@ -134,24 +135,21 @@ async function generateSpecContent(
                         ? data.error.details
                         : data?.error?.details
                             ? [data.error.details]
-                            : (data?.ok === true) // check có data (status 201)
+                            : (data?.ok === true)
                                 ? []
                                 : data !== undefined && data !== null
                                     ? [data]
                                     : [];
                 softExpectDetails = [...expectDetails].sort();
                 
-                // Kiểm tra nếu tất cả actual errors đều có trong expected errors
                 const allErrorsMatched = softExpectDetails.every(actualError => 
                     expectJson.includes(actualError)
                 );
                 
-                // Kiểm tra nếu tất cả expected errors đều có trong actual errors
                 const exactMatch = allErrorsMatched && 
                                  softExpectDetails.length === expectJson.length;
                 
                 if (exactMatch) {
-                    // Trường hợp khớp hoàn toàn
                     passedTests++;
                     codedTest.push({
                         testcase: testNumber,
@@ -159,7 +157,6 @@ async function generateSpecContent(
                         body: resolvedData,
                     });
                 } else if (allErrorsMatched) {
-                    // Trường hợp actual errors là tập con của expected errors
                     warnings.push({
                         testcase: testNumber,
                         code: response.status,
@@ -168,9 +165,8 @@ async function generateSpecContent(
                         expectedErrors: expectJson,
                         message: "Actual errors includes of expected errors"
                     });
-                    // passedTests++; // Vẫn tính là pass nhưng có warning
+                    // passedTests++;
                 } else {
-                    // Trường hợp có lỗi không khớp
                     failedTests.push({
                         testcase: testNumber,
                         code: response.status,
@@ -192,7 +188,6 @@ async function generateSpecContent(
                     ? data.error.details
                     : [];
                 softExpectDetails = [...expectDetails].sort();
-                // Áp dụng logic tương tự cho các status code khác
                 const defaultAllMatched = softExpectDetails.every(actualError => 
                     expectJson.includes(actualError)
                 );
@@ -238,9 +233,7 @@ async function generateSpecContent(
       .join('\n')}
       afterEach(async () => {
           testCaseNumber++;
-          const afterEachSteps = ${classNameCapitalized}Request.options
-            ?.find((option) => option.afterEach)
-            ?.afterEach || [];
+          const afterEachSteps = ${classNameCapitalized}.options[0]?.afterEach || [];
 
           if (afterEachSteps.length > 0) {
             contextData = context.clone();
@@ -252,15 +245,13 @@ async function generateSpecContent(
                 phase: 'afterEach',
               });
             });
-          }else {
-            contextData = globalContext
+          } else {
+            contextData = globalContext;
           }
         });
 
          afterAll(async () => {
-          const afterAllSteps = ${classNameCapitalized}Request.options
-            ?.find((option) => option.afterAll)
-            ?.afterAll || [];
+          const afterAllSteps = ${classNameCapitalized}.options[0]?.afterAll || [];
 
           if (afterAllSteps.length > 0) {
             contextData = context.clone();
@@ -272,13 +263,12 @@ async function generateSpecContent(
                 phase: 'afterAll',
               });
             });
-          }else {
-            contextData = globalContext
+          } else {
+            contextData = globalContext;
           }
           
-          // Lưu kết quả vào biến toàn cục
           const testResult: TestResult = {
-            path: '${resolveActionPath(requestConfig.action)}',
+            path: '${resolveActionPath(primaryAction)}',
             className: '${className}',
             allSteps: allSteps,
             chunkNumber: ${chunkNumber || 'undefined'},
@@ -290,19 +280,20 @@ async function generateSpecContent(
             failedStep: [...failedStep]
           };
           const reportDir = path.join(__dirname, '../../../../tmp-reports');
-  if (!fs.existsSync(reportDir)) {
-    fs.mkdirSync(reportDir, { recursive: true });
-  }
-  const chunkNumber = ${chunkNumber}
-  const fileName = '${className}' + (chunkNumber ? \`-chunk-${chunkNumber}\` : '') + '.result.json';
-  const filePath = path.join(reportDir, fileName);
-  fs.writeFileSync(filePath, JSON.stringify(testResult, null, 2), 'utf-8');
+          if (!fs.existsSync(reportDir)) {
+            fs.mkdirSync(reportDir, { recursive: true });
+          }
+          const chunkNumber = ${chunkNumber};
+          const fileName = '${className}' + (chunkNumber ? \`-chunk-${chunkNumber}\` : '') + '.result.json';
+          const filePath = path.join(reportDir, fileName);
+          fs.writeFileSync(filePath, JSON.stringify(testResult, null, 2), 'utf-8');
 
-  console.log(\`📝 Saved result for ${className} chunk ${chunkNumber || 'single'} to \${filePath}\`);
+          console.log(\`📝 Saved result for ${className} chunk ${chunkNumber || 'single'} to \${filePath}\`);
     });
         })
   `;
 }
+
 async function genTestCase(
   payloadPath: string,
   requestPath: string,
@@ -318,9 +309,9 @@ async function genTestCase(
     .join('');
 
   const requestModule = await import(requestPath);
-  const requestConfig = requestModule[`${classNameCapitalized}Request`];
+  // Access the chained DTOBuilder instance's options
+  const requestConfig = requestModule[classNameCapitalized];
 
-  // Tạo thư mục output nếu chưa tồn tại
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
   }
@@ -362,6 +353,7 @@ async function genTestCase(
     console.log(`Success: ${outputPath}`);
   }
 }
+
 export function genTestRequest(dtoName: string) {
   const dtoFolderPath = path.join(__dirname, '../test-requests', dtoName);
   const baseRequestsPath = path.join(__dirname, '../test-requests');

@@ -6,7 +6,8 @@ import {
   getMatchedFilePaths,
   groupFilesByName,
 } from './helper';
-export async function genBodyRequest(dtoName) {
+
+export async function genBodyRequest(dtoName: string) {
   const baseRequestsPath = path.join(__dirname, '../test-requests');
   const foundFolders = findAllFoldersWithDtoAndRequest(
     baseRequestsPath,
@@ -33,11 +34,10 @@ export async function genBodyRequest(dtoName) {
 
       try {
         const dtoModule = require(dtoPath);
-        const classNameCapitalized =
-          className
-            .split('-')
-            .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-            .join('') + 'DTO';
+        const classNameCapitalized = className
+          .split('-')
+          .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+          .join('') + 'DTO';
 
         const dtoClass = dtoModule[classNameCapitalized];
 
@@ -50,9 +50,21 @@ export async function genBodyRequest(dtoName) {
         }
 
         const requestModule = await import(requestPath);
-        const requestData =
-          requestModule.default || Object.values(requestModule)[0];
-        const payload = requestData.body;
+        const classNameCapitalizedRequest = className
+          .split('-')
+          .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+          .join('');
+
+        const requestData = requestModule[classNameCapitalizedRequest];
+
+        // Access the body from the first action in the first step
+        const payload = requestData?.options?.[0]?.steps?.[0]?.step?.[0]?.body;
+
+        if (!payload) {
+          console.warn(`No valid body found in request for class: ${className}`);
+          continue;
+        }
+
         const result = await generateErrorCases(dtoClass, payload);
         const testCasePayload = result.map(({ body, expects }) => ({
           body,
