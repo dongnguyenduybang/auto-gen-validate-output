@@ -33,9 +33,9 @@ export const getResponseSuccess = async <TReq, TRes>(
   method: ClientMethod<TReq, TRes>,
   headers?: HEADERS,
 ): Promise<TRes> => {
-
+  // console.log(headers)
   // console.log(headers, request)
-  const response = await method(request,  headers );
+  const response = await method(request, headers);
 
 
   // console.log(response)
@@ -55,14 +55,6 @@ async function generateSpecContent(
   httpCall?: any,
   camelDTO?: string
 ): Promise<string> {
-   console.log(requestConfig)
-  const msgRes = await getResponseSuccess(
-    requestConfig.body,
-    httpCall[camelDTO],
-    { 'x-session-token': 'ESQuI44gohYX9BwJ6wPpGYTMTDnCER2VisQQ4BTixuEX4p-lSoBei0thEDobc_nYEv-iZSx1-z8tPaR4-XniwQ' }
-  );
-
-  console.log(msgRes)
 
   const utilsPath = path.join(__dirname, '../utils');
   const utilsImportPath = getRelativeImportPath(outputPath, utilsPath) || '@utils';
@@ -336,7 +328,7 @@ async function genTestCase(
 
   // Lấy RequestTestSuite từ generateRequestTestSuite
   const requestConfig = await generateRequestTestSuite(className);
-  console.log(requestConfig)
+
   // Tạo thư mục output nếu chưa tồn tại
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });

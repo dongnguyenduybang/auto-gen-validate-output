@@ -21,7 +21,7 @@ function getFlag(flagName: string): string | undefined {
 }
 
 const optionsString = getFlag('--options');
-const cluster = getFlag('--cluster');
+const clus = getFlag('--clus');
 
 const args = rawArgs.filter((arg, i) => {
   return !arg.startsWith('--') && !rawArgs[i - 1]?.startsWith('--');
@@ -76,7 +76,7 @@ const actionHandlers: Record<string, Record<string, ActionHandler[]>> = {
     swagger: [() => genClientSwagger()],
     interface: [
       (dto, cluster, options) => Promise.resolve(genBodyRequests(dto, cluster, options)),
-      // (dto, cluster ) => Promise.resolve(genTestRequest(dto, cluster)),
+      (dto, cluster ) => Promise.resolve(genTestRequest(dto, cluster)),
     ],
   },
   test: {
@@ -184,7 +184,7 @@ async function main() {
     `Processing "${type}${subType ? ` ${subType}` : ''}"${dtoName ? ` for: ${dtoName}` : ''}`,
   );
 
-  if (type === 'interface' && !cluster) {
+  if (type === 'interface' && !clus) {
     console.error('Error: --branch is required for interface type');
     process.exit(1);
   }
@@ -209,7 +209,7 @@ async function main() {
       } else {
         for (const handler of handlers) {
           if (type === 'interface') {
-            await handler(dtoName, cluster, parseOptions(optionsString));
+            await handler(dtoName, clus, parseOptions(optionsString));
           } else {
             await handler(dtoName);
           }

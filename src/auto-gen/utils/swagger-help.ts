@@ -68,9 +68,8 @@ function findInterface(requestName: string): any {
     return schema;
 }
 
-// Hàm phụ để tạo giá trị từ schema (hỗ trợ đệ quy)
 function generateValueFromSchema(value: any, key: string): any {
-    console.log(value)
+    console.log(value, key)
     if (value.type === 'string') {
         if (key in VAR) {
             return VAR[key];
@@ -78,7 +77,7 @@ function generateValueFromSchema(value: any, key: string): any {
         return `VAR.${key}`;
     } else if (value.type === 'array') {
         if (value.items) {
-            // Tạo ít nhất 1 phần tử cho mảng
+
             return [generateValueFromSchema(value.items, `${key}_item`)];
         }
         return [];
@@ -173,7 +172,6 @@ export async function genBodyRequests( dtoName: string, cluster: string,options?
                     continue;
                 }
 
-                // Sử dụng interface để tạo RequestTestSuite
                 const [generator] = requestGeneratorInterface;
                 const requestData = await generator(className, options);
 

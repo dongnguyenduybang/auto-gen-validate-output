@@ -137,9 +137,9 @@ export interface TestResult {
   chunkNumber?: number;
   failedTests: any[];
   codedTest: any[];
+  warnings: any[]
   passedTests: number;
   totalTests: number;
-  logicTests: any[];
   failedStep: any[];
   passed200?: number;
   passed201?: number;
