@@ -1,3 +1,11 @@
+## Websocket
+
+- Mục đích: Test validate các event trả về khi gọi các API
+
+Bước 1: Định nghĩa file cấu trúc các step sẽ check
+
+```ts
+
 import { WSBuilder } from '../../utils/chain-declarations';
 import { ACTION, HEADER_LIST, VAR } from '../../enums';
 import { API_EVENT, SYSTEM_MESSAGE } from '../../utils/ws-config';
@@ -139,3 +147,45 @@ export const SendDmMessageWS = new WSBuilder()
   )
   // .addResume('resume send dm message', VAR.recipient, API_EVENT.halome.v3.chat.INCOMING_MESSAGE_REQUEST_CREATED, VAR.time)
   .execute();
+
+```
+
+Cấu trúc:
+
+- .startStep: để bắt đầu một check
+- .addStepAction: để gọi api
+- .addStepEvent: để expect các event của ws trả về
+
+  Trong addStepEvent: có 2 chain để compare :
+
+  - chain.expect.exact: comapre type thông thường
+  - chain.expect.builder: compare data event
+
+    Trong builder có 2 cấu trúc:
+
+    - set: compare response data
+    - add: compare response includes
+
+Cấu trúc resume:
+
+- .addResume: để thêm một breakpoint vào các step event để tiến hành resume
+
+Bước 2: Tiến hành chạy gen script
+
+```bash
+pnpm gen ws send-dm-message
+```
+
+Sau khi chạy gen sẽ ra được file
+
+- 📄 send-dm-message.ws.ts
+
+Bước 3: Tiến hành chạy test script
+
+```bash
+pnpm test ws send-dm-message
+```
+
+Sau khi chạy thành công file report sẽ được ghi vào folder và tên folder tương ứng với tên endpoint
+
+[File report](/src/auto-gen/test-ws/reports/send-dm-message/send-dm-message-sagas-09-06-20-06-2025.report.txt)
