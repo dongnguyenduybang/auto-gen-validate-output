@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import 'reflect-metadata';
+import inquirer from 'inquirer';
 import { genBodyRequest } from './utils/gen-body-request';
 import { genTestRequest } from './utils/gen-test-request';
 import { execSync } from 'child_process';
@@ -13,7 +14,7 @@ type ActionHandler = (dtoName: string) => Promise<void> | void;
 const args = process.argv.slice(2);
 if (args.length < 2) {
   console.error(
-    'Usage: pnpm <action> <type> <dtoName>\nExample: pnpm gen request UserDTO',
+    'Usage: pnpm <action> <type> [dtoName]\nExample: pnpm gen request [UserDTO]',
   );
   process.exit(1);
 }
@@ -69,7 +70,6 @@ async function handleBulkAction(basePath: string, handlers: ActionHandler[]) {
   const fullPath = path.join(__dirname, basePath);
   console.log(`Processing bulk action in directory: ${fullPath}`);
 
-  // Lấy danh sách thư mục con, loại bỏ thư mục reports
   const directories = getSubDirectories(fullPath).filter(
     (dir) => !dir.includes('reports'),
   );
@@ -92,10 +92,11 @@ function getSubDirectories(dirPath: string): string[] {
     .readdirSync(dirPath, { withFileTypes: true })
     .filter(
       (dirent) =>
-        dirent.isDirectory() && !dirent.name.toLowerCase().includes('report'), // Loại bỏ thư mục report
+        dirent.isDirectory() && !dirent.name.toLowerCase().includes('report'),
     )
     .map((dirent) => dirent.name);
 }
+
 function runTests(testType: string): ActionHandler {
   return async (dtoName) => {
     console.log(`Running test for ${testType} "${dtoName}"...`);
@@ -144,6 +145,31 @@ function clearReports(reportType: string): ActionHandler {
       });
   };
 }
+
+async function selectRequestDTO(): Promise<string> {
+  const requestDir = path.join(__dirname, 'src/auto-gen/test-requests');
+  const dtos = getSubDirectories(requestDir);
+
+  if (dtos.length === 0) {
+    console.error('No request DTOs found in src/auto-gen/test-requests');
+    process.exit(1);
+  }
+
+  const { selectedDTO } = await inquirer.prompt([
+    {
+      type: 'list',
+      name: 'selectedDTO',
+      message: 'Select a request DTO to generate:',
+      choices: dtos.map((dto, index) => ({
+        name: `${index + 1}. ${dto}`,
+        value: dto,
+      })),
+    },
+  ]);
+
+  return selectedDTO;
+}
+
 async function main() {
   console.log(
     `Processing "${type}${subType ? ` ${subType}` : ''}"${
@@ -155,41 +181,32 @@ async function main() {
     const handlers = actionHandlers[action]?.[type];
     if (!handlers) throw new Error('Invalid action');
 
+    let selectedDTO = dtoName;
+
+    // Nếu action là 'gen' và type là 'request' mà không có dtoName, hiển thị danh sách để chọn
+    if (action === 'gen' && type === 'request' && !dtoName) {
+      selectedDTO = await selectRequestDTO();
+    }
+
     const isBulkAction =
-      dtoName &&
-      (dtoName.includes('-requests') ||
-        dtoName.includes('-responses') ||
-        dtoName.includes('-sagas'));
+      selectedDTO &&
+      (selectedDTO.includes('-requests') ||
+        selectedDTO.includes('-responses') ||
+        selectedDTO.includes('-sagas'));
 
     if (isBulkAction) {
-      // Truyền toàn bộ mảng handlers
-      await handleBulkAction(dtoName, handlers);
-    } else if (dtoName) {
+      await handleBulkAction(selectedDTO, handlers);
+    } else if (selectedDTO) {
       for (const handler of handlers) {
-        await handler(dtoName);
+        await handler(selectedDTO);
       }
     } else {
-      const isBulkAction =
-        dtoName &&
-        (dtoName.includes('-requests') ||
-          dtoName.includes('-responses') ||
-          dtoName.includes('-sagas'));
-
-      if (!dtoName) {
-        throw new Error('Missing dtoName parameter');
-      }
-
-      if (isBulkAction) {
-        await handleBulkAction(dtoName, handlers);
-      } else {
-        for (const handler of handlers) {
-          await handler(dtoName);
-        }
-      }
+      throw new Error('Missing dtoName parameter');
     }
   } catch (error) {
     console.error('Error:', error.message);
     process.exit(1);
   }
 }
+
 main();
