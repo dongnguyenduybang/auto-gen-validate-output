@@ -8,82 +8,111 @@ import {
 } from './helper';
 
 export async function genBodyRequest(dtoName: string) {
-  const baseRequestsPath = path.join(__dirname, '../test-requests');
-  const foundFolders = findAllFoldersWithDtoAndRequest(
-    baseRequestsPath,
-    dtoName,
-  );
+  try {
+    const baseRequestsPath = path.join(__dirname, '../test-requests');
+    const searchPath = path.join(baseRequestsPath, dtoName);
+    console.log(`Searching in: ${searchPath}`);
 
-  for (const folder of foundFolders) {
-    const outputDir = folder.path;
-
-    if (!fs.existsSync(outputDir)) {
-      fs.mkdirSync(outputDir, { recursive: true });
+    if (!fs.existsSync(searchPath)) {
+      console.error(`❌ Target folder does not exist: ${searchPath}`);
+      return;
     }
-    const file = getMatchedFilePaths(foundFolders);
 
-    const fileMap = groupFilesByName(file);
+    const foundFolders = findAllFoldersWithDtoAndRequest(searchPath);
 
-    for (const [className, { dtoPath, requestPath }] of Object.entries(
-      fileMap,
-    )) {
-      if (!dtoPath) {
-        console.warn(`Missing .dto file for class: ${className}`);
-        continue;
+    if (foundFolders.length === 0) {
+      console.error(`No folders with .dto.ts and .request.ts found in: ${searchPath}`);
+      return;
+    }
+
+    let payloadGenerated = false;
+    for (const folder of foundFolders) {
+      const outputDir = folder.path;
+
+      if (!fs.existsSync(outputDir)) {
+        fs.mkdirSync(outputDir, { recursive: true });
       }
 
-      try {
-        const dtoModule = require(dtoPath);
-        const classNameCapitalized = className
-          .split('-')
-          .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-          .join('') + 'DTO';
+      const file = getMatchedFilePaths([folder]); // Chỉ xử lý file trong thư mục hiện tại
+      const fileMap = groupFilesByName(file);
 
-        const dtoClass = dtoModule[classNameCapitalized];
+      for (const [className, { dtoPath, requestPath }] of Object.entries(fileMap)) {
 
-        if (
-          typeof dtoClass !== 'function' ||
-          !/^\s*class\s/.test(dtoClass.toString())
-        ) {
-          console.error(`Invalid DTO class in file: ${dtoPath}`);
+        if (!dtoPath) {
+          console.warn(`Missing .dto file for class: ${className}`);
           continue;
         }
 
-        const requestModule = await import(requestPath);
-        const classNameCapitalizedRequest = className
-          .split('-')
-          .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-          .join('');
+        try {
+          delete require.cache[require.resolve(dtoPath)];
+          const dtoModule = require(dtoPath);
 
-        const requestData = requestModule[classNameCapitalizedRequest];
+          const classNameCapitalized = className
+            .split('-')
+            .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+            .join('') + 'DTO';
 
-        // Access the body from the first action in the first step
-        const payload = requestData?.options?.[0]?.steps?.[0]?.step?.[0]?.body;
+          const dtoClass = dtoModule[classNameCapitalized];
 
-        if (!payload) {
-          console.warn(`No valid body found in request for class: ${className}`);
-          continue;
+          if (!dtoClass || typeof dtoClass !== 'function' || !/^\s*class\s/.test(dtoClass.toString())) {
+            console.error(`Invalid DTO class in file: ${dtoPath}`);
+            console.log(`Available exports: ${Object.keys(dtoModule).join(', ')}`);
+            continue;
+          }
+
+          const requestModule = await import(requestPath);
+          const classNameCapitalizedRequest = className
+            .split('-')
+            .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+            .join('');
+
+          const requestData = requestModule[classNameCapitalizedRequest];
+
+          if (!requestData?.options?.[0]?.steps?.[0]?.step?.[0]?.body) {
+            console.warn(`No valid body found in request for class: ${className}`);
+            console.log(`Request data structure:`, requestData);
+                      console.log('-----------------------')
+            continue;
+          }
+
+          const payload = requestData.options[0].steps[0].step[0].body;
+          const result = await generateErrorCases(dtoClass, payload);
+          const testCasePayload = result.map(({ body, expects }) => ({
+            body,
+            expects,
+          }));
+
+          const outputFilePath = path.join(outputDir, `${className}.payload.json`);
+          console.log(`Writing to: ${outputFilePath}`);
+
+          fs.writeFileSync(
+            outputFilePath,
+            JSON.stringify(testCasePayload, null, 4),
+            'utf-8'
+          );
+
+          console.log(`✅ Successfully created: ${outputFilePath}`);
+          console.log(`File content length: ${testCasePayload.length} cases`);
+          console.log('-----------------------')
+          payloadGenerated = true;
+
+        } catch (error) {
+          console.error(`❌ Error processing class: ${className}`, error);
+          if (error instanceof Error) {
+            console.error(`Stack trace: ${error.stack}`);
+          }
         }
-
-        const result = await generateErrorCases(dtoClass, payload);
-        const testCasePayload = result.map(({ body, expects }) => ({
-          body,
-          expects,
-        }));
-
-        const outputFilePath = path.join(
-          outputDir,
-          `${className}.payload.json`,
-        );
-        fs.writeFileSync(
-          outputFilePath,
-          JSON.stringify(testCasePayload, null, 4),
-          'utf-8',
-        );
-        console.log(`✅ Success: ${outputFilePath}`);
-      } catch (error) {
-        console.error(`❌ Error processing class: ${className}`, error);
       }
     }
+
+    if (!payloadGenerated) {
+      console.warn(`No payload.json was generated for: ${dtoName}`);
+    }
+  } catch (error) {
+    console.error(`❌ Critical error in genBodyRequest:`, error);
+    if (error instanceof Error) {
+      console.error(`Stack trace: ${error.stack}`);
+    }
+    throw error;
   }
 }

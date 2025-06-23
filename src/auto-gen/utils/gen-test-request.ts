@@ -355,31 +355,42 @@ async function genTestCase(
 }
 
 export function genTestRequest(dtoName: string) {
-  const dtoFolderPath = path.join(__dirname, '../test-requests', dtoName);
   const baseRequestsPath = path.join(__dirname, '../test-requests');
-  const foundFolders = findAllFoldersWithDtoAndRequest(
-    baseRequestsPath,
-    dtoName,
-  );
+  const searchPath = path.join(baseRequestsPath, dtoName);
+  
+  console.log(`Searching in: ${searchPath}`);
+  
+  if (!fs.existsSync(searchPath)) {
+    console.error(`❌ Target folder does not exist: ${searchPath}`);
+    return;
+  }
+
+  const foundFolders = findAllFoldersWithDtoAndRequest(searchPath);
   const file = getMatchedFilePaths(foundFolders);
   const pairedFiles = pairFiles(file);
 
-  pairedFiles.forEach(({ dtoPath, requestPath, className }) => {
-    if (dtoPath && requestPath) {
-      for (const folder of foundFolders) {
-        const outputDir = folder.path;
-        const payloadPath = path.join(outputDir, `${className}.payload.json`);
-        if (fs.existsSync(payloadPath)) {
-          genTestCase(payloadPath, requestPath, className, outputDir).catch(
-            (err) =>
-              console.error(`Error generating tests for ${className}:`, err),
-          );
-        } else {
-          console.warn(`Missing payload file for class: ${className}`);
-        }
-      }
-    } else {
+  // Tạo map để truy cập nhanh folder theo path
+  const folderMap = new Map();
+  foundFolders.forEach(folder => {
+    folderMap.set(folder.path, folder);
+  });
+
+  pairedFiles.forEach(({ dtoPath, requestPath, className, folderPath }) => {
+    if (!dtoPath || !requestPath) {
       console.warn(`Missing .dto or .request.ts for class: ${className}`);
+      return;
+    }
+
+    // Chỉ kiểm tra trong folder chứa file hiện tại
+    const outputDir = folderPath;
+    const payloadPath = path.join(outputDir, `${className}.payload.json`);
+    
+    if (fs.existsSync(payloadPath)) {
+      genTestCase(payloadPath, requestPath, className, outputDir).catch(
+        err => console.error(`Error generating tests for ${className}:`, err)
+      );
+    } else {
+      console.warn(`Missing payload file for class: ${className} in ${outputDir}`);
     }
   });
 }

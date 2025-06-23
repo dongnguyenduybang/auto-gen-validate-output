@@ -15,9 +15,10 @@ import { getApiFunctions } from '../functions/api-registry';
 import { ClassConstructor, plainToClass } from 'class-transformer';
 import { validateResponses } from '../validates/validate-response';
 import { BaseResponse } from '../response';
+
 export function pairFiles(
   files: string[],
-): { dtoPath: string; requestPath: string; className: string }[] {
+): { dtoPath: string; requestPath: string; className: string, folderPath: any }[] {
   const fileMap: Record<string, { dtoPath?: string; requestPath?: string }> =
     {};
   files.forEach((filePath) => {
@@ -37,9 +38,11 @@ export function pairFiles(
       dtoPath,
       requestPath,
       className,
+      folderPath: dtoPath ? path.dirname(dtoPath) : path.dirname(requestPath)
     }),
   );
 }
+
 export function summaryFields(
   expectJson: string[],
   receivedResponse: string[],
@@ -164,6 +167,7 @@ export function getMatchedFilePaths(
 
   return result;
 }
+
 export function getResponseFile(dirPath: string): string | string {
   try {
     const files = fs.readdirSync(dirPath);
@@ -513,32 +517,29 @@ export function countEmojis(str: unknown): number {
 export function findTestPath(basePath: string, dtoName: string): string[] {
   const testFiles: string[] = [];
   
-  function scanDirectory(currentPath: string) {
-    const entries = fs.readdirSync(currentPath, { withFileTypes: true });
+  function searchDirectory(dir: string) {
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
     
     for (const entry of entries) {
-      const fullPath = path.join(currentPath, entry.name);
+      const fullPath = path.join(dir, entry.name);
       
       if (entry.isDirectory()) {
-        scanDirectory(fullPath);
+        searchDirectory(fullPath);
       } else if (
         entry.isFile() && 
-        (entry.name.endsWith('.spec.ts') || entry.name.endsWith('.test.ts')) &&
-        entry.name.replace(/\.(spec|test)\.ts$/, '').toLowerCase() === dtoName.toLowerCase()
+        entry.name.endsWith('.spec.ts') &&
+        entry.name.replace('.spec.ts', '').toLowerCase() === dtoName.toLowerCase()
       ) {
         testFiles.push(fullPath);
       }
     }
   }
   
-  scanDirectory(basePath);
+  searchDirectory(basePath);
   return testFiles;
 }
 
-export function findAllFoldersWithDtoAndRequest(
-  basePath: string,
-  folderName: string,
-) {
+export function findAllFoldersWithDtoAndRequest(basePath: string) {
   const results: {
     path: string;
     dtoFiles: string[];
@@ -546,38 +547,38 @@ export function findAllFoldersWithDtoAndRequest(
   }[] = [];
 
   function scanDirectory(dir: string) {
+    console.log(`🔍 Scanning directory: ${dir}`);
     const entries = fs.readdirSync(dir, { withFileTypes: true });
-    const currentFolder = path.basename(dir);
 
-    // Nếu là thư mục cần tìm
-    if (currentFolder.toLowerCase() === folderName.toLowerCase()) {
-      const dtoFiles = entries
-        .filter((e) => !e.isDirectory() && e.name.endsWith('.dto.ts'))
-        .map((e) => e.name);
+    // Check current directory first
+    const currentDtoFiles = entries
+      .filter(e => !e.isDirectory() && e.name.endsWith('.dto.ts'))
+      .map(e => e.name);
+      
+    const currentRequestFiles = entries
+      .filter(e => !e.isDirectory() && e.name.endsWith('.request.ts'))
+      .map(e => e.name);
 
-      const requestFiles = entries
-        .filter((e) => !e.isDirectory() && e.name.endsWith('.request.ts'))
-        .map((e) => e.name);
-
-      // Nếu có cả 2 loại file thì thêm vào kết quả
-      if (dtoFiles.length > 0 && requestFiles.length > 0) {
-        results.push({
-          path: dir,
-          dtoFiles,
-          requestFiles,
-        });
-      }
+    if (currentDtoFiles.length > 0 && currentRequestFiles.length > 0) {
+      results.push({
+        path: dir,
+        dtoFiles: currentDtoFiles,
+        requestFiles: currentRequestFiles,
+      });
     }
 
+    // Then scan subdirectories
     entries
-      .filter((e) => e.isDirectory())
-      .forEach((e) => scanDirectory(path.join(dir, e.name)));
+      .filter(e => e.isDirectory())
+      .forEach(e => {
+        scanDirectory(path.join(dir, e.name));
+      });
   }
 
   scanDirectory(basePath);
+  results.forEach(r => console.log(`- ${r.path}`));
   return results;
 }
-
 export const getFilesSwagger = (dirPath: string): string[] => {
   let jsonFiles: string[] = [];
 

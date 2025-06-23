@@ -2,7 +2,7 @@
     {
         "body": {
             "userId": 123,
-            "content": "test response send dm message",
+            "content": "send dm message chain update",
             "ref": "ref"
         },
         "expects": [
@@ -61,7 +61,7 @@
     {
         "body": {
             "userId": 123,
-            "content": "test response send dm message",
+            "content": "send dm message chain update",
             "ref": 123
         },
         "expects": [
@@ -71,7 +71,7 @@
     {
         "body": {
             "userId": 123,
-            "content": "test response send dm message",
+            "content": "send dm message chain update",
             "ref": ""
         },
         "expects": [
@@ -81,7 +81,7 @@
     {
         "body": {
             "userId": 123,
-            "content": "test response send dm message"
+            "content": "send dm message chain update"
         },
         "expects": [
             "Could not resolve permission type"
@@ -90,7 +90,7 @@
     {
         "body": {
             "userId": 123,
-            "content": "test response send dm message",
+            "content": "send dm message chain update",
             "ref": null
         },
         "expects": [
@@ -100,7 +100,7 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "content": "test response send dm message",
+            "content": "send dm message chain update",
             "ref": "ref"
         },
         "expects": []
@@ -158,7 +158,7 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "content": "test response send dm message",
+            "content": "send dm message chain update",
             "ref": 123
         },
         "expects": [
@@ -168,7 +168,7 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "content": "test response send dm message",
+            "content": "send dm message chain update",
             "ref": ""
         },
         "expects": [
@@ -179,7 +179,7 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "content": "test response send dm message"
+            "content": "send dm message chain update"
         },
         "expects": [
             "ref required"
@@ -188,7 +188,7 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "content": "test response send dm message",
+            "content": "send dm message chain update",
             "ref": null
         },
         "expects": [
@@ -197,7 +197,7 @@
     },
     {
         "body": {
-            "content": "test response send dm message",
+            "content": "send dm message chain update",
             "ref": "ref"
         },
         "expects": [
@@ -250,7 +250,7 @@
     },
     {
         "body": {
-            "content": "test response send dm message",
+            "content": "send dm message chain update",
             "ref": 123
         },
         "expects": [
@@ -259,7 +259,7 @@
     },
     {
         "body": {
-            "content": "test response send dm message",
+            "content": "send dm message chain update",
             "ref": ""
         },
         "expects": [
@@ -268,7 +268,7 @@
     },
     {
         "body": {
-            "content": "test response send dm message"
+            "content": "send dm message chain update"
         },
         "expects": [
             "Could not resolve permission type"
@@ -276,7 +276,7 @@
     },
     {
         "body": {
-            "content": "test response send dm message",
+            "content": "send dm message chain update",
             "ref": null
         },
         "expects": [
@@ -286,7 +286,7 @@
     {
         "body": {
             "userId": "",
-            "content": "test response send dm message",
+            "content": "send dm message chain update",
             "ref": "ref"
         },
         "expects": [
@@ -345,7 +345,7 @@
     {
         "body": {
             "userId": "",
-            "content": "test response send dm message",
+            "content": "send dm message chain update",
             "ref": 123
         },
         "expects": [
@@ -355,7 +355,7 @@
     {
         "body": {
             "userId": "",
-            "content": "test response send dm message",
+            "content": "send dm message chain update",
             "ref": ""
         },
         "expects": [
@@ -365,7 +365,7 @@
     {
         "body": {
             "userId": "",
-            "content": "test response send dm message"
+            "content": "send dm message chain update"
         },
         "expects": [
             "Could not resolve permission type"
@@ -374,7 +374,7 @@
     {
         "body": {
             "userId": "",
-            "content": "test response send dm message",
+            "content": "send dm message chain update",
             "ref": null
         },
         "expects": [
@@ -384,7 +384,7 @@
     {
         "body": {
             "userId": null,
-            "content": "test response send dm message",
+            "content": "send dm message chain update",
             "ref": "ref"
         },
         "expects": [
@@ -443,7 +443,7 @@
     {
         "body": {
             "userId": null,
-            "content": "test response send dm message",
+            "content": "send dm message chain update",
             "ref": 123
         },
         "expects": [
@@ -453,7 +453,7 @@
     {
         "body": {
             "userId": null,
-            "content": "test response send dm message",
+            "content": "send dm message chain update",
             "ref": ""
         },
         "expects": [
@@ -463,7 +463,7 @@
     {
         "body": {
             "userId": null,
-            "content": "test response send dm message"
+            "content": "send dm message chain update"
         },
         "expects": [
             "Could not resolve permission type"
@@ -472,7 +472,7 @@
     {
         "body": {
             "userId": null,
-            "content": "test response send dm message",
+            "content": "send dm message chain update",
             "ref": null
         },
         "expects": [
@@ -482,7 +482,7 @@
     {
         "body": {
             "userId": "invalid_value",
-            "content": "test response send dm message",
+            "content": "send dm message chain update",
             "ref": "ref"
         },
         "expects": [
@@ -541,7 +541,7 @@
     {
         "body": {
             "userId": "invalid_value",
-            "content": "test response send dm message",
+            "content": "send dm message chain update",
             "ref": 123
         },
         "expects": [
@@ -551,7 +551,7 @@
     {
         "body": {
             "userId": "invalid_value",
-            "content": "test response send dm message",
+            "content": "send dm message chain update",
             "ref": ""
         },
         "expects": [
@@ -561,7 +561,7 @@
     {
         "body": {
             "userId": "invalid_value",
-            "content": "test response send dm message"
+            "content": "send dm message chain update"
         },
         "expects": [
             "Unauthorized request"
@@ -570,7 +570,7 @@
     {
         "body": {
             "userId": "invalid_value",
-            "content": "test response send dm message",
+            "content": "send dm message chain update",
             "ref": null
         },
         "expects": [
