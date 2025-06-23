@@ -515,30 +515,29 @@ export function countEmojis(str: unknown): number {
 }
 
 export function findTestPath(basePath: string, dtoName: string): string[] {
-  const testFiles: string[] = [];
-  
-  function searchDirectory(dir: string) {
+  const result: string[] = [];
+  const targetDir = path.join(basePath, dtoName);
+
+  if (!fs.existsSync(targetDir)) {
+    return result;
+  }
+
+  function searchDir(dir: string) {
     const entries = fs.readdirSync(dir, { withFileTypes: true });
-    
+
     for (const entry of entries) {
       const fullPath = path.join(dir, entry.name);
-      
       if (entry.isDirectory()) {
-        searchDirectory(fullPath);
-      } else if (
-        entry.isFile() && 
-        entry.name.endsWith('.spec.ts') &&
-        entry.name.replace('.spec.ts', '').toLowerCase() === dtoName.toLowerCase()
-      ) {
-        testFiles.push(fullPath);
+        searchDir(fullPath); // Recursively search subdirectories
+      } else if (entry.isFile() && entry.name.endsWith('.spec.ts')) {
+        result.push(fullPath);
       }
     }
   }
-  
-  searchDirectory(basePath);
-  return testFiles;
-}
 
+  searchDir(targetDir);
+  return result;
+}
 export function findAllFoldersWithDtoAndRequest(basePath: string) {
   const results: {
     path: string;
