@@ -12,8 +12,6 @@ import { interactiveCLI } from './utils/inquirer-prompts';
 type ActionHandler = (dtoName: string) => Promise<void> | void;
 
 const args = process.argv.slice(2);
-let action: string, type: string, dtoName: string, subType: string;
-let restArgs: string[] = [];
 if (args.length > 0 && !args.includes('--started')) {
   if (args.length < 2) {
     console.error(
@@ -22,15 +20,6 @@ if (args.length > 0 && !args.includes('--started')) {
     process.exit(1);
   }
 
-  [action, type, ...restArgs] = args;
-
-  if (type === 'report') {
-    [subType, dtoName] = restArgs;
-  } else if (type !== 'reports') {
-    dtoName = restArgs[0];
-  } else {
-    dtoName = restArgs[0];
-  }
 }
 
 
@@ -82,12 +71,12 @@ export const actionHandlers: Record<string, Record<string, ActionHandler[]>> = {
     response: [clearFiles('test-responses')],
     saga: [clearFiles('test-sagas')],
     ws: [clearFiles('test-ws')],
-    report: [
-      (dto) => {
-        const basePath = `test-${subType}s/reports`;
-        return clearReports(basePath)(dto);
-      },
-    ],
+    // report: [
+    //   (dto) => {
+    //     const basePath = `test-${subType}s/reports`;
+    //     return clearReports(basePath)(dto);
+    //   },
+    // ],
   },
 };
 
@@ -117,45 +106,11 @@ function runTests(testType: string): ActionHandler {
 }
 
 async function main() {
-  if (process.argv.includes('--started') || process.argv.length <= 2) {
-    await interactiveCLI();
-    return;
-  }
-
-  console.log(`Processing "${type}${subType ? ` ${subType}` : ''}"${dtoName ? ` for: ${dtoName}` : ''}`);
-
   try {
-    const handlers = actionHandlers[action]?.[type];
-    if (!handlers) throw new Error('Action invalid');
-
-    let selectedDTOs: string[] = [];
-
-    if (!dtoName && (action === 'gen' || action === 'test') && type === 'request') {
-      const requestDir = path.join(__dirname, './test-requests');
-      selectedDTOs = getSubDirectories(requestDir);
-    } else if (action === 'clear' && !dtoName) {
-      const basePath = `test-${type === 'report' ? subType : type}s`;
-      await handleBulkAction(basePath, handlers);
+    if (process.argv.includes('--started') || process.argv.length <= 2) {
+      await interactiveCLI();
       return;
-    } else if (dtoName) {
-      selectedDTOs = [dtoName];
-    } else {
-      throw new Error('Missing dtoName parameter');
     }
-
-    for (const dto of selectedDTOs) {
-      console.log(`\n🚀 Starting processing for: ${dto}`);
-      for (const handler of handlers) {
-        try {
-          await handler(dto);
-          console.log(`✅ Handler completed successfully for ${dto}`);
-        } catch (error) {
-          console.error(`❌ Handler failed for ${dto}:`, error.message);
-        }
-      }
-    }
-
-    console.log('\n🎉 All selected DTOs processed successfully!');
   } catch (error) {
     console.error('⛔ Critical error:', error.message);
     process.exit(1);
