@@ -130,6 +130,13 @@ export interface ApiFunctionParams {
   body: any;
 }
 
+export interface RecentSelection {
+  action: string;
+  type: string;
+  paths: string[];
+  timestamp: number;
+}
+
 export interface TestResult {
   path: string;
   className: string;

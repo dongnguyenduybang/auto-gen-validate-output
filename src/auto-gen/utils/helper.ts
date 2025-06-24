@@ -598,54 +598,6 @@ export const getFilesSwagger = (dirPath: string): string[] => {
   return jsonFiles;
 };
 
-export function clearFiles(testType: string): ActionHandler {
-  return async (dtoName) => {
-    const basePath = path.join(__dirname, testType);
-    if (!fs.existsSync(basePath)) {
-      console.error(`${testType} directory not found: ${basePath}`);
-      return;
-    }
-
-    function clearDirectory(dir: string) {
-      const entries = fs.readdirSync(dir, { withFileTypes: true });
-
-      for (const entry of entries) {
-        const fullPath = path.join(dir, entry.name);
-
-        if (entry.isDirectory()) {
-          clearDirectory(fullPath);
-        } else if (
-          entry.name.toLowerCase().includes(dtoName.toLowerCase()) &&
-          entry.name.endsWith('.spec.ts')
-        ) {
-          fs.unlinkSync(fullPath);
-          console.log(`Deleted: ${fullPath}`);
-        }
-      }
-    }
-
-    clearDirectory(basePath);
-  };
-}
-
-export function clearReports(reportType: string): ActionHandler {
-  return async (dtoName) => {
-    const targetDir = path.join(__dirname, reportType, dtoName);
-    if (!fs.existsSync(targetDir)) {
-      console.error(`Report directory not found: ${targetDir}`);
-      return;
-    }
-
-    fs.readdirSync(targetDir)
-      .filter((file) => file.endsWith('.txt'))
-      .forEach((file) => {
-        const filePath = path.join(targetDir, file);
-        fs.unlinkSync(filePath);
-        console.log(`Deleted: ${filePath}`);
-      });
-  };
-}
-
 export function findAllDtoDirectories(parentDir: string): string[] {
   console.log(parentDir)
   const fullPath = path.join(__dirname,'..', 'test-requests', parentDir);
@@ -688,6 +640,13 @@ export async function handleBulkAction(basePath: string, handlers: ActionHandler
   const fullPath = path.join(__dirname, basePath);
   console.log(`Processing bulk action in directory: ${fullPath}`);
 
+  if (handlers[0].name.includes('clearFiles')) {
+    console.log(`Initiating recursive clear of all .spec.ts files in: ${fullPath}`);
+    await clearAllFilesRecursively(fullPath);
+    console.log(`Completed recursive clear in: ${fullPath}`);
+    return;
+  }
+
   const directories = getSubDirectories(fullPath).filter(
     (dir) => !dir.includes('reports'),
   );
@@ -695,11 +654,14 @@ export async function handleBulkAction(basePath: string, handlers: ActionHandler
   console.log(`Found ${directories.length} DTO directories:`, directories);
 
   for (const dir of directories) {
+    console.log(`Processing DTO: ${dir}`);
     for (const handler of handlers) {
       try {
+        console.log(`Executing handler for ${dir} with function: ${handler.name || 'anonymous'}`);
         await handler(dir);
+        console.log(`Successfully processed ${dir} with handler: ${handler.name || 'anonymous'}`);
       } catch (error) {
-        console.error(`Handler failed: ${error.message}`);
+        console.error(`Error processing ${dir} with handler: ${error.message}`, error.stack);
       }
     }
   }
@@ -713,4 +675,95 @@ export function getSubDirectories(dirPath: string): string[] {
         dirent.isDirectory() && !dirent.name.toLowerCase().includes('report'), // Loại bỏ thư mục report
     )
     .map((dirent) => dirent.name);
+}
+
+export function clearFiles(testType: string): ActionHandler {
+  const handler = async (dtoName: string) => {
+    const baseDir = path.join(__dirname, testType);
+
+    if (!dtoName) {
+      console.log(`🧹 Clearing all files in ${baseDir}`);
+      await clearAllFilesRecursively(baseDir);
+      return;
+    }
+
+    const targetDir = path.join(baseDir, dtoName);
+    if (!fs.existsSync(targetDir)) {
+      console.error(`❌ Directory not found: ${targetDir}`);
+      return;
+    }
+
+    console.log(`🧹 Cleaning files in ${targetDir}`);
+    await clearAllFilesRecursively(targetDir);
+  };
+
+  Object.defineProperty(handler, 'name', {
+    value: `clearFiles_${testType}`,
+    writable: false
+  });
+
+  return handler;
+}
+
+export function clearAllFilesRecursively(dir: string) {
+  if (!fs.existsSync(dir)) {
+    console.error(`Directory not found: ${dir}`);
+    return;
+  }
+
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+
+  entries.forEach((entry) => {
+    const fullPath = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      clearAllFilesRecursively(fullPath);
+    } else if (entry.isFile() && entry.name.endsWith('.spec.ts')) {
+      try {
+        fs.unlinkSync(fullPath);
+        console.log(`🗑️ Deleted: ${fullPath}`);
+      } catch (error) {
+        console.error(`Failed to delete ${fullPath}: ${error.message}`);
+      }
+    }
+  });
+}
+
+export function clearReports(reportType: string): ActionHandler {
+  return async (dtoName: string) => {
+    const targetDir = path.join(__dirname, reportType, dtoName);
+    if (!fs.existsSync(targetDir)) {
+      console.error(`Report directory not found: ${targetDir}`);
+      return;
+    }
+
+    fs.readdirSync(targetDir)
+      .filter((file) => file.endsWith('.txt'))
+      .forEach((file) => {
+        const filePath = path.join(targetDir, file);
+        fs.unlinkSync(filePath);
+        console.log(`Deleted: ${filePath}`);
+      });
+  };
+}
+
+export function getSubDirectoriesRecursive(dirPath: string, prefix: string = ''): { name: string, value: string }[] {
+  const result: { name: string, value: string }[] = [];
+  if (!fs.existsSync(dirPath)) {
+    return result;
+  }
+
+  const entries = fs.readdirSync(dirPath, { withFileTypes: true });
+
+  for (const entry of entries) {
+    if (entry.isDirectory() && !entry.name.toLowerCase().includes('report')) {
+      const fullPath = path.join(dirPath, entry.name);
+      const displayName = prefix ? `${prefix}/${entry.name}` : entry.name;
+      result.push({ name: displayName, value: displayName });
+
+      const subDirs = getSubDirectoriesRecursive(fullPath, displayName);
+      result.push(...subDirs);
+    }
+  }
+
+  return result;
 }
