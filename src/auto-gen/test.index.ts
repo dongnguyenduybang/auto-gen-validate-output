@@ -38,23 +38,18 @@ export const actionHandlers: Record<string, Record<string, ActionHandler[]>> = {
   gen: {
     request: [
       async (dto) => {
-        console.log(`[GEN BODY] Starting for: ${dto}`);
         try {
           const result = await genBodyRequest(dto);
           return result;
         } catch (e) {
-          console.error(`[GEN BODY] Error for ${dto}:`, e);
           throw e;
         }
       },
       async (dto) => {
-        console.log(`[GEN TEST] Starting for: ${dto}`);
         try {
           const result = await genTestRequest(dto);
-          console.log(`[GEN TEST] Successfully generated spec file for: ${dto}`);
           return result;
         } catch (e) {
-          console.error(`[GEN TEST] Error for ${dto}:`, e);
           throw e;
         }
       },

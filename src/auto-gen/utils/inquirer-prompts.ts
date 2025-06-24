@@ -350,7 +350,7 @@ async function selectFoldersRecursive(): Promise<string[]> {
     let basePath = '';
 
     while (true) {
-        const fullPath = path.join(__dirname, 'test-requests', basePath, currentPath);
+        const fullPath = path.join(__dirname, '../test-requests', basePath, currentPath);
         const entries = fs.readdirSync(fullPath, { withFileTypes: true });
 
         const folders = entries

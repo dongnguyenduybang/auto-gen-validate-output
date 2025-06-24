@@ -11,7 +11,6 @@ export async function genBodyRequest(dtoName: string) {
   try {
     const baseRequestsPath = path.join(__dirname, '../test-requests');
     const searchPath = path.join(baseRequestsPath, dtoName);
-    console.log(`Searching in: ${searchPath}`);
 
     if (!fs.existsSync(searchPath)) {
       console.error(`❌ Target folder does not exist: ${searchPath}`);
@@ -33,7 +32,7 @@ export async function genBodyRequest(dtoName: string) {
         fs.mkdirSync(outputDir, { recursive: true });
       }
 
-      const file = getMatchedFilePaths([folder]); // Chỉ xử lý file trong thư mục hiện tại
+      const file = getMatchedFilePaths([folder]);
       const fileMap = groupFilesByName(file);
 
       for (const [className, { dtoPath, requestPath }] of Object.entries(fileMap)) {
@@ -71,7 +70,7 @@ export async function genBodyRequest(dtoName: string) {
           if (!requestData?.options?.[0]?.steps?.[0]?.step?.[0]?.body) {
             console.warn(`No valid body found in request for class: ${className}`);
             console.log(`Request data structure:`, requestData);
-                      console.log('-----------------------')
+            console.log('-----------------------')
             continue;
           }
 
@@ -83,7 +82,6 @@ export async function genBodyRequest(dtoName: string) {
           }));
 
           const outputFilePath = path.join(outputDir, `${className}.payload.json`);
-          console.log(`Writing to: ${outputFilePath}`);
 
           fs.writeFileSync(
             outputFilePath,

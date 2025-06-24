@@ -301,7 +301,6 @@ async function genTestCase(
   outputDir: string,
 ) {
   const payloadData = readJsonFile(payloadPath);
-  console.log(`Total test cases in ${payloadPath}: ${payloadData.length}`);
 
   const classNameCapitalized = className
     .split('-')
@@ -357,8 +356,6 @@ async function genTestCase(
 export function genTestRequest(dtoName: string) {
   const baseRequestsPath = path.join(__dirname, '../test-requests');
   const searchPath = path.join(baseRequestsPath, dtoName);
-  
-  console.log(`Searching in: ${searchPath}`);
   
   if (!fs.existsSync(searchPath)) {
     console.error(`❌ Target folder does not exist: ${searchPath}`);

@@ -546,7 +546,6 @@ export function findAllFoldersWithDtoAndRequest(basePath: string) {
   }[] = [];
 
   function scanDirectory(dir: string) {
-    console.log(`🔍 Scanning directory: ${dir}`);
     const entries = fs.readdirSync(dir, { withFileTypes: true });
 
     // Check current directory first
@@ -679,7 +678,7 @@ export function getSubDirectories(dirPath: string): string[] {
 
 export function clearFiles(testType: string): ActionHandler {
   const handler = async (dtoName: string) => {
-    const baseDir = path.join(__dirname, testType);
+    const baseDir = path.join(__dirname,'../', testType);
 
     if (!dtoName) {
       console.log(`🧹 Clearing all files in ${baseDir}`);
