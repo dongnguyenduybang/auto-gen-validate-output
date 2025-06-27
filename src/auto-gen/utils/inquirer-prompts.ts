@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import { RecentSelection } from './declarations';
 import { actionHandlers } from '../test.index';
-import { transformPropertyName } from './helper';
+import { normalizePathForReport, transformPropertyName } from './helper';
 
 let recentSelections: RecentSelection[] = [];
 const MAX_RECENT_ITEMS = 100;
@@ -351,9 +351,8 @@ export async function executeAction(action: string, type: string, paths: string[
 
                 if (generateReport) {
                     try {
-                        const normalizedPath = path.replace(/\//g, '-');
+                        const normalizedPath = normalizePathForReport(path)
                         const lastPart = normalizedPath.split(/[/\\]/).pop();
-                        console.log(lastPart)
                         await actionHandlers.report.single[0](lastPart);
 
                     } catch (error) {

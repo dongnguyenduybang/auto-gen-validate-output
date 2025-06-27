@@ -861,3 +861,7 @@ export function validateDtoName(dtoName) {
 
 
 }
+
+export  function normalizePathForReport(path: string): string {
+  return path.replace(/[/\\]/g, '-');
+}
