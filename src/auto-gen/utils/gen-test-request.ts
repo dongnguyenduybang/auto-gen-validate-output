@@ -383,7 +383,6 @@ async function genTestCase(
 export function genTestRequest(dtoName: string) {
   const baseRequestsPath = path.join(__dirname, '../test-requests');
   const searchPath = path.join(baseRequestsPath, dtoName);
-
   if (!fs.existsSync(searchPath)) {
     console.error(`❌ Target folder does not exist: ${searchPath}`);
     return;

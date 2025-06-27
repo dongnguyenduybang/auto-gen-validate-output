@@ -15,6 +15,7 @@ import { getApiFunctions } from '../functions/api-registry';
 import { ClassConstructor, plainToClass } from 'class-transformer';
 import { validateResponses } from '../validates/validate-response';
 import { BaseResponse } from '../response';
+import { glob } from 'glob';
 
 export function pairFiles(
   files: string[],
@@ -862,7 +863,6 @@ export function validateDtoName(dtoName) {
 
 }
 
-
 export function parsePath(inputPath: string): { normalized: string; lastPart: string } {
   const normalizedPath = inputPath.replace(/\\/g, '/').trim();
   const parts = normalizedPath.split('/').filter(part => part !== '');
@@ -871,4 +871,44 @@ export function parsePath(inputPath: string): { normalized: string; lastPart: st
 }
 export function normalizePath(inputPath: string) {
   return inputPath.replace(/\\/g, '/').replace(/\/+/g, '/');
+}
+
+export async function searchDtoInTestRequests(dtoName: string): Promise<string[]> {
+    const basePath = path.join(__dirname, '../test-requests');
+
+    const matches: string[] = [];
+
+    async function walkDir(currentPath: string) {
+        try {
+            const entries = await fs.promises.readdir(currentPath, { withFileTypes: true });
+
+            for (const entry of entries) {
+                const fullPath = path.join(currentPath, entry.name);
+
+                if (entry.isDirectory()) {
+                    // Check if the folder name matches dtoName exactly
+                    if (path.basename(entry.name) === dtoName) {
+                        // Add the relative path from basePath
+                        const relativePath = path.relative(basePath, fullPath);
+                        matches.push(relativePath);
+                    }
+                    // Recursively search subdirectories
+                    await walkDir(fullPath);
+                } else {
+                    // Check if the file name (without extension) matches dtoName
+                    const baseName = path.parse(entry.name).name;
+                    if (baseName === dtoName) {
+                        // Add the relative path from basePath
+                        const relativePath = path.relative(basePath, fullPath);
+                        matches.push(relativePath);
+                    }
+                }
+            }
+        } catch (error) {
+            console.error(`Error reading directory ${currentPath}: ${(error as Error).message}`);
+        }
+    }
+
+    await walkDir(basePath);
+    return matches;
 }

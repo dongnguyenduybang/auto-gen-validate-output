@@ -223,7 +223,6 @@ export async function generateAllReports(dtoName?: string): Promise<{filePath: s
     if (fs.existsSync(reportFile)) {
       try {
         reportContent = JSON.parse(fs.readFileSync(reportFile, 'utf-8'));
-        console.log(`Parsed content for ${dtoName}:`, reportContent); // Ghi log để debug
       } catch (error) {
         console.error(`Error parsing ${reportFile}:`, error);
         reportContent = {};
@@ -294,23 +293,32 @@ export function viewReports(dtoName: string) {
         return fs.readFileSync(fullPath, 'utf8');
       }
     } catch (err) {
-      // Không cần log lỗi ở đây để tránh spam
+      console.error(`Error reading file ${fullPath}:`, err);
     }
     return null;
   };
 
-  const findNewestReportInDir = (dirPath: string): string | null => {
+  const findNewestReportInDir = (dirPath: string, targetDtoName: string): string | null => {
     try {
       const files = fs.readdirSync(dirPath)
-        .filter(file => file.endsWith('.txt') || file.endsWith('.md'))
+        .filter(file => (file.endsWith('.txt') || file.endsWith('.md')))
         .map(file => {
           const filePath = path.join(dirPath, file);
-          return { filePath, mtime: fs.statSync(filePath).mtime };
+          const fileBaseName = path.parse(file).name.split('-combined-')[0]; // Extract base name before "-combined-"
+          return { filePath, mtime: fs.statSync(filePath).mtime, fileBaseName };
         })
-        .sort((a, b) => b.mtime.getTime() - a.mtime.getTime());
+        .filter(file => file.fileBaseName === targetDtoName); // Filter for exact dtoName match
 
-      return files.length > 0 ? files[0].filePath : null;
+      if (files.length === 0) {
+        console.log(`No matching report files found for ${targetDtoName} in ${dirPath}`);
+        return null;
+      }
+
+      const sortedFiles = files.sort((a, b) => b.mtime.getTime() - a.mtime.getTime());
+      // console.log(`Found matching files for ${targetDtoName}:`, sortedFiles.map(f => ({ path: f.filePath, mtime: f.mtime })));
+      return sortedFiles[0].filePath;
     } catch (err) {
+      console.error(`Error reading directory ${dirPath}:`, err);
       return null;
     }
   };
@@ -327,18 +335,20 @@ export function viewReports(dtoName: string) {
   }
 
   const possiblePaths = [
-    path.join(basePath, dtoName),
-    path.join(basePath, 'success-reports', dtoName),
-    path.join(basePath, 'failed-reports', dtoName)
+    path.join(basePath, 'success-reports', dtoName), // Prioritize success reports
+    path.join(basePath, 'failed-reports', dtoName),  // Then failed reports
   ];
 
   let newestFilePath: string | null = null;
 
   for (const possiblePath of possiblePaths) {
-    const foundPath = findNewestReportInDir(possiblePath);
-    if (foundPath && (!newestFilePath || 
-        fs.statSync(foundPath).mtime > fs.statSync(newestFilePath).mtime)) {
-      newestFilePath = foundPath;
+    if (fs.existsSync(possiblePath)) {
+      const foundPath = findNewestReportInDir(possiblePath, dtoName);
+      if (foundPath && (!newestFilePath || fs.statSync(foundPath).mtime > fs.statSync(newestFilePath).mtime)) {
+        newestFilePath = foundPath;
+      }
+    } else {
+      // console.log(`Directory not found: ${possiblePath}`);
     }
   }
 

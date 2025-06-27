@@ -4,7 +4,7 @@ import { glob } from 'glob';
 import path from 'path';
 import { RecentSelection } from './declarations';
 import { actionHandlers } from '../test.index';
-import { normalizePath, parsePath, transformPropertyName } from './helper';
+import { normalizePath, parsePath, searchDtoInTestRequests, transformPropertyName } from './helper';
 
 let recentSelections: RecentSelection[] = [];
 const MAX_RECENT_ITEMS = 100;
@@ -445,7 +445,7 @@ function validateDtoName(dtoName: string): { status: boolean; data: any } {
     }
 }
 
-async function selectFoldersRecursive(isReport = false): Promise<string[]> {
+async function selectFoldersRecursive(isReport = false, type = 'request'): Promise<string[]> {
     const selectedPaths: string[] = [];
     let currentPath = '';
     let basePath = '';
@@ -459,8 +459,6 @@ async function selectFoldersRecursive(isReport = false): Promise<string[]> {
         }
 
         try {
-
-
             const entries = fs.readdirSync(fullPath, { withFileTypes: true });
 
             const items = entries
@@ -471,8 +469,8 @@ async function selectFoldersRecursive(isReport = false): Promise<string[]> {
                 })
                 .map((entry) => ({
                     name: entry.name,
-                    value: entry.name, // Use entry.name instead of entry.value
-                    checked: selectedPaths.includes(path.join(basePath, currentPath, entry.name)), // Use entry.name here too
+                    value: entry.name,
+                    checked: selectedPaths.includes(path.join(basePath, currentPath, entry.name)),
                 }));
             const currentFullPath = path.join(basePath, currentPath);
             const isCurrentSelected = selectedPaths.includes(currentFullPath) && currentFullPath !== '';
@@ -497,7 +495,7 @@ async function selectFoldersRecursive(isReport = false): Promise<string[]> {
                             name: `${item.name.endsWith('.md') ? '📄' : '📂'} ${selectedPaths.includes(path.join(basePath, currentPath, item.value)) ? '✓ ' : ''}${item.name}`,
                         })),
                         new inquirer.Separator(),
-                        // { name: '✅ Create', value: '__CREATE__' },
+                        { name: '🔍 Search DTO', value: '__SEARCH__' },
                         { name: '✅ Confirm selection', value: '__CONFIRM__' },
                         { name: '↩ Back', value: '__BACK__' },
                     ],
@@ -516,106 +514,174 @@ async function selectFoldersRecursive(isReport = false): Promise<string[]> {
                 }
             }
 
-            if (selectedOptions.includes('__CREATE__')) {
-                let dataDTO: any;
-                let dtoFields: { field: string; decorators: string[] }[] = [];
-                const { dtoName, requestType } = await inquirer.prompt<{ dtoName: string; requestType: string }>([
-                    {
-                        type: 'input',
-                        name: 'dtoName',
-                        message: 'Enter DTO name (e.g., create-channel):',
-                        validate: async (input: string) => {
-                            if (!input) return 'DTO name is required.';
-                            if (!/^[a-zA-Z0-9-_]+$/.test(input)) {
-                                return 'DTO name can only contain letters, numbers, hyphens, and underscores.';
-                            }
-                            const result = validateDtoName(input);
-                            if (result.status) {
+            if (selectedOptions.includes('__SEARCH__')) {
+                while (true) {
+                    let dataDTO: any;
+                    const { dtoName } = await inquirer.prompt<{ dtoName: string }>([
+                        {
+                            type: 'input',
+                            name: 'dtoName',
+                            message: 'Enter DTO name to search (e.g., create-channel):',
+                            validate: async (input: string) => {
+                                if (!input) return 'DTO name is required.';
+                                if (!/^[a-zA-Z0-9-_]+$/.test(input)) {
+                                    return 'DTO name can only contain letters, numbers, hyphens, and underscores.';
+                                }
+                                const result = validateDtoName(input);
+                                if (!result.status) {
+                                    return result.data as string;
+                                }
                                 dataDTO = result.data;
+
+                                // Check if DTO exists in test-requests
+                                const matches = await searchDtoInTestRequests(input);
+                                if (matches.length === 0) {
+                                    return `DTO '${input}' not found in test-requests folder.`;
+                                }
                                 return true;
-                            }
-                            return result.data as string;
+                            },
                         },
-                    },
-                    {
-                        type: 'list',
-                        name: 'requestType',
-                        message: 'Select request type:',
-                        choices: ['DTO', 'Response', 'Saga', 'WS'],
-                        default: 'DTO',
-                    },
-                ]);
+                    ]);
 
-                // while (true) {
-                //     const { dto, decorators, continueAdding } = await inquirer.prompt<{
-                //         dto: string;
-                //         decorators: string[];
-                //         continueAdding: boolean;
-                //     }>([
-                //         {
-                //             type: 'list',
-                //             name: 'dto',
-                //             message: 'Select a DTO field for decorator definition:',
-                //             choices: () => {
-                //                 const choices = transformPropertyName(dataDTO);
-                //                 if (choices.length === 0) {
-                //                     throw new Error('No properties found for the selected DTO.');
-                //                 }
-                //                 return [
-                //                     ...choices,
-                //                     new inquirer.Separator(),
-                //                     { name: '✅ Confirm selection', value: '__CONFIRM__' },
-                //                 ];
-                //             },
-                //             default: () => {
-                //                 const choices = transformPropertyName(dataDTO);
-                //                 return choices.length > 0 ? choices[0] : null;
-                //             },
-                //         },
-                //         {
-                //             type: 'checkbox',
-                //             name: 'decorators',
-                //             message: (answers: any) => `Select decorators for the field '${answers.dto}':`,
-                //             choices: (answers: any) => {
-                //                 if (answers.dto === '__CONFIRM__') return [];
-                //                 // return getDecoratorChoices(dataDTO.properties[answers.dto]);
-                //             },
-                //             validate: (input) => {
-                //                 if (!input || input.length === 0) {
-                //                     return 'At least one decorator must be selected.';
-                //                 }
-                //                 return true;
-                //             },
-                //             when: (answers) => answers.dto !== '__CONFIRM__',
-                //         },
-                //         {
-                //             type: 'confirm',
-                //             name: 'continueAdding',
-                //             message: 'Add another field to this DTO?',
-                //             default: true,
-                //             when: (answers: any) => answers.dto !== '__CONFIRM__',
-                //         },
-                //     ]);
+                    // Search for the DTO in test-requests
+                    const matches = await searchDtoInTestRequests(dtoName);
+                    let dtoPath: string;
 
-                //     if (dto === '__CONFIRM__') {
-                //         break;
-                //     }
+                    if (matches.length === 1) {
+                        // Single match: use it directly
+                        dtoPath = matches[0];
+                    } else if (matches.length > 1) {
+                        // Multiple matches: let user choose
+                        const { selectedPath } = await inquirer.prompt<{ selectedPath: string }>([
+                            {
+                                type: 'list',
+                                name: 'selectedPath',
+                                message: `Multiple matches found for '${dtoName}'. Please select one:`,
+                                choices: matches.map((match) => ({
+                                    name: match,
+                                    value: match,
+                                })),
+                            },
+                        ]);
+                        dtoPath = selectedPath;
+                    } else {
+                        // This shouldn’t happen due to validation, but handle it
+                        console.error(`No matches found for DTO '${dtoName}' after validation.`);
+                        continue;
+                    }
 
-                //     dtoFields.push({ field: dto, decorators });
+                    // Add the DTO path to selectedPaths if not already included
+                    if (!selectedPaths.includes(dtoPath)) {
+                        selectedPaths.push(dtoPath);
+                    }
 
-                //     if (!continueAdding) {
-                //         break;
-                //     }
-                // }
+                    console.log(`\n📋 Selected DTO for generation: ${dtoName} (Type: ${type}, Path: ${dtoPath})`);
 
-                console.log(
-                    `DTO Created: ${dtoName}, Type: ${requestType}, Fields: ${JSON.stringify(
-                        dtoFields.map((f) => ({ [f.field]: f.decorators })),
-                        null,
-                        2
-                    )}`
-                );
-                continue;
+                    // Optionally, handle DTO field selection (uncomment and adapt if needed)
+                    /*
+                    let dtoFields: { field: string; decorators: string[] }[] = [];
+                    while (true) {
+                        const { dto, decorators, continueAdding } = await inquirer.prompt<{
+                            dto: string;
+                            decorators: string[];
+                            continueAdding: boolean;
+                        }>([
+                            {
+                                type: 'list',
+                                name: 'dto',
+                                message: 'Select a DTO field for decorator definition:',
+                                choices: () => {
+                                    const choices = transformPropertyName(dataDTO);
+                                    if (choices.length === 0) {
+                                        throw new Error('No properties found for the selected DTO.');
+                                    }
+                                    return [
+                                        ...choices,
+                                        new inquirer.Separator(),
+                                        { name: '✅ Confirm selection', value: '__CONFIRM__' },
+                                    ];
+                                },
+                                default: () => {
+                                    const choices = transformPropertyName(dataDTO);
+                                    return choices.length > 0 ? choices[0] : null;
+                                },
+                            },
+                            {
+                                type: 'checkbox',
+                                name: 'decorators',
+                                message: (answers: any) => `Select decorators for the field '${answers.dto}':`,
+                                choices: (answers: any) => {
+                                    if (answers.dto === '__CONFIRM__') return [];
+                                    // return getDecoratorChoices(dataDTO.properties[answers.dto]);
+                                },
+                                validate: (input) => {
+                                    if (!input || input.length === 0) {
+                                        return 'At least one decorator must be selected.';
+                                    }
+                                    return true;
+                                },
+                                when: (answers) => answers.dto !== '__CONFIRM__',
+                            },
+                            {
+                                type: 'confirm',
+                                name: 'continueAdding',
+                                message: 'Add another field to this DTO?',
+                                default: true,
+                                when: (answers: any) => answers.dto !== '__CONFIRM__',
+                            },
+                        ]);
+
+                        if (dto === '__CONFIRM__') {
+                            break;
+                        }
+
+                        dtoFields.push({ field: dto, decorators });
+
+                        if (!continueAdding) {
+                            break;
+                        }
+                    }
+
+                    console.log(
+                        `DTO Created: ${dtoName}, Type: ${type}, Fields: ${JSON.stringify(
+                            dtoFields.map((f) => ({ [f.field]: f.decorators })),
+                            null,
+                            2
+                        )}`
+                    );
+                    */
+
+                    // Add to recent selections
+                    addToRecentSelections({
+                        action: 'gen',
+                        type: type,
+                        paths: [dtoPath],
+                        timestamp: Date.now(),
+                    });
+
+                    // Ask what to do next
+                    const { continueSearch } = await inquirer.prompt<{ continueSearch: string }>([
+                        {
+                            type: 'list',
+                            name: 'continueSearch',
+                            message: 'What would you like to do next?',
+                            choices: [
+                                { name: 'Continue searching for another DTO', value: 'continue' },
+                                { name: 'Return to folder selection', value: 'folder' },
+                                { name: 'Confirm selection and proceed', value: 'confirm' },
+                            ],
+                            default: 'continue',
+                        },
+                    ]);
+
+                    if (continueSearch === 'confirm') {
+                        return selectedPaths.filter((f) => f !== '');
+                    } else if (continueSearch === 'folder') {
+                        break; // Exit the inner DTO search loop to return to folder selection
+                    }
+                    // If 'continue', loop back to prompt for another DTO name
+                }
+                continue; // After exiting the inner loop, continue to folder selection
             }
 
             items.forEach((item) => {
@@ -647,7 +713,7 @@ async function selectFoldersRecursive(isReport = false): Promise<string[]> {
             }
 
             const nextItem = selectedOptions.find((opt) =>
-                !['__CURRENT__', '__CREATE__', '__CONFIRM__', '__BACK__'].includes(opt)
+                !['__CURRENT__', '__SEARCH__', '__CONFIRM__', '__BACK__'].includes(opt)
             );
 
             if (nextItem) {
