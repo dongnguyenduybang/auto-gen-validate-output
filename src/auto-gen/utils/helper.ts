@@ -552,7 +552,7 @@ export function findAllFoldersWithDtoAndRequest(basePath: string) {
     const currentDtoFiles = entries
       .filter(e => !e.isDirectory() && e.name.endsWith('.dto.ts'))
       .map(e => e.name);
-      
+
     const currentRequestFiles = entries
       .filter(e => !e.isDirectory() && e.name.endsWith('.request.ts'))
       .map(e => e.name);
@@ -599,22 +599,22 @@ export const getFilesSwagger = (dirPath: string): string[] => {
 
 export function findAllDtoDirectories(parentDir: string): string[] {
   console.log(parentDir)
-  const fullPath = path.join(__dirname,'..', 'test-requests', parentDir);
+  const fullPath = path.join(__dirname, '..', 'test-requests', parentDir);
   const result: string[] = [];
 
   function scanDirectory(currentPath: string, relativePath: string = '') {
     const entries = fs.readdirSync(currentPath, { withFileTypes: true });
 
     const hasDtoFile = entries.some(
-      entry => entry.isFile() && 
-      (entry.name.endsWith('.dto.ts') || entry.name.endsWith('.request.ts'))
+      entry => entry.isFile() &&
+        (entry.name.endsWith('.dto.ts') || entry.name.endsWith('.request.ts'))
     );
 
     if (hasDtoFile) {
       const dtoName = entries.find(
         e => e.isFile() && (e.name.endsWith('.dto.ts') || e.name.endsWith('.request.ts'))
       )?.name.replace(/\.(dto|request)\.ts$/, '');
-      
+
       if (dtoName) {
         result.push(dtoName);
       }
@@ -678,7 +678,7 @@ export function getSubDirectories(dirPath: string): string[] {
 
 export function clearFiles(testType: string): ActionHandler {
   const handler = async (dtoName: string) => {
-    const baseDir = path.join(__dirname,'../', testType);
+    const baseDir = path.join(__dirname, '../', testType);
 
     if (!dtoName) {
       console.log(`🧹 Clearing all files in ${baseDir}`);
@@ -765,4 +765,99 @@ export function getSubDirectoriesRecursive(dirPath: string, prefix: string = '')
   }
 
   return result;
+}
+
+export function getDtoNamesFromSwagger(swaggerFilePath: string): { original: string; transformed: string }[] {
+  try {
+    const swaggerContent = fs.readFileSync(swaggerFilePath, 'utf8');
+    const swaggerJson = JSON.parse(swaggerContent);
+    console.log(swaggerJson)
+    // Extract DTO names from components.schemas
+    const schemas = swaggerJson.components?.schemas || {};
+    const dtoNames = Object.keys(schemas)
+      // Filter out non-request schemas (e.g., enums)
+      .filter(name => schemas[name].type === 'object' && name.toLowerCase().includes('request'))
+      .map(name => ({
+        original: name,
+        // Transform to kebab-case (e.g., V3CreateChannelRequest -> v3-create-channel-request)
+        transformed: name
+          .replace(/^V3/, 'v3-') // Handle V3 prefix
+          .replace(/([A-Z])/g, '-$1') // Add hyphens before capital letters
+          .toLowerCase()
+          .replace(/^-+/, '') // Remove leading hyphens
+      }));
+
+    return dtoNames;
+  } catch (err) {
+    console.error('Error reading or parsing Swagger JSON:', err.message);
+    return [];
+  }
+}
+
+function transformDtoName(dtoName) {
+  const words = dtoName.split('-');
+  const capitalizedWords = words.map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()); // Capitalize each word
+  return `V3${capitalizedWords.join('')}Request`;
+}
+
+export function transformPropertyName(dataDTO: object): string[] {
+
+  const schemaPath = path.join(__dirname, '../swagger/schemas.json')
+  const fileContent = fs.readFileSync(schemaPath, 'utf-8');
+  const schema = JSON.parse(fileContent);
+  if (!dataDTO || typeof dataDTO !== 'object') return [];
+
+  const dto = dataDTO as any;
+
+  if (!dto.properties || typeof dto.properties !== 'object') return [];
+
+  const requiredFields = Array.isArray(dto.required) ? dto.required : [];
+
+  return Object.entries(dto.properties).map(([key, value]: [string, any]) => {
+    let typeDesc = '';
+    let isRequired = requiredFields.includes(key);
+
+    if (value.type) {
+      typeDesc = value.type;
+    } else if (value.$ref) {
+      const refName = value.$ref.replace('#/components/schemas/', '');
+      const refSchema = schema?.[refName];
+
+      if (refSchema?.enum && Array.isArray(refSchema['x-enum-varnames'])) {
+        // Gộp enum value + tên biến
+        const enums = refSchema.enum
+          .map((val: number | string, idx: number) => {
+            const name = refSchema['x-enum-varnames']?.[idx] ?? `UNKNOWN_${val}`;
+            return `${val}: ${name}`;
+          })
+          .join(', ');
+
+        typeDesc = `enum: ${refName} - [${enums}]`;
+      } else {
+        typeDesc = `ref: ${refName}`;
+      }
+    } else {
+      typeDesc = 'unknown';
+    }
+
+    return `${key} (${typeDesc}${isRequired ? '' : ', optional'})`;
+  });
+}
+
+
+export function validateDtoName(dtoName) {
+  const schemaPath = path.join(__dirname, '../swagger/schemas.json')
+  const fileContent = fs.readFileSync(schemaPath, 'utf-8');
+  const schema = JSON.parse(fileContent);
+  const transformedName = transformDtoName(dtoName);
+
+  if (schema[transformedName]) {
+    return {
+      status: true, data: schema[transformedName]
+    }
+  } else {
+    return { status: false, data: `DTO name '${transformedName}' not found in schema.` }
+  }
+
+
 }

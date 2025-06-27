@@ -2,7 +2,7 @@
     {
         "body": {
             "userId": 123,
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": [
@@ -61,7 +61,7 @@
     {
         "body": {
             "userId": 123,
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": 123
         },
         "expects": [
@@ -71,7 +71,7 @@
     {
         "body": {
             "userId": 123,
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": ""
         },
         "expects": [
@@ -81,7 +81,7 @@
     {
         "body": {
             "userId": 123,
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91"
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0"
         },
         "expects": [
             "Could not resolve permission type"
@@ -90,7 +90,7 @@
     {
         "body": {
             "userId": 123,
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": null
         },
         "expects": [
@@ -100,7 +100,7 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": []
@@ -158,7 +158,7 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": 123
         },
         "expects": [
@@ -168,7 +168,7 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": ""
         },
         "expects": [
@@ -178,7 +178,7 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91"
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0"
         },
         "expects": [
             "ref required"
@@ -187,7 +187,7 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": null
         },
         "expects": [
@@ -196,7 +196,7 @@
     },
     {
         "body": {
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": [
@@ -249,7 +249,7 @@
     },
     {
         "body": {
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": 123
         },
         "expects": [
@@ -258,7 +258,7 @@
     },
     {
         "body": {
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": ""
         },
         "expects": [
@@ -267,7 +267,7 @@
     },
     {
         "body": {
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91"
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0"
         },
         "expects": [
             "Could not resolve permission type"
@@ -275,7 +275,7 @@
     },
     {
         "body": {
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": null
         },
         "expects": [
@@ -285,7 +285,7 @@
     {
         "body": {
             "userId": "",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": [
@@ -344,7 +344,7 @@
     {
         "body": {
             "userId": "",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": 123
         },
         "expects": [
@@ -354,7 +354,7 @@
     {
         "body": {
             "userId": "",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": ""
         },
         "expects": [
@@ -364,7 +364,7 @@
     {
         "body": {
             "userId": "",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91"
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0"
         },
         "expects": [
             "Could not resolve permission type"
@@ -373,7 +373,7 @@
     {
         "body": {
             "userId": "",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": null
         },
         "expects": [
@@ -383,7 +383,7 @@
     {
         "body": {
             "userId": null,
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": [
@@ -442,7 +442,7 @@
     {
         "body": {
             "userId": null,
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": 123
         },
         "expects": [
@@ -452,7 +452,7 @@
     {
         "body": {
             "userId": null,
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": ""
         },
         "expects": [
@@ -462,7 +462,7 @@
     {
         "body": {
             "userId": null,
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91"
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0"
         },
         "expects": [
             "Could not resolve permission type"
@@ -471,7 +471,7 @@
     {
         "body": {
             "userId": null,
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": null
         },
         "expects": [
@@ -481,7 +481,7 @@
     {
         "body": {
             "userId": "invalid_value",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
         },
         "expects": [
@@ -540,7 +540,7 @@
     {
         "body": {
             "userId": "invalid_value",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": 123
         },
         "expects": [
@@ -550,7 +550,7 @@
     {
         "body": {
             "userId": "invalid_value",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": ""
         },
         "expects": [
@@ -560,7 +560,7 @@
     {
         "body": {
             "userId": "invalid_value",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91"
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0"
         },
         "expects": [
             "Unauthorized request"
@@ -569,7 +569,7 @@
     {
         "body": {
             "userId": "invalid_value",
-            "stickerId": "01HXTX9THMYNP2DSPDT4B48E91",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": null
         },
         "expects": [

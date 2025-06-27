@@ -3,6 +3,8 @@ import * as fs from 'fs';
 import { combinedReportTemplate } from './report-file';
 import { getTime } from './helper';
 import { TestResult } from './declarations';
+import { table } from 'table';
+
 
 function isResultFile(file: string, className: string): boolean {
   return file.startsWith(className) && file.endsWith('.result.json');
@@ -140,7 +142,7 @@ async function combineReports(className: string) {
     noFailedTests ? 'success-reports' : 'failed-reports',
     className
   );
-  
+
   ensureDirExists(outputDir);
 
   const reportFileName = `${className}-combined-${getTime()}.report.txt`;
@@ -217,4 +219,148 @@ export async function generateAllReports(dtoName?: string): Promise<void> {
 
 function hasNoFailedTests(results: TestResult[]): boolean {
   return results.every(result => result.failedTests.length === 0);
+}
+
+export function viewReports(dtoName: string) {
+  const fullPath = path.join(__dirname, '../test-requests/.reports', dtoName);
+
+  try {
+    // Check if dtoName is a file
+    if (dtoName.endsWith('.txt') || dtoName.endsWith('.md')) {
+      if (fs.existsSync(fullPath) && fs.statSync(fullPath).isFile()) {
+        const data = fs.readFileSync(fullPath, 'utf8');
+        renderMarkdown(data);
+        return;
+      } else {
+        console.log('File not found:', fullPath);
+        return;
+      }
+    }
+
+    // Treat dtoName as a directory
+    const files = fs.readdirSync(fullPath)
+      .filter(file => file.endsWith('.txt') || file.endsWith('.md'))
+      .map(file => {
+        const filePath = path.join(fullPath, file);
+        const stats = fs.statSync(filePath);
+        return { file, mtime: stats.mtime };
+      })
+      .sort((a, b) => b.mtime.getTime() - a.mtime.getTime());
+
+    if (files.length === 0) {
+      console.log('No .txt or .md file found in:', fullPath);
+      return;
+    }
+
+    const newestFile = files[0].file;
+    const newestFilePath = path.join(fullPath, newestFile);
+    const data = fs.readFileSync(newestFilePath, 'utf8');
+    renderMarkdown(data);
+  } catch (err) {
+    if (err.code === 'ENOENT') {
+      console.error('Directory or file does not exist:', fullPath);
+    } else if (err.code === 'ENOTDIR') {
+      console.error('Expected a directory but found a file:', fullPath);
+    } else {
+      console.error('Error reading file:', err);
+    }
+  }
+}
+
+function renderMarkdown(content: string) {
+  // Split content into lines
+  const lines = content.split('\n');
+
+  // Variables to track table parsing
+  let inTable = false;
+  let tableHeaders: string[] = [];
+  let tableRows: string[][] = [];
+  let output: string[] = [];
+
+  for (let line of lines) {
+    line = line.trim();
+
+    // Handle headers
+    if (line.startsWith('#')) {
+      const level = line.match(/^#+/)![0].length;
+      const text = line.replace(/^#+/, '').trim();
+      output.push(`\x1b[1m${' '.repeat(level * 2)}${text}\x1b[0m`); // Bold headers with indentation
+      continue;
+    }
+
+    // Handle table start
+    if (line.startsWith('|')) {
+      const columns = line.split('|').map(col => col.trim()).filter(col => col);
+      if (!inTable) {
+        // Header row
+        tableHeaders = columns;
+        inTable = true;
+        tableRows = [tableHeaders];
+      } else if (line.match(/^\|[-:\s|]+$/)) {
+        // Separator row, ignore
+        continue;
+      } else {
+        // Data row
+        tableRows.push(columns);
+      }
+      continue;
+    }
+
+    // Handle non-table lines (e.g., text, links)
+    if (inTable && tableRows.length > 1) {
+      // End of table, render it
+      output.push(table(tableRows, {
+        border: {
+          topBody: `─`,
+          topJoin: `┬`,
+          topLeft: `┌`,
+          topRight: `┐`,
+          bottomBody: `─`,
+          bottomJoin: `┴`,
+          bottomLeft: `└`,
+          bottomRight: `┘`,
+          bodyLeft: `│`,
+          bodyRight: `│`,
+          bodyJoin: `│`,
+          joinLeft: `├`,
+          joinRight: `┤`,
+          joinBody: `─`
+        }
+      }));
+      inTable = false;
+      tableHeaders = [];
+      tableRows = [];
+    }
+
+    // Handle regular text or links
+    if (line) {
+      // Replace Markdown links [text](url) with text
+      line = line.replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1');
+      output.push(line);
+    }
+  }
+
+  // Render any remaining table
+  if (inTable && tableRows.length > 1) {
+    output.push(table(tableRows, {
+      border: {
+        topBody: `─`,
+        topJoin: `┬`,
+        topLeft: `┌`,
+        topRight: `┐`,
+        bottomBody: `─`,
+        bottomJoin: `┴`,
+        bottomLeft: `└`,
+        bottomRight: `┘`,
+        bodyLeft: `│`,
+        bodyRight: `│`,
+        bodyJoin: `│`,
+        joinLeft: `├`,
+        joinRight: `┤`,
+        joinBody: `─`
+      }
+    }));
+  }
+
+  console.log(output.join('\n'));
 }

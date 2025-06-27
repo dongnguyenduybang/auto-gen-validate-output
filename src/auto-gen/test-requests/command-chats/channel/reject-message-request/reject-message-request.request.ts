@@ -1,28 +1,20 @@
 import { ACTION, HEADER_LIST, VAR } from '../../../../enums';
-import { RequestTestSuite } from '../../../../utils/declarations';
+import { DTOBuilder } from '../../../../utils/chain-dto';
 
-export const RejectMessageRequestRequest: RequestTestSuite = {
-  action: ACTION.REJECT_MESSAGE_REQUEST,
-  headers: HEADER_LIST.create({ token: VAR.token }),
-  body: {
-    userId: VAR.userId1
-  },
-  options: [
-    {
-      beforeAll: [
-        {
-          action: ACTION.SEND_DM_MESSAGE,
-          headers: HEADER_LIST.create({ token: VAR.token1 }),
-          body: {
-            userId: VAR.userId,
-            content: 'test accept message request',
-            ref: 'ref',
-          },
-        }
-      ],
-      beforeEach: [],
-      afterEach: [],
-      afterAll: [],
+export const RejectMessageRequestRequest = new DTOBuilder()
+  .startStep('reject message request')
+  .addAction('reject message request', 'reject-request', ACTION.REJECT_MESSAGE_REQUEST, {
+    headers: HEADER_LIST.create({ token: VAR.token }),
+    body: {
+      userId: VAR.userId1,
     },
-  ],
-};
+  })
+  .addBeforeAll('send dm message', 'send-message', ACTION.SEND_DM_MESSAGE, {
+    headers: HEADER_LIST.create({ token: VAR.token1 }),
+    body: {
+      userId: VAR.userId,
+      content: 'test accept message request',
+      ref: 'ref',
+    },
+  })
+  .execute();

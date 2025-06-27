@@ -5,7 +5,7 @@
     import { TestResult } from '../../../../utils/declarations';
     import { executeSteps } from '../../../../utils/text-execute-test';
     import { TestContext } from '../../../../utils/text-context';
-    import { SendDmMessage } from '././send-dm-message.request';
+    import { SendDmMessageRequest } from '././send-dm-message.request';
     describe('Testcase for send-dm-message', () => {
         let totalTests = 0;
         let allSteps = [];
@@ -27,7 +27,7 @@
           testType = 'request';
           globalContext = globalThis.globalContext;
           context = new TestContext();
-          const beforeAllSteps = SendDmMessage.options[0]?.beforeAll || [];
+          const beforeAllSteps = SendDmMessageRequest.options[0]?.beforeAll || [];
 
           if (beforeAllSteps.length > 0) {
             contextData = context.clone();
@@ -45,7 +45,7 @@
         });
         beforeEach(async () => {
           testCaseNumber++;
-          const beforeEachSteps = SendDmMessage.options[0]?.beforeEach || [];
+          const beforeEachSteps = SendDmMessageRequest.options[0]?.beforeEach || [];
 
           if (beforeEachSteps.length > 0) {
             contextData = context.clone();
@@ -9824,7 +9824,7 @@
 });
       afterEach(async () => {
           testCaseNumber++;
-          const afterEachSteps = SendDmMessage.options[0]?.afterEach || [];
+          const afterEachSteps = SendDmMessageRequest.options[0]?.afterEach || [];
 
           if (afterEachSteps.length > 0) {
             contextData = context.clone();
@@ -9842,7 +9842,7 @@
         });
 
          afterAll(async () => {
-          const afterAllSteps = SendDmMessage.options[0]?.afterAll || [];
+          const afterAllSteps = SendDmMessageRequest.options[0]?.afterAll || [];
 
           if (afterAllSteps.length > 0) {
             contextData = context.clone();

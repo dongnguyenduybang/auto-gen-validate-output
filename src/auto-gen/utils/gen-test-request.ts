@@ -25,10 +25,12 @@ async function generateSpecContent(
   totalChunks?: number,
 ): Promise<string> {
   const requestFilePathWithoutExt = className.replace('.request.ts', '');
-  const classNameCapitalized = requestFilePathWithoutExt
-    .split('-')
-    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-    .join('');
+  const classNameCapitalized =
+    requestFilePathWithoutExt
+      .split('-')
+      .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+      .join('') + 'Request';
+
 
   const utilsPath = path.join(__dirname, '../utils');
   const requestImportPath = `./${requestFilePathWithoutExt}.request`;
@@ -308,8 +310,32 @@ async function genTestCase(
     .join('');
 
   const requestModule = await import(requestPath);
-  // Access the chained DTOBuilder instance's options
-  const requestConfig = requestModule[classNameCapitalized];
+
+  // Flexible request export detection
+  let requestConfig;
+  if (requestModule[classNameCapitalized]) {
+    requestConfig = requestModule[classNameCapitalized];
+  } else if (requestModule[classNameCapitalized + 'Request']) {
+    requestConfig = requestModule[classNameCapitalized + 'Request'];
+  } else if (requestModule.default) {
+    requestConfig = requestModule.default;
+  } else {
+    // Try to find any export with options
+    for (const key of Object.keys(requestModule)) {
+      if (requestModule[key]?.options) {
+        requestConfig = requestModule[key];
+        break;
+      }
+    }
+  }
+
+  if (!requestConfig?.options) {
+    console.error(`❌ Invalid request config for ${className}`);
+    console.log('Available exports:', Object.keys(requestModule));
+    console.log('Request module content:', requestModule);
+    return;
+  }
+
 
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
@@ -349,14 +375,15 @@ async function genTestCase(
     );
 
     fs.writeFileSync(outputPath, specContent, 'utf-8');
-    console.log(`Success: ${outputPath}`);
+    console.log(`✅ Successfully created: ${outputPath}`);
+    console.log('-----------------------');
   }
 }
 
 export function genTestRequest(dtoName: string) {
   const baseRequestsPath = path.join(__dirname, '../test-requests');
   const searchPath = path.join(baseRequestsPath, dtoName);
-  
+
   if (!fs.existsSync(searchPath)) {
     console.error(`❌ Target folder does not exist: ${searchPath}`);
     return;
@@ -381,7 +408,7 @@ export function genTestRequest(dtoName: string) {
     // Chỉ kiểm tra trong folder chứa file hiện tại
     const outputDir = folderPath;
     const payloadPath = path.join(outputDir, `${className}.payload.json`);
-    
+
     if (fs.existsSync(payloadPath)) {
       genTestCase(payloadPath, requestPath, className, outputDir).catch(
         err => console.error(`Error generating tests for ${className}:`, err)

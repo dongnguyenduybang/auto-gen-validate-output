@@ -6,7 +6,7 @@ import { execSync } from 'child_process';
 import { genTestResponse } from './utils/gen-test-response';
 import { genTestSaga } from './utils/gen-test-saga';
 import { clearFiles, clearReports, findTestPath, getSubDirectories, handleBulkAction } from './utils/helper';
-import { generateAllReports } from './utils/combine-report';
+import { generateAllReports, viewReports } from './utils/combine-report';
 import { interactiveCLI } from './utils/inquirer-prompts';
 
 type ActionHandler = (dtoName: string) => Promise<void> | void;
@@ -57,6 +57,10 @@ export const actionHandlers: Record<string, Record<string, ActionHandler[]>> = {
     all: [async () => {
       console.log('📊 Generating all reports');
       await generateAllReports();
+    }],
+    view: [async (dtoName) => {
+      console.log('📊 View reports: ');
+      await viewReports(dtoName)
     }]
   },
 

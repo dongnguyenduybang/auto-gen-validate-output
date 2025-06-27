@@ -36,44 +36,89 @@ export async function genBodyRequest(dtoName: string) {
       const fileMap = groupFilesByName(file);
 
       for (const [className, { dtoPath, requestPath }] of Object.entries(fileMap)) {
-
         if (!dtoPath) {
           console.warn(`Missing .dto file for class: ${className}`);
           continue;
         }
 
         try {
+          // Load DTO class (phần này giữ nguyên)
           delete require.cache[require.resolve(dtoPath)];
           const dtoModule = require(dtoPath);
 
           const classNameCapitalized = className
             .split('-')
             .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-            .join('') + 'DTO';
+            .join('');
 
-          const dtoClass = dtoModule[classNameCapitalized];
+          const possibleDtoNames = [
+            `${classNameCapitalized}DTO`,
+            classNameCapitalized,
+            `${classNameCapitalized}RequestDTO`,
+            `${classNameCapitalized}Request`
+          ];
 
-          if (!dtoClass || typeof dtoClass !== 'function' || !/^\s*class\s/.test(dtoClass.toString())) {
+          let dtoClass;
+          for (const name of possibleDtoNames) {
+            if (dtoModule[name] && typeof dtoModule[name] === 'function') {
+              dtoClass = dtoModule[name];
+              break;
+            }
+          }
+
+          if (!dtoClass) {
             console.error(`Invalid DTO class in file: ${dtoPath}`);
             console.log(`Available exports: ${Object.keys(dtoModule).join(', ')}`);
             continue;
           }
 
+          // Load request module
           const requestModule = await import(requestPath);
-          const classNameCapitalizedRequest = className
-            .split('-')
-            .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-            .join('');
 
-          const requestData = requestModule[classNameCapitalizedRequest];
+          // Flexible request export detection với type checking
+          const possibleRequestNames = [
+            classNameCapitalized + 'Request',
+            classNameCapitalized,
+            'default'
+          ];
+
+          let requestData;
+          for (const name of possibleRequestNames) {
+            const candidate = requestModule[name];
+            if (candidate && (isDTOBuilderInstance(candidate) || hasOptions(candidate))) {
+              requestData = isDTOBuilderInstance(candidate) ? candidate.execute() : candidate;
+              break;
+            }
+          }
+
+          // Type guard functions
+          function isDTOBuilderInstance(obj: any): obj is { execute: () => any } {
+            return typeof obj?.execute === 'function';
+          }
+
+          function hasOptions(obj: any): obj is { options: any[] } {
+            return Array.isArray(obj?.options);
+          }
+
+          // If still not found, try to find any export with options (với type checking)
+          if (!requestData) {
+            for (const [key, value] of Object.entries(requestModule)) {
+              if (isDTOBuilderInstance(value) || hasOptions(value)) {
+                requestData = isDTOBuilderInstance(value) ? value.execute() : value;
+                break;
+              }
+            }
+          }
 
           if (!requestData?.options?.[0]?.steps?.[0]?.step?.[0]?.body) {
             console.warn(`No valid body found in request for class: ${className}`);
             console.log(`Request data structure:`, requestData);
-            console.log('-----------------------')
+            console.log('Available exports:', Object.keys(requestModule));
+            console.log('-----------------------');
             continue;
           }
 
+          // Phần còn lại giữ nguyên
           const payload = requestData.options[0].steps[0].step[0].body;
           const result = await generateErrorCases(dtoClass, payload);
           const testCasePayload = result.map(({ body, expects }) => ({
@@ -91,7 +136,7 @@ export async function genBodyRequest(dtoName: string) {
 
           console.log(`✅ Successfully created: ${outputFilePath}`);
           console.log(`File content length: ${testCasePayload.length} cases`);
-          console.log('-----------------------')
+          console.log('-----------------------');
           payloadGenerated = true;
 
         } catch (error) {
