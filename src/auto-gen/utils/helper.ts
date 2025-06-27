@@ -862,16 +862,13 @@ export function validateDtoName(dtoName) {
 
 }
 
+
 export function parsePath(inputPath: string): { normalized: string; lastPart: string } {
-
   const normalizedPath = inputPath.replace(/\\/g, '/').trim();
-  
   const parts = normalizedPath.split('/').filter(part => part !== '');
-  
-
   const lastPart = parts[parts.length - 1] || '';
-  
-  const normalized = parts.join('/'); 
-  
-  return { normalized, lastPart };
+  return { normalized: lastPart, lastPart }; // Trả về lastPart cho cả normalized
+}
+export function normalizePath(inputPath: string) {
+  return inputPath.replace(/\\/g, '/').replace(/\/+/g, '/');
 }

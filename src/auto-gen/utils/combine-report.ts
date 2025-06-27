@@ -164,6 +164,11 @@ export async function generateAllReports(dtoName?: string): Promise<void> {
   // Nếu có truyền dtoName => chỉ gen report cho DTO đó
   if (dtoName) {
     console.log(`Generating report for single DTO: ${dtoName}`);
+    const reportFile = path.join(reportDir, `${dtoName}.result.json`);
+    if (!fs.existsSync(reportFile)) {
+      fs.writeFileSync(reportFile, '{}'); // Tạo file mẫu nếu không tồn tại
+      console.log(`Created placeholder JSON for ${dtoName} at ${reportFile}`);
+    }
     await combineReports(dtoName);
     return;
   }

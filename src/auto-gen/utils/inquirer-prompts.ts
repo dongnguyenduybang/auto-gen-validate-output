@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import { RecentSelection } from './declarations';
 import { actionHandlers } from '../test.index';
-import { parsePath, transformPropertyName } from './helper';
+import { normalizePath, parsePath, transformPropertyName } from './helper';
 
 let recentSelections: RecentSelection[] = [];
 const MAX_RECENT_ITEMS = 100;
@@ -314,58 +314,66 @@ function addToRecentSelections(item: RecentSelection) {
     }
 }
 
-export async function executeAction(action: string, type: string, paths: string[]) {
-    console.log(`\n📌 Starting ${action} ${type} for ${paths.length} items:`);
+export async function executeAction(action: string, type: string, filePaths: string[]) {
+    console.log(`\n📌 Starting ${action} ${type} for ${filePaths.length} items:`);
     console.log('----------------------------------------');
 
-    paths.forEach((path, index) => {
-        console.log(`${index + 1}. ${path}`);
+    filePaths.forEach((filePath, index) => {
+        console.log(`${index + 1}. ${filePath}`);
     });
 
     console.log('----------------------------------------');
 
     const results: { path: string; success: boolean; error?: string }[] = [];
 
-    for (const path of paths) {
+    for (const filePath of filePaths) {
+        const normalizedPath = normalizePath(filePath);
         try {
-            console.log(`\n🔄 Processing: ${path}`);
+            // Chuẩn hóa path ngay khi bắt đầu xử lý
+
+            console.log(`\n🔄 Processing: ${normalizedPath}`);
+
             for (const handler of actionHandlers[action][type]) {
-                let finalPath = path;
+                let finalPath = normalizedPath;
+
                 if (action === 'report' && type !== 'view') {
-                    finalPath = path.split(/[/\\]/).pop();
+                    // Sử dụng path.parse trên path đã chuẩn hóa
+                    const parsed = path.parse(normalizedPath);
+                    finalPath = parsed.base;
                 }
 
                 await handler(finalPath);
             }
-            console.log(`✅ Success: ${path}`);
-            results.push({ path, success: true });
+
+            console.log(`✅ Success: ${normalizedPath}`);
+            results.push({ path: normalizedPath, success: true });
+
             if (action === 'test') {
                 const { generateReport } = await inquirer.prompt([
                     {
                         type: 'confirm',
                         name: 'generateReport',
-                        message: `Generate test report for ${path}?`,
+                        message: `Generate test report for ${normalizedPath}?`,
                         default: true
                     }
                 ]);
 
                 if (generateReport) {
-                    console.log('true')
                     try {
-                        const { normalized, lastPart } = parsePath(path);
-                        
-                        console.log('lastPart', lastPart,'normalized', normalized)
-                        await actionHandlers.report.single[0](lastPart);
-
+                        // Sử dụng path đã chuẩn hóa để tạo report
+                        const parsed = path.parse(normalizedPath);
+                        const reportName = parsed.name; // Lấy phần tên file (send-dm-message)
+                       
+                        await actionHandlers.report.single[0](reportName);
                     } catch (error) {
-                        console.error(`❌ Failed to generate report for ${path}:`, error.message);
+                        console.error(`❌ Failed to generate report for ${normalizedPath}:`, error.message);
                     }
                 }
             }
         } catch (error) {
             const errorMsg = error instanceof Error ? error.message : String(error);
-            console.error(`❌ Failed: ${path} - ${errorMsg}`);
-            results.push({ path, success: false, error: errorMsg });
+            console.error(`❌ Failed: ${normalizedPath} - ${errorMsg}`);
+            results.push({ path: normalizedPath, success: false, error: errorMsg });
         }
     }
 }
