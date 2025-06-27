@@ -1,6 +1,5 @@
 import path from 'path';
 import 'reflect-metadata';
-import { genTestRequest } from './utils/gen-test-request';
 import { execSync } from 'child_process';
 import { genTestResponse } from './utils/gen-test-response';
 import { genTestSaga } from './utils/gen-test-saga';
@@ -35,12 +34,12 @@ export const actionHandlers: Record<string, Record<string, ActionHandler[]>> = {
         // }
       },
       async (dto) => {
-        try {
-          const result = await genTestRequest(dto);
-          return result;
-        } catch (e) {
-          throw e;
-        }
+        // try {
+        //   const result = await genTestRequest(dto);
+        //   return result;
+        // } catch (e) {
+        //   throw e;
+        // }
       },
     ],
     response: [(dto) => Promise.resolve(genTestResponse(dto))],

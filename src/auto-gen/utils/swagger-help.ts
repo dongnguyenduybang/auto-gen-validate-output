@@ -131,11 +131,10 @@ export async function generateRequestTestSuite(
 
     const beforeAll = options.beforeAll || [];
     const updatedBeforeAll = [...beforeAll];
-
     return {
         action: `ACTION.${requestName.toUpperCase().replace(/-/g, '_')}`,
         headers: {
-            ...headers,
+            'x-session-token': headers.token
         },
         body,
         options: [{
