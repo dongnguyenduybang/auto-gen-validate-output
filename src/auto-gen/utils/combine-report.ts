@@ -2,9 +2,19 @@ import * as path from 'path';
 import * as fs from 'fs';
 import { combinedReportTemplate } from './report-file';
 import { getTime } from './helper';
-import { TestResult } from './declarations';
 import { table } from 'table';
 
+// Định nghĩa interface TestResult với các thuộc tính tùy chọn để xử lý trường hợp undefined
+interface TestResult {
+  failedTests?: any[];
+  codedTest?: any[];
+  allSteps?: any[];
+  warnings?: any[];
+  path?: string;
+  passedTests?: number;
+  totalTests?: number;
+  [key: string]: any;
+}
 
 function isResultFile(file: string, className: string): boolean {
   return file.startsWith(className) && file.endsWith('.result.json');
@@ -16,24 +26,51 @@ function isJsonResultFile(file: string): boolean {
 
 function parseResultFile(reportDir: string, file: string): TestResult {
   const filePath = path.join(reportDir, file);
-  const content = fs.readFileSync(filePath, 'utf-8');
-  return JSON.parse(content) as TestResult;
+  let content: string;
+  try {
+    content = fs.readFileSync(filePath, 'utf-8');
+  } catch (error) {
+    console.error(`Error reading file ${filePath}:`, error);
+    throw new Error(`Failed to read report file: ${file}`);
+  }
+
+  let parsed: TestResult;
+  try {
+    parsed = JSON.parse(content) as TestResult;
+  } catch (error) {
+    console.error(`Error parsing JSON in ${filePath}:`, error);
+    throw new Error(`Invalid JSON format in ${file}`);
+  }
+
+  // Đảm bảo các thuộc tính cần thiết tồn tại, nếu không thì cung cấp giá trị mặc định
+  parsed = {
+    failedTests: Array.isArray(parsed.failedTests) ? parsed.failedTests : [],
+    codedTest: Array.isArray(parsed.codedTest) ? parsed.codedTest : [],
+    allSteps: Array.isArray(parsed.allSteps) ? parsed.allSteps : [],
+    warnings: Array.isArray(parsed.warnings) ? parsed.warnings : [],
+    path: typeof parsed.path === 'string' ? parsed.path : '',
+    passedTests: typeof parsed.passedTests === 'number' ? parsed.passedTests : 0,
+    totalTests: typeof parsed.totalTests === 'number' ? parsed.totalTests : 0,
+    ...parsed, // Giữ các thuộc tính khác nếu có
+  };
+
+  return parsed;
 }
 
 function extractFailedTests(result: TestResult): TestResult[] {
-  return result.failedTests;
+  return Array.isArray(result.failedTests) ? result.failedTests : [];
 }
 
 function extractCodedTests(result: TestResult): TestResult[] {
-  return result.codedTest;
+  return Array.isArray(result.codedTest) ? result.codedTest : [];
 }
 
 function extractFailedSteps(result: TestResult): TestResult[] {
-  return result.allSteps;
+  return Array.isArray(result.allSteps) ? result.allSteps : [];
 }
 
 function extractPaths(result: TestResult): string {
-  return result.path;
+  return typeof result.path === 'string' ? result.path : '';
 }
 
 function sumByField(results: TestResult[], field: keyof TestResult): number {
@@ -62,10 +99,7 @@ function parseTestResults(reportDir: string, files: string[]): TestResult[] {
   });
 }
 
-function generateSummary(
-  codedTests: any[],
-  failedTests: any[],
-) {
+function generateSummary(codedTests: any[], failedTests: any[]) {
   return {
     statusCodes: {
       200: filterByCode(codedTests, 200).length,
@@ -95,33 +129,36 @@ function cleanupTempFiles(dir: string, files: string[]): void {
   });
 }
 
-async function combineReports(className: string) {
+async function combineReports(className: string): Promise<{
+  reportContent: string;
+  reportPath: string;
+  summary: any;
+  noFailedTests: boolean;
+}> {
   const reportDir = path.join(__dirname, '../tmp-reports');
   const reportFiles = getReportFiles(reportDir, className);
-  console.log('reportFile', reportFiles)
+  console.log('reportFile', reportFiles);
+
   if (reportFiles.length === 0) {
-    console.error(`No report files found for ${className}`);
-    return;
+    const errorMsg = `No report files found for ${className}`;
+    console.error(errorMsg);
+    throw new Error(errorMsg);
   }
 
   const results = parseTestResults(reportDir, reportFiles);
-
-  // Kiểm tra có case fail hay không
   const noFailedTests = hasNoFailedTests(results);
 
   const combinedFailedTests = results.map(extractFailedTests).flat();
   const combinedCodedTest = results.map(extractCodedTests).flat();
   const combinedFailedStep = results.map(extractFailedSteps).flat();
-  const combinedWarnings = results.map(r => r.warnings).flat();
+  const combinedWarnings = results.map(r => Array.isArray(r.warnings) ? r.warnings : []).flat();
   const pathRequest = results.map(extractPaths).flat();
 
   const totalPassedTests = sumByField(results, 'passedTests');
   const totalTests = sumByField(results, 'totalTests');
 
-  const summary = generateSummary(
-    combinedCodedTest,
-    combinedFailedTests,
-  );
+  const summary = generateSummary(combinedCodedTest, combinedFailedTests);
+
   const reportContent = combinedReportTemplate(
     className,
     globalThis.urls,
@@ -135,7 +172,6 @@ async function combineReports(className: string) {
     combinedWarnings
   );
 
-  // Xác định thư mục output dựa trên có case fail hay không
   const outputBaseDir = path.join(__dirname, '../test-requests/.reports');
   const outputDir = path.join(
     outputBaseDir,
@@ -152,36 +188,63 @@ async function combineReports(className: string) {
     fs.writeFileSync(reportPath, reportContent, 'utf-8');
     console.log(`📄 Combined report generated: ${reportPath}`);
     console.log(`ℹ️ Report classified as: ${noFailedTests ? 'SUCCESS (no failed tests)' : 'FAILED (has failed tests)'}`);
-    // cleanupTempFiles(reportDir, reportFiles);
+
+    return {
+      reportContent,
+      reportPath,
+      summary: {
+        className,
+        totalTests,
+        passedTests: totalPassedTests,
+        failedTests: combinedFailedTests.length,
+        warnings: combinedWarnings.length,
+        isSuccess: noFailedTests
+      },
+      noFailedTests
+    };
   } catch (error) {
     console.error(`Error writing combined report to ${reportPath}:`, error);
+    throw error;
   }
 }
 
-export async function generateAllReports(dtoName?: string): Promise<void> {
+export async function generateAllReports(dtoName?: string): Promise<{filePath: string; content?: any} | void> {
   const reportDir = path.join(__dirname, '../tmp-reports');
 
-  // Nếu có truyền dtoName => chỉ gen report cho DTO đó
+  if (!fs.existsSync(reportDir)) {
+    fs.mkdirSync(reportDir, { recursive: true });
+  }
+
   if (dtoName) {
     console.log(`Generating report for single DTO: ${dtoName}`);
     const reportFile = path.join(reportDir, `${dtoName}.result.json`);
-    if (!fs.existsSync(reportFile)) {
-      fs.writeFileSync(reportFile, '{}'); // Tạo file mẫu nếu không tồn tại
+
+    let reportContent = {};
+    if (fs.existsSync(reportFile)) {
+      try {
+        reportContent = JSON.parse(fs.readFileSync(reportFile, 'utf-8'));
+        console.log(`Parsed content for ${dtoName}:`, reportContent); // Ghi log để debug
+      } catch (error) {
+        console.error(`Error parsing ${reportFile}:`, error);
+        reportContent = {};
+      }
+    } else {
+      fs.writeFileSync(reportFile, JSON.stringify(reportContent, null, 2));
       console.log(`Created placeholder JSON for ${dtoName} at ${reportFile}`);
     }
-    await combineReports(dtoName);
-    return;
+
+    const result = await combineReports(dtoName);
+    const finalContent = result || reportContent;
+
+    fs.writeFileSync(reportFile, JSON.stringify(finalContent, null, 2));
+
+    return {
+      filePath: reportFile,
+      content: finalContent
+    };
   }
 
-  // Nếu không có tham số => gen tất cả reports trong tmp-reports
   console.log(`Generating ALL reports from: ${reportDir}`);
-
-  if (!fs.existsSync(reportDir)) {
-    console.error(`❌ Directory ${reportDir} does not exist!`);
-    return;
-  }
-
-  // Lấy tất cả file JSON trong thư mục
   const allFiles = fs.readdirSync(reportDir);
   const jsonFiles = allFiles.filter(file => file.endsWith('.json'));
 
@@ -191,31 +254,27 @@ export async function generateAllReports(dtoName?: string): Promise<void> {
   }
 
   console.log(`📁 Found ${jsonFiles.length} JSON files to process:`);
-  jsonFiles.forEach(file => console.log(`- ${file}`));
 
-  // Tạo Map để nhóm các file theo DTO (nếu cần)
-  const dtoMap: Record<string, string[]> = {};
-
+  const results = [];
   for (const file of jsonFiles) {
-    // Giả sử tên file có dạng: "dtoName-report.json" hoặc "dtoName.json"
-    const dtoName = file.split('.')[0]; // Lấy phần trước dấu '.' đầu tiên
-
-    if (!dtoMap[dtoName]) {
-      dtoMap[dtoName] = [];
-    }
-    dtoMap[dtoName].push(file);
-  }
-
-  // Gen report cho từng DTO
-  for (const [dtoName, files] of Object.entries(dtoMap)) {
-    console.log(`\n🚀 Generating report for DTO: ${dtoName}`);
-    console.log(`📄 Files: ${files.join(', ')}`);
+    const dtoName = file.split('.')[0];
+    console.log(`\n🚀 Processing: ${file}`);
 
     try {
-      await combineReports(dtoName);
-      console.log(`✅ Successfully generated report for ${dtoName}`);
+      const parsedContent = parseResultFile(reportDir, file);
+      const result = await combineReports(dtoName);
+      const reportFile = path.join(reportDir, file);
+      fs.writeFileSync(reportFile, JSON.stringify(result, null, 2));
+
+      results.push({
+        dtoName,
+        filePath: reportFile,
+        content: result
+      });
+
+      console.log(`✅ Successfully processed ${file}`);
     } catch (error) {
-      console.error(`❌ Failed to generate report for ${dtoName}:`, error);
+      console.error(`❌ Failed to process ${file}:`, error);
     }
   }
 
@@ -223,60 +282,79 @@ export async function generateAllReports(dtoName?: string): Promise<void> {
 }
 
 function hasNoFailedTests(results: TestResult[]): boolean {
-  return results.every(result => result.failedTests.length === 0);
+  return results.every(result => Array.isArray(result.failedTests) && result.failedTests.length === 0);
 }
 
 export function viewReports(dtoName: string) {
-  const fullPath = path.join(__dirname, '../test-requests/.reports', dtoName);
+  const basePath = path.join(__dirname, '../test-requests/.reports');
 
-  try {
-    // Check if dtoName is a file
-    if (dtoName.endsWith('.txt') || dtoName.endsWith('.md')) {
+  const tryReadReport = (fullPath: string): string | null => {
+    try {
       if (fs.existsSync(fullPath) && fs.statSync(fullPath).isFile()) {
-        const data = fs.readFileSync(fullPath, 'utf8');
-        renderMarkdown(data);
-        return;
-      } else {
-        console.log('File not found:', fullPath);
-        return;
+        return fs.readFileSync(fullPath, 'utf8');
       }
+    } catch (err) {
+      // Không cần log lỗi ở đây để tránh spam
     }
+    return null;
+  };
 
-    // Treat dtoName as a directory
-    const files = fs.readdirSync(fullPath)
-      .filter(file => file.endsWith('.txt') || file.endsWith('.md'))
-      .map(file => {
-        const filePath = path.join(fullPath, file);
-        const stats = fs.statSync(filePath);
-        return { file, mtime: stats.mtime };
-      })
-      .sort((a, b) => b.mtime.getTime() - a.mtime.getTime());
+  const findNewestReportInDir = (dirPath: string): string | null => {
+    try {
+      const files = fs.readdirSync(dirPath)
+        .filter(file => file.endsWith('.txt') || file.endsWith('.md'))
+        .map(file => {
+          const filePath = path.join(dirPath, file);
+          return { filePath, mtime: fs.statSync(filePath).mtime };
+        })
+        .sort((a, b) => b.mtime.getTime() - a.mtime.getTime());
 
-    if (files.length === 0) {
-      console.log('No .txt or .md file found in:', fullPath);
+      return files.length > 0 ? files[0].filePath : null;
+    } catch (err) {
+      return null;
+    }
+  };
+
+  if (dtoName.endsWith('.txt') || dtoName.endsWith('.md')) {
+    const fullPath = path.join(basePath, dtoName);
+    const data = tryReadReport(fullPath);
+    if (data) {
+      renderMarkdown(data);
       return;
     }
+    console.log('File not found:', fullPath);
+    return;
+  }
 
-    const newestFile = files[0].file;
-    const newestFilePath = path.join(fullPath, newestFile);
-    const data = fs.readFileSync(newestFilePath, 'utf8');
-    renderMarkdown(data);
-  } catch (err) {
-    if (err.code === 'ENOENT') {
-      console.error('Directory or file does not exist:', fullPath);
-    } else if (err.code === 'ENOTDIR') {
-      console.error('Expected a directory but found a file:', fullPath);
-    } else {
-      console.error('Error reading file:', err);
+  const possiblePaths = [
+    path.join(basePath, dtoName),
+    path.join(basePath, 'success-reports', dtoName),
+    path.join(basePath, 'failed-reports', dtoName)
+  ];
+
+  let newestFilePath: string | null = null;
+
+  for (const possiblePath of possiblePaths) {
+    const foundPath = findNewestReportInDir(possiblePath);
+    if (foundPath && (!newestFilePath || 
+        fs.statSync(foundPath).mtime > fs.statSync(newestFilePath).mtime)) {
+      newestFilePath = foundPath;
     }
   }
+
+  if (newestFilePath) {
+    const data = fs.readFileSync(newestFilePath, 'utf8');
+    renderMarkdown(data);
+    return;
+  }
+
+  console.error('No report found for:', dtoName);
+  console.error('Searched in:');
+  possiblePaths.forEach(p => console.error('-', p));
 }
 
 function renderMarkdown(content: string) {
-  // Split content into lines
   const lines = content.split('\n');
-
-  // Variables to track table parsing
   let inTable = false;
   let tableHeaders: string[] = [];
   let tableRows: string[][] = [];
@@ -285,35 +363,28 @@ function renderMarkdown(content: string) {
   for (let line of lines) {
     line = line.trim();
 
-    // Handle headers
     if (line.startsWith('#')) {
       const level = line.match(/^#+/)![0].length;
       const text = line.replace(/^#+/, '').trim();
-      output.push(`\x1b[1m${' '.repeat(level * 2)}${text}\x1b[0m`); // Bold headers with indentation
+      output.push(`\x1b[1m${' '.repeat(level * 2)}${text}\x1b[0m`);
       continue;
     }
 
-    // Handle table start
     if (line.startsWith('|')) {
       const columns = line.split('|').map(col => col.trim()).filter(col => col);
       if (!inTable) {
-        // Header row
         tableHeaders = columns;
         inTable = true;
         tableRows = [tableHeaders];
       } else if (line.match(/^\|[-:\s|]+$/)) {
-        // Separator row, ignore
         continue;
       } else {
-        // Data row
         tableRows.push(columns);
       }
       continue;
     }
 
-    // Handle non-table lines (e.g., text, links)
     if (inTable && tableRows.length > 1) {
-      // End of table, render it
       output.push(table(tableRows, {
         border: {
           topBody: `─`,
@@ -337,15 +408,12 @@ function renderMarkdown(content: string) {
       tableRows = [];
     }
 
-    // Handle regular text or links
     if (line) {
-      // Replace Markdown links [text](url) with text
       line = line.replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1');
       output.push(line);
     }
   }
 
-  // Render any remaining table
   if (inTable && tableRows.length > 1) {
     output.push(table(tableRows, {
       border: {

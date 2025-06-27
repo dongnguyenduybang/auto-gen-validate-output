@@ -1,5 +1,6 @@
 import inquirer from 'inquirer';
 import fs from 'fs';
+import { glob } from 'glob';
 import path from 'path';
 import { RecentSelection } from './declarations';
 import { actionHandlers } from '../test.index';
@@ -7,36 +8,36 @@ import { normalizePath, parsePath, transformPropertyName } from './helper';
 
 let recentSelections: RecentSelection[] = [];
 const MAX_RECENT_ITEMS = 100;
+const REPORT_LENGTH = 5
 
-export async function interactiveCLI() {
+export async function interactiveCLI(): Promise<void> {
     console.log('🚀 Auto-gen CLI');
     console.log('=============================\n');
 
     while (true) {
-
-        const mainChoices = [
+        const mainChoices: { name: string; value: string }[] = [
             { name: 'Generate files', value: 'gen' },
             { name: 'Run tests', value: 'test' },
             { name: 'Reports', value: 'report' },
-            { name: 'Clear files', value: 'clear' }
+            { name: 'Clear files', value: 'clear' },
         ];
 
         if (recentSelections.length > 0) {
             mainChoices.unshift({
                 name: `🕒 Recent selections (${recentSelections.length})`,
-                value: 'recent'
+                value: 'recent',
             });
         }
 
         mainChoices.push({ name: 'Exit', value: 'exit' });
 
-        const { action } = await inquirer.prompt([
+        const { action } = await inquirer.prompt<{ action: string }>([
             {
                 type: 'list',
                 name: 'action',
                 message: 'Select action:',
                 choices: mainChoices,
-            }
+            },
         ]);
 
         if (action === 'exit') {
@@ -45,7 +46,7 @@ export async function interactiveCLI() {
         }
 
         if (action === 'report') {
-            const { reportType } = await inquirer.prompt([
+            const { reportType } = await inquirer.prompt<{ reportType: string }>([
                 {
                     type: 'list',
                     name: 'reportType',
@@ -54,9 +55,9 @@ export async function interactiveCLI() {
                         { name: 'Generate report for specific DTO', value: 'single' },
                         { name: 'Generate all reports', value: 'all' },
                         { name: 'View', value: 'view' },
-                        { name: 'Back to main menu', value: 'back' }
+                        { name: 'Back to main menu', value: 'back' },
                     ],
-                }
+                },
             ]);
 
             if (reportType === 'back') continue;
@@ -68,13 +69,13 @@ export async function interactiveCLI() {
                 console.log(`\n📋 Selected ${selectedPaths.length} items for report generation:`);
                 selectedPaths.forEach((path, i) => console.log(` ${i + 1}. ${path}`));
 
-                const { confirm } = await inquirer.prompt([
+                const { confirm } = await inquirer.prompt<{ confirm: boolean }>([
                     {
                         type: 'confirm',
                         name: 'confirm',
                         message: `Generate reports for these DTOs?`,
-                        default: true
-                    }
+                        default: true,
+                    },
                 ]);
 
                 if (confirm) {
@@ -83,17 +84,17 @@ export async function interactiveCLI() {
                         action: 'report',
                         type: 'single',
                         paths: selectedPaths,
-                        timestamp: Date.now()
+                        timestamp: Date.now(),
                     });
                 }
             } else if (reportType === 'all') {
-                const { confirm } = await inquirer.prompt([
+                const { confirm } = await inquirer.prompt<{ confirm: boolean }>([
                     {
                         type: 'confirm',
                         name: 'confirm',
                         message: 'Generate reports for ALL DTOs?',
-                        default: false
-                    }
+                        default: false,
+                    },
                 ]);
 
                 if (confirm) {
@@ -102,7 +103,7 @@ export async function interactiveCLI() {
                         action: 'report',
                         type: 'all',
                         paths: ['ALL'],
-                        timestamp: Date.now()
+                        timestamp: Date.now(),
                     });
                 }
             } else if (reportType === 'view') {
@@ -111,13 +112,13 @@ export async function interactiveCLI() {
                 console.log(`\n📋 Selected ${selectedPaths.length} items for view report:`);
                 selectedPaths.forEach((path, i) => console.log(` ${i + 1}. ${path}`));
 
-                const { confirm } = await inquirer.prompt([
+                const { confirm } = await inquirer.prompt<{ confirm: boolean }>([
                     {
                         type: 'confirm',
                         name: 'confirm',
                         message: `View reports for these DTOs?`,
-                        default: true
-                    }
+                        default: true,
+                    },
                 ]);
 
                 if (confirm) {
@@ -126,7 +127,7 @@ export async function interactiveCLI() {
                         action: 'report',
                         type: 'view',
                         paths: selectedPaths,
-                        timestamp: Date.now()
+                        timestamp: Date.now(),
                     });
                 }
             }
@@ -134,7 +135,7 @@ export async function interactiveCLI() {
         }
 
         if (action === 'recent') {
-            const { selectedRecent } = await inquirer.prompt([
+            const { selectedRecent } = await inquirer.prompt<{ selectedRecent: number }>([
                 {
                     type: 'list',
                     name: 'selectedRecent',
@@ -142,13 +143,13 @@ export async function interactiveCLI() {
                     choices: [
                         ...recentSelections.map((item, index) => ({
                             name: `[${index + 1}] ${item.action.padEnd(6)} ${item.type.padEnd(8)} ${formatPaths(item.paths)}`,
-                            value: index
+                            value: index,
                         })),
                         new inquirer.Separator(),
-                        { name: 'Back to main menu', value: -1 }
+                        { name: 'Back to main menu', value: -1 },
                     ],
-                    pageSize: 10
-                }
+                    pageSize: 10,
+                },
             ]);
 
             if (selectedRecent === -1) continue;
@@ -162,13 +163,12 @@ export async function interactiveCLI() {
         }
 
         if (action === 'test' && recentSelections.length > 0) {
-
             const recentGenItems = recentSelections
-                .filter(item => item.action === 'gen')
+                .filter((item) => item.action === 'gen')
                 .slice(0, MAX_RECENT_ITEMS);
 
             if (recentGenItems.length > 0) {
-                const { quickTestChoice } = await inquirer.prompt([
+                const { quickTestChoice } = await inquirer.prompt<{ quickTestChoice: string | number }>([
                     {
                         type: 'list',
                         name: 'quickTestChoice',
@@ -180,14 +180,14 @@ export async function interactiveCLI() {
                             })),
                             new inquirer.Separator(),
                             { name: 'Test all recent generated items', value: 'all' },
-                            { name: 'Manual selection', value: 'manual' }
+                            { name: 'Manual selection', value: 'manual' },
                         ],
-                        pageSize: 10
-                    }
+                        pageSize: 10,
+                    },
                 ]);
 
                 if (quickTestChoice === 'all') {
-                    const allPaths = recentGenItems.flatMap(item => item.paths);
+                    const allPaths = recentGenItems.flatMap((item) => item.paths);
                     console.log(`\n🔍 Testing all recently generated items (${allPaths.length}):`);
                     allPaths.forEach((path, i) => console.log(` ${i + 1}. ${path}`));
 
@@ -197,12 +197,11 @@ export async function interactiveCLI() {
                         action: 'test',
                         type: 'request',
                         paths: allPaths,
-                        timestamp: Date.now()
+                        timestamp: Date.now(),
                     });
                     continue;
-                }
-                else if (quickTestChoice !== 'manual') {
-                    const selectedItem = recentGenItems[quickTestChoice];
+                } else if (quickTestChoice !== 'manual') {
+                    const selectedItem = recentGenItems[quickTestChoice as number];
                     console.log(`\n🔍 Testing selected items (${selectedItem.paths.length}):`);
                     selectedItem.paths.forEach((path, i) => console.log(` ${i + 1}. ${path}`));
 
@@ -212,14 +211,14 @@ export async function interactiveCLI() {
                         action: 'test',
                         type: selectedItem.type,
                         paths: selectedItem.paths,
-                        timestamp: Date.now()
+                        timestamp: Date.now(),
                     });
                     continue;
                 }
             }
         }
 
-        const { type } = await inquirer.prompt([
+        const { type } = await inquirer.prompt<{ type: string }>([
             {
                 type: 'list',
                 name: 'type',
@@ -229,15 +228,15 @@ export async function interactiveCLI() {
                     { name: 'Response', value: 'response' },
                     { name: 'Saga', value: 'saga' },
                     { name: 'WebSocket', value: 'ws' },
-                    { name: 'Back to main menu', value: 'back' }
+                    { name: 'Back to main menu', value: 'back' },
                 ],
-            }
+            },
         ]);
 
         if (type === 'back') continue;
 
         if (action === 'clear') {
-            const { scope } = await inquirer.prompt([
+            const { scope } = await inquirer.prompt<{ scope: string }>([
                 {
                     type: 'list',
                     name: 'scope',
@@ -245,9 +244,9 @@ export async function interactiveCLI() {
                     choices: [
                         { name: 'Clear all', value: 'all' },
                         { name: 'Clear by DTO', value: 'dto' },
-                        { name: 'Back', value: 'back' }
+                        { name: 'Back', value: 'back' },
                     ],
-                }
+                },
             ]);
 
             if (scope === 'back') continue;
@@ -261,7 +260,7 @@ export async function interactiveCLI() {
                     action: 'clear',
                     type,
                     paths: ['ALL'],
-                    timestamp: Date.now()
+                    timestamp: Date.now(),
                 });
                 continue;
             }
@@ -276,13 +275,13 @@ export async function interactiveCLI() {
         console.log(`\n📋 Selected ${selectedPaths.length} items:`);
         selectedPaths.forEach((path, i) => console.log(` ${i + 1}. ${path}`));
 
-        const { confirm } = await inquirer.prompt([
+        const { confirm } = await inquirer.prompt<{ confirm: boolean }>([
             {
                 type: 'confirm',
                 name: 'confirm',
                 message: `Proceed with ${action} ${type}?`,
-                default: true
-            }
+                default: true,
+            },
         ]);
 
         if (!confirm) {
@@ -295,7 +294,7 @@ export async function interactiveCLI() {
             action,
             type,
             paths: selectedPaths,
-            timestamp: Date.now()
+            timestamp: Date.now(),
         });
     }
 }
@@ -307,14 +306,14 @@ function formatPaths(paths: string[]): string {
     return `${paths[0]} +${paths.length - 1} more`;
 }
 
-function addToRecentSelections(item: RecentSelection) {
+function addToRecentSelections(item: RecentSelection): void {
     recentSelections.unshift(item);
     if (recentSelections.length > MAX_RECENT_ITEMS) {
         recentSelections.pop();
     }
 }
 
-export async function executeAction(action: string, type: string, filePaths: string[]) {
+export async function executeAction(action: string, type: string, filePaths: string[]): Promise<{ path: string; success: boolean; error?: string }[]> {
     console.log(`\n📌 Starting ${action} ${type} for ${filePaths.length} items:`);
     console.log('----------------------------------------');
 
@@ -326,65 +325,111 @@ export async function executeAction(action: string, type: string, filePaths: str
 
     const results: { path: string; success: boolean; error?: string }[] = [];
 
-    for (const filePath of filePaths) {
-        const normalizedPath = normalizePath(filePath);
+    if (action === 'test') {
+        // Run all tests in parallel
         try {
-            // Chuẩn hóa path ngay khi bắt đầu xử lý
+            const normalizedPaths = filePaths.map((filePath) => normalizePath(filePath));
+            const successfulTests = (await actionHandlers.test[type][0](normalizedPaths)) as string[];
 
-            console.log(`\n🔄 Processing: ${normalizedPath}`);
+            results.push(
+                ...successfulTests.map((path: string) => ({ path, success: true })),
+                ...filePaths
+                    .filter((path) => !successfulTests.includes(normalizePath(path)))
+                    .map((path) => ({ path: normalizePath(path), success: false, error: 'Test failed' }))
+            );
 
-            for (const handler of actionHandlers[action][type]) {
-                let finalPath = normalizedPath;
+            // Prompt for report generation once after all tests
+            const { generateReport } = await inquirer.prompt<{ generateReport: boolean }>([
+                {
+                    type: 'confirm',
+                    name: 'generateReport',
+                    message: `Generate test reports for all ${successfulTests.length} items?`,
+                    default: true,
+                },
+            ]);
 
-                if (action === 'report' && type !== 'view') {
-                    // Sử dụng path.parse trên path đã chuẩn hóa
-                    const parsed = path.parse(normalizedPath);
-                    finalPath = parsed.base;
-                }
+            if (generateReport) {
+                try {
+                    // Generate reports in parallel
+                    const reportPromises = successfulTests.map(async (filePath: string) => {
+                        try {
+                            const normalizedPath = normalizePath(filePath);
+                            const parsed = path.parse(normalizedPath);
+                            const reportName = parsed.name;
 
-                await handler(finalPath);
-            }
+                            await actionHandlers.report.single[0](reportName);
+                            return reportName;
+                        } catch (error) {
+                            console.error(`❌ Failed to generate report for ${filePath}:`, (error as Error).message);
+                            return null;
+                        }
+                    });
 
-            console.log(`✅ Success: ${normalizedPath}`);
-            results.push({ path: normalizedPath, success: true });
+                    // Wait for all reports to complete
+                    const reportNames = (await Promise.all(reportPromises)).filter(Boolean) as string[];
 
-            if (action === 'test') {
-                const { generateReport } = await inquirer.prompt([
-                    {
-                        type: 'confirm',
-                        name: 'generateReport',
-                        message: `Generate test report for ${normalizedPath}?`,
-                        default: true
+                    if (reportNames.length > 0 && reportNames.length <= REPORT_LENGTH) {
+                        console.log('\n📜 TEST REPORTS SUMMARY');
+                        console.log('======================');
+
+                        const displayPromises = reportNames.map(async (reportName) => {
+                            console.log(`\n🔍 Report for: ${reportName}`);
+                            console.log('----------------------');
+                            await actionHandlers.report.view[0](reportName);
+                            console.log('----------------------');
+                        });
+
+                        await Promise.all(displayPromises);
+
+                        console.log('\n======================');
+                        console.log(`🎉 Displayed ${reportNames.length} reports`);
                     }
-                ]);
-
-                if (generateReport) {
-                    try {
-                        // Sử dụng path đã chuẩn hóa để tạo report
-                        const parsed = path.parse(normalizedPath);
-                        const reportName = parsed.name; // Lấy phần tên file (send-dm-message)
-                       
-                        await actionHandlers.report.single[0](reportName);
-                    } catch (error) {
-                        console.error(`❌ Failed to generate report for ${normalizedPath}:`, error.message);
-                    }
+                } catch (error) {
+                    console.error('❌ Error in report generation:', (error as Error).message);
                 }
             }
         } catch (error) {
-            const errorMsg = error instanceof Error ? error.message : String(error);
-            console.error(`❌ Failed: ${normalizedPath} - ${errorMsg}`);
-            results.push({ path: normalizedPath, success: false, error: errorMsg });
+            console.error('❌ Error in test execution:', (error as Error).message);
+            results.push(...filePaths.map((path) => ({ path: normalizePath(path), success: false, error: (error as Error).message })));
+        }
+    } else {
+        // Original logic for non-test actions
+        for (const filePath of filePaths) {
+            const normalizedPath = normalizePath(filePath);
+            try {
+                console.log(`\n🔄 Processing: ${normalizedPath}`);
+
+                for (const handler of actionHandlers[action][type]) {
+                    let finalPath = normalizedPath;
+
+                    if (action === 'report' && type !== 'view') {
+                        const parsed = path.parse(normalizedPath);
+                        finalPath = parsed.base;
+                    }
+
+                    await handler(finalPath);
+                }
+
+                console.log(`✅ Success: ${normalizedPath}`);
+                results.push({ path: normalizedPath, success: true });
+            } catch (error) {
+                const errorMsg = error instanceof Error ? error.message : String(error);
+                console.error(`❌ Failed: ${normalizedPath} - ${errorMsg}`);
+                results.push({ path: normalizedPath, success: false, error: errorMsg });
+            }
         }
     }
+
+    return results;
 }
 
-function transformDtoName(dtoName) {
+function transformDtoName(dtoName: string): string {
     const words = dtoName.split('-');
-    const capitalizedWords = words.map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase());
+    const capitalizedWords = words.map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase());
     return `V3${capitalizedWords.join('')}Request`;
 }
 
-function validateDtoName(dtoName) {
+function validateDtoName(dtoName: string): { status: boolean; data: any } {
     const schemaPath = path.join(__dirname, '../swagger/schemas.json');
     try {
         const fileContent = fs.readFileSync(schemaPath, 'utf-8');
@@ -396,15 +441,15 @@ function validateDtoName(dtoName) {
         }
         return { status: false, data: `DTO name '${transformedName}' not found in schema.` };
     } catch (error) {
-        return { status: false, data: `Error reading schema: ${error.message}` };
+        return { status: false, data: `Error reading schema: ${(error as Error).message}` };
     }
 }
 
-async function selectFoldersRecursive(isReport = false) {
-    const selectedPaths = [];
+async function selectFoldersRecursive(isReport = false): Promise<string[]> {
+    const selectedPaths: string[] = [];
     let currentPath = '';
     let basePath = '';
-    let fullPath;
+    let fullPath: string;
 
     while (true) {
         if (isReport) {
@@ -414,24 +459,25 @@ async function selectFoldersRecursive(isReport = false) {
         }
 
         try {
+
+
             const entries = fs.readdirSync(fullPath, { withFileTypes: true });
 
             const items = entries
-                .filter(entry => {
+                .filter((entry) => {
                     if (entry.isDirectory()) return true;
                     if (isReport && entry.isFile() && entry.name.endsWith('.md')) return true;
                     return false;
                 })
-                .map(entry => ({
+                .map((entry) => ({
                     name: entry.name,
-                    value: entry.name,
-                    checked: selectedPaths.includes(path.join(basePath, currentPath, entry.name)),
+                    value: entry.name, // Use entry.name instead of entry.value
+                    checked: selectedPaths.includes(path.join(basePath, currentPath, entry.name)), // Use entry.name here too
                 }));
-
             const currentFullPath = path.join(basePath, currentPath);
             const isCurrentSelected = selectedPaths.includes(currentFullPath) && currentFullPath !== '';
 
-            const { selectedOptions } = await inquirer.prompt([
+            const { selectedOptions } = await inquirer.prompt<{ selectedOptions: string[] }>([
                 {
                     type: 'checkbox',
                     name: 'selectedOptions',
@@ -446,10 +492,9 @@ async function selectFoldersRecursive(isReport = false) {
                                 },
                             ]
                             : []),
-                        ...items.map(item => ({
+                        ...items.map((item) => ({
                             ...item,
-                            name: `${item.name.endsWith('.md') ? '📄' : '📂'} ${selectedPaths.includes(path.join(basePath, currentPath, item.value)) ? '✓ ' : ''
-                                }${item.name}`,
+                            name: `${item.name.endsWith('.md') ? '📄' : '📂'} ${selectedPaths.includes(path.join(basePath, currentPath, item.value)) ? '✓ ' : ''}${item.name}`,
                         })),
                         new inquirer.Separator(),
                         // { name: '✅ Create', value: '__CREATE__' },
@@ -472,9 +517,9 @@ async function selectFoldersRecursive(isReport = false) {
             }
 
             if (selectedOptions.includes('__CREATE__')) {
-                let dataDTO;
+                let dataDTO: any;
                 let dtoFields: { field: string; decorators: string[] }[] = [];
-                const { dtoName, requestType } = await inquirer.prompt([
+                const { dtoName, requestType } = await inquirer.prompt<{ dtoName: string; requestType: string }>([
                     {
                         type: 'input',
                         name: 'dtoName',
@@ -501,67 +546,71 @@ async function selectFoldersRecursive(isReport = false) {
                     },
                 ]);
 
-                while (true) {
-                    const { dto, decorators, continueAdding } = await inquirer.prompt([
-                        {
-                            type: 'list',
-                            name: 'dto',
-                            message: 'Select a DTO field for decorator definition:',
-                            choices: () => {
-                                const choices = transformPropertyName(dataDTO);
-                                if (choices.length === 0) {
-                                    throw new Error('No properties found for the selected DTO.');
-                                }
-                                return [
-                                    ...choices,
-                                    new inquirer.Separator(),
-                                    { name: '✅ Confirm selection', value: '__CONFIRM__' },
-                                ];
-                            },
-                            default: () => {
-                                const choices = transformPropertyName(dataDTO);
-                                return choices.length > 0 ? choices[0] : null;
-                            },
-                        },
-                        {
-                            type: 'checkbox',
-                            name: 'decorators',
-                            message: (answers: any) => `Select decorators for the field '${answers.dto}':`,
-                            choices: (answers: any) => {
-                                if (answers.dto === '__CONFIRM__') return [];
-                                // return getDecoratorChoices(dataDTO.properties[answers.dto]);
-                            },
-                            validate: (input) => {
-                                if (!input || input.length === 0) {
-                                    return 'At least one decorator must be selected.';
-                                }
-                                return true;
-                            },
-                            when: (answers) => answers.dto !== '__CONFIRM__',
-                        },
-                        {
-                            type: 'confirm',
-                            name: 'continueAdding',
-                            message: 'Add another field to this DTO?',
-                            default: true,
-                            when: (answers: any) => answers.dto !== '__CONFIRM__',
-                        },
-                    ] as any);
+                // while (true) {
+                //     const { dto, decorators, continueAdding } = await inquirer.prompt<{
+                //         dto: string;
+                //         decorators: string[];
+                //         continueAdding: boolean;
+                //     }>([
+                //         {
+                //             type: 'list',
+                //             name: 'dto',
+                //             message: 'Select a DTO field for decorator definition:',
+                //             choices: () => {
+                //                 const choices = transformPropertyName(dataDTO);
+                //                 if (choices.length === 0) {
+                //                     throw new Error('No properties found for the selected DTO.');
+                //                 }
+                //                 return [
+                //                     ...choices,
+                //                     new inquirer.Separator(),
+                //                     { name: '✅ Confirm selection', value: '__CONFIRM__' },
+                //                 ];
+                //             },
+                //             default: () => {
+                //                 const choices = transformPropertyName(dataDTO);
+                //                 return choices.length > 0 ? choices[0] : null;
+                //             },
+                //         },
+                //         {
+                //             type: 'checkbox',
+                //             name: 'decorators',
+                //             message: (answers: any) => `Select decorators for the field '${answers.dto}':`,
+                //             choices: (answers: any) => {
+                //                 if (answers.dto === '__CONFIRM__') return [];
+                //                 // return getDecoratorChoices(dataDTO.properties[answers.dto]);
+                //             },
+                //             validate: (input) => {
+                //                 if (!input || input.length === 0) {
+                //                     return 'At least one decorator must be selected.';
+                //                 }
+                //                 return true;
+                //             },
+                //             when: (answers) => answers.dto !== '__CONFIRM__',
+                //         },
+                //         {
+                //             type: 'confirm',
+                //             name: 'continueAdding',
+                //             message: 'Add another field to this DTO?',
+                //             default: true,
+                //             when: (answers: any) => answers.dto !== '__CONFIRM__',
+                //         },
+                //     ]);
 
-                    if (dto === '__CONFIRM__') {
-                        break;
-                    }
+                //     if (dto === '__CONFIRM__') {
+                //         break;
+                //     }
 
-                    dtoFields.push({ field: dto, decorators });
+                //     dtoFields.push({ field: dto, decorators });
 
-                    if (!continueAdding) {
-                        break;
-                    }
-                }
+                //     if (!continueAdding) {
+                //         break;
+                //     }
+                // }
 
                 console.log(
                     `DTO Created: ${dtoName}, Type: ${requestType}, Fields: ${JSON.stringify(
-                        dtoFields.map(f => ({ [f.field]: f.decorators })),
+                        dtoFields.map((f) => ({ [f.field]: f.decorators })),
                         null,
                         2
                     )}`
@@ -569,7 +618,7 @@ async function selectFoldersRecursive(isReport = false) {
                 continue;
             }
 
-            items.forEach(item => {
+            items.forEach((item) => {
                 const itemPath = path.join(basePath, currentPath, item.value);
                 if (selectedOptions.includes(item.value)) {
                     if (!selectedPaths.includes(itemPath)) {
@@ -584,7 +633,7 @@ async function selectFoldersRecursive(isReport = false) {
             });
 
             if (selectedOptions.includes('__CONFIRM__')) {
-                return selectedPaths.filter(f => f !== '');
+                return selectedPaths.filter((f) => f !== '');
             }
 
             if (selectedOptions.includes('__BACK__')) {
@@ -597,7 +646,7 @@ async function selectFoldersRecursive(isReport = false) {
                 continue;
             }
 
-            const nextItem = selectedOptions.find(opt =>
+            const nextItem = selectedOptions.find((opt) =>
                 !['__CURRENT__', '__CREATE__', '__CONFIRM__', '__BACK__'].includes(opt)
             );
 
@@ -609,7 +658,7 @@ async function selectFoldersRecursive(isReport = false) {
                 }
             }
         } catch (error) {
-            console.error(`Error reading directory: ${error.message}`);
+            console.error(`Error reading directory: ${(error as Error).message}`);
             return [];
         }
     }
