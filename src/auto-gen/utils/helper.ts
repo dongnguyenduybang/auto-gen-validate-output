@@ -862,6 +862,10 @@ export function validateDtoName(dtoName) {
 
 }
 
-export  function normalizePathForReport(path: string): string {
-  return path.replace(/[/\\]/g, '-');
+export function parsePath(path: string): { normalized: string; lastPart: string } {
+  const trimmed = path.trim();
+  const parts = trimmed.split(/[/\\]+/); 
+  const lastPart = parts[parts.length - 1];
+  const normalized = parts.join('-');
+  return { normalized, lastPart };
 }
