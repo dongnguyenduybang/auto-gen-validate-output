@@ -350,8 +350,8 @@ export async function executeAction(action: string, type: string, paths: string[
                 ]);
 
                 if (generateReport) {
+                    console.log('true')
                     try {
-                        const path2 = 'command-chats/channel/accept-message-request'
                         const { normalized, lastPart } = parsePath(path);
                         
                         console.log('lastPart', lastPart,'normalized', normalized)
