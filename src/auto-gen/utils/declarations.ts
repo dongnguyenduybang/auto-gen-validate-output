@@ -85,6 +85,8 @@ export interface SagaTestSuite {
 
 export interface RequestTestSuite {
   action: string;
+  dtoName: string;
+  cluster: string;
   headers: object;
   body: Object;
   options: FirstStep[];

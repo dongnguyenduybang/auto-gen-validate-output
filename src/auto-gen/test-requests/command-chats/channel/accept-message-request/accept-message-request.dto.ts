@@ -14,5 +14,5 @@ export class AcceptMessageRequestDTO {
   @IsNotEmpty({ message: ErrorMessage.COULD_NOT_PERMISSION })
   @IsInvalid({ message: ErrorMessage.UNAUTHORIZED_REQUEST })
   userId: string = '';
-
+  
 }

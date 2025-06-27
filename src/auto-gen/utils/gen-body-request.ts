@@ -1,17 +1,17 @@
-import * as path from 'path';
-import * as fs from 'fs';
-import { generateErrorCases } from './dto-helper-v2';
-import {
-  findAllFoldersWithDtoAndRequest,
-  getMatchedFilePaths,
-  groupFilesByName,
-} from './helper';
-export async function genBodyRequest(dtoName) {
+import path from "path";
+import fs from "fs";
+import { GenRequestOptions, RequestHeaders } from "./declarations";
+import { findAllFoldersWithDtoAndRequest, getMatchedFilePaths, groupFilesByName } from "./helper";
+import { requestGeneratorInterface } from "./swagger-help";
+import { generateErrorCases } from "./dto-helper-v2";
+
+export async function genBodyRequests(
+  dtoName: string,
+  cluster: string,
+  options: GenRequestOptions = {},
+  headers: RequestHeaders = {}) {
   const baseRequestsPath = path.join(__dirname, '../test-requests');
-  const foundFolders = findAllFoldersWithDtoAndRequest(
-    baseRequestsPath,
-    dtoName,
-  );
+  const foundFolders = findAllFoldersWithDtoAndRequest(baseRequestsPath, dtoName);
 
   for (const folder of foundFolders) {
     const outputDir = folder.path;
@@ -19,13 +19,11 @@ export async function genBodyRequest(dtoName) {
     if (!fs.existsSync(outputDir)) {
       fs.mkdirSync(outputDir, { recursive: true });
     }
-    const file = getMatchedFilePaths(foundFolders);
 
+    const file = getMatchedFilePaths(foundFolders);
     const fileMap = groupFilesByName(file);
 
-    for (const [className, { dtoPath, requestPath }] of Object.entries(
-      fileMap,
-    )) {
+    for (const [className, { dtoPath }] of Object.entries(fileMap)) {
       if (!dtoPath) {
         console.warn(`Missing .dto file for class: ${className}`);
         continue;
@@ -49,9 +47,9 @@ export async function genBodyRequest(dtoName) {
           continue;
         }
 
-        const requestModule = await import(requestPath);
-        const requestData =
-          requestModule.default || Object.values(requestModule)[0];
+        const [generator] = requestGeneratorInterface;
+        const requestData = await generator(className, dtoName, cluster, options, headers);
+
         const payload = requestData.body;
         const result = await generateErrorCases(dtoClass, payload);
         const testCasePayload = result.map(({ body, expects }) => ({
