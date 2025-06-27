@@ -509,35 +509,60 @@ export function countEmojis(str: unknown): number {
   return Array.from(str.matchAll(regex)).length;
 }
 
-export function findTestPath(
-  basePath: string,
-  dtoName: string,
-): string[] | null {
-  const absoluteBasePath = path.resolve(basePath);
-  const findSpecFiles = (dir: string): string[] => {
-    try {
-      const entries = fs.readdirSync(dir, { withFileTypes: true });
-      const files = entries
-        .filter(
-          (file) =>
-            !file.isDirectory() &&
-            file.name.toLowerCase().includes(dtoName.toLowerCase()) &&
-            file.name.endsWith('.spec.ts'),
-        )
-        .map((file) => path.join(dir, file.name));
+// export function findTestPath(
+//   basePath: string,
+//   dtoName: string,
+// ): string[] | null {
+//   const absoluteBasePath = path.resolve(basePath);
+//   const findSpecFiles = (dir: string): string[] => {
+//     try {
+//       const entries = fs.readdirSync(dir, { withFileTypes: true });
+//       const files = entries
+//         .filter(
+//           (file) =>
+//             !file.isDirectory() &&
+//             file.name.toLowerCase().includes(dtoName.toLowerCase()) &&
+//             file.name.endsWith('.spec.ts'),
+//         )
+//         .map((file) => path.join(dir, file.name));
 
-      const folders = entries.filter((entry) => entry.isDirectory());
-      for (const folder of folders) {
-        files.push(...findSpecFiles(path.join(dir, folder.name)));
+//       const folders = entries.filter((entry) => entry.isDirectory());
+//       for (const folder of folders) {
+//         files.push(...findSpecFiles(path.join(dir, folder.name)));
+//       }
+//       return files;
+//     } catch (error) {
+//       return [];
+//     }
+//   };
+
+//   const specFiles = findSpecFiles(absoluteBasePath);
+//   return specFiles.length > 0 ? specFiles : null;
+// }
+
+export function findTestPath(basePath: string, dtoName: string): string[] {
+  const result: string[] = [];
+  const targetDir = path.join(basePath, dtoName);
+
+  if (!fs.existsSync(targetDir)) {
+    return result;
+  }
+
+  function searchDir(dir: string) {
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
+
+    for (const entry of entries) {
+      const fullPath = path.join(dir, entry.name);
+      if (entry.isDirectory()) {
+        searchDir(fullPath); // Recursively search subdirectories
+      } else if (entry.isFile() && entry.name.endsWith('.spec.ts')) {
+        result.push(fullPath);
       }
-      return files;
-    } catch (error) {
-      return [];
     }
-  };
+  }
 
-  const specFiles = findSpecFiles(absoluteBasePath);
-  return specFiles.length > 0 ? specFiles : null;
+  searchDir(targetDir);
+  return result;
 }
 
 export function findAllFoldersWithDtoAndRequest(
@@ -605,4 +630,121 @@ export const getFilesSwagger = (dirPath: string): string[] => {
 
 export function kebabToCamel(str) {
   return str.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase());
+}
+
+export function getSubDirectoriesRecursive(dirPath: string, prefix: string = ''): { name: string, value: string }[] {
+  const result: { name: string, value: string }[] = [];
+  if (!fs.existsSync(dirPath)) {
+    return result;
+  }
+
+  const entries = fs.readdirSync(dirPath, { withFileTypes: true });
+
+  for (const entry of entries) {
+    if (entry.isDirectory() && !entry.name.toLowerCase().includes('report')) {
+      const fullPath = path.join(dirPath, entry.name);
+      const displayName = prefix ? `${prefix}/${entry.name}` : entry.name;
+      result.push({ name: displayName, value: displayName });
+
+      const subDirs = getSubDirectoriesRecursive(fullPath, displayName);
+      result.push(...subDirs);
+    }
+  }
+
+  return result;
+}
+
+export function getDtoNamesFromSwagger(swaggerFilePath: string): { original: string; transformed: string }[] {
+  try {
+    const swaggerContent = fs.readFileSync(swaggerFilePath, 'utf8');
+    const swaggerJson = JSON.parse(swaggerContent);
+    console.log(swaggerJson)
+    // Extract DTO names from components.schemas
+    const schemas = swaggerJson.components?.schemas || {};
+    const dtoNames = Object.keys(schemas)
+      // Filter out non-request schemas (e.g., enums)
+      .filter(name => schemas[name].type === 'object' && name.toLowerCase().includes('request'))
+      .map(name => ({
+        original: name,
+        // Transform to kebab-case (e.g., V3CreateChannelRequest -> v3-create-channel-request)
+        transformed: name
+          .replace(/^V3/, 'v3-') // Handle V3 prefix
+          .replace(/([A-Z])/g, '-$1') // Add hyphens before capital letters
+          .toLowerCase()
+          .replace(/^-+/, '') // Remove leading hyphens
+      }));
+
+    return dtoNames;
+  } catch (err) {
+    console.error('Error reading or parsing Swagger JSON:', err.message);
+    return [];
+  }
+}
+
+function transformDtoName(dtoName) {
+  const words = dtoName.split('-');
+  const capitalizedWords = words.map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()); // Capitalize each word
+  return `V3${capitalizedWords.join('')}Request`;
+}
+
+export function transformPropertyName(dataDTO: object): string[] {
+
+  const schemaPath = path.join(__dirname, '../swagger-hono/schemas.json')
+  const fileContent = fs.readFileSync(schemaPath, 'utf-8');
+  const schema = JSON.parse(fileContent);
+  if (!dataDTO || typeof dataDTO !== 'object') return [];
+
+  const dto = dataDTO as any;
+
+  if (!dto.properties || typeof dto.properties !== 'object') return [];
+
+  const requiredFields = Array.isArray(dto.required) ? dto.required : [];
+
+  return Object.entries(dto.properties).map(([key, value]: [string, any]) => {
+    let typeDesc = '';
+    let isRequired = requiredFields.includes(key);
+
+    if (value.type) {
+      typeDesc = value.type;
+    } else if (value.$ref) {
+      const refName = value.$ref.replace('#/components/schemas/', '');
+      const refSchema = schema?.[refName];
+
+      if (refSchema?.enum && Array.isArray(refSchema['x-enum-varnames'])) {
+        // Gộp enum value + tên biến
+        const enums = refSchema.enum
+          .map((val: number | string, idx: number) => {
+            const name = refSchema['x-enum-varnames']?.[idx] ?? `UNKNOWN_${val}`;
+            return `${val}: ${name}`;
+          })
+          .join(', ');
+
+        typeDesc = `enum: ${refName} - [${enums}]`;
+      } else {
+        typeDesc = `ref: ${refName}`;
+      }
+    } else {
+      typeDesc = 'unknown';
+    }
+
+    return `${key} (${typeDesc}${isRequired ? '' : ', optional'})`;
+  });
+}
+
+
+export function validateDtoName(dtoName) {
+  const schemaPath = path.join(__dirname, '../swagger/schemas.json')
+  const fileContent = fs.readFileSync(schemaPath, 'utf-8');
+  const schema = JSON.parse(fileContent);
+  const transformedName = transformDtoName(dtoName);
+
+  if (schema[transformedName]) {
+    return {
+      status: true, data: schema[transformedName]
+    }
+  } else {
+    return { status: false, data: `DTO name '${transformedName}' not found in schema.` }
+  }
+
+
 }

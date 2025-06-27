@@ -7,7 +7,7 @@ import {
     groupFilesByName,
 } from './helper';
 import schemas from '../swagger-hono/schemas.json';
-import { RequestTestSuite, Step } from './declarations';
+import { GenRequestOptions, RequestHeaders, RequestTestSuite, Step } from './declarations';
 import { VAR } from '../enums';
 
 interface TestOptions {
@@ -28,7 +28,7 @@ function parseOptions(rawOptions: any): TestOptions {
 
     for (const [key, value] of Object.entries(rawOptions)) {
         if (validHooks.includes(key) && Array.isArray(value)) {
-             options[key] = [...value]; 
+            options[key] = [...value];
         }
     }
 
@@ -36,11 +36,18 @@ function parseOptions(rawOptions: any): TestOptions {
 }
 
 interface RequestGenerator {
-    (dto: string, options?: any): Promise<RequestTestSuite>;
+    (dto: string, dtoName: any, cluster: string, options?: any, headers?: any): Promise<RequestTestSuite>;
 }
 
 const requestGeneratorInterface: RequestGenerator[] = [
-    (dto, options) => generateRequestTestSuite(dto, options ? parseOptions(options) : {})
+    (dto, dtoName, cluster, options, headers) =>
+        generateRequestTestSuite(
+            dto,
+            dtoName,
+            cluster,
+            parseOptions(options),
+            headers
+        )
 ];
 
 function toInterfaceName(requestName: string): string {
@@ -98,7 +105,7 @@ function generateValueFromSchema(value: any, key: string): any {
     }
 }
 
-function createBodyFromInterface(requestName: string): Record<string, any> {
+function createBodyFromSwaggerJson(requestName: string): Record<string, any> {
     const schema = findInterface(requestName);
     const body: Record<string, any> = {};
 
@@ -113,16 +120,23 @@ function createBodyFromInterface(requestName: string): Record<string, any> {
     return body;
 }
 
-export async function generateRequestTestSuite(requestName: string, options: TestOptions = {}): Promise<RequestTestSuite> {
-
-    const body = createBodyFromInterface(requestName);
+export async function generateRequestTestSuite(
+    requestName: string,
+    dtoName: any,
+    cluster: string,
+    options: TestOptions = {},
+    headers: any = {}
+): Promise<RequestTestSuite> {
+    const body = createBodyFromSwaggerJson(requestName);
 
     const beforeAll = options.beforeAll || [];
     const updatedBeforeAll = [...beforeAll];
 
     return {
         action: `ACTION.${requestName.toUpperCase().replace(/-/g, '_')}`,
-        headers: {'x-session-token': 'aaaaaaaaaaaaaa'},
+        headers: {
+            ...headers,
+        },
         body,
         options: [{
             beforeAll: updatedBeforeAll || [],
@@ -133,8 +147,13 @@ export async function generateRequestTestSuite(requestName: string, options: Tes
     };
 }
 
-export async function genBodyRequests( dtoName: string, cluster: string,options?: any) {
-    console.log(cluster, dtoName, options)
+
+export async function genBodyRequests(
+    dtoName: string,
+    cluster: string,
+    options: GenRequestOptions = {},
+    headers: RequestHeaders = {}) {
+    console.log('aaaaaaaaaa', cluster, dtoName, options, headers)
     const baseRequestsPath = path.join(__dirname, '../test-requests');
     const foundFolders = findAllFoldersWithDtoAndRequest(baseRequestsPath, dtoName);
 
@@ -173,7 +192,7 @@ export async function genBodyRequests( dtoName: string, cluster: string,options?
                 }
 
                 const [generator] = requestGeneratorInterface;
-                const requestData = await generator(className, options);
+                const requestData = await generator(className, dtoName, cluster, options, headers);
 
                 const payload = requestData.body;
                 const result = await generateErrorCases(dtoClass, payload);

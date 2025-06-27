@@ -9,6 +9,34 @@ import {
 } from '../response';
 import { TestContext } from './text-context';
 
+export interface GenRequestOptions {
+    beforeAll?: any[];
+    beforeEach?: any[];
+    afterAll?: any[];
+    afterEach?: any[];
+    // Các option khác nếu cần
+}
+
+export interface RequestHeaders {
+    [key: string]: string;
+}
+
+export interface RecentSelection {
+  action: string;
+  type: string;
+  paths: string[];
+  timestamp: number;
+}
+
+export type SelectFoldersResult = string[] | {
+    action: string;
+    dtoName: string;
+    requestType: string;
+    headers: Record<string, string>;
+    cluster: string;
+    paths: string[];
+};
+
 export interface ValidationError {
   path: string;
   expected: string;

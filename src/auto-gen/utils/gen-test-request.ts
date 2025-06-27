@@ -379,7 +379,7 @@ async function genTestCase(
   }
 }
 
-export async function genTestRequest(dtoName: string, cluster: string) {
+export async function genTestRequest(dtoName: string, cluster?: string) {
   const baseRequestsPath = path.join(__dirname, '../test-requests');
   const foundFolders = findAllFoldersWithDtoAndRequest(baseRequestsPath, dtoName);
   const file = getMatchedFilePaths(foundFolders);

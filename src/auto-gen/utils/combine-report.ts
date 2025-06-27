@@ -26,9 +26,9 @@ function extractCodedTests(result: TestResult): TestResult[] {
   return result.codedTest;
 }
 
-function extractLogicTests(result: TestResult): TestResult[] {
-  return result.logicTests;
-}
+// function extractLogicTests(result: TestResult): TestResult[] {
+//   return result.logicTests;
+// }
 
 function extractFailedSteps(result: TestResult): TestResult[] {
   return result.failedStep;
@@ -111,7 +111,6 @@ async function combineReports(className: string) {
 
   const combinedFailedTests = results.map(extractFailedTests).flat();
   const combinedCodedTest = results.map(extractCodedTests).flat();
-  const combinedLogicTests = results.map(extractLogicTests).flat();
   const combinedFailedStep = results.map(extractFailedSteps).flat();
   const pathRequest = results.map(extractPaths).flat();
 
@@ -135,7 +134,7 @@ async function combineReports(className: string) {
     totalPassedTests,
     combinedFailedTests,
     totalTests,
-    combinedLogicTests,
+    null,
     summary,
     'request',
   );
