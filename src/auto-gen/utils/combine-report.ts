@@ -98,7 +98,7 @@ function cleanupTempFiles(dir: string, files: string[]): void {
 async function combineReports(className: string) {
   const reportDir = path.join(__dirname, '../tmp-reports');
   const reportFiles = getReportFiles(reportDir, className);
-
+  console.log(reportFiles)
   if (reportFiles.length === 0) {
     console.error(`No report files found for ${className}`);
     return;

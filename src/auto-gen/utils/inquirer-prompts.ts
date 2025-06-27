@@ -353,9 +353,9 @@ export async function executeAction(action: string, type: string, paths: string[
                     try {
                         const normalizedPath = path.replace(/\//g, '-');
                         const lastPart = normalizedPath.split(/[/\\]/).pop();
+                        console.log(lastPart)
                         await actionHandlers.report.single[0](lastPart);
 
-                        console.log(`📝 Report generated successfully for ${path}`);
                     } catch (error) {
                         console.error(`❌ Failed to generate report for ${path}:`, error.message);
                     }

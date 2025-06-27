@@ -51,7 +51,6 @@ export const actionHandlers: Record<string, Record<string, ActionHandler[]>> = {
       console.log(`📊 Generating report for: ${dtoName}`);
 
       const normalizedDtoName = dtoName.replace(/\//g, '-');
-      console.log(normalizedDtoName)
       await generateAllReports(normalizedDtoName);
     }],
     all: [async () => {
