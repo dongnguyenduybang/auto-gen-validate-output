@@ -92,11 +92,10 @@ function runTests(subType: string): ActionHandler {
     const testPromises = paths.map(async (filePath) => {
       try {
         const normalizedPath = normalizePath(filePath);
+        const testPathPattern = `${normalizedPath}/.*\\.spec\\.ts$`;
         console.log(`🔄 Processing: ${normalizedPath}`);
         console.log(`Running test for ${subType} "${normalizedPath}"...`);
-
-        await execPromise(`jest ${normalizedPath}`);
-
+        await execPromise(`jest ${testPathPattern}`);
         console.log(`✅ Success: ${normalizedPath}`);
         return normalizedPath;
       } catch (error) {

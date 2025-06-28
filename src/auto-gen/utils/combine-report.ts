@@ -306,10 +306,10 @@ export function viewReports(dtoName: string) {
         .filter(file => (file.endsWith('.txt') || file.endsWith('.md')))
         .map(file => {
           const filePath = path.join(dirPath, file);
-          const fileBaseName = path.parse(file).name.split('-combined-')[0]; // Extract base name before "-combined-"
+          const fileBaseName = path.parse(file).name.split('-combined-')[0];
           return { filePath, mtime: fs.statSync(filePath).mtime, fileBaseName };
         })
-        .filter(file => file.fileBaseName === targetDtoName); // Filter for exact dtoName match
+        .filter(file => file.fileBaseName === targetDtoName);
 
       if (files.length === 0) {
         console.log(`No matching report files found for ${targetDtoName} in ${dirPath}`);
@@ -317,7 +317,6 @@ export function viewReports(dtoName: string) {
       }
 
       const sortedFiles = files.sort((a, b) => b.mtime.getTime() - a.mtime.getTime());
-      // console.log(`Found matching files for ${targetDtoName}:`, sortedFiles.map(f => ({ path: f.filePath, mtime: f.mtime })));
       return sortedFiles[0].filePath;
     } catch (err) {
       console.error(`Error reading directory ${dirPath}:`, err);
@@ -359,9 +358,6 @@ export function viewReports(dtoName: string) {
     renderMarkdown(data);
     return;
   }
-
-  console.error('No report found for:', dtoName);
-  console.error('Searched in:');
   possiblePaths.forEach(p => console.error('-', p));
 }
 

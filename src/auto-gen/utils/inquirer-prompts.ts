@@ -8,442 +8,444 @@ import { normalizePath, parsePath, searchDtoInTestRequests, transformPropertyNam
 
 let recentSelections: RecentSelection[] = [];
 const MAX_RECENT_ITEMS = 100;
-const REPORT_LENGTH = 5
+const REPORT_LENGTH = 5;
 
 export async function interactiveCLI(): Promise<void> {
-    console.log('🚀 Auto-gen CLI');
-    console.log('=============================\n');
+  console.log('🚀 Auto-gen CLI');
+  console.log('=============================\n');
 
-    while (true) {
-        const mainChoices: { name: string; value: string }[] = [
-            { name: 'Generate files', value: 'gen' },
-            { name: 'Run tests', value: 'test' },
-            { name: 'Reports', value: 'report' },
-            { name: 'Clear files', value: 'clear' },
-        ];
+  while (true) {
+    const mainChoices: { name: string; value: string }[] = [
+      { name: 'Generate files', value: 'gen' },
+      { name: 'Run tests', value: 'test' },
+      { name: 'Reports', value: 'report' },
+      { name: 'Clear files', value: 'clear' },
+    ];
 
-        if (recentSelections.length > 0) {
-            mainChoices.unshift({
-                name: `🕒 Recent selections (${recentSelections.length})`,
-                value: 'recent',
-            });
-        }
+    if (recentSelections.length > 0) {
+      mainChoices.unshift({
+        name: `🕒 Recent selections (${recentSelections.length})`,
+        value: 'recent',
+      });
+    }
 
-        mainChoices.push({ name: 'Exit', value: 'exit' });
+    mainChoices.push({ name: 'Exit', value: 'exit' });
 
-        const { action } = await inquirer.prompt<{ action: string }>([
-            {
-                type: 'list',
-                name: 'action',
-                message: 'Select action:',
-                choices: mainChoices,
-            },
-        ]);
+    const { action } = await inquirer.prompt<{ action: string }>([
+      {
+        type: 'list',
+        name: 'action',
+        message: 'Select action:',
+        choices: mainChoices,
+      },
+    ]);
 
-        if (action === 'exit') {
-            console.log('👋 Goodbye!');
-            process.exit(0);
-        }
+    if (action === 'exit') {
+      console.log('👋 Goodbye!');
+      process.exit(0);
+    }
 
-        if (action === 'report') {
-            const { reportType } = await inquirer.prompt<{ reportType: string }>([
-                {
-                    type: 'list',
-                    name: 'reportType',
-                    message: 'Select report type:',
-                    choices: [
-                        { name: 'Generate report for specific DTO', value: 'single' },
-                        { name: 'Generate all reports', value: 'all' },
-                        { name: 'View', value: 'view' },
-                        { name: 'Back to main menu', value: 'back' },
-                    ],
-                },
-            ]);
+    if (action === 'report') {
+      const { reportType } = await inquirer.prompt<{ reportType: string }>([
+        {
+          type: 'list',
+          name: 'reportType',
+          message: 'Select report type:',
+          choices: [
+            { name: 'Generate report for specific DTO', value: 'single' },
+            { name: 'Generate all reports', value: 'all' },
+            { name: 'View', value: 'view' },
+            { name: 'Back to main menu', value: 'back' },
+          ],
+        },
+      ]);
 
-            if (reportType === 'back') continue;
+      if (reportType === 'back') continue;
 
-            if (reportType === 'single') {
-                const selectedPaths = await selectFoldersRecursive();
-                if (selectedPaths.length === 0) continue;
+      if (reportType === 'single') {
+        const selectedPaths = await selectFoldersRecursive(true);
+        if (selectedPaths.length === 0) continue;
 
-                console.log(`\n📋 Selected ${selectedPaths.length} items for report generation:`);
-                selectedPaths.forEach((path, i) => console.log(` ${i + 1}. ${path}`));
-
-                const { confirm } = await inquirer.prompt<{ confirm: boolean }>([
-                    {
-                        type: 'confirm',
-                        name: 'confirm',
-                        message: `Generate reports for these DTOs?`,
-                        default: true,
-                    },
-                ]);
-
-                if (confirm) {
-                    await executeAction('report', 'single', selectedPaths);
-                    addToRecentSelections({
-                        action: 'report',
-                        type: 'single',
-                        paths: selectedPaths,
-                        timestamp: Date.now(),
-                    });
-                }
-            } else if (reportType === 'all') {
-                const { confirm } = await inquirer.prompt<{ confirm: boolean }>([
-                    {
-                        type: 'confirm',
-                        name: 'confirm',
-                        message: 'Generate reports for ALL DTOs?',
-                        default: false,
-                    },
-                ]);
-
-                if (confirm) {
-                    await actionHandlers.report.all[0]('');
-                    addToRecentSelections({
-                        action: 'report',
-                        type: 'all',
-                        paths: ['ALL'],
-                        timestamp: Date.now(),
-                    });
-                }
-            } else if (reportType === 'view') {
-                const selectedPaths = await selectFoldersRecursive(true);
-                if (selectedPaths.length === 0) continue;
-                console.log(`\n📋 Selected ${selectedPaths.length} items for view report:`);
-                selectedPaths.forEach((path, i) => console.log(` ${i + 1}. ${path}`));
-
-                const { confirm } = await inquirer.prompt<{ confirm: boolean }>([
-                    {
-                        type: 'confirm',
-                        name: 'confirm',
-                        message: `View reports for these DTOs?`,
-                        default: true,
-                    },
-                ]);
-
-                if (confirm) {
-                    await executeAction('report', 'view', selectedPaths);
-                    addToRecentSelections({
-                        action: 'report',
-                        type: 'view',
-                        paths: selectedPaths,
-                        timestamp: Date.now(),
-                    });
-                }
-            }
-            continue;
-        }
-
-        if (action === 'recent') {
-            const { selectedRecent } = await inquirer.prompt<{ selectedRecent: number }>([
-                {
-                    type: 'list',
-                    name: 'selectedRecent',
-                    message: 'Select recent action to repeat:',
-                    choices: [
-                        ...recentSelections.map((item, index) => ({
-                            name: `[${index + 1}] ${item.action.padEnd(6)} ${item.type.padEnd(8)} ${formatPaths(item.paths)}`,
-                            value: index,
-                        })),
-                        new inquirer.Separator(),
-                        { name: 'Back to main menu', value: -1 },
-                    ],
-                    pageSize: 10,
-                },
-            ]);
-
-            if (selectedRecent === -1) continue;
-
-            const selected = recentSelections[selectedRecent];
-            await executeAction(selected.action, selected.type, selected.paths);
-
-            recentSelections[selectedRecent].timestamp = Date.now();
-            recentSelections.sort((a, b) => b.timestamp - a.timestamp);
-            continue;
-        }
-
-        if (action === 'test' && recentSelections.length > 0) {
-            const recentGenItems = recentSelections
-                .filter((item) => item.action === 'gen')
-                .slice(0, MAX_RECENT_ITEMS);
-
-            if (recentGenItems.length > 0) {
-                const { quickTestChoice } = await inquirer.prompt<{ quickTestChoice: string | number }>([
-                    {
-                        type: 'list',
-                        name: 'quickTestChoice',
-                        message: 'Select items to test:',
-                        choices: [
-                            ...recentGenItems.map((item, index) => ({
-                                name: `[${index + 1}] ${item.type.padEnd(8)} ${formatPaths(item.paths)}`,
-                                value: index,
-                            })),
-                            new inquirer.Separator(),
-                            { name: 'Test all recent generated items', value: 'all' },
-                            { name: 'Manual selection', value: 'manual' },
-                        ],
-                        pageSize: 10,
-                    },
-                ]);
-
-                if (quickTestChoice === 'all') {
-                    const allPaths = recentGenItems.flatMap((item) => item.paths);
-                    console.log(`\n🔍 Testing all recently generated items (${allPaths.length}):`);
-                    allPaths.forEach((path, i) => console.log(` ${i + 1}. ${path}`));
-
-                    await executeAction('test', 'request', allPaths);
-
-                    addToRecentSelections({
-                        action: 'test',
-                        type: 'request',
-                        paths: allPaths,
-                        timestamp: Date.now(),
-                    });
-                    continue;
-                } else if (quickTestChoice !== 'manual') {
-                    const selectedItem = recentGenItems[quickTestChoice as number];
-                    console.log(`\n🔍 Testing selected items (${selectedItem.paths.length}):`);
-                    selectedItem.paths.forEach((path, i) => console.log(` ${i + 1}. ${path}`));
-
-                    await executeAction('test', selectedItem.type, selectedItem.paths);
-
-                    addToRecentSelections({
-                        action: 'test',
-                        type: selectedItem.type,
-                        paths: selectedItem.paths,
-                        timestamp: Date.now(),
-                    });
-                    continue;
-                }
-            }
-        }
-
-        const { type } = await inquirer.prompt<{ type: string }>([
-            {
-                type: 'list',
-                name: 'type',
-                message: 'Select file type:',
-                choices: [
-                    { name: 'Request', value: 'request' },
-                    { name: 'Response', value: 'response' },
-                    { name: 'Saga', value: 'saga' },
-                    { name: 'WebSocket', value: 'ws' },
-                    { name: 'Back to main menu', value: 'back' },
-                ],
-            },
-        ]);
-
-        if (type === 'back') continue;
-
-        if (action === 'clear') {
-            const { scope } = await inquirer.prompt<{ scope: string }>([
-                {
-                    type: 'list',
-                    name: 'scope',
-                    message: 'Select clear scope:',
-                    choices: [
-                        { name: 'Clear all', value: 'all' },
-                        { name: 'Clear by DTO', value: 'dto' },
-                        { name: 'Back', value: 'back' },
-                    ],
-                },
-            ]);
-
-            if (scope === 'back') continue;
-
-            if (scope === 'all') {
-                console.log(`🧹 Clearing all ${type} files...`);
-                await actionHandlers.clear[type][0]('');
-                console.log('✅ Done!');
-
-                addToRecentSelections({
-                    action: 'clear',
-                    type,
-                    paths: ['ALL'],
-                    timestamp: Date.now(),
-                });
-                continue;
-            }
-        }
-
-        const selectedPaths = await selectFoldersRecursive();
-
-        if (selectedPaths.length === 0) {
-            continue;
-        }
-
-        console.log(`\n📋 Selected ${selectedPaths.length} items:`);
+        console.log(`\n📋 Selected ${selectedPaths.length} items for report generation:`);
         selectedPaths.forEach((path, i) => console.log(` ${i + 1}. ${path}`));
 
         const { confirm } = await inquirer.prompt<{ confirm: boolean }>([
-            {
-                type: 'confirm',
-                name: 'confirm',
-                message: `Proceed with ${action} ${type}?`,
-                default: true,
-            },
+          {
+            type: 'confirm',
+            name: 'confirm',
+            message: `Generate reports for these DTOs?`,
+            default: true,
+          },
         ]);
 
-        if (!confirm) {
-            continue;
-        }
-
-        await executeAction(action, type, selectedPaths);
-
-        addToRecentSelections({
-            action,
-            type,
+        if (confirm) {
+          await executeAction('report', 'single', selectedPaths);
+          addToRecentSelections({
+            action: 'report',
+            type: 'single',
             paths: selectedPaths,
             timestamp: Date.now(),
-        });
+          });
+        }
+      } else if (reportType === 'all') {
+        const { confirm } = await inquirer.prompt<{ confirm: boolean }>([
+          {
+            type: 'confirm',
+            name: 'confirm',
+            message: 'Generate reports for ALL DTOs?',
+            default: false,
+          },
+        ]);
+
+        if (confirm) {
+          await actionHandlers.report.all[0]('');
+          addToRecentSelections({
+            action: 'report',
+            type: 'all',
+            paths: ['ALL'],
+            timestamp: Date.now(),
+          });
+        }
+      } else if (reportType === 'view') {
+        const selectedPaths = await selectFoldersRecursive(true);
+        if (selectedPaths.length === 0) continue;
+        console.log(`\n📋 Selected ${selectedPaths.length} items for view report:`);
+        selectedPaths.forEach((path, i) => console.log(` ${i + 1}. ${path}`));
+
+        const { confirm } = await inquirer.prompt<{ confirm: boolean }>([
+          {
+            type: 'confirm',
+            name: 'confirm',
+            message: `View reports for these DTOs?`,
+            default: true,
+          },
+        ]);
+
+        if (confirm) {
+          await executeAction('report', 'view', selectedPaths);
+          addToRecentSelections({
+            action: 'report',
+            type: 'view',
+            paths: selectedPaths,
+            timestamp: Date.now(),
+          });
+        }
+      }
+      continue;
     }
+
+    if (action === 'recent') {
+      const { selectedRecent } = await inquirer.prompt<{ selectedRecent: number }>([
+        {
+          type: 'list',
+          name: 'selectedRecent',
+          message: 'Select recent action to repeat:',
+          choices: [
+            ...recentSelections.map((item, index) => ({
+              name: `[${index + 1}] ${item.action.padEnd(6)} ${item.type.padEnd(8)} ${formatPaths(item.paths)}`,
+              value: index,
+            })),
+            new inquirer.Separator(),
+            { name: 'Back to main menu', value: -1 },
+          ],
+          pageSize: 10,
+        },
+      ]);
+
+      if (selectedRecent === -1) continue;
+
+      const selected = recentSelections[selectedRecent];
+      await executeAction(selected.action, selected.type, selected.paths);
+
+      recentSelections[selectedRecent].timestamp = Date.now();
+      recentSelections.sort((a, b) => b.timestamp - a.timestamp);
+      continue;
+    }
+
+    if (action === 'test' && recentSelections.length > 0) {
+      const recentGenItems = recentSelections
+        .filter((item) => item.action === 'gen')
+        .slice(0, MAX_RECENT_ITEMS);
+
+      if (recentGenItems.length > 0) {
+        const { quickTestChoice } = await inquirer.prompt<{ quickTestChoice: string | number }>([
+          {
+            type: 'list',
+            name: 'quickTestChoice',
+            message: 'Select items to test:',
+            choices: [
+              ...recentGenItems.map((item, index) => ({
+                name: `[${index + 1}] ${item.type.padEnd(8)} ${formatPaths(item.paths)}`,
+                value: index,
+              })),
+              new inquirer.Separator(),
+              { name: 'Test all recent generated items', value: 'all' },
+              { name: 'Manual selection', value: 'manual' },
+            ],
+            pageSize: 10,
+          },
+        ]);
+
+        if (quickTestChoice === 'all') {
+          const allPaths = recentGenItems.flatMap((item) => item.paths);
+          console.log(`\n🔍 Testing all recently generated items (${allPaths.length}):`);
+          allPaths.forEach((path, i) => console.log(` ${i + 1}. ${path}`));
+
+          await executeAction('test', 'request', allPaths);
+
+          addToRecentSelections({
+            action: 'test',
+            type: 'request',
+            paths: allPaths,
+            timestamp: Date.now(),
+          });
+          continue;
+        } else if (quickTestChoice !== 'manual') {
+          const selectedItem = recentGenItems[quickTestChoice as number];
+          console.log(`\n🔍 Testing selected items (${selectedItem.paths.length}):`);
+          selectedItem.paths.forEach((path, i) => console.log(` ${i + 1}. ${path}`));
+
+          await executeAction('test', selectedItem.type, selectedItem.paths);
+
+          addToRecentSelections({
+            action: 'test',
+            type: selectedItem.type,
+            paths: selectedItem.paths,
+            timestamp: Date.now(),
+          });
+          continue;
+        }
+      }
+    }
+
+    const { type } = await inquirer.prompt<{ type: string }>([
+      {
+        type: 'list',
+        name: 'type',
+        message: 'Select file type:',
+        choices: [
+          { name: 'Request', value: 'request' },
+          { name: 'Response', value: 'response' },
+          { name: 'Saga', value: 'saga' },
+          { name: 'WebSocket', value: 'ws' },
+          { name: 'Back to main menu', value: 'back' },
+        ],
+      },
+    ]);
+
+    if (type === 'back') continue;
+
+    if (action === 'clear') {
+      const { scope } = await inquirer.prompt<{ scope: string }>([
+        {
+          type: 'list',
+          name: 'scope',
+          message: 'Select clear scope:',
+          choices: [
+            { name: 'Clear all', value: 'all' },
+            { name: 'Clear by DTO', value: 'dto' },
+            { name: 'Back', value: 'back' },
+          ],
+        },
+      ]);
+
+      if (scope === 'back') continue;
+
+      if (scope === 'all') {
+        console.log(`🧹 Clearing all ${type} files...`);
+        await actionHandlers.clear[type][0]('');
+        console.log('✅ Done!');
+
+        addToRecentSelections({
+          action: 'clear',
+          type,
+          paths: ['ALL'],
+          timestamp: Date.now(),
+        });
+        continue;
+      }
+    }
+
+    const selectedPaths = await selectFoldersRecursive(false, type);
+    console.log('ssss',selectedPaths)
+    if (selectedPaths.length === 0) {
+      continue;
+    }
+
+    console.log(`\n📋 Selected ${selectedPaths.length} items:`);
+    selectedPaths.forEach((path, i) => console.log(` ${i + 1}. ${path}`));
+
+    const { confirm } = await inquirer.prompt<{ confirm: boolean }>([
+      {
+        type: 'confirm',
+        name: 'confirm',
+        message: `Proceed with ${action} ${type}?`,
+        default: true,
+      },
+    ]);
+
+    if (!confirm) {
+      continue;
+    }
+
+    await executeAction(action, type, selectedPaths);
+
+    addToRecentSelections({
+      action,
+      type,
+      paths: selectedPaths,
+      timestamp: Date.now(),
+    });
+  }
 }
 
 function formatPaths(paths: string[]): string {
-    if (paths.length === 0) return '';
-    if (paths.length === 1) return paths[0];
-    if (paths.length <= 3) return paths.join(', ');
-    return `${paths[0]} +${paths.length - 1} more`;
+  if (paths.length === 0) return '';
+  if (paths.length === 1) return paths[0];
+  if (paths.length <= 3) return paths.join(', ');
+  return `${paths[0]} +${paths.length - 1} more`;
 }
 
 function addToRecentSelections(item: RecentSelection): void {
-    recentSelections.unshift(item);
-    if (recentSelections.length > MAX_RECENT_ITEMS) {
-        recentSelections.pop();
-    }
+  recentSelections.unshift(item);
+  if (recentSelections.length > MAX_RECENT_ITEMS) {
+    recentSelections.pop();
+  }
 }
 
 export async function executeAction(action: string, type: string, filePaths: string[]): Promise<{ path: string; success: boolean; error?: string }[]> {
-    console.log(`\n📌 Starting ${action} ${type} for ${filePaths.length} items:`);
-    console.log('----------------------------------------');
+  console.log(`\n📌 Starting ${action} ${type} for ${filePaths.length} items:`);
+  console.log('----------------------------------------');
 
-    filePaths.forEach((filePath, index) => {
-        console.log(`${index + 1}. ${filePath}`);
-    });
+  filePaths.forEach((filePath, index) => {
+    console.log(`${index + 1}. ${filePath}`);
+  });
 
-    console.log('----------------------------------------');
+  console.log('----------------------------------------');
 
-    const results: { path: string; success: boolean; error?: string }[] = [];
+  const results: { path: string; success: boolean; error?: string }[] = [];
 
-    if (action === 'test') {
-        // Run all tests in parallel
+  if (action === 'test') {
+    try {
+      const normalizedPaths = filePaths.map((filePath) => normalizePath(filePath));
+      const successfulTests = (await actionHandlers.test[type][0](normalizedPaths)) as string[];
+
+      results.push(
+        ...successfulTests.map((path: string) => ({ path, success: true })),
+        ...filePaths
+          .filter((path) => !successfulTests.includes(normalizePath(path)))
+          .map((path) => ({ path: normalizePath(path), success: false, error: 'Test failed' }))
+      );
+
+      const { generateReport } = await inquirer.prompt<{ generateReport: boolean }>([
+        {
+          type: 'confirm',
+          name: 'generateReport',
+          message: `Generate test reports for all ${successfulTests.length} items?`,
+          default: true,
+        },
+      ]);
+
+      if (generateReport) {
         try {
-            const normalizedPaths = filePaths.map((filePath) => normalizePath(filePath));
-            console.log(normalizedPaths)
-            const successfulTests = (await actionHandlers.test[type][0](normalizedPaths)) as string[];
-
-            results.push(
-                ...successfulTests.map((path: string) => ({ path, success: true })),
-                ...filePaths
-                    .filter((path) => !successfulTests.includes(normalizePath(path)))
-                    .map((path) => ({ path: normalizePath(path), success: false, error: 'Test failed' }))
-            );
-
-            // Prompt for report generation once after all tests
-            const { generateReport } = await inquirer.prompt<{ generateReport: boolean }>([
-                {
-                    type: 'confirm',
-                    name: 'generateReport',
-                    message: `Generate test reports for all ${successfulTests.length} items?`,
-                    default: true,
-                },
-            ]);
-
-            if (generateReport) {
-                try {
-                    // Generate reports in parallel
-                    const reportPromises = successfulTests.map(async (filePath: string) => {
-                        try {
-                            const normalizedPath = normalizePath(filePath);
-                            const parsed = path.parse(normalizedPath);
-                            const reportName = parsed.name;
-
-                            await actionHandlers.report.single[0](reportName);
-                            return reportName;
-                        } catch (error) {
-                            console.error(`❌ Failed to generate report for ${filePath}:`, (error as Error).message);
-                            return null;
-                        }
-                    });
-
-                    // Wait for all reports to complete
-                    const reportNames = (await Promise.all(reportPromises)).filter(Boolean) as string[];
-
-                    if (reportNames.length > 0 && reportNames.length <= REPORT_LENGTH) {
-                        console.log('\n📜 TEST REPORTS SUMMARY');
-                        console.log('======================');
-
-                        const displayPromises = reportNames.map(async (reportName) => {
-                            console.log(`\n🔍 Report for: ${reportName}`);
-                            console.log('----------------------');
-                            await actionHandlers.report.view[0](reportName);
-                            console.log('----------------------');
-                        });
-
-                        await Promise.all(displayPromises);
-
-                        console.log('\n======================');
-                        console.log(`🎉 Displayed ${reportNames.length} reports`);
-                    }
-                } catch (error) {
-                    console.error('❌ Error in report generation:', (error as Error).message);
-                }
-            }
-        } catch (error) {
-            console.error('❌ Error in test execution:', (error as Error).message);
-            results.push(...filePaths.map((path) => ({ path: normalizePath(path), success: false, error: (error as Error).message })));
-        }
-    } else {
-        // Original logic for non-test actions
-        for (const filePath of filePaths) {
-            const normalizedPath = normalizePath(filePath);
+          const reportPromises = successfulTests.map(async (filePath: string) => {
             try {
-                console.log(`\n🔄 Processing: ${normalizedPath}`);
+              const normalizedPath = normalizePath(filePath);
+              const parsed = path.parse(normalizedPath);
+              const reportName = parsed.name;
 
-                for (const handler of actionHandlers[action][type]) {
-                    let finalPath = normalizedPath;
-
-                    if (action === 'report' && type !== 'view') {
-                        const parsed = path.parse(normalizedPath);
-                        finalPath = parsed.base;
-                    }
-
-                    await handler(finalPath);
-                }
-
-                console.log(`✅ Success: ${normalizedPath}`);
-                results.push({ path: normalizedPath, success: true });
+              await actionHandlers.report.single[0](reportName);
+              return reportName;
             } catch (error) {
-                const errorMsg = error instanceof Error ? error.message : String(error);
-                console.error(`❌ Failed: ${normalizedPath} - ${errorMsg}`);
-                results.push({ path: normalizedPath, success: false, error: errorMsg });
+              console.error(`❌ Failed to generate report for ${filePath}:`, (error as Error).message);
+              return null;
             }
-        }
-    }
+          });
 
-    return results;
+          const reportNames = (await Promise.all(reportPromises)).filter(Boolean) as string[];
+
+          if (reportNames.length > 0 && reportNames.length <= REPORT_LENGTH) {
+            console.log('\n📜 TEST REPORTS SUMMARY');
+            console.log('======================');
+
+            const displayPromises = reportNames.map(async (reportName) => {
+              console.log(`\n🔍 Report for: ${reportName}`);
+              console.log('----------------------');
+              await actionHandlers.report.view[0](reportName);
+              console.log('----------------------');
+            });
+
+            await Promise.all(displayPromises);
+
+            console.log('\n======================');
+            console.log(`🎉 Displayed ${reportNames.length} reports`);
+          }
+        } catch (error) {
+          console.error('❌ Error in report generation:', (error as Error).message);
+        }
+      }
+    } catch (error) {
+      console.error('❌ Error in test execution:', (error as Error).message);
+      results.push(...filePaths.map((path) => ({ path: normalizePath(path), success: false, error: (error as Error).message })));
+    }
+  } else {
+    for (const filePath of filePaths) {
+      const normalizedPath = normalizePath(filePath);
+      try {
+        console.log(`\n🔄 Processing: ${normalizedPath}`);
+
+        for (const handler of actionHandlers[action][type]) {
+          let finalPath = normalizedPath;
+
+          if (action === 'report' && type !== 'view') {
+            const parsed = path.parse(normalizedPath);
+            finalPath = parsed.base;
+          }
+
+          await handler(finalPath);
+        }
+
+        console.log(`✅ Success: ${normalizedPath}`);
+        results.push({ path: normalizedPath, success: true });
+      } catch (error) {
+        const errorMsg = error instanceof Error ? error.message : String(error);
+        console.error(`❌ Failed: ${normalizedPath} - ${errorMsg}`);
+        results.push({ path: normalizedPath, success: false, error: errorMsg });
+      }
+    }
+  }
+
+  return results;
 }
 
 function transformDtoName(dtoName: string): string {
-    const words = dtoName.split('-');
-    const capitalizedWords = words.map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase());
-    return `V3${capitalizedWords.join('')}Request`;
+  const specialAcronyms = new Set(['dm']);
+
+  const words = dtoName.split('-');
+  const capitalizedWords = words.map((word) => {
+    if (specialAcronyms.has(word.toLowerCase())) {
+      return word.toUpperCase();
+    }
+    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+  });
+
+  return `V3${capitalizedWords.join('')}Request`;
 }
 
 function validateDtoName(dtoName: string): { status: boolean; data: any } {
-    const schemaPath = path.join(__dirname, '../swagger/schemas.json');
-    try {
-        const fileContent = fs.readFileSync(schemaPath, 'utf-8');
-        const schema = JSON.parse(fileContent);
-        const transformedName = transformDtoName(dtoName);
+  const schemaPath = path.join(__dirname, '../swagger/schemas.json');
+  try {
+    const fileContent = fs.readFileSync(schemaPath, 'utf-8');
+    const schema = JSON.parse(fileContent);
+    const transformedName = transformDtoName(dtoName);
 
-        if (schema[transformedName]) {
-            return { status: true, data: schema[transformedName] };
-        }
-        return { status: false, data: `DTO name '${transformedName}' not found in schema.` };
-    } catch (error) {
-        return { status: false, data: `Error reading schema: ${(error as Error).message}` };
+    if (schema[transformedName]) {
+      return { status: true, data: schema[transformedName] };
     }
+    return { status: false, data: `DTO name '${transformedName}' not found in schema.` };
+  } catch (error) {
+    return { status: false, data: `Error reading schema: ${(error as Error).message}` };
+  }
 }
 
 async function selectFoldersRecursive(isReport = false, type = 'request'): Promise<string[]> {
@@ -465,8 +467,8 @@ async function selectFoldersRecursive(isReport = false, type = 'request'): Promi
       const items = entries
         .filter((entry) => {
           if (entry.isDirectory()) return true;
-          if (!isReport && entry.isFile() && entry.name.endsWith('.test.ts')) return true;
           if (isReport && entry.isFile() && entry.name.endsWith('.md')) return true;
+          if (!isReport && entry.isFile() && entry.name.endsWith('.spec.ts')) return true;
           return false;
         })
         .map((entry) => ({
@@ -486,16 +488,17 @@ async function selectFoldersRecursive(isReport = false, type = 'request'): Promi
           choices: [
             ...(currentPath !== ''
               ? [
-                  {
-                    name: `📁 ${isCurrentSelected ? '✓ ' : ''}[SELECT CURRENT] ${currentPath}`,
-                    value: '__CURRENT__',
-                    checked: isCurrentSelected,
-                  },
-                ]
+                {
+                  name: `📁 ${isCurrentSelected ? '✓ ' : ''}[SELECT CURRENT] ${currentPath}`,
+                  value: '__CURRENT__',
+                  checked: isCurrentSelected,
+                },
+              ]
               : []),
             ...items.map((item) => ({
               ...item,
-              name: `${item.name.endsWith('.md') || item.name.endsWith('.test.ts') ? '📄' : '📂'} ${selectedPaths.includes(path.join(basePath, currentPath, item.value)) ? '✓ ' : ''}${item.name}`,
+              name: `${item.name.endsWith('.md') || item.name.endsWith('.spec.ts') ? '📄' : '📂'} ${selectedPaths.includes(path.join(basePath, currentPath, item.value)) ? '✓ ' : ''
+                }${item.name}`,
             })),
             new inquirer.Separator(),
             { name: '🔍 Search DTO', value: '__SEARCH__' },
@@ -507,8 +510,18 @@ async function selectFoldersRecursive(isReport = false, type = 'request'): Promi
       ]);
 
       if (selectedOptions.includes('__CURRENT__')) {
-        if (!selectedPaths.includes(currentFullPath) && currentFullPath !== '') {
-          selectedPaths.push(currentFullPath);
+        if (!selectedPaths.includes(currentFullPath)) {
+          if (!isReport) {
+            const testFiles = await glob(path.join(fullPath, '**/*.spec.ts'), { nodir: true });
+            testFiles.forEach((file) => {
+              const relativePath = path.relative(path.join(__dirname, '../test-requests'), file).replace(/\\/g, '/');
+              if (!selectedPaths.includes(relativePath)) {
+                selectedPaths.push(relativePath);
+              }
+            });
+          } else if (!selectedPaths.includes(currentFullPath)) {
+            selectedPaths.push(currentFullPath);
+          }
         }
       } else {
         const index = selectedPaths.indexOf(currentFullPath);
@@ -524,7 +537,7 @@ async function selectFoldersRecursive(isReport = false, type = 'request'): Promi
             {
               type: 'input',
               name: 'dtoName',
-              message: 'Enter DTO name to search (e.g., create-channel):',
+              message: 'Enter DTO name to search (e.g., send-dm-message):',
               validate: async (input: string) => {
                 if (!input) return 'DTO name is required.';
                 if (!/^[a-zA-Z0-9-_]+$/.test(input)) {
@@ -568,13 +581,11 @@ async function selectFoldersRecursive(isReport = false, type = 'request'): Promi
             continue;
           }
 
-          // Normalize the DTO path to avoid duplication
-          const normalizedDtoPath = normalizePath(dtoPath);
-          if (!selectedPaths.includes(normalizedDtoPath)) {
-            selectedPaths.push(normalizedDtoPath);
+          if (!selectedPaths.includes(dtoPath)) {
+            selectedPaths.push(dtoPath);
           }
 
-          console.log(`\n📋 Selected DTO for generation: ${dtoName} (Type: ${type}, Path: ${normalizedDtoPath})`);
+          console.log(`\n📋 Selected DTO for generation: ${dtoName} (Type: ${type}, Path: ${dtoPath})`);
 
           const { continueSearch } = await inquirer.prompt<{ continueSearch: string }>([
             {
@@ -601,13 +612,12 @@ async function selectFoldersRecursive(isReport = false, type = 'request'): Promi
 
       items.forEach((item) => {
         const itemPath = path.join(basePath, currentPath, item.value);
-        const normalizedItemPath = normalizePath(itemPath); // Normalize each item path
         if (selectedOptions.includes(item.value)) {
-          if (!selectedPaths.includes(normalizedItemPath)) {
-            selectedPaths.push(normalizedItemPath);
+          if (!selectedPaths.includes(itemPath)) {
+            selectedPaths.push(itemPath);
           }
         } else {
-          const index = selectedPaths.indexOf(normalizedItemPath);
+          const index = selectedPaths.indexOf(itemPath);
           if (index !== -1) {
             selectedPaths.splice(index, 1);
           }
