@@ -873,7 +873,7 @@ function checkTypeString(
         );
         return errors;
       }
-      if (field === 'stickerId' && value !== VAR.stickerId) {
+      if (field === 'stickerId' && value !== VAR.stickerId && value != null && value !== "") {
         addErrorIfNotExist(errors, decorators['isInvalidMessage'], null);
         return errors;
       }
@@ -1039,20 +1039,20 @@ function checkTypeArray(
                 addErrorIfNotExist(errors, message, `${field} ${message}`);
               }
             }
-          }else {
-           if(name === 'IsULID') {
-             addErrorIfNotExist(
-                  errors,
-                  null,
-                  `${field} has element ${index} ${ErrorMessage.INVALID_ULID}`,
-                );
-           }else {
-             addErrorIfNotExist(
-                  errors,
-                  null,
-                  `${field} has element ${index} ${ErrorMessage.INVALID_TYPE_STRING} ${typeof item}`,
-                );
-           }
+          } else {
+            if (name === 'IsULID') {
+              addErrorIfNotExist(
+                errors,
+                null,
+                `${field} has element ${index} ${ErrorMessage.INVALID_ULID}`,
+              );
+            } else {
+              addErrorIfNotExist(
+                errors,
+                null,
+                `${field} has element ${index} ${ErrorMessage.INVALID_TYPE_STRING} ${typeof item}`,
+              );
+            }
           }
 
 

@@ -17,7 +17,8 @@ interface TestResult {
 }
 
 function isResultFile(file: string, className: string): boolean {
-  return file.startsWith(className) && file.endsWith('.result.json');
+  const baseName = file.replace('.result.json', '');
+  return baseName === className;
 }
 
 function isJsonResultFile(file: string): boolean {
@@ -136,8 +137,8 @@ async function combineReports(className: string): Promise<{
   noFailedTests: boolean;
 }> {
   const reportDir = path.join(__dirname, '../tmp-reports');
-  const reportFiles = getReportFiles(reportDir, className);
-  console.log('reportFile', reportFiles);
+  const reportFiles = fs.readdirSync(reportDir)
+    .filter(file => file === `${className}.result.json`);
 
   if (reportFiles.length === 0) {
     const errorMsg = `No report files found for ${className}`;
@@ -182,6 +183,7 @@ async function combineReports(className: string): Promise<{
   ensureDirExists(outputDir);
 
   const reportFileName = `${className}-combined-${getTime()}.report.txt`;
+
   const reportPath = path.join(outputDir, reportFileName);
 
   try {
@@ -208,7 +210,7 @@ async function combineReports(className: string): Promise<{
   }
 }
 
-export async function generateAllReports(dtoName?: string): Promise<{filePath: string; content?: any} | void> {
+export async function generateAllReports(dtoName?: string): Promise<{ filePath: string; content?: any } | void> {
   const reportDir = path.join(__dirname, '../tmp-reports');
 
   if (!fs.existsSync(reportDir)) {
