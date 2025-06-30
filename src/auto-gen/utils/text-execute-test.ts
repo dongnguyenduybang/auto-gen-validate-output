@@ -3,7 +3,7 @@ import { extractDatas } from './extract-data';
 import { Step, StepResult } from './declarations';
 import { TestContext } from './text-context';
 import { ACTION_CONFIG } from '../enums';
-import { handleExpectConfig } from './check-expect';
+import { handleExpectConfig } from '../validates/check-expect';
 import { checkResponse, resolveExpectConfig, resolveVariables } from './helper';
 
 export async function executeSteps(

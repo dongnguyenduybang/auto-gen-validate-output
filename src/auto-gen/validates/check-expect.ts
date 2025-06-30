@@ -1,8 +1,8 @@
 import { ACTION_CONFIG } from '../enums';
 import { getApiFunctions } from '../functions/api-registry';
-import { Expect, ExpectResult } from './declarations';
-import { resolveVariables } from './helper';
-import { TestContext } from './text-context';
+import { Expect, ExpectResult } from '../utils/declarations';
+import { resolveVariables } from '../utils/helper';
+import { TestContext } from '../utils/text-context';
 
 export async function handleExpectConfig(
   responseChecking: unknown,
@@ -482,40 +482,3 @@ function deepEqual(obj1: Object, obj2: Object): boolean {
 
   return true;
 }
-
-// function applyFilter(data: any, filter: any): any {
-//   if (!data || typeof data !== 'object') return data;
-
-//   if (Array.isArray(data)) {
-//     return data.filter(item => {
-//       return Object.entries(filter).every(([key, value]) => {
-//         return deepEqual(item[key], value);
-//       });
-//     });
-//   }
-
-//   return Object.entries(filter).every(([key, value]) => {
-//     return deepEqual(data[key], value);
-//   }) ? data : null;
-// }
-
-// function processData(data: any, fields: string[], nestedKey?: string): any {
-//   if (Array.isArray(data)) {
-//     return data.map(item => {
-//       const target = nestedKey ? item[nestedKey] || item : item;
-//       return fields.length > 0 ? pickFields(target, fields) : target;
-//     });
-//   } else if (data && typeof data === 'object') {
-//     const target = nestedKey ? data[nestedKey] || data : data;
-//     return fields.length > 0 ? pickFields(target, fields) : target;
-//   }
-//   return data;
-// }
-
-// function filterFields(data: any, fields: string[]): any {
-//   if (!data) return data;
-//   if (Array.isArray(data)) {
-//     return data.map(item => pickFields(item, fields));
-//   }
-//   return pickFields(data, fields);
-// }
