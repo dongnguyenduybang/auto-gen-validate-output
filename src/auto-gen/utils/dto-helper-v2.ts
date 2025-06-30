@@ -1114,15 +1114,19 @@ function checkEnum(
       const enumValues = Object.values(decorators['enumType']).filter(
         (v) => typeof v === 'number',
       ) as number[];
+
       const expectedText = enumValues.join(' | ');
+      const receivedText = typeof value === 'string' ? 'nan' : value;
+
       addErrorIfNotExist(
         errors,
         decorators['enumMessage'],
-        `${field} ${ErrorMessage.INVALID_ENUM} ${expectedText}, received '${value}'`,
+        `${field} ${ErrorMessage.INVALID_ENUM} ${expectedText}, received ${receivedText}`,
       );
       return errors;
     }
   }
+
   return errors;
 }
 
