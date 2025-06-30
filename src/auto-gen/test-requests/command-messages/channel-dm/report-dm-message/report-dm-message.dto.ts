@@ -14,6 +14,7 @@ import {
   MaxLength,
   IsULID,
   IsNotNull,
+  IsOptional,
 } from '../../../../decorator/index';
 
 export class ReportDmMessageDTO {
@@ -40,6 +41,7 @@ export class ReportDmMessageDTO {
   @ValidIf('reportCategory', '===', ReportCategory.REPORT_CATEGORY_OTHER, {
     optional: false,
   })
+  @IsOptional()
   @IsDefined()
   @IsString()
   @IsNotEmpty()
@@ -55,6 +57,7 @@ export class ReportDmMessageDTO {
     { optional: false },
   )
   @IsEnum(PretendingTo)
+  @IsOptional()
   @IsDefined()
   @IsNotNull()
   pretendingTo: PretendingTo = 0;
