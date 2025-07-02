@@ -1,0 +1,1856 @@
+{
+  "path": "/MessageView/ListDMMedia",
+  "className": "list-dm-media",
+  "allSteps": [
+    {
+      "type": null,
+      "status": true,
+      "stepName": "sendDmMessageMedia",
+      "caseTitle": "Case 0",
+      "phase": "beforeAll"
+    }
+  ],
+  "failedTests": [
+    {
+      "testcase": 1,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "type": 1,
+        "limit": 1,
+        "nextPageToken": ""
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 2,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "type": "invalid_enum_value",
+        "limit": 1,
+        "nextPageToken": ""
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 3,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "type": "",
+        "limit": 1,
+        "nextPageToken": ""
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 4,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "type": null,
+        "limit": 1,
+        "nextPageToken": ""
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 5,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "type": 1,
+        "limit": "invalid_number",
+        "nextPageToken": ""
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 6,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "type": 1,
+        "limit": 0,
+        "nextPageToken": ""
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 7,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "type": 1,
+        "limit": 501,
+        "nextPageToken": ""
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 8,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "type": 1,
+        "nextPageToken": ""
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 9,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "type": 1,
+        "limit": "",
+        "nextPageToken": ""
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 10,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "type": 1,
+        "limit": null,
+        "nextPageToken": ""
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 11,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "type": 1,
+        "limit": 1,
+        "nextPageToken": 123
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 12,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "type": 1,
+        "limit": 1
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 13,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "type": 1,
+        "limit": 1,
+        "nextPageToken": null
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 14,
+      "code": 403,
+      "body": {
+        "userId": 123,
+        "type": 1,
+        "limit": 1,
+        "nextPageToken": "invalid_ULID"
+      },
+      "missing": [
+        "Unauthorized request"
+      ],
+      "extra": [
+        "Could not resolve permission type"
+      ]
+    },
+    {
+      "testcase": 17,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": "",
+        "limit": 1,
+        "nextPageToken": ""
+      },
+      "missing": [
+        "invalid attachment type. This type not allowed for processing",
+        "nextPageToken invalid ulid"
+      ],
+      "extra": [
+        "nextPageToken invalid ulid",
+        "nextPageToken should not be empty",
+        "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan",
+        "type should not be empty"
+      ]
+    },
+    {
+      "testcase": 18,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": null,
+        "limit": 1,
+        "nextPageToken": ""
+      },
+      "missing": [
+        "nextPageToken invalid ulid",
+        "type required"
+      ],
+      "extra": [
+        "nextPageToken invalid ulid",
+        "nextPageToken should not be empty",
+        "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received null"
+      ]
+    },
+    {
+      "testcase": 19,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": 1,
+        "limit": "invalid_number",
+        "nextPageToken": ""
+      },
+      "missing": [
+        "limit expected number, received nan",
+        "nextPageToken invalid ulid"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "nextPageToken invalid ulid",
+        "nextPageToken should not be empty"
+      ]
+    },
+    {
+      "testcase": 20,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": 1,
+        "limit": 0,
+        "nextPageToken": ""
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "nextPageToken invalid ulid"
+      ],
+      "extra": [
+        "limit must be at least 1",
+        "nextPageToken invalid ulid",
+        "nextPageToken should not be empty"
+      ]
+    },
+    {
+      "testcase": 21,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": 1,
+        "limit": 501,
+        "nextPageToken": ""
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "nextPageToken invalid ulid"
+      ],
+      "extra": [
+        "limit must be at most 500",
+        "nextPageToken invalid ulid",
+        "nextPageToken should not be empty"
+      ]
+    },
+    {
+      "testcase": 23,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": 1,
+        "limit": "",
+        "nextPageToken": ""
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "nextPageToken invalid ulid"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "limit should not be empty",
+        "nextPageToken invalid ulid",
+        "nextPageToken should not be empty"
+      ]
+    },
+    {
+      "testcase": 25,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": 1,
+        "limit": 1,
+        "nextPageToken": 123
+      },
+      "missing": [
+        "nextPageToken invalid ulid"
+      ],
+      "extra": [
+        "nextPageToken expected string, received number"
+      ]
+    },
+    {
+      "testcase": 71,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": "invalid_enum_value",
+        "limit": "invalid_number",
+        "nextPageToken": ""
+      },
+      "missing": [
+        "limit expected number, received nan",
+        "nextPageToken invalid ulid",
+        "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "nextPageToken invalid ulid",
+        "nextPageToken should not be empty",
+        "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan"
+      ]
+    },
+    {
+      "testcase": 72,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": "invalid_enum_value",
+        "limit": 0,
+        "nextPageToken": ""
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "nextPageToken invalid ulid",
+        "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan"
+      ],
+      "extra": [
+        "limit must be at least 1",
+        "nextPageToken invalid ulid",
+        "nextPageToken should not be empty",
+        "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan"
+      ]
+    },
+    {
+      "testcase": 73,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": "invalid_enum_value",
+        "limit": 501,
+        "nextPageToken": ""
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "nextPageToken invalid ulid",
+        "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan"
+      ],
+      "extra": [
+        "limit must be at most 500",
+        "nextPageToken invalid ulid",
+        "nextPageToken should not be empty",
+        "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan"
+      ]
+    },
+    {
+      "testcase": 75,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": "invalid_enum_value",
+        "limit": "",
+        "nextPageToken": ""
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "nextPageToken invalid ulid",
+        "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "limit should not be empty",
+        "nextPageToken invalid ulid",
+        "nextPageToken should not be empty",
+        "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan"
+      ]
+    },
+    {
+      "testcase": 77,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": "invalid_enum_value",
+        "limit": 1,
+        "nextPageToken": 123
+      },
+      "missing": [
+        "nextPageToken invalid ulid",
+        "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan"
+      ],
+      "extra": [
+        "nextPageToken expected string, received number",
+        "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan"
+      ]
+    },
+    {
+      "testcase": 81,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": "",
+        "limit": "invalid_number",
+        "nextPageToken": ""
+      },
+      "missing": [
+        "limit expected number, received nan",
+        "nextPageToken invalid ulid"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "nextPageToken invalid ulid",
+        "nextPageToken should not be empty",
+        "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan",
+        "type should not be empty"
+      ]
+    },
+    {
+      "testcase": 82,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": "",
+        "limit": 0,
+        "nextPageToken": ""
+      },
+      "missing": [
+        "invalid attachment type. This type not allowed for processing",
+        "limit range from 1 to 500",
+        "nextPageToken invalid ulid"
+      ],
+      "extra": [
+        "limit must be at least 1",
+        "nextPageToken invalid ulid",
+        "nextPageToken should not be empty",
+        "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan",
+        "type should not be empty"
+      ]
+    },
+    {
+      "testcase": 83,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": "",
+        "limit": 501,
+        "nextPageToken": ""
+      },
+      "missing": [
+        "invalid attachment type. This type not allowed for processing",
+        "limit range from 1 to 500",
+        "nextPageToken invalid ulid"
+      ],
+      "extra": [
+        "limit must be at most 500",
+        "nextPageToken invalid ulid",
+        "nextPageToken should not be empty",
+        "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan",
+        "type should not be empty"
+      ]
+    },
+    {
+      "testcase": 84,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": "",
+        "nextPageToken": ""
+      },
+      "missing": [
+        "invalid attachment type. This type not allowed for processing",
+        "nextPageToken invalid ulid"
+      ],
+      "extra": [
+        "nextPageToken invalid ulid",
+        "nextPageToken should not be empty",
+        "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan",
+        "type should not be empty"
+      ]
+    },
+    {
+      "testcase": 85,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": "",
+        "limit": "",
+        "nextPageToken": ""
+      },
+      "missing": [
+        "invalid attachment type. This type not allowed for processing",
+        "limit range from 1 to 500",
+        "nextPageToken invalid ulid"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "limit should not be empty",
+        "nextPageToken invalid ulid",
+        "nextPageToken should not be empty",
+        "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan",
+        "type should not be empty"
+      ]
+    },
+    {
+      "testcase": 86,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": "",
+        "limit": null,
+        "nextPageToken": ""
+      },
+      "missing": [
+        "invalid attachment type. This type not allowed for processing",
+        "nextPageToken invalid ulid"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "nextPageToken invalid ulid",
+        "nextPageToken should not be empty",
+        "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan",
+        "type should not be empty"
+      ]
+    },
+    {
+      "testcase": 87,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": "",
+        "limit": 1,
+        "nextPageToken": 123
+      },
+      "missing": [
+        "invalid attachment type. This type not allowed for processing",
+        "nextPageToken invalid ulid"
+      ],
+      "extra": [
+        "nextPageToken expected string, received number",
+        "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan",
+        "type should not be empty"
+      ]
+    },
+    {
+      "testcase": 88,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": "",
+        "limit": 1
+      },
+      "missing": [
+        "invalid attachment type. This type not allowed for processing"
+      ],
+      "extra": [
+        "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan",
+        "type should not be empty"
+      ]
+    },
+    {
+      "testcase": 89,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": "",
+        "limit": 1,
+        "nextPageToken": null
+      },
+      "missing": [
+        "invalid attachment type. This type not allowed for processing"
+      ],
+      "extra": [
+        "nextPageToken expected string, received null",
+        "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan",
+        "type should not be empty"
+      ]
+    },
+    {
+      "testcase": 90,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": "",
+        "limit": 1,
+        "nextPageToken": "invalid_ULID"
+      },
+      "missing": [
+        "invalid attachment type. This type not allowed for processing",
+        "nextPageToken invalid ulid"
+      ],
+      "extra": [
+        "nextPageToken invalid ulid",
+        "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan",
+        "type should not be empty"
+      ]
+    },
+    {
+      "testcase": 91,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": null,
+        "limit": "invalid_number",
+        "nextPageToken": ""
+      },
+      "missing": [
+        "limit expected number, received nan",
+        "nextPageToken invalid ulid",
+        "type required"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "nextPageToken invalid ulid",
+        "nextPageToken should not be empty",
+        "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received null"
+      ]
+    },
+    {
+      "testcase": 92,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": null,
+        "limit": 0,
+        "nextPageToken": ""
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "nextPageToken invalid ulid",
+        "type required"
+      ],
+      "extra": [
+        "limit must be at least 1",
+        "nextPageToken invalid ulid",
+        "nextPageToken should not be empty",
+        "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received null"
+      ]
+    },
+    {
+      "testcase": 93,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": null,
+        "limit": 501,
+        "nextPageToken": ""
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "nextPageToken invalid ulid",
+        "type required"
+      ],
+      "extra": [
+        "limit must be at most 500",
+        "nextPageToken invalid ulid",
+        "nextPageToken should not be empty",
+        "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received null"
+      ]
+    },
+    {
+      "testcase": 94,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": null,
+        "nextPageToken": ""
+      },
+      "missing": [
+        "nextPageToken invalid ulid",
+        "type required"
+      ],
+      "extra": [
+        "nextPageToken invalid ulid",
+        "nextPageToken should not be empty",
+        "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received null"
+      ]
+    },
+    {
+      "testcase": 95,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": null,
+        "limit": "",
+        "nextPageToken": ""
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "nextPageToken invalid ulid",
+        "type required"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "limit should not be empty",
+        "nextPageToken invalid ulid",
+        "nextPageToken should not be empty",
+        "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received null"
+      ]
+    },
+    {
+      "testcase": 96,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": null,
+        "limit": null,
+        "nextPageToken": ""
+      },
+      "missing": [
+        "nextPageToken invalid ulid",
+        "type required"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "nextPageToken invalid ulid",
+        "nextPageToken should not be empty",
+        "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received null"
+      ]
+    },
+    {
+      "testcase": 97,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": null,
+        "limit": 1,
+        "nextPageToken": 123
+      },
+      "missing": [
+        "nextPageToken invalid ulid",
+        "type required"
+      ],
+      "extra": [
+        "nextPageToken expected string, received number",
+        "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received null"
+      ]
+    },
+    {
+      "testcase": 98,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": null,
+        "limit": 1
+      },
+      "missing": [
+        "type required"
+      ],
+      "extra": [
+        "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received null"
+      ]
+    },
+    {
+      "testcase": 99,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": null,
+        "limit": 1,
+        "nextPageToken": null
+      },
+      "missing": [
+        "type required"
+      ],
+      "extra": [
+        "nextPageToken expected string, received null",
+        "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received null"
+      ]
+    },
+    {
+      "testcase": 100,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": null,
+        "limit": 1,
+        "nextPageToken": "invalid_ULID"
+      },
+      "missing": [
+        "nextPageToken invalid ulid",
+        "type required"
+      ],
+      "extra": [
+        "nextPageToken invalid ulid",
+        "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received null"
+      ]
+    },
+    {
+      "testcase": 101,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": 1,
+        "limit": "invalid_number",
+        "nextPageToken": 123
+      },
+      "missing": [
+        "limit expected number, received nan",
+        "nextPageToken invalid ulid"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "nextPageToken expected string, received number"
+      ]
+    },
+    {
+      "testcase": 102,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": 1,
+        "limit": "invalid_number"
+      },
+      "missing": [
+        "limit expected number, received nan"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints"
+      ]
+    },
+    {
+      "testcase": 103,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": 1,
+        "limit": "invalid_number",
+        "nextPageToken": null
+      },
+      "missing": [
+        "limit expected number, received nan"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "nextPageToken expected string, received null"
+      ]
+    },
+    {
+      "testcase": 104,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": 1,
+        "limit": "invalid_number",
+        "nextPageToken": "invalid_ULID"
+      },
+      "missing": [
+        "limit expected number, received nan",
+        "nextPageToken invalid ulid"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "nextPageToken invalid ulid"
+      ]
+    },
+    {
+      "testcase": 105,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": 1,
+        "limit": 0,
+        "nextPageToken": 123
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "nextPageToken invalid ulid"
+      ],
+      "extra": [
+        "limit must be at least 1",
+        "nextPageToken expected string, received number"
+      ]
+    },
+    {
+      "testcase": 106,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": 1,
+        "limit": 0
+      },
+      "missing": [
+        "limit range from 1 to 500"
+      ],
+      "extra": [
+        "limit must be at least 1"
+      ]
+    },
+    {
+      "testcase": 107,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": 1,
+        "limit": 0,
+        "nextPageToken": null
+      },
+      "missing": [
+        "limit range from 1 to 500"
+      ],
+      "extra": [
+        "limit must be at least 1",
+        "nextPageToken expected string, received null"
+      ]
+    },
+    {
+      "testcase": 108,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": 1,
+        "limit": 0,
+        "nextPageToken": "invalid_ULID"
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "nextPageToken invalid ulid"
+      ],
+      "extra": [
+        "limit must be at least 1",
+        "nextPageToken invalid ulid"
+      ]
+    },
+    {
+      "testcase": 109,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": 1,
+        "limit": 501,
+        "nextPageToken": 123
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "nextPageToken invalid ulid"
+      ],
+      "extra": [
+        "limit must be at most 500",
+        "nextPageToken expected string, received number"
+      ]
+    },
+    {
+      "testcase": 110,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": 1,
+        "limit": 501
+      },
+      "missing": [
+        "limit range from 1 to 500"
+      ],
+      "extra": [
+        "limit must be at most 500"
+      ]
+    },
+    {
+      "testcase": 111,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": 1,
+        "limit": 501,
+        "nextPageToken": null
+      },
+      "missing": [
+        "limit range from 1 to 500"
+      ],
+      "extra": [
+        "limit must be at most 500",
+        "nextPageToken expected string, received null"
+      ]
+    },
+    {
+      "testcase": 112,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": 1,
+        "limit": 501,
+        "nextPageToken": "invalid_ULID"
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "nextPageToken invalid ulid"
+      ],
+      "extra": [
+        "limit must be at most 500",
+        "nextPageToken invalid ulid"
+      ]
+    },
+    {
+      "testcase": 113,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": 1,
+        "nextPageToken": 123
+      },
+      "missing": [
+        "nextPageToken invalid ulid"
+      ],
+      "extra": [
+        "nextPageToken expected string, received number"
+      ]
+    },
+    {
+      "testcase": 117,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": 1,
+        "limit": "",
+        "nextPageToken": 123
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "nextPageToken invalid ulid"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "limit should not be empty",
+        "nextPageToken expected string, received number"
+      ]
+    },
+    {
+      "testcase": 118,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": 1,
+        "limit": ""
+      },
+      "missing": [
+        "limit range from 1 to 500"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "limit should not be empty"
+      ]
+    },
+    {
+      "testcase": 119,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": 1,
+        "limit": "",
+        "nextPageToken": null
+      },
+      "missing": [
+        "limit range from 1 to 500"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "limit should not be empty",
+        "nextPageToken expected string, received null"
+      ]
+    },
+    {
+      "testcase": 120,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": 1,
+        "limit": "",
+        "nextPageToken": "invalid_ULID"
+      },
+      "missing": [
+        "limit range from 1 to 500",
+        "nextPageToken invalid ulid"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "limit should not be empty",
+        "nextPageToken invalid ulid"
+      ]
+    },
+    {
+      "testcase": 121,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": 1,
+        "limit": null,
+        "nextPageToken": 123
+      },
+      "missing": [
+        "nextPageToken invalid ulid"
+      ],
+      "extra": [
+        "limit must be a number conforming to the specified constraints",
+        "nextPageToken expected string, received number"
+      ]
+    }
+  ],
+  "codedTest": [
+    {
+      "testcase": 26,
+      "code": 200,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": 1,
+        "limit": 1
+      }
+    },
+    {
+      "testcase": 28,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": 1,
+        "limit": 1,
+        "nextPageToken": "invalid_ULID"
+      }
+    },
+    {
+      "testcase": 29,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "type": 1,
+        "limit": 1,
+        "nextPageToken": ""
+      }
+    },
+    {
+      "testcase": 30,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "type": "invalid_enum_value",
+        "limit": 1,
+        "nextPageToken": ""
+      }
+    },
+    {
+      "testcase": 31,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "type": "",
+        "limit": 1,
+        "nextPageToken": ""
+      }
+    },
+    {
+      "testcase": 32,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "type": null,
+        "limit": 1,
+        "nextPageToken": ""
+      }
+    },
+    {
+      "testcase": 33,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "type": 1,
+        "limit": "invalid_number",
+        "nextPageToken": ""
+      }
+    },
+    {
+      "testcase": 34,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "type": 1,
+        "limit": 0,
+        "nextPageToken": ""
+      }
+    },
+    {
+      "testcase": 35,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "type": 1,
+        "limit": 501,
+        "nextPageToken": ""
+      }
+    },
+    {
+      "testcase": 36,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "type": 1,
+        "nextPageToken": ""
+      }
+    },
+    {
+      "testcase": 37,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "type": 1,
+        "limit": "",
+        "nextPageToken": ""
+      }
+    },
+    {
+      "testcase": 38,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "type": 1,
+        "limit": null,
+        "nextPageToken": ""
+      }
+    },
+    {
+      "testcase": 39,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "type": 1,
+        "limit": 1,
+        "nextPageToken": 123
+      }
+    },
+    {
+      "testcase": 40,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "type": 1,
+        "limit": 1
+      }
+    },
+    {
+      "testcase": 41,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "type": 1,
+        "limit": 1,
+        "nextPageToken": null
+      }
+    },
+    {
+      "testcase": 42,
+      "code": 403,
+      "body": {
+        "userId": "",
+        "type": 1,
+        "limit": 1,
+        "nextPageToken": "invalid_ULID"
+      }
+    },
+    {
+      "testcase": 43,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "type": 1,
+        "limit": 1,
+        "nextPageToken": ""
+      }
+    },
+    {
+      "testcase": 44,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "type": "invalid_enum_value",
+        "limit": 1,
+        "nextPageToken": ""
+      }
+    },
+    {
+      "testcase": 45,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "type": "",
+        "limit": 1,
+        "nextPageToken": ""
+      }
+    },
+    {
+      "testcase": 46,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "type": null,
+        "limit": 1,
+        "nextPageToken": ""
+      }
+    },
+    {
+      "testcase": 47,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "type": 1,
+        "limit": "invalid_number",
+        "nextPageToken": ""
+      }
+    },
+    {
+      "testcase": 48,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "type": 1,
+        "limit": 0,
+        "nextPageToken": ""
+      }
+    },
+    {
+      "testcase": 49,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "type": 1,
+        "limit": 501,
+        "nextPageToken": ""
+      }
+    },
+    {
+      "testcase": 50,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "type": 1,
+        "nextPageToken": ""
+      }
+    },
+    {
+      "testcase": 51,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "type": 1,
+        "limit": "",
+        "nextPageToken": ""
+      }
+    },
+    {
+      "testcase": 52,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "type": 1,
+        "limit": null,
+        "nextPageToken": ""
+      }
+    },
+    {
+      "testcase": 53,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "type": 1,
+        "limit": 1,
+        "nextPageToken": 123
+      }
+    },
+    {
+      "testcase": 54,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "type": 1,
+        "limit": 1
+      }
+    },
+    {
+      "testcase": 55,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "type": 1,
+        "limit": 1,
+        "nextPageToken": null
+      }
+    },
+    {
+      "testcase": 56,
+      "code": 403,
+      "body": {
+        "userId": null,
+        "type": 1,
+        "limit": 1,
+        "nextPageToken": "invalid_ULID"
+      }
+    },
+    {
+      "testcase": 57,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "type": 1,
+        "limit": 1,
+        "nextPageToken": ""
+      }
+    },
+    {
+      "testcase": 58,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "type": "invalid_enum_value",
+        "limit": 1,
+        "nextPageToken": ""
+      }
+    },
+    {
+      "testcase": 59,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "type": "",
+        "limit": 1,
+        "nextPageToken": ""
+      }
+    },
+    {
+      "testcase": 60,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "type": null,
+        "limit": 1,
+        "nextPageToken": ""
+      }
+    },
+    {
+      "testcase": 61,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "type": 1,
+        "limit": "invalid_number",
+        "nextPageToken": ""
+      }
+    },
+    {
+      "testcase": 62,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "type": 1,
+        "limit": 0,
+        "nextPageToken": ""
+      }
+    },
+    {
+      "testcase": 63,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "type": 1,
+        "limit": 501,
+        "nextPageToken": ""
+      }
+    },
+    {
+      "testcase": 64,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "type": 1,
+        "nextPageToken": ""
+      }
+    },
+    {
+      "testcase": 65,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "type": 1,
+        "limit": "",
+        "nextPageToken": ""
+      }
+    },
+    {
+      "testcase": 66,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "type": 1,
+        "limit": null,
+        "nextPageToken": ""
+      }
+    },
+    {
+      "testcase": 67,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "type": 1,
+        "limit": 1,
+        "nextPageToken": 123
+      }
+    },
+    {
+      "testcase": 68,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "type": 1,
+        "limit": 1
+      }
+    },
+    {
+      "testcase": 69,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "type": 1,
+        "limit": 1,
+        "nextPageToken": null
+      }
+    },
+    {
+      "testcase": 70,
+      "code": 403,
+      "body": {
+        "userId": "invalid_value",
+        "type": 1,
+        "limit": 1,
+        "nextPageToken": "invalid_ULID"
+      }
+    },
+    {
+      "testcase": 78,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": "invalid_enum_value",
+        "limit": 1
+      }
+    },
+    {
+      "testcase": 80,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": "invalid_enum_value",
+        "limit": 1,
+        "nextPageToken": "invalid_ULID"
+      }
+    },
+    {
+      "testcase": 114,
+      "code": 200,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": 1
+      }
+    },
+    {
+      "testcase": 116,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": 1,
+        "nextPageToken": "invalid_ULID"
+      }
+    }
+  ],
+  "warnings": [
+    {
+      "testcase": 15,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": 1,
+        "limit": 1,
+        "nextPageToken": ""
+      },
+      "actualErrors": [
+        "nextPageToken invalid ulid"
+      ],
+      "expectedErrors": [
+        "nextPageToken invalid ulid",
+        "nextPageToken should not be empty"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 16,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": "invalid_enum_value",
+        "limit": 1,
+        "nextPageToken": ""
+      },
+      "actualErrors": [
+        "nextPageToken invalid ulid",
+        "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan"
+      ],
+      "expectedErrors": [
+        "nextPageToken invalid ulid",
+        "nextPageToken should not be empty",
+        "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 22,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": 1,
+        "nextPageToken": ""
+      },
+      "actualErrors": [
+        "nextPageToken invalid ulid"
+      ],
+      "expectedErrors": [
+        "nextPageToken invalid ulid",
+        "nextPageToken should not be empty"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 24,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": 1,
+        "limit": null,
+        "nextPageToken": ""
+      },
+      "actualErrors": [
+        "nextPageToken invalid ulid"
+      ],
+      "expectedErrors": [
+        "limit must be a number conforming to the specified constraints",
+        "nextPageToken invalid ulid",
+        "nextPageToken should not be empty"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 27,
+      "code": 200,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": 1,
+        "limit": 1,
+        "nextPageToken": null
+      },
+      "actualErrors": [],
+      "expectedErrors": [
+        "nextPageToken expected string, received null"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 74,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": "invalid_enum_value",
+        "nextPageToken": ""
+      },
+      "actualErrors": [
+        "nextPageToken invalid ulid",
+        "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan"
+      ],
+      "expectedErrors": [
+        "nextPageToken invalid ulid",
+        "nextPageToken should not be empty",
+        "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 76,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": "invalid_enum_value",
+        "limit": null,
+        "nextPageToken": ""
+      },
+      "actualErrors": [
+        "nextPageToken invalid ulid",
+        "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan"
+      ],
+      "expectedErrors": [
+        "limit must be a number conforming to the specified constraints",
+        "nextPageToken invalid ulid",
+        "nextPageToken should not be empty",
+        "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 79,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": "invalid_enum_value",
+        "limit": 1,
+        "nextPageToken": null
+      },
+      "actualErrors": [
+        "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan"
+      ],
+      "expectedErrors": [
+        "nextPageToken expected string, received null",
+        "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 115,
+      "code": 200,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": 1,
+        "nextPageToken": null
+      },
+      "actualErrors": [],
+      "expectedErrors": [
+        "nextPageToken expected string, received null"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 122,
+      "code": 200,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": 1,
+        "limit": null
+      },
+      "actualErrors": [],
+      "expectedErrors": [
+        "limit must be a number conforming to the specified constraints"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 123,
+      "code": 200,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": 1,
+        "limit": null,
+        "nextPageToken": null
+      },
+      "actualErrors": [],
+      "expectedErrors": [
+        "limit must be a number conforming to the specified constraints",
+        "nextPageToken expected string, received null"
+      ],
+      "message": "Actual errors includes of expected errors"
+    },
+    {
+      "testcase": 124,
+      "code": 400,
+      "body": {
+        "userId": "01JZ4HQF0YYR8QEH84PB3HAHYQ",
+        "type": 1,
+        "limit": null,
+        "nextPageToken": "invalid_ULID"
+      },
+      "actualErrors": [
+        "nextPageToken invalid ulid"
+      ],
+      "expectedErrors": [
+        "limit must be a number conforming to the specified constraints",
+        "nextPageToken invalid ulid"
+      ],
+      "message": "Actual errors includes of expected errors"
+    }
+  ],
+  "passedTests": 48,
+  "totalTests": 124,
+  "failedStep": []
+}

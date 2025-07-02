@@ -1,0 +1,30 @@
+=== Request Test Report for list-dm-media ===
+• Host: N/A
+• Endpoint: N/A
+• Date: 02/07/2025, 10:01:53
+
+=== Execution Steps ===
+
+=== Test Summary ===
+✅ Passed: 0
+❌ Failed: 0
+⚠️ Warnings: 0
+📊 Total: 0
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 0
+ 🟢 201: 0
+ 🟠 400: 0
+ 🟠 403: 0
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Warnings ===
+✅ No warnings
+
+=== Unique Errors ===
+
+[DTO Validation Issues]
+
+=== End of Report ===

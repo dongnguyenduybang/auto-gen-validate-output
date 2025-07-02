@@ -2,6 +2,9 @@ import { METHOD } from './method.enum';
 import { APIPath } from './path.enum';
 
 export enum ACTION {
+
+  LIST_DM_MEDIA = 'listDmMedia',
+  LIST_MEDIA = 'listMedia',
   SUBSCRIBE_ALL = 'subscribeAll',
   TURNON_GLOBAL_NOTIFICATION = 'turnonGlobalNotification',
   TURNOFF_GLOBAL_NOTIFICATION = 'turnoffGlobalNotification',
@@ -130,6 +133,14 @@ export const ACTION_CONFIG: Record<ACTION, { path: string; method: METHOD }> = {
   [ACTION.DELETE_USER_AVATAR]: {
     path: APIPath.UserProfile.DeleteUserAvatar,
     method: METHOD.DELETE,
+  },
+  [ACTION.LIST_DM_MEDIA]: {
+    path: APIPath.ViewMessage.ListDmMedia,
+    method: METHOD.GET,
+  },
+  [ACTION.LIST_MEDIA]: {
+    path: APIPath.ViewMessage.ListMedia,
+    method: METHOD.GET,
   },
   [ACTION.UPDATE_USER_EMAIL]: {
     path: APIPath.UserProfile.UpdateUserEmail,

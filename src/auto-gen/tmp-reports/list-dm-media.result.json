@@ -1,0 +1,13 @@
+{
+  "reportContent": "=== Request Test Report for list-dm-media ===\n• Host: N/A\n• Endpoint: N/A\n• Date: 02/07/2025, 10:01:53\n\n=== Execution Steps ===\n\n=== Test Summary ===\n✅ Passed: 0\n❌ Failed: 0\n⚠️ Warnings: 0\n📊 Total: 0\n\n=== System Metrics ===\n▧ Status Code Distribution:\n 🟢 200: 0\n 🟢 201: 0\n 🟠 400: 0\n 🟠 403: 0\n 🟠 404: 0\n 🔴 500: 0\n\n=== Warnings ===\n✅ No warnings\n\n=== Unique Errors ===\n\n[DTO Validation Issues]\n\n=== End of Report ===",
+  "reportPath": "C:\\Users\\duy\\Downloads\\rac\\auto-gen-validate-output\\src\\auto-gen\\test-requests\\.reports\\success-reports\\list-dm-media\\list-dm-media-combined-10-01-02-07-2025.report.txt",
+  "summary": {
+    "className": "list-dm-media",
+    "totalTests": 0,
+    "passedTests": 0,
+    "failedTests": 0,
+    "warnings": 0,
+    "isSuccess": true
+  },
+  "noFailedTests": true
+}

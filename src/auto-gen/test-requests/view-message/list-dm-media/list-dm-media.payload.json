@@ -1,0 +1,1448 @@
+[
+    {
+        "body": {
+            "userId": 123,
+            "type": 1,
+            "limit": 1,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "type": "invalid_enum_value",
+            "limit": 1,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "type": "",
+            "limit": 1,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "type": null,
+            "limit": 1,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "type": 1,
+            "limit": "invalid_number",
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "type": 1,
+            "limit": 0,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "type": 1,
+            "limit": 501,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "type": 1,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "type": 1,
+            "limit": "",
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "type": 1,
+            "limit": null,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "type": 1,
+            "limit": 1,
+            "nextPageToken": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "type": 1,
+            "limit": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "type": 1,
+            "limit": 1,
+            "nextPageToken": null
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "type": 1,
+            "limit": 1,
+            "nextPageToken": "invalid_ULID"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": 1,
+            "limit": 1,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "nextPageToken should not be empty",
+            "nextPageToken invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": "invalid_enum_value",
+            "limit": 1,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan",
+            "nextPageToken should not be empty",
+            "nextPageToken invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": "",
+            "limit": 1,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "type should not be empty",
+            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan",
+            "nextPageToken should not be empty",
+            "nextPageToken invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": null,
+            "limit": 1,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received null",
+            "nextPageToken should not be empty",
+            "nextPageToken invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": 1,
+            "limit": "invalid_number",
+            "nextPageToken": ""
+        },
+        "expects": [
+            "limit must be a number conforming to the specified constraints",
+            "nextPageToken should not be empty",
+            "nextPageToken invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": 1,
+            "limit": 0,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "limit must be at least 1",
+            "nextPageToken should not be empty",
+            "nextPageToken invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": 1,
+            "limit": 501,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "limit must be at most 500",
+            "nextPageToken should not be empty",
+            "nextPageToken invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": 1,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "nextPageToken should not be empty",
+            "nextPageToken invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": 1,
+            "limit": "",
+            "nextPageToken": ""
+        },
+        "expects": [
+            "limit should not be empty",
+            "limit must be a number conforming to the specified constraints",
+            "nextPageToken should not be empty",
+            "nextPageToken invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": 1,
+            "limit": null,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "limit must be a number conforming to the specified constraints",
+            "nextPageToken should not be empty",
+            "nextPageToken invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": 1,
+            "limit": 1,
+            "nextPageToken": 123
+        },
+        "expects": [
+            "nextPageToken expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": 1,
+            "limit": 1
+        },
+        "expects": []
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": 1,
+            "limit": 1,
+            "nextPageToken": null
+        },
+        "expects": [
+            "nextPageToken expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": 1,
+            "limit": 1,
+            "nextPageToken": "invalid_ULID"
+        },
+        "expects": [
+            "nextPageToken invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "type": 1,
+            "limit": 1,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "type": "invalid_enum_value",
+            "limit": 1,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "type": "",
+            "limit": 1,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "type": null,
+            "limit": 1,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "type": 1,
+            "limit": "invalid_number",
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "type": 1,
+            "limit": 0,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "type": 1,
+            "limit": 501,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "type": 1,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "type": 1,
+            "limit": "",
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "type": 1,
+            "limit": null,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "type": 1,
+            "limit": 1,
+            "nextPageToken": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "type": 1,
+            "limit": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "type": 1,
+            "limit": 1,
+            "nextPageToken": null
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "type": 1,
+            "limit": 1,
+            "nextPageToken": "invalid_ULID"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "type": 1,
+            "limit": 1,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "type": "invalid_enum_value",
+            "limit": 1,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "type": "",
+            "limit": 1,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "type": null,
+            "limit": 1,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "type": 1,
+            "limit": "invalid_number",
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "type": 1,
+            "limit": 0,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "type": 1,
+            "limit": 501,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "type": 1,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "type": 1,
+            "limit": "",
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "type": 1,
+            "limit": null,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "type": 1,
+            "limit": 1,
+            "nextPageToken": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "type": 1,
+            "limit": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "type": 1,
+            "limit": 1,
+            "nextPageToken": null
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "type": 1,
+            "limit": 1,
+            "nextPageToken": "invalid_ULID"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "type": 1,
+            "limit": 1,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "type": "invalid_enum_value",
+            "limit": 1,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "type": "",
+            "limit": 1,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "type": null,
+            "limit": 1,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "type": 1,
+            "limit": "invalid_number",
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "type": 1,
+            "limit": 0,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "type": 1,
+            "limit": 501,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "type": 1,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "type": 1,
+            "limit": "",
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "type": 1,
+            "limit": null,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "type": 1,
+            "limit": 1,
+            "nextPageToken": 123
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "type": 1,
+            "limit": 1
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "type": 1,
+            "limit": 1,
+            "nextPageToken": null
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "type": 1,
+            "limit": 1,
+            "nextPageToken": "invalid_ULID"
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": "invalid_enum_value",
+            "limit": "invalid_number",
+            "nextPageToken": ""
+        },
+        "expects": [
+            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan",
+            "limit must be a number conforming to the specified constraints",
+            "nextPageToken should not be empty",
+            "nextPageToken invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": "invalid_enum_value",
+            "limit": 0,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan",
+            "limit must be at least 1",
+            "nextPageToken should not be empty",
+            "nextPageToken invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": "invalid_enum_value",
+            "limit": 501,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan",
+            "limit must be at most 500",
+            "nextPageToken should not be empty",
+            "nextPageToken invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": "invalid_enum_value",
+            "nextPageToken": ""
+        },
+        "expects": [
+            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan",
+            "nextPageToken should not be empty",
+            "nextPageToken invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": "invalid_enum_value",
+            "limit": "",
+            "nextPageToken": ""
+        },
+        "expects": [
+            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan",
+            "limit should not be empty",
+            "limit must be a number conforming to the specified constraints",
+            "nextPageToken should not be empty",
+            "nextPageToken invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": "invalid_enum_value",
+            "limit": null,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan",
+            "limit must be a number conforming to the specified constraints",
+            "nextPageToken should not be empty",
+            "nextPageToken invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": "invalid_enum_value",
+            "limit": 1,
+            "nextPageToken": 123
+        },
+        "expects": [
+            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan",
+            "nextPageToken expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": "invalid_enum_value",
+            "limit": 1
+        },
+        "expects": [
+            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": "invalid_enum_value",
+            "limit": 1,
+            "nextPageToken": null
+        },
+        "expects": [
+            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan",
+            "nextPageToken expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": "invalid_enum_value",
+            "limit": 1,
+            "nextPageToken": "invalid_ULID"
+        },
+        "expects": [
+            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan",
+            "nextPageToken invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": "",
+            "limit": "invalid_number",
+            "nextPageToken": ""
+        },
+        "expects": [
+            "type should not be empty",
+            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan",
+            "limit must be a number conforming to the specified constraints",
+            "nextPageToken should not be empty",
+            "nextPageToken invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": "",
+            "limit": 0,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "type should not be empty",
+            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan",
+            "limit must be at least 1",
+            "nextPageToken should not be empty",
+            "nextPageToken invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": "",
+            "limit": 501,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "type should not be empty",
+            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan",
+            "limit must be at most 500",
+            "nextPageToken should not be empty",
+            "nextPageToken invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": "",
+            "nextPageToken": ""
+        },
+        "expects": [
+            "type should not be empty",
+            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan",
+            "nextPageToken should not be empty",
+            "nextPageToken invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": "",
+            "limit": "",
+            "nextPageToken": ""
+        },
+        "expects": [
+            "type should not be empty",
+            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan",
+            "limit should not be empty",
+            "limit must be a number conforming to the specified constraints",
+            "nextPageToken should not be empty",
+            "nextPageToken invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": "",
+            "limit": null,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "type should not be empty",
+            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan",
+            "limit must be a number conforming to the specified constraints",
+            "nextPageToken should not be empty",
+            "nextPageToken invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": "",
+            "limit": 1,
+            "nextPageToken": 123
+        },
+        "expects": [
+            "type should not be empty",
+            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan",
+            "nextPageToken expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": "",
+            "limit": 1
+        },
+        "expects": [
+            "type should not be empty",
+            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": "",
+            "limit": 1,
+            "nextPageToken": null
+        },
+        "expects": [
+            "type should not be empty",
+            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan",
+            "nextPageToken expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": "",
+            "limit": 1,
+            "nextPageToken": "invalid_ULID"
+        },
+        "expects": [
+            "type should not be empty",
+            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan",
+            "nextPageToken invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": null,
+            "limit": "invalid_number",
+            "nextPageToken": ""
+        },
+        "expects": [
+            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received null",
+            "limit must be a number conforming to the specified constraints",
+            "nextPageToken should not be empty",
+            "nextPageToken invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": null,
+            "limit": 0,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received null",
+            "limit must be at least 1",
+            "nextPageToken should not be empty",
+            "nextPageToken invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": null,
+            "limit": 501,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received null",
+            "limit must be at most 500",
+            "nextPageToken should not be empty",
+            "nextPageToken invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": null,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received null",
+            "nextPageToken should not be empty",
+            "nextPageToken invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": null,
+            "limit": "",
+            "nextPageToken": ""
+        },
+        "expects": [
+            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received null",
+            "limit should not be empty",
+            "limit must be a number conforming to the specified constraints",
+            "nextPageToken should not be empty",
+            "nextPageToken invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": null,
+            "limit": null,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received null",
+            "limit must be a number conforming to the specified constraints",
+            "nextPageToken should not be empty",
+            "nextPageToken invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": null,
+            "limit": 1,
+            "nextPageToken": 123
+        },
+        "expects": [
+            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received null",
+            "nextPageToken expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": null,
+            "limit": 1
+        },
+        "expects": [
+            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received null"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": null,
+            "limit": 1,
+            "nextPageToken": null
+        },
+        "expects": [
+            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received null",
+            "nextPageToken expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": null,
+            "limit": 1,
+            "nextPageToken": "invalid_ULID"
+        },
+        "expects": [
+            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received null",
+            "nextPageToken invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": 1,
+            "limit": "invalid_number",
+            "nextPageToken": 123
+        },
+        "expects": [
+            "limit must be a number conforming to the specified constraints",
+            "nextPageToken expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": 1,
+            "limit": "invalid_number"
+        },
+        "expects": [
+            "limit must be a number conforming to the specified constraints"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": 1,
+            "limit": "invalid_number",
+            "nextPageToken": null
+        },
+        "expects": [
+            "limit must be a number conforming to the specified constraints",
+            "nextPageToken expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": 1,
+            "limit": "invalid_number",
+            "nextPageToken": "invalid_ULID"
+        },
+        "expects": [
+            "limit must be a number conforming to the specified constraints",
+            "nextPageToken invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": 1,
+            "limit": 0,
+            "nextPageToken": 123
+        },
+        "expects": [
+            "limit must be at least 1",
+            "nextPageToken expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": 1,
+            "limit": 0
+        },
+        "expects": [
+            "limit must be at least 1"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": 1,
+            "limit": 0,
+            "nextPageToken": null
+        },
+        "expects": [
+            "limit must be at least 1",
+            "nextPageToken expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": 1,
+            "limit": 0,
+            "nextPageToken": "invalid_ULID"
+        },
+        "expects": [
+            "limit must be at least 1",
+            "nextPageToken invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": 1,
+            "limit": 501,
+            "nextPageToken": 123
+        },
+        "expects": [
+            "limit must be at most 500",
+            "nextPageToken expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": 1,
+            "limit": 501
+        },
+        "expects": [
+            "limit must be at most 500"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": 1,
+            "limit": 501,
+            "nextPageToken": null
+        },
+        "expects": [
+            "limit must be at most 500",
+            "nextPageToken expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": 1,
+            "limit": 501,
+            "nextPageToken": "invalid_ULID"
+        },
+        "expects": [
+            "limit must be at most 500",
+            "nextPageToken invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": 1,
+            "nextPageToken": 123
+        },
+        "expects": [
+            "nextPageToken expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": 1
+        },
+        "expects": []
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": 1,
+            "nextPageToken": null
+        },
+        "expects": [
+            "nextPageToken expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": 1,
+            "nextPageToken": "invalid_ULID"
+        },
+        "expects": [
+            "nextPageToken invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": 1,
+            "limit": "",
+            "nextPageToken": 123
+        },
+        "expects": [
+            "limit should not be empty",
+            "limit must be a number conforming to the specified constraints",
+            "nextPageToken expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": 1,
+            "limit": ""
+        },
+        "expects": [
+            "limit should not be empty",
+            "limit must be a number conforming to the specified constraints"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": 1,
+            "limit": "",
+            "nextPageToken": null
+        },
+        "expects": [
+            "limit should not be empty",
+            "limit must be a number conforming to the specified constraints",
+            "nextPageToken expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": 1,
+            "limit": "",
+            "nextPageToken": "invalid_ULID"
+        },
+        "expects": [
+            "limit should not be empty",
+            "limit must be a number conforming to the specified constraints",
+            "nextPageToken invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": 1,
+            "limit": null,
+            "nextPageToken": 123
+        },
+        "expects": [
+            "limit must be a number conforming to the specified constraints",
+            "nextPageToken expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": 1,
+            "limit": null
+        },
+        "expects": [
+            "limit must be a number conforming to the specified constraints"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": 1,
+            "limit": null,
+            "nextPageToken": null
+        },
+        "expects": [
+            "limit must be a number conforming to the specified constraints",
+            "nextPageToken expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": 1,
+            "limit": null,
+            "nextPageToken": "invalid_ULID"
+        },
+        "expects": [
+            "limit must be a number conforming to the specified constraints",
+            "nextPageToken invalid ulid"
+        ]
+    }
+]
