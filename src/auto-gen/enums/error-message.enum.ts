@@ -9,7 +9,7 @@ export enum ErrorMessage {
   MAX = 'must be at most',
   MIN_ARRAY = 'array must contain at least',
   MAX_ARRAY = 'array must contain at most',
-  INVALID_TYPE_NUMBER = 'must be a number conforming to the specified constraints',
+  INVALID_TYPE_NUMBER = 'expected number, received',
   INVALID_TYPE_STRING = 'expected string, received',
   INVALID_TYPE_BOOLEAN = 'expected boolean, received',
   INVALID_TYPE_ARRAY = 'expected array, received',
