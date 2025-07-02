@@ -101,12 +101,12 @@ const requestReportTemplate = (
     '',
     '=== Execution Steps ===',
     ...failedStep.map((step, index) => {
-      const parsedError = step.error ? JSON.parse(step.error) : [];
-      const errorDetails = parsedError.length
-        ? `\n     └─ ${parsedError.join('\n       ')}`
-        : '';
-      const typeLine = step.type ? `\n     type: ${step.type}` : '';
-      return `  ${index + 1}. [${step.status ? '✅ PASSED' : '❌ FAILED'}] ${step.stepName}${typeLine}${errorDetails}`;
+      // const parsedError = step.error ? JSON.parse(step.error) : [];
+      // const errorDetails = parsedError.length
+      //   ? `\n     └─ ${parsedError.join('\n       ')}`
+      //   : '';
+      // const typeLine = step.type ? `\n     type: ${step.type}` : '';
+      // return `  ${index + 1}. [${step.status ? '✅ PASSED' : '❌ FAILED'}] ${step.stepName}${typeLine}${errorDetails}`;
     }),
 
     '',
@@ -126,15 +126,15 @@ const requestReportTemplate = (
     ` 🔴 500: ${summary.statusCodes[500] || 0}`,
     '',
     '=== Warnings ===',
-    ...(warnings.length > 0 
+    ...(warnings.length > 0
       ? warnings.map((warning, index) => [
-          ` 🟠 ${index + 1}. Case #${warning.testcase}`,
-          `     ├─ Status: ${warning.code || 'N/A'}`,
-          `     ├─ Body: ${JSON.stringify(warning.body) || 'None'}`,
-          `     ├─ Actual Errors: ${warning.actualErrors?.join(', ') || 'None'}`,
-          `     ├─ Expected Errors: ${warning.expectedErrors?.join(', ') || 'None'}`,
-          `     └─ Message: ${warning.message || 'No details'}`,
-        ].join('\n'))
+        ` 🟠 ${index + 1}. Case #${warning.testcase}`,
+        `     ├─ Status: ${warning.code || 'N/A'}`,
+        `     ├─ Body: ${JSON.stringify(warning.body) || 'None'}`,
+        `     ├─ Actual Errors: ${warning.actualErrors?.join(', ') || 'None'}`,
+        `     ├─ Expected Errors: ${warning.expectedErrors?.join(', ') || 'None'}`,
+        `     └─ Message: ${warning.message || 'No details'}`,
+      ].join('\n'))
       : ['✅ No warnings']
     ),
     '',
@@ -424,3 +424,18 @@ function formatErrorDetails(error: Record<string, Entry[]>): string {
 
 //   return `    └─ Message: ${String(error)}`;
 // };
+
+const formatError = (error: any) => {
+  if (!error) return [];
+  if (typeof error === 'string') {
+    try {
+      return JSON.parse(error);
+    } catch {
+      return [error]; // Return as array with single item if not valid JSON
+    }
+  } else {
+    return error;
+  }
+
+  return [JSON.stringify(error)]; // Convert object to string if it's not already
+};

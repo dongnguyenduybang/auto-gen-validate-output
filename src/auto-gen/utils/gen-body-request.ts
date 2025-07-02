@@ -34,7 +34,6 @@ export async function genBodyRequest(dtoName: string) {
 
       const file = getMatchedFilePaths([folder]);
       const fileMap = groupFilesByName(file);
-
       for (const [className, { dtoPath, requestPath }] of Object.entries(fileMap)) {
         if (!dtoPath) {
           console.warn(`Missing .dto file for class: ${className}`);
@@ -42,10 +41,10 @@ export async function genBodyRequest(dtoName: string) {
         }
 
         try {
+
           // Load DTO class (phần này giữ nguyên)
           delete require.cache[require.resolve(dtoPath)];
           const dtoModule = require(dtoPath);
-
           const classNameCapitalized = className
             .split('-')
             .map((part) => part.charAt(0).toUpperCase() + part.slice(1))

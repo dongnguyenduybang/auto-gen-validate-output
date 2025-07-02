@@ -65,6 +65,8 @@ export const APIPath = {
     GetPinnedMessage: '/MessageView/GetPinnedMessage',
     GetPinnedDMMessage: '/MessageView/GetPinnedDMMessage',
     ListMessagesFragment: '/MessageView/ListMessageFragments',
+    ListDmMedia: '/MessageView/ListDMMedia',
+    ListMedia: '/MessageView/ListMedia'
   },
   ViewUser: {
     GetUser: '/UserView/GetUser',

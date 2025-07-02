@@ -267,7 +267,6 @@ export async function interactiveCLI(): Promise<void> {
     }
 
     const selectedPaths = await selectFoldersRecursive(false, type);
-    console.log('ssss',selectedPaths)
     if (selectedPaths.length === 0) {
       continue;
     }

@@ -46,7 +46,7 @@ async function generateSpecContent(
   return `
     import fs from 'fs';
     import path from 'path';
-    import { summaryFields, resolveCallAPI, resolveVariables } from '${utilsImportPath}/helper';
+    import { summaryFields, resolveCallAPI, resolveVariables, findReportsDirectory } from '${utilsImportPath}/helper';
     import { TestResult } from '${utilsImportPath}/declarations';
     import { executeSteps } from '${utilsImportPath}/text-execute-test';
     import { TestContext } from '${utilsImportPath}/text-context';
@@ -281,10 +281,8 @@ async function generateSpecContent(
             totalTests: totalTests,
             failedStep: [...failedStep]
           };
-          const reportDir = path.join(__dirname, '../../../../tmp-reports');
-          if (!fs.existsSync(reportDir)) {
-            fs.mkdirSync(reportDir, { recursive: true });
-          }
+          const currentFileDir = __dirname; // Hoặc đường dẫn file hiện tại
+                  const reportDir = findReportsDirectory(currentFileDir);
           const chunkNumber = ${chunkNumber};
           const fileName = '${className}' + (chunkNumber ? \`-chunk-${chunkNumber}\` : '') + '.result.json';
           const filePath = path.join(reportDir, fileName);

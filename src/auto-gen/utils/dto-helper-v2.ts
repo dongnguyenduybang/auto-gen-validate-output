@@ -294,7 +294,7 @@ export function generateErrorVariantsForField(
 
   // 5. Vi phạm kích thước mảng
 
-  if (!decorators['optional']) {
+  if (decorators['optional']) {
     variants.push(undefined);
   }
 

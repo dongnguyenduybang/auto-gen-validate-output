@@ -9,6 +9,17 @@ import {
 } from '../response';
 import { TestContext } from './text-context';
 
+export interface GenRequestOptions {
+    beforeAll?: any[];
+    beforeEach?: any[];
+    afterAll?: any[];
+    afterEach?: any[];
+}
+
+export interface RequestHeaders {
+    [key: string]: string;
+}
+
 export interface ValidationError {
   path: string;
   expected: string;
@@ -57,7 +68,9 @@ export interface SagaTestSuite {
 
 export interface RequestTestSuite {
   action: string;
-  headers: Record<string, string>;
+  dtoName: string;
+  cluster: string;
+  headers: object;
   body: Object;
   options: FirstStep[];
 }

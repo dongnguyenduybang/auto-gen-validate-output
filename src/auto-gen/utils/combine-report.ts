@@ -137,61 +137,71 @@ async function combineReports(className: string): Promise<{
   noFailedTests: boolean;
 }> {
   const reportDir = path.join(__dirname, '../tmp-reports');
-  const reportFiles = fs.readdirSync(reportDir)
-    .filter(file => file === `${className}.result.json`);
-
-  if (reportFiles.length === 0) {
-    const errorMsg = `No report files found for ${className}`;
-    console.error(errorMsg);
-    throw new Error(errorMsg);
-  }
-
-  const results = parseTestResults(reportDir, reportFiles);
-  const noFailedTests = hasNoFailedTests(results);
-
-  const combinedFailedTests = results.map(extractFailedTests).flat();
-  const combinedCodedTest = results.map(extractCodedTests).flat();
-  const combinedFailedStep = results.map(extractFailedSteps).flat();
-  const combinedWarnings = results.map(r => Array.isArray(r.warnings) ? r.warnings : []).flat();
-  const pathRequest = results.map(extractPaths).flat();
-
-  const totalPassedTests = sumByField(results, 'passedTests');
-  const totalTests = sumByField(results, 'totalTests');
-
-  const summary = generateSummary(combinedCodedTest, combinedFailedTests);
-
-  const reportContent = combinedReportTemplate(
-    className,
-    globalThis.urls,
-    pathRequest.join(', '),
-    combinedFailedStep,
-    totalPassedTests,
-    combinedFailedTests,
-    totalTests,
-    summary,
-    'request',
-    combinedWarnings
-  );
-
-  const outputBaseDir = path.join(__dirname, '../test-requests/.reports');
-  const outputDir = path.join(
-    outputBaseDir,
-    noFailedTests ? 'success-reports' : 'failed-reports',
-    className
-  );
-
-  ensureDirExists(outputDir);
-
-  const reportFileName = `${className}-combined-${getTime()}.report.txt`;
-
-  const reportPath = path.join(outputDir, reportFileName);
 
   try {
+    const reportFiles = fs.readdirSync(reportDir)
+      .filter(file => file === `${className}.result.json`);
+
+    if (reportFiles.length === 0) {
+      throw new Error(`No report files found for ${className}`);
+    }
+
+    const results = parseTestResults(reportDir, reportFiles)
+
+    // Sanitize data before processing
+    const sanitizedResults = results.map(result => ({
+      ...result,
+      failedTests: Array.isArray(result.failedTests) ? result.failedTests : [],
+      codedTest: Array.isArray(result.codedTest) ? result.codedTest : [],
+      allSteps: Array.isArray(result.allSteps) ? result.allSteps : [],
+      warnings: Array.isArray(result.warnings) ? result.warnings : [],
+    }));
+
+    const noFailedTests = hasNoFailedTests(sanitizedResults);
+
+    const combinedFailedTests = sanitizedResults.map(extractFailedTests).flat();
+    const combinedCodedTest = sanitizedResults.map(extractCodedTests).flat();
+    const combinedFailedStep = sanitizedResults.map(extractFailedSteps).flat();
+    const combinedWarnings = sanitizedResults.map(r => r.warnings).flat();
+    const pathRequest = sanitizedResults.map(extractPaths).filter(Boolean);
+
+    const totalPassedTests = sumByField(sanitizedResults, 'passedTests');
+    const totalTests = sumByField(sanitizedResults, 'totalTests');
+
+    const summary = generateSummary(combinedCodedTest, combinedFailedTests);
+
+    const reportContent = combinedReportTemplate(
+      className,
+      globalThis.urls || {},
+      pathRequest.join(', '),
+      combinedFailedStep,
+      totalPassedTests,
+      combinedFailedTests,
+      totalTests,
+      summary,
+      'request',
+      combinedWarnings
+    );
+
+    const outputBaseDir = path.join(__dirname, '../test-requests/.reports');
+    const outputDir = path.join(
+      outputBaseDir,
+      noFailedTests ? 'success-reports' : 'failed-reports',
+      className
+    );
+
+    ensureDirExists(outputDir);
+
+    const reportFileName = `${className}-combined-${getTime()}.report.txt`;
+    const reportPath = path.join(outputDir, reportFileName);
+
+    // Write the report content first
     fs.writeFileSync(reportPath, reportContent, 'utf-8');
     console.log(`📄 Combined report generated: ${reportPath}`);
     console.log(`ℹ️ Report classified as: ${noFailedTests ? 'SUCCESS (no failed tests)' : 'FAILED (has failed tests)'}`);
 
-    return {
+    // Prepare return value carefully
+    const returnValue = {
       reportContent,
       reportPath,
       summary: {
@@ -204,23 +214,20 @@ async function combineReports(className: string): Promise<{
       },
       noFailedTests
     };
+
+    return returnValue;
+
   } catch (error) {
-    console.error(`Error writing combined report to ${reportPath}:`, error);
-    throw error;
+    console.error('❌ Error in combineReports:', error);
+    throw new Error(`Failed to combine reports: ${error.message}`);
   }
 }
-
 export async function generateAllReports(dtoName?: string): Promise<{ filePath: string; content?: any } | void> {
   const reportDir = path.join(__dirname, '../tmp-reports');
-
-  if (!fs.existsSync(reportDir)) {
-    fs.mkdirSync(reportDir, { recursive: true });
-  }
 
   if (dtoName) {
     console.log(`Generating report for single DTO: ${dtoName}`);
     const reportFile = path.join(reportDir, `${dtoName}.result.json`);
-
     let reportContent = {};
     if (fs.existsSync(reportFile)) {
       try {
