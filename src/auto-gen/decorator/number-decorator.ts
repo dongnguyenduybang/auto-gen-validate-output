@@ -22,3 +22,9 @@ export function Max(value: number) {
     Reflect.defineMetadata('max', value, target, propertyKey);
   };
 }
+
+export function RangeNumber(start: number, end: number) {
+  return (target: any, propertyKey: string) => {
+    Reflect.defineMetadata('rangeNumber', { start, end }, target, propertyKey);
+  };
+}

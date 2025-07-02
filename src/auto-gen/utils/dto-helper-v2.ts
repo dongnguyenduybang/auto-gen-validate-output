@@ -220,6 +220,11 @@ export function generateErrorVariantsForField(
       if (decorators['max'] !== undefined) {
         variants.push(decorators['max'] + 1);
       }
+      if (decorators['rangeNumber'] !== undefined) {
+        const { start, end } = decorators['rangeNumber'];
+        variants.push(start - 1)
+        variants.push(end + 1)
+      }
       break;
     case 'enum':
       variants.push('invalid_enum_value');
@@ -735,6 +740,7 @@ function checkULID(
   }
   return errors;
 }
+
 function checkEmoji(
   field: string,
   value: unknown,
@@ -784,6 +790,7 @@ function checkEmoji(
   }
   return errors;
 }
+
 function checkTypeString(
   field: string,
   value: unknown,
@@ -904,6 +911,7 @@ function checkTypeString(
   }
   return errors;
 }
+
 function checkTypeNumber(
   field: string,
   value: unknown,
@@ -934,6 +942,18 @@ function checkTypeNumber(
         `${field} must be at most ${decorators['max']}`,
       );
     }
+
+    if (decorators['rangeNumber']) {
+      const { start, end } = decorators['rangeNumber'];
+      if (value < start || value > end) {
+        addErrorIfNotExist(
+          errors,
+          decorators['rangeMessage'],
+          `${field} ${ErrorMessage.INVALID_RANGE_NUMBER} ${start} to ${end}`,
+        );
+      }
+    }
+
   }
 
   return errors;

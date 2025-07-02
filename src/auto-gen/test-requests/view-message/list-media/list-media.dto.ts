@@ -5,12 +5,11 @@ import {
     IsInvalid,
     IsString,
     IsNotNull,
-    Min,
-    Max,
     IsNumber,
     IsEnum,
     IsOptional,
     IsULID,
+    RangeNumber,
 } from '../../../decorator';
 
 export class ListMediaDTO {
@@ -38,8 +37,7 @@ export class ListMediaDTO {
     @IsDefined()
     @IsNotNull()
     @IsNotEmpty()
-    @Min(1)
-    @Max(500)
+    @RangeNumber(1, 500)
     @IsOptional()
     limit: number = 0
 
