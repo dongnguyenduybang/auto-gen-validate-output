@@ -21,9 +21,10 @@ export async function generateTotalReportsFromJSON(
     const reportData: ReportData[] = [];
     for (const file of jsonFiles) {
       const filePath = path.join(inputDir, file);
+      console.log(filePath)
       const content = await fsPromises.readFile(filePath, 'utf-8');
-      const data: TestResult = JSON.parse(content);
-
+      const data = JSON.parse(content);
+      console.log(data)
       const endpoint = data.path || file.replace('.result.json', '');
       const hasFailures = data.failedTests?.length > 0;
 
@@ -70,27 +71,26 @@ export async function generateTotalReportsFromJSON(
         console.warn(`⚠️ Cannot find detail report for ${dtoName}: ${error}`);
         detailFilePath = null;
       }
-
+      console.log(data)
       reportData.push({
         endpoint,
         dtoName,
-        total: data.totalTests || 0,
-        passed: data.passedTests || 0,
-        failed: data.failedTests?.length || 0,
-        warnings: data.warnings?.length || 0,
-        case200: data.codedTest?.filter(test => test.code === 200).length || 0,
-        case201: data.codedTest?.filter(test => test.code === 201).length || 0,
-        case400: data.codedTest?.filter(test => test.code === 400).length || 0,
-        case403: data.codedTest?.filter(test => test.code === 403).length || 0,
-        case404: data.codedTest?.filter(test => test.code === 404).length || 0,
-        case500: data.codedTest?.filter(test => test.code === 500).length || 0,
-        hasFailures: data.failedTests?.length > 0,
+        total: data.summaries.totalTests || 0,
+        passed: data.summaries.passedTests || 0,
+        failed: data.summaries.failedTests || 0, // Not .length since it's a number
+        warnings: data.summaries.warnings || 0,  // Fixed path and not .length
+        case200: data.summaries.summary.statusCodes[200] || 0,
+        case201: data.summaries.summary.statusCodes[201] || 0,
+        case400: data.summaries.summary.statusCodes[400] || 0,
+        case403: data.summaries.summary.statusCodes[403] || 0,
+        case404: data.summaries.summary.statusCodes[404] || 0,
+        case500: data.summaries.summary.statusCodes[500] || 0,
+        hasFailures: !data.summaries.isSuccess, // Use isSuccess flag from summaries
         jsonFile: file,
-        detailFilePath: detailFilePath ? path.relative(outputDir, detailFilePath) : null,
+        detailFilePath: detailFilePath ? path.relative(outputDir, detailFilePath).replace(/\\/g, '/') : null,
         reportCategory
       });
     }
-
     const markdownContent = generateSummaryMarkdown(reportData);
     const summaryPath = path.join(outputDir, 'SUMMARY.md');
     await fsPromises.writeFile(summaryPath, markdownContent);
@@ -169,6 +169,6 @@ function generateSummaryMarkdown(data: ReportData[]): string {
     });
     content += `\n`;
   }
-
+  console.log(content)
   return content;
 }

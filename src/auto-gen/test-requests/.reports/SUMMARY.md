@@ -2,22 +2,23 @@
 
 
 ---
-Time: 21/06/2025, 11:08:50
+Time: 02/07/2025, 16:34:17
 ## 📋 Overview
 
 | Metric | Count |
 |--------|-------|
-| Total Endpoints | 1 |
-| ✅ Passed Endpoints | 1 |
-| ❌ Failed Endpoints | 0 |
-| Total Test Cases | 110 |
-| ✅ Passed Tests | 103 |
-| ❌ Failed Tests | 0 |
-| ⚠️ Warnings | 7 |
+| Total Endpoints | 2 |
+| ✅ Passed Endpoints | 0 |
+| ❌ Failed Endpoints | 2 |
+| Total Test Cases | 320 |
+| ✅ Passed Tests | 119 |
+| ❌ Failed Tests | 177 |
+| ⚠️ Warnings | 24 |
 
-## ✅ Passed Endpoints (1)
+## ❌ Failed Endpoints (2)
 
 | Endpoint | DTO | Passed | Failed | Warnings | 200 | 201 | 400 | 403 | 404 | 500 | Detail Report |
 |----------|-----|--------|--------|----------|-----|-----|-----|-----|-----|-----|---------------|
-| /Message/UpdateDMMessage | update-dm-message | 103 | 0 | 7 | 1 | 0 | 42 | 60 | 0 | 0 | [📄 View Report](success-reports\update-dm-message\update-dm-message-combined-11-08-21-06-2025.report.txt) |
+| list-dm-media | list-dm-media | 48 | 64 | 12 | 2 | 0 | 4 | 42 | 0 | 0 | ❌ No Report |
+| list-media | list-media | 71 | 113 | 12 | 2 | 0 | 4 | 65 | 0 | 0 | ❌ No Report |
 

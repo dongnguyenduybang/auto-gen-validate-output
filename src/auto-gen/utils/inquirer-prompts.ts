@@ -55,6 +55,7 @@ export async function interactiveCLI(): Promise<void> {
             { name: 'Generate report for specific DTO', value: 'single' },
             { name: 'Generate all reports', value: 'all' },
             { name: 'View', value: 'view' },
+            { name: 'Total Report', value: 'totalReport' },
             { name: 'Back to main menu', value: 'back' },
           ],
         },
@@ -127,6 +128,25 @@ export async function interactiveCLI(): Promise<void> {
             action: 'report',
             type: 'view',
             paths: selectedPaths,
+            timestamp: Date.now(),
+          });
+        }
+      } else if (reportType === 'totalReport') {
+        const { confirm } = await inquirer.prompt<{ confirm: boolean }>([
+          {
+            type: 'confirm',
+            name: 'confirm',
+            message: 'Generate reports total?',
+            default: false,
+          },
+        ]);
+
+        if (confirm) {
+          await actionHandlers.report.total[0]('');
+          addToRecentSelections({
+            action: 'report',
+            type: 'total',
+            paths: ['total'],
             timestamp: Date.now(),
           });
         }

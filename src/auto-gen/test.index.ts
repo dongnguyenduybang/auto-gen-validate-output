@@ -9,6 +9,7 @@ import { generateAllReports, viewReports } from './utils/combine-report';
 import { interactiveCLI } from './utils/inquirer-prompts';
 import util from 'util';
 import path from 'path';
+import { generateTotalReportsFromJSON } from './utils/gen-total-reports';
 
 type ActionHandler = (input: string | string[]) => void | Promise<void> | Promise<string[]>;
 
@@ -70,6 +71,12 @@ export const actionHandlers: Record<string, Record<string, ActionHandler[]>> = {
         await viewReports(dtoName);
       },
     ],
+    total: [
+      async () => {
+        console.log ('Generating total report');
+        await generateTotalReportsFromJSON()
+      }
+    ]
   },
   test: {
     request: [runTests('test-requests')],

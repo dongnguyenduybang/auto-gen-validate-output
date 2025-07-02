@@ -1,7 +1,7 @@
 === Request Test Report for list-dm-media ===
 • Host: [object Object]
 • Endpoint: /MessageView/ListDMMedia
-• Date: 02/07/2025, 15:49:07
+• Date: 02/07/2025, 16:26:30
 
 === Execution Steps ===
 
@@ -24,73 +24,73 @@
 === Warnings ===
  🟠 1. Case #15
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":1,"limit":1,"nextPageToken":""}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":1,"limit":1,"nextPageToken":""}
      ├─ Actual Errors: nextPageToken invalid ulid
      ├─ Expected Errors: nextPageToken invalid ulid, nextPageToken should not be empty
      └─ Message: Actual errors includes of expected errors
  🟠 2. Case #16
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":"invalid_enum_value","limit":1,"nextPageToken":""}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":"invalid_enum_value","limit":1,"nextPageToken":""}
      ├─ Actual Errors: nextPageToken invalid ulid, type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan
      ├─ Expected Errors: nextPageToken invalid ulid, nextPageToken should not be empty, type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan
      └─ Message: Actual errors includes of expected errors
  🟠 3. Case #22
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":1,"nextPageToken":""}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":1,"nextPageToken":""}
      ├─ Actual Errors: nextPageToken invalid ulid
      ├─ Expected Errors: nextPageToken invalid ulid, nextPageToken should not be empty
      └─ Message: Actual errors includes of expected errors
  🟠 4. Case #24
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":1,"limit":null,"nextPageToken":""}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":1,"limit":null,"nextPageToken":""}
      ├─ Actual Errors: nextPageToken invalid ulid
      ├─ Expected Errors: limit must be a number conforming to the specified constraints, nextPageToken invalid ulid, nextPageToken should not be empty
      └─ Message: Actual errors includes of expected errors
  🟠 5. Case #27
      ├─ Status: 200
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":1,"limit":1,"nextPageToken":null}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":1,"limit":1,"nextPageToken":null}
      ├─ Actual Errors: None
      ├─ Expected Errors: nextPageToken expected string, received null
      └─ Message: Actual errors includes of expected errors
  🟠 6. Case #74
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":"invalid_enum_value","nextPageToken":""}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":"invalid_enum_value","nextPageToken":""}
      ├─ Actual Errors: nextPageToken invalid ulid, type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan
      ├─ Expected Errors: nextPageToken invalid ulid, nextPageToken should not be empty, type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan
      └─ Message: Actual errors includes of expected errors
  🟠 7. Case #76
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":"invalid_enum_value","limit":null,"nextPageToken":""}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":"invalid_enum_value","limit":null,"nextPageToken":""}
      ├─ Actual Errors: nextPageToken invalid ulid, type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan
      ├─ Expected Errors: limit must be a number conforming to the specified constraints, nextPageToken invalid ulid, nextPageToken should not be empty, type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan
      └─ Message: Actual errors includes of expected errors
  🟠 8. Case #79
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":"invalid_enum_value","limit":1,"nextPageToken":null}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":"invalid_enum_value","limit":1,"nextPageToken":null}
      ├─ Actual Errors: type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan
      ├─ Expected Errors: nextPageToken expected string, received null, type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan
      └─ Message: Actual errors includes of expected errors
  🟠 9. Case #115
      ├─ Status: 200
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":1,"nextPageToken":null}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":1,"nextPageToken":null}
      ├─ Actual Errors: None
      ├─ Expected Errors: nextPageToken expected string, received null
      └─ Message: Actual errors includes of expected errors
  🟠 10. Case #122
      ├─ Status: 200
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":1,"limit":null}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":1,"limit":null}
      ├─ Actual Errors: None
      ├─ Expected Errors: limit must be a number conforming to the specified constraints
      └─ Message: Actual errors includes of expected errors
  🟠 11. Case #123
      ├─ Status: 200
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":1,"limit":null,"nextPageToken":null}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":1,"limit":null,"nextPageToken":null}
      ├─ Actual Errors: None
      ├─ Expected Errors: limit must be a number conforming to the specified constraints, nextPageToken expected string, received null
      └─ Message: Actual errors includes of expected errors
  🟠 12. Case #124
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":1,"limit":null,"nextPageToken":"invalid_ULID"}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":1,"limit":null,"nextPageToken":"invalid_ULID"}
      ├─ Actual Errors: nextPageToken invalid ulid
      ├─ Expected Errors: limit must be a number conforming to the specified constraints, nextPageToken invalid ulid
      └─ Message: Actual errors includes of expected errors
@@ -211,350 +211,350 @@
 
  🟣 15. Case #17
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":"","limit":1,"nextPageToken":""}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":"","limit":1,"nextPageToken":""}
      ├─ Actual: invalid attachment type. This type not allowed for processing, nextPageToken invalid ulid
      ├─ Expected: nextPageToken invalid ulid, nextPageToken should not be empty, type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan, type should not be empty
      └─ Details: No details
 
  🟣 16. Case #18
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":null,"limit":1,"nextPageToken":""}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":null,"limit":1,"nextPageToken":""}
      ├─ Actual: nextPageToken invalid ulid, type required
      ├─ Expected: nextPageToken invalid ulid, nextPageToken should not be empty, type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received null
      └─ Details: No details
 
  🟣 17. Case #19
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":1,"limit":"invalid_number","nextPageToken":""}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":1,"limit":"invalid_number","nextPageToken":""}
      ├─ Actual: limit expected number, received nan, nextPageToken invalid ulid
      ├─ Expected: limit must be a number conforming to the specified constraints, nextPageToken invalid ulid, nextPageToken should not be empty
      └─ Details: No details
 
  🟣 18. Case #20
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":1,"limit":0,"nextPageToken":""}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":1,"limit":0,"nextPageToken":""}
      ├─ Actual: limit range from 1 to 500, nextPageToken invalid ulid
      ├─ Expected: limit must be at least 1, nextPageToken invalid ulid, nextPageToken should not be empty
      └─ Details: No details
 
  🟣 19. Case #21
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":1,"limit":501,"nextPageToken":""}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":1,"limit":501,"nextPageToken":""}
      ├─ Actual: limit range from 1 to 500, nextPageToken invalid ulid
      ├─ Expected: limit must be at most 500, nextPageToken invalid ulid, nextPageToken should not be empty
      └─ Details: No details
 
  🟣 20. Case #23
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":1,"limit":"","nextPageToken":""}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":1,"limit":"","nextPageToken":""}
      ├─ Actual: limit range from 1 to 500, nextPageToken invalid ulid
      ├─ Expected: limit must be a number conforming to the specified constraints, limit should not be empty, nextPageToken invalid ulid, nextPageToken should not be empty
      └─ Details: No details
 
  🟣 21. Case #25
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":1,"limit":1,"nextPageToken":123}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":1,"limit":1,"nextPageToken":123}
      ├─ Actual: nextPageToken invalid ulid
      ├─ Expected: nextPageToken expected string, received number
      └─ Details: No details
 
  🟣 22. Case #71
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":"invalid_enum_value","limit":"invalid_number","nextPageToken":""}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":"invalid_enum_value","limit":"invalid_number","nextPageToken":""}
      ├─ Actual: limit expected number, received nan, nextPageToken invalid ulid, type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan
      ├─ Expected: limit must be a number conforming to the specified constraints, nextPageToken invalid ulid, nextPageToken should not be empty, type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan
      └─ Details: No details
 
  🟣 23. Case #72
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":"invalid_enum_value","limit":0,"nextPageToken":""}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":"invalid_enum_value","limit":0,"nextPageToken":""}
      ├─ Actual: limit range from 1 to 500, nextPageToken invalid ulid, type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan
      ├─ Expected: limit must be at least 1, nextPageToken invalid ulid, nextPageToken should not be empty, type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan
      └─ Details: No details
 
  🟣 24. Case #73
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":"invalid_enum_value","limit":501,"nextPageToken":""}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":"invalid_enum_value","limit":501,"nextPageToken":""}
      ├─ Actual: limit range from 1 to 500, nextPageToken invalid ulid, type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan
      ├─ Expected: limit must be at most 500, nextPageToken invalid ulid, nextPageToken should not be empty, type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan
      └─ Details: No details
 
  🟣 25. Case #75
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":"invalid_enum_value","limit":"","nextPageToken":""}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":"invalid_enum_value","limit":"","nextPageToken":""}
      ├─ Actual: limit range from 1 to 500, nextPageToken invalid ulid, type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan
      ├─ Expected: limit must be a number conforming to the specified constraints, limit should not be empty, nextPageToken invalid ulid, nextPageToken should not be empty, type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan
      └─ Details: No details
 
  🟣 26. Case #77
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":"invalid_enum_value","limit":1,"nextPageToken":123}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":"invalid_enum_value","limit":1,"nextPageToken":123}
      ├─ Actual: nextPageToken invalid ulid, type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan
      ├─ Expected: nextPageToken expected string, received number, type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan
      └─ Details: No details
 
  🟣 27. Case #81
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":"","limit":"invalid_number","nextPageToken":""}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":"","limit":"invalid_number","nextPageToken":""}
      ├─ Actual: limit expected number, received nan, nextPageToken invalid ulid
      ├─ Expected: limit must be a number conforming to the specified constraints, nextPageToken invalid ulid, nextPageToken should not be empty, type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan, type should not be empty
      └─ Details: No details
 
  🟣 28. Case #82
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":"","limit":0,"nextPageToken":""}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":"","limit":0,"nextPageToken":""}
      ├─ Actual: invalid attachment type. This type not allowed for processing, limit range from 1 to 500, nextPageToken invalid ulid
      ├─ Expected: limit must be at least 1, nextPageToken invalid ulid, nextPageToken should not be empty, type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan, type should not be empty
      └─ Details: No details
 
  🟣 29. Case #83
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":"","limit":501,"nextPageToken":""}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":"","limit":501,"nextPageToken":""}
      ├─ Actual: invalid attachment type. This type not allowed for processing, limit range from 1 to 500, nextPageToken invalid ulid
      ├─ Expected: limit must be at most 500, nextPageToken invalid ulid, nextPageToken should not be empty, type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan, type should not be empty
      └─ Details: No details
 
  🟣 30. Case #84
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":"","nextPageToken":""}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":"","nextPageToken":""}
      ├─ Actual: invalid attachment type. This type not allowed for processing, nextPageToken invalid ulid
      ├─ Expected: nextPageToken invalid ulid, nextPageToken should not be empty, type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan, type should not be empty
      └─ Details: No details
 
  🟣 31. Case #85
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":"","limit":"","nextPageToken":""}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":"","limit":"","nextPageToken":""}
      ├─ Actual: invalid attachment type. This type not allowed for processing, limit range from 1 to 500, nextPageToken invalid ulid
      ├─ Expected: limit must be a number conforming to the specified constraints, limit should not be empty, nextPageToken invalid ulid, nextPageToken should not be empty, type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan, type should not be empty
      └─ Details: No details
 
  🟣 32. Case #86
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":"","limit":null,"nextPageToken":""}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":"","limit":null,"nextPageToken":""}
      ├─ Actual: invalid attachment type. This type not allowed for processing, nextPageToken invalid ulid
      ├─ Expected: limit must be a number conforming to the specified constraints, nextPageToken invalid ulid, nextPageToken should not be empty, type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan, type should not be empty
      └─ Details: No details
 
  🟣 33. Case #87
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":"","limit":1,"nextPageToken":123}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":"","limit":1,"nextPageToken":123}
      ├─ Actual: invalid attachment type. This type not allowed for processing, nextPageToken invalid ulid
      ├─ Expected: nextPageToken expected string, received number, type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan, type should not be empty
      └─ Details: No details
 
  🟣 34. Case #88
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":"","limit":1}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":"","limit":1}
      ├─ Actual: invalid attachment type. This type not allowed for processing
      ├─ Expected: type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan, type should not be empty
      └─ Details: No details
 
  🟣 35. Case #89
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":"","limit":1,"nextPageToken":null}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":"","limit":1,"nextPageToken":null}
      ├─ Actual: invalid attachment type. This type not allowed for processing
      ├─ Expected: nextPageToken expected string, received null, type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan, type should not be empty
      └─ Details: No details
 
  🟣 36. Case #90
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":"","limit":1,"nextPageToken":"invalid_ULID"}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":"","limit":1,"nextPageToken":"invalid_ULID"}
      ├─ Actual: invalid attachment type. This type not allowed for processing, nextPageToken invalid ulid
      ├─ Expected: nextPageToken invalid ulid, type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan, type should not be empty
      └─ Details: No details
 
  🟣 37. Case #91
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":null,"limit":"invalid_number","nextPageToken":""}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":null,"limit":"invalid_number","nextPageToken":""}
      ├─ Actual: limit expected number, received nan, nextPageToken invalid ulid, type required
      ├─ Expected: limit must be a number conforming to the specified constraints, nextPageToken invalid ulid, nextPageToken should not be empty, type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received null
      └─ Details: No details
 
  🟣 38. Case #92
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":null,"limit":0,"nextPageToken":""}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":null,"limit":0,"nextPageToken":""}
      ├─ Actual: limit range from 1 to 500, nextPageToken invalid ulid, type required
      ├─ Expected: limit must be at least 1, nextPageToken invalid ulid, nextPageToken should not be empty, type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received null
      └─ Details: No details
 
  🟣 39. Case #93
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":null,"limit":501,"nextPageToken":""}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":null,"limit":501,"nextPageToken":""}
      ├─ Actual: limit range from 1 to 500, nextPageToken invalid ulid, type required
      ├─ Expected: limit must be at most 500, nextPageToken invalid ulid, nextPageToken should not be empty, type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received null
      └─ Details: No details
 
  🟣 40. Case #94
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":null,"nextPageToken":""}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":null,"nextPageToken":""}
      ├─ Actual: nextPageToken invalid ulid, type required
      ├─ Expected: nextPageToken invalid ulid, nextPageToken should not be empty, type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received null
      └─ Details: No details
 
  🟣 41. Case #95
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":null,"limit":"","nextPageToken":""}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":null,"limit":"","nextPageToken":""}
      ├─ Actual: limit range from 1 to 500, nextPageToken invalid ulid, type required
      ├─ Expected: limit must be a number conforming to the specified constraints, limit should not be empty, nextPageToken invalid ulid, nextPageToken should not be empty, type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received null
      └─ Details: No details
 
  🟣 42. Case #96
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":null,"limit":null,"nextPageToken":""}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":null,"limit":null,"nextPageToken":""}
      ├─ Actual: nextPageToken invalid ulid, type required
      ├─ Expected: limit must be a number conforming to the specified constraints, nextPageToken invalid ulid, nextPageToken should not be empty, type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received null
      └─ Details: No details
 
  🟣 43. Case #97
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":null,"limit":1,"nextPageToken":123}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":null,"limit":1,"nextPageToken":123}
      ├─ Actual: nextPageToken invalid ulid, type required
      ├─ Expected: nextPageToken expected string, received number, type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received null
      └─ Details: No details
 
  🟣 44. Case #98
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":null,"limit":1}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":null,"limit":1}
      ├─ Actual: type required
      ├─ Expected: type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received null
      └─ Details: No details
 
  🟣 45. Case #99
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":null,"limit":1,"nextPageToken":null}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":null,"limit":1,"nextPageToken":null}
      ├─ Actual: type required
      ├─ Expected: nextPageToken expected string, received null, type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received null
      └─ Details: No details
 
  🟣 46. Case #100
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":null,"limit":1,"nextPageToken":"invalid_ULID"}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":null,"limit":1,"nextPageToken":"invalid_ULID"}
      ├─ Actual: nextPageToken invalid ulid, type required
      ├─ Expected: nextPageToken invalid ulid, type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received null
      └─ Details: No details
 
  🟣 47. Case #101
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":1,"limit":"invalid_number","nextPageToken":123}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":1,"limit":"invalid_number","nextPageToken":123}
      ├─ Actual: limit expected number, received nan, nextPageToken invalid ulid
      ├─ Expected: limit must be a number conforming to the specified constraints, nextPageToken expected string, received number
      └─ Details: No details
 
  🟣 48. Case #102
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":1,"limit":"invalid_number"}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":1,"limit":"invalid_number"}
      ├─ Actual: limit expected number, received nan
      ├─ Expected: limit must be a number conforming to the specified constraints
      └─ Details: No details
 
  🟣 49. Case #103
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":1,"limit":"invalid_number","nextPageToken":null}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":1,"limit":"invalid_number","nextPageToken":null}
      ├─ Actual: limit expected number, received nan
      ├─ Expected: limit must be a number conforming to the specified constraints, nextPageToken expected string, received null
      └─ Details: No details
 
  🟣 50. Case #104
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":1,"limit":"invalid_number","nextPageToken":"invalid_ULID"}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":1,"limit":"invalid_number","nextPageToken":"invalid_ULID"}
      ├─ Actual: limit expected number, received nan, nextPageToken invalid ulid
      ├─ Expected: limit must be a number conforming to the specified constraints, nextPageToken invalid ulid
      └─ Details: No details
 
  🟣 51. Case #105
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":1,"limit":0,"nextPageToken":123}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":1,"limit":0,"nextPageToken":123}
      ├─ Actual: limit range from 1 to 500, nextPageToken invalid ulid
      ├─ Expected: limit must be at least 1, nextPageToken expected string, received number
      └─ Details: No details
 
  🟣 52. Case #106
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":1,"limit":0}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":1,"limit":0}
      ├─ Actual: limit range from 1 to 500
      ├─ Expected: limit must be at least 1
      └─ Details: No details
 
  🟣 53. Case #107
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":1,"limit":0,"nextPageToken":null}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":1,"limit":0,"nextPageToken":null}
      ├─ Actual: limit range from 1 to 500
      ├─ Expected: limit must be at least 1, nextPageToken expected string, received null
      └─ Details: No details
 
  🟣 54. Case #108
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":1,"limit":0,"nextPageToken":"invalid_ULID"}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":1,"limit":0,"nextPageToken":"invalid_ULID"}
      ├─ Actual: limit range from 1 to 500, nextPageToken invalid ulid
      ├─ Expected: limit must be at least 1, nextPageToken invalid ulid
      └─ Details: No details
 
  🟣 55. Case #109
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":1,"limit":501,"nextPageToken":123}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":1,"limit":501,"nextPageToken":123}
      ├─ Actual: limit range from 1 to 500, nextPageToken invalid ulid
      ├─ Expected: limit must be at most 500, nextPageToken expected string, received number
      └─ Details: No details
 
  🟣 56. Case #110
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":1,"limit":501}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":1,"limit":501}
      ├─ Actual: limit range from 1 to 500
      ├─ Expected: limit must be at most 500
      └─ Details: No details
 
  🟣 57. Case #111
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":1,"limit":501,"nextPageToken":null}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":1,"limit":501,"nextPageToken":null}
      ├─ Actual: limit range from 1 to 500
      ├─ Expected: limit must be at most 500, nextPageToken expected string, received null
      └─ Details: No details
 
  🟣 58. Case #112
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":1,"limit":501,"nextPageToken":"invalid_ULID"}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":1,"limit":501,"nextPageToken":"invalid_ULID"}
      ├─ Actual: limit range from 1 to 500, nextPageToken invalid ulid
      ├─ Expected: limit must be at most 500, nextPageToken invalid ulid
      └─ Details: No details
 
  🟣 59. Case #113
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":1,"nextPageToken":123}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":1,"nextPageToken":123}
      ├─ Actual: nextPageToken invalid ulid
      ├─ Expected: nextPageToken expected string, received number
      └─ Details: No details
 
  🟣 60. Case #117
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":1,"limit":"","nextPageToken":123}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":1,"limit":"","nextPageToken":123}
      ├─ Actual: limit range from 1 to 500, nextPageToken invalid ulid
      ├─ Expected: limit must be a number conforming to the specified constraints, limit should not be empty, nextPageToken expected string, received number
      └─ Details: No details
 
  🟣 61. Case #118
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":1,"limit":""}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":1,"limit":""}
      ├─ Actual: limit range from 1 to 500
      ├─ Expected: limit must be a number conforming to the specified constraints, limit should not be empty
      └─ Details: No details
 
  🟣 62. Case #119
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":1,"limit":"","nextPageToken":null}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":1,"limit":"","nextPageToken":null}
      ├─ Actual: limit range from 1 to 500
      ├─ Expected: limit must be a number conforming to the specified constraints, limit should not be empty, nextPageToken expected string, received null
      └─ Details: No details
 
  🟣 63. Case #120
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":1,"limit":"","nextPageToken":"invalid_ULID"}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":1,"limit":"","nextPageToken":"invalid_ULID"}
      ├─ Actual: limit range from 1 to 500, nextPageToken invalid ulid
      ├─ Expected: limit must be a number conforming to the specified constraints, limit should not be empty, nextPageToken invalid ulid
      └─ Details: No details
 
  🟣 64. Case #121
      ├─ Status: 400
-     ├─ Body: {"userId":"01JZ556A1VFYBW6H4AAYC7XQFK","type":1,"limit":null,"nextPageToken":123}
+     ├─ Body: {"userId":"01JZ57AR2PBSBXZNBZFRFDY3G9","type":1,"limit":null,"nextPageToken":123}
      ├─ Actual: nextPageToken invalid ulid
      ├─ Expected: limit must be a number conforming to the specified constraints, nextPageToken expected string, received number
      └─ Details: No details

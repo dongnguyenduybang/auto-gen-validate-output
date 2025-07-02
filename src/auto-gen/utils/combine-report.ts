@@ -131,9 +131,9 @@ function cleanupTempFiles(dir: string, files: string[]): void {
 }
 
 async function combineReports(className: string): Promise<{
-  reportContent: string;
+  reportContent?: string;
   reportPath: string;
-  summary: any;
+  summaries: any;
   noFailedTests: boolean;
 }> {
   const reportDir = path.join(__dirname, '../tmp-reports');
@@ -202,15 +202,15 @@ async function combineReports(className: string): Promise<{
 
     // Prepare return value carefully
     const returnValue = {
-      reportContent,
       reportPath,
-      summary: {
+      summaries: {
         className,
         totalTests,
         passedTests: totalPassedTests,
         failedTests: combinedFailedTests.length,
         warnings: combinedWarnings.length,
-        isSuccess: noFailedTests
+        isSuccess: noFailedTests,
+        summary
       },
       noFailedTests
     };
