@@ -71,7 +71,6 @@ export async function generateTotalReportsFromJSON(
         console.warn(`⚠️ Cannot find detail report for ${dtoName}: ${error}`);
         detailFilePath = null;
       }
-      console.log(data)
       reportData.push({
         endpoint,
         dtoName,
@@ -87,7 +86,7 @@ export async function generateTotalReportsFromJSON(
         case500: data.summaries.summary.statusCodes[500] || 0,
         hasFailures: !data.summaries.isSuccess, // Use isSuccess flag from summaries
         jsonFile: file,
-        detailFilePath: detailFilePath ? path.relative(outputDir, detailFilePath).replace(/\\/g, '/') : null,
+        detailFilePath: data.reportPath,
         reportCategory
       });
     }
@@ -107,6 +106,8 @@ export async function generateTotalReportsFromJSON(
 }
 
 function generateSummaryMarkdown(data: ReportData[]): string {
+
+  console.log(data)
   let content = `# 📊 Test Report Summary\n\n`;
   content += `\n---\n`;
   content += `Time: ${new Date().toLocaleString()}\n`;
@@ -137,7 +138,6 @@ function generateSummaryMarkdown(data: ReportData[]): string {
     content += `|----------|-----|--------|--------|----------|-----|-----|-----|-----|-----|-----|---------------|\n`;
 
     failed.forEach(item => {
-      console.log(item)
       let detailLink = '❌ No Report';
 
       if (item.detailFilePath) {
