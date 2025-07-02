@@ -1,6 +1,6 @@
 import * as path from 'path';
 import { promises as fsPromises } from 'fs';
-import { ReportData, TestResult } from './declarations';
+import { ReportData } from './declarations';
 
 export async function generateTotalReportsFromJSON(
   inputDir: string = path.join(__dirname, '../tmp-reports'),
@@ -21,10 +21,8 @@ export async function generateTotalReportsFromJSON(
     const reportData: ReportData[] = [];
     for (const file of jsonFiles) {
       const filePath = path.join(inputDir, file);
-      console.log(filePath)
       const content = await fsPromises.readFile(filePath, 'utf-8');
       const data = JSON.parse(content);
-      console.log(data)
       const endpoint = data.path || file.replace('.result.json', '');
       const hasFailures = data.failedTests?.length > 0;
 
@@ -36,25 +34,10 @@ export async function generateTotalReportsFromJSON(
       let detailFilePath: string | null = null;
 
       try {
-
-        const txtFiles = await fsPromises.readdir(txtFileDir);
-        const txtFile = txtFiles.find(f => f.endsWith('.report.txt') && f.includes(dtoName));
-
-        if (txtFile) {
-          detailFilePath = path.join(txtFileDir, txtFile);
-        }
-      } catch (error) {
-        console.warn(`⚠️ Cannot find detail report for ${dtoName}: ${error}`);
-      }
-      try {
-
         const txtFiles = await fsPromises.readdir(txtFileDir);
         const reportFiles = txtFiles.filter(f => f.endsWith('.report.txt') && f.includes(dtoName));
 
-        let detailFilePath: string | null = null;
-
         if (reportFiles.length > 0) {
-
           const fileStats = await Promise.all(
             reportFiles.map(async file => {
               const filePath = path.join(txtFileDir, file);
@@ -64,12 +47,11 @@ export async function generateTotalReportsFromJSON(
           );
 
           fileStats.sort((a, b) => b.mtime.getTime() - a.mtime.getTime());
-
           detailFilePath = fileStats[0].filePath;
         }
       } catch (error) {
-        console.warn(`⚠️ Cannot find detail report for ${dtoName}: ${error}`);
-        detailFilePath = null;
+        // console.warn(`⚠️ Cannot process report files for ${dtoName}: ${error}`);
+        // Không cần throw lỗi, chỉ log
       }
       reportData.push({
         endpoint,
@@ -106,8 +88,6 @@ export async function generateTotalReportsFromJSON(
 }
 
 function generateSummaryMarkdown(data: ReportData[]): string {
-
-  console.log(data)
   let content = `# 📊 Test Report Summary\n\n`;
   content += `\n---\n`;
   content += `Time: ${new Date().toLocaleString()}\n`;
@@ -141,12 +121,9 @@ function generateSummaryMarkdown(data: ReportData[]): string {
       let detailLink = '❌ No Report';
 
       if (item.detailFilePath) {
-
-        const encodedPath = item.detailFilePath.replace(/\\/g, '/');
+        const shortPath = item.detailFilePath.split('\\.reports\\')[1];
+        const encodedPath = shortPath.replace(/\\/g, '/');
         detailLink = `[📄 View Report](./${encodedPath})`;
-
-
-
       }
 
       content += `| ${item.endpoint} | ${item.dtoName} | ${item.passed} | ${item.failed} | ${item.warnings} | ${item.case200} | ${item.case201} | ${item.case400} | ${item.case403} | ${item.case404} | ${item.case500} | ${detailLink} |\n`;
@@ -169,6 +146,5 @@ function generateSummaryMarkdown(data: ReportData[]): string {
     });
     content += `\n`;
   }
-  console.log(content)
   return content;
 }

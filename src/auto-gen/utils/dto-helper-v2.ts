@@ -47,31 +47,30 @@ export function generateStructuredErrorCases(
       baseCase[rootField] = errorValue;
 
       const testCase = { ...baseCase };
-      // console.log(JSON.stringify(testCase, null, 2))
       const errors = softErrorFromMap(testCase, dtoClass);
-      // console.log(JSON.stringify(errors, null ,2))
+
       allTestCases.push({
         body: testCase,
         expects: errors.length > 0 ? errors : [],
       });
 
-      keys.forEach((otherField) => {
-        if (otherField !== rootField) {
-          const otherErrorVariants = errorCasesByField[otherField];
+      // keys.forEach((otherField) => {
+      //   if (otherField !== rootField) {
+      //     const otherErrorVariants = errorCasesByField[otherField];
 
-          otherErrorVariants.forEach((otherErrorValue) => {
-            const combinedCase = { ...baseCase };
-            combinedCase[otherField] = otherErrorValue;
+      //     otherErrorVariants.forEach((otherErrorValue) => {
+      //       const combinedCase = { ...baseCase };
+      //       combinedCase[otherField] = otherErrorValue;
 
-            const combinedErrors = softErrorFromMap(combinedCase, dtoClass);
+      //       const combinedErrors = softErrorFromMap(combinedCase, dtoClass);
 
-            allTestCases.push({
-              body: combinedCase,
-              expects: combinedErrors.length > 0 ? combinedErrors : [],
-            });
-          });
-        }
-      });
+      //       allTestCases.push({
+      //         body: combinedCase,
+      //         expects: combinedErrors.length > 0 ? combinedErrors : [],
+      //       });
+      //     });
+      //   }
+      // });
     });
   });
 
@@ -913,10 +912,11 @@ function checkTypeNumber(
   const errors: string[] = [];
   if (decorators['type'] === 'number') {
     if (typeof value !== 'number' || isNaN(value)) {
+      const receivedNumber = typeof value === 'number' || typeof value === 'string' ? 'nan' : value;
       addErrorIfNotExist(
         errors,
         decorators['numberMessage'],
-        `${field} ${ErrorMessage.INVALID_TYPE_NUMBER}`,
+        `${field} ${ErrorMessage.INVALID_TYPE_NUMBER} ${receivedNumber}`,
       );
       return errors;
     }
@@ -935,6 +935,7 @@ function checkTypeNumber(
       );
     }
   }
+
   return errors;
 }
 

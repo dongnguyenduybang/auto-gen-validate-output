@@ -73,7 +73,7 @@ export const actionHandlers: Record<string, Record<string, ActionHandler[]>> = {
     ],
     total: [
       async () => {
-        console.log ('Generating total report');
+        console.log ('📊 Generating total report');
         await generateTotalReportsFromJSON()
       }
     ]
