@@ -16,10 +16,7 @@ export const ListMediaRequest = new DTOBuilder()
         headers: HEADER_LIST.create({ token: VAR.token }),
         body: {
             workspace: VAR.workspaceId,
-<<<<<<< HEAD
-=======
             channelId: VAR.channelId,
->>>>>>> feat/hono-dto-2
             attachmentType: AttachmentTypeEnum.ATTACHMENT_TYPE_ENUM_PHOTO,
             ref: 'ref',
             mediaObjects: [
@@ -36,8 +33,4 @@ export const ListMediaRequest = new DTOBuilder()
             ],
         },
     })
-<<<<<<< HEAD
     .execute();
-=======
-    .execute();
->>>>>>> feat/hono-dto-2

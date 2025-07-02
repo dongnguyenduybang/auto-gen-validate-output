@@ -49,8 +49,4 @@ export class ListMediaDTO {
     @IsString()
     @IsOptional()
     nextPageToken: string = ''
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> feat/hono-dto-2

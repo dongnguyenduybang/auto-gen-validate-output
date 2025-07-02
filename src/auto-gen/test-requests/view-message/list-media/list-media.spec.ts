@@ -1,11 +1,7 @@
 
     import fs from 'fs';
     import path from 'path';
-<<<<<<< HEAD
-    import { summaryFields, resolveCallAPI, resolveVariables } from '../../../utils/helper';
-=======
     import { summaryFields, resolveCallAPI, resolveVariables, findReportsDirectory } from '../../../utils/helper';
->>>>>>> feat/hono-dto-2
     import { TestResult } from '../../../utils/declarations';
     import { executeSteps } from '../../../utils/text-execute-test';
     import { TestContext } from '../../../utils/text-context';
@@ -24026,15 +24022,8 @@
             totalTests: totalTests,
             failedStep: [...failedStep]
           };
-<<<<<<< HEAD
-          const reportDir = path.join(__dirname, '../../../../tmp-reports');
-          if (!fs.existsSync(reportDir)) {
-            fs.mkdirSync(reportDir, { recursive: true });
-          }
-=======
           const currentFileDir = __dirname; // Hoặc đường dẫn file hiện tại
                   const reportDir = findReportsDirectory(currentFileDir);
->>>>>>> feat/hono-dto-2
           const chunkNumber = undefined;
           const fileName = 'list-media' + (chunkNumber ? `-chunk-undefined` : '') + '.result.json';
           const filePath = path.join(reportDir, fileName);
