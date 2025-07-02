@@ -281,8 +281,7 @@ async function generateSpecContent(
             totalTests: totalTests,
             failedStep: [...failedStep]
           };
-          const currentFileDir = __dirname; // Hoặc đường dẫn file hiện tại
-                  const reportDir = findReportsDirectory(currentFileDir);
+          const reportDir = findReportsDirectory(__dirname);
           const chunkNumber = ${chunkNumber};
           const fileName = '${className}' + (chunkNumber ? \`-chunk-${chunkNumber}\` : '') + '.result.json';
           const filePath = path.join(reportDir, fileName);
