@@ -912,3 +912,31 @@ export async function searchDtoInTestRequests(dtoName: string): Promise<string[]
     await walkDir(basePath);
     return matches;
 }
+
+export function findReportsDirectory(startDir: string): string {
+  // Duyệt lên các thư mục cha từ vị trí bắt đầu
+  let currentDir = startDir;
+  while (currentDir !== path.parse(currentDir).root) {
+    const testRequestsPath = path.join(currentDir, 'src', 'auto-gen');
+    
+    if (fs.existsSync(testRequestsPath)) {
+      const potentialReportDir = path.join(testRequestsPath, 'tmp-reports');
+      
+      // Nếu tìm thấy thư mục tmp-reports
+      if (fs.existsSync(potentialReportDir)) {
+        return potentialReportDir;
+      }
+      
+      // Nếu không tìm thấy nhưng có thư mục test-requests
+      fs.mkdirSync(potentialReportDir, { recursive: true });
+      return potentialReportDir;
+    }
+    
+    currentDir = path.dirname(currentDir); // Lên thư mục cha
+  }
+  
+  // Fallback: tạo trong thư mục hiện tại nếu không tìm thấy
+  const fallbackDir = path.join(startDir, 'tmp-reports');
+  fs.mkdirSync(fallbackDir, { recursive: true });
+  return fallbackDir;
+}

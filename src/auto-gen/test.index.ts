@@ -8,6 +8,7 @@ import { clearFiles, normalizePath } from './utils/helper';
 import { generateAllReports, viewReports } from './utils/combine-report';
 import { interactiveCLI } from './utils/inquirer-prompts';
 import util from 'util';
+import path from 'path';
 
 type ActionHandler = (input: string | string[]) => void | Promise<void> | Promise<string[]>;
 
