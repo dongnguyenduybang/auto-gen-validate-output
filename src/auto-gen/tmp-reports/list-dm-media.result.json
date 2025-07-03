@@ -1,18 +1,18 @@
 {
-  "reportPath": "C:\\Users\\duy\\Downloads\\rac\\auto-gen-validate-output\\src\\auto-gen\\test-requests\\.reports\\failed-reports\\list-dm-media\\list-dm-media-combined-22-13-02-07-2025.report.txt",
+  "reportPath": "C:\\Users\\duy\\Downloads\\rac\\auto-gen-validate-output\\src\\auto-gen\\test-requests\\.reports\\failed-reports\\list-dm-media\\list-dm-media-combined-16-35-03-07-2025.report.txt",
   "summaries": {
     "className": "list-dm-media",
-    "totalTests": 18,
-    "passedTests": 5,
-    "failedTests": 5,
-    "warnings": 8,
+    "totalTests": 20,
+    "passedTests": 12,
+    "failedTests": 2,
+    "warnings": 6,
     "isSuccess": false,
     "summary": {
       "statusCodes": {
-        "200": 1,
+        "200": 3,
         "201": 0,
-        "400": 1,
-        "403": 3,
+        "400": 5,
+        "403": 4,
         "500": 0
       }
     }

@@ -9,7 +9,8 @@ export const ListMediaRequest = new DTOBuilder()
             workspaceId: VAR.workspaceId,
             channelId: VAR.channelId,
             type: AttachmentTypeEnum.ATTACHMENT_TYPE_ENUM_PHOTO,
-            limit: 1
+            limit: 1,
+            nextPageToken: "01JPPHQFHCC697M93K6PTZTZ8Q"
         },
     })
     .addBeforeAll('send message media', 'send-message-media', ACTION.SEND_MESSAGE_MEDIA, {

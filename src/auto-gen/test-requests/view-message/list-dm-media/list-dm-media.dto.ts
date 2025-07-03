@@ -23,13 +23,11 @@ export class ListDmMediaDTO {
     @IsEnum(AttachmentTypeEnum)
     @IsDefined()
     @IsNotEmpty()
-    @IsNotNull()
     type: AttachmentTypeEnum = 0;
 
     @IsNumber()
-    @IsDefined()
-    @IsNotNull()
     @IsNotEmpty()
+    @IsNotNull()
     @RangeNumber(1, 500)
     @IsOptional()
     limit: number = 0

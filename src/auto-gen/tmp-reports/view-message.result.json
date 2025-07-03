@@ -1,0 +1,21 @@
+{
+  "reportPath": "C:\\Users\\duy\\Downloads\\rac\\auto-gen-validate-output\\src\\auto-gen\\test-requests\\.reports\\success-reports\\view-message\\view-message-combined-15-18-03-07-2025.report.txt",
+  "summaries": {
+    "className": "view-message",
+    "totalTests": 0,
+    "passedTests": 0,
+    "failedTests": 0,
+    "warnings": 0,
+    "isSuccess": true,
+    "summary": {
+      "statusCodes": {
+        "200": 0,
+        "201": 0,
+        "400": 0,
+        "403": 0,
+        "500": 0
+      }
+    }
+  },
+  "noFailedTests": true
+}

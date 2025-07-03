@@ -103,7 +103,8 @@ function runTests(subType: string): ActionHandler {
         const testPathPattern = `${normalizedPath}/.*\\.spec\\.ts$`;
         console.log(`🔄 Processing: ${normalizedPath}`);
         console.log(`Running test for ${subType} "${normalizedPath}"...`);
-        await execPromise(`jest ${testPathPattern}`);
+        const {stderr, stdout} = await execPromise(`jest ${testPathPattern}`);
+        // console.log(stderr, stdout)
         console.log(`✅ Success: ${normalizedPath}`);
         return normalizedPath;
       } catch (error) {

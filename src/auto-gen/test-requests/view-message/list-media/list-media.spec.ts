@@ -63,17 +63,17 @@
         });
 
         
-            it('Test case #1 should return errors ["Could not resolve permission type"] when body {"workspaceId":123,"channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":""}', async () => {
+            it('Test case #1 should return errors ["Could not resolve permission type"] when body {"workspaceId":123,"channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"}', async () => {
     testNumber = 1;
     totalTests++;
-    const payloadObj = {"workspaceId":123,"channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":""};
+    const payloadObj = {"workspaceId":123,"channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"};
     resolvedData = resolveVariables(payloadObj, globalContext);
     
     try {
         const response = await resolveCallAPI(
             'listMedia',
             {"x-session-token":"{{token}}"},
-            {"workspaceId":123,"channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":""},
+            {"workspaceId":123,"channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"},
             contextData
         );
         const data = response.data;
@@ -185,21 +185,21 @@
     }
 });
 
-            it('Test case #2 should return errors ["nextPageToken should not be empty","nextPageToken invalid ulid"] when body {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":""}', async () => {
+            it('Test case #2 should return errors [] when body {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"}', async () => {
     testNumber = 2;
     totalTests++;
-    const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":""};
+    const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"};
     resolvedData = resolveVariables(payloadObj, globalContext);
     
     try {
         const response = await resolveCallAPI(
             'listMedia',
             {"x-session-token":"{{token}}"},
-            {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":""},
+            {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"},
             contextData
         );
         const data = response.data;
-        const expectJson = ["nextPageToken should not be empty","nextPageToken invalid ulid"].sort();
+        const expectJson = [].sort();
 
         let expectDetails;
         let softExpectDetails;
@@ -307,17 +307,17 @@
     }
 });
 
-            it('Test case #3 should return errors ["Could not resolve permission type"] when body {"workspaceId":"","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":""}', async () => {
+            it('Test case #3 should return errors ["Could not resolve permission type"] when body {"channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"}', async () => {
     testNumber = 3;
     totalTests++;
-    const payloadObj = {"workspaceId":"","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":""};
+    const payloadObj = {"channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"};
     resolvedData = resolveVariables(payloadObj, globalContext);
     
     try {
         const response = await resolveCallAPI(
             'listMedia',
             {"x-session-token":"{{token}}"},
-            {"workspaceId":"","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":""},
+            {"channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"},
             contextData
         );
         const data = response.data;
@@ -429,17 +429,17 @@
     }
 });
 
-            it('Test case #4 should return errors ["Could not resolve permission type"] when body {"workspaceId":null,"channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":""}', async () => {
+            it('Test case #4 should return errors ["Could not resolve permission type"] when body {"workspaceId":"","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"}', async () => {
     testNumber = 4;
     totalTests++;
-    const payloadObj = {"workspaceId":null,"channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":""};
+    const payloadObj = {"workspaceId":"","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"};
     resolvedData = resolveVariables(payloadObj, globalContext);
     
     try {
         const response = await resolveCallAPI(
             'listMedia',
             {"x-session-token":"{{token}}"},
-            {"workspaceId":null,"channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":""},
+            {"workspaceId":"","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"},
             contextData
         );
         const data = response.data;
@@ -551,21 +551,21 @@
     }
 });
 
-            it('Test case #5 should return errors ["Invalid channel"] when body {"workspaceId":"invalid_value","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":""}', async () => {
+            it('Test case #5 should return errors ["Could not resolve permission type"] when body {"workspaceId":null,"channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"}', async () => {
     testNumber = 5;
     totalTests++;
-    const payloadObj = {"workspaceId":"invalid_value","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":""};
+    const payloadObj = {"workspaceId":null,"channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"};
     resolvedData = resolveVariables(payloadObj, globalContext);
     
     try {
         const response = await resolveCallAPI(
             'listMedia',
             {"x-session-token":"{{token}}"},
-            {"workspaceId":"invalid_value","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":""},
+            {"workspaceId":null,"channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"},
             contextData
         );
         const data = response.data;
-        const expectJson = ["Invalid channel"].sort();
+        const expectJson = ["Could not resolve permission type"].sort();
 
         let expectDetails;
         let softExpectDetails;
@@ -673,383 +673,17 @@
     }
 });
 
-            it('Test case #6 should return errors ["Could not resolve permission type"] when body {"workspaceId":"0","channelId":123,"type":1,"limit":1,"nextPageToken":""}', async () => {
+            it('Test case #6 should return errors ["Invalid channel"] when body {"workspaceId":"invalid_value","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"}', async () => {
     testNumber = 6;
     totalTests++;
-    const payloadObj = {"workspaceId":"0","channelId":123,"type":1,"limit":1,"nextPageToken":""};
+    const payloadObj = {"workspaceId":"invalid_value","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"};
     resolvedData = resolveVariables(payloadObj, globalContext);
     
     try {
         const response = await resolveCallAPI(
             'listMedia',
             {"x-session-token":"{{token}}"},
-            {"workspaceId":"0","channelId":123,"type":1,"limit":1,"nextPageToken":""},
-            contextData
-        );
-        const data = response.data;
-        const expectJson = ["Could not resolve permission type"].sort();
-
-        let expectDetails;
-        let softExpectDetails;
-        switch (response.status) {
-            case 200:
-            case 201:
-            case 400:
-            case 403:
-                    expectDetails = Array.isArray(data?.error?.details)
-                        ? data.error.details
-                        : data?.error?.details
-                            ? [data.error.details]
-                            : (data?.ok === true)
-                                ? []
-                                : data !== undefined && data !== null
-                                    ? [data]
-                                    : [];
-                softExpectDetails = [...expectDetails].sort();
-                
-                const allErrorsMatched = softExpectDetails.every(actualError => 
-                    expectJson.includes(actualError)
-                );
-                
-                const exactMatch = allErrorsMatched && 
-                                 softExpectDetails.length === expectJson.length;
-                
-                if (exactMatch) {
-                    passedTests++;
-                    codedTest.push({
-                        testcase: testNumber,
-                        code: response.status,
-                        body: resolvedData,
-                    });
-                } else if (allErrorsMatched) {
-                    warnings.push({
-                        testcase: testNumber,
-                        code: response.status,
-                        body: resolvedData,
-                        actualErrors: softExpectDetails,
-                        expectedErrors: expectJson,
-                        message: "Actual errors includes of expected errors"
-                    });
-                    // passedTests++;
-                } else {
-                    failedTests.push({
-                        testcase: testNumber,
-                        code: response.status,
-                        body: resolvedData,
-                        missing: softExpectDetails,
-                        extra: expectJson,
-                    });
-                }
-                break;
-            case 500:
-                failedTests.push({
-                    testcase: testNumber,
-                    code: 500,
-                    errorDetails: expectJson,
-                });
-                break;
-            default:
-                expectDetails = Array.isArray(data?.error?.details)
-                    ? data.error.details
-                    : [];
-                softExpectDetails = [...expectDetails].sort();
-                const defaultAllMatched = softExpectDetails.every(actualError => 
-                    expectJson.includes(actualError)
-                );
-                const defaultExactMatch = defaultAllMatched && 
-                                        softExpectDetails.length === expectJson.length;
-                
-                if (defaultExactMatch) {
-                    passedTests++;
-                    codedTest.push({
-                        testcase: testNumber,
-                        code: response.status,
-                        body: resolvedData,
-                    });
-                } else if (defaultAllMatched) {
-                    warnings.push({
-                        testcase: testNumber,
-                        code: response.status,
-                        body: resolvedData,
-                        actualErrors: softExpectDetails,
-                        expectedErrors: expectJson,
-                        message: "Actual errors are subset of expected errors"
-                    });
-                    passedTests++;
-                } else {
-                    failedTests.push({
-                        testcase: testNumber,
-                        code: response.status,
-                        body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
-                    });
-                }
-        }
-    } catch (error) {
-        console.error('Error in test case #' + testNumber, error);
-        failedTests.push({
-            testcase: testNumber,
-            error: error.message
-        });
-    }
-});
-
-            it('Test case #7 should return errors ["Could not resolve permission type"] when body {"workspaceId":"0","channelId":"","type":1,"limit":1,"nextPageToken":""}', async () => {
-    testNumber = 7;
-    totalTests++;
-    const payloadObj = {"workspaceId":"0","channelId":"","type":1,"limit":1,"nextPageToken":""};
-    resolvedData = resolveVariables(payloadObj, globalContext);
-    
-    try {
-        const response = await resolveCallAPI(
-            'listMedia',
-            {"x-session-token":"{{token}}"},
-            {"workspaceId":"0","channelId":"","type":1,"limit":1,"nextPageToken":""},
-            contextData
-        );
-        const data = response.data;
-        const expectJson = ["Could not resolve permission type"].sort();
-
-        let expectDetails;
-        let softExpectDetails;
-        switch (response.status) {
-            case 200:
-            case 201:
-            case 400:
-            case 403:
-                    expectDetails = Array.isArray(data?.error?.details)
-                        ? data.error.details
-                        : data?.error?.details
-                            ? [data.error.details]
-                            : (data?.ok === true)
-                                ? []
-                                : data !== undefined && data !== null
-                                    ? [data]
-                                    : [];
-                softExpectDetails = [...expectDetails].sort();
-                
-                const allErrorsMatched = softExpectDetails.every(actualError => 
-                    expectJson.includes(actualError)
-                );
-                
-                const exactMatch = allErrorsMatched && 
-                                 softExpectDetails.length === expectJson.length;
-                
-                if (exactMatch) {
-                    passedTests++;
-                    codedTest.push({
-                        testcase: testNumber,
-                        code: response.status,
-                        body: resolvedData,
-                    });
-                } else if (allErrorsMatched) {
-                    warnings.push({
-                        testcase: testNumber,
-                        code: response.status,
-                        body: resolvedData,
-                        actualErrors: softExpectDetails,
-                        expectedErrors: expectJson,
-                        message: "Actual errors includes of expected errors"
-                    });
-                    // passedTests++;
-                } else {
-                    failedTests.push({
-                        testcase: testNumber,
-                        code: response.status,
-                        body: resolvedData,
-                        missing: softExpectDetails,
-                        extra: expectJson,
-                    });
-                }
-                break;
-            case 500:
-                failedTests.push({
-                    testcase: testNumber,
-                    code: 500,
-                    errorDetails: expectJson,
-                });
-                break;
-            default:
-                expectDetails = Array.isArray(data?.error?.details)
-                    ? data.error.details
-                    : [];
-                softExpectDetails = [...expectDetails].sort();
-                const defaultAllMatched = softExpectDetails.every(actualError => 
-                    expectJson.includes(actualError)
-                );
-                const defaultExactMatch = defaultAllMatched && 
-                                        softExpectDetails.length === expectJson.length;
-                
-                if (defaultExactMatch) {
-                    passedTests++;
-                    codedTest.push({
-                        testcase: testNumber,
-                        code: response.status,
-                        body: resolvedData,
-                    });
-                } else if (defaultAllMatched) {
-                    warnings.push({
-                        testcase: testNumber,
-                        code: response.status,
-                        body: resolvedData,
-                        actualErrors: softExpectDetails,
-                        expectedErrors: expectJson,
-                        message: "Actual errors are subset of expected errors"
-                    });
-                    passedTests++;
-                } else {
-                    failedTests.push({
-                        testcase: testNumber,
-                        code: response.status,
-                        body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
-                    });
-                }
-        }
-    } catch (error) {
-        console.error('Error in test case #' + testNumber, error);
-        failedTests.push({
-            testcase: testNumber,
-            error: error.message
-        });
-    }
-});
-
-            it('Test case #8 should return errors ["Could not resolve permission type"] when body {"workspaceId":"0","channelId":null,"type":1,"limit":1,"nextPageToken":""}', async () => {
-    testNumber = 8;
-    totalTests++;
-    const payloadObj = {"workspaceId":"0","channelId":null,"type":1,"limit":1,"nextPageToken":""};
-    resolvedData = resolveVariables(payloadObj, globalContext);
-    
-    try {
-        const response = await resolveCallAPI(
-            'listMedia',
-            {"x-session-token":"{{token}}"},
-            {"workspaceId":"0","channelId":null,"type":1,"limit":1,"nextPageToken":""},
-            contextData
-        );
-        const data = response.data;
-        const expectJson = ["Could not resolve permission type"].sort();
-
-        let expectDetails;
-        let softExpectDetails;
-        switch (response.status) {
-            case 200:
-            case 201:
-            case 400:
-            case 403:
-                    expectDetails = Array.isArray(data?.error?.details)
-                        ? data.error.details
-                        : data?.error?.details
-                            ? [data.error.details]
-                            : (data?.ok === true)
-                                ? []
-                                : data !== undefined && data !== null
-                                    ? [data]
-                                    : [];
-                softExpectDetails = [...expectDetails].sort();
-                
-                const allErrorsMatched = softExpectDetails.every(actualError => 
-                    expectJson.includes(actualError)
-                );
-                
-                const exactMatch = allErrorsMatched && 
-                                 softExpectDetails.length === expectJson.length;
-                
-                if (exactMatch) {
-                    passedTests++;
-                    codedTest.push({
-                        testcase: testNumber,
-                        code: response.status,
-                        body: resolvedData,
-                    });
-                } else if (allErrorsMatched) {
-                    warnings.push({
-                        testcase: testNumber,
-                        code: response.status,
-                        body: resolvedData,
-                        actualErrors: softExpectDetails,
-                        expectedErrors: expectJson,
-                        message: "Actual errors includes of expected errors"
-                    });
-                    // passedTests++;
-                } else {
-                    failedTests.push({
-                        testcase: testNumber,
-                        code: response.status,
-                        body: resolvedData,
-                        missing: softExpectDetails,
-                        extra: expectJson,
-                    });
-                }
-                break;
-            case 500:
-                failedTests.push({
-                    testcase: testNumber,
-                    code: 500,
-                    errorDetails: expectJson,
-                });
-                break;
-            default:
-                expectDetails = Array.isArray(data?.error?.details)
-                    ? data.error.details
-                    : [];
-                softExpectDetails = [...expectDetails].sort();
-                const defaultAllMatched = softExpectDetails.every(actualError => 
-                    expectJson.includes(actualError)
-                );
-                const defaultExactMatch = defaultAllMatched && 
-                                        softExpectDetails.length === expectJson.length;
-                
-                if (defaultExactMatch) {
-                    passedTests++;
-                    codedTest.push({
-                        testcase: testNumber,
-                        code: response.status,
-                        body: resolvedData,
-                    });
-                } else if (defaultAllMatched) {
-                    warnings.push({
-                        testcase: testNumber,
-                        code: response.status,
-                        body: resolvedData,
-                        actualErrors: softExpectDetails,
-                        expectedErrors: expectJson,
-                        message: "Actual errors are subset of expected errors"
-                    });
-                    passedTests++;
-                } else {
-                    failedTests.push({
-                        testcase: testNumber,
-                        code: response.status,
-                        body: resolvedData,
-                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
-                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
-                    });
-                }
-        }
-    } catch (error) {
-        console.error('Error in test case #' + testNumber, error);
-        failedTests.push({
-            testcase: testNumber,
-            error: error.message
-        });
-    }
-});
-
-            it('Test case #9 should return errors ["Invalid channel"] when body {"workspaceId":"0","channelId":"invalid_value","type":1,"limit":1,"nextPageToken":""}', async () => {
-    testNumber = 9;
-    totalTests++;
-    const payloadObj = {"workspaceId":"0","channelId":"invalid_value","type":1,"limit":1,"nextPageToken":""};
-    resolvedData = resolveVariables(payloadObj, globalContext);
-    
-    try {
-        const response = await resolveCallAPI(
-            'listMedia',
-            {"x-session-token":"{{token}}"},
-            {"workspaceId":"0","channelId":"invalid_value","type":1,"limit":1,"nextPageToken":""},
+            {"workspaceId":"invalid_value","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"},
             contextData
         );
         const data = response.data;
@@ -1161,21 +795,387 @@
     }
 });
 
-            it('Test case #10 should return errors ["type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11,received nan","nextPageToken should not be empty","nextPageToken invalid ulid"] when body {"workspaceId":"0","channelId":"{{channelId}}","type":"invalid_enum_value","limit":1,"nextPageToken":""}', async () => {
+            it('Test case #7 should return errors ["Could not resolve permission type"] when body {"workspaceId":"0","channelId":123,"type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"}', async () => {
+    testNumber = 7;
+    totalTests++;
+    const payloadObj = {"workspaceId":"0","channelId":123,"type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"};
+    resolvedData = resolveVariables(payloadObj, globalContext);
+    
+    try {
+        const response = await resolveCallAPI(
+            'listMedia',
+            {"x-session-token":"{{token}}"},
+            {"workspaceId":"0","channelId":123,"type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"},
+            contextData
+        );
+        const data = response.data;
+        const expectJson = ["Could not resolve permission type"].sort();
+
+        let expectDetails;
+        let softExpectDetails;
+        switch (response.status) {
+            case 200:
+            case 201:
+            case 400:
+            case 403:
+                    expectDetails = Array.isArray(data?.error?.details)
+                        ? data.error.details
+                        : data?.error?.details
+                            ? [data.error.details]
+                            : (data?.ok === true)
+                                ? []
+                                : data !== undefined && data !== null
+                                    ? [data]
+                                    : [];
+                softExpectDetails = [...expectDetails].sort();
+                
+                const allErrorsMatched = softExpectDetails.every(actualError => 
+                    expectJson.includes(actualError)
+                );
+                
+                const exactMatch = allErrorsMatched && 
+                                 softExpectDetails.length === expectJson.length;
+                
+                if (exactMatch) {
+                    passedTests++;
+                    codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                    });
+                } else if (allErrorsMatched) {
+                    warnings.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        actualErrors: softExpectDetails,
+                        expectedErrors: expectJson,
+                        message: "Actual errors includes of expected errors"
+                    });
+                    // passedTests++;
+                } else {
+                    failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails,
+                        extra: expectJson,
+                    });
+                }
+                break;
+            case 500:
+                failedTests.push({
+                    testcase: testNumber,
+                    code: 500,
+                    errorDetails: expectJson,
+                });
+                break;
+            default:
+                expectDetails = Array.isArray(data?.error?.details)
+                    ? data.error.details
+                    : [];
+                softExpectDetails = [...expectDetails].sort();
+                const defaultAllMatched = softExpectDetails.every(actualError => 
+                    expectJson.includes(actualError)
+                );
+                const defaultExactMatch = defaultAllMatched && 
+                                        softExpectDetails.length === expectJson.length;
+                
+                if (defaultExactMatch) {
+                    passedTests++;
+                    codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                    });
+                } else if (defaultAllMatched) {
+                    warnings.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        actualErrors: softExpectDetails,
+                        expectedErrors: expectJson,
+                        message: "Actual errors are subset of expected errors"
+                    });
+                    passedTests++;
+                } else {
+                    failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
+                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                    });
+                }
+        }
+    } catch (error) {
+        console.error('Error in test case #' + testNumber, error);
+        failedTests.push({
+            testcase: testNumber,
+            error: error.message
+        });
+    }
+});
+
+            it('Test case #8 should return errors [] when body {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"}', async () => {
+    testNumber = 8;
+    totalTests++;
+    const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"};
+    resolvedData = resolveVariables(payloadObj, globalContext);
+    
+    try {
+        const response = await resolveCallAPI(
+            'listMedia',
+            {"x-session-token":"{{token}}"},
+            {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"},
+            contextData
+        );
+        const data = response.data;
+        const expectJson = [].sort();
+
+        let expectDetails;
+        let softExpectDetails;
+        switch (response.status) {
+            case 200:
+            case 201:
+            case 400:
+            case 403:
+                    expectDetails = Array.isArray(data?.error?.details)
+                        ? data.error.details
+                        : data?.error?.details
+                            ? [data.error.details]
+                            : (data?.ok === true)
+                                ? []
+                                : data !== undefined && data !== null
+                                    ? [data]
+                                    : [];
+                softExpectDetails = [...expectDetails].sort();
+                
+                const allErrorsMatched = softExpectDetails.every(actualError => 
+                    expectJson.includes(actualError)
+                );
+                
+                const exactMatch = allErrorsMatched && 
+                                 softExpectDetails.length === expectJson.length;
+                
+                if (exactMatch) {
+                    passedTests++;
+                    codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                    });
+                } else if (allErrorsMatched) {
+                    warnings.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        actualErrors: softExpectDetails,
+                        expectedErrors: expectJson,
+                        message: "Actual errors includes of expected errors"
+                    });
+                    // passedTests++;
+                } else {
+                    failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails,
+                        extra: expectJson,
+                    });
+                }
+                break;
+            case 500:
+                failedTests.push({
+                    testcase: testNumber,
+                    code: 500,
+                    errorDetails: expectJson,
+                });
+                break;
+            default:
+                expectDetails = Array.isArray(data?.error?.details)
+                    ? data.error.details
+                    : [];
+                softExpectDetails = [...expectDetails].sort();
+                const defaultAllMatched = softExpectDetails.every(actualError => 
+                    expectJson.includes(actualError)
+                );
+                const defaultExactMatch = defaultAllMatched && 
+                                        softExpectDetails.length === expectJson.length;
+                
+                if (defaultExactMatch) {
+                    passedTests++;
+                    codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                    });
+                } else if (defaultAllMatched) {
+                    warnings.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        actualErrors: softExpectDetails,
+                        expectedErrors: expectJson,
+                        message: "Actual errors are subset of expected errors"
+                    });
+                    passedTests++;
+                } else {
+                    failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
+                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                    });
+                }
+        }
+    } catch (error) {
+        console.error('Error in test case #' + testNumber, error);
+        failedTests.push({
+            testcase: testNumber,
+            error: error.message
+        });
+    }
+});
+
+            it('Test case #9 should return errors ["Unsupported permission type"] when body {"workspaceId":"0","type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"}', async () => {
+    testNumber = 9;
+    totalTests++;
+    const payloadObj = {"workspaceId":"0","type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"};
+    resolvedData = resolveVariables(payloadObj, globalContext);
+    
+    try {
+        const response = await resolveCallAPI(
+            'listMedia',
+            {"x-session-token":"{{token}}"},
+            {"workspaceId":"0","type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"},
+            contextData
+        );
+        const data = response.data;
+        const expectJson = ["Unsupported permission type"].sort();
+
+        let expectDetails;
+        let softExpectDetails;
+        switch (response.status) {
+            case 200:
+            case 201:
+            case 400:
+            case 403:
+                    expectDetails = Array.isArray(data?.error?.details)
+                        ? data.error.details
+                        : data?.error?.details
+                            ? [data.error.details]
+                            : (data?.ok === true)
+                                ? []
+                                : data !== undefined && data !== null
+                                    ? [data]
+                                    : [];
+                softExpectDetails = [...expectDetails].sort();
+                
+                const allErrorsMatched = softExpectDetails.every(actualError => 
+                    expectJson.includes(actualError)
+                );
+                
+                const exactMatch = allErrorsMatched && 
+                                 softExpectDetails.length === expectJson.length;
+                
+                if (exactMatch) {
+                    passedTests++;
+                    codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                    });
+                } else if (allErrorsMatched) {
+                    warnings.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        actualErrors: softExpectDetails,
+                        expectedErrors: expectJson,
+                        message: "Actual errors includes of expected errors"
+                    });
+                    // passedTests++;
+                } else {
+                    failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails,
+                        extra: expectJson,
+                    });
+                }
+                break;
+            case 500:
+                failedTests.push({
+                    testcase: testNumber,
+                    code: 500,
+                    errorDetails: expectJson,
+                });
+                break;
+            default:
+                expectDetails = Array.isArray(data?.error?.details)
+                    ? data.error.details
+                    : [];
+                softExpectDetails = [...expectDetails].sort();
+                const defaultAllMatched = softExpectDetails.every(actualError => 
+                    expectJson.includes(actualError)
+                );
+                const defaultExactMatch = defaultAllMatched && 
+                                        softExpectDetails.length === expectJson.length;
+                
+                if (defaultExactMatch) {
+                    passedTests++;
+                    codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                    });
+                } else if (defaultAllMatched) {
+                    warnings.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        actualErrors: softExpectDetails,
+                        expectedErrors: expectJson,
+                        message: "Actual errors are subset of expected errors"
+                    });
+                    passedTests++;
+                } else {
+                    failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
+                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                    });
+                }
+        }
+    } catch (error) {
+        console.error('Error in test case #' + testNumber, error);
+        failedTests.push({
+            testcase: testNumber,
+            error: error.message
+        });
+    }
+});
+
+            it('Test case #10 should return errors ["Could not resolve permission type"] when body {"workspaceId":"0","channelId":"","type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"}', async () => {
     testNumber = 10;
     totalTests++;
-    const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","type":"invalid_enum_value","limit":1,"nextPageToken":""};
+    const payloadObj = {"workspaceId":"0","channelId":"","type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"};
     resolvedData = resolveVariables(payloadObj, globalContext);
     
     try {
         const response = await resolveCallAPI(
             'listMedia',
             {"x-session-token":"{{token}}"},
-            {"workspaceId":"0","channelId":"{{channelId}}","type":"invalid_enum_value","limit":1,"nextPageToken":""},
+            {"workspaceId":"0","channelId":"","type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"},
             contextData
         );
         const data = response.data;
-        const expectJson = ["type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan","nextPageToken should not be empty","nextPageToken invalid ulid"].sort();
+        const expectJson = ["Could not resolve permission type"].sort();
 
         let expectDetails;
         let softExpectDetails;
@@ -1283,21 +1283,21 @@
     }
 });
 
-            it('Test case #11 should return errors ["type should not be empty","type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11,received nan","nextPageToken should not be empty","nextPageToken invalid ulid"] when body {"workspaceId":"0","channelId":"{{channelId}}","type":"","limit":1,"nextPageToken":""}', async () => {
+            it('Test case #11 should return errors ["Could not resolve permission type"] when body {"workspaceId":"0","channelId":null,"type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"}', async () => {
     testNumber = 11;
     totalTests++;
-    const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","type":"","limit":1,"nextPageToken":""};
+    const payloadObj = {"workspaceId":"0","channelId":null,"type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"};
     resolvedData = resolveVariables(payloadObj, globalContext);
     
     try {
         const response = await resolveCallAPI(
             'listMedia',
             {"x-session-token":"{{token}}"},
-            {"workspaceId":"0","channelId":"{{channelId}}","type":"","limit":1,"nextPageToken":""},
+            {"workspaceId":"0","channelId":null,"type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"},
             contextData
         );
         const data = response.data;
-        const expectJson = ["type should not be empty","type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan","nextPageToken should not be empty","nextPageToken invalid ulid"].sort();
+        const expectJson = ["Could not resolve permission type"].sort();
 
         let expectDetails;
         let softExpectDetails;
@@ -1405,21 +1405,21 @@
     }
 });
 
-            it('Test case #12 should return errors ["type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11,received null","nextPageToken should not be empty","nextPageToken invalid ulid"] when body {"workspaceId":"0","channelId":"{{channelId}}","type":null,"limit":1,"nextPageToken":""}', async () => {
+            it('Test case #12 should return errors ["Invalid channel"] when body {"workspaceId":"0","channelId":"invalid_value","type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"}', async () => {
     testNumber = 12;
     totalTests++;
-    const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","type":null,"limit":1,"nextPageToken":""};
+    const payloadObj = {"workspaceId":"0","channelId":"invalid_value","type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"};
     resolvedData = resolveVariables(payloadObj, globalContext);
     
     try {
         const response = await resolveCallAPI(
             'listMedia',
             {"x-session-token":"{{token}}"},
-            {"workspaceId":"0","channelId":"{{channelId}}","type":null,"limit":1,"nextPageToken":""},
+            {"workspaceId":"0","channelId":"invalid_value","type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"},
             contextData
         );
         const data = response.data;
-        const expectJson = ["type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received null","nextPageToken should not be empty","nextPageToken invalid ulid"].sort();
+        const expectJson = ["Invalid channel"].sort();
 
         let expectDetails;
         let softExpectDetails;
@@ -1527,21 +1527,21 @@
     }
 });
 
-            it('Test case #13 should return errors ["limit expected number,received nan","nextPageToken should not be empty","nextPageToken invalid ulid"] when body {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":"invalid_number","nextPageToken":""}', async () => {
+            it('Test case #13 should return errors ["type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11,received nan"] when body {"workspaceId":"0","channelId":"{{channelId}}","type":"invalid_enum_value","limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"}', async () => {
     testNumber = 13;
     totalTests++;
-    const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":"invalid_number","nextPageToken":""};
+    const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","type":"invalid_enum_value","limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"};
     resolvedData = resolveVariables(payloadObj, globalContext);
     
     try {
         const response = await resolveCallAPI(
             'listMedia',
             {"x-session-token":"{{token}}"},
-            {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":"invalid_number","nextPageToken":""},
+            {"workspaceId":"0","channelId":"{{channelId}}","type":"invalid_enum_value","limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"},
             contextData
         );
         const data = response.data;
-        const expectJson = ["limit expected number, received nan","nextPageToken should not be empty","nextPageToken invalid ulid"].sort();
+        const expectJson = ["type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan"].sort();
 
         let expectDetails;
         let softExpectDetails;
@@ -1649,21 +1649,21 @@
     }
 });
 
-            it('Test case #14 should return errors ["limit range from 1 to 500","nextPageToken should not be empty","nextPageToken invalid ulid"] when body {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":0,"nextPageToken":""}', async () => {
+            it('Test case #14 should return errors [] when body {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"}', async () => {
     testNumber = 14;
     totalTests++;
-    const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":0,"nextPageToken":""};
+    const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"};
     resolvedData = resolveVariables(payloadObj, globalContext);
     
     try {
         const response = await resolveCallAPI(
             'listMedia',
             {"x-session-token":"{{token}}"},
-            {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":0,"nextPageToken":""},
+            {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"},
             contextData
         );
         const data = response.data;
-        const expectJson = ["limit range from 1 to 500","nextPageToken should not be empty","nextPageToken invalid ulid"].sort();
+        const expectJson = [].sort();
 
         let expectDetails;
         let softExpectDetails;
@@ -1771,21 +1771,21 @@
     }
 });
 
-            it('Test case #15 should return errors ["limit range from 1 to 500","nextPageToken should not be empty","nextPageToken invalid ulid"] when body {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":501,"nextPageToken":""}', async () => {
+            it('Test case #15 should return errors ["type required","type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11,received undefined"] when body {"workspaceId":"0","channelId":"{{channelId}}","limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"}', async () => {
     testNumber = 15;
     totalTests++;
-    const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":501,"nextPageToken":""};
+    const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"};
     resolvedData = resolveVariables(payloadObj, globalContext);
     
     try {
         const response = await resolveCallAPI(
             'listMedia',
             {"x-session-token":"{{token}}"},
-            {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":501,"nextPageToken":""},
+            {"workspaceId":"0","channelId":"{{channelId}}","limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"},
             contextData
         );
         const data = response.data;
-        const expectJson = ["limit range from 1 to 500","nextPageToken should not be empty","nextPageToken invalid ulid"].sort();
+        const expectJson = ["type required","type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received undefined"].sort();
 
         let expectDetails;
         let softExpectDetails;
@@ -1893,21 +1893,21 @@
     }
 });
 
-            it('Test case #16 should return errors ["nextPageToken should not be empty","nextPageToken invalid ulid"] when body {"workspaceId":"0","channelId":"{{channelId}}","type":1,"nextPageToken":""}', async () => {
+            it('Test case #16 should return errors ["type should not be empty","type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11,received nan"] when body {"workspaceId":"0","channelId":"{{channelId}}","type":"","limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"}', async () => {
     testNumber = 16;
     totalTests++;
-    const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","type":1,"nextPageToken":""};
+    const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","type":"","limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"};
     resolvedData = resolveVariables(payloadObj, globalContext);
     
     try {
         const response = await resolveCallAPI(
             'listMedia',
             {"x-session-token":"{{token}}"},
-            {"workspaceId":"0","channelId":"{{channelId}}","type":1,"nextPageToken":""},
+            {"workspaceId":"0","channelId":"{{channelId}}","type":"","limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"},
             contextData
         );
         const data = response.data;
-        const expectJson = ["nextPageToken should not be empty","nextPageToken invalid ulid"].sort();
+        const expectJson = ["type should not be empty","type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan"].sort();
 
         let expectDetails;
         let softExpectDetails;
@@ -2015,21 +2015,21 @@
     }
 });
 
-            it('Test case #17 should return errors ["limit should not be empty","limit expected number,received nan","nextPageToken should not be empty","nextPageToken invalid ulid"] when body {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":"","nextPageToken":""}', async () => {
+            it('Test case #17 should return errors ["limit expected number,received nan"] when body {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":"invalid_number","nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"}', async () => {
     testNumber = 17;
     totalTests++;
-    const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":"","nextPageToken":""};
+    const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":"invalid_number","nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"};
     resolvedData = resolveVariables(payloadObj, globalContext);
     
     try {
         const response = await resolveCallAPI(
             'listMedia',
             {"x-session-token":"{{token}}"},
-            {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":"","nextPageToken":""},
+            {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":"invalid_number","nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"},
             contextData
         );
         const data = response.data;
-        const expectJson = ["limit should not be empty","limit expected number, received nan","nextPageToken should not be empty","nextPageToken invalid ulid"].sort();
+        const expectJson = ["limit expected number, received nan"].sort();
 
         let expectDetails;
         let softExpectDetails;
@@ -2137,21 +2137,21 @@
     }
 });
 
-            it('Test case #18 should return errors ["limit expected number,received null","nextPageToken should not be empty","nextPageToken invalid ulid"] when body {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":null,"nextPageToken":""}', async () => {
+            it('Test case #18 should return errors ["limit range from 1 to 500"] when body {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":0,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"}', async () => {
     testNumber = 18;
     totalTests++;
-    const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":null,"nextPageToken":""};
+    const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":0,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"};
     resolvedData = resolveVariables(payloadObj, globalContext);
     
     try {
         const response = await resolveCallAPI(
             'listMedia',
             {"x-session-token":"{{token}}"},
-            {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":null,"nextPageToken":""},
+            {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":0,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"},
             contextData
         );
         const data = response.data;
-        const expectJson = ["limit expected number, received null","nextPageToken should not be empty","nextPageToken invalid ulid"].sort();
+        const expectJson = ["limit range from 1 to 500"].sort();
 
         let expectDetails;
         let softExpectDetails;
@@ -2259,8 +2259,496 @@
     }
 });
 
-            it('Test case #19 should return errors ["nextPageToken expected string,received number"] when body {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":123}', async () => {
+            it('Test case #19 should return errors ["limit range from 1 to 500"] when body {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":501,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"}', async () => {
     testNumber = 19;
+    totalTests++;
+    const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":501,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"};
+    resolvedData = resolveVariables(payloadObj, globalContext);
+    
+    try {
+        const response = await resolveCallAPI(
+            'listMedia',
+            {"x-session-token":"{{token}}"},
+            {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":501,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"},
+            contextData
+        );
+        const data = response.data;
+        const expectJson = ["limit range from 1 to 500"].sort();
+
+        let expectDetails;
+        let softExpectDetails;
+        switch (response.status) {
+            case 200:
+            case 201:
+            case 400:
+            case 403:
+                    expectDetails = Array.isArray(data?.error?.details)
+                        ? data.error.details
+                        : data?.error?.details
+                            ? [data.error.details]
+                            : (data?.ok === true)
+                                ? []
+                                : data !== undefined && data !== null
+                                    ? [data]
+                                    : [];
+                softExpectDetails = [...expectDetails].sort();
+                
+                const allErrorsMatched = softExpectDetails.every(actualError => 
+                    expectJson.includes(actualError)
+                );
+                
+                const exactMatch = allErrorsMatched && 
+                                 softExpectDetails.length === expectJson.length;
+                
+                if (exactMatch) {
+                    passedTests++;
+                    codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                    });
+                } else if (allErrorsMatched) {
+                    warnings.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        actualErrors: softExpectDetails,
+                        expectedErrors: expectJson,
+                        message: "Actual errors includes of expected errors"
+                    });
+                    // passedTests++;
+                } else {
+                    failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails,
+                        extra: expectJson,
+                    });
+                }
+                break;
+            case 500:
+                failedTests.push({
+                    testcase: testNumber,
+                    code: 500,
+                    errorDetails: expectJson,
+                });
+                break;
+            default:
+                expectDetails = Array.isArray(data?.error?.details)
+                    ? data.error.details
+                    : [];
+                softExpectDetails = [...expectDetails].sort();
+                const defaultAllMatched = softExpectDetails.every(actualError => 
+                    expectJson.includes(actualError)
+                );
+                const defaultExactMatch = defaultAllMatched && 
+                                        softExpectDetails.length === expectJson.length;
+                
+                if (defaultExactMatch) {
+                    passedTests++;
+                    codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                    });
+                } else if (defaultAllMatched) {
+                    warnings.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        actualErrors: softExpectDetails,
+                        expectedErrors: expectJson,
+                        message: "Actual errors are subset of expected errors"
+                    });
+                    passedTests++;
+                } else {
+                    failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
+                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                    });
+                }
+        }
+    } catch (error) {
+        console.error('Error in test case #' + testNumber, error);
+        failedTests.push({
+            testcase: testNumber,
+            error: error.message
+        });
+    }
+});
+
+            it('Test case #20 should return errors [] when body {"workspaceId":"0","channelId":"{{channelId}}","type":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"}', async () => {
+    testNumber = 20;
+    totalTests++;
+    const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","type":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"};
+    resolvedData = resolveVariables(payloadObj, globalContext);
+    
+    try {
+        const response = await resolveCallAPI(
+            'listMedia',
+            {"x-session-token":"{{token}}"},
+            {"workspaceId":"0","channelId":"{{channelId}}","type":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"},
+            contextData
+        );
+        const data = response.data;
+        const expectJson = [].sort();
+
+        let expectDetails;
+        let softExpectDetails;
+        switch (response.status) {
+            case 200:
+            case 201:
+            case 400:
+            case 403:
+                    expectDetails = Array.isArray(data?.error?.details)
+                        ? data.error.details
+                        : data?.error?.details
+                            ? [data.error.details]
+                            : (data?.ok === true)
+                                ? []
+                                : data !== undefined && data !== null
+                                    ? [data]
+                                    : [];
+                softExpectDetails = [...expectDetails].sort();
+                
+                const allErrorsMatched = softExpectDetails.every(actualError => 
+                    expectJson.includes(actualError)
+                );
+                
+                const exactMatch = allErrorsMatched && 
+                                 softExpectDetails.length === expectJson.length;
+                
+                if (exactMatch) {
+                    passedTests++;
+                    codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                    });
+                } else if (allErrorsMatched) {
+                    warnings.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        actualErrors: softExpectDetails,
+                        expectedErrors: expectJson,
+                        message: "Actual errors includes of expected errors"
+                    });
+                    // passedTests++;
+                } else {
+                    failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails,
+                        extra: expectJson,
+                    });
+                }
+                break;
+            case 500:
+                failedTests.push({
+                    testcase: testNumber,
+                    code: 500,
+                    errorDetails: expectJson,
+                });
+                break;
+            default:
+                expectDetails = Array.isArray(data?.error?.details)
+                    ? data.error.details
+                    : [];
+                softExpectDetails = [...expectDetails].sort();
+                const defaultAllMatched = softExpectDetails.every(actualError => 
+                    expectJson.includes(actualError)
+                );
+                const defaultExactMatch = defaultAllMatched && 
+                                        softExpectDetails.length === expectJson.length;
+                
+                if (defaultExactMatch) {
+                    passedTests++;
+                    codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                    });
+                } else if (defaultAllMatched) {
+                    warnings.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        actualErrors: softExpectDetails,
+                        expectedErrors: expectJson,
+                        message: "Actual errors are subset of expected errors"
+                    });
+                    passedTests++;
+                } else {
+                    failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
+                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                    });
+                }
+        }
+    } catch (error) {
+        console.error('Error in test case #' + testNumber, error);
+        failedTests.push({
+            testcase: testNumber,
+            error: error.message
+        });
+    }
+});
+
+            it('Test case #21 should return errors ["limit should not be empty","limit expected number,received nan","limit range from 1 to 500"] when body {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":"","nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"}', async () => {
+    testNumber = 21;
+    totalTests++;
+    const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":"","nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"};
+    resolvedData = resolveVariables(payloadObj, globalContext);
+    
+    try {
+        const response = await resolveCallAPI(
+            'listMedia',
+            {"x-session-token":"{{token}}"},
+            {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":"","nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"},
+            contextData
+        );
+        const data = response.data;
+        const expectJson = ["limit should not be empty","limit expected number, received nan","limit range from 1 to 500"].sort();
+
+        let expectDetails;
+        let softExpectDetails;
+        switch (response.status) {
+            case 200:
+            case 201:
+            case 400:
+            case 403:
+                    expectDetails = Array.isArray(data?.error?.details)
+                        ? data.error.details
+                        : data?.error?.details
+                            ? [data.error.details]
+                            : (data?.ok === true)
+                                ? []
+                                : data !== undefined && data !== null
+                                    ? [data]
+                                    : [];
+                softExpectDetails = [...expectDetails].sort();
+                
+                const allErrorsMatched = softExpectDetails.every(actualError => 
+                    expectJson.includes(actualError)
+                );
+                
+                const exactMatch = allErrorsMatched && 
+                                 softExpectDetails.length === expectJson.length;
+                
+                if (exactMatch) {
+                    passedTests++;
+                    codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                    });
+                } else if (allErrorsMatched) {
+                    warnings.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        actualErrors: softExpectDetails,
+                        expectedErrors: expectJson,
+                        message: "Actual errors includes of expected errors"
+                    });
+                    // passedTests++;
+                } else {
+                    failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails,
+                        extra: expectJson,
+                    });
+                }
+                break;
+            case 500:
+                failedTests.push({
+                    testcase: testNumber,
+                    code: 500,
+                    errorDetails: expectJson,
+                });
+                break;
+            default:
+                expectDetails = Array.isArray(data?.error?.details)
+                    ? data.error.details
+                    : [];
+                softExpectDetails = [...expectDetails].sort();
+                const defaultAllMatched = softExpectDetails.every(actualError => 
+                    expectJson.includes(actualError)
+                );
+                const defaultExactMatch = defaultAllMatched && 
+                                        softExpectDetails.length === expectJson.length;
+                
+                if (defaultExactMatch) {
+                    passedTests++;
+                    codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                    });
+                } else if (defaultAllMatched) {
+                    warnings.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        actualErrors: softExpectDetails,
+                        expectedErrors: expectJson,
+                        message: "Actual errors are subset of expected errors"
+                    });
+                    passedTests++;
+                } else {
+                    failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
+                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                    });
+                }
+        }
+    } catch (error) {
+        console.error('Error in test case #' + testNumber, error);
+        failedTests.push({
+            testcase: testNumber,
+            error: error.message
+        });
+    }
+});
+
+            it('Test case #22 should return errors ["limit expected number,received null","limit range from 1 to 500"] when body {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":null,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"}', async () => {
+    testNumber = 22;
+    totalTests++;
+    const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":null,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"};
+    resolvedData = resolveVariables(payloadObj, globalContext);
+    
+    try {
+        const response = await resolveCallAPI(
+            'listMedia',
+            {"x-session-token":"{{token}}"},
+            {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":null,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"},
+            contextData
+        );
+        const data = response.data;
+        const expectJson = ["limit expected number, received null","limit range from 1 to 500"].sort();
+
+        let expectDetails;
+        let softExpectDetails;
+        switch (response.status) {
+            case 200:
+            case 201:
+            case 400:
+            case 403:
+                    expectDetails = Array.isArray(data?.error?.details)
+                        ? data.error.details
+                        : data?.error?.details
+                            ? [data.error.details]
+                            : (data?.ok === true)
+                                ? []
+                                : data !== undefined && data !== null
+                                    ? [data]
+                                    : [];
+                softExpectDetails = [...expectDetails].sort();
+                
+                const allErrorsMatched = softExpectDetails.every(actualError => 
+                    expectJson.includes(actualError)
+                );
+                
+                const exactMatch = allErrorsMatched && 
+                                 softExpectDetails.length === expectJson.length;
+                
+                if (exactMatch) {
+                    passedTests++;
+                    codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                    });
+                } else if (allErrorsMatched) {
+                    warnings.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        actualErrors: softExpectDetails,
+                        expectedErrors: expectJson,
+                        message: "Actual errors includes of expected errors"
+                    });
+                    // passedTests++;
+                } else {
+                    failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails,
+                        extra: expectJson,
+                    });
+                }
+                break;
+            case 500:
+                failedTests.push({
+                    testcase: testNumber,
+                    code: 500,
+                    errorDetails: expectJson,
+                });
+                break;
+            default:
+                expectDetails = Array.isArray(data?.error?.details)
+                    ? data.error.details
+                    : [];
+                softExpectDetails = [...expectDetails].sort();
+                const defaultAllMatched = softExpectDetails.every(actualError => 
+                    expectJson.includes(actualError)
+                );
+                const defaultExactMatch = defaultAllMatched && 
+                                        softExpectDetails.length === expectJson.length;
+                
+                if (defaultExactMatch) {
+                    passedTests++;
+                    codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                    });
+                } else if (defaultAllMatched) {
+                    warnings.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        actualErrors: softExpectDetails,
+                        expectedErrors: expectJson,
+                        message: "Actual errors are subset of expected errors"
+                    });
+                    passedTests++;
+                } else {
+                    failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
+                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                    });
+                }
+        }
+    } catch (error) {
+        console.error('Error in test case #' + testNumber, error);
+        failedTests.push({
+            testcase: testNumber,
+            error: error.message
+        });
+    }
+});
+
+            it('Test case #23 should return errors ["nextPageToken invalid ulid","nextPageToken expected string,received number"] when body {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":123}', async () => {
+    testNumber = 23;
     totalTests++;
     const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":123};
     resolvedData = resolveVariables(payloadObj, globalContext);
@@ -2273,7 +2761,7 @@
             contextData
         );
         const data = response.data;
-        const expectJson = ["nextPageToken expected string, received number"].sort();
+        const expectJson = ["nextPageToken invalid ulid","nextPageToken expected string, received number"].sort();
 
         let expectDetails;
         let softExpectDetails;
@@ -2381,8 +2869,130 @@
     }
 });
 
-            it('Test case #20 should return errors [] when body {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":1}', async () => {
-    testNumber = 20;
+            it('Test case #24 should return errors [] when body {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"}', async () => {
+    testNumber = 24;
+    totalTests++;
+    const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"};
+    resolvedData = resolveVariables(payloadObj, globalContext);
+    
+    try {
+        const response = await resolveCallAPI(
+            'listMedia',
+            {"x-session-token":"{{token}}"},
+            {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"},
+            contextData
+        );
+        const data = response.data;
+        const expectJson = [].sort();
+
+        let expectDetails;
+        let softExpectDetails;
+        switch (response.status) {
+            case 200:
+            case 201:
+            case 400:
+            case 403:
+                    expectDetails = Array.isArray(data?.error?.details)
+                        ? data.error.details
+                        : data?.error?.details
+                            ? [data.error.details]
+                            : (data?.ok === true)
+                                ? []
+                                : data !== undefined && data !== null
+                                    ? [data]
+                                    : [];
+                softExpectDetails = [...expectDetails].sort();
+                
+                const allErrorsMatched = softExpectDetails.every(actualError => 
+                    expectJson.includes(actualError)
+                );
+                
+                const exactMatch = allErrorsMatched && 
+                                 softExpectDetails.length === expectJson.length;
+                
+                if (exactMatch) {
+                    passedTests++;
+                    codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                    });
+                } else if (allErrorsMatched) {
+                    warnings.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        actualErrors: softExpectDetails,
+                        expectedErrors: expectJson,
+                        message: "Actual errors includes of expected errors"
+                    });
+                    // passedTests++;
+                } else {
+                    failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails,
+                        extra: expectJson,
+                    });
+                }
+                break;
+            case 500:
+                failedTests.push({
+                    testcase: testNumber,
+                    code: 500,
+                    errorDetails: expectJson,
+                });
+                break;
+            default:
+                expectDetails = Array.isArray(data?.error?.details)
+                    ? data.error.details
+                    : [];
+                softExpectDetails = [...expectDetails].sort();
+                const defaultAllMatched = softExpectDetails.every(actualError => 
+                    expectJson.includes(actualError)
+                );
+                const defaultExactMatch = defaultAllMatched && 
+                                        softExpectDetails.length === expectJson.length;
+                
+                if (defaultExactMatch) {
+                    passedTests++;
+                    codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                    });
+                } else if (defaultAllMatched) {
+                    warnings.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        actualErrors: softExpectDetails,
+                        expectedErrors: expectJson,
+                        message: "Actual errors are subset of expected errors"
+                    });
+                    passedTests++;
+                } else {
+                    failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
+                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                    });
+                }
+        }
+    } catch (error) {
+        console.error('Error in test case #' + testNumber, error);
+        failedTests.push({
+            testcase: testNumber,
+            error: error.message
+        });
+    }
+});
+
+            it('Test case #25 should return errors [] when body {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":1}', async () => {
+    testNumber = 25;
     totalTests++;
     const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":1};
     resolvedData = resolveVariables(payloadObj, globalContext);
@@ -2503,21 +3113,21 @@
     }
 });
 
-            it('Test case #21 should return errors ["nextPageToken expected string,received null"] when body {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":null}', async () => {
-    testNumber = 21;
+            it('Test case #26 should return errors ["nextPageToken should not be empty","nextPageToken invalid ulid"] when body {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":""}', async () => {
+    testNumber = 26;
     totalTests++;
-    const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":null};
+    const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":""};
     resolvedData = resolveVariables(payloadObj, globalContext);
     
     try {
         const response = await resolveCallAPI(
             'listMedia',
             {"x-session-token":"{{token}}"},
-            {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":null},
+            {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":""},
             contextData
         );
         const data = response.data;
-        const expectJson = ["nextPageToken expected string, received null"].sort();
+        const expectJson = ["nextPageToken should not be empty","nextPageToken invalid ulid"].sort();
 
         let expectDetails;
         let softExpectDetails;
@@ -2625,8 +3235,130 @@
     }
 });
 
-            it('Test case #22 should return errors ["nextPageToken invalid ulid"] when body {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":"invalid_ULID"}', async () => {
-    testNumber = 22;
+            it('Test case #27 should return errors ["nextPageToken invalid ulid","nextPageToken expected string,received null"] when body {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":null}', async () => {
+    testNumber = 27;
+    totalTests++;
+    const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":null};
+    resolvedData = resolveVariables(payloadObj, globalContext);
+    
+    try {
+        const response = await resolveCallAPI(
+            'listMedia',
+            {"x-session-token":"{{token}}"},
+            {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":null},
+            contextData
+        );
+        const data = response.data;
+        const expectJson = ["nextPageToken invalid ulid","nextPageToken expected string, received null"].sort();
+
+        let expectDetails;
+        let softExpectDetails;
+        switch (response.status) {
+            case 200:
+            case 201:
+            case 400:
+            case 403:
+                    expectDetails = Array.isArray(data?.error?.details)
+                        ? data.error.details
+                        : data?.error?.details
+                            ? [data.error.details]
+                            : (data?.ok === true)
+                                ? []
+                                : data !== undefined && data !== null
+                                    ? [data]
+                                    : [];
+                softExpectDetails = [...expectDetails].sort();
+                
+                const allErrorsMatched = softExpectDetails.every(actualError => 
+                    expectJson.includes(actualError)
+                );
+                
+                const exactMatch = allErrorsMatched && 
+                                 softExpectDetails.length === expectJson.length;
+                
+                if (exactMatch) {
+                    passedTests++;
+                    codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                    });
+                } else if (allErrorsMatched) {
+                    warnings.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        actualErrors: softExpectDetails,
+                        expectedErrors: expectJson,
+                        message: "Actual errors includes of expected errors"
+                    });
+                    // passedTests++;
+                } else {
+                    failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails,
+                        extra: expectJson,
+                    });
+                }
+                break;
+            case 500:
+                failedTests.push({
+                    testcase: testNumber,
+                    code: 500,
+                    errorDetails: expectJson,
+                });
+                break;
+            default:
+                expectDetails = Array.isArray(data?.error?.details)
+                    ? data.error.details
+                    : [];
+                softExpectDetails = [...expectDetails].sort();
+                const defaultAllMatched = softExpectDetails.every(actualError => 
+                    expectJson.includes(actualError)
+                );
+                const defaultExactMatch = defaultAllMatched && 
+                                        softExpectDetails.length === expectJson.length;
+                
+                if (defaultExactMatch) {
+                    passedTests++;
+                    codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                    });
+                } else if (defaultAllMatched) {
+                    warnings.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        actualErrors: softExpectDetails,
+                        expectedErrors: expectJson,
+                        message: "Actual errors are subset of expected errors"
+                    });
+                    passedTests++;
+                } else {
+                    failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
+                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                    });
+                }
+        }
+    } catch (error) {
+        console.error('Error in test case #' + testNumber, error);
+        failedTests.push({
+            testcase: testNumber,
+            error: error.message
+        });
+    }
+});
+
+            it('Test case #28 should return errors ["nextPageToken invalid ulid"] when body {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":"invalid_ULID"}', async () => {
+    testNumber = 28;
     totalTests++;
     const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":"invalid_ULID"};
     resolvedData = resolveVariables(payloadObj, globalContext);
@@ -2640,6 +3372,128 @@
         );
         const data = response.data;
         const expectJson = ["nextPageToken invalid ulid"].sort();
+
+        let expectDetails;
+        let softExpectDetails;
+        switch (response.status) {
+            case 200:
+            case 201:
+            case 400:
+            case 403:
+                    expectDetails = Array.isArray(data?.error?.details)
+                        ? data.error.details
+                        : data?.error?.details
+                            ? [data.error.details]
+                            : (data?.ok === true)
+                                ? []
+                                : data !== undefined && data !== null
+                                    ? [data]
+                                    : [];
+                softExpectDetails = [...expectDetails].sort();
+                
+                const allErrorsMatched = softExpectDetails.every(actualError => 
+                    expectJson.includes(actualError)
+                );
+                
+                const exactMatch = allErrorsMatched && 
+                                 softExpectDetails.length === expectJson.length;
+                
+                if (exactMatch) {
+                    passedTests++;
+                    codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                    });
+                } else if (allErrorsMatched) {
+                    warnings.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        actualErrors: softExpectDetails,
+                        expectedErrors: expectJson,
+                        message: "Actual errors includes of expected errors"
+                    });
+                    // passedTests++;
+                } else {
+                    failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails,
+                        extra: expectJson,
+                    });
+                }
+                break;
+            case 500:
+                failedTests.push({
+                    testcase: testNumber,
+                    code: 500,
+                    errorDetails: expectJson,
+                });
+                break;
+            default:
+                expectDetails = Array.isArray(data?.error?.details)
+                    ? data.error.details
+                    : [];
+                softExpectDetails = [...expectDetails].sort();
+                const defaultAllMatched = softExpectDetails.every(actualError => 
+                    expectJson.includes(actualError)
+                );
+                const defaultExactMatch = defaultAllMatched && 
+                                        softExpectDetails.length === expectJson.length;
+                
+                if (defaultExactMatch) {
+                    passedTests++;
+                    codedTest.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                    });
+                } else if (defaultAllMatched) {
+                    warnings.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        actualErrors: softExpectDetails,
+                        expectedErrors: expectJson,
+                        message: "Actual errors are subset of expected errors"
+                    });
+                    passedTests++;
+                } else {
+                    failedTests.push({
+                        testcase: testNumber,
+                        code: response.status,
+                        body: resolvedData,
+                        missing: softExpectDetails.filter(x => !expectJson.includes(x)),
+                        extra: expectJson.filter(x => !softExpectDetails.includes(x))
+                    });
+                }
+        }
+    } catch (error) {
+        console.error('Error in test case #' + testNumber, error);
+        failedTests.push({
+            testcase: testNumber,
+            error: error.message
+        });
+    }
+});
+
+            it('Test case #29 should return errors [] when body {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"}', async () => {
+    testNumber = 29;
+    totalTests++;
+    const payloadObj = {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"};
+    resolvedData = resolveVariables(payloadObj, globalContext);
+    
+    try {
+        const response = await resolveCallAPI(
+            'listMedia',
+            {"x-session-token":"{{token}}"},
+            {"workspaceId":"0","channelId":"{{channelId}}","type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"},
+            contextData
+        );
+        const data = response.data;
+        const expectJson = [].sort();
 
         let expectDetails;
         let softExpectDetails;

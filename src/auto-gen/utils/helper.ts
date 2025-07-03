@@ -372,13 +372,15 @@ export async function resolveCallAPI(
   const resolveBody = resolveVariables(body, context);
   const resolveHeader = resolveVariables(header, context);
   const apiFunction = getApiFunctions(action, context);
-
+  console.log(actionInfo, resolveHeader, resolveBody)
   const response = await apiFunction({
     method: actionInfo.method,
     path: actionInfo.path,
     headers: resolveHeader,
     body: resolveBody,
   });
+
+  console.log(response.data.error)
 
   return response;
 }
@@ -874,43 +876,43 @@ export function normalizePath(inputPath: string) {
 }
 
 export async function searchDtoInTestRequests(dtoName: string): Promise<string[]> {
-    const basePath = path.join(__dirname, '../test-requests');
+  const basePath = path.join(__dirname, '../test-requests');
 
-    const matches: string[] = [];
+  const matches: string[] = [];
 
-    async function walkDir(currentPath: string) {
-        try {
-            const entries = await fs.promises.readdir(currentPath, { withFileTypes: true });
+  async function walkDir(currentPath: string) {
+    try {
+      const entries = await fs.promises.readdir(currentPath, { withFileTypes: true });
 
-            for (const entry of entries) {
-                const fullPath = path.join(currentPath, entry.name);
+      for (const entry of entries) {
+        const fullPath = path.join(currentPath, entry.name);
 
-                if (entry.isDirectory()) {
-                    // Check if the folder name matches dtoName exactly
-                    if (path.basename(entry.name) === dtoName) {
-                        // Add the relative path from basePath
-                        const relativePath = path.relative(basePath, fullPath);
-                        matches.push(relativePath);
-                    }
-                    // Recursively search subdirectories
-                    await walkDir(fullPath);
-                } else {
-                    // Check if the file name (without extension) matches dtoName
-                    const baseName = path.parse(entry.name).name;
-                    if (baseName === dtoName) {
-                        // Add the relative path from basePath
-                        const relativePath = path.relative(basePath, fullPath);
-                        matches.push(relativePath);
-                    }
-                }
-            }
-        } catch (error) {
-            console.error(`Error reading directory ${currentPath}: ${(error as Error).message}`);
+        if (entry.isDirectory()) {
+          // Check if the folder name matches dtoName exactly
+          if (path.basename(entry.name) === dtoName) {
+            // Add the relative path from basePath
+            const relativePath = path.relative(basePath, fullPath);
+            matches.push(relativePath);
+          }
+          // Recursively search subdirectories
+          await walkDir(fullPath);
+        } else {
+          // Check if the file name (without extension) matches dtoName
+          const baseName = path.parse(entry.name).name;
+          if (baseName === dtoName) {
+            // Add the relative path from basePath
+            const relativePath = path.relative(basePath, fullPath);
+            matches.push(relativePath);
+          }
         }
+      }
+    } catch (error) {
+      console.error(`Error reading directory ${currentPath}: ${(error as Error).message}`);
     }
+  }
 
-    await walkDir(basePath);
-    return matches;
+  await walkDir(basePath);
+  return matches;
 }
 
 export function findReportsDirectory(startDir: string): string {
@@ -918,23 +920,23 @@ export function findReportsDirectory(startDir: string): string {
   let currentDir = startDir;
   while (currentDir !== path.parse(currentDir).root) {
     const testRequestsPath = path.join(currentDir, 'src', 'auto-gen');
-    
+
     if (fs.existsSync(testRequestsPath)) {
       const potentialReportDir = path.join(testRequestsPath, 'tmp-reports');
-      
+
       // Nếu tìm thấy thư mục tmp-reports
       if (fs.existsSync(potentialReportDir)) {
         return potentialReportDir;
       }
-      
+
       // Nếu không tìm thấy nhưng có thư mục test-requests
       fs.mkdirSync(potentialReportDir, { recursive: true });
       return potentialReportDir;
     }
-    
+
     currentDir = path.dirname(currentDir); // Lên thư mục cha
   }
-  
+
   // Fallback: tạo trong thư mục hiện tại nếu không tìm thấy
   const fallbackDir = path.join(startDir, 'tmp-reports');
   fs.mkdirSync(fallbackDir, { recursive: true });

@@ -33,6 +33,9 @@ export function generateStructuredErrorCases(
       field,
     );
 
+    console.log(`Field ${field} has ${variants.length} variants:`);
+    console.log(variants);
+
     errorCasesByField[field] = Array.isArray(variants) ? variants : [];
   });
 
@@ -73,6 +76,7 @@ export function generateStructuredErrorCases(
       // });
     });
   });
+
 
   const allValidCase = { ...validValues };
 
@@ -235,7 +239,7 @@ export function generateErrorVariantsForField(
           variants.push(enumValue);
         });
       }
-      variants.push('invalid_enum_value');
+      // variants.push('invalid_enum_value');
 
       break;
     case 'array':
@@ -300,6 +304,10 @@ export function generateErrorVariantsForField(
 
   if (decorators['optional']) {
     variants.push(undefined);
+  }
+
+  if (decorators['isDefined']) {
+    variants.push(undefined)
   }
 
   if (decorators['notEmpty']) {
@@ -724,22 +732,22 @@ function checkULID(
   decorators: Record<string, any>,
 ): string[] {
   const errors: string[] = [];
+
   if (decorators['isULID']) {
-    if (
-      typeof value === 'string' &&
-      (value === '' || !value.startsWith('{{'))
-    ) {
+    if (typeof value !== 'string') {
+      // ✅ Nếu không phải string, cũng lỗi
       addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_ULID}`);
-    } else if (
-      typeof value === 'string' &&
-      !value.startsWith('{{') &&
-      !checkRegexULID(value)
-    ) {
+    } else if (value === '') {
+      addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_ULID}`);
+    } else if (!value.startsWith('{{') && !checkRegexULID(value)) {
       addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_ULID}`);
     }
   }
+
   return errors;
 }
+
+
 
 function checkEmoji(
   field: string,
@@ -838,6 +846,8 @@ function checkTypeString(
           );
         }
       }
+
+      errors.push(...checkULID(field, value, decorators));
       return errors;
     }
 
@@ -918,24 +928,38 @@ function checkTypeNumber(
   decorators: Record<string, any>,
 ): string[] {
   const errors: string[] = [];
+
   if (decorators['type'] === 'number') {
-    if (typeof value !== 'number' || isNaN(value)) {
-      const receivedNumber = typeof value === 'number' || typeof value === 'string' ? 'nan' : value;
+    const isInvalidType = typeof value !== 'number' || isNaN(value);
+    const isEmptyString = value === '';
+
+    if (isInvalidType || isEmptyString) {
+      const receivedNumber =
+        typeof value === 'number' || typeof value === 'string'
+          ? 'nan'
+          : value;
+
       addErrorIfNotExist(
         errors,
         decorators['numberMessage'],
         `${field} ${ErrorMessage.INVALID_TYPE_NUMBER} ${receivedNumber}`,
       );
-      return errors;
     }
-    if (decorators['min'] != null && value < decorators['min']) {
+
+    // ✅ Dù sai kiểu vẫn kiểm tra range để báo đầy đủ lỗi
+    const numberValue =
+      typeof value === 'number' ? value : Number(value);
+
+    // Nếu là chuỗi rỗng hoặc parse không ra số → NaN → vẫn vào các check này
+    if (decorators['min'] != null && numberValue < decorators['min']) {
       addErrorIfNotExist(
         errors,
         decorators['minMessage'],
         `${field} must be at least ${decorators['min']}`,
       );
     }
-    if (decorators['max'] != null && value > decorators['max']) {
+
+    if (decorators['max'] != null && numberValue > decorators['max']) {
       addErrorIfNotExist(
         errors,
         decorators['maxMessage'],
@@ -945,7 +969,7 @@ function checkTypeNumber(
 
     if (decorators['rangeNumber']) {
       const { start, end } = decorators['rangeNumber'];
-      if (value < start || value > end) {
+      if (numberValue < start || numberValue > end) {
         addErrorIfNotExist(
           errors,
           decorators['rangeMessage'],
@@ -953,7 +977,6 @@ function checkTypeNumber(
         );
       }
     }
-
   }
 
   return errors;
@@ -1138,7 +1161,7 @@ function checkEnum(
 
       const expectedText = enumValues.join(' | ');
       const receivedText = typeof value === 'string' ? 'nan' : value;
-
+      // console.log(typeof value, expectedText,receivedText)
       addErrorIfNotExist(
         errors,
         decorators['enumMessage'],

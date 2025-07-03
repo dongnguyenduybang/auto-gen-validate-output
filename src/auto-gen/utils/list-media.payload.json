@@ -1,7 +1,8 @@
 [
     {
         "body": {
-            "userId": 123,
+            "workspaceId": 123,
+            "channelId": "{{channelId}}",
             "type": 1,
             "limit": 1,
             "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
@@ -12,7 +13,8 @@
     },
     {
         "body": {
-            "userId": "{{userId1}}",
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
             "type": 1,
             "limit": 1,
             "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
@@ -21,6 +23,8 @@
     },
     {
         "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
             "type": 1,
             "limit": 1,
             "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
@@ -31,7 +35,8 @@
     },
     {
         "body": {
-            "userId": "",
+            "workspaceId": null,
+            "channelId": "{{channelId}}",
             "type": 1,
             "limit": 1,
             "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
@@ -42,7 +47,20 @@
     },
     {
         "body": {
-            "userId": null,
+            "workspaceId": "invalid_value",
+            "channelId": "{{channelId}}",
+            "type": 1,
+            "limit": 1,
+            "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 123,
             "type": 1,
             "limit": 1,
             "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
@@ -53,18 +71,54 @@
     },
     {
         "body": {
-            "userId": "invalid_value",
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "type": 1,
+            "limit": 1,
+            "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
+        },
+        "expects": []
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
             "type": 1,
             "limit": 1,
             "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
         },
         "expects": [
-            "Unauthorized request"
+            "Could not resolve permission type"
         ]
     },
     {
         "body": {
-            "userId": "{{userId1}}",
+            "workspaceId": "0",
+            "channelId": null,
+            "type": 1,
+            "limit": 1,
+            "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "invalid_value",
+            "type": 1,
+            "limit": 1,
+            "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
             "type": "invalid_enum_value",
             "limit": 1,
             "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
@@ -75,7 +129,8 @@
     },
     {
         "body": {
-            "userId": "{{userId1}}",
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
             "type": 1,
             "limit": 1,
             "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
@@ -84,18 +139,8 @@
     },
     {
         "body": {
-            "userId": "{{userId1}}",
-            "limit": 1,
-            "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
-        },
-        "expects": [
-            "type required",
-            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received undefined"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
             "type": "",
             "limit": 1,
             "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
@@ -107,7 +152,8 @@
     },
     {
         "body": {
-            "userId": "{{userId1}}",
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
             "type": 1,
             "limit": "invalid_number",
             "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
@@ -118,7 +164,8 @@
     },
     {
         "body": {
-            "userId": "{{userId1}}",
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
             "type": 1,
             "limit": 0,
             "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
@@ -129,7 +176,8 @@
     },
     {
         "body": {
-            "userId": "{{userId1}}",
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
             "type": 1,
             "limit": 501,
             "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
@@ -140,7 +188,8 @@
     },
     {
         "body": {
-            "userId": "{{userId1}}",
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
             "type": 1,
             "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
         },
@@ -148,7 +197,8 @@
     },
     {
         "body": {
-            "userId": "{{userId1}}",
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
             "type": 1,
             "limit": "",
             "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
@@ -161,7 +211,8 @@
     },
     {
         "body": {
-            "userId": "{{userId1}}",
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
             "type": 1,
             "limit": null,
             "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
@@ -173,7 +224,8 @@
     },
     {
         "body": {
-            "userId": "{{userId1}}",
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
             "type": 1,
             "limit": 1,
             "nextPageToken": 123
@@ -185,7 +237,8 @@
     },
     {
         "body": {
-            "userId": "{{userId1}}",
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
             "type": 1,
             "limit": 1,
             "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
@@ -194,7 +247,8 @@
     },
     {
         "body": {
-            "userId": "{{userId1}}",
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
             "type": 1,
             "limit": 1
         },
@@ -202,7 +256,8 @@
     },
     {
         "body": {
-            "userId": "{{userId1}}",
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
             "type": 1,
             "limit": 1,
             "nextPageToken": ""
@@ -214,7 +269,8 @@
     },
     {
         "body": {
-            "userId": "{{userId1}}",
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
             "type": 1,
             "limit": 1,
             "nextPageToken": null
@@ -226,7 +282,8 @@
     },
     {
         "body": {
-            "userId": "{{userId1}}",
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
             "type": 1,
             "limit": 1,
             "nextPageToken": "invalid_ULID"
@@ -237,7 +294,8 @@
     },
     {
         "body": {
-            "userId": "{{userId1}}",
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
             "type": 1,
             "limit": 1,
             "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"

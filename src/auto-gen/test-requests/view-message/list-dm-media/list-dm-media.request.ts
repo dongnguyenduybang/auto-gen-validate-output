@@ -8,7 +8,8 @@ export const ListDmMediaRequest = new DTOBuilder()
         body: {
             userId: VAR.userId1,
             type: AttachmentTypeEnum.ATTACHMENT_TYPE_ENUM_PHOTO,
-            limit: 1
+            limit: 1,
+            nextPageToken: '01JPPHQFHCC697M93K6PTZTZ8Q'
         },
     })
     .addBeforeAll('send dm message media', 'send-dm-message-media', ACTION.SEND_DM_MESSAGE_MEDIA, {

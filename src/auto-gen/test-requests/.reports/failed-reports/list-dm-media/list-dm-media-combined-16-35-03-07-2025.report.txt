@@ -1,0 +1,83 @@
+=== Request Test Report for list-dm-media ===
+• Host: [object Object]
+• Endpoint: /MessageView/ListDMMedia
+• Date: 03/07/2025, 16:35:27
+
+=== Execution Steps ===
+
+
+=== Test Summary ===
+✅ Passed: 12
+❌ Failed: 2
+⚠️ Warnings: 6
+📊 Total: 20
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 3
+ 🟢 201: 0
+ 🟠 400: 5
+ 🟠 403: 4
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Warnings ===
+ 🟠 1. Case #8
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JZ7T81XMXC2RW2RP4WNAJV9Z","limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"}
+     ├─ Actual Errors: type required
+     ├─ Expected Errors: type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received undefined, type required
+     └─ Message: Actual errors includes of expected errors
+ 🟠 2. Case #14
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JZ7T81XMXC2RW2RP4WNAJV9Z","type":1,"limit":"","nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"}
+     ├─ Actual Errors: limit range from 1 to 500
+     ├─ Expected Errors: limit expected number, received nan, limit range from 1 to 500, limit should not be empty
+     └─ Message: Actual errors includes of expected errors
+ 🟠 3. Case #15
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JZ7T81XMXC2RW2RP4WNAJV9Z","type":1,"limit":null,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: limit expected number, received null, limit range from 1 to 500
+     └─ Message: Actual errors includes of expected errors
+ 🟠 4. Case #16
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JZ7T81XMXC2RW2RP4WNAJV9Z","type":1,"limit":1,"nextPageToken":123}
+     ├─ Actual Errors: nextPageToken invalid ulid
+     ├─ Expected Errors: nextPageToken expected string, received number, nextPageToken invalid ulid
+     └─ Message: Actual errors includes of expected errors
+ 🟠 5. Case #18
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JZ7T81XMXC2RW2RP4WNAJV9Z","type":1,"limit":1,"nextPageToken":""}
+     ├─ Actual Errors: nextPageToken invalid ulid
+     ├─ Expected Errors: nextPageToken invalid ulid, nextPageToken should not be empty
+     └─ Message: Actual errors includes of expected errors
+ 🟠 6. Case #19
+     ├─ Status: 200
+     ├─ Body: {"userId":"01JZ7T81XMXC2RW2RP4WNAJV9Z","type":1,"limit":1,"nextPageToken":null}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: nextPageToken expected string, received null, nextPageToken invalid ulid
+     └─ Message: Actual errors includes of expected errors
+
+=== Unique Errors ===
+ 🟣 1. Could not resolve permission type (Occurred: 1 time)
+ 🟣 2. type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan (Occurred: 1 time)
+ 🟣 3. type should not be empty (Occurred: 1 time)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #1
+     ├─ Status: 403
+     ├─ Body: {"userId":123,"type":1,"limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"}
+     ├─ Actual: Unauthorized request
+     ├─ Expected: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 2. Case #9
+     ├─ Status: 400
+     ├─ Body: {"userId":"01JZ7T81XMXC2RW2RP4WNAJV9Z","type":"","limit":1,"nextPageToken":"01JPPHQFHCC697M93K6PTZTZ8Q"}
+     ├─ Actual: invalid attachment type. This type not allowed for processing
+     ├─ Expected: type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan, type should not be empty
+     └─ Details: No details
+
+=== End of Report ===

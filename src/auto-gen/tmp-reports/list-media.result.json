@@ -1,18 +1,18 @@
 {
-  "reportPath": "C:\\Users\\duy\\Downloads\\rac\\auto-gen-validate-output\\src\\auto-gen\\test-requests\\.reports\\failed-reports\\list-media\\list-media-combined-22-13-02-07-2025.report.txt",
+  "reportPath": "C:\\Users\\duy\\Downloads\\rac\\auto-gen-validate-output\\src\\auto-gen\\test-requests\\.reports\\failed-reports\\list-media\\list-media-combined-16-35-03-07-2025.report.txt",
   "summaries": {
     "className": "list-media",
-    "totalTests": 22,
-    "passedTests": 6,
-    "failedTests": 8,
-    "warnings": 8,
+    "totalTests": 25,
+    "passedTests": 13,
+    "failedTests": 6,
+    "warnings": 6,
     "isSuccess": false,
     "summary": {
       "statusCodes": {
-        "200": 1,
+        "200": 3,
         "201": 0,
-        "400": 1,
-        "403": 4,
+        "400": 5,
+        "403": 5,
         "500": 0
       }
     }

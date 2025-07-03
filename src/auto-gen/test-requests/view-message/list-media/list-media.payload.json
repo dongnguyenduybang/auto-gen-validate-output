@@ -5,7 +5,7 @@
             "channelId": "{{channelId}}",
             "type": 1,
             "limit": 1,
-            "nextPageToken": ""
+            "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
         },
         "expects": [
             "Could not resolve permission type"
@@ -17,11 +17,19 @@
             "channelId": "{{channelId}}",
             "type": 1,
             "limit": 1,
-            "nextPageToken": ""
+            "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
+        },
+        "expects": []
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "type": 1,
+            "limit": 1,
+            "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
         },
         "expects": [
-            "nextPageToken should not be empty",
-            "nextPageToken invalid ulid"
+            "Could not resolve permission type"
         ]
     },
     {
@@ -30,7 +38,7 @@
             "channelId": "{{channelId}}",
             "type": 1,
             "limit": 1,
-            "nextPageToken": ""
+            "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
         },
         "expects": [
             "Could not resolve permission type"
@@ -42,7 +50,7 @@
             "channelId": "{{channelId}}",
             "type": 1,
             "limit": 1,
-            "nextPageToken": ""
+            "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
         },
         "expects": [
             "Could not resolve permission type"
@@ -54,7 +62,7 @@
             "channelId": "{{channelId}}",
             "type": 1,
             "limit": 1,
-            "nextPageToken": ""
+            "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
         },
         "expects": [
             "Invalid channel"
@@ -66,7 +74,7 @@
             "channelId": 123,
             "type": 1,
             "limit": 1,
-            "nextPageToken": ""
+            "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
         },
         "expects": [
             "Could not resolve permission type"
@@ -75,10 +83,31 @@
     {
         "body": {
             "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "type": 1,
+            "limit": 1,
+            "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
+        },
+        "expects": []
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "type": 1,
+            "limit": 1,
+            "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
+        },
+        "expects": [
+            "Unsupported permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
             "channelId": "",
             "type": 1,
             "limit": 1,
-            "nextPageToken": ""
+            "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
         },
         "expects": [
             "Could not resolve permission type"
@@ -90,7 +119,7 @@
             "channelId": null,
             "type": 1,
             "limit": 1,
-            "nextPageToken": ""
+            "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
         },
         "expects": [
             "Could not resolve permission type"
@@ -102,7 +131,7 @@
             "channelId": "invalid_value",
             "type": 1,
             "limit": 1,
-            "nextPageToken": ""
+            "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
         },
         "expects": [
             "Invalid channel"
@@ -114,12 +143,32 @@
             "channelId": "{{channelId}}",
             "type": "invalid_enum_value",
             "limit": 1,
-            "nextPageToken": ""
+            "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
         },
         "expects": [
-            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan",
-            "nextPageToken should not be empty",
-            "nextPageToken invalid ulid"
+            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "type": 1,
+            "limit": 1,
+            "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
+        },
+        "expects": []
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "limit": 1,
+            "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
+        },
+        "expects": [
+            "type required",
+            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received undefined"
         ]
     },
     {
@@ -128,27 +177,11 @@
             "channelId": "{{channelId}}",
             "type": "",
             "limit": 1,
-            "nextPageToken": ""
+            "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
         },
         "expects": [
             "type should not be empty",
-            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan",
-            "nextPageToken should not be empty",
-            "nextPageToken invalid ulid"
-        ]
-    },
-    {
-        "body": {
-            "workspaceId": "0",
-            "channelId": "{{channelId}}",
-            "type": null,
-            "limit": 1,
-            "nextPageToken": ""
-        },
-        "expects": [
-            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received null",
-            "nextPageToken should not be empty",
-            "nextPageToken invalid ulid"
+            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan"
         ]
     },
     {
@@ -157,12 +190,10 @@
             "channelId": "{{channelId}}",
             "type": 1,
             "limit": "invalid_number",
-            "nextPageToken": ""
+            "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
         },
         "expects": [
-            "limit expected number, received nan",
-            "nextPageToken should not be empty",
-            "nextPageToken invalid ulid"
+            "limit expected number, received nan"
         ]
     },
     {
@@ -171,12 +202,10 @@
             "channelId": "{{channelId}}",
             "type": 1,
             "limit": 0,
-            "nextPageToken": ""
+            "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
         },
         "expects": [
-            "limit range from 1 to 500",
-            "nextPageToken should not be empty",
-            "nextPageToken invalid ulid"
+            "limit range from 1 to 500"
         ]
     },
     {
@@ -185,12 +214,10 @@
             "channelId": "{{channelId}}",
             "type": 1,
             "limit": 501,
-            "nextPageToken": ""
+            "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
         },
         "expects": [
-            "limit range from 1 to 500",
-            "nextPageToken should not be empty",
-            "nextPageToken invalid ulid"
+            "limit range from 1 to 500"
         ]
     },
     {
@@ -198,12 +225,9 @@
             "workspaceId": "0",
             "channelId": "{{channelId}}",
             "type": 1,
-            "nextPageToken": ""
+            "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
         },
-        "expects": [
-            "nextPageToken should not be empty",
-            "nextPageToken invalid ulid"
-        ]
+        "expects": []
     },
     {
         "body": {
@@ -211,13 +235,12 @@
             "channelId": "{{channelId}}",
             "type": 1,
             "limit": "",
-            "nextPageToken": ""
+            "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
         },
         "expects": [
             "limit should not be empty",
             "limit expected number, received nan",
-            "nextPageToken should not be empty",
-            "nextPageToken invalid ulid"
+            "limit range from 1 to 500"
         ]
     },
     {
@@ -226,12 +249,11 @@
             "channelId": "{{channelId}}",
             "type": 1,
             "limit": null,
-            "nextPageToken": ""
+            "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
         },
         "expects": [
             "limit expected number, received null",
-            "nextPageToken should not be empty",
-            "nextPageToken invalid ulid"
+            "limit range from 1 to 500"
         ]
     },
     {
@@ -243,8 +265,19 @@
             "nextPageToken": 123
         },
         "expects": [
+            "nextPageToken invalid ulid",
             "nextPageToken expected string, received number"
         ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "type": 1,
+            "limit": 1,
+            "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
+        },
+        "expects": []
     },
     {
         "body": {
@@ -261,9 +294,23 @@
             "channelId": "{{channelId}}",
             "type": 1,
             "limit": 1,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "nextPageToken should not be empty",
+            "nextPageToken invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "type": 1,
+            "limit": 1,
             "nextPageToken": null
         },
         "expects": [
+            "nextPageToken invalid ulid",
             "nextPageToken expected string, received null"
         ]
     },
@@ -278,5 +325,15 @@
         "expects": [
             "nextPageToken invalid ulid"
         ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "type": 1,
+            "limit": 1,
+            "nextPageToken": "01JPPHQFHCC697M93K6PTZTZ8Q"
+        },
+        "expects": []
     }
 ]
