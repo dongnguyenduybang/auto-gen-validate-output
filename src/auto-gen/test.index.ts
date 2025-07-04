@@ -9,6 +9,7 @@ import { generateAllReports, viewReports } from './utils/combine-report';
 import { interactiveCLI } from './utils/inquirer-prompts';
 import util from 'util';
 import path from 'path';
+import { loadAIModel } from './utils/ai-service';
 
 type ActionHandler = (input: string | string[]) => void | Promise<void> | Promise<string[]>;
 
@@ -26,21 +27,8 @@ export const actionHandlers: Record<string, Record<string, ActionHandler[]>> = {
   gen: {
     request: [
       async (dto: string) => {
-        try {
-          const result = await genBodyRequest(dto);
-          return result;
-        } catch (e) {
-          throw e;
-        }
-      },
-      async (dto: string) => {
-        try {
-          const result = await genTestRequest(dto);
-          return result;
-        } catch (e) {
-          throw e;
-        }
-      },
+        genAllRequests(dto); // Chỉ gọi hàm tổng hợp này
+      }
     ],
     response: [(dto: string) => Promise.resolve(genTestResponse(dto))],
     saga: [(dto: string) => Promise.resolve(genTestSaga(dto))],
@@ -96,7 +84,8 @@ function runTests(subType: string): ActionHandler {
         const testPathPattern = `${normalizedPath}/.*\\.spec\\.ts$`;
         console.log(`🔄 Processing: ${normalizedPath}`);
         console.log(`Running test for ${subType} "${normalizedPath}"...`);
-        await execPromise(`jest ${testPathPattern}`);
+        const { stderr, stdout } = await execPromise(`jest ${testPathPattern}`);
+        // console.log(stderr, stdout)
         console.log(`✅ Success: ${normalizedPath}`);
         return normalizedPath;
       } catch (error) {
@@ -108,6 +97,24 @@ function runTests(subType: string): ActionHandler {
     const results = await Promise.all(testPromises);
     return results.filter(Boolean) as string[];
   };
+}
+
+export async function genAllRequests(dto: string) {
+  try {
+    // Chỉ load model 1 lần duy nhất
+    await loadAIModel();
+
+    // Chạy tuần tự hoặc song song tùy nhu cầu
+    const [bodyResult, testResult] = await Promise.all([
+      genBodyRequest(dto),
+      genTestRequest(dto)
+    ]);
+
+    return { bodyResult, testResult };
+  } catch (e) {
+    console.error('❌ Lỗi khi gen requests:', e);
+    throw e;
+  }
 }
 
 async function main(): Promise<void> {
