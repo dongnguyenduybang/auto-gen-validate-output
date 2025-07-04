@@ -31,32 +31,32 @@ async function generateSpecContent(
       .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
       .join('') + 'Request';
 
-
   const utilsPath = path.join(__dirname, '../utils');
   const requestImportPath = `./${requestFilePathWithoutExt}.request`;
 
   const utilsImportPath =
     getRelativeImportPath(outputPath, utilsPath) || '@utils';
 
-  // Assume the first step's first action is the primary action to test
-  const primaryStep = requestConfig.options[0]?.steps[0]?.step[0] || {};
-  const primaryAction = primaryStep.action || '';
-  const primaryHeaders = primaryStep.headers || {};
+  // Get the primary action from the new structure
+  const primaryStep = requestConfig.steps?.[0];
+  const primaryAction = primaryStep?.actions?.main?.[0];
+  const actionName = primaryAction?.action || '';
+  const primaryHeaders = primaryAction?.headers || {};
+  const actionPath = primaryAction?.config?.path || '';
 
   return `
     import fs from 'fs';
     import path from 'path';
-    import { summaryFields, resolveCallAPI, resolveVariables, findReportsDirectory } from '${utilsImportPath}/helper';
+    import { resolveCallAPI, resolveVariables, findReportsDirectory } from '${utilsImportPath}/helper';
     import { TestResult } from '${utilsImportPath}/declarations';
     import { executeSteps } from '${utilsImportPath}/text-execute-test';
-    import { TestContext } from '${utilsImportPath}/text-context';
     import { ${classNameCapitalized} } from './${requestImportPath}';
+    
     describe('Testcase for ${className}${chunkNumber ? ` (Chunk ${chunkNumber})` : ''}', () => {
         let totalTests = 0;
         let allSteps = [];
         let failedTests: any[] = [];
         let codedTest: any[] = [];
-        let logicTests: any[] = [];
         let passedTests = 0;
         let testNumber: number;
         let failedStep: any[] = [];
@@ -64,18 +64,21 @@ async function generateSpecContent(
         let resolvedData: any;
         let globalContext: any;
         let testCaseNumber = 0;
-        let currentTestCaseTitle = '';
-        let context, contextData;
         let warnings: any[] = [];
-        
+        let requestConfig: any;
+
         beforeAll(async () => {
           testType = 'request';
           globalContext = globalThis.globalContext;
-          context = new TestContext();
-          const beforeAllSteps = ${classNameCapitalized}.options[0]?.beforeAll || [];
+          
+          requestConfig = typeof CreateChannelRequest === 'function'
+                      ? await CreateChannelRequest()
+                      : CreateChannelRequest;
+
+
+          const beforeAllSteps = requestConfig.steps?.[0]?.actions?.beforeAll || [];
 
           if (beforeAllSteps.length > 0) {
-            contextData = context.clone();
             const results = await executeSteps(beforeAllSteps, globalContext);
             results.forEach((result) => {
               allSteps.push({
@@ -84,16 +87,16 @@ async function generateSpecContent(
                 phase: 'beforeAll',
               });
             });
-          } else {
-            contextData = globalContext;
           }
-        });
+        }, 15000);
+
         beforeEach(async () => {
           testCaseNumber++;
-          const beforeEachSteps = ${classNameCapitalized}.options[0]?.beforeEach || [];
+          
+          const beforeEachSteps = requestConfig.steps?.[0]?.actions?.beforeEach || [];
 
           if (beforeEachSteps.length > 0) {
-            contextData = context.clone();
+
             const results = await executeSteps(beforeEachSteps, globalContext);
             results.forEach((result) => {
               allSteps.push({
@@ -102,8 +105,6 @@ async function generateSpecContent(
                 phase: 'beforeEach',
               });
             });
-          } else {
-            contextData = globalContext;
           }
         });
 
@@ -118,10 +119,10 @@ async function generateSpecContent(
     
     try {
         const response = await resolveCallAPI(
-            '${primaryAction}',
+            '${actionName}',
             ${JSON.stringify(primaryHeaders)},
             ${JSON.stringify(testCase.body)},
-            contextData
+            globalContext
         );
         const data = response.data;
         const expectJson = ${JSON.stringify(testCase.expects)}.sort();
@@ -233,12 +234,12 @@ async function generateSpecContent(
 });`,
       )
       .join('\n')}
-      afterEach(async () => {
-          testCaseNumber++;
-          const afterEachSteps = ${classNameCapitalized}.options[0]?.afterEach || [];
+
+        afterEach(async () => {
+        
+          const afterEachSteps = requestConfig.steps?.[0]?.actions?.afterEach || [];
 
           if (afterEachSteps.length > 0) {
-            contextData = context.clone();
             const results = await executeSteps(afterEachSteps, globalContext);
             results.forEach((result) => {
               allSteps.push({
@@ -247,16 +248,14 @@ async function generateSpecContent(
                 phase: 'afterEach',
               });
             });
-          } else {
-            contextData = globalContext;
           }
         });
 
-         afterAll(async () => {
-          const afterAllSteps = ${classNameCapitalized}.options[0]?.afterAll || [];
+        afterAll(async () => {
+      
+          const afterAllSteps = requestConfig.steps?.[0]?.actions?.afterAll || [];
 
           if (afterAllSteps.length > 0) {
-            contextData = context.clone();
             const results = await executeSteps(afterAllSteps, globalContext);
             results.forEach((result) => {
               allSteps.push({
@@ -265,12 +264,10 @@ async function generateSpecContent(
                 phase: 'afterAll',
               });
             });
-          } else {
-            contextData = globalContext;
           }
           
           const testResult: TestResult = {
-            path: '${resolveActionPath(primaryAction)}',
+            path: '${actionPath}',
             className: '${className}',
             allSteps: allSteps,
             chunkNumber: ${chunkNumber || 'undefined'},
@@ -281,17 +278,35 @@ async function generateSpecContent(
             totalTests: totalTests,
             failedStep: [...failedStep]
           };
-          const currentFileDir = __dirname; // Hoặc đường dẫn file hiện tại
-                  const reportDir = findReportsDirectory(currentFileDir);
+          
+          const currentFileDir = __dirname;
+          const reportDir = findReportsDirectory(currentFileDir);
           const chunkNumber = ${chunkNumber};
           const fileName = '${className}' + (chunkNumber ? \`-chunk-${chunkNumber}\` : '') + '.result.json';
           const filePath = path.join(reportDir, fileName);
           fs.writeFileSync(filePath, JSON.stringify(testResult, null, 2), 'utf-8');
 
           console.log(\`📝 Saved result for ${className} chunk ${chunkNumber || 'single'} to \${filePath}\`);
+        });
     });
-        })
   `;
+}
+
+// Type guard functions
+function isPromise(obj: any): obj is Promise<any> {
+  return obj && typeof obj === 'object' && typeof obj.then === 'function';
+}
+
+function isFunction(obj: any): obj is Function {
+  return typeof obj === 'function';
+}
+
+function hasValidSteps(obj: any): obj is { steps: any[] } {
+  return obj && obj.steps && Array.isArray(obj.steps);
+}
+
+function hasValidOptions(obj: any): obj is { options: any[] } {
+  return obj && obj.options && Array.isArray(obj.options);
 }
 
 async function genTestCase(
@@ -309,28 +324,113 @@ async function genTestCase(
 
   const requestModule = await import(requestPath);
 
-  // Flexible request export detection
+  // Flexible request export detection with new structure support
   let requestConfig;
-  if (requestModule[classNameCapitalized]) {
-    requestConfig = requestModule[classNameCapitalized];
-  } else if (requestModule[classNameCapitalized + 'Request']) {
-    requestConfig = requestModule[classNameCapitalized + 'Request'];
-  } else if (requestModule.default) {
-    requestConfig = requestModule.default;
-  } else {
-    // Try to find any export with options
-    for (const key of Object.keys(requestModule)) {
-      if (requestModule[key]?.options) {
-        requestConfig = requestModule[key];
+
+  // Try different export patterns
+  const possibleExports = [
+    classNameCapitalized,
+    classNameCapitalized + 'Request',
+    'default'
+  ];
+
+  for (const exportName of possibleExports) {
+    let candidate = requestModule[exportName];
+
+    if (candidate) {
+      // If candidate is a function, try to execute it
+      if (isFunction(candidate)) {
+        try {
+          candidate = candidate(); // Execute function
+
+          // If result is a Promise, await it
+          if (isPromise(candidate)) {
+            candidate = await candidate;
+
+          }
+        } catch (error) {
+          console.error(`Error executing function ${exportName}:`, error);
+          continue;
+        }
+      }
+      // If candidate is a Promise, resolve it
+      else if (isPromise(candidate)) {
+
+        candidate = await candidate;
+
+      }
+
+      // Check for new structure (steps array)
+      if (hasValidSteps(candidate)) {
+
+        requestConfig = candidate;
+        break;
+      }
+      // Check for old structure (options array)
+      else if (hasValidOptions(candidate)) {
+
+        requestConfig = candidate;
         break;
       }
     }
   }
 
-  if (!requestConfig?.options) {
-    console.error(`❌ Invalid request config for ${className}`);
+  // If no direct match, try to find any export with steps or options
+  if (!requestConfig) {
+    console.log('No direct match found, trying fallback...');
+    for (const [key, value] of Object.entries(requestModule)) {
+      let candidate = value;
+
+      // Execute function if needed
+      if (isFunction(candidate)) {
+        console.log(`Fallback: ${key} is a function, executing...`);
+        try {
+          candidate = candidate(); // Execute function
+
+          // If result is a Promise, await it
+          if (isPromise(candidate)) {
+            console.log(`Fallback: ${key} returned a Promise, awaiting...`);
+            candidate = await candidate;
+          }
+        } catch (error) {
+          console.error(`Fallback: Error executing function ${key}:`, error);
+          continue;
+        }
+      }
+      // Resolve Promise if needed
+      else if (isPromise(candidate)) {
+        console.log(`Fallback: ${key} is a Promise, resolving...`);
+        candidate = await candidate;
+      }
+
+      // Check for valid structure
+      if (hasValidSteps(candidate)) {
+        console.log(`Fallback: Found valid steps structure for ${key}`);
+        requestConfig = candidate;
+        break;
+      } else if (hasValidOptions(candidate)) {
+        console.log(`Fallback: Found valid options structure for ${key}`);
+        requestConfig = candidate;
+        break;
+      }
+    }
+  }
+
+  // Validate the structure
+  if (!requestConfig) {
+    console.error(`❌ Invalid request config for ${className} - no steps or options found`);
     console.log('Available exports:', Object.keys(requestModule));
-    console.log('Request module content:', requestModule);
+    console.log('Request module content:', JSON.stringify(requestModule, null, 2));
+    return;
+  }
+
+  // Check if it's the new structure or old structure
+  const hasNewStructure = requestConfig.steps && Array.isArray(requestConfig.steps);
+  const hasOldStructure = requestConfig.options && Array.isArray(requestConfig.options);
+
+  if (!hasNewStructure && !hasOldStructure) {
+    console.error(`❌ Invalid request config structure for ${className}`);
+    console.log('Request config:', JSON.stringify(requestConfig, null, 2));
     return;
   }
 
@@ -386,6 +486,8 @@ export function genTestRequest(dtoName: string) {
     return;
   }
 
+  let hasLoggedInitialization = false;
+
   const foundFolders = findAllFoldersWithDtoAndRequest(searchPath);
   const file = getMatchedFilePaths(foundFolders);
   const pairedFiles = pairFiles(file);
@@ -407,11 +509,16 @@ export function genTestRequest(dtoName: string) {
     const payloadPath = path.join(outputDir, `${className}.payload.json`);
 
     if (fs.existsSync(payloadPath)) {
-      genTestCase(payloadPath, requestPath, className, outputDir).catch(
-        err => console.error(`Error generating tests for ${className}:`, err)
-      );
-    } else {
-      console.warn(`Missing payload file for class: ${className} in ${outputDir}`);
+      // Chỉ log 1 lần khi bắt đầu
+      if (!hasLoggedInitialization) {
+        console.log(`\n🔄 Processing: ${dtoName}`);
+        console.log(`- ${outputDir}`);
+        hasLoggedInitialization = true;
+      }
+
+      genTestCase(payloadPath, requestPath, className, outputDir).catch(err => {
+        console.error(`❌ Error processing ${className}:`, err.message);
+      });
     }
   });
 }

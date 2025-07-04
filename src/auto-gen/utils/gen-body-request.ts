@@ -7,6 +7,27 @@ import {
   groupFilesByName,
 } from './helper';
 
+// Type guard functions
+function isDTOBuilderInstance(obj: any): obj is { execute: () => Promise<any> } {
+  return typeof obj?.execute === 'function';
+}
+
+function hasOptions(obj: any): obj is { options: any[] } {
+  return Array.isArray(obj?.options);
+}
+
+function isPromise(obj: any): obj is Promise<any> {
+  return obj && typeof obj === 'object' && typeof obj.then === 'function';
+}
+
+function isFunction(obj: any): obj is Function {
+  return typeof obj === 'function';
+}
+
+function hasValidSteps(obj: any): obj is { steps: any[] } {
+  return obj && obj.steps && Array.isArray(obj.steps);
+}
+
 export async function genBodyRequest(dtoName: string) {
   try {
     const baseRequestsPath = path.join(__dirname, '../test-requests');
@@ -41,10 +62,10 @@ export async function genBodyRequest(dtoName: string) {
         }
 
         try {
-
-          // Load DTO class (phần này giữ nguyên)
+          // Load DTO class
           delete require.cache[require.resolve(dtoPath)];
           const dtoModule = require(dtoPath);
+
           const classNameCapitalized = className
             .split('-')
             .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
@@ -54,7 +75,7 @@ export async function genBodyRequest(dtoName: string) {
             `${classNameCapitalized}DTO`,
             classNameCapitalized,
             `${classNameCapitalized}RequestDTO`,
-            `${classNameCapitalized}Request`
+            `${classNameCapitalized}Request`,
           ];
 
           let dtoClass;
@@ -74,51 +95,110 @@ export async function genBodyRequest(dtoName: string) {
           // Load request module
           const requestModule = await import(requestPath);
 
-          // Flexible request export detection với type checking
+          // Flexible request export detection
           const possibleRequestNames = [
             classNameCapitalized + 'Request',
             classNameCapitalized,
-            'default'
+            'default',
           ];
 
-          let requestData;
+          let requestData: any;
           for (const name of possibleRequestNames) {
-            const candidate = requestModule[name];
-            if (candidate && (isDTOBuilderInstance(candidate) || hasOptions(candidate))) {
-              requestData = isDTOBuilderInstance(candidate) ? candidate.execute() : candidate;
+            let candidate = requestModule[name];
+
+            // If candidate is a function, execute it
+            if (isFunction(candidate)) {
+              try {
+                candidate = candidate(); // Execute function
+
+                // If result is a Promise, await it
+                if (isPromise(candidate)) {
+                  candidate = await candidate;
+                }
+              } catch (error) {
+                console.error(`Error executing function ${name}:`, error);
+                continue;
+              }
+            }
+            // If candidate is a Promise, resolve it
+            else if (isPromise(candidate)) {
+              candidate = await candidate;
+            }
+
+            // Check if candidate has the expected data structure
+            if (hasValidSteps(candidate)) {
+              requestData = candidate;
+              break;
+            }
+
+            // Fallback: check for other patterns
+            if (isDTOBuilderInstance(candidate)) {
+              requestData = await candidate.execute();
+              break;
+            } else if (hasOptions(candidate)) {
+              requestData = candidate;
               break;
             }
           }
 
-          // Type guard functions
-          function isDTOBuilderInstance(obj: any): obj is { execute: () => any } {
-            return typeof obj?.execute === 'function';
-          }
-
-          function hasOptions(obj: any): obj is { options: any[] } {
-            return Array.isArray(obj?.options);
-          }
-
-          // If still not found, try to find any export with options (với type checking)
+          // Fallback: Try to find any export with execute or options
           if (!requestData) {
+
             for (const [key, value] of Object.entries(requestModule)) {
-              if (isDTOBuilderInstance(value) || hasOptions(value)) {
-                requestData = isDTOBuilderInstance(value) ? value.execute() : value;
+              let candidate = value;
+
+              // Execute function if needed
+              if (isFunction(candidate)) {
+
+                try {
+                  candidate = candidate(); // Execute function
+
+                  // If result is a Promise, await it
+                  if (isPromise(candidate)) {
+
+                    candidate = await candidate;
+                  }
+                } catch (error) {
+                  console.error(`Fallback: Error executing function ${key}:`, error);
+                  continue;
+                }
+              }
+              // Resolve Promise if needed
+              else if (isPromise(candidate)) {
+
+                candidate = await candidate;
+              }
+
+              // Check if candidate has the expected data structure
+              if (hasValidSteps(candidate)) {
+
+                requestData = candidate;
+                break;
+              }
+
+              if (isDTOBuilderInstance(candidate)) {
+                requestData = await candidate.execute();
+
+                break;
+              } else if (hasOptions(candidate)) {
+                requestData = candidate;
+
                 break;
               }
             }
           }
 
-          if (!requestData?.options?.[0]?.steps?.[0]?.step?.[0]?.body) {
+          // Validate requestData structure
+          if (!requestData?.steps?.[0]?.actions?.main?.[0]?.config?.body) {
             console.warn(`No valid body found in request for class: ${className}`);
-            console.log(`Request data structure:`, requestData);
-            console.log('Available exports:', Object.keys(requestModule));
             console.log('-----------------------');
             continue;
           }
 
-          // Phần còn lại giữ nguyên
-          const payload = requestData.options[0].steps[0].step[0].body;
+          // Extract payload from the main action's body
+          const payload = requestData.steps[0].actions.main[0].config.body;
+
+
           const result = await generateErrorCases(dtoClass, payload);
           const testCasePayload = result.map(({ body, expects }) => ({
             body,
@@ -132,8 +212,6 @@ export async function genBodyRequest(dtoName: string) {
             JSON.stringify(testCasePayload, null, 4),
             'utf-8'
           );
-
-          console.log(`✅ Successfully created: ${outputFilePath}`);
           console.log(`File content length: ${testCasePayload.length} cases`);
           console.log('-----------------------');
           payloadGenerated = true;
