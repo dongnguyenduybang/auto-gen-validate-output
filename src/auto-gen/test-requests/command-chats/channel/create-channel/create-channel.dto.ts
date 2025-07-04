@@ -30,6 +30,7 @@ export class CreateChannelDTO {
   @IsString()
   @IsOptional()
   @IsNotEmpty()
+  @IsNotNull()
   avatar: string = '';
 
   @IsEnum(ChannelTypeEnum)
