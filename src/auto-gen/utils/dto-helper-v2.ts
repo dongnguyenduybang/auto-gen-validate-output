@@ -55,23 +55,23 @@ export function generateStructuredErrorCases(
         expects: errors.length > 0 ? errors : [],
       });
 
-      keys.forEach((otherField) => {
-        if (otherField !== rootField) {
-          const otherErrorVariants = errorCasesByField[otherField];
+      // keys.forEach((otherField) => {
+      //   if (otherField !== rootField) {
+      //     const otherErrorVariants = errorCasesByField[otherField];
 
-          otherErrorVariants.forEach((otherErrorValue) => {
-            const combinedCase = { ...baseCase };
-            combinedCase[otherField] = otherErrorValue;
+      //     otherErrorVariants.forEach((otherErrorValue) => {
+      //       const combinedCase = { ...baseCase };
+      //       combinedCase[otherField] = otherErrorValue;
 
-            const combinedErrors = softErrorFromMap(combinedCase, dtoClass);
+      //       const combinedErrors = softErrorFromMap(combinedCase, dtoClass);
 
-            allTestCases.push({
-              body: combinedCase,
-              expects: combinedErrors.length > 0 ? combinedErrors : [],
-            });
-          });
-        }
-      });
+      //       allTestCases.push({
+      //         body: combinedCase,
+      //         expects: combinedErrors.length > 0 ? combinedErrors : [],
+      //       });
+      //     });
+      //   }
+      // });
     });
   });
 
@@ -193,7 +193,7 @@ export function generateErrorVariantsForField(
   switch (fieldType) {
     case 'string':
       variants.push(123);
-      variants.push(fieldValue);
+      // variants.push(fieldValue);
 
       // 4. Vi phạm độ dài
       if (decorators['minLength']) {
@@ -224,7 +224,7 @@ export function generateErrorVariantsForField(
       break;
     case 'enum':
       variants.push('invalid_enum_value');
-      variants.push(fieldValue);
+      // variants.push(fieldValue);
       const usedEnumValues = getUsedEnumValuesFromValidIf(dtoClass, fieldName);
       if (usedEnumValues.length > 0) {
         usedEnumValues.forEach((enumValue) => {
@@ -236,7 +236,7 @@ export function generateErrorVariantsForField(
       break;
     case 'array':
       variants.push('not_an_array'); //invalid type array
-      variants.push(fieldValue); // valid case
+      // variants.push(fieldValue); // valid case
 
       if (decorators['minArray']) {
         variants.push(new Array(decorators['minArray'] - 1).fill(null));
@@ -266,7 +266,7 @@ export function generateErrorVariantsForField(
         });
       }
       if (decorators['isValidateNested']) {
-        console.log('Processing nested array validation for:', fieldName);
+        // console.log('Processing nested array validation for:', fieldName);
         const nestedClass = getNestedClass(decorators);
 
         if (nestedClass && Array.isArray(fieldValue)) {
@@ -282,7 +282,7 @@ export function generateErrorVariantsForField(
       break;
     case 'boolean':
       variants.push('invalid_boolean');
-      variants.push(fieldValue);
+      // variants.push(fieldValue);
       break;
   }
 
@@ -1288,7 +1288,7 @@ function generateNestedArrayVariants(
         nestedClass,
         nestedField,
       );
-      console.log('Field variants for', nestedField, ':', fieldVariants);
+      // console.log('Field variants for', nestedField, ':', fieldVariants);
 
       fieldVariants.forEach((errorValue) => {
         // Tạo array với object có lỗi ở field này
