@@ -1131,10 +1131,9 @@ export function getUsedEnumValuesFromValidIf(
   const instance = new dtoClass();
   const keys = Object.keys(instance);
   const usedValues: any[] = [];
-
   // Duyệt qua tất cả các fields để tìm ValidIf conditions
   keys.forEach((fieldName) => {
-    if (fieldName === targetFieldName) return; // Skip chính field đó
+    // if (fieldName === targetFieldName) return; // Skip chính field đó
 
     const decorators = getDecorators(instance, fieldName);
     const validIfConditions = decorators['validIf'];
