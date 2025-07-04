@@ -41,7 +41,6 @@ export enum VAR {
   defaultEmoji = '🚀',
   defaultCollectionId = '01JPPHQFHCC697M93K6PTZTZ8Q',
   defaultChannelName = 'channelname1',
-  versionSwagger = 'V3$Request',
+
   content = 'defaultContent',
-  
 }
