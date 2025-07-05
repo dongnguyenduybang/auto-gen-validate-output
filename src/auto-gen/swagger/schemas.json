@@ -1,4 +1,21 @@
 {
+  "V3MockUsersRequest": {
+    "type": "object",
+    "properties": {
+      "quantity": {
+        "type": "integer",
+        "format": "int64",
+        "description": "The number of accounts you want to create."
+      },
+      "prefix": {
+        "type": "string",
+        "title": "It is the prefix specifically assigned to each tester. EX: 'BO'\nThe account structure would look like: username = {prefix}{id};"
+      },
+      "badge": {
+        "$ref": "#/definitions/v3UserBadgeTypeEnum"
+      }
+    }
+  },
   "V3ChannelTypeEnum": {
     "type": "number",
     "additionalProperties": false,
@@ -117,7 +134,6 @@
       "channelId"
     ],
     "$id": "V3DeleteChannelAvatarRequest"
-    
   },
   "V3UpdateChannelAvatarRequest": {
     "type": "object",
@@ -235,7 +251,6 @@
     ],
     "$id": "V3RejectMessageRequestRequest"
   },
-  
   "V3UpdateDMMediaPermissionSettingRequest": {
     "type": "object",
     "additionalProperties": false,

@@ -88,15 +88,15 @@ const sendInvitationConfig: ExtractConfig = {
 }
 // Ánh xạ action tới cấu hình
 export const configMap: Record<string, ExtractConfig> = {
-  mockUser: mockUserConfig,
-  createChannel: createChannelConfig,
+  V3MockUsersRequest: mockUserConfig,
+  V3CreateChannelRequest: createChannelConfig,
   getChannel: getChannelConfig,
   acceptInvitation: acceptInvitationConfig,
-  sendMessage: sendMessageConfig,
+  V3SendMessageRequest: sendMessageConfig,
   updateMessage: updateMessageConfig,
-  sendDmMessage: sendDmMessageConfig,
+  V3SendDMMessageRequest: sendDmMessageConfig,
   acceptMessage: acceptMessageConfig,
-  ejectMessage: ejectMessageConfig,
+  V3RejectMessageRequestRequest: ejectMessageConfig,
   createInvitation: createInvitationConfig,
   ringbackToneCreate: ringbackToneCreateConfig,
   sendInvitation: sendInvitationConfig,

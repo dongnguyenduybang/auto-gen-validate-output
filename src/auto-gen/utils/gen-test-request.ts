@@ -71,9 +71,9 @@ async function generateSpecContent(
           testType = 'request';
           globalContext = globalThis.globalContext;
           
-          requestConfig = typeof CreateChannelRequest === 'function'
-                      ? await CreateChannelRequest()
-                      : CreateChannelRequest;
+          requestConfig = typeof ${classNameCapitalized} === 'function'
+                      ? await ${classNameCapitalized}()
+                      : ${classNameCapitalized};
 
 
           const beforeAllSteps = requestConfig.steps?.[0]?.actions?.beforeAll || [];
@@ -88,7 +88,7 @@ async function generateSpecContent(
               });
             });
           }
-        }, 15000);
+        }, 20000);
 
         beforeEach(async () => {
           testCaseNumber++;

@@ -15,28 +15,51 @@ beforeAll(async () => {
 
     const steps = [
       {
-        action: ACTION.MOCK_USER,
-        body: {
-          quantity: 2,
-          prefix: VAR.prefix,
-          badge: 0,
+        "name": "mock-user",
+        "key": "mock-user",
+        "action": "mockUser",
+        "headers": {
+          "x-session-token": "{{token}}"
         },
+        "config": {
+          "body": {
+            "prefix": VAR.prefix,
+            "quantity": 2,
+            "badge": 0,
+            "headers": {
+              "x-session-token": "{{token}}"
+            },
+          },
+          "method": "POST",
+          "path": "/InternalFaker/MockUsers",
+          "schema": "V3MockUsersRequest",
+          "metadata": {}
+        }
       },
       {
-        action: ACTION.CREATE_CHANNEL,
-        body: {
-          workspaceId: VAR.workspaceId,
-          name: VAR.defaultChannelName
+        "name": "create-channel",
+        "key": "create-channel",
+        "action": "createChannel",
+        "headers": {
+          "x-session-token": "{{token}}"
         },
-      },
+        "config": {
+          "body": {
+            "name": VAR.defaultChannelName,
+            "workspaceId": 0,
+            "headers": {
+              "x-session-token": "{{token}}"
+            },
+          },
+          "method": "POST",
+          "path": "/Channel/CreateChannel",
+          "schema": "V3CreateChannelRequest",
+          "metadata": {}
+        }
+      }
     ];
 
     await executeSteps(steps, globalThis.globalContext);
-    const dataToSave = {
-      urls: globalThis.urls,
-      prefix: steps[0].body.prefix,
-      context: globalThis.globalContext,
-    };
   } catch (error) {
     console.error('Setup failed:', error);
     throw error;

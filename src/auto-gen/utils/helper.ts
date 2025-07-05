@@ -940,3 +940,11 @@ export function findReportsDirectory(startDir: string): string {
   fs.mkdirSync(fallbackDir, { recursive: true });
   return fallbackDir;
 }
+
+export function transformPayload(resolved: Record<string, any>) {
+  const { headers, metadata, ...rest } = resolved;
+  return {
+    headers: headers ?? {},
+    body: rest
+  };
+}

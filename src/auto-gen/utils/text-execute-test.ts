@@ -4,7 +4,7 @@ import { Step, StepResult } from './declarations';
 import { TestContext } from './text-context';
 import { ACTION_CONFIG } from '../enums';
 import { handleExpectConfig } from '../validates/check-expect';
-import { checkResponse, resolveExpectConfig, resolveVariables } from './helper';
+import { checkResponse, transformPayload, resolveExpectConfig, resolveVariables } from './helper';
 
 export async function executeSteps(
   steps: Step[],
@@ -29,27 +29,29 @@ async function executeSingleStep(
   step: Step,
   context?: TestContext,
 ): Promise<StepResult> {
-  const { action, body, headers, expect: expectConfig } = step;
+
+  const { headers, config, expect: expectConfig } = step;
   // defined method & path dựa vào action config
-  const actionInfo = ACTION_CONFIG[action as keyof typeof ACTION_CONFIG];
+  const extractBody = transformPayload(config.body)
   // resolve variables body and headers
-  const resolveBody = resolveVariables(body, context);
-  const resolveHeaders = resolveVariables(headers, context);
+  const resolveBody = resolveVariables(extractBody.body, context);
+  const resolveHeaders = resolveVariables(extractBody.headers, context);
 
   // get api function
-  const apiFunction = getApiFunctions(action, context);
+  const apiFunction = getApiFunctions(config.schema, context);
   const response = await apiFunction({
-    method: actionInfo.method,
-    path: actionInfo.path,
+    method: config.method,
+    path: config.path,
     headers: resolveHeaders,
     body: resolveBody,
   });
+
   const hasExpectConfig = !!expectConfig;
   if (!response?.data?.ok && !hasExpectConfig) {
     return {
       type: 'request DTO',
       status: false,
-      stepName: action,
+      stepName: config.schema,
       error:
         response?.error || {
           code: response?.data?.error?.code,
@@ -71,7 +73,7 @@ async function executeSingleStep(
     } else {
       // save context
       if (response?.data.data) {
-        const extractedData = extractDatas(response.data, action);
+        const extractedData = extractDatas(response.data, config.schema);
         context.mergeData(extractedData);
       }
 
@@ -94,7 +96,7 @@ async function executeSingleStep(
           return {
             type: 'expect',
             status: false,
-            stepName: action,
+            stepName: config.schema,
             error: groupedErrors,
           };
         }
@@ -104,6 +106,6 @@ async function executeSingleStep(
   return {
     type: null,
     status: true,
-    stepName: action,
+    stepName: config.schema,
   };
 }

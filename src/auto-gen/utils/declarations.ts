@@ -54,9 +54,8 @@ export interface ExpectResult {
   expectedValue?: string;
 }
 export interface Step<T = any> {
-  action: string;
-  body?: T;
   headers?: Record<string, string>;
+  config?: T;
   expect?: Expect;
   delay?: number;
 }
