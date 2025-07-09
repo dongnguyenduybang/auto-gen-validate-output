@@ -63,7 +63,7 @@ export const options = {
   thresholds: {
     'http_req_duration': ['p(95)<500'],
     'passed_tests': ['count>=1'],
-    'failed_tests': ['count<2']
+    'failed_tests': ['count<0']
   },
   discardResponseBodies: false
 };
@@ -108,7 +108,7 @@ export default function (data) {
       number: 1,
       title: 'should return errors ["Could not resolve permission type"] when body {"workspaceId":123,"name":"channelname1","avatar":"","channelType":1}',
       payload: { workspaceId: 123, name: "channelname1", avatar: "", channelType: 1 },
-      expectedErrors: ["Could not resolve permission type"]
+      expectedErrors: ["Could not resolve permission types"]
     },
     {
       number: 10,
@@ -159,8 +159,9 @@ export default function (data) {
       const exactMatch = allErrorsMatched && softExpectDetails.length === test.expectedErrors.length;
 
       check(response, {
-        [`Status is expected for testcase #${test.number}`]: res => [200, 201, 400, 403, 500].includes(res.status),
-        [`Errors match for testcase #${test.number}`]: () => exactMatch
+        [`Errors match for testcase #${test.number} 
+          Expected: ${test.expectedErrors.join(", ")}
+          Actual: ${softExpectDetails.join(", ")}`]: () => exactMatch
       });
 
       if (exactMatch) {
