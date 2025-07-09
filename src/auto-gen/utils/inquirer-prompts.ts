@@ -2,9 +2,11 @@ import inquirer from 'inquirer';
 import fs from 'fs';
 import { glob } from 'glob';
 import path from 'path';
+import { execSync } from 'child_process';
 import { RecentSelection } from './declarations';
 import { actionHandlers } from '../test.index';
 import { normalizePath, parsePath, searchDtoInTestRequests, transformPropertyName } from './helper';
+import { mapOption } from './k6-help';
 
 let recentSelections: RecentSelection[] = [];
 const MAX_RECENT_ITEMS = 100;
@@ -162,59 +164,213 @@ export async function interactiveCLI(): Promise<void> {
       continue;
     }
 
-    if (action === 'test' && recentSelections.length > 0) {
+    if (action === 'test') {
       const recentGenItems = recentSelections
         .filter((item) => item.action === 'gen')
         .slice(0, MAX_RECENT_ITEMS);
 
-      if (recentGenItems.length > 0) {
-        const { quickTestChoice } = await inquirer.prompt<{ quickTestChoice: string | number }>([
+      const choices = [
+        ...recentGenItems.map((item, index) => ({
+          name: `[${index + 1}] ${item.type.padEnd(8)} ${formatPaths(item.paths)}`,
+          value: index,
+        })),
+        new inquirer.Separator(),
+        { name: 'Test all recent generated items', value: 'all' },
+        { name: 'Test with k6', value: 'k6' },
+        { name: 'Manual selection', value: 'manual' },
+      ];
+
+      const { quickTestChoice } = await inquirer.prompt<{ quickTestChoice: string | number }>([
+        {
+          type: 'list',
+          name: 'quickTestChoice',
+          message: 'Select items to test:',
+          choices: recentGenItems.length > 0 ? choices : [
+            { name: 'Test with k6', value: 'k6' },
+            { name: 'Manual selection', value: 'manual' },
+          ],
+          pageSize: 10,
+        },
+      ]);
+
+      if (quickTestChoice === 'all') {
+        const allPaths = recentGenItems.flatMap((item) => item.paths);
+        console.log(`\n🔍 Testing all recently generated items (${allPaths.length}):`);
+        allPaths.forEach((path, i) => console.log(` ${i + 1}. ${path}`));
+
+        await executeAction('test', 'request', allPaths);
+
+        addToRecentSelections({
+          action: 'test',
+          type: 'request',
+          paths: allPaths,
+          timestamp: Date.now(),
+        });
+        continue;
+      } else if (quickTestChoice === 'k6') {
+        // Xử lý Test with k6
+        const payloadBasePath = 'C:/Users/duy/Documents/payloads'; // Thư mục gốc cho payload
+        const selectedPayloads = await selectFoldersRecursive(false,);
+        if (selectedPayloads.length === 0) {
+          console.log('No payload file selected.');
+          continue;
+        }
+        const payloadPath = selectedPayloads[0]; // Chỉ lấy file đầu tiên
+
+        const { k6ScriptPath, vus, executor, stages, thresholds, gracefulRampDown } = await inquirer.prompt([
           {
-            type: 'list',
-            name: 'quickTestChoice',
-            message: 'Select items to test:',
-            choices: [
-              ...recentGenItems.map((item, index) => ({
-                name: `[${index + 1}] ${item.type.padEnd(8)} ${formatPaths(item.paths)}`,
-                value: index,
-              })),
-              new inquirer.Separator(),
-              { name: 'Test all recent generated items', value: 'all' },
-              { name: 'Manual selection', value: 'manual' },
-            ],
-            pageSize: 10,
+            type: 'input',
+            name: 'k6ScriptPath',
+            message: 'Enter path to k6 script:',
+            default: 'C:/Users/duy/Documents/k6-studio/Scripts/',
+            validate: (input) => {
+              try {
+                fs.accessSync(input, fs.constants.R_OK);
+                return true;
+              } catch {
+                return 'Invalid or inaccessible k6 script path';
+              }
+            },
+          },
+          {
+            type: 'input',
+            name: 'executor',
+            message: 'Enter executor(per-vu-iterations, constant-vus, ramping-vus):',
+            // validate: (input) => {
+            //   return !input || /^\d+$/.test(input) ? true : 'VUs must be a number';
+            // },
+          },
+          {
+            type: 'input',
+            name: 'vus',
+            message: 'Enter number of virtual users (vus):',
+            default: '1',
+            validate: (input) => {
+              return !input || /^\d+$/.test(input) ? true : 'VUs must be a number';
+            },
+          },
+          {
+            type: 'input',
+            name: 'stages',
+            message: 'Enter stages (e.g., [{duration:"10s",target:10},{duration:"10s",target:0}]):',
+            default: '',
+            validate: (input) => {
+              if (!input) return true;
+              try {
+                JSON.parse(input);
+                return true;
+              } catch {
+                return 'Stages must be a valid JSON array';
+              }
+            },
+          },
+          {
+            type: 'input',
+            name: 'thresholds',
+            message: 'Enter thresholds (e.g., {"http_req_duration":"p(95)<700"}):',
+            default: `{
+                        'http_req_duration': ['p(95)<500', 'p(99)<1000'],
+                        'http_req_failed': ['rate<0.01'],
+                        'checks': ['rate>0.99'],
+                        'data_sent': ['count>0'],
+                        'data_received': ['count>0'],
+                        'iteration_duration': ['p(90)<1000'],
+                        'vus_max': ['value<100'],
+                        'http_reqs': ['count>100']
+              }`,
+            // validate: (input) => {
+            //   if (!input) return true;
+            //   try {
+            //     JSON.parse(input);
+            //     return true;
+            //   } catch {
+            //     return 'Thresholds must be a valid JSON object';
+            //   }
+            // },
+          },
+          {
+            type: 'input',
+            name: 'gracefulRampDown',
+            message: 'Enter gracefulRampDown (30s):',
+            // validate: (input) => {
+            //   return !input || /^\d+$/.test(input) ? true : 'VUs must be a number';
+            // },
           },
         ]);
 
-        if (quickTestChoice === 'all') {
-          const allPaths = recentGenItems.flatMap((item) => item.paths);
-          console.log(`\n🔍 Testing all recently generated items (${allPaths.length}):`);
-          allPaths.forEach((path, i) => console.log(` ${i + 1}. ${path}`));
+        console.log(`\n🔍 Running k6 tests with payload: ${payloadPath} and script: ${k6ScriptPath}`);
 
-          await executeAction('test', 'request', allPaths);
+        try {
+
+          const folderName = path.basename(payloadPath);
+
+          const targetDir = path.join('C:/Users/duy/Documents/k6-studio/Scripts', folderName);
+
+          if (!fs.existsSync(targetDir)) {
+            fs.mkdirSync(targetDir, { recursive: true });
+            console.log(`Đã tạo folder: ${targetDir}`);
+          } else {
+            console.log(`Folder đã tồn tại: ${targetDir}`);
+          }
+
+
+          const commonDir = path.join(targetDir, 'common');
+          if (!fs.existsSync(commonDir)) {
+            fs.mkdirSync(commonDir, { recursive: true });
+            console.log(`Đã tạo folder common: ${commonDir}`);
+          } else {
+            console.log(`Folder common đã tồn tại: ${commonDir}`);
+          }
+
+          // Bước 7: Ghi file options.js
+          const optionsPath = path.join(commonDir, 'options.js');
+
+          const optionsContent = mapOption(vus, executor, stages, thresholds, gracefulRampDown)
+          fs.writeFileSync(optionsPath, optionsContent, 'utf8');
+          console.log(`Đã ghi file options.js tại: ${optionsPath}`);
+
+          
 
           addToRecentSelections({
             action: 'test',
-            type: 'request',
-            paths: allPaths,
+            type: 'k6',
+            paths: [payloadPath, k6ScriptPath],
             timestamp: Date.now(),
           });
-          continue;
-        } else if (quickTestChoice !== 'manual') {
-          const selectedItem = recentGenItems[quickTestChoice as number];
-          console.log(`\n🔍 Testing selected items (${selectedItem.paths.length}):`);
-          selectedItem.paths.forEach((path, i) => console.log(` ${i + 1}. ${path}`));
 
-          await executeAction('test', selectedItem.type, selectedItem.paths);
+          const { generateReport } = await inquirer.prompt<{ generateReport: boolean }>([
+            {
+              type: 'confirm',
+              name: 'generateReport',
+              message: 'Generate test report for k6 results?',
+              default: true,
+            },
+          ]);
 
-          addToRecentSelections({
-            action: 'test',
-            type: selectedItem.type,
-            paths: selectedItem.paths,
-            timestamp: Date.now(),
-          });
-          continue;
+          if (generateReport) {
+            const reportName = path.basename(k6ScriptPath, '.js');
+            await actionHandlers.report.single[0](reportName);
+            console.log(`\n📜 Generated report for: ${reportName}`);
+            await actionHandlers.report.view[0](reportName);
+          }
+        } catch (error) {
+          console.error('❌ Error running k6 tests:', error.message);
         }
+        continue;
+      } else if (quickTestChoice !== 'manual') {
+        const selectedItem = recentGenItems[quickTestChoice];
+        console.log(`\n🔍 Testing selected items (${selectedItem.paths.length}):`);
+        selectedItem.paths.forEach((path, i) => console.log(` ${i + 1}. ${path}`));
+
+        await executeAction('test', selectedItem.type, selectedItem.paths);
+
+        addToRecentSelections({
+          action: 'test',
+          type: selectedItem.type,
+          paths: selectedItem.paths,
+          timestamp: Date.now(),
+        });
+        continue;
       }
     }
 
@@ -324,7 +480,7 @@ export async function executeAction(action: string, type: string, filePaths: str
 
   const results: { path: string; success: boolean; error?: string }[] = [];
 
-  if (action === 'test') {
+  if (action === 'test' && type !== 'k6') {
     try {
       const normalizedPaths = filePaths.map((filePath) => normalizePath(filePath));
       const successfulTests = (await actionHandlers.test[type][0](normalizedPaths)) as string[];
@@ -387,6 +543,23 @@ export async function executeAction(action: string, type: string, filePaths: str
       console.error('❌ Error in test execution:', (error as Error).message);
       results.push(...filePaths.map((path) => ({ path: normalizePath(path), success: false, error: (error as Error).message })));
     }
+  } else if (action === 'test' && type === 'k6') {
+    const [payloadPath, k6ScriptPath, vus, duration, stages, thresholds] = filePaths;
+    try {
+      let command = `k6 run -e PAYLOAD_PATH="${payloadPath}"`;
+      if (vus) command += ` -e VUS="${vus}"`;
+      if (duration) command += ` -e DURATION="${duration}"`;
+      if (stages) command += ` -e STAGES='${stages}'`;
+      if (thresholds) command += ` -e THRESHOLDS='${thresholds}'`;
+      command += ` --out json=results.json "${k6ScriptPath}"`;
+
+      const output = execSync(command, { encoding: 'utf-8' });
+      console.log('✅ k6 Test Output:\n', output);
+      results.push({ path: k6ScriptPath, success: true });
+    } catch (error) {
+      console.error('❌ Error running k6 tests:', error.message);
+      results.push({ path: k6ScriptPath, success: false, error: error.message });
+    }
   } else {
     for (const filePath of filePaths) {
       const normalizedPath = normalizePath(filePath);
@@ -447,18 +620,14 @@ function validateDtoName(dtoName: string): { status: boolean; data: any } {
   }
 }
 
-async function selectFoldersRecursive(isReport = false, type = 'request'): Promise<string[]> {
+async function selectFoldersRecursive(isReport = false, type = 'request', basePathOverride?: string): Promise<string[]> {
   const selectedPaths: string[] = [];
   let currentPath = '';
-  let basePath = '';
+  let basePath = basePathOverride || (isReport ? path.join(__dirname, '../test-requests', '.reports') : path.join(__dirname, '../test-requests'));
   let fullPath: string;
 
   while (true) {
-    if (isReport) {
-      fullPath = path.join(__dirname, '../test-requests', '.reports', basePath, currentPath);
-    } else {
-      fullPath = path.join(__dirname, '../test-requests', basePath, currentPath);
-    }
+    fullPath = path.join(basePath, currentPath);
 
     try {
       const entries = fs.readdirSync(fullPath, { withFileTypes: true });
@@ -467,7 +636,8 @@ async function selectFoldersRecursive(isReport = false, type = 'request'): Promi
         .filter((entry) => {
           if (entry.isDirectory()) return true;
           if (isReport && entry.isFile() && entry.name.endsWith('.md')) return true;
-          if (!isReport && entry.isFile() && entry.name.endsWith('.spec.ts')) return true;
+          if (!isReport && type === 'json' && entry.isFile() && entry.name.endsWith('.json')) return true;
+          if (!isReport && type !== 'json' && entry.isFile() && entry.name.endsWith('.spec.ts')) return true;
           return false;
         })
         .map((entry) => ({
@@ -485,7 +655,7 @@ async function selectFoldersRecursive(isReport = false, type = 'request'): Promi
           name: 'selectedOptions',
           message: `Select items in ${currentPath || 'root'}:`,
           choices: [
-            ...(currentPath !== ''
+            ...(currentPath !== '' && type !== 'json'
               ? [
                 {
                   name: `📁 ${isCurrentSelected ? '✓ ' : ''}[SELECT CURRENT] ${currentPath}`,
@@ -496,11 +666,10 @@ async function selectFoldersRecursive(isReport = false, type = 'request'): Promi
               : []),
             ...items.map((item) => ({
               ...item,
-              name: `${item.name.endsWith('.md') || item.name.endsWith('.spec.ts') ? '📄' : '📂'} ${selectedPaths.includes(path.join(basePath, currentPath, item.value)) ? '✓ ' : ''
-                }${item.name}`,
+              name: `${item.name.endsWith('.md') || item.name.endsWith('.spec.ts') || item.name.endsWith('.json') ? '📄' : '📂'} ${selectedPaths.includes(path.join(basePath, currentPath, item.value)) ? '✓ ' : ''}${item.name}`,
             })),
             new inquirer.Separator(),
-            { name: '🔍 Search DTO', value: '__SEARCH__' },
+            ...(type !== 'json' ? [{ name: '🔍 Search DTO', value: '__SEARCH__' }] : []),
             { name: '✅ Confirm selection', value: '__CONFIRM__' },
             { name: '↩ Back', value: '__BACK__' },
           ],
@@ -508,7 +677,7 @@ async function selectFoldersRecursive(isReport = false, type = 'request'): Promi
         },
       ]);
 
-      if (selectedOptions.includes('__CURRENT__')) {
+      if (selectedOptions.includes('__CURRENT__') && type !== 'json') {
         if (!selectedPaths.includes(currentFullPath)) {
           if (!isReport) {
             const testFiles = await glob(path.join(fullPath, '**/*.spec.ts'), { nodir: true });
@@ -529,7 +698,7 @@ async function selectFoldersRecursive(isReport = false, type = 'request'): Promi
         }
       }
 
-      if (selectedOptions.includes('__SEARCH__')) {
+      if (selectedOptions.includes('__SEARCH__') && type !== 'json') {
         while (true) {
           let dataDTO: any;
           const { dtoName } = await inquirer.prompt<{ dtoName: string }>([
@@ -628,7 +797,7 @@ async function selectFoldersRecursive(isReport = false, type = 'request'): Promi
       }
 
       if (selectedOptions.includes('__BACK__')) {
-        if (!basePath) {
+        if (!basePathOverride && !basePath) {
           return [];
         }
         const parentPath = path.dirname(basePath);
