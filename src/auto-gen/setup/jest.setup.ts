@@ -46,7 +46,7 @@ beforeAll(async () => {
         "config": {
           "body": {
             "name": VAR.defaultChannelName,
-            "workspaceId": 0,
+            "workspaceId": VAR.workspaceId,
             "headers": {
               "x-session-token": "{{token}}"
             },

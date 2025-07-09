@@ -47,7 +47,7 @@ async function executeSingleStep(
   });
 
   const hasExpectConfig = !!expectConfig;
-  if (!response?.data?.ok && !hasExpectConfig) {
+  if (!response?.ok && !hasExpectConfig) {
     return {
       type: 'request DTO',
       status: false,
@@ -68,12 +68,13 @@ async function executeSingleStep(
       resolveBody,
       context,
     );
+
     if (!resultCheckResponse.status) {
       return resultCheckResponse;
     } else {
       // save context
-      if (response?.data.data) {
-        const extractedData = extractDatas(response.data, config.schema);
+      if (response?.data) {
+        const extractedData = extractDatas(response, config.schema);
         context.mergeData(extractedData);
       }
 

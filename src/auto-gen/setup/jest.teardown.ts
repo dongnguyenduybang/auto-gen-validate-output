@@ -11,14 +11,14 @@ export default async function () {
     globalThis.urls = getOrThrow<string>('host');
     globalThis.globalVar = new Map<string, any>();
 
-    const steps = [
-      {
-        action: ACTION.DELETE_MOCKED_USER,
-        body: {
-          prefix: VAR.prefix,
-        },
-      },
-    ];
+    // const steps = [
+    //   {
+    //     action: ACTION.DELETE_MOCKED_USER,
+    //     body: {
+    //       prefix: VAR.prefix,
+    //     },
+    //   },
+    // ];
 
     // const results = await executeSteps(steps, globalThis.globalContext);
 
