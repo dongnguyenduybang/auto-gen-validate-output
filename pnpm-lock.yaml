@@ -83,6 +83,7 @@ importers:
       marked-terminal:
         specifier: ^7.3.0
         version: 7.3.0(marked@15.0.12)
+      os: {specifier: ^0.1.2, version: 0.1.2}
       path:
         specifier: ^0.12.7
         version: 0.12.7
@@ -3349,6 +3350,9 @@ packages:
   os-tmpdir@1.0.2:
     resolution: {integrity: sha512-D2FR03Vir7FIu45XBY20mTb+/ZSWB00sjU9jdQXt83gDrI4Ztz5Fs7/yy74g2N5SVQY4xY1qDr4rNddwYRVX0g==}
     engines: {node: '>=0.10.0'}
+
+  os@0.1.2:
+    resolution: {integrity: sha512-ZoXJkvAnljwvc56MbvhtKVWmSkzV712k42Is2mA0+0KTSRakq5XXuXpjZjgAt9ctzl51ojhQWakQQpmOvXWfjQ==}
 
   p-cancelable@2.1.1:
     resolution: {integrity: sha512-BZOr3nRQHOntUjTrH8+Lh54smKHoHyur8We1V8DSMVrl5A2malOOwuJRnKRDjSnkoeBh4at6BwEnb5I7Jl31wg==}
@@ -8029,6 +8033,8 @@ snapshots:
       arch: 2.2.0
 
   os-tmpdir@1.0.2: {}
+
+  os@0.1.2: {}
 
   p-cancelable@2.1.1: {}
 
