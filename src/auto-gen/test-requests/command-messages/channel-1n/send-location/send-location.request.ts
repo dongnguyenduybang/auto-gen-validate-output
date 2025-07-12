@@ -1,18 +1,14 @@
-import { ACTION, HEADER_LIST, VAR } from '../../../../enums';
-import { DTOBuilder } from '../../../../utils/chain-dto';
+import { createAIEnhancedDTO } from '../../../../utils/swagger-execute';
+import { ACTION } from '../../../../enums';
 
-export const SendLocationRequest = new DTOBuilder()
+export const SendLocationRequest = () => createAIEnhancedDTO()
   .startStep('send location')
-  .addAction('send location', 'send-location', ACTION.SEND_LOCATION, {
-    headers: HEADER_LIST.create({ token: VAR.token }),
-    body: {
-      channelId: VAR.channelId,
-      workspaceId: VAR.workspaceId,
-      content: 'test DTO send message',
-      ref: 'ref',
-      description: 'description',
-      latitude: VAR.latitude,
-      longitude: VAR.longitude,
+  .addActionAI(
+    'send location',
+    'send-location',
+    ACTION.SEND_LOCATION,
+    {
+      body: ACTION.SEND_LOCATION,
     },
-  })
+  )
   .execute();

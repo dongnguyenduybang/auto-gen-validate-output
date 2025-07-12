@@ -1,24 +1,23 @@
 import { createAIEnhancedDTO } from '../../../../../utils/swagger-execute';
-import {
-  ACTION,
-} from '../../../../../enums/index';
+import { VAR, ACTION, HEADER_LIST } from '../../../../../enums';
 
-export const UpdateUserStatusRequest = () => createAIEnhancedDTO()
-  .startStep('update user status')
+export const AddMessageReactionRequest = () => createAIEnhancedDTO()
+  .startStep('add reaction to a message')
   .addActionAI(
-    'update user status',
-    'update-user-status',
-    ACTION.UPDATE_USER_STATUS,
+    'add reaction',
+    'add-reaction',
+    ACTION.ADD_MESSAGE_REACTION,
     {
-      body: ACTION.UPDATE_USER_STATUS
-    }
+      body: ACTION.ADD_MESSAGE_REACTION
+    },
   )
   .addBeforeAllActionAI(
-    'add user status',
-    'add-user-status',
-    ACTION.ADD_USER_STATUS,
+    'send message',
+    'send-message',
+    ACTION.SEND_MESSAGE,
     {
-      body: ACTION.ADD_USER_STATUS
-    }
+    
+      body:ACTION.SEND_MESSAGE,
+    },
   )
-  .execute()
+  .execute();

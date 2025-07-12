@@ -1,28 +1,22 @@
-import { DTOBuilder } from '../../../../utils/chain-dto';
-import { ACTION, HEADER_LIST, VAR } from '../../../../enums/index';
+import { createAIEnhancedDTO } from '../../../../utils/swagger-execute';
+import { ACTION } from '../../../../enums';
 
-export const DeleteMessagesForEveryoneRequest = new DTOBuilder()
+export const DeleteMessagesForEveryoneRequest = () => createAIEnhancedDTO()
   .startStep('delete messages for everyone')
-  .addBeforeAll('send message', '', ACTION.SEND_MESSAGE, {
-    headers: HEADER_LIST.create({ token: VAR.token }),
-    body: {
-      channelId: VAR.channelId,
-      workspaceId: VAR.workspaceId,
-      content: 'test DTO send message',
-      ref: 'ref',
-    },
-  })
-  .addAction(
+  .addActionAI(
     'delete message for everyone',
     'delete-message',
     ACTION.DELETE_MESSAGES_FOR_EVERYONE,
     {
-      headers: HEADER_LIST.create({ token: VAR.token }),
-      body: {
-        workspaceId: VAR.workspaceId,
-        channelID: VAR.channelId,
-        messageIds: [VAR.messageId],
-      },
+      body: ACTION.DELETE_MESSAGES_FOR_EVERYONE,
+    },
+  )
+  .addBeforeAllActionAI(
+    'send message',
+    'send-message',
+    ACTION.SEND_MESSAGE,
+    {
+      body: ACTION.SEND_MESSAGE,
     },
   )
   .execute();

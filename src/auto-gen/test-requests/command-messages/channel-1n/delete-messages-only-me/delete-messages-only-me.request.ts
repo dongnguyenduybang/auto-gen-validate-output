@@ -1,28 +1,22 @@
-import { DTOBuilder } from '../../../../utils/chain-dto';
-import { ACTION, HEADER_LIST, VAR } from '../../../../enums/index';
+import { createAIEnhancedDTO } from '../../../../utils/swagger-execute';
+import { ACTION } from '../../../../enums';
 
-export const DeleteMessagesOnlyMeRequest = new DTOBuilder()
+export const DeleteMessagesOnlyMeRequest = () => createAIEnhancedDTO()
   .startStep('delete messages only for me')
-  .addBeforeAll('send message', '', ACTION.SEND_MESSAGE, {
-    headers: HEADER_LIST.create({ token: VAR.token }),
-    body: {
-      channelId: VAR.channelId,
-      workspaceId: VAR.workspaceId,
-      content: 'test DTO send message',
-      ref: 'ref',
-    },
-  })
-  .addAction(
+  .addActionAI(
     'delete message only me',
     'delete-message-only-me',
     ACTION.DELETE_MESSAGES_ONLY_ME,
     {
-      headers: HEADER_LIST.create({ token: VAR.token }),
-      body: {
-        workspaceId: VAR.workspaceId,
-        channelID: VAR.channelId,
-        messageIds: [VAR.messageId],
-      },
+      body: ACTION.DELETE_MESSAGES_ONLY_ME,
+    },
+  )
+  .addBeforeAllActionAI(
+    'send message',
+    'send-message',
+    ACTION.SEND_MESSAGE,
+    {
+      body: ACTION.SEND_MESSAGE,
     },
   )
   .execute();

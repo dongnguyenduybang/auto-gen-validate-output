@@ -1,15 +1,14 @@
-import { ACTION, HEADER_LIST, VAR } from '../../../../enums';
-import { DTOBuilder } from '../../../../utils/chain-dto';
+import { createAIEnhancedDTO } from '../../../../utils/swagger-execute';
+import { ACTION } from '../../../../enums';
 
-export const SendMessageStickerRequest = new DTOBuilder()
+export const SendMessageStickerRequest = () => createAIEnhancedDTO()
   .startStep('send message sticker')
-  .addAction('send message sticker', 'send-message-sticker', ACTION.SEND_MESSAGE_STICKER, {
-    headers: HEADER_LIST.create({ token: VAR.token }),
-    body: {
-      workspaceId: VAR.workspaceId,
-      channelId: VAR.channelId,
-      stickerId: VAR.stickerId,
-      ref: 'ref',
+  .addActionAI(
+    'send message sticker',
+    'send-message-sticker',
+    ACTION.SEND_MESSAGE_STICKER,
+    {
+      body: ACTION.SEND_MESSAGE_STICKER,
     },
-  })
+  )
   .execute();

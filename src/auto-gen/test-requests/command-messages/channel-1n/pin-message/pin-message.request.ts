@@ -1,29 +1,22 @@
-import { DTOBuilder } from '../../../../utils/chain-dto';
-import { VAR, ACTION, HEADER_LIST } from '../../../../enums/index';
+import { createAIEnhancedDTO } from '../../../../utils/swagger-execute';
+import { ACTION } from '../../../../enums';
 
-export const PinMessageRequest = new DTOBuilder()
+export const PinMessageRequest = () => createAIEnhancedDTO()
   .startStep('pin a message')
-  .addBeforeAll('send message', '', ACTION.SEND_MESSAGE, {
-    headers: HEADER_LIST.create({ token: VAR.token }),
-    body: {
-      channelId: VAR.channelId,
-      workspaceId: VAR.workspaceId,
-      content: 'test DTO send message',
-      ref: 'ref',
-    },
-  })
-  .addAction(
+  .addActionAI(
     'pin message',
     'pin-message',
     ACTION.PIN_UNPIN_MESSAGE,
     {
-      headers: HEADER_LIST.create({ token: VAR.token }),
-      body: {
-        workspaceId: VAR.workspaceId,
-        channelId: VAR.channelId,
-        messageId: VAR.messageId,
-        status: true,
-      },
-    }
+      body: ACTION.PIN_UNPIN_MESSAGE,
+    },
+  )
+  .addBeforeAllActionAI(
+    'send message',
+    'send-message',
+    ACTION.SEND_MESSAGE,
+    {
+      body: ACTION.SEND_MESSAGE,
+    },
   )
   .execute();

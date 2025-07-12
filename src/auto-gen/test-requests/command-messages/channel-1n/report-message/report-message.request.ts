@@ -1,38 +1,32 @@
+import { createAIEnhancedDTO } from '../../../../utils/swagger-execute';
 import {
   ACTION,
-  HEADER_LIST,
-  PretendingTo,
-  ReportCategory,
-  VAR,
 } from '../../../../enums';
-import { DTOBuilder } from '../../../../utils/chain-dto';
 
-export const ReportMessageRequest = new DTOBuilder()
+export const ReportMessageRequest = () => createAIEnhancedDTO()
   .startStep('report message')
-  .addAction('report message', 'report-message', ACTION.REPORT_MESSAGE, {
-    headers: HEADER_LIST.create({ token: VAR.token }),
-    body: {
-      channelId: VAR.channelId,
-      workspaceId: VAR.workspaceId,
-      messageId: VAR.messageId1,
-      reportCategory: ReportCategory.REPORT_CATEGORY_PRETENDING_TO_BE_SOMEONE,
-      pretendingTo: PretendingTo.PRETENDING_TO_FRIEND,
-      reportReason: 'report message',
+  .addActionAI(
+    'report message',
+    'report-message',
+    ACTION.REPORT_MESSAGE,
+    {
+      body: ACTION.REPORT_MESSAGE,
     },
-  })
-  .addBeforeAll('accept invitation', 'accept-invite', ACTION.ACCEPT_INVITATION, {
-    headers: HEADER_LIST.create({ token: VAR.token1 }),
-    body: {
-      invitationLink: VAR.invitationLink,
+  )
+  .addBeforeAllActionAI(
+    'accept invitation',
+    'accept-invite',
+    ACTION.ACCEPT_INVITATION,
+    {
+      body: ACTION.ACCEPT_INVITATION,
     },
-  })
-  .addBeforeAll('send message', 'send-message', ACTION.SEND_MESSAGE, {
-    headers: HEADER_LIST.create({ token: VAR.token }),
-    body: {
-      workspaceId: VAR.workspaceId,
-      content: 'aaaaa',
-      channelId: VAR.channelId,
-      ref: 'ref',
+  )
+  .addBeforeAllActionAI(
+    'send message',
+    'send-message',
+    ACTION.SEND_MESSAGE,
+    {
+      body: ACTION.SEND_MESSAGE,
     },
-  })
+  )
   .execute();
