@@ -85,7 +85,7 @@ function runTests(subType: string): ActionHandler {
         console.log(`🔄 Processing: ${normalizedPath}`);
         console.log(`Running test for ${subType} "${normalizedPath}"...`);
         const { stderr, stdout } = await execPromise(`jest ${testPathPattern}`);
-        // console.log(stderr, stdout)
+        console.log(stderr, stdout)
         console.log(`✅ Success: ${normalizedPath}`);
         return normalizedPath;
       } catch (error) {

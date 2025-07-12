@@ -1,0 +1,78 @@
+=== Request Test Report for update-user-status ===
+• Host: [object Object]
+• Endpoint: /UserProfile/UpdateUserStatus
+• Date: 12/07/2025, 15:18:56
+
+=== Execution Steps ===
+
+
+=== Test Summary ===
+✅ Passed: 11
+❌ Failed: 0
+⚠️ Warnings: 8
+📊 Total: 11
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 0
+ 🟢 201: 0
+ 🟠 400: 0
+ 🟠 403: 0
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Warnings ===
+ 🟠 1. Case #1
+     ├─ Status: N/A
+     ├─ Body: {"content":123,"status":"🚀"}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: content expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 2. Case #2
+     ├─ Status: N/A
+     ├─ Body: {"content":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","status":"🚀"}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: content string must contain at most 50 character(s)
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 3. Case #4
+     ├─ Status: N/A
+     ├─ Body: {"content":"","status":"🚀"}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: content should not be empty
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 4. Case #5
+     ├─ Status: N/A
+     ├─ Body: {"content":null,"status":"🚀"}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: content expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 5. Case #6
+     ├─ Status: N/A
+     ├─ Body: {"content":"defaultContent","status":123}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: status expected string, received number
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 6. Case #7
+     ├─ Status: N/A
+     ├─ Body: {"content":"defaultContent","status":"🚀🚀"}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: status only accepts 1 emoji
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 7. Case #8
+     ├─ Status: N/A
+     ├─ Body: {"content":"defaultContent","status":""}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: status invalid emoji, status only accepts 1 emoji, status should not be empty
+     └─ Message: Actual errors are subset of expected errors
+ 🟠 8. Case #10
+     ├─ Status: N/A
+     ├─ Body: {"content":"defaultContent","status":null}
+     ├─ Actual Errors: None
+     ├─ Expected Errors: status expected string, received null
+     └─ Message: Actual errors are subset of expected errors
+
+=== Unique Errors ===
+
+[DTO Validation Issues]
+
+=== End of Report ===

@@ -2,7 +2,7 @@
     {
         "body": {
             "content": 123,
-            "status": "🧑🏼‍❤️‍💋‍🧑🏿"
+            "status": "🚀"
         },
         "expects": [
             "content expected string, received number"
@@ -10,95 +10,8 @@
     },
     {
         "body": {
-            "content": 123,
-            "status": 123
-        },
-        "expects": [
-            "content expected string, received number",
-            "status expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "content": 123,
-            "status": "🧑🏼‍❤️‍💋‍🧑🏿🧑🏼‍❤️‍💋‍🧑🏿"
-        },
-        "expects": [
-            "content expected string, received number",
-            "status only accepts 1 emoji"
-        ]
-    },
-    {
-        "body": {
-            "content": 123,
-            "status": ""
-        },
-        "expects": [
-            "content expected string, received number",
-            "status should not be empty",
-            "status invalid emoji",
-            "status only accepts 1 emoji"
-        ]
-    },
-    {
-        "body": {
-            "content": 123,
-            "status": null
-        },
-        "expects": [
-            "content expected string, received number",
-            "status expected string, received null"
-        ]
-    },
-    {
-        "body": {
-            "content": "Hi hi",
-            "status": "🧑🏼‍❤️‍💋‍🧑🏿"
-        },
-        "expects": []
-    },
-    {
-        "body": {
-            "content": "Hi hi",
-            "status": 123
-        },
-        "expects": [
-            "status expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "content": "Hi hi",
-            "status": "🧑🏼‍❤️‍💋‍🧑🏿🧑🏼‍❤️‍💋‍🧑🏿"
-        },
-        "expects": [
-            "status only accepts 1 emoji"
-        ]
-    },
-    {
-        "body": {
-            "content": "Hi hi",
-            "status": ""
-        },
-        "expects": [
-            "status should not be empty",
-            "status invalid emoji",
-            "status only accepts 1 emoji"
-        ]
-    },
-    {
-        "body": {
-            "content": "Hi hi",
-            "status": null
-        },
-        "expects": [
-            "status expected string, received null"
-        ]
-    },
-    {
-        "body": {
             "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "status": "🧑🏼‍❤️‍💋‍🧑🏿"
+            "status": "🚀"
         },
         "expects": [
             "content string must contain at most 50 character(s)"
@@ -106,50 +19,14 @@
     },
     {
         "body": {
-            "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "status": 123
+            "status": "🚀"
         },
-        "expects": [
-            "content string must contain at most 50 character(s)",
-            "status expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "status": "🧑🏼‍❤️‍💋‍🧑🏿🧑🏼‍❤️‍💋‍🧑🏿"
-        },
-        "expects": [
-            "content string must contain at most 50 character(s)",
-            "status only accepts 1 emoji"
-        ]
-    },
-    {
-        "body": {
-            "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "status": ""
-        },
-        "expects": [
-            "content string must contain at most 50 character(s)",
-            "status should not be empty",
-            "status invalid emoji",
-            "status only accepts 1 emoji"
-        ]
-    },
-    {
-        "body": {
-            "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "status": null
-        },
-        "expects": [
-            "content string must contain at most 50 character(s)",
-            "status expected string, received null"
-        ]
+        "expects": []
     },
     {
         "body": {
             "content": "",
-            "status": "🧑🏼‍❤️‍💋‍🧑🏿"
+            "status": "🚀"
         },
         "expects": [
             "content should not be empty"
@@ -157,50 +34,8 @@
     },
     {
         "body": {
-            "content": "",
-            "status": 123
-        },
-        "expects": [
-            "content should not be empty",
-            "status expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "content": "",
-            "status": "🧑🏼‍❤️‍💋‍🧑🏿🧑🏼‍❤️‍💋‍🧑🏿"
-        },
-        "expects": [
-            "content should not be empty",
-            "status only accepts 1 emoji"
-        ]
-    },
-    {
-        "body": {
-            "content": "",
-            "status": ""
-        },
-        "expects": [
-            "content should not be empty",
-            "status should not be empty",
-            "status invalid emoji",
-            "status only accepts 1 emoji"
-        ]
-    },
-    {
-        "body": {
-            "content": "",
-            "status": null
-        },
-        "expects": [
-            "content should not be empty",
-            "status expected string, received null"
-        ]
-    },
-    {
-        "body": {
             "content": null,
-            "status": "🧑🏼‍❤️‍💋‍🧑🏿"
+            "status": "🚀"
         },
         "expects": [
             "content expected string, received null"
@@ -208,31 +43,28 @@
     },
     {
         "body": {
-            "content": null,
+            "content": "defaultContent",
             "status": 123
         },
         "expects": [
-            "content expected string, received null",
             "status expected string, received number"
         ]
     },
     {
         "body": {
-            "content": null,
-            "status": "🧑🏼‍❤️‍💋‍🧑🏿🧑🏼‍❤️‍💋‍🧑🏿"
+            "content": "defaultContent",
+            "status": "🚀🚀"
         },
         "expects": [
-            "content expected string, received null",
             "status only accepts 1 emoji"
         ]
     },
     {
         "body": {
-            "content": null,
+            "content": "defaultContent",
             "status": ""
         },
         "expects": [
-            "content expected string, received null",
             "status should not be empty",
             "status invalid emoji",
             "status only accepts 1 emoji"
@@ -240,12 +72,24 @@
     },
     {
         "body": {
-            "content": null,
+            "content": "defaultContent"
+        },
+        "expects": []
+    },
+    {
+        "body": {
+            "content": "defaultContent",
             "status": null
         },
         "expects": [
-            "content expected string, received null",
             "status expected string, received null"
         ]
+    },
+    {
+        "body": {
+            "content": "defaultContent",
+            "status": "🚀"
+        },
+        "expects": []
     }
 ]

@@ -382,7 +382,7 @@ export async function resolveCallAPI(
     headers: resolveHeader,
     body: resolveBody,
   });
-
+  console.log(response)
   return response;
 }
 
