@@ -1,0 +1,46 @@
+[
+    {
+        "body": {
+            "displayName": 123
+        },
+        "expects": [
+            "displayName expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "displayName": "ABCDEF"
+        },
+        "expects": []
+    },
+    {
+        "body": {
+            "displayName": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "expects": [
+            "displayName string must contain at most 50 character(s)"
+        ]
+    },
+    {
+        "body": {},
+        "expects": [
+            "displayName required"
+        ]
+    },
+    {
+        "body": {
+            "displayName": ""
+        },
+        "expects": [
+            "displayName should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "displayName": null
+        },
+        "expects": [
+            "displayName expected string, received null"
+        ]
+    }
+]

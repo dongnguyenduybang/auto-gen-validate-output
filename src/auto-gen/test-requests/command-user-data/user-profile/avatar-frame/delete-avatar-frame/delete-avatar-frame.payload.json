@@ -1,0 +1,41 @@
+[
+    {
+        "body": {
+            "avatarFrameId": 123
+        },
+        "expects": [
+            "avatarFrameId expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "avatarFrameId": ""
+        },
+        "expects": [
+            "avatarFrameId should not be empty",
+            "avatarFrameId invalid ulid"
+        ]
+    },
+    {
+        "body": {},
+        "expects": [
+            "avatarFrameId required"
+        ]
+    },
+    {
+        "body": {
+            "avatarFrameId": null
+        },
+        "expects": [
+            "avatarFrameId expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "avatarFrameId": "invalid_ULID"
+        },
+        "expects": [
+            "avatarFrameId invalid ulid"
+        ]
+    }
+]

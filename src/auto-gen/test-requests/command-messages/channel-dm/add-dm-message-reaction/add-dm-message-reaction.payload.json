@@ -1,0 +1,920 @@
+[
+    {
+        "body": {
+            "userId": 123,
+            "messageId": "{{messageId}}",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "messageId": 123,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "messageId": "",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "messageId": null,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "messageId": "invalid_ULID",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "messageId": "{{messageId}}",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "messageId": "{{messageId}}",
+            "emoji": "🚀🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "messageId": "{{messageId}}",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "messageId": "{{messageId}}"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "messageId": "{{messageId}}",
+            "emoji": null
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": "{{messageId}}",
+            "emoji": "🚀"
+        },
+        "expects": []
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": 123,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "messageId expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "messageId required"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": "",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "messageId should not be empty",
+            "messageId invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": null,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "messageId expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": "invalid_ULID",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "messageId invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": "{{messageId}}",
+            "emoji": 123
+        },
+        "expects": [
+            "emoji expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": "{{messageId}}",
+            "emoji": "🚀🚀"
+        },
+        "expects": [
+            "emoji only accepts 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": "{{messageId}}",
+            "emoji": ""
+        },
+        "expects": [
+            "emoji should not be empty",
+            "emoji invalid emoji",
+            "emoji only accepts 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": "{{messageId}}"
+        },
+        "expects": [
+            "emoji required"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": "{{messageId}}",
+            "emoji": null
+        },
+        "expects": [
+            "emoji expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "messageId": "{{messageId}}",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "messageId": 123,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "messageId": "",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "messageId": null,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "messageId": "invalid_ULID",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "messageId": "{{messageId}}",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "messageId": "{{messageId}}",
+            "emoji": "🚀🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "messageId": "{{messageId}}",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "messageId": "{{messageId}}"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "messageId": "{{messageId}}",
+            "emoji": null
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "messageId": "{{messageId}}",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "messageId": 123,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "messageId": "",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "messageId": null,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "messageId": "invalid_ULID",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "messageId": "{{messageId}}",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "messageId": "{{messageId}}",
+            "emoji": "🚀🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "messageId": "{{messageId}}",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "messageId": "{{messageId}}"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "messageId": "{{messageId}}",
+            "emoji": null
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "messageId": "{{messageId}}",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "messageId": 123,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "messageId": "",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "messageId": null,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "messageId": "invalid_ULID",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "messageId": "{{messageId}}",
+            "emoji": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "messageId": "{{messageId}}",
+            "emoji": "🚀🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "messageId": "{{messageId}}",
+            "emoji": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "messageId": "{{messageId}}"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "messageId": "{{messageId}}",
+            "emoji": null
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "messageId": "{{messageId}}",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "messageId": 123,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "messageId": "",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "messageId": null,
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "messageId": "invalid_ULID",
+            "emoji": "🚀"
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "messageId": "{{messageId}}",
+            "emoji": 123
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "messageId": "{{messageId}}",
+            "emoji": "🚀🚀"
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "messageId": "{{messageId}}",
+            "emoji": ""
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "messageId": "{{messageId}}"
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "messageId": "{{messageId}}",
+            "emoji": null
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": 123,
+            "emoji": 123
+        },
+        "expects": [
+            "messageId expected string, received number",
+            "emoji expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": 123,
+            "emoji": "🚀🚀"
+        },
+        "expects": [
+            "messageId expected string, received number",
+            "emoji only accepts 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": 123,
+            "emoji": ""
+        },
+        "expects": [
+            "messageId expected string, received number",
+            "emoji should not be empty",
+            "emoji invalid emoji",
+            "emoji only accepts 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": 123
+        },
+        "expects": [
+            "messageId expected string, received number",
+            "emoji required"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": 123,
+            "emoji": null
+        },
+        "expects": [
+            "messageId expected string, received number",
+            "emoji expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "emoji": 123
+        },
+        "expects": [
+            "messageId required",
+            "emoji expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "emoji": "🚀🚀"
+        },
+        "expects": [
+            "messageId required",
+            "emoji only accepts 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "emoji": ""
+        },
+        "expects": [
+            "messageId required",
+            "emoji should not be empty",
+            "emoji invalid emoji",
+            "emoji only accepts 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}"
+        },
+        "expects": [
+            "messageId required",
+            "emoji required"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "emoji": null
+        },
+        "expects": [
+            "messageId required",
+            "emoji expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": "",
+            "emoji": 123
+        },
+        "expects": [
+            "messageId should not be empty",
+            "messageId invalid ulid",
+            "emoji expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": "",
+            "emoji": "🚀🚀"
+        },
+        "expects": [
+            "messageId should not be empty",
+            "messageId invalid ulid",
+            "emoji only accepts 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": "",
+            "emoji": ""
+        },
+        "expects": [
+            "messageId should not be empty",
+            "messageId invalid ulid",
+            "emoji should not be empty",
+            "emoji invalid emoji",
+            "emoji only accepts 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": ""
+        },
+        "expects": [
+            "messageId should not be empty",
+            "messageId invalid ulid",
+            "emoji required"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": "",
+            "emoji": null
+        },
+        "expects": [
+            "messageId should not be empty",
+            "messageId invalid ulid",
+            "emoji expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": null,
+            "emoji": 123
+        },
+        "expects": [
+            "messageId expected string, received null",
+            "emoji expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": null,
+            "emoji": "🚀🚀"
+        },
+        "expects": [
+            "messageId expected string, received null",
+            "emoji only accepts 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": null,
+            "emoji": ""
+        },
+        "expects": [
+            "messageId expected string, received null",
+            "emoji should not be empty",
+            "emoji invalid emoji",
+            "emoji only accepts 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": null
+        },
+        "expects": [
+            "messageId expected string, received null",
+            "emoji required"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": null,
+            "emoji": null
+        },
+        "expects": [
+            "messageId expected string, received null",
+            "emoji expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": "invalid_ULID",
+            "emoji": 123
+        },
+        "expects": [
+            "messageId invalid ulid",
+            "emoji expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": "invalid_ULID",
+            "emoji": "🚀🚀"
+        },
+        "expects": [
+            "messageId invalid ulid",
+            "emoji only accepts 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": "invalid_ULID",
+            "emoji": ""
+        },
+        "expects": [
+            "messageId invalid ulid",
+            "emoji should not be empty",
+            "emoji invalid emoji",
+            "emoji only accepts 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": "invalid_ULID"
+        },
+        "expects": [
+            "messageId invalid ulid",
+            "emoji required"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": "invalid_ULID",
+            "emoji": null
+        },
+        "expects": [
+            "messageId invalid ulid",
+            "emoji expected string, received null"
+        ]
+    }
+]
