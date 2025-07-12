@@ -1,22 +1,24 @@
+import { createAIEnhancedDTO } from '../../../../utils/swagger-execute';
 import {
   ACTION,
-  HEADER_LIST,
-  VAR,
 } from '../../../../enums/index';
-import { RequestTestSuite } from '../../../../utils/declarations';
 
-export const UnblockUserRequest: RequestTestSuite = {
-  action: ACTION.UNBLOCK_USER,
-  headers: HEADER_LIST.create({ token: VAR.token }),
-  body: {
-    targetUserId: VAR.userId1
-  },
-  options: [
+export const UnblockUserRequest = () => createAIEnhancedDTO()
+  .startStep('unblock user')
+  .addActionAI(
+    'unblock user',
+    'unblock-user',
+    ACTION.BLOCK_USER,
     {
-      beforeAll: [],
-      beforeEach: [],
-      afterEach: [],
-      afterAll: [],
-    },
-  ],
-};
+      body: ACTION.UNBLOCK_USER,
+    }
+  )
+  .addBeforeAllActionAI(
+    'block user',
+    'block-user',
+    ACTION.BLOCK_USER,
+    {
+      body: ACTION.BLOCK_USER,
+    }
+  )
+  .execute()

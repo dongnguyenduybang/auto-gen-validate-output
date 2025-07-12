@@ -1,30 +1,24 @@
+import { createAIEnhancedDTO } from '../../../../../utils/swagger-execute';
 import {
-    ACTION,
-    HEADER_LIST,
-    VAR,
+  ACTION,
 } from '../../../../../enums/index';
-import { RequestTestSuite } from '../../../../../utils/declarations';
 
-export const DeleteUserVisitProfileRequest: RequestTestSuite = {
-    action: ACTION.DELETE_USER_VISIT_PROFILE,
-    headers: HEADER_LIST.create({ token: VAR.token }),
-    body: {
-        userId: VAR.userId1
-    },
-    options: [
-        {
-            beforeAll: [
-                {
-                    action: ACTION.VISIT_PROFILE,
-                    headers: HEADER_LIST.create({ token: VAR.token1 }),
-                    body: {
-                        userId: VAR.userId
-                    },
-                }
-            ],
-            beforeEach: [],
-            afterEach: [],
-            afterAll: [],
-        },
-    ],
-};
+export const DeleteUserVisitProfileRequest = () => createAIEnhancedDTO()
+  .startStep('delete user visit profile')
+  .addActionAI(
+    'delete user visit profile',
+    'delete-user-visit-profile',
+    ACTION.DELETE_USER_VISIT_PROFILE,
+    {
+      body: ACTION.DELETE_USER_VISIT_PROFILE
+    }
+  )
+  .addBeforeAllActionAI(
+    'visit profile',
+    'visit-profile',
+    ACTION.VISIT_PROFILE,
+    {
+        body: ACTION.VISIT_PROFILE
+    }
+  )
+  .execute()

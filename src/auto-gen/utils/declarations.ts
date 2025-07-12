@@ -10,14 +10,14 @@ import {
 import { TestContext } from './text-context';
 
 export interface GenRequestOptions {
-    beforeAll?: any[];
-    beforeEach?: any[];
-    afterAll?: any[];
-    afterEach?: any[];
+  beforeAll?: any[];
+  beforeEach?: any[];
+  afterAll?: any[];
+  afterEach?: any[];
 }
 
 export interface RequestHeaders {
-    [key: string]: string;
+  [key: string]: string;
 }
 
 export interface ValidationError {
@@ -70,7 +70,7 @@ export interface RequestTestSuite {
   dtoName: string;
   cluster: string;
   headers: object;
-  body: Object;
+  body: object;
   options: FirstStep[];
 }
 
@@ -136,7 +136,6 @@ export interface ApiConfig {
 // }
 
 export interface ApiFunctionParams {
-  method?: string;
   path?: string;
   headers: any;
   body: any;
@@ -286,4 +285,13 @@ export interface ReportData {
   jsonFile: string;
   detailFilePath: string | null;
   reportCategory: string;
+}
+export interface TrainingData {
+  action: string;
+  apiEndpoint: string;
+  swaggerDesc: string;
+  contextClues: string[];
+  httpMethod?: string;
+  schemaId?: string;
+  fieldName?: string;
 }

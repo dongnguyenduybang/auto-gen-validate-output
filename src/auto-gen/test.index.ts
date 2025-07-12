@@ -1,17 +1,21 @@
 import 'reflect-metadata';
 import { genBodyRequest } from './utils/gen-body-request';
-import { genTestRequest } from './utils/gen-test-request';
-import { exec } from 'child_process';
+import { exec, spawn } from 'child_process';
 import { genTestResponse } from './utils/gen-test-response';
 import { genTestSaga } from './utils/gen-test-saga';
 import { clearFiles, normalizePath } from './utils/helper';
 import { generateAllReports, viewReports } from './utils/combine-report';
 import { interactiveCLI } from './utils/inquirer-prompts';
 import util from 'util';
-import path from 'path';
 import { loadAIModel } from './utils/ai-service';
+import { genK6Request } from './utils/k6-test';
+import { generateSetupData } from './utils/k6-help';
+import { default as runTeardown } from './setup/jest.teardown';
+import setup from './setup/jest.setup';
 
-type ActionHandler = (input: string | string[]) => void | Promise<void> | Promise<string[]>;
+type ActionHandler = (
+  input: string | string[],
+) => void | Promise<void> | Promise<string[]>;
 
 const args = process.argv.slice(2);
 if (args.length > 0 && !args.includes('--started')) {
@@ -27,8 +31,8 @@ export const actionHandlers: Record<string, Record<string, ActionHandler[]>> = {
   gen: {
     request: [
       async (dto: string) => {
-        genAllRequests(dto); // Chỉ gọi hàm tổng hợp này
-      }
+        genAllRequests(dto);
+      },
     ],
     response: [(dto: string) => Promise.resolve(genTestResponse(dto))],
     saga: [(dto: string) => Promise.resolve(genTestSaga(dto))],
@@ -41,7 +45,10 @@ export const actionHandlers: Record<string, Record<string, ActionHandler[]>> = {
         try {
           await generateAllReports(normalizedDtoName);
         } catch (error) {
-          console.error('❌ Failed to generate report:', (error as Error).message);
+          console.error(
+            '❌ Failed to generate report:',
+            (error as Error).message,
+          );
           throw error;
         }
       },
@@ -64,6 +71,7 @@ export const actionHandlers: Record<string, Record<string, ActionHandler[]>> = {
     response: [runTests('test-responses')],
     saga: [runTests('test-sagas')],
     ws: [runTests('test-ws')],
+    k6: [runTestsK6()],
   },
   clear: {
     request: [clearFiles('test-requests')],
@@ -84,12 +92,15 @@ function runTests(subType: string): ActionHandler {
         const testPathPattern = `${normalizedPath}/.*\\.spec\\.ts$`;
         console.log(`🔄 Processing: ${normalizedPath}`);
         console.log(`Running test for ${subType} "${normalizedPath}"...`);
-        const { stderr, stdout } = await execPromise(`jest ${testPathPattern}`);
+        await execPromise(`jest ${testPathPattern}`);
         // console.log(stderr, stdout)
         console.log(`✅ Success: ${normalizedPath}`);
         return normalizedPath;
       } catch (error) {
-        console.error(`❌ Failed to run test for ${filePath}:`, (error as Error).message);
+        console.error(
+          `❌ Failed to run test for ${filePath}:`,
+          (error as Error).message,
+        );
         return null;
       }
     });
@@ -99,15 +110,48 @@ function runTests(subType: string): ActionHandler {
   };
 }
 
+function runTestsK6(): ActionHandler {
+  return async (filePaths: string | string[]) => {
+    await setup()
+    await generateSetupData(filePaths);
+    if (Array.isArray(filePaths)) {
+      for (const filePath of filePaths) {
+        const lastSegment = filePath.split('/').pop() || '';
+        await runK6TestScript(filePath, `${lastSegment}.k6.js`);
+      }
+    } else {
+      const lastSegment = filePaths.split('/').pop() || '';
+      await runK6TestScript(filePaths, `${lastSegment}.k6.js`);
+    }
+    console.log('🧹 Starting global teardown...');
+    await runTeardown();
+  };
+}
+
+function runK6TestScript(scriptFolderPath: string, scriptFile: string) {
+  return new Promise<void>((resolve, reject) => {
+    const fullPath = `${scriptFolderPath}/${scriptFile}`;
+    const k6Process = spawn('k6', ['run', fullPath], {
+      cwd: scriptFolderPath,
+      stdio: 'inherit',
+      shell: true,
+    });
+
+    k6Process.on('close', (code) => {
+      console.log(`✅ K6 test for ${scriptFile} completed successfully.`);
+      resolve();
+    });
+  });
+}
+
 export async function genAllRequests(dto: string) {
   try {
-    // Chỉ load model 1 lần duy nhất
-    await loadAIModel();
-
-    // Chạy tuần tự hoặc song song tùy nhu cầu
+    await setup()
+    await loadAIModel()
     const [bodyResult, testResult] = await Promise.all([
       genBodyRequest(dto),
-      genTestRequest(dto)
+      // genTestRequest(dto)
+      genK6Request(dto),
     ]);
 
     return { bodyResult, testResult };

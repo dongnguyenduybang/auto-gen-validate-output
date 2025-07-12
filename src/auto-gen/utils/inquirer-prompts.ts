@@ -2,13 +2,12 @@ import inquirer from 'inquirer';
 import fs from 'fs';
 import { glob } from 'glob';
 import path from 'path';
-import { execSync } from 'child_process';
 import { RecentSelection } from './declarations';
 import { actionHandlers } from '../test.index';
-import { normalizePath, parsePath, searchDtoInTestRequests, transformPropertyName } from './helper';
+import { normalizePath, searchDtoInTestRequests } from './helper';
 import { mapOption } from './k6-help';
 
-let recentSelections: RecentSelection[] = [];
+const recentSelections: RecentSelection[] = [];
 const MAX_RECENT_ITEMS = 100;
 const REPORT_LENGTH = 5;
 
@@ -68,7 +67,9 @@ export async function interactiveCLI(): Promise<void> {
         const selectedPaths = await selectFoldersRecursive(true);
         if (selectedPaths.length === 0) continue;
 
-        console.log(`\n📋 Selected ${selectedPaths.length} items for report generation:`);
+        console.log(
+          `\n📋 Selected ${selectedPaths.length} items for report generation:`,
+        );
         selectedPaths.forEach((path, i) => console.log(` ${i + 1}. ${path}`));
 
         const { confirm } = await inquirer.prompt<{ confirm: boolean }>([
@@ -111,7 +112,9 @@ export async function interactiveCLI(): Promise<void> {
       } else if (reportType === 'view') {
         const selectedPaths = await selectFoldersRecursive(true);
         if (selectedPaths.length === 0) continue;
-        console.log(`\n📋 Selected ${selectedPaths.length} items for view report:`);
+        console.log(
+          `\n📋 Selected ${selectedPaths.length} items for view report:`,
+        );
         selectedPaths.forEach((path, i) => console.log(` ${i + 1}. ${path}`));
 
         const { confirm } = await inquirer.prompt<{ confirm: boolean }>([
@@ -137,7 +140,9 @@ export async function interactiveCLI(): Promise<void> {
     }
 
     if (action === 'recent') {
-      const { selectedRecent } = await inquirer.prompt<{ selectedRecent: number }>([
+      const { selectedRecent } = await inquirer.prompt<{
+        selectedRecent: number;
+      }>([
         {
           type: 'list',
           name: 'selectedRecent',
@@ -180,22 +185,29 @@ export async function interactiveCLI(): Promise<void> {
         { name: 'Manual selection', value: 'manual' },
       ];
 
-      const { quickTestChoice } = await inquirer.prompt<{ quickTestChoice: string | number }>([
+      const { quickTestChoice } = await inquirer.prompt<{
+        quickTestChoice: string | number;
+      }>([
         {
           type: 'list',
           name: 'quickTestChoice',
           message: 'Select items to test:',
-          choices: recentGenItems.length > 0 ? choices : [
-            { name: 'Test with k6', value: 'k6' },
-            { name: 'Manual selection', value: 'manual' },
-          ],
+          choices:
+            recentGenItems.length > 0
+              ? choices
+              : [
+                { name: 'Test with k6', value: 'k6' },
+                { name: 'Manual selection', value: 'manual' },
+              ],
           pageSize: 10,
         },
       ]);
 
       if (quickTestChoice === 'all') {
         const allPaths = recentGenItems.flatMap((item) => item.paths);
-        console.log(`\n🔍 Testing all recently generated items (${allPaths.length}):`);
+        console.log(
+          `\n🔍 Testing all recently generated items (${allPaths.length}):`,
+        );
         allPaths.forEach((path, i) => console.log(` ${i + 1}. ${path}`));
 
         await executeAction('test', 'request', allPaths);
@@ -209,15 +221,22 @@ export async function interactiveCLI(): Promise<void> {
         continue;
       } else if (quickTestChoice === 'k6') {
         // Xử lý Test with k6
-        const payloadBasePath = 'C:/Users/duy/Documents/payloads'; // Thư mục gốc cho payload
-        const selectedPayloads = await selectFoldersRecursive(false,);
+        const selectedPayloads = await selectFoldersRecursive(false);
         if (selectedPayloads.length === 0) {
           console.log('No payload file selected.');
           continue;
         }
         const payloadPath = selectedPayloads[0]; // Chỉ lấy file đầu tiên
 
-        const { k6ScriptPath, vus, executor, stages, thresholds, gracefulRampDown } = await inquirer.prompt([
+        const {
+          k6ScriptPath,
+          vus,
+          executor,
+          stages,
+          thresholds,
+          gracefulRampDown,
+          iterations,
+        } = await inquirer.prompt([
           {
             type: 'input',
             name: 'k6ScriptPath',
@@ -235,7 +254,8 @@ export async function interactiveCLI(): Promise<void> {
           {
             type: 'input',
             name: 'executor',
-            message: 'Enter executor(per-vu-iterations, constant-vus, ramping-vus):',
+            message:
+              'Enter executor(per-vu-iterations, constant-vus, ramping-vus):',
             // validate: (input) => {
             //   return !input || /^\d+$/.test(input) ? true : 'VUs must be a number';
             // },
@@ -246,13 +266,27 @@ export async function interactiveCLI(): Promise<void> {
             message: 'Enter number of virtual users (vus):',
             default: '1',
             validate: (input) => {
-              return !input || /^\d+$/.test(input) ? true : 'VUs must be a number';
+              return !input || /^\d+$/.test(input)
+                ? true
+                : 'VUs must be a number';
+            },
+          },
+          {
+            type: 'input',
+            name: 'iterations',
+            message: 'Enter number of iterations (1):',
+            default: '1',
+            validate: (input) => {
+              return !input || /^\d+$/.test(input)
+                ? true
+                : 'Iterations must be a number';
             },
           },
           {
             type: 'input',
             name: 'stages',
-            message: 'Enter stages (e.g., [{duration:"10s",target:10},{duration:"10s",target:0}]):',
+            message:
+              'Enter stages (e.g., [{duration:"10s",target:10},{duration:"10s",target:0}]):',
             default: '',
             validate: (input) => {
               if (!input) return true;
@@ -267,16 +301,11 @@ export async function interactiveCLI(): Promise<void> {
           {
             type: 'input',
             name: 'thresholds',
-            message: 'Enter thresholds (e.g., {"http_req_duration":"p(95)<700"}):',
-            default: `{
-                        'http_req_duration': ['p(95)<500', 'p(99)<1000'],
-                        'http_req_failed': ['rate<0.01'],
-                        'checks': ['rate>0.99'],
-                        'data_sent': ['count>0'],
-                        'data_received': ['count>0'],
-                        'iteration_duration': ['p(90)<1000'],
-                        'vus_max': ['value<100'],
-                        'http_reqs': ['count>100']
+            message:
+              'Enter thresholds (e.g., {"http_req_duration":"p(95)<700"}):',
+            default: `{ "http_req_duration": ["p(95)<500"],
+                  "passed_tests": ["count>=1"],
+                  "failed_tests": ["count<2"]
               }`,
             // validate: (input) => {
             //   if (!input) return true;
@@ -298,13 +327,16 @@ export async function interactiveCLI(): Promise<void> {
           },
         ]);
 
-        console.log(`\n🔍 Running k6 tests with payload: ${payloadPath} and script: ${k6ScriptPath}`);
+        console.log(
+          `\n🔍 Running k6 tests with payload: ${payloadPath} and script: ${k6ScriptPath}`,
+        );
 
         try {
-
           const folderName = path.basename(payloadPath);
-
-          const targetDir = path.join('C:/Users/duy/Documents/k6-studio/Scripts', folderName);
+          const targetDir = path.join(
+            'C:/Users/duy/Documents/k6-studio/Scripts',
+            folderName,
+          );
 
           if (!fs.existsSync(targetDir)) {
             fs.mkdirSync(targetDir, { recursive: true });
@@ -312,7 +344,6 @@ export async function interactiveCLI(): Promise<void> {
           } else {
             console.log(`Folder đã tồn tại: ${targetDir}`);
           }
-
 
           const commonDir = path.join(targetDir, 'common');
           if (!fs.existsSync(commonDir)) {
@@ -323,13 +354,19 @@ export async function interactiveCLI(): Promise<void> {
           }
 
           // Bước 7: Ghi file options.js
-          const optionsPath = path.join(commonDir, 'options.js');
-
-          const optionsContent = mapOption(vus, executor, stages, thresholds, gracefulRampDown)
+          const optionsPath = path.join(commonDir, 'options.k6.json');
+          const optionsContent = mapOption(
+            vus,
+            executor,
+            stages,
+            thresholds,
+            gracefulRampDown,
+            iterations,
+          );
           fs.writeFileSync(optionsPath, optionsContent, 'utf8');
           console.log(`Đã ghi file options.js tại: ${optionsPath}`);
 
-          
+          await executeAction(action, 'k6', [targetDir]);
 
           addToRecentSelections({
             action: 'test',
@@ -338,29 +375,18 @@ export async function interactiveCLI(): Promise<void> {
             timestamp: Date.now(),
           });
 
-          const { generateReport } = await inquirer.prompt<{ generateReport: boolean }>([
-            {
-              type: 'confirm',
-              name: 'generateReport',
-              message: 'Generate test report for k6 results?',
-              default: true,
-            },
-          ]);
-
-          if (generateReport) {
-            const reportName = path.basename(k6ScriptPath, '.js');
-            await actionHandlers.report.single[0](reportName);
-            console.log(`\n📜 Generated report for: ${reportName}`);
-            await actionHandlers.report.view[0](reportName);
-          }
         } catch (error) {
           console.error('❌ Error running k6 tests:', error.message);
         }
         continue;
       } else if (quickTestChoice !== 'manual') {
         const selectedItem = recentGenItems[quickTestChoice];
-        console.log(`\n🔍 Testing selected items (${selectedItem.paths.length}):`);
-        selectedItem.paths.forEach((path, i) => console.log(` ${i + 1}. ${path}`));
+        console.log(
+          `\n🔍 Testing selected items (${selectedItem.paths.length}):`,
+        );
+        selectedItem.paths.forEach((path, i) =>
+          console.log(` ${i + 1}. ${path}`),
+        );
 
         await executeAction('test', selectedItem.type, selectedItem.paths);
 
@@ -468,7 +494,11 @@ function addToRecentSelections(item: RecentSelection): void {
   }
 }
 
-export async function executeAction(action: string, type: string, filePaths: string[]): Promise<{ path: string; success: boolean; error?: string }[]> {
+export async function executeAction(
+  action: string,
+  type: string,
+  filePaths: string[],
+): Promise<{ path: string; success: boolean; error?: string }[]> {
   console.log(`\n📌 Starting ${action} ${type} for ${filePaths.length} items:`);
   console.log('----------------------------------------');
 
@@ -482,17 +512,27 @@ export async function executeAction(action: string, type: string, filePaths: str
 
   if (action === 'test' && type !== 'k6') {
     try {
-      const normalizedPaths = filePaths.map((filePath) => normalizePath(filePath));
-      const successfulTests = (await actionHandlers.test[type][0](normalizedPaths)) as string[];
+      const normalizedPaths = filePaths.map((filePath) =>
+        normalizePath(filePath),
+      );
+      const successfulTests = (await actionHandlers.test[type][0](
+        normalizedPaths,
+      )) as string[];
 
       results.push(
         ...successfulTests.map((path: string) => ({ path, success: true })),
         ...filePaths
           .filter((path) => !successfulTests.includes(normalizePath(path)))
-          .map((path) => ({ path: normalizePath(path), success: false, error: 'Test failed' }))
+          .map((path) => ({
+            path: normalizePath(path),
+            success: false,
+            error: 'Test failed',
+          })),
       );
 
-      const { generateReport } = await inquirer.prompt<{ generateReport: boolean }>([
+      const { generateReport } = await inquirer.prompt<{
+        generateReport: boolean;
+      }>([
         {
           type: 'confirm',
           name: 'generateReport',
@@ -503,21 +543,28 @@ export async function executeAction(action: string, type: string, filePaths: str
 
       if (generateReport) {
         try {
-          const reportPromises = successfulTests.map(async (filePath: string) => {
-            try {
-              const normalizedPath = normalizePath(filePath);
-              const parsed = path.parse(normalizedPath);
-              const reportName = parsed.name;
+          const reportPromises = successfulTests.map(
+            async (filePath: string) => {
+              try {
+                const normalizedPath = normalizePath(filePath);
+                const parsed = path.parse(normalizedPath);
+                const reportName = parsed.name;
 
-              await actionHandlers.report.single[0](reportName);
-              return reportName;
-            } catch (error) {
-              console.error(`❌ Failed to generate report for ${filePath}:`, (error as Error).message);
-              return null;
-            }
-          });
+                await actionHandlers.report.single[0](reportName);
+                return reportName;
+              } catch (error) {
+                console.error(
+                  `❌ Failed to generate report for ${filePath}:`,
+                  (error as Error).message,
+                );
+                return null;
+              }
+            },
+          );
 
-          const reportNames = (await Promise.all(reportPromises)).filter(Boolean) as string[];
+          const reportNames = (await Promise.all(reportPromises)).filter(
+            Boolean,
+          ) as string[];
 
           if (reportNames.length > 0 && reportNames.length <= REPORT_LENGTH) {
             console.log('\n📜 TEST REPORTS SUMMARY');
@@ -536,30 +583,33 @@ export async function executeAction(action: string, type: string, filePaths: str
             console.log(`🎉 Displayed ${reportNames.length} reports`);
           }
         } catch (error) {
-          console.error('❌ Error in report generation:', (error as Error).message);
+          console.error(
+            '❌ Error in report generation:',
+            (error as Error).message,
+          );
         }
       }
     } catch (error) {
       console.error('❌ Error in test execution:', (error as Error).message);
-      results.push(...filePaths.map((path) => ({ path: normalizePath(path), success: false, error: (error as Error).message })));
+      results.push(
+        ...filePaths.map((path) => ({
+          path: normalizePath(path),
+          success: false,
+          error: (error as Error).message,
+        })),
+      );
     }
   } else if (action === 'test' && type === 'k6') {
-    const [payloadPath, k6ScriptPath, vus, duration, stages, thresholds] = filePaths;
     try {
-      let command = `k6 run -e PAYLOAD_PATH="${payloadPath}"`;
-      if (vus) command += ` -e VUS="${vus}"`;
-      if (duration) command += ` -e DURATION="${duration}"`;
-      if (stages) command += ` -e STAGES='${stages}'`;
-      if (thresholds) command += ` -e THRESHOLDS='${thresholds}'`;
-      command += ` --out json=results.json "${k6ScriptPath}"`;
-
-      const output = execSync(command, { encoding: 'utf-8' });
-      console.log('✅ k6 Test Output:\n', output);
-      results.push({ path: k6ScriptPath, success: true });
-    } catch (error) {
-      console.error('❌ Error running k6 tests:', error.message);
-      results.push({ path: k6ScriptPath, success: false, error: error.message });
-    }
+      for (const filePath of filePaths) {
+        const normalizedPath = normalizePath(filePath);
+        console.log(`\n🔄 Processing: ${normalizedPath}`);
+        for (const handler of actionHandlers[action][type]) {
+          const finalPath = normalizedPath;
+          await handler(finalPath);
+        }
+      }
+    } catch (error) { }
   } else {
     for (const filePath of filePaths) {
       const normalizedPath = normalizePath(filePath);
@@ -614,16 +664,30 @@ function validateDtoName(dtoName: string): { status: boolean; data: any } {
     if (schema[transformedName]) {
       return { status: true, data: schema[transformedName] };
     }
-    return { status: false, data: `DTO name '${transformedName}' not found in schema.` };
+    return {
+      status: false,
+      data: `DTO name '${transformedName}' not found in schema.`,
+    };
   } catch (error) {
-    return { status: false, data: `Error reading schema: ${(error as Error).message}` };
+    return {
+      status: false,
+      data: `Error reading schema: ${(error as Error).message}`,
+    };
   }
 }
 
-async function selectFoldersRecursive(isReport = false, type = 'request', basePathOverride?: string): Promise<string[]> {
+async function selectFoldersRecursive(
+  isReport = false,
+  type = 'request',
+  basePathOverride?: string,
+): Promise<string[]> {
   const selectedPaths: string[] = [];
   let currentPath = '';
-  let basePath = basePathOverride || (isReport ? path.join(__dirname, '../test-requests', '.reports') : path.join(__dirname, '../test-requests'));
+  let basePath =
+    basePathOverride ||
+    (isReport
+      ? path.join(__dirname, '../test-requests', '.reports')
+      : path.join(__dirname, '../test-requests'));
   let fullPath: string;
 
   while (true) {
@@ -635,21 +699,39 @@ async function selectFoldersRecursive(isReport = false, type = 'request', basePa
       const items = entries
         .filter((entry) => {
           if (entry.isDirectory()) return true;
-          if (isReport && entry.isFile() && entry.name.endsWith('.md')) return true;
-          if (!isReport && type === 'json' && entry.isFile() && entry.name.endsWith('.json')) return true;
-          if (!isReport && type !== 'json' && entry.isFile() && entry.name.endsWith('.spec.ts')) return true;
+          if (isReport && entry.isFile() && entry.name.endsWith('.md'))
+            return true;
+          if (
+            !isReport &&
+            type === 'json' &&
+            entry.isFile() &&
+            entry.name.endsWith('.json')
+          )
+            return true;
+          if (
+            !isReport &&
+            type !== 'json' &&
+            entry.isFile() &&
+            entry.name.endsWith('.spec.ts')
+          )
+            return true;
           return false;
         })
         .map((entry) => ({
           name: entry.name,
           value: entry.name,
-          checked: selectedPaths.includes(path.join(basePath, currentPath, entry.name)),
+          checked: selectedPaths.includes(
+            path.join(basePath, currentPath, entry.name),
+          ),
         }));
 
       const currentFullPath = path.join(basePath, currentPath);
-      const isCurrentSelected = selectedPaths.includes(currentFullPath) && currentFullPath !== '';
+      const isCurrentSelected =
+        selectedPaths.includes(currentFullPath) && currentFullPath !== '';
 
-      const { selectedOptions } = await inquirer.prompt<{ selectedOptions: string[] }>([
+      const { selectedOptions } = await inquirer.prompt<{
+        selectedOptions: string[];
+      }>([
         {
           type: 'checkbox',
           name: 'selectedOptions',
@@ -669,7 +751,9 @@ async function selectFoldersRecursive(isReport = false, type = 'request', basePa
               name: `${item.name.endsWith('.md') || item.name.endsWith('.spec.ts') || item.name.endsWith('.json') ? '📄' : '📂'} ${selectedPaths.includes(path.join(basePath, currentPath, item.value)) ? '✓ ' : ''}${item.name}`,
             })),
             new inquirer.Separator(),
-            ...(type !== 'json' ? [{ name: '🔍 Search DTO', value: '__SEARCH__' }] : []),
+            ...(type !== 'json'
+              ? [{ name: '🔍 Search DTO', value: '__SEARCH__' }]
+              : []),
             { name: '✅ Confirm selection', value: '__CONFIRM__' },
             { name: '↩ Back', value: '__BACK__' },
           ],
@@ -680,9 +764,13 @@ async function selectFoldersRecursive(isReport = false, type = 'request', basePa
       if (selectedOptions.includes('__CURRENT__') && type !== 'json') {
         if (!selectedPaths.includes(currentFullPath)) {
           if (!isReport) {
-            const testFiles = await glob(path.join(fullPath, '**/*.spec.ts'), { nodir: true });
+            const testFiles = await glob(path.join(fullPath, '**/*.spec.ts'), {
+              nodir: true,
+            });
             testFiles.forEach((file) => {
-              const relativePath = path.relative(path.join(__dirname, '../test-requests'), file).replace(/\\/g, '/');
+              const relativePath = path
+                .relative(path.join(__dirname, '../test-requests'), file)
+                .replace(/\\/g, '/');
               if (!selectedPaths.includes(relativePath)) {
                 selectedPaths.push(relativePath);
               }
@@ -732,7 +820,9 @@ async function selectFoldersRecursive(isReport = false, type = 'request', basePa
           if (matches.length === 1) {
             dtoPath = matches[0];
           } else if (matches.length > 1) {
-            const { selectedPath } = await inquirer.prompt<{ selectedPath: string }>([
+            const { selectedPath } = await inquirer.prompt<{
+              selectedPath: string;
+            }>([
               {
                 type: 'list',
                 name: 'selectedPath',
@@ -745,7 +835,9 @@ async function selectFoldersRecursive(isReport = false, type = 'request', basePa
             ]);
             dtoPath = selectedPath;
           } else {
-            console.error(`No matches found for DTO '${dtoName}' after validation.`);
+            console.error(
+              `No matches found for DTO '${dtoName}' after validation.`,
+            );
             continue;
           }
 
@@ -753,15 +845,22 @@ async function selectFoldersRecursive(isReport = false, type = 'request', basePa
             selectedPaths.push(dtoPath);
           }
 
-          console.log(`\n📋 Selected DTO for generation: ${dtoName} (Type: ${type}, Path: ${dtoPath})`);
+          console.log(
+            `\n📋 Selected DTO for generation: ${dtoName} (Type: ${type}, Path: ${dtoPath})`,
+          );
 
-          const { continueSearch } = await inquirer.prompt<{ continueSearch: string }>([
+          const { continueSearch } = await inquirer.prompt<{
+            continueSearch: string;
+          }>([
             {
               type: 'list',
               name: 'continueSearch',
               message: 'What would you like to do next?',
               choices: [
-                { name: 'Continue searching for another DTO', value: 'continue' },
+                {
+                  name: 'Continue searching for another DTO',
+                  value: 'continue',
+                },
                 { name: 'Return to folder selection', value: 'folder' },
                 { name: 'Confirm selection and proceed', value: 'confirm' },
               ],
@@ -806,8 +905,11 @@ async function selectFoldersRecursive(isReport = false, type = 'request', basePa
         continue;
       }
 
-      const nextItem = selectedOptions.find((opt) =>
-        !['__CURRENT__', '__SEARCH__', '__CONFIRM__', '__BACK__'].includes(opt)
+      const nextItem = selectedOptions.find(
+        (opt) =>
+          !['__CURRENT__', '__SEARCH__', '__CONFIRM__', '__BACK__'].includes(
+            opt,
+          ),
       );
 
       if (nextItem) {

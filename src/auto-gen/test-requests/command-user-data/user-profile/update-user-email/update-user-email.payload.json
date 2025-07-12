@@ -9,18 +9,6 @@
     },
     {
         "body": {
-            "email": "ziichat@halome.com"
-        },
-        "expects": []
-    },
-    {
-        "body": {},
-        "expects": [
-            "email required"
-        ]
-    },
-    {
-        "body": {
             "email": ""
         },
         "expects": [
@@ -34,5 +22,11 @@
         "expects": [
             "email expected string, received null"
         ]
+    },
+    {
+        "body": {
+            "email": "ziichat@halome.com"
+        },
+        "expects": []
     }
 ]

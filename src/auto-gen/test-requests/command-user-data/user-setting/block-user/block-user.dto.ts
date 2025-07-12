@@ -1,4 +1,4 @@
-import { ErrorMessage } from 'src/auto-gen/enums';
+import { ErrorMessage } from '../../../../enums';
 import {
   IsDefined,
   IsNotEmpty,

@@ -52,7 +52,6 @@ export async function handleExpectConfig(
     } else {
       const apiFunction = getApiFunctions(action, context);
       const response = await apiFunction({
-        method: actionInfo.method,
         path: actionInfo.path,
         headers: resolveHeader,
         body: payload,
@@ -116,7 +115,6 @@ export async function handleExpectConfig(
 
           const apiFunction = getApiFunctions(action, context);
           const response = await apiFunction({
-            method: actionInfo.method,
             path: actionInfo.path,
             headers: resolveHeader,
             body: itemPayload,

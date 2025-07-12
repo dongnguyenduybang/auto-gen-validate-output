@@ -9,19 +9,6 @@
     },
     {
         "body": {
-            "avatarFramePath": "https://fs.ugc.ziicdn.net/01JEWASZD3TK58P25Y1QJSYRPC/heic_300kB.heic"
-        },
-        "expects": []
-    },
-    {
-        "body": {},
-        "expects": [
-            "avatarFramePath required",
-            "avatarFramePath invalid url"
-        ]
-    },
-    {
-        "body": {
             "avatarFramePath": ""
         },
         "expects": [

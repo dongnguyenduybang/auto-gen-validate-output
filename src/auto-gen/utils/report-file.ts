@@ -127,16 +127,17 @@ const requestReportTemplate = (
     '',
     '=== Warnings ===',
     ...(warnings.length > 0
-      ? warnings.map((warning, index) => [
-        ` 🟠 ${index + 1}. Case #${warning.testcase}`,
-        `     ├─ Status: ${warning.code || 'N/A'}`,
-        `     ├─ Body: ${JSON.stringify(warning.body) || 'None'}`,
-        `     ├─ Actual Errors: ${warning.actualErrors?.join(', ') || 'None'}`,
-        `     ├─ Expected Errors: ${warning.expectedErrors?.join(', ') || 'None'}`,
-        `     └─ Message: ${warning.message || 'No details'}`,
-      ].join('\n'))
-      : ['✅ No warnings']
-    ),
+      ? warnings.map((warning, index) =>
+          [
+            ` 🟠 ${index + 1}. Case #${warning.testcase}`,
+            `     ├─ Status: ${warning.code || 'N/A'}`,
+            `     ├─ Body: ${JSON.stringify(warning.body) || 'None'}`,
+            `     ├─ Actual Errors: ${warning.actualErrors?.join(', ') || 'None'}`,
+            `     ├─ Expected Errors: ${warning.expectedErrors?.join(', ') || 'None'}`,
+            `     └─ Message: ${warning.message || 'No details'}`,
+          ].join('\n'),
+        )
+      : ['✅ No warnings']),
     '',
     '=== Unique Errors ===',
     ...Array.from(uniqueErrors.entries()).map(
@@ -198,13 +199,13 @@ const responseReportTemplate = (
         `   ├─ Error: ${test.error || 'No details'}`,
         ...(test.expected
           ? [
-            `   ├─ Expected: ${JSON.stringify(test.expected, null, 2).split('\n').join('\n      ')}`,
-          ]
+              `   ├─ Expected: ${JSON.stringify(test.expected, null, 2).split('\n').join('\n      ')}`,
+            ]
           : []),
         ...(test.actual
           ? [
-            `   └─ Actual: ${JSON.stringify(test.actual, null, 2).split('\n').join('\n      ')}`,
-          ]
+              `   └─ Actual: ${JSON.stringify(test.actual, null, 2).split('\n').join('\n      ')}`,
+            ]
           : []),
       ].join('\n'),
     ),
@@ -265,51 +266,51 @@ const sagaReportTemplate = (
     '',
     ...(beforeAllFailures.length > 0
       ? [
-        '=== BeforeAll Failures ===',
-        ...beforeAllFailures.map((step, i) => formatStep(step, i)),
-      ]
+          '=== BeforeAll Failures ===',
+          ...beforeAllFailures.map((step, i) => formatStep(step, i)),
+        ]
       : []),
     '',
     ...(Object.keys(beforeEachGroups).length > 0
       ? [
-        '=== BeforeEach Failures ===',
-        ...Object.entries(beforeEachGroups).flatMap(
-          ([caseTitle, failures]) => [
-            `📄 Case: ${caseTitle}`,
-            ...(failures as any[]).map((step, i) => formatStep(step, i)),
-            '',
-          ],
-        ),
-      ]
+          '=== BeforeEach Failures ===',
+          ...Object.entries(beforeEachGroups).flatMap(
+            ([caseTitle, failures]) => [
+              `📄 Case: ${caseTitle}`,
+              ...(failures as any[]).map((step, i) => formatStep(step, i)),
+              '',
+            ],
+          ),
+        ]
       : []),
     '',
     '=== Test Case ===',
     ...(Object.keys(testCaseGroups).length > 0
       ? Object.entries(testCaseGroups).flatMap(([caseTitle, failures]) => [
-        `📄 Case: ${caseTitle}`,
-        ...(failures as any[]).map((step, i) => formatStep(step, i)),
-        '',
-      ])
+          `📄 Case: ${caseTitle}`,
+          ...(failures as any[]).map((step, i) => formatStep(step, i)),
+          '',
+        ])
       : ['✅ All test cases passed']),
     '',
     ...(Object.keys(afterEachGroups).length > 0
       ? [
-        '=== AfterEach Failures ===',
-        ...Object.entries(afterEachGroups).flatMap(
-          ([caseTitle, failures]) => [
-            `📄 Case: ${caseTitle}`,
-            ...(failures as any[]).map((step, i) => formatStep(step, i)),
-            '',
-          ],
-        ),
-      ]
+          '=== AfterEach Failures ===',
+          ...Object.entries(afterEachGroups).flatMap(
+            ([caseTitle, failures]) => [
+              `📄 Case: ${caseTitle}`,
+              ...(failures as any[]).map((step, i) => formatStep(step, i)),
+              '',
+            ],
+          ),
+        ]
       : []),
     '',
     ...(afterAllFailures.length > 0
       ? [
-        '=== AfterAll Failures ===',
-        ...afterAllFailures.map((step, i) => formatStep(step, i)),
-      ]
+          '=== AfterAll Failures ===',
+          ...afterAllFailures.map((step, i) => formatStep(step, i)),
+        ]
       : []),
     '',
     '=== End of Report ===',

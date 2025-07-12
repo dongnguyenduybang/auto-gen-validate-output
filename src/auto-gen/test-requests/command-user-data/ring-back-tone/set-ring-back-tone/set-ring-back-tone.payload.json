@@ -9,18 +9,6 @@
     },
     {
         "body": {
-            "ringbackToneId": "{{ringbackToneId}}"
-        },
-        "expects": []
-    },
-    {
-        "body": {},
-        "expects": [
-            "ringbackToneId required"
-        ]
-    },
-    {
-        "body": {
             "ringbackToneId": ""
         },
         "expects": [

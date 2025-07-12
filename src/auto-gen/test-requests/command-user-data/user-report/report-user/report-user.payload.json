@@ -2,83 +2,7 @@
     {
         "body": {
             "userId": 123,
-            "reportCategory": 1,
-            "reportReason": "report user",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "userId": 123,
-            "reportCategory": "invalid_enum_value",
-            "reportReason": "report user",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "userId": 123,
-            "reportCategory": 20,
-            "reportReason": "report user",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "userId": 123,
-            "reportCategory": 3,
-            "reportReason": "report user",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "userId": 123,
-            "reportReason": "report user",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "userId": 123,
-            "reportCategory": "",
-            "reportReason": "report user",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "userId": 123,
-            "reportCategory": 1,
-            "reportReason": 123,
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "userId": 123,
-            "reportCategory": 1,
+            "reportCategory": 0,
             "reportReason": "",
             "pretendingTo": 0
         },
@@ -88,9 +12,9 @@
     },
     {
         "body": {
-            "userId": 123,
-            "reportCategory": 1,
-            "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "userId": "",
+            "reportCategory": 0,
+            "reportReason": "",
             "pretendingTo": 0
         },
         "expects": [
@@ -99,676 +23,26 @@
     },
     {
         "body": {
-            "userId": 123,
-            "reportCategory": 1,
-            "reportReason": "🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀",
+            "userId": "invalid_value",
+            "reportCategory": 0,
+            "reportReason": "",
             "pretendingTo": 0
         },
         "expects": [
-            "Could not resolve permission type"
+            "Unauthorized request"
         ]
-    },
-    {
-        "body": {
-            "userId": 123,
-            "reportCategory": 1,
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "userId": 123,
-            "reportCategory": 1,
-            "reportReason": "report user",
-            "pretendingTo": "invalid_enum_value"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "userId": 123,
-            "reportCategory": 1,
-            "reportReason": "report user"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": 1,
-            "reportReason": "report user",
-            "pretendingTo": 0
-        },
-        "expects": []
     },
     {
         "body": {
             "userId": "{{userId1}}",
             "reportCategory": "invalid_enum_value",
-            "reportReason": "report user",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": 20,
-            "reportReason": "report user",
-            "pretendingTo": 0
-        },
-        "expects": []
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": 3,
-            "reportReason": "report user",
-            "pretendingTo": 0
-        },
-        "expects": []
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportReason": "report user",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "reportCategory required",
-            "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": "",
-            "reportReason": "report user",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "reportCategory should not be empty",
-            "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": 1,
-            "reportReason": 123,
-            "pretendingTo": 0
-        },
-        "expects": [
-            "reportReason expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": 1,
             "reportReason": "",
             "pretendingTo": 0
         },
         "expects": [
+            "reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan",
             "reportReason should not be empty",
             "reportReason string must contain at least 1 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": 1,
-            "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "reportReason string must contain at most 255 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": 1,
-            "reportReason": "🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "reportReason string must contain at most 255 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": 1,
-            "pretendingTo": 0
-        },
-        "expects": []
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": 1,
-            "reportReason": "report user",
-            "pretendingTo": "invalid_enum_value"
-        },
-        "expects": [
-            "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": 1,
-            "reportReason": "report user"
-        },
-        "expects": []
-    },
-    {
-        "body": {
-            "reportCategory": 1,
-            "reportReason": "report user",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "reportCategory": "invalid_enum_value",
-            "reportReason": "report user",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "reportCategory": 20,
-            "reportReason": "report user",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "reportCategory": 3,
-            "reportReason": "report user",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "reportReason": "report user",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "reportCategory": "",
-            "reportReason": "report user",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "reportCategory": 1,
-            "reportReason": 123,
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "reportCategory": 1,
-            "reportReason": "",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "reportCategory": 1,
-            "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "reportCategory": 1,
-            "reportReason": "🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "reportCategory": 1,
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "reportCategory": 1,
-            "reportReason": "report user",
-            "pretendingTo": "invalid_enum_value"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "reportCategory": 1,
-            "reportReason": "report user"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "userId": "",
-            "reportCategory": 1,
-            "reportReason": "report user",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "userId": "",
-            "reportCategory": "invalid_enum_value",
-            "reportReason": "report user",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "userId": "",
-            "reportCategory": 20,
-            "reportReason": "report user",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "userId": "",
-            "reportCategory": 3,
-            "reportReason": "report user",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "userId": "",
-            "reportReason": "report user",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "userId": "",
-            "reportCategory": "",
-            "reportReason": "report user",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "userId": "",
-            "reportCategory": 1,
-            "reportReason": 123,
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "userId": "",
-            "reportCategory": 1,
-            "reportReason": "",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "userId": "",
-            "reportCategory": 1,
-            "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "userId": "",
-            "reportCategory": 1,
-            "reportReason": "🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "userId": "",
-            "reportCategory": 1,
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "userId": "",
-            "reportCategory": 1,
-            "reportReason": "report user",
-            "pretendingTo": "invalid_enum_value"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "userId": "",
-            "reportCategory": 1,
-            "reportReason": "report user"
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "userId": "invalid_value",
-            "reportCategory": 1,
-            "reportReason": "report user",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Unauthorized request"
-        ]
-    },
-    {
-        "body": {
-            "userId": "invalid_value",
-            "reportCategory": "invalid_enum_value",
-            "reportReason": "report user",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Unauthorized request"
-        ]
-    },
-    {
-        "body": {
-            "userId": "invalid_value",
-            "reportCategory": 20,
-            "reportReason": "report user",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Unauthorized request"
-        ]
-    },
-    {
-        "body": {
-            "userId": "invalid_value",
-            "reportCategory": 3,
-            "reportReason": "report user",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Unauthorized request"
-        ]
-    },
-    {
-        "body": {
-            "userId": "invalid_value",
-            "reportReason": "report user",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Unauthorized request"
-        ]
-    },
-    {
-        "body": {
-            "userId": "invalid_value",
-            "reportCategory": "",
-            "reportReason": "report user",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Unauthorized request"
-        ]
-    },
-    {
-        "body": {
-            "userId": "invalid_value",
-            "reportCategory": 1,
-            "reportReason": 123,
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Unauthorized request"
-        ]
-    },
-    {
-        "body": {
-            "userId": "invalid_value",
-            "reportCategory": 1,
-            "reportReason": "",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Unauthorized request"
-        ]
-    },
-    {
-        "body": {
-            "userId": "invalid_value",
-            "reportCategory": 1,
-            "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Unauthorized request"
-        ]
-    },
-    {
-        "body": {
-            "userId": "invalid_value",
-            "reportCategory": 1,
-            "reportReason": "🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Unauthorized request"
-        ]
-    },
-    {
-        "body": {
-            "userId": "invalid_value",
-            "reportCategory": 1,
-            "pretendingTo": 0
-        },
-        "expects": [
-            "Unauthorized request"
-        ]
-    },
-    {
-        "body": {
-            "userId": "invalid_value",
-            "reportCategory": 1,
-            "reportReason": "report user",
-            "pretendingTo": "invalid_enum_value"
-        },
-        "expects": [
-            "Unauthorized request"
-        ]
-    },
-    {
-        "body": {
-            "userId": "invalid_value",
-            "reportCategory": 1,
-            "reportReason": "report user"
-        },
-        "expects": [
-            "Unauthorized request"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": "invalid_enum_value",
-            "reportReason": 123,
-            "pretendingTo": 0
-        },
-        "expects": [
-            "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'",
-            "reportReason expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": "invalid_enum_value",
-            "reportReason": "",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'",
-            "reportReason should not be empty",
-            "reportReason string must contain at least 1 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": "invalid_enum_value",
-            "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'",
-            "reportReason string must contain at most 255 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": "invalid_enum_value",
-            "reportReason": "🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'",
-            "reportReason string must contain at most 255 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": "invalid_enum_value",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": "invalid_enum_value",
-            "reportReason": "report user",
-            "pretendingTo": "invalid_enum_value"
-        },
-        "expects": [
-            "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'",
-            "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": "invalid_enum_value",
-            "reportReason": "report user"
-        },
-        "expects": [
-            "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'invalid_enum_value'"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": 20,
-            "reportReason": 123,
-            "pretendingTo": 0
-        },
-        "expects": [
-            "reportReason expected string, received number"
         ]
     },
     {
@@ -786,68 +60,6 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "reportCategory": 20,
-            "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "reportReason string must contain at most 255 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": 20,
-            "reportReason": "🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "reportReason string must contain at most 255 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": 20,
-            "pretendingTo": 0
-        },
-        "expects": [
-            "reportReason required"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": 20,
-            "reportReason": "report user",
-            "pretendingTo": "invalid_enum_value"
-        },
-        "expects": [
-            "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": 20,
-            "reportReason": "report user"
-        },
-        "expects": []
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": 3,
-            "reportReason": 123,
-            "pretendingTo": 0
-        },
-        "expects": [
-            "reportReason expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
             "reportCategory": 3,
             "reportReason": "",
             "pretendingTo": 0
@@ -860,76 +72,13 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "reportCategory": 3,
-            "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "reportReason string must contain at most 255 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": 3,
-            "reportReason": "🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "reportReason string must contain at most 255 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": 3,
-            "pretendingTo": 0
-        },
-        "expects": []
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": 3,
-            "reportReason": "report user",
-            "pretendingTo": "invalid_enum_value"
-        },
-        "expects": [
-            "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": 3,
-            "reportReason": "report user"
-        },
-        "expects": [
-            "pretendingTo required",
-            "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'undefined'"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportReason": 123,
-            "pretendingTo": 0
-        },
-        "expects": [
-            "reportCategory required",
-            "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'",
-            "reportReason expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
+            "reportCategory": "",
             "reportReason": "",
             "pretendingTo": 0
         },
         "expects": [
-            "reportCategory required",
-            "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'",
+            "reportCategory should not be empty",
+            "reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan",
             "reportReason should not be empty",
             "reportReason string must contain at least 1 character(s)"
         ]
@@ -937,82 +86,22 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "reportCategory required",
-            "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'",
-            "reportReason string must contain at most 255 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportReason": "🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "reportCategory required",
-            "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'",
-            "reportReason string must contain at most 255 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "reportCategory required",
-            "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportReason": "report user",
-            "pretendingTo": "invalid_enum_value"
-        },
-        "expects": [
-            "reportCategory required",
-            "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'",
-            "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportReason": "report user"
-        },
-        "expects": [
-            "reportCategory required",
-            "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received 'undefined'"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": "",
+            "reportCategory": 0,
             "reportReason": 123,
             "pretendingTo": 0
         },
         "expects": [
-            "reportCategory should not be empty",
-            "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
             "reportReason expected string, received number"
         ]
     },
     {
         "body": {
             "userId": "{{userId1}}",
-            "reportCategory": "",
+            "reportCategory": 0,
             "reportReason": "",
             "pretendingTo": 0
         },
         "expects": [
-            "reportCategory should not be empty",
-            "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
             "reportReason should not be empty",
             "reportReason string must contain at least 1 character(s)"
         ]
@@ -1020,169 +109,36 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "reportCategory": "",
+            "reportCategory": 0,
             "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
             "pretendingTo": 0
         },
         "expects": [
-            "reportCategory should not be empty",
-            "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
             "reportReason string must contain at most 255 character(s)"
         ]
     },
     {
         "body": {
             "userId": "{{userId1}}",
-            "reportCategory": "",
+            "reportCategory": 0,
             "reportReason": "🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀",
             "pretendingTo": 0
         },
         "expects": [
-            "reportCategory should not be empty",
-            "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
             "reportReason string must contain at most 255 character(s)"
         ]
     },
     {
         "body": {
             "userId": "{{userId1}}",
-            "reportCategory": "",
-            "pretendingTo": 0
-        },
-        "expects": [
-            "reportCategory should not be empty",
-            "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": "",
-            "reportReason": "report user",
-            "pretendingTo": "invalid_enum_value"
-        },
-        "expects": [
-            "reportCategory should not be empty",
-            "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''",
-            "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": "",
-            "reportReason": "report user"
-        },
-        "expects": [
-            "reportCategory should not be empty",
-            "reportCategory invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received ''"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": 1,
-            "reportReason": 123,
-            "pretendingTo": "invalid_enum_value"
-        },
-        "expects": [
-            "reportReason expected string, received number",
-            "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": 1,
-            "reportReason": 123
-        },
-        "expects": [
-            "reportReason expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": 1,
+            "reportCategory": 0,
             "reportReason": "",
             "pretendingTo": "invalid_enum_value"
         },
         "expects": [
             "reportReason should not be empty",
             "reportReason string must contain at least 1 character(s)",
-            "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'"
+            "pretendingTo expected 0 | 1 | 2 | 3, received nan"
         ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": 1,
-            "reportReason": ""
-        },
-        "expects": [
-            "reportReason should not be empty",
-            "reportReason string must contain at least 1 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": 1,
-            "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "pretendingTo": "invalid_enum_value"
-        },
-        "expects": [
-            "reportReason string must contain at most 255 character(s)",
-            "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": 1,
-            "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-        },
-        "expects": [
-            "reportReason string must contain at most 255 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": 1,
-            "reportReason": "🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀",
-            "pretendingTo": "invalid_enum_value"
-        },
-        "expects": [
-            "reportReason string must contain at most 255 character(s)",
-            "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": 1,
-            "reportReason": "🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀"
-        },
-        "expects": [
-            "reportReason string must contain at most 255 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": 1,
-            "pretendingTo": "invalid_enum_value"
-        },
-        "expects": [
-            "pretendingTo invalid enum value. Expected 0 | 1 | 2 | 3, received 'invalid_enum_value'"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "reportCategory": 1
-        },
-        "expects": []
     }
 ]

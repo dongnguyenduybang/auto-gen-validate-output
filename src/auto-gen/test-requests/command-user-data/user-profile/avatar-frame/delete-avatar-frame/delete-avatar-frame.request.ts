@@ -1,22 +1,16 @@
+import { createAIEnhancedDTO } from '../../../../../utils/swagger-execute';
 import {
     ACTION,
-    HEADER_LIST,
-    VAR,
 } from '../../../../../enums/index';
-import { RequestTestSuite } from '../../../../../utils/declarations';
 
-export const DeleteAvatarFrameRequest: RequestTestSuite = {
-    action: ACTION.DELETE_AVATAR_FRAME,
-    headers: HEADER_LIST.create({ token: VAR.token }),
-    body: {
-        avatarFrameId: ''
-    },
-    options: [
+export const DeleteAvatarFrameRequest = () => createAIEnhancedDTO()
+    .startStep('delete avatar frame')
+    .addActionAI(
+        'delete avatar frame',
+        'delete-avatar-frame',
+        ACTION.DELETE_AVATAR_FRAME,
         {
-            beforeAll: [],
-            beforeEach: [],
-            afterEach: [],
-            afterAll: [],
-        },
-    ],
-};
+            body: ACTION.DELETE_AVATAR_FRAME
+        }
+    )
+    .execute()

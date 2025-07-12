@@ -1,22 +1,16 @@
+import { createAIEnhancedDTO } from '../../../../utils/swagger-execute';
 import {
   ACTION,
-  HEADER_LIST,
-  VAR,
 } from '../../../../enums/index';
-import { DTOBuilder } from '../../../../utils/chain-dto';
 
-export const RingBackToneCreateRequest = new DTOBuilder()
+export const RingBackToneCreateRequest = () => createAIEnhancedDTO()
   .startStep('create ring back tone')
-  .addAction(
+  .addActionAI(
     'create ring back tone',
     'create-ringbacktone',
     ACTION.RING_BACK_TONE_CREATE,
     {
-      headers: HEADER_LIST.create({ token: VAR.token }),
-      body: {
-        name: 'nhac cho',
-        ringbackTonePath: VAR.ringBackTone,
-      },
+      body: ACTION.RING_BACK_TONE_CREATE,
     }
   )
   .execute();

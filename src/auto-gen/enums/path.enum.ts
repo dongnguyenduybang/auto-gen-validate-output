@@ -66,7 +66,7 @@ export const APIPath = {
     GetPinnedDMMessage: '/MessageView/GetPinnedDMMessage',
     ListMessagesFragment: '/MessageView/ListMessageFragments',
     ListDmMedia: '/MessageView/ListDMMedia',
-    ListMedia: '/MessageView/ListMedia'
+    ListMedia: '/MessageView/ListMedia',
   },
   ViewUser: {
     GetUser: '/UserView/GetUser',
@@ -79,7 +79,7 @@ export const APIPath = {
     ListFriend: '/FriendView/ListFriends',
     GetFriend: '/FriendView/GetFriend',
     ListInComingFriendRequests: '/FriendView/ListInComingFriendRequests',
-    ListOutGoingFriendRequests: '/FriendView/ListOutGoingFriendRequests'
+    ListOutGoingFriendRequests: '/FriendView/ListOutGoingFriendRequests',
   },
   ViewInvitation: {
     ListInvitation: '/InvitationView/ListInvitation',
@@ -135,12 +135,12 @@ export const APIPath = {
     DeleteAvatarFrame: '/AvatarFrame/DeleteAvatarFrame',
     DeleteUserAvatar: '/UserProfile/DeleteUserAvatar',
     UpdateUserEmail: '/UserProfile/UpdateUserEmail',
-    UpdateUserAvatar: 'UserProfile/UpdateUserAvatar'
+    UpdateUserAvatar: 'UserProfile/UpdateUserAvatar',
   },
   ViewMember: {
     ListMembers: '/MemberView/ListMembers',
     GetMember: '/MemberView/GetMember',
-    ListBannedUser: '/MemberView/ListBannedUsers'
+    ListBannedUser: '/MemberView/ListBannedUsers',
   },
   UserReport: {
     ReportUser: '/UserReport/ReportUser',
@@ -159,7 +159,7 @@ export const APIPath = {
   },
   UserSetting: {
     BlockUser: '/UserSetting/BlockUser',
-    UnBlockUser: '/UserSetting/UnblockUser'
+    UnBlockUser: '/UserSetting/UnblockUser',
   },
   RingBackTone: {
     RingBackToneCreate: '/RingbackTone/RingbackToneCreate',
@@ -167,7 +167,7 @@ export const APIPath = {
     SetRingBackTone: '/RingbackTone/SetRingbackTone',
   },
   Suggestion: {
-    ListSuggestedFriendsByType: '/Suggestion/ListSuggestedFriendsByType'
+    ListSuggestedFriendsByType: '/Suggestion/ListSuggestedFriendsByType',
   },
   Notification: {
     SubscribeAll: '/Notification/SubscribeAll',
@@ -176,5 +176,5 @@ export const APIPath = {
     UnsubscribeAll: '/Notification/UnsubscribeAll',
     SubscribeChannel: '/Notification/SubscribeChannel',
     UnsubscribeChannel: '/Notification/UnsubscribeChannel',
-  }
+  },
 };

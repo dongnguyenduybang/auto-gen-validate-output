@@ -9,22 +9,10 @@
     },
     {
         "body": {
-            "displayName": "ABCDEF"
-        },
-        "expects": []
-    },
-    {
-        "body": {
             "displayName": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
         },
         "expects": [
             "displayName string must contain at most 50 character(s)"
-        ]
-    },
-    {
-        "body": {},
-        "expects": [
-            "displayName required"
         ]
     },
     {

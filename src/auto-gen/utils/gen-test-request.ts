@@ -3,11 +3,9 @@ import * as fs from 'fs';
 import {
   findAllFoldersWithDtoAndRequest,
   formatExpectErrors,
-  getAllFiles,
   getMatchedFilePaths,
   pairFiles,
   readJsonFile,
-  resolveActionPath,
 } from './helper';
 
 function getRelativeImportPath(fromPath: string, toPath: string): string {
@@ -109,8 +107,8 @@ async function generateSpecContent(
         });
 
         ${testCases
-      .map(
-        (testCase, index) => `
+          .map(
+            (testCase, index) => `
             it('Test case #${startIndex + index + 1} should return errors ${formatExpectErrors(testCase.expects)} when body ${JSON.stringify(testCase.body)}', async () => {
     testNumber = ${startIndex + index + 1};
     totalTests++;
@@ -232,8 +230,8 @@ async function generateSpecContent(
         });
     }
 });`,
-      )
-      .join('\n')}
+          )
+          .join('\n')}
 
         afterEach(async () => {
         
@@ -331,7 +329,7 @@ async function genTestCase(
   const possibleExports = [
     classNameCapitalized,
     classNameCapitalized + 'Request',
-    'default'
+    'default',
   ];
 
   for (const exportName of possibleExports) {
@@ -346,7 +344,6 @@ async function genTestCase(
           // If result is a Promise, await it
           if (isPromise(candidate)) {
             candidate = await candidate;
-
           }
         } catch (error) {
           console.error(`Error executing function ${exportName}:`, error);
@@ -355,20 +352,16 @@ async function genTestCase(
       }
       // If candidate is a Promise, resolve it
       else if (isPromise(candidate)) {
-
         candidate = await candidate;
-
       }
 
       // Check for new structure (steps array)
       if (hasValidSteps(candidate)) {
-
         requestConfig = candidate;
         break;
       }
       // Check for old structure (options array)
       else if (hasValidOptions(candidate)) {
-
         requestConfig = candidate;
         break;
       }
@@ -418,22 +411,28 @@ async function genTestCase(
 
   // Validate the structure
   if (!requestConfig) {
-    console.error(`❌ Invalid request config for ${className} - no steps or options found`);
+    console.error(
+      `❌ Invalid request config for ${className} - no steps or options found`,
+    );
     console.log('Available exports:', Object.keys(requestModule));
-    console.log('Request module content:', JSON.stringify(requestModule, null, 2));
+    console.log(
+      'Request module content:',
+      JSON.stringify(requestModule, null, 2),
+    );
     return;
   }
 
   // Check if it's the new structure or old structure
-  const hasNewStructure = requestConfig.steps && Array.isArray(requestConfig.steps);
-  const hasOldStructure = requestConfig.options && Array.isArray(requestConfig.options);
+  const hasNewStructure =
+    requestConfig.steps && Array.isArray(requestConfig.steps);
+  const hasOldStructure =
+    requestConfig.options && Array.isArray(requestConfig.options);
 
   if (!hasNewStructure && !hasOldStructure) {
     console.error(`❌ Invalid request config structure for ${className}`);
     console.log('Request config:', JSON.stringify(requestConfig, null, 2));
     return;
   }
-
 
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
@@ -494,7 +493,7 @@ export function genTestRequest(dtoName: string) {
 
   // Tạo map để truy cập nhanh folder theo path
   const folderMap = new Map();
-  foundFolders.forEach(folder => {
+  foundFolders.forEach((folder) => {
     folderMap.set(folder.path, folder);
   });
 
@@ -516,9 +515,11 @@ export function genTestRequest(dtoName: string) {
         hasLoggedInitialization = true;
       }
 
-      genTestCase(payloadPath, requestPath, className, outputDir).catch(err => {
-        console.error(`❌ Error processing ${className}:`, err.message);
-      });
+      genTestCase(payloadPath, requestPath, className, outputDir).catch(
+        (err) => {
+          console.error(`❌ Error processing ${className}:`, err.message);
+        },
+      );
     }
   });
 }

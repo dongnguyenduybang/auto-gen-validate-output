@@ -1,22 +1,16 @@
+import { createAIEnhancedDTO } from '../../../../utils/swagger-execute';
 import {
   ACTION,
-  HEADER_LIST,
-  VAR,
 } from '../../../../enums/index';
-import { RequestTestSuite } from '../../../../utils/declarations';
 
-export const UpdateUserAvatarRequest: RequestTestSuite = {
-  action: ACTION.UPDATE_USER_AVATAR,
-  headers: HEADER_LIST.create({ token: VAR.token }),
-  body: {
-    avatarPath: VAR.avatarPath
-  },
-  options: [
+export const UpdateUserAvatarRequest = () => createAIEnhancedDTO()
+  .startStep('update user avatar')
+  .addActionAI(
+    'update user avatar',
+    'update-user-avatar',
+    ACTION.UPDATE_USER_AVATAR,
     {
-      beforeAll: [],
-      beforeEach: [],
-      afterEach: [],
-      afterAll: [],
-    },
-  ],
-};
+      body: ACTION.UPDATE_USER_AVATAR
+    }
+  )
+  .execute()

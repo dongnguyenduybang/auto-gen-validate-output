@@ -4,7 +4,12 @@ import { Step, StepResult } from './declarations';
 import { TestContext } from './text-context';
 import { ACTION_CONFIG } from '../enums';
 import { handleExpectConfig } from '../validates/check-expect';
-import { checkResponse, transformPayload, resolveExpectConfig, resolveVariables } from './helper';
+import {
+  checkResponse,
+  transformPayload,
+  resolveExpectConfig,
+  resolveVariables,
+} from './helper';
 
 export async function executeSteps(
   steps: Step[],
@@ -16,7 +21,7 @@ export async function executeSteps(
     try {
       const result = await executeSingleStep(step, context);
       results.push(result);
-      context.debug()
+      // context.debug();
       if (!result.status) break;
     } catch (error) {
       console.error(`Error executing step ${index}:`, error);
@@ -29,10 +34,9 @@ async function executeSingleStep(
   step: Step,
   context?: TestContext,
 ): Promise<StepResult> {
-
   const { headers, config, expect: expectConfig } = step;
   // defined method & path dựa vào action config
-  const extractBody = transformPayload(config.body)
+  const extractBody = transformPayload(config.body);
   // resolve variables body and headers
   const resolveBody = resolveVariables(extractBody.body, context);
   const resolveHeaders = resolveVariables(extractBody.headers, context);
@@ -40,12 +44,12 @@ async function executeSingleStep(
   // get api function
   const apiFunction = getApiFunctions(config.schema, context);
   const response = await apiFunction({
-    method: config.method,
     path: config.path,
     headers: resolveHeaders,
     body: resolveBody,
   });
 
+  // console.log(JSON.stringify(response, null, 2))
   const hasExpectConfig = !!expectConfig;
   if (!response?.ok && !hasExpectConfig) {
     return {
@@ -64,7 +68,7 @@ async function executeSingleStep(
     // validate response
     const resultCheckResponse = await checkResponse(
       step,
-      response.data,
+      response,
       resolveBody,
       context,
     );

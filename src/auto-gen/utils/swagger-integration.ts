@@ -18,7 +18,7 @@
 //                 schemaId: "V3AcceptMessageRequestRequest"
 //             },
 //             {
-//                 action: "SEND_DM_MESSAGE", 
+//                 action: "SEND_DM_MESSAGE",
 //                 apiEndpoint: ACTION.SEND_DM_MESSAGE,
 //                 swaggerDesc: "Send direct message to another user - userId identifies the recipient who will receive the message",
 //                 contextClues: ["send", "to", "message", "recipient", "receive", "whom", "destination", "target_user"],
@@ -28,7 +28,7 @@
 //             },
 //             {
 //                 action: "ADD_DM_MESSAGE_REACTION",
-//                 apiEndpoint: ACTION.ADD_DM_MESSAGE_REACTION, 
+//                 apiEndpoint: ACTION.ADD_DM_MESSAGE_REACTION,
 //                 swaggerDesc: "Add reaction to a direct message - userId is who will see the reaction",
 //                 contextClues: ["reaction", "add", "message", "direct", "react", "to_user"],
 //                 userIdMeaning: "receiver", // ⚠️ Cần xem lại logic này
@@ -46,7 +46,7 @@
 //                 schemaId: "V3BlockUserRequest"
 //             },
 //             {
-//                 action: "UNBLOCK_USER", 
+//                 action: "UNBLOCK_USER",
 //                 apiEndpoint: "UNBLOCK_USER",
 //                 swaggerDesc: "Unblock a specific user - userId is the target user to be unblocked",
 //                 contextClues: ["unblock", "target", "unblocked", "user", "specific"],
@@ -66,7 +66,7 @@
 //             },
 //             {
 //                 action: "FOLLOW_USER",
-//                 apiEndpoint: "FOLLOW_USER", 
+//                 apiEndpoint: "FOLLOW_USER",
 //                 swaggerDesc: "Follow another user - userId is the user to follow",
 //                 contextClues: ["follow", "another", "user", "to_follow", "target"],
 //                 userIdMeaning: "target",
@@ -84,24 +84,24 @@
 //         method: string = 'POST'
 //     ): number[] {
 //         const features: number[] = [];
-        
+
 //         // Vector hóa action name (12 chiều)
 //         const actionVector = this.textToVector(actionName, 12);
 //         features.push(...actionVector);
-        
+
 //         // Vector hóa swagger description (20 chiều) - tăng để capture nhiều context hơn
 //         const descVector = this.textToVector(swaggerDesc, 20);
 //         features.push(...descVector);
-        
+
 //         // HTTP method encoding (4 chiều)
 //         const methodEncoding: Record<string, number[]> = {
 //             'GET': [1, 0, 0, 0],
-//             'POST': [0, 1, 0, 0], 
+//             'POST': [0, 1, 0, 0],
 //             'PUT': [0, 0, 1, 0],
 //             'DELETE': [0, 0, 0, 1]
 //         };
 //         features.push(...(methodEncoding[method] || [0, 0, 0, 0]));
-        
+
 //         // Endpoint pattern features (8 chiều) - cải thiện
 //         const endpointFeatures = [
 //             endpoint.includes('accept') ? 1 : 0,
@@ -114,22 +114,22 @@
 //             endpoint.includes('profile') ? 1 : 0,
 //         ];
 //         features.push(...endpointFeatures);
-        
+
 //         // Semantic features (10 chiều) - QUAN TRỌNG để phân biệt sender/receiver
 //         const fullText = `${actionName} ${swaggerDesc} ${endpoint}`.toLowerCase();
 //         const semanticFeatures = [
 //             // Receiver indicators
 //             /send.*to|message.*to|recipient|receive|destination/.test(fullText) ? 1 : 0,
 //             /whom.*receive|who.*will.*receive/.test(fullText) ? 1 : 0,
-            
-//             // Sender indicators  
+
+//             // Sender indicators
 //             /accept.*from|request.*from|from.*user/.test(fullText) ? 1 : 0,
 //             /who.*sent|sender/.test(fullText) ? 1 : 0,
-            
+
 //             // Target indicators
 //             /block.*user|unblock.*user|target.*user/.test(fullText) ? 1 : 0,
 //             /specific.*user|another.*user/.test(fullText) ? 1 : 0,
-            
+
 //             // Action type indicators
 //             /^send|^message/.test(actionName.toLowerCase()) ? 1 : 0,
 //             /^accept|^approve/.test(actionName.toLowerCase()) ? 1 : 0,
@@ -137,7 +137,7 @@
 //             /^get|^fetch/.test(actionName.toLowerCase()) ? 1 : 0,
 //         ];
 //         features.push(...semanticFeatures);
-        
+
 //         return features;
 //     }
 
@@ -145,10 +145,10 @@
 //     private async createAndTrainModel(): Promise<void> {
 //         const trainX: number[][] = [];
 //         const trainY: number[] = [];
-//         const labelMap: Record<string, number> = { 
-//             'sender': 0, 
-//             'receiver': 1, 
-//             'target': 2 
+//         const labelMap: Record<string, number> = {
+//             'sender': 0,
+//             'receiver': 1,
+//             'target': 2
 //         };
 
 //         // Generate training data
@@ -164,7 +164,7 @@
 //         });
 
 //         console.log(`🏋️ Training with ${trainX.length} samples, ${trainX[0].length} features each`);
-//         console.log(`📊 Label distribution:`, 
+//         console.log(`📊 Label distribution:`,
 //             this._trainingData.reduce((acc, d) => {
 //                 acc[d.userIdMeaning] = (acc[d.userIdMeaning] || 0) + 1;
 //                 return acc;
@@ -186,7 +186,7 @@
 //                 }),
 //                 tf.layers.batchNormalization(),
 //                 tf.layers.dropout({ rate: 0.3 }),
-                
+
 //                 tf.layers.dense({
 //                     units: 128,
 //                     activation: 'relu',
@@ -194,13 +194,13 @@
 //                 }),
 //                 tf.layers.batchNormalization(),
 //                 tf.layers.dropout({ rate: 0.2 }),
-                
+
 //                 tf.layers.dense({
 //                     units: 64,
 //                     activation: 'relu'
 //                 }),
 //                 tf.layers.dropout({ rate: 0.1 }),
-                
+
 //                 tf.layers.dense({
 //                     units: 3,
 //                     activation: 'softmax'
@@ -240,25 +240,25 @@
 //     // Thêm method validation
 //     private async validateModel(trainX: number[][], trainingData: TrainingData[]): Promise<void> {
 //         console.log('🔍 Validating model predictions...');
-        
+
 //         for (let i = 0; i < trainingData.length; i++) {
 //             const data = trainingData[i];
 //             const features = trainX[i];
-            
+
 //             const inputTensor = tf.tensor2d([features]);
 //             const prediction = this.model!.predict(inputTensor) as tf.Tensor;
 //             const probabilities = await prediction.data();
-            
+
 //             const labels = ['sender', 'receiver', 'target'];
 //             const maxIndex = probabilities.indexOf(Math.max(...probabilities));
 //             const predictedLabel = labels[maxIndex];
 //             const confidence = probabilities[maxIndex];
-            
+
 //             const isCorrect = predictedLabel === data.userIdMeaning;
 //             const status = isCorrect ? '✅' : '❌';
-            
+
 //             console.log(`${status} ${data.action}: Expected "${data.userIdMeaning}", Predicted "${predictedLabel}" (${(confidence * 100).toFixed(1)}%)`);
-            
+
 //             inputTensor.dispose();
 //             prediction.dispose();
 //         }
@@ -269,9 +269,9 @@
 //         const desc = (swaggerSchema.description || '').toLowerCase();
 //         const action = actionName.toLowerCase();
 //         const fullText = `${action} ${desc}`;
-        
+
 //         console.log(`🔧 Rule-based analysis for: "${fullText}"`);
-        
+
 //         // Precise patterns with higher specificity
 //         const patterns = {
 //             receiver: [
@@ -315,11 +315,11 @@
 //             return {
 //                 userIdMeaning: 'receiver',
 //                 confidence: 0.7,
-//                 method: 'rules', 
+//                 method: 'rules',
 //                 reasoning: 'Action name suggests sending to someone (receiver)'
 //             };
 //         }
-        
+
 //         if (/^accept|^approve/.test(action)) {
 //             return {
 //                 userIdMeaning: 'sender',

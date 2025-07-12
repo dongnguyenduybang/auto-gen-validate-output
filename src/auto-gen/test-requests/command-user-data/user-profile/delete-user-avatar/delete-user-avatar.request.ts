@@ -1,22 +1,16 @@
+import { createAIEnhancedDTO } from '../../../../utils/swagger-execute';
 import {
   ACTION,
-  HEADER_LIST,
-  VAR,
 } from '../../../../enums/index';
-import { RequestTestSuite } from '../../../../utils/declarations';
 
-export const DeleteUserAvatarRequest: RequestTestSuite = {
-  action: ACTION.DELETE_USER_AVATAR,
-  headers: HEADER_LIST.create({ token: VAR.token }),
-  body: {
-    avatarPath: VAR.avatarPath
-  },
-  options: [
+export const DeleteUserAvatarRequest = () => createAIEnhancedDTO()
+  .startStep('delete cover photo')
+  .addActionAI(
+    'delete cover photo',
+    'delete-cover-photo',
+    ACTION.DELETE_USER_AVATAR,
     {
-      beforeAll: [],
-      beforeEach: [],
-      afterEach: [],
-      afterAll: [],
-    },
-  ],
-};
+      body: ACTION.DELETE_USER_AVATAR
+    }
+  )
+  .execute()

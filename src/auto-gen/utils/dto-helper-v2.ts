@@ -152,7 +152,7 @@ const decoratorItemValidations = {
 };
 
 export function getDecorators(
-  target: Object,
+  target: object,
   propertyKey: string,
 ): Record<string, any> {
   const decorators: Record<string, any> = {};
@@ -873,7 +873,12 @@ function checkTypeString(
         );
         return errors;
       }
-      if (field === 'stickerId' && value !== VAR.stickerId && value != null && value !== "") {
+      if (
+        field === 'stickerId' &&
+        value !== VAR.stickerId &&
+        value != null &&
+        value !== ''
+      ) {
         addErrorIfNotExist(errors, decorators['isInvalidMessage'], null);
         return errors;
       }
@@ -1009,11 +1014,7 @@ function checkTypeArray(
               `${field} has element ${index} ${ErrorMessage.MIN_LENGTH} ${params} character(s)`,
             );
           }
-          if (
-            item === '' &&
-            name === 'MinArrayItem' &&
-            decorators['IsULID']
-          ) {
+          if (item === '' && name === 'MinArrayItem' && decorators['IsULID']) {
             addErrorIfNotExist(
               errors,
               null,
@@ -1055,7 +1056,6 @@ function checkTypeArray(
             }
           }
 
-
           //check unique item
           if (name === 'IsUnique') {
             const uniqueItems = new Set(value);
@@ -1069,7 +1069,6 @@ function checkTypeArray(
           }
         },
       );
-
     });
   }
 

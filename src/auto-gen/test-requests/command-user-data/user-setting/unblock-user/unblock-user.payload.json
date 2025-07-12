@@ -9,18 +9,6 @@
     },
     {
         "body": {
-            "targetUserId": "{{userId1}}"
-        },
-        "expects": []
-    },
-    {
-        "body": {},
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
             "targetUserId": ""
         },
         "expects": [

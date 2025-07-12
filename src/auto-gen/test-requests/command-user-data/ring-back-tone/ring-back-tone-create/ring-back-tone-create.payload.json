@@ -2,123 +2,11 @@
     {
         "body": {
             "name": 123,
-            "ringbackTonePath": "https://fs.ugc.ziicdn.net/01JEZJ0GPMSHH2RVX9QTSJJNRX/heic_300kB.heic"
-        },
-        "expects": [
-            "name expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "name": 123,
-            "ringbackTonePath": 123
-        },
-        "expects": [
-            "name expected string, received number",
-            "ringbackTonePath expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "name": 123
-        },
-        "expects": [
-            "name expected string, received number",
-            "ringbackTonePath required",
-            "ringbackTonePath invalid url"
-        ]
-    },
-    {
-        "body": {
-            "name": 123,
             "ringbackTonePath": ""
         },
         "expects": [
             "name expected string, received number",
             "ringbackTonePath should not be empty",
-            "ringbackTonePath invalid url"
-        ]
-    },
-    {
-        "body": {
-            "name": 123,
-            "ringbackTonePath": null
-        },
-        "expects": [
-            "name expected string, received number",
-            "ringbackTonePath expected string, received null"
-        ]
-    },
-    {
-        "body": {
-            "name": "nhac cho",
-            "ringbackTonePath": "https://fs.ugc.ziicdn.net/01JEZJ0GPMSHH2RVX9QTSJJNRX/heic_300kB.heic"
-        },
-        "expects": []
-    },
-    {
-        "body": {
-            "name": "nhac cho",
-            "ringbackTonePath": 123
-        },
-        "expects": [
-            "ringbackTonePath expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "name": "nhac cho"
-        },
-        "expects": [
-            "ringbackTonePath required",
-            "ringbackTonePath invalid url"
-        ]
-    },
-    {
-        "body": {
-            "name": "nhac cho",
-            "ringbackTonePath": ""
-        },
-        "expects": [
-            "ringbackTonePath should not be empty",
-            "ringbackTonePath invalid url"
-        ]
-    },
-    {
-        "body": {
-            "name": "nhac cho",
-            "ringbackTonePath": null
-        },
-        "expects": [
-            "ringbackTonePath expected string, received null"
-        ]
-    },
-    {
-        "body": {
-            "name": "aa",
-            "ringbackTonePath": "https://fs.ugc.ziicdn.net/01JEZJ0GPMSHH2RVX9QTSJJNRX/heic_300kB.heic"
-        },
-        "expects": [
-            "name string must contain at least 3 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "name": "aa",
-            "ringbackTonePath": 123
-        },
-        "expects": [
-            "name string must contain at least 3 character(s)",
-            "ringbackTonePath expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "name": "aa"
-        },
-        "expects": [
-            "name string must contain at least 3 character(s)",
-            "ringbackTonePath required",
             "ringbackTonePath invalid url"
         ]
     },
@@ -135,137 +23,12 @@
     },
     {
         "body": {
-            "name": "aa",
-            "ringbackTonePath": null
-        },
-        "expects": [
-            "name string must contain at least 3 character(s)",
-            "ringbackTonePath expected string, received null"
-        ]
-    },
-    {
-        "body": {
-            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "ringbackTonePath": "https://fs.ugc.ziicdn.net/01JEZJ0GPMSHH2RVX9QTSJJNRX/heic_300kB.heic"
-        },
-        "expects": [
-            "name string must contain at most 50 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "ringbackTonePath": 123
-        },
-        "expects": [
-            "name string must contain at most 50 character(s)",
-            "ringbackTonePath expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-        },
-        "expects": [
-            "name string must contain at most 50 character(s)",
-            "ringbackTonePath required",
-            "ringbackTonePath invalid url"
-        ]
-    },
-    {
-        "body": {
             "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
             "ringbackTonePath": ""
         },
         "expects": [
             "name string must contain at most 50 character(s)",
             "ringbackTonePath should not be empty",
-            "ringbackTonePath invalid url"
-        ]
-    },
-    {
-        "body": {
-            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "ringbackTonePath": null
-        },
-        "expects": [
-            "name string must contain at most 50 character(s)",
-            "ringbackTonePath expected string, received null"
-        ]
-    },
-    {
-        "body": {
-            "ringbackTonePath": "https://fs.ugc.ziicdn.net/01JEZJ0GPMSHH2RVX9QTSJJNRX/heic_300kB.heic"
-        },
-        "expects": [
-            "name required"
-        ]
-    },
-    {
-        "body": {
-            "ringbackTonePath": 123
-        },
-        "expects": [
-            "name required",
-            "ringbackTonePath expected string, received number"
-        ]
-    },
-    {
-        "body": {},
-        "expects": [
-            "name required",
-            "ringbackTonePath required",
-            "ringbackTonePath invalid url"
-        ]
-    },
-    {
-        "body": {
-            "ringbackTonePath": ""
-        },
-        "expects": [
-            "name required",
-            "ringbackTonePath should not be empty",
-            "ringbackTonePath invalid url"
-        ]
-    },
-    {
-        "body": {
-            "ringbackTonePath": null
-        },
-        "expects": [
-            "name required",
-            "ringbackTonePath expected string, received null"
-        ]
-    },
-    {
-        "body": {
-            "name": "",
-            "ringbackTonePath": "https://fs.ugc.ziicdn.net/01JEZJ0GPMSHH2RVX9QTSJJNRX/heic_300kB.heic"
-        },
-        "expects": [
-            "name should not be empty",
-            "name string must contain at least 3 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "name": "",
-            "ringbackTonePath": 123
-        },
-        "expects": [
-            "name should not be empty",
-            "name string must contain at least 3 character(s)",
-            "ringbackTonePath expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "name": ""
-        },
-        "expects": [
-            "name should not be empty",
-            "name string must contain at least 3 character(s)",
-            "ringbackTonePath required",
             "ringbackTonePath invalid url"
         ]
     },
@@ -283,46 +46,6 @@
     },
     {
         "body": {
-            "name": "",
-            "ringbackTonePath": null
-        },
-        "expects": [
-            "name should not be empty",
-            "name string must contain at least 3 character(s)",
-            "ringbackTonePath expected string, received null"
-        ]
-    },
-    {
-        "body": {
-            "name": null,
-            "ringbackTonePath": "https://fs.ugc.ziicdn.net/01JEZJ0GPMSHH2RVX9QTSJJNRX/heic_300kB.heic"
-        },
-        "expects": [
-            "name expected string, received null"
-        ]
-    },
-    {
-        "body": {
-            "name": null,
-            "ringbackTonePath": 123
-        },
-        "expects": [
-            "name expected string, received null",
-            "ringbackTonePath expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "name": null
-        },
-        "expects": [
-            "name expected string, received null",
-            "ringbackTonePath required",
-            "ringbackTonePath invalid url"
-        ]
-    },
-    {
-        "body": {
             "name": null,
             "ringbackTonePath": ""
         },
@@ -334,11 +57,23 @@
     },
     {
         "body": {
-            "name": null,
+            "name": "",
+            "ringbackTonePath": 123
+        },
+        "expects": [
+            "name should not be empty",
+            "name string must contain at least 3 character(s)",
+            "ringbackTonePath expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "name": "",
             "ringbackTonePath": null
         },
         "expects": [
-            "name expected string, received null",
+            "name should not be empty",
+            "name string must contain at least 3 character(s)",
             "ringbackTonePath expected string, received null"
         ]
     }

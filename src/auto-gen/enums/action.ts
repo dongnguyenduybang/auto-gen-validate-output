@@ -2,7 +2,6 @@ import { METHOD } from './method.enum';
 import { APIPath } from './path.enum';
 
 export enum ACTION {
-
   LIST_DM_MEDIA = 'listDmMedia',
   LIST_MEDIA = 'listMedia',
   SUBSCRIBE_ALL = 'subscribeAll',
@@ -61,7 +60,7 @@ export enum ACTION {
   UNBLOCK_USER = 'unBlockUser',
   UPDATE_USER_EMAIL = 'updateUserEmail',
   DELETE_USER_AVATAR = 'deleteUserAvatar',
-  MOCK_USER = 'mockUser',
+  MOCK_USER = 'mockUsers',
   CREATE_CHANNEL = 'createChannel',
   DELETE_CHANNEL_AVATAR = 'deleteChannelAvatar',
   SEND_MESSAGE = 'sendMessage',
@@ -127,7 +126,7 @@ export enum ACTION {
   UPDATE_COVER_PHOTO = 'updateCoverPhoto',
   AVATAR_FRAME_PATH = 'avatarFramePath',
   DELETE_AVATAR_FRAME = 'deleteAvatarFrame',
-  UPDATE_USER_AVATAR = 'updateUserAvatar'
+  UPDATE_USER_AVATAR = 'updateUserAvatar',
 }
 
 export const ACTION_CONFIG: Record<ACTION, { path: string; method: METHOD }> = {
@@ -135,7 +134,7 @@ export const ACTION_CONFIG: Record<ACTION, { path: string; method: METHOD }> = {
     path: APIPath.UserProfile.DeleteUserAvatar,
     method: METHOD.DELETE,
   },
-    [ACTION.LIST_DM_MESSAGE_FRAGMENT]: {
+  [ACTION.LIST_DM_MESSAGE_FRAGMENT]: {
     path: APIPath.ViewMessage.ListMessagesFragment,
     method: METHOD.GET,
   },

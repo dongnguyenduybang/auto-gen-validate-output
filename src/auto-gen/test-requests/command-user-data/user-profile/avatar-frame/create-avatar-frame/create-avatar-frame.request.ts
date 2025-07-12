@@ -1,17 +1,15 @@
-import { ACTION, HEADER_LIST, VAR } from '../../../../../enums/index';
-import { DTOBuilder } from '../../../../../utils/chain-dto';
+import { ACTION } from '../../../../../enums/index';
+import { createAIEnhancedDTO } from '../../../../../utils/swagger-execute';
 
-export const CreateAvatarFrameRequest = new DTOBuilder()
+export const CreateAvatarFrameRequest = () => createAIEnhancedDTO()
   .startStep('create avatar frame')
-  .addAction(
+  .addActionAI(
     'create avatar frame',
     'create-avatar-frame',
     ACTION.AVATAR_FRAME_PATH,
     {
-      headers: HEADER_LIST.create({ token: VAR.token }),
-      body: {
-        avatarFramePath: VAR.coverPath,
-      },
+
+      body: ACTION.AVATAR_FRAME_PATH,
     }
   )
   .execute();

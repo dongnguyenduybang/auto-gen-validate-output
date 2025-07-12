@@ -1,23 +1,16 @@
+import { createAIEnhancedDTO } from '../../../../utils/swagger-execute';
 import {
   ACTION,
-  ExpireAfterTimeEnum,
-  HEADER_LIST,
-  VAR,
 } from '../../../../enums/index';
-import { RequestTestSuite } from '../../../../utils/declarations';
 
-export const UpdateUserDisplayNameRequest: RequestTestSuite = {
-  action: ACTION.UPDATE_USER_DISPLAY_NAME,
-  headers: HEADER_LIST.create({ token: VAR.token }),
-  body: {
-    displayName: "ABCDEF"
-  },
-  options: [
+export const UpdateUserDisplayNameRequest = () => createAIEnhancedDTO()
+  .startStep('update user display name')
+  .addActionAI(
+    'update user display name',
+    'update-user-display-name',
+    ACTION.UPDATE_USER_DISPLAY_NAME,
     {
-      beforeAll: [],
-      beforeEach: [],
-      afterEach: [],
-      afterAll: [],
-    },
-  ],
-};
+      body: ACTION.UPDATE_USER_DISPLAY_NAME
+    }
+  )
+  .execute()

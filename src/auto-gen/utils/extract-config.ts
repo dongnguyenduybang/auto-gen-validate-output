@@ -71,21 +71,21 @@ const ejectMessageConfig: ExtractConfig = {
 const ringbackToneCreateConfig: ExtractConfig = {
   data: {
     path: ['data'],
-    fields: ['ringbackToneId']
-  }
-}
+    fields: ['ringbackToneId'],
+  },
+};
 const createInvitationConfig: ExtractConfig = {
   data: {
     path: ['data'],
-    fields: ['code']
-  }
+    fields: ['code'],
+  },
 };
 const sendInvitationConfig: ExtractConfig = {
   data: {
     path: ['data'],
-    fields: ['code']
-  }
-}
+    fields: ['code'],
+  },
+};
 // Ánh xạ action tới cấu hình
 export const configMap: Record<string, ExtractConfig> = {
   V3MockUsersRequest: mockUserConfig,

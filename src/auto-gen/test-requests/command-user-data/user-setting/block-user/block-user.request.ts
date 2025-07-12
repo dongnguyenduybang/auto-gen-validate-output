@@ -1,22 +1,16 @@
+import { createAIEnhancedDTO } from '../../../../utils/swagger-execute';
 import {
   ACTION,
-  HEADER_LIST,
-  VAR,
 } from '../../../../enums/index';
-import { RequestTestSuite } from '../../../../utils/declarations';
 
-export const BlockUserRequest: RequestTestSuite = {
-  action: ACTION.BLOCK_USER,
-  headers: HEADER_LIST.create({ token: VAR.token }),
-  body: {
-    targetUserId: VAR.userId1
-  },
-  options: [
+export const BlockUserRequest = () => createAIEnhancedDTO()
+  .startStep('block user')
+  .addActionAI(
+    'block user',
+    'block-user',
+    ACTION.BLOCK_USER,
     {
-      beforeAll: [],
-      beforeEach: [],
-      afterEach: [],
-      afterAll: [],
-    },
-  ],
-};
+      body: ACTION.BLOCK_USER,
+    }
+  )
+  .execute()

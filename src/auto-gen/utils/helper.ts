@@ -15,11 +15,13 @@ import { getApiFunctions } from '../functions/api-registry';
 import { ClassConstructor, plainToClass } from 'class-transformer';
 import { validateResponses } from '../validates/validate-response';
 import { BaseResponse } from '../response';
-import { glob } from 'glob';
 
-export function pairFiles(
-  files: string[],
-): { dtoPath: string; requestPath: string; className: string, folderPath: any }[] {
+export function pairFiles(files: string[]): {
+  dtoPath: string;
+  requestPath: string;
+  className: string;
+  folderPath: any;
+}[] {
   const fileMap: Record<string, { dtoPath?: string; requestPath?: string }> =
     {};
   files.forEach((filePath) => {
@@ -39,7 +41,7 @@ export function pairFiles(
       dtoPath,
       requestPath,
       className,
-      folderPath: dtoPath ? path.dirname(dtoPath) : path.dirname(requestPath)
+      folderPath: dtoPath ? path.dirname(dtoPath) : path.dirname(requestPath),
     }),
   );
 }
@@ -298,6 +300,7 @@ export function isEmoji(str: string): boolean {
   const regex = emojiRegex();
   return regex.test(cleaned);
 }
+
 export function resolveVariables(obj: any, context: TestContext): any {
   if (typeof obj === 'string') {
     return obj.replace(
@@ -342,6 +345,7 @@ export function resolveExpectConfig(
   }
   return expectConfig;
 }
+
 export function formatErrors(errors: ValidationError[]): any {
   if (!Array.isArray(errors)) return { message: 'No error details available' };
 
@@ -374,7 +378,6 @@ export async function resolveCallAPI(
   const apiFunction = getApiFunctions(action, context);
 
   const response = await apiFunction({
-    method: actionInfo.method,
     path: actionInfo.path,
     headers: resolveHeader,
     body: resolveBody,
@@ -539,6 +542,7 @@ export function findTestPath(basePath: string, dtoName: string): string[] {
   searchDir(targetDir);
   return result;
 }
+
 export function findAllFoldersWithDtoAndRequest(basePath: string) {
   const results: {
     path: string;
@@ -551,12 +555,12 @@ export function findAllFoldersWithDtoAndRequest(basePath: string) {
 
     // Check current directory first
     const currentDtoFiles = entries
-      .filter(e => !e.isDirectory() && e.name.endsWith('.dto.ts'))
-      .map(e => e.name);
+      .filter((e) => !e.isDirectory() && e.name.endsWith('.dto.ts'))
+      .map((e) => e.name);
 
     const currentRequestFiles = entries
-      .filter(e => !e.isDirectory() && e.name.endsWith('.request.ts'))
-      .map(e => e.name);
+      .filter((e) => !e.isDirectory() && e.name.endsWith('.request.ts'))
+      .map((e) => e.name);
 
     if (currentDtoFiles.length > 0 && currentRequestFiles.length > 0) {
       results.push({
@@ -568,14 +572,14 @@ export function findAllFoldersWithDtoAndRequest(basePath: string) {
 
     // Then scan subdirectories
     entries
-      .filter(e => e.isDirectory())
-      .forEach(e => {
+      .filter((e) => e.isDirectory())
+      .forEach((e) => {
         scanDirectory(path.join(dir, e.name));
       });
   }
 
   scanDirectory(basePath);
-  results.forEach(r => console.log(`- ${r.path}`));
+  // results.forEach((r) => console.log(`- ${r.path}`));
   return results;
 }
 export const getFilesSwagger = (dirPath: string): string[] => {
@@ -599,7 +603,7 @@ export const getFilesSwagger = (dirPath: string): string[] => {
 };
 
 export function findAllDtoDirectories(parentDir: string): string[] {
-  console.log(parentDir)
+  console.log(parentDir);
   const fullPath = path.join(__dirname, '..', 'test-requests', parentDir);
   const result: string[] = [];
 
@@ -607,14 +611,19 @@ export function findAllDtoDirectories(parentDir: string): string[] {
     const entries = fs.readdirSync(currentPath, { withFileTypes: true });
 
     const hasDtoFile = entries.some(
-      entry => entry.isFile() &&
-        (entry.name.endsWith('.dto.ts') || entry.name.endsWith('.request.ts'))
+      (entry) =>
+        entry.isFile() &&
+        (entry.name.endsWith('.dto.ts') || entry.name.endsWith('.request.ts')),
     );
 
     if (hasDtoFile) {
-      const dtoName = entries.find(
-        e => e.isFile() && (e.name.endsWith('.dto.ts') || e.name.endsWith('.request.ts'))
-      )?.name.replace(/\.(dto|request)\.ts$/, '');
+      const dtoName = entries
+        .find(
+          (e) =>
+            e.isFile() &&
+            (e.name.endsWith('.dto.ts') || e.name.endsWith('.request.ts')),
+        )
+        ?.name.replace(/\.(dto|request)\.ts$/, '');
 
       if (dtoName) {
         result.push(dtoName);
@@ -625,7 +634,7 @@ export function findAllDtoDirectories(parentDir: string): string[] {
       if (entry.isDirectory()) {
         scanDirectory(
           path.join(currentPath, entry.name),
-          path.join(relativePath, entry.name)
+          path.join(relativePath, entry.name),
         );
       }
     }
@@ -635,13 +644,17 @@ export function findAllDtoDirectories(parentDir: string): string[] {
   return result;
 }
 
-
-export async function handleBulkAction(basePath: string, handlers: ActionHandler[]) {
+export async function handleBulkAction(
+  basePath: string,
+  handlers: ActionHandler[],
+) {
   const fullPath = path.join(__dirname, basePath);
   console.log(`Processing bulk action in directory: ${fullPath}`);
 
   if (handlers[0].name.includes('clearFiles')) {
-    console.log(`Initiating recursive clear of all .spec.ts files in: ${fullPath}`);
+    console.log(
+      `Initiating recursive clear of all .spec.ts files in: ${fullPath}`,
+    );
     await clearAllFilesRecursively(fullPath);
     console.log(`Completed recursive clear in: ${fullPath}`);
     return;
@@ -657,11 +670,18 @@ export async function handleBulkAction(basePath: string, handlers: ActionHandler
     console.log(`Processing DTO: ${dir}`);
     for (const handler of handlers) {
       try {
-        console.log(`Executing handler for ${dir} with function: ${handler.name || 'anonymous'}`);
+        console.log(
+          `Executing handler for ${dir} with function: ${handler.name || 'anonymous'}`,
+        );
         await handler(dir);
-        console.log(`Successfully processed ${dir} with handler: ${handler.name || 'anonymous'}`);
+        console.log(
+          `Successfully processed ${dir} with handler: ${handler.name || 'anonymous'}`,
+        );
       } catch (error) {
-        console.error(`Error processing ${dir} with handler: ${error.message}`, error.stack);
+        console.error(
+          `Error processing ${dir} with handler: ${error.message}`,
+          error.stack,
+        );
       }
     }
   }
@@ -699,7 +719,7 @@ export function clearFiles(testType: string): ActionHandler {
 
   Object.defineProperty(handler, 'name', {
     value: `clearFiles_${testType}`,
-    writable: false
+    writable: false,
   });
 
   return handler;
@@ -746,8 +766,11 @@ export function clearReports(reportType: string): ActionHandler {
   };
 }
 
-export function getSubDirectoriesRecursive(dirPath: string, prefix: string = ''): { name: string, value: string }[] {
-  const result: { name: string, value: string }[] = [];
+export function getSubDirectoriesRecursive(
+  dirPath: string,
+  prefix: string = '',
+): { name: string; value: string }[] {
+  const result: { name: string; value: string }[] = [];
   if (!fs.existsSync(dirPath)) {
     return result;
   }
@@ -768,24 +791,30 @@ export function getSubDirectoriesRecursive(dirPath: string, prefix: string = '')
   return result;
 }
 
-export function getDtoNamesFromSwagger(swaggerFilePath: string): { original: string; transformed: string }[] {
+export function getDtoNamesFromSwagger(
+  swaggerFilePath: string,
+): { original: string; transformed: string }[] {
   try {
     const swaggerContent = fs.readFileSync(swaggerFilePath, 'utf8');
     const swaggerJson = JSON.parse(swaggerContent);
-    console.log(swaggerJson)
+    console.log(swaggerJson);
     // Extract DTO names from components.schemas
     const schemas = swaggerJson.components?.schemas || {};
     const dtoNames = Object.keys(schemas)
       // Filter out non-request schemas (e.g., enums)
-      .filter(name => schemas[name].type === 'object' && name.toLowerCase().includes('request'))
-      .map(name => ({
+      .filter(
+        (name) =>
+          schemas[name].type === 'object' &&
+          name.toLowerCase().includes('request'),
+      )
+      .map((name) => ({
         original: name,
         // Transform to kebab-case (e.g., V3CreateChannelRequest -> v3-create-channel-request)
         transformed: name
           .replace(/^V3/, 'v3-') // Handle V3 prefix
           .replace(/([A-Z])/g, '-$1') // Add hyphens before capital letters
           .toLowerCase()
-          .replace(/^-+/, '') // Remove leading hyphens
+          .replace(/^-+/, ''), // Remove leading hyphens
       }));
 
     return dtoNames;
@@ -797,13 +826,14 @@ export function getDtoNamesFromSwagger(swaggerFilePath: string): { original: str
 
 function transformDtoName(dtoName) {
   const words = dtoName.split('-');
-  const capitalizedWords = words.map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()); // Capitalize each word
+  const capitalizedWords = words.map(
+    (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase(),
+  ); // Capitalize each word
   return `V3${capitalizedWords.join('')}Request`;
 }
 
 export function transformPropertyName(dataDTO: object): string[] {
-
-  const schemaPath = path.join(__dirname, '../swagger/schemas.json')
+  const schemaPath = path.join(__dirname, '../swagger/schemas.json');
   const fileContent = fs.readFileSync(schemaPath, 'utf-8');
   const schema = JSON.parse(fileContent);
   if (!dataDTO || typeof dataDTO !== 'object') return [];
@@ -816,7 +846,7 @@ export function transformPropertyName(dataDTO: object): string[] {
 
   return Object.entries(dto.properties).map(([key, value]: [string, any]) => {
     let typeDesc = '';
-    let isRequired = requiredFields.includes(key);
+    const isRequired = requiredFields.includes(key);
 
     if (value.type) {
       typeDesc = value.type;
@@ -828,7 +858,8 @@ export function transformPropertyName(dataDTO: object): string[] {
         // Gộp enum value + tên biến
         const enums = refSchema.enum
           .map((val: number | string, idx: number) => {
-            const name = refSchema['x-enum-varnames']?.[idx] ?? `UNKNOWN_${val}`;
+            const name =
+              refSchema['x-enum-varnames']?.[idx] ?? `UNKNOWN_${val}`;
             return `${val}: ${name}`;
           })
           .join(', ');
@@ -845,27 +876,31 @@ export function transformPropertyName(dataDTO: object): string[] {
   });
 }
 
-
 export function validateDtoName(dtoName) {
-  const schemaPath = path.join(__dirname, '../swagger/schemas.json')
+  const schemaPath = path.join(__dirname, '../swagger/schemas.json');
   const fileContent = fs.readFileSync(schemaPath, 'utf-8');
   const schema = JSON.parse(fileContent);
   const transformedName = transformDtoName(dtoName);
 
   if (schema[transformedName]) {
     return {
-      status: true, data: schema[transformedName]
-    }
+      status: true,
+      data: schema[transformedName],
+    };
   } else {
-    return { status: false, data: `DTO name '${transformedName}' not found in schema.` }
+    return {
+      status: false,
+      data: `DTO name '${transformedName}' not found in schema.`,
+    };
   }
-
-
 }
 
-export function parsePath(inputPath: string): { normalized: string; lastPart: string } {
+export function parsePath(inputPath: string): {
+  normalized: string;
+  lastPart: string;
+} {
   const normalizedPath = inputPath.replace(/\\/g, '/').trim();
-  const parts = normalizedPath.split('/').filter(part => part !== '');
+  const parts = normalizedPath.split('/').filter((part) => part !== '');
   const lastPart = parts[parts.length - 1] || '';
   return { normalized: lastPart, lastPart }; // Trả về lastPart cho cả normalized
 }
@@ -873,44 +908,50 @@ export function normalizePath(inputPath: string) {
   return inputPath.replace(/\\/g, '/').replace(/\/+/g, '/');
 }
 
-export async function searchDtoInTestRequests(dtoName: string): Promise<string[]> {
-    const basePath = path.join(__dirname, '../test-requests');
+export async function searchDtoInTestRequests(
+  dtoName: string,
+): Promise<string[]> {
+  const basePath = path.join(__dirname, '../test-requests');
 
-    const matches: string[] = [];
+  const matches: string[] = [];
 
-    async function walkDir(currentPath: string) {
-        try {
-            const entries = await fs.promises.readdir(currentPath, { withFileTypes: true });
+  async function walkDir(currentPath: string) {
+    try {
+      const entries = await fs.promises.readdir(currentPath, {
+        withFileTypes: true,
+      });
 
-            for (const entry of entries) {
-                const fullPath = path.join(currentPath, entry.name);
+      for (const entry of entries) {
+        const fullPath = path.join(currentPath, entry.name);
 
-                if (entry.isDirectory()) {
-                    // Check if the folder name matches dtoName exactly
-                    if (path.basename(entry.name) === dtoName) {
-                        // Add the relative path from basePath
-                        const relativePath = path.relative(basePath, fullPath);
-                        matches.push(relativePath);
-                    }
-                    // Recursively search subdirectories
-                    await walkDir(fullPath);
-                } else {
-                    // Check if the file name (without extension) matches dtoName
-                    const baseName = path.parse(entry.name).name;
-                    if (baseName === dtoName) {
-                        // Add the relative path from basePath
-                        const relativePath = path.relative(basePath, fullPath);
-                        matches.push(relativePath);
-                    }
-                }
-            }
-        } catch (error) {
-            console.error(`Error reading directory ${currentPath}: ${(error as Error).message}`);
+        if (entry.isDirectory()) {
+          // Check if the folder name matches dtoName exactly
+          if (path.basename(entry.name) === dtoName) {
+            // Add the relative path from basePath
+            const relativePath = path.relative(basePath, fullPath);
+            matches.push(relativePath);
+          }
+          // Recursively search subdirectories
+          await walkDir(fullPath);
+        } else {
+          // Check if the file name (without extension) matches dtoName
+          const baseName = path.parse(entry.name).name;
+          if (baseName === dtoName) {
+            // Add the relative path from basePath
+            const relativePath = path.relative(basePath, fullPath);
+            matches.push(relativePath);
+          }
         }
+      }
+    } catch (error) {
+      console.error(
+        `Error reading directory ${currentPath}: ${(error as Error).message}`,
+      );
     }
+  }
 
-    await walkDir(basePath);
-    return matches;
+  await walkDir(basePath);
+  return matches;
 }
 
 export function findReportsDirectory(startDir: string): string {
@@ -918,23 +959,23 @@ export function findReportsDirectory(startDir: string): string {
   let currentDir = startDir;
   while (currentDir !== path.parse(currentDir).root) {
     const testRequestsPath = path.join(currentDir, 'src', 'auto-gen');
-    
+
     if (fs.existsSync(testRequestsPath)) {
       const potentialReportDir = path.join(testRequestsPath, 'tmp-reports');
-      
+
       // Nếu tìm thấy thư mục tmp-reports
       if (fs.existsSync(potentialReportDir)) {
         return potentialReportDir;
       }
-      
+
       // Nếu không tìm thấy nhưng có thư mục test-requests
       fs.mkdirSync(potentialReportDir, { recursive: true });
       return potentialReportDir;
     }
-    
+
     currentDir = path.dirname(currentDir); // Lên thư mục cha
   }
-  
+
   // Fallback: tạo trong thư mục hiện tại nếu không tìm thấy
   const fallbackDir = path.join(startDir, 'tmp-reports');
   fs.mkdirSync(fallbackDir, { recursive: true });
@@ -945,6 +986,33 @@ export function transformPayload(resolved: Record<string, any>) {
   const { headers, metadata, ...rest } = resolved;
   return {
     headers: headers ?? {},
-    body: rest
+    body: rest,
   };
 }
+export function getDtoFolderPath(dtoName: string): string | null {
+  const rootDir = path.resolve('./src/auto-gen/test-requests');
+
+  function searchDir(currentPath: string): string | null {
+    const entries = fs.readdirSync(currentPath, { withFileTypes: true });
+
+    for (const entry of entries) {
+      const fullPath = path.join(currentPath, entry.name);
+
+      // 👉 Bỏ qua folder .reports
+      if (entry.isDirectory()) {
+        if (entry.name === '.reports') continue;
+
+        const found = searchDir(fullPath);
+        if (found) return found;
+      } else if (entry.isFile() && entry.name.startsWith(dtoName)) {
+        return path.resolve(path.dirname(fullPath));
+      }
+    }
+
+    return null;
+  }
+
+  return searchDir(rootDir);
+}
+
+

@@ -1,22 +1,16 @@
+import { createAIEnhancedDTO } from '../../../../../utils/swagger-execute';
 import {
     ACTION,
-    HEADER_LIST,
-    VAR,
 } from '../../../../../enums/index';
-import { RequestTestSuite } from '../../../../../utils/declarations';
 
-export const UpdateCoverPhotoRequest: RequestTestSuite = {
-    action: ACTION.UPDATE_COVER_PHOTO,
-    headers: HEADER_LIST.create({ token: VAR.token }),
-    body: {
-        coverPath: VAR.coverPath
-    },
-    options: [
+export const UpdateCoverPhotoRequest = () => createAIEnhancedDTO()
+    .startStep('update cover photo')
+    .addActionAI(
+        'update cover photo',
+        'update-cover-photo',
+        ACTION.UPDATE_COVER_PHOTO,
         {
-            beforeAll: [],
-            beforeEach: [],
-            afterEach: [],
-            afterAll: [],
-        },
-    ],
-};
+            body: ACTION.UPDATE_COVER_PHOTO
+        }
+    )
+    .execute()

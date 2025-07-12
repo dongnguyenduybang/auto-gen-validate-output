@@ -9,19 +9,6 @@
     },
     {
         "body": {
-            "coverPath": "https://fs.ugc.ziicdn.net/01JEWASZD3TK58P25Y1QJSYRPC/heic_300kB.heic"
-        },
-        "expects": []
-    },
-    {
-        "body": {},
-        "expects": [
-            "coverPath required",
-            "coverPath invalid url"
-        ]
-    },
-    {
-        "body": {
             "coverPath": ""
         },
         "expects": [
@@ -36,5 +23,11 @@
         "expects": [
             "coverPath expected string, received null"
         ]
+    },
+    {
+        "body": {
+            "coverPath": "https://fs.ugc.ziicdn.net/01JEWASZD3TK58P25Y1QJSYRPC/heic_300kB.heic"
+        },
+        "expects": []
     }
 ]

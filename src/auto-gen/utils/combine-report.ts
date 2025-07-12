@@ -21,10 +21,6 @@ function isResultFile(file: string, className: string): boolean {
   return baseName === className;
 }
 
-function isJsonResultFile(file: string): boolean {
-  return file.endsWith('.result.json');
-}
-
 function parseResultFile(reportDir: string, file: string): TestResult {
   const filePath = path.join(reportDir, file);
   let content: string;
@@ -50,7 +46,8 @@ function parseResultFile(reportDir: string, file: string): TestResult {
     allSteps: Array.isArray(parsed.allSteps) ? parsed.allSteps : [],
     warnings: Array.isArray(parsed.warnings) ? parsed.warnings : [],
     path: typeof parsed.path === 'string' ? parsed.path : '',
-    passedTests: typeof parsed.passedTests === 'number' ? parsed.passedTests : 0,
+    passedTests:
+      typeof parsed.passedTests === 'number' ? parsed.passedTests : 0,
     totalTests: typeof parsed.totalTests === 'number' ? parsed.totalTests : 0,
     ...parsed, // Giữ các thuộc tính khác nếu có
   };
@@ -87,13 +84,6 @@ function filterByCode(tests: any[], code: number): any[] {
   });
 }
 
-function getReportFiles(reportDir: string, className: string): string[] {
-  const allFiles = fs.readdirSync(reportDir);
-  return allFiles.filter(function (file) {
-    return isResultFile(file, className);
-  });
-}
-
 function parseTestResults(reportDir: string, files: string[]): TestResult[] {
   return files.map(function (file) {
     return parseResultFile(reportDir, file);
@@ -117,19 +107,6 @@ function ensureDirExists(dir: string): void {
     fs.mkdirSync(dir, { recursive: true });
   }
 }
-
-function cleanupTempFiles(dir: string, files: string[]): void {
-  files.forEach(function (file) {
-    const filePath = path.join(dir, file);
-    try {
-      fs.unlinkSync(filePath);
-      console.log(`🗑️ Deleted temporary file: ${filePath}`);
-    } catch (error) {
-      console.error(`Error deleting file ${filePath}:`, error);
-    }
-  });
-}
-
 async function combineReports(className: string): Promise<{
   reportContent: string;
   reportPath: string;
@@ -139,17 +116,18 @@ async function combineReports(className: string): Promise<{
   const reportDir = path.join(__dirname, '../tmp-reports');
 
   try {
-    const reportFiles = fs.readdirSync(reportDir)
-      .filter(file => file === `${className}.result.json`);
+    const reportFiles = fs
+      .readdirSync(reportDir)
+      .filter((file) => file === `${className}.result.json`);
 
     if (reportFiles.length === 0) {
       throw new Error(`No report files found for ${className}`);
     }
 
-    const results = parseTestResults(reportDir, reportFiles)
+    const results = parseTestResults(reportDir, reportFiles);
 
     // Sanitize data before processing
-    const sanitizedResults = results.map(result => ({
+    const sanitizedResults = results.map((result) => ({
       ...result,
       failedTests: Array.isArray(result.failedTests) ? result.failedTests : [],
       codedTest: Array.isArray(result.codedTest) ? result.codedTest : [],
@@ -162,7 +140,7 @@ async function combineReports(className: string): Promise<{
     const combinedFailedTests = sanitizedResults.map(extractFailedTests).flat();
     const combinedCodedTest = sanitizedResults.map(extractCodedTests).flat();
     const combinedFailedStep = sanitizedResults.map(extractFailedSteps).flat();
-    const combinedWarnings = sanitizedResults.map(r => r.warnings).flat();
+    const combinedWarnings = sanitizedResults.map((r) => r.warnings).flat();
     const pathRequest = sanitizedResults.map(extractPaths).filter(Boolean);
 
     const totalPassedTests = sumByField(sanitizedResults, 'passedTests');
@@ -180,14 +158,14 @@ async function combineReports(className: string): Promise<{
       totalTests,
       summary,
       'request',
-      combinedWarnings
+      combinedWarnings,
     );
 
     const outputBaseDir = path.join(__dirname, '../test-requests/.reports');
     const outputDir = path.join(
       outputBaseDir,
       noFailedTests ? 'success-reports' : 'failed-reports',
-      className
+      className,
     );
 
     ensureDirExists(outputDir);
@@ -198,7 +176,9 @@ async function combineReports(className: string): Promise<{
     // Write the report content first
     fs.writeFileSync(reportPath, reportContent, 'utf-8');
     console.log(`📄 Combined report generated: ${reportPath}`);
-    console.log(`ℹ️ Report classified as: ${noFailedTests ? 'SUCCESS (no failed tests)' : 'FAILED (has failed tests)'}`);
+    console.log(
+      `ℹ️ Report classified as: ${noFailedTests ? 'SUCCESS (no failed tests)' : 'FAILED (has failed tests)'}`,
+    );
 
     // Prepare return value carefully
     const returnValue = {
@@ -210,19 +190,20 @@ async function combineReports(className: string): Promise<{
         passedTests: totalPassedTests,
         failedTests: combinedFailedTests.length,
         warnings: combinedWarnings.length,
-        isSuccess: noFailedTests
+        isSuccess: noFailedTests,
       },
-      noFailedTests
+      noFailedTests,
     };
 
     return returnValue;
-
   } catch (error) {
     console.error('❌ Error in combineReports:', error);
     throw new Error(`Failed to combine reports: ${error.message}`);
   }
 }
-export async function generateAllReports(dtoName?: string): Promise<{ filePath: string; content?: any } | void> {
+export async function generateAllReports(
+  dtoName?: string,
+): Promise<{ filePath: string; content?: any } | void> {
   const reportDir = path.join(__dirname, '../tmp-reports');
 
   if (dtoName) {
@@ -248,13 +229,13 @@ export async function generateAllReports(dtoName?: string): Promise<{ filePath: 
 
     return {
       filePath: reportFile,
-      content: finalContent
+      content: finalContent,
     };
   }
 
   console.log(`Generating ALL reports from: ${reportDir}`);
   const allFiles = fs.readdirSync(reportDir);
-  const jsonFiles = allFiles.filter(file => file.endsWith('.json'));
+  const jsonFiles = allFiles.filter((file) => file.endsWith('.json'));
 
   if (jsonFiles.length === 0) {
     console.error(`❌ No JSON files found in ${reportDir}!`);
@@ -269,7 +250,6 @@ export async function generateAllReports(dtoName?: string): Promise<{ filePath: 
     console.log(`\n🚀 Processing: ${file}`);
 
     try {
-      const parsedContent = parseResultFile(reportDir, file);
       const result = await combineReports(dtoName);
       const reportFile = path.join(reportDir, file);
       fs.writeFileSync(reportFile, JSON.stringify(result, null, 2));
@@ -277,7 +257,7 @@ export async function generateAllReports(dtoName?: string): Promise<{ filePath: 
       results.push({
         dtoName,
         filePath: reportFile,
-        content: result
+        content: result,
       });
 
       console.log(`✅ Successfully processed ${file}`);
@@ -290,7 +270,10 @@ export async function generateAllReports(dtoName?: string): Promise<{ filePath: 
 }
 
 function hasNoFailedTests(results: TestResult[]): boolean {
-  return results.every(result => Array.isArray(result.failedTests) && result.failedTests.length === 0);
+  return results.every(
+    (result) =>
+      Array.isArray(result.failedTests) && result.failedTests.length === 0,
+  );
 }
 
 export function viewReports(dtoName: string) {
@@ -307,23 +290,31 @@ export function viewReports(dtoName: string) {
     return null;
   };
 
-  const findNewestReportInDir = (dirPath: string, targetDtoName: string): string | null => {
+  const findNewestReportInDir = (
+    dirPath: string,
+    targetDtoName: string,
+  ): string | null => {
     try {
-      const files = fs.readdirSync(dirPath)
-        .filter(file => (file.endsWith('.txt') || file.endsWith('.md')))
-        .map(file => {
+      const files = fs
+        .readdirSync(dirPath)
+        .filter((file) => file.endsWith('.txt') || file.endsWith('.md'))
+        .map((file) => {
           const filePath = path.join(dirPath, file);
           const fileBaseName = path.parse(file).name.split('-combined-')[0];
           return { filePath, mtime: fs.statSync(filePath).mtime, fileBaseName };
         })
-        .filter(file => file.fileBaseName === targetDtoName);
+        .filter((file) => file.fileBaseName === targetDtoName);
 
       if (files.length === 0) {
-        console.log(`No matching report files found for ${targetDtoName} in ${dirPath}`);
+        console.log(
+          `No matching report files found for ${targetDtoName} in ${dirPath}`,
+        );
         return null;
       }
 
-      const sortedFiles = files.sort((a, b) => b.mtime.getTime() - a.mtime.getTime());
+      const sortedFiles = files.sort(
+        (a, b) => b.mtime.getTime() - a.mtime.getTime(),
+      );
       return sortedFiles[0].filePath;
     } catch (err) {
       console.error(`Error reading directory ${dirPath}:`, err);
@@ -344,7 +335,7 @@ export function viewReports(dtoName: string) {
 
   const possiblePaths = [
     path.join(basePath, 'success-reports', dtoName), // Prioritize success reports
-    path.join(basePath, 'failed-reports', dtoName),  // Then failed reports
+    path.join(basePath, 'failed-reports', dtoName), // Then failed reports
   ];
 
   let newestFilePath: string | null = null;
@@ -352,7 +343,11 @@ export function viewReports(dtoName: string) {
   for (const possiblePath of possiblePaths) {
     if (fs.existsSync(possiblePath)) {
       const foundPath = findNewestReportInDir(possiblePath, dtoName);
-      if (foundPath && (!newestFilePath || fs.statSync(foundPath).mtime > fs.statSync(newestFilePath).mtime)) {
+      if (
+        foundPath &&
+        (!newestFilePath ||
+          fs.statSync(foundPath).mtime > fs.statSync(newestFilePath).mtime)
+      ) {
         newestFilePath = foundPath;
       }
     } else {
@@ -365,7 +360,7 @@ export function viewReports(dtoName: string) {
     renderMarkdown(data);
     return;
   }
-  possiblePaths.forEach(p => console.error('-', p));
+  possiblePaths.forEach((p) => console.error('-', p));
 }
 
 function renderMarkdown(content: string) {
@@ -373,7 +368,7 @@ function renderMarkdown(content: string) {
   let inTable = false;
   let tableHeaders: string[] = [];
   let tableRows: string[][] = [];
-  let output: string[] = [];
+  const output: string[] = [];
 
   for (let line of lines) {
     line = line.trim();
@@ -386,7 +381,10 @@ function renderMarkdown(content: string) {
     }
 
     if (line.startsWith('|')) {
-      const columns = line.split('|').map(col => col.trim()).filter(col => col);
+      const columns = line
+        .split('|')
+        .map((col) => col.trim())
+        .filter((col) => col);
       if (!inTable) {
         tableHeaders = columns;
         inTable = true;
@@ -400,7 +398,40 @@ function renderMarkdown(content: string) {
     }
 
     if (inTable && tableRows.length > 1) {
-      output.push(table(tableRows, {
+      output.push(
+        table(tableRows, {
+          border: {
+            topBody: `─`,
+            topJoin: `┬`,
+            topLeft: `┌`,
+            topRight: `┐`,
+            bottomBody: `─`,
+            bottomJoin: `┴`,
+            bottomLeft: `└`,
+            bottomRight: `┘`,
+            bodyLeft: `│`,
+            bodyRight: `│`,
+            bodyJoin: `│`,
+            joinLeft: `├`,
+            joinRight: `┤`,
+            joinBody: `─`,
+          },
+        }),
+      );
+      inTable = false;
+      tableHeaders = [];
+      tableRows = [];
+    }
+
+    if (line) {
+      line = line.replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1');
+      output.push(line);
+    }
+  }
+
+  if (inTable && tableRows.length > 1) {
+    output.push(
+      table(tableRows, {
         border: {
           topBody: `─`,
           topJoin: `┬`,
@@ -415,39 +446,10 @@ function renderMarkdown(content: string) {
           bodyJoin: `│`,
           joinLeft: `├`,
           joinRight: `┤`,
-          joinBody: `─`
-        }
-      }));
-      inTable = false;
-      tableHeaders = [];
-      tableRows = [];
-    }
-
-    if (line) {
-      line = line.replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1');
-      output.push(line);
-    }
-  }
-
-  if (inTable && tableRows.length > 1) {
-    output.push(table(tableRows, {
-      border: {
-        topBody: `─`,
-        topJoin: `┬`,
-        topLeft: `┌`,
-        topRight: `┐`,
-        bottomBody: `─`,
-        bottomJoin: `┴`,
-        bottomLeft: `└`,
-        bottomRight: `┘`,
-        bodyLeft: `│`,
-        bodyRight: `│`,
-        bodyJoin: `│`,
-        joinLeft: `├`,
-        joinRight: `┤`,
-        joinBody: `─`
-      }
-    }));
+          joinBody: `─`,
+        },
+      }),
+    );
   }
 
   console.log(output.join('\n'));

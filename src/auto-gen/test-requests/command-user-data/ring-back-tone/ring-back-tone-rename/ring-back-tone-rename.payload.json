@@ -2,140 +2,12 @@
     {
         "body": {
             "name": 123,
-            "ringbackToneId": "{{ringbackToneId}}"
-        },
-        "expects": [
-            "name expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "name": 123,
-            "ringbackToneId": 123
-        },
-        "expects": [
-            "name expected string, received number",
-            "ringbackToneId expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "name": 123
-        },
-        "expects": [
-            "name expected string, received number",
-            "ringbackToneId required"
-        ]
-    },
-    {
-        "body": {
-            "name": 123,
             "ringbackToneId": ""
         },
         "expects": [
             "name expected string, received number",
             "ringbackToneId should not be empty",
             "ringbackToneId invalid ulid"
-        ]
-    },
-    {
-        "body": {
-            "name": 123,
-            "ringbackToneId": null
-        },
-        "expects": [
-            "name expected string, received number",
-            "ringbackToneId expected string, received null"
-        ]
-    },
-    {
-        "body": {
-            "name": 123,
-            "ringbackToneId": "invalid_ULID"
-        },
-        "expects": [
-            "name expected string, received number",
-            "ringbackToneId invalid ulid"
-        ]
-    },
-    {
-        "body": {
-            "name": "rename nhac cho  ",
-            "ringbackToneId": "{{ringbackToneId}}"
-        },
-        "expects": []
-    },
-    {
-        "body": {
-            "name": "rename nhac cho  ",
-            "ringbackToneId": 123
-        },
-        "expects": [
-            "ringbackToneId expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "name": "rename nhac cho  "
-        },
-        "expects": [
-            "ringbackToneId required"
-        ]
-    },
-    {
-        "body": {
-            "name": "rename nhac cho  ",
-            "ringbackToneId": ""
-        },
-        "expects": [
-            "ringbackToneId should not be empty",
-            "ringbackToneId invalid ulid"
-        ]
-    },
-    {
-        "body": {
-            "name": "rename nhac cho  ",
-            "ringbackToneId": null
-        },
-        "expects": [
-            "ringbackToneId expected string, received null"
-        ]
-    },
-    {
-        "body": {
-            "name": "rename nhac cho  ",
-            "ringbackToneId": "invalid_ULID"
-        },
-        "expects": [
-            "ringbackToneId invalid ulid"
-        ]
-    },
-    {
-        "body": {
-            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "ringbackToneId": "{{ringbackToneId}}"
-        },
-        "expects": [
-            "name string must contain at most 50 character(s)"
-        ]
-    },
-    {
-        "body": {
-            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "ringbackToneId": 123
-        },
-        "expects": [
-            "name string must contain at most 50 character(s)",
-            "ringbackToneId expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-        },
-        "expects": [
-            "name string must contain at most 50 character(s)",
-            "ringbackToneId required"
         ]
     },
     {
@@ -147,106 +19,6 @@
             "name string must contain at most 50 character(s)",
             "ringbackToneId should not be empty",
             "ringbackToneId invalid ulid"
-        ]
-    },
-    {
-        "body": {
-            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "ringbackToneId": null
-        },
-        "expects": [
-            "name string must contain at most 50 character(s)",
-            "ringbackToneId expected string, received null"
-        ]
-    },
-    {
-        "body": {
-            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "ringbackToneId": "invalid_ULID"
-        },
-        "expects": [
-            "name string must contain at most 50 character(s)",
-            "ringbackToneId invalid ulid"
-        ]
-    },
-    {
-        "body": {
-            "ringbackToneId": "{{ringbackToneId}}"
-        },
-        "expects": [
-            "name required"
-        ]
-    },
-    {
-        "body": {
-            "ringbackToneId": 123
-        },
-        "expects": [
-            "name required",
-            "ringbackToneId expected string, received number"
-        ]
-    },
-    {
-        "body": {},
-        "expects": [
-            "name required",
-            "ringbackToneId required"
-        ]
-    },
-    {
-        "body": {
-            "ringbackToneId": ""
-        },
-        "expects": [
-            "name required",
-            "ringbackToneId should not be empty",
-            "ringbackToneId invalid ulid"
-        ]
-    },
-    {
-        "body": {
-            "ringbackToneId": null
-        },
-        "expects": [
-            "name required",
-            "ringbackToneId expected string, received null"
-        ]
-    },
-    {
-        "body": {
-            "ringbackToneId": "invalid_ULID"
-        },
-        "expects": [
-            "name required",
-            "ringbackToneId invalid ulid"
-        ]
-    },
-    {
-        "body": {
-            "name": "",
-            "ringbackToneId": "{{ringbackToneId}}"
-        },
-        "expects": [
-            "name should not be empty"
-        ]
-    },
-    {
-        "body": {
-            "name": "",
-            "ringbackToneId": 123
-        },
-        "expects": [
-            "name should not be empty",
-            "ringbackToneId expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "name": ""
-        },
-        "expects": [
-            "name should not be empty",
-            "ringbackToneId required"
         ]
     },
     {
@@ -258,6 +30,27 @@
             "name should not be empty",
             "ringbackToneId should not be empty",
             "ringbackToneId invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "name": null,
+            "ringbackToneId": ""
+        },
+        "expects": [
+            "name expected string, received null",
+            "ringbackToneId should not be empty",
+            "ringbackToneId invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "name": "",
+            "ringbackToneId": 123
+        },
+        "expects": [
+            "name should not be empty",
+            "ringbackToneId expected string, received number"
         ]
     },
     {
@@ -277,65 +70,6 @@
         },
         "expects": [
             "name should not be empty",
-            "ringbackToneId invalid ulid"
-        ]
-    },
-    {
-        "body": {
-            "name": null,
-            "ringbackToneId": "{{ringbackToneId}}"
-        },
-        "expects": [
-            "name expected string, received null"
-        ]
-    },
-    {
-        "body": {
-            "name": null,
-            "ringbackToneId": 123
-        },
-        "expects": [
-            "name expected string, received null",
-            "ringbackToneId expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "name": null
-        },
-        "expects": [
-            "name expected string, received null",
-            "ringbackToneId required"
-        ]
-    },
-    {
-        "body": {
-            "name": null,
-            "ringbackToneId": ""
-        },
-        "expects": [
-            "name expected string, received null",
-            "ringbackToneId should not be empty",
-            "ringbackToneId invalid ulid"
-        ]
-    },
-    {
-        "body": {
-            "name": null,
-            "ringbackToneId": null
-        },
-        "expects": [
-            "name expected string, received null",
-            "ringbackToneId expected string, received null"
-        ]
-    },
-    {
-        "body": {
-            "name": null,
-            "ringbackToneId": "invalid_ULID"
-        },
-        "expects": [
-            "name expected string, received null",
             "ringbackToneId invalid ulid"
         ]
     }

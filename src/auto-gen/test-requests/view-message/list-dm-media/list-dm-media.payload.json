@@ -1,0 +1,154 @@
+[
+    {
+        "body": {
+            "userId": 123,
+            "type": 0,
+            "limit": 0,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "type": 0,
+            "limit": 0,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "type": 0,
+            "limit": 0,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "type": 0,
+            "limit": 0,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "type": "invalid_enum_value",
+            "limit": 0,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "type": "",
+            "limit": 0,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "type": 0,
+            "limit": "invalid_number",
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "type": 0,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "type": 0,
+            "limit": "",
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "type": 0,
+            "limit": null,
+            "nextPageToken": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "type": 0,
+            "limit": 0,
+            "nextPageToken": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "type": 0,
+            "limit": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "type": 0,
+            "limit": 0,
+            "nextPageToken": null
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "type": 0,
+            "limit": 0,
+            "nextPageToken": "invalid_ULID"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    }
+]

@@ -29,7 +29,7 @@ const decoratorItemValidations = {
 };
 
 export function getDecorators(
-  target: Object,
+  target: object,
   propertyKey: string,
 ): Record<string, any> {
   const decorators: Record<string, any> = {};

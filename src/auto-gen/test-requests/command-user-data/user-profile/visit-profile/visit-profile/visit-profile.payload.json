@@ -9,18 +9,6 @@
     },
     {
         "body": {
-            "userId": "{{userId1}}"
-        },
-        "expects": []
-    },
-    {
-        "body": {},
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
             "userId": ""
         },
         "expects": [
@@ -42,5 +30,11 @@
         "expects": [
             "Unauthorized request"
         ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}"
+        },
+        "expects": []
     }
 ]

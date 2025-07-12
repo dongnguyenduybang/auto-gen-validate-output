@@ -8,7 +8,9 @@ import {
 } from './helper';
 
 // Type guard functions
-function isDTOBuilderInstance(obj: any): obj is { execute: () => Promise<any> } {
+function isDTOBuilderInstance(
+  obj: any,
+): obj is { execute: () => Promise<any> } {
   return typeof obj?.execute === 'function';
 }
 
@@ -33,15 +35,17 @@ export async function genBodyRequest(dtoName: string) {
     const baseRequestsPath = path.join(__dirname, '../test-requests');
     const searchPath = path.join(baseRequestsPath, dtoName);
 
-    if (!fs.existsSync(searchPath)) {
-      console.error(`❌ Target folder does not exist: ${searchPath}`);
+    if (!fs.existsSync(dtoName)) {
+      console.error(`❌ Target folder does not exist: ${dtoName}`);
       return;
     }
 
-    const foundFolders = findAllFoldersWithDtoAndRequest(searchPath);
+    const foundFolders = findAllFoldersWithDtoAndRequest(dtoName);
 
     if (foundFolders.length === 0) {
-      console.error(`No folders with .dto.ts and .request.ts found in: ${searchPath}`);
+      console.error(
+        `No folders with .dto.ts and .request.ts found in: ${dtoName}`,
+      );
       return;
     }
 
@@ -55,7 +59,9 @@ export async function genBodyRequest(dtoName: string) {
 
       const file = getMatchedFilePaths([folder]);
       const fileMap = groupFilesByName(file);
-      for (const [className, { dtoPath, requestPath }] of Object.entries(fileMap)) {
+      for (const [className, { dtoPath, requestPath }] of Object.entries(
+        fileMap,
+      )) {
         if (!dtoPath) {
           console.warn(`Missing .dto file for class: ${className}`);
           continue;
@@ -88,7 +94,9 @@ export async function genBodyRequest(dtoName: string) {
 
           if (!dtoClass) {
             console.error(`Invalid DTO class in file: ${dtoPath}`);
-            console.log(`Available exports: ${Object.keys(dtoModule).join(', ')}`);
+            console.log(
+              `Available exports: ${Object.keys(dtoModule).join(', ')}`,
+            );
             continue;
           }
 
@@ -143,35 +151,33 @@ export async function genBodyRequest(dtoName: string) {
 
           // Fallback: Try to find any export with execute or options
           if (!requestData) {
-
             for (const [key, value] of Object.entries(requestModule)) {
               let candidate = value;
 
               // Execute function if needed
               if (isFunction(candidate)) {
-
                 try {
                   candidate = candidate(); // Execute function
 
                   // If result is a Promise, await it
                   if (isPromise(candidate)) {
-
                     candidate = await candidate;
                   }
                 } catch (error) {
-                  console.error(`Fallback: Error executing function ${key}:`, error);
+                  console.error(
+                    `Fallback: Error executing function ${key}:`,
+                    error,
+                  );
                   continue;
                 }
               }
               // Resolve Promise if needed
               else if (isPromise(candidate)) {
-
                 candidate = await candidate;
               }
 
               // Check if candidate has the expected data structure
               if (hasValidSteps(candidate)) {
-
                 requestData = candidate;
                 break;
               }
@@ -190,7 +196,9 @@ export async function genBodyRequest(dtoName: string) {
 
           // Validate requestData structure
           if (!requestData?.steps?.[0]?.actions?.main?.[0]?.config?.body) {
-            console.warn(`No valid body found in request for class: ${className}`);
+            console.warn(
+              `No valid body found in request for class: ${className}`,
+            );
             console.log('-----------------------');
             continue;
           }
@@ -198,24 +206,25 @@ export async function genBodyRequest(dtoName: string) {
           // Extract payload from the main action's body
           const payload = requestData.steps[0].actions.main[0].config.body;
 
-
           const result = await generateErrorCases(dtoClass, payload);
           const testCasePayload = result.map(({ body, expects }) => ({
             body,
             expects,
           }));
 
-          const outputFilePath = path.join(outputDir, `${className}.payload.json`);
+          const outputFilePath = path.join(
+            outputDir,
+            `${className}.payload.json`,
+          );
 
           fs.writeFileSync(
             outputFilePath,
             JSON.stringify(testCasePayload, null, 4),
-            'utf-8'
+            'utf-8',
           );
           console.log(`File content length: ${testCasePayload.length} cases`);
           console.log('-----------------------');
           payloadGenerated = true;
-
         } catch (error) {
           console.error(`❌ Error processing class: ${className}`, error);
           if (error instanceof Error) {
