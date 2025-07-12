@@ -43,4 +43,5 @@ export enum VAR {
   defaultChannelName = 'channelname1',
 
   content = 'defaultContent',
+  ref= 'ref'
 }

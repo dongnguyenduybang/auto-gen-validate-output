@@ -2,9 +2,10 @@ import { ulid } from 'ulidx';
 import { ChannelTypeEnum } from './channel-type.enum';
 import { ExpireAfterTimeEnum } from './expire-after-time.enum';
 import { BadgeEnum } from './badge.enum';
+import { VAR } from './var-placeholder.enum';
 
 export const CONST = {
-  workspaceId: '0',
+  workspaceId: VAR.workspaceId,
   code: '{{code}}',
   avatarPath:
     'https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg',
@@ -24,11 +25,12 @@ export const CONST = {
   content: 'defaultContent',
   // userIds: `["{{VAR.userId1}}"]`,
   channelType: ChannelTypeEnum.CHANNEL_TYPE_ENUM_CHANNEL,
-  ref: 'ref',
-  prefix: 'defaultPrefix',
+  ref: VAR.ref,
+  prefix: VAR.prefix,
   quantity: 2,
   badge: BadgeEnum.USER_BADGE_TYPE_DEFAULT,
   nextPageToken: ulid(), // ✅ OK
   status: '🚀',
-  expireAfterTime: ExpireAfterTimeEnum.USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_1_HOUR
+  expireAfterTime: ExpireAfterTimeEnum.USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_1_HOUR,
+  channelId: VAR.channelId
 } as const;

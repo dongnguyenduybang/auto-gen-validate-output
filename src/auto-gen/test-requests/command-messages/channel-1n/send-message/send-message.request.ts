@@ -11,4 +11,10 @@ export const SendMessageRequest = () => createAIEnhancedDTO()
       body: ACTION.SEND_MESSAGE,
     },
   )
+  .addBeforeAllActionAI('create channel', 'create-channel',
+    ACTION.CREATE_CHANNEL,
+    {
+      body: ACTION.CREATE_CHANNEL
+    }
+  )
   .execute();

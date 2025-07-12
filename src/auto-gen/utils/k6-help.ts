@@ -2,7 +2,7 @@ import path, { basename } from 'path';
 import fs from 'fs';
 import * as os from 'os';
 import { setupConfiguration } from './get-config';
-import { findAllDtoDirectories, findAllFoldersWithDtoAndRequest, getDtoFolderPath } from './helper';
+import { getDtoFolderPath } from './helper';
 import { executeSteps } from './text-execute-test';
 setupConfiguration();
 
@@ -37,6 +37,28 @@ export function mapOption(
 
 export async function generateSetupData(dtoPath) {
   try {
+const resolveVar =
+  `export function resolveVariables(obj, context) {
+  if (typeof obj === 'string') {
+    return obj.replace(
+      /\\{\\{(.+?)\\}\\}/g,
+      (_, path) => {
+        // Simple path resolution - could be enhanced for nested objects
+        return context[path.trim()] ?? \`{{\${path}}}\`;
+      }
+    );
+  }
+  if (Array.isArray(obj)) {
+    return obj.map((item) => resolveVariables(item, context));
+  }
+  if (typeof obj === 'object' && obj !== null) {
+    return Object.fromEntries(
+      Object.entries(obj).map(([k, v]) => [k, resolveVariables(v, context)])
+    );
+  }
+  return obj;
+}
+`;
 
     const context = globalThis.globalContext
     const dtoName = basename(dtoPath);
@@ -60,8 +82,18 @@ export async function generateSetupData(dtoPath) {
         }
       });
     }
-    
+
     const setupData = context.clone();
+    const utilsPaths = path.join(
+      os.homedir(),
+      'Documents',
+      'k6-studio',
+      'Scripts',
+      'common',
+    )
+    const utils = path.join(utilsPaths, `utils.js`);
+    fs.mkdirSync(path.dirname(utils), { recursive: true });
+    fs.writeFileSync(utils, resolveVar);
 
     const scriptPath = path.join(
       os.homedir(),
