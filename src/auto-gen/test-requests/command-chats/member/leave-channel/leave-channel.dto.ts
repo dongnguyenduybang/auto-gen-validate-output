@@ -3,7 +3,7 @@ import {
   IsNotEmpty,
   IsInvalid,
   IsString,
-} from '@decorators/';
+} from '../../../../decorator/index';
 
 export class LeaveChannelDTO {
   @IsDefined({ message: `Could not resolve permission type` })
@@ -17,5 +17,4 @@ export class LeaveChannelDTO {
   @IsNotEmpty({ message: `Could not resolve permission type` })
   @IsString({ message: `Could not resolve permission type` })
   channelId: string = '';
-
 }

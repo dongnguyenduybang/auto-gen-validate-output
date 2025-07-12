@@ -1,3 +1,4 @@
+import { ErrorMessage } from '../../../../enums';
 import {
   IsDefined,
   IsNotEmpty,
@@ -7,28 +8,35 @@ import {
   IsString,
   MaxLength,
   MinLength,
-} from '@utils/declarations';
+  IsNotNull,
+} from '../../../../decorator';
 
 export class UpdateMessageDTO {
-  @IsDefined({ message: `Could not resolve permission type` })
-  @IsInvalid({ message: `Invalid channel` })
-  @IsNotEmpty({ message: `Could not resolve permission type` })
-  @IsString({ message: `Could not resolve permission type` })
+  @IsDefined({ message: ErrorMessage.COULD_NOT_PERMISSION })
+  @IsInvalid({ message: ErrorMessage.INVALID_CHANNEL })
+  @IsNotNull({ message: ErrorMessage.COULD_NOT_PERMISSION })
+  @IsNotEmpty({ message: ErrorMessage.COULD_NOT_PERMISSION })
+  @IsString({ message: ErrorMessage.COULD_NOT_PERMISSION })
   workspaceId: string = '';
 
-  @IsDefined({ message: `Could not resolve permission type` })
-  @IsInvalid({ message: `Unsupported permission type` })
-  @IsNotEmpty({ message: `Could not resolve permission type` })
-  @IsString({ message: `Could not resolve permission type` })
+  @IsDefined({ message: ErrorMessage.UNSUPPORTED_PERMISSION_TYPE })
+  @IsInvalid({ message: ErrorMessage.INVALID_CHANNEL })
+  @IsNotNull({ message: ErrorMessage.COULD_NOT_PERMISSION })
+  @IsNotEmpty({ message: ErrorMessage.COULD_NOT_PERMISSION })
+  @IsString({ message: ErrorMessage.COULD_NOT_PERMISSION })
   channelId: string = '';
 
   @IsString()
   @IsULID()
+  @IsNotEmpty()
+  @IsNotNull()
   @IsDefined()
   messageId: string = '';
 
   @IsString()
   @IsDefined()
+  @IsNotEmpty()
+  @IsNotNull()
   @MinLength(1)
   @MaxLength(2000)
   content: string = '';

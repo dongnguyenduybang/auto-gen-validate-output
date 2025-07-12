@@ -1,13 +1,18 @@
-import { ACTION, HEADER_LIST, PretendingTo, ReportCategory, VAR } from "@enum/";
-import { RequestTestSuite } from "@utils/declarations";
+import {
+  ACTION,
+  HEADER_LIST,
+  PretendingTo,
+  ReportCategory,
+  VAR,
+} from '../../../../enums/index';
+import { RequestTestSuite } from '../../../../utils/declarations';
 
 export const ReportUserRequest: RequestTestSuite = {
   action: ACTION.REPORT_USER,
   headers: HEADER_LIST.create({ token: VAR.token }),
   body: {
     userId: VAR.userId1,
-    reportCategory: ReportCategory.REPORT_CATEGORY_UNSPECIFIED,
-    pretendingTo: PretendingTo.PRETENDING_TO_UNSPECIFIED,
+    reportCategory: ReportCategory.REPORT_CATEGORY_HARASSMENT,
     reportReason: 'report user',
   },
   options: [
@@ -15,7 +20,7 @@ export const ReportUserRequest: RequestTestSuite = {
       beforeAll: [],
       beforeEach: [],
       afterEach: [],
-      afterAll: []
+      afterAll: [],
     },
   ],
 };

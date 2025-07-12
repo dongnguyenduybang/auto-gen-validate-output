@@ -1,23 +1,14 @@
-import { VAR, ACTION, HEADER_LIST } from '@enum/';
+import { VAR, ACTION, HEADER_LIST } from '../../../../enums';
+import { DTOBuilder } from '../../../../utils/chain-dto';
 
-export const UpdateChannelAvatarRequest = {
-  action: ACTION.UPDATE_CHANNEL_AVATAR,
-  body: {
-    channelId: VAR.channelId,
-    workspaceId: VAR.workspaceId,
-    avatarPath: VAR.avatarPath
-  },
-  headers: HEADER_LIST.create({ token: VAR.token }),
-  options: [
-    {
-      beforeAll: [],
-      beforeEach: [
-       
-      ],
-      afterEach: [],
-      afterAll: [
-      ]
+export const UpdateChannelAvatarRequest = new DTOBuilder()
+  .startStep('update channel avatar')
+  .addAction('update channel avatar', 'update-avatar', ACTION.UPDATE_CHANNEL_AVATAR, {
+    headers: HEADER_LIST.create({ token: VAR.token }),
+    body: {
+      channelId: VAR.channelId,
+      workspaceId: VAR.workspaceId,
+      avatarPath: VAR.avatarPath,
     },
-
-  ],
-};
+  })
+  .execute();

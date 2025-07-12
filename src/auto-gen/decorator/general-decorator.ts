@@ -96,9 +96,18 @@ export function isValidURL(options?: { url?: string }) {
   return (target: any, propertyKey: string) => {
     Reflect.defineMetadata('isValidURL', true, target, propertyKey);
     if (options?.url) {
+      Reflect.defineMetadata('isValidURL', options.url, target, propertyKey);
+    }
+  };
+}
+
+export function ValidateNested(options?: { each?: boolean }) {
+  return (target: any, propertyKey: string) => {
+    Reflect.defineMetadata('isValidateNested', true, target, propertyKey);
+    if (options?.each) {
       Reflect.defineMetadata(
-        'isValidURL',
-        options.url,
+        'isValidateNested',
+        options.each,
         target,
         propertyKey,
       );
@@ -106,6 +115,16 @@ export function isValidURL(options?: { url?: string }) {
   };
 }
 
+// Đảm bảo decorator Type lưu metadata đúng cách
+export function Type(typeFunction: () => any) {
+  return (target: any, propertyKey: string) => {
+    const type = typeFunction();
+    // Lưu metadata vào prototype của class
+    Reflect.defineMetadata('nestedType', type, target, propertyKey);
+    // Không ghi đè design:type để tránh xung đột với TypeScript
+    // Reflect.defineMetadata('design:type', type, target, propertyKey);
+  };
+}
 export function IsEmoji(options?: { value?: number }) {
   return (target: any, propertyKey: string) => {
     Reflect.defineMetadata('isEmoji', true, target, propertyKey);
@@ -126,14 +145,13 @@ export function GenEmoji(emoji: any, quantity?: number) {
     if (emoji) {
       Reflect.defineMetadata(
         'genEmoji',
-         {emoji, quantity },
+        { emoji, quantity },
         target,
         propertyKey,
       );
     }
   };
 }
-
 
 /* check value là một ULID */
 export function IsULID() {
@@ -175,5 +193,3 @@ export function IsMath(options?: {
     }
   };
 }
-
-

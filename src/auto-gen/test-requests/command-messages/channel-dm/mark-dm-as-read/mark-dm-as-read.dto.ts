@@ -1,4 +1,4 @@
-import { ErrorMessage } from '@enum/';
+import { ErrorMessage } from '../../../../enums/index';
 import {
   IsDefined,
   IsNotEmpty,
@@ -6,7 +6,7 @@ import {
   IsString,
   IsULID,
   IsNotNull,
-} from '@decorators/';
+} from '../../../../decorator/index';
 
 export class MarkDmAsReadDTO {
   @IsString({ message: ErrorMessage.COULD_NOT_PERMISSION })

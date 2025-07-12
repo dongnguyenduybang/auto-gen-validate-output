@@ -1,9 +1,9 @@
-import { ExtractConfig } from "./declarations";
+import { ExtractConfig } from './declarations';
 
 const mockUserConfig: ExtractConfig = {
   user: {
     path: ['data'],
-    fields: ['userId', 'token'],
+    fields: ['userId', 'token', 'username'],
   },
 };
 
@@ -18,10 +18,10 @@ const createChannelConfig: ExtractConfig = {
       'totalMembers',
     ],
   },
-  users: {
-    path: ['includes', 'users'],
-    fields: ['username'],
-  },
+  // users: {
+  //   path: ['includes', 'users'],
+  //   fields: ['username'],
+  // },
 };
 
 const getChannelConfig: ExtractConfig = {};
@@ -68,20 +68,36 @@ const ejectMessageConfig: ExtractConfig = {
   },
 };
 
-const createInvitationConfig: ExtractConfig = {
-
+const ringbackToneCreateConfig: ExtractConfig = {
+  data: {
+    path: ['data'],
+    fields: ['ringbackToneId']
+  }
 }
-
+const createInvitationConfig: ExtractConfig = {
+  data: {
+    path: ['data'],
+    fields: ['code']
+  }
+};
+const sendInvitationConfig: ExtractConfig = {
+  data: {
+    path: ['data'],
+    fields: ['code']
+  }
+}
 // Ánh xạ action tới cấu hình
 export const configMap: Record<string, ExtractConfig> = {
-  mockUser: mockUserConfig,
-  createChannel: createChannelConfig,
+  V3MockUsersRequest: mockUserConfig,
+  V3CreateChannelRequest: createChannelConfig,
   getChannel: getChannelConfig,
   acceptInvitation: acceptInvitationConfig,
-  sendMessage: sendMessageConfig,
+  V3SendMessageRequest: sendMessageConfig,
   updateMessage: updateMessageConfig,
-  sendDmMessage: sendDmMessageConfig,
+  V3SendDMMessageRequest: sendDmMessageConfig,
   acceptMessage: acceptMessageConfig,
-  ejectMessage: ejectMessageConfig,
+  V3RejectMessageRequestRequest: ejectMessageConfig,
   createInvitation: createInvitationConfig,
+  ringbackToneCreate: ringbackToneCreateConfig,
+  sendInvitation: sendInvitationConfig,
 };

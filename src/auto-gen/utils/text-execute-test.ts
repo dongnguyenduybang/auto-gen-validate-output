@@ -2,9 +2,14 @@ import { getApiFunctions } from '../functions/api-registry';
 import { extractDatas } from './extract-data';
 import { Step, StepResult } from './declarations';
 import { TestContext } from './text-context';
-import { ACTION_CONFIG } from '@enum/';
-import { handleExpectConfig } from './check-expect';
-import { checkResponse, resolveExpectConfig, resolveVariables } from './helper';
+import { ACTION_CONFIG } from '../enums';
+import { handleExpectConfig } from '../validates/check-expect';
+import {
+  checkResponse,
+  transformPayload,
+  resolveExpectConfig,
+  resolveVariables,
+} from './helper';
 
 export async function executeSteps(
   steps: Step[],
@@ -16,7 +21,8 @@ export async function executeSteps(
     try {
       const result = await executeSingleStep(step, context);
       results.push(result);
-      if(!result.status) break;
+      // context.debug();
+      if (!result.status) break;
     } catch (error) {
       console.error(`Error executing step ${index}:`, error);
     }
@@ -28,55 +34,63 @@ async function executeSingleStep(
   step: Step,
   context?: TestContext,
 ): Promise<StepResult> {
-
-  const { action, body, headers, expect: expectConfig } = step;
+  const { headers, config, expect: expectConfig } = step;
   // defined method & path dựa vào action config
-  const actionInfo = ACTION_CONFIG[action as keyof typeof ACTION_CONFIG];
+  const extractBody = transformPayload(config.body);
   // resolve variables body and headers
-  const resolveBody = resolveVariables(body, context);
-  const resolveHeaders = resolveVariables(headers, context);
+  const resolveBody = resolveVariables(extractBody.body, context);
+  const resolveHeaders = resolveVariables(extractBody.headers, context);
 
   // get api function
-  const apiFunction = getApiFunctions(action, context);
+  const apiFunction = getApiFunctions(config.schema, context);
   const response = await apiFunction({
-    method: actionInfo.method,
-    path: actionInfo.path,
+    path: config.path,
     headers: resolveHeaders,
     body: resolveBody,
   });
-  console.log(action, response.data)
+
+  // console.log(JSON.stringify(response, null, 2))
   const hasExpectConfig = !!expectConfig;
-  if ((!response?.data?.ok) && !hasExpectConfig) {
+  if (!response?.ok && !hasExpectConfig) {
     return {
       type: 'request DTO',
       status: false,
-      stepName: action,
-      error: response?.error || {
-        code: response?.data?.error?.code,
-        message: response?.data?.error?.message,
-        details: response?.data?.error?.details,
-      } || response?.data
-
+      stepName: config.schema,
+      error:
+        response?.error || {
+          code: response?.data?.error?.code,
+          message: response?.data?.error?.message,
+          details: response?.data?.error?.details,
+        } ||
+        response?.data,
     };
-
   } else {
     // validate response
-    const resultCheckResponse = await checkResponse(step, response.data, resolveBody, context)
-    if (!resultCheckResponse.status) {
-      return resultCheckResponse
-    } else {
+    const resultCheckResponse = await checkResponse(
+      step,
+      response,
+      resolveBody,
+      context,
+    );
 
+    if (!resultCheckResponse.status) {
+      return resultCheckResponse;
+    } else {
       // save context
-      if (response?.data.data) {
-        const extractedData = extractDatas(response.data, action);
+      if (response?.data) {
+        const extractedData = extractDatas(response, config.schema);
         context.mergeData(extractedData);
       }
 
       // validate saga
       if (expectConfig) {
-        const resolveConfig = resolveExpectConfig(expectConfig, context)
+        const resolveConfig = resolveExpectConfig(expectConfig, context);
         // get api function
-        const result = await handleExpectConfig(response.data, resolveConfig, context);
+        const result = await handleExpectConfig(
+          response.data,
+          resolveConfig,
+          context,
+        );
         if (result.length > 0) {
           const groupedErrors = result.reduce((acc, item) => {
             const key = item.type || 'unknown';
@@ -87,8 +101,8 @@ async function executeSingleStep(
           return {
             type: 'expect',
             status: false,
-            stepName: action,
-            error: groupedErrors
+            stepName: config.schema,
+            error: groupedErrors,
           };
         }
       }
@@ -97,6 +111,6 @@ async function executeSingleStep(
   return {
     type: null,
     status: true,
-    stepName: action,
+    stepName: config.schema,
   };
 }

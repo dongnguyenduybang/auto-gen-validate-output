@@ -19,8 +19,8 @@ import {
   IsArray,
   IsBoolean,
   IsObject,
-} from '@decorators/';
-import { DirectMessageStatusEnum } from '@enum/';
+} from '../decorator';
+import { DirectMessageStatusEnum } from '../enums';
 
 export class Message extends GeneralMessage {
   @ValidIf('workspaceId', '===', '0')

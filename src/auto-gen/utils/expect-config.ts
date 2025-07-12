@@ -1,10 +1,9 @@
-import { HEADER_LIST, VAR } from "../enums";
+import { HEADER_LIST, VAR } from '../enums';
 export function executeFunction(
-  path: string, 
-  action: string, 
+  path: string,
+  action: string,
   payload: unknown[] | unknown,
-  filter: string[] = [], 
-
+  filter: string[] = [],
 ) {
   return {
     path,
@@ -12,6 +11,6 @@ export function executeFunction(
     payload,
     filter,
     isArrayMapping: Array.isArray(payload),
-    headers: HEADER_LIST.create({token: VAR.token})
+    headers: HEADER_LIST.create({ token: VAR.token }),
   };
 }

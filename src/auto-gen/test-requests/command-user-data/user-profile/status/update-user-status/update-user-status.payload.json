@@ -1,0 +1,95 @@
+[
+    {
+        "body": {
+            "content": 123,
+            "status": "🚀"
+        },
+        "expects": [
+            "content expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "status": "🚀"
+        },
+        "expects": [
+            "content string must contain at most 50 character(s)"
+        ]
+    },
+    {
+        "body": {
+            "status": "🚀"
+        },
+        "expects": []
+    },
+    {
+        "body": {
+            "content": "",
+            "status": "🚀"
+        },
+        "expects": [
+            "content should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "content": null,
+            "status": "🚀"
+        },
+        "expects": [
+            "content expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "content": "defaultContent",
+            "status": 123
+        },
+        "expects": [
+            "status expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "content": "defaultContent",
+            "status": "🚀🚀"
+        },
+        "expects": [
+            "status only accepts 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "content": "defaultContent",
+            "status": ""
+        },
+        "expects": [
+            "status should not be empty",
+            "status invalid emoji",
+            "status only accepts 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "content": "defaultContent"
+        },
+        "expects": []
+    },
+    {
+        "body": {
+            "content": "defaultContent",
+            "status": null
+        },
+        "expects": [
+            "status expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "content": "defaultContent",
+            "status": "🚀"
+        },
+        "expects": []
+    }
+]

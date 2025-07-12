@@ -6,7 +6,7 @@ import {
   MaxLength,
   MinLength,
   IsNotNull,
-} from '@decorators/';
+} from '../../../../decorator/index';
 
 export class UpdateNicknameDTO {
   @IsDefined({ message: `Could not resolve permission type` })
@@ -25,11 +25,11 @@ export class UpdateNicknameDTO {
   @IsDefined({ message: `Could not resolve permission type` })
   @IsNotEmpty({ message: `Could not resolve permission type` })
   @IsInvalid({ message: `Unauthorized request` })
-  @IsNotNull({ message: `Could not resolve permission type`})
+  @IsNotNull({ message: `Could not resolve permission type` })
   userId: string = '';
 
   @IsString()
-  @IsDefined()
+  @IsDefined({ message: 'Unable update with the same name' })
   @MinLength(1)
   @MaxLength(50)
   nickname: string = '';

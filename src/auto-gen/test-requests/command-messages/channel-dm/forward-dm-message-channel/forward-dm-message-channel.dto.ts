@@ -1,4 +1,4 @@
-import { ErrorMessage } from '@enum/';
+import { ErrorMessage } from '../../../../enums/index';
 import {
   IsDefined,
   IsNotEmpty,
@@ -7,7 +7,7 @@ import {
   IsArray,
   MinArray,
   IsNotNull,
-} from '@decorators/';
+} from '../../../../decorator/index';
 
 export class ForwardDmMessageChannelDTO {
   @IsString({ message: ErrorMessage.COULD_NOT_PERMISSION })
@@ -20,7 +20,10 @@ export class ForwardDmMessageChannelDTO {
   @IsArray({
     decorators: [
       { name: 'IsString' },
-      { name: 'IsULID', message: `Code: 404. Message: Data not found. Details: Data not found.` },
+      {
+        name: 'IsULID',
+        message: `Code: 404. Message: Data not found. Details: Data not found.`,
+      },
       { name: 'IsUnique' },
       { name: 'IsNotNull' },
       { name: 'MinArrayItem', params: 1 },
@@ -29,5 +32,4 @@ export class ForwardDmMessageChannelDTO {
   @IsDefined()
   @MinArray(1)
   originalMessageIds: string[] = [];
-
 }

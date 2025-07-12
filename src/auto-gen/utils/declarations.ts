@@ -1,6 +1,24 @@
+import {
+  GetChannelResponse,
+  MockUserResponse,
+  AcceptInvitationResponse,
+  CreateChannelResponse,
+  SendDmMessageResponse,
+  SendMessageResponse,
+  UpdateMessageResponse,
+} from '../response';
+import { TestContext } from './text-context';
 
-import { GetChannelResponse,MockUserResponse, AcceptInvitationResponse, CreateChannelResponse, SendDmMessageResponse, SendMessageResponse, UpdateMessageResponse } from "@responses/";
-import { TestContext } from "./text-context";
+export interface GenRequestOptions {
+    beforeAll?: any[];
+    beforeEach?: any[];
+    afterAll?: any[];
+    afterEach?: any[];
+}
+
+export interface RequestHeaders {
+    [key: string]: string;
+}
 
 export interface ValidationError {
   path: string;
@@ -23,9 +41,9 @@ interface ExpectData {
   headers?: Record<string, string>;
 }
 export interface Expect {
-  ok?: boolean,
-  data?: ExpectData
-  includes?: ExpectData[]
+  ok?: boolean;
+  data?: ExpectData;
+  includes?: ExpectData[];
 }
 
 export interface ExpectResult {
@@ -34,12 +52,10 @@ export interface ExpectResult {
   message: string;
   actualValue?: string;
   expectedValue?: string;
-
 }
 export interface Step<T = any> {
-  action: string;
-  body?: T;
   headers?: Record<string, string>;
+  config?: T;
   expect?: Expect;
   delay?: number;
 }
@@ -51,14 +67,16 @@ export interface SagaTestSuite {
 
 export interface RequestTestSuite {
   action: string;
-  headers: Record<string, string>;
+  dtoName: string;
+  cluster: string;
+  headers: object;
   body: Object;
-  options: FirstStep[]
+  options: FirstStep[];
 }
 
 interface FirstStep {
   beforeEach?: Step[];
-  beforeAll?: Step[]
+  beforeAll?: Step[];
   afterEach?: Step[];
   afterAll?: Step[];
 }
@@ -124,21 +142,25 @@ export interface ApiFunctionParams {
   body: any;
 }
 
-export interface TestResult {
-  path: string;
-    className: string;
-    allSteps: any[];
-    chunkNumber?: number;
-    failedTests: any[];
-    codedTest: any[];
-    passedTests: number;
-    totalTests: number;
-    logicTests: any[];
-    failedStep: any[];
-    passed200?: number;
-    passed201?: number;
+export interface RecentSelection {
+  action: string;
+  type: string;
+  paths: string[];
+  timestamp: number;
 }
 
+export interface TestResult {
+  path: string;
+  className: string;
+  allSteps: any[];
+  chunkNumber?: number;
+  failedTests: any[];
+  codedTest: any[];
+  warnings: any[];
+  passedTests: number;
+  totalTests: number;
+  failedStep: any[];
+}
 
 export type ActionHandler = (dtoName: string) => Promise<void> | void;
 export type ApiRegistry = Record<string, ApiConfig>;
@@ -154,9 +176,9 @@ export type HeaderOptions = {
 
 export type Actual = {
   ok: boolean;
-  data: object
+  data: object;
   includes: object;
-}
+};
 
 export const responseClassMap = {
   CreateChannelResponse,
@@ -194,7 +216,6 @@ export interface ValidIfCondition {
   value: any;
 }
 
-
 export interface ValidIfOptions {
   conditions: ValidIfCondition | ValidIfCondition[];
   result?: {
@@ -203,4 +224,66 @@ export interface ValidIfOptions {
     [key: string]: any;
   };
   logicalOperator?: 'AND' | 'OR';
+}
+
+export interface TestReport {
+  path: string;
+  passedTests: number;
+  totalTests: number;
+  failedTests: { code: number }[];
+  warnings: any[];
+  codedTest: { code: number }[];
+}
+
+// Định nghĩa interface cho dữ liệu phân tích
+export interface ReportMetrics {
+  endpoint: string;
+  passed: number;
+  failed: number;
+  warnings: number;
+  code_200: number;
+  code_201: number;
+  code_400: number;
+  code_403: number;
+  code_500: number;
+}
+
+export interface TestReport {
+  path: string;
+  passedTests: number;
+  failedTests: { code: number }[];
+  warnings: any[];
+  codedTest: { code: number }[];
+}
+
+// Định nghĩa interface cho dữ liệu phân tích
+export interface ReportMetrics {
+  endpoint: string;
+  passed: number;
+  failed: number;
+  warnings: number;
+  code_200: number;
+  code_201: number;
+  code_400: number;
+  code_403: number;
+  code_500: number;
+}
+
+export interface ReportData {
+  endpoint: string;
+  dtoName: string;
+  total: number;
+  passed: number;
+  failed: number;
+  warnings: number;
+  case200: number;
+  case201: number;
+  case400: number;
+  case403: number;
+  case404: number;
+  case500: number;
+  hasFailures: boolean;
+  jsonFile: string;
+  detailFilePath: string | null;
+  reportCategory: string;
 }

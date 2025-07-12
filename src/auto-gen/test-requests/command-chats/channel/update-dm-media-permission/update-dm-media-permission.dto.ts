@@ -1,4 +1,4 @@
-import { MediaPermissionSettingEnum } from '@enum/';
+import { MediaPermissionSettingEnum } from '../../../../enums/index';
 import {
   IsDefined,
   IsNotEmpty,
@@ -6,19 +6,18 @@ import {
   IsString,
   IsNotNull,
   IsEnum,
-} from '@decorators/';
+} from '../../../../decorator/index';
 
 export class UpdateDmMediaPermissionDTO {
-
   @IsString({ message: `Could not resolve permission type` })
   @IsDefined({ message: `Could not resolve permission type` })
   @IsNotEmpty({ message: `Could not resolve permission type` })
   @IsInvalid({ message: `Unauthorized request` })
-  @IsNotNull({ message: `Could not resolve permission type`})
+  @IsNotNull({ message: `Could not resolve permission type` })
   userId: string = '';
 
   @IsEnum(MediaPermissionSettingEnum)
   @IsDefined()
   @IsNotEmpty()
-  mediaPermissionSetting: MediaPermissionSettingEnum = 0
+  mediaPermissionSetting: MediaPermissionSettingEnum = 0;
 }

@@ -1,0 +1,47 @@
+[
+    {
+        "body": {
+            "ringbackToneId": 123
+        },
+        "expects": [
+            "ringbackToneId expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "ringbackToneId": "{{ringbackToneId}}"
+        },
+        "expects": []
+    },
+    {
+        "body": {},
+        "expects": [
+            "ringbackToneId required"
+        ]
+    },
+    {
+        "body": {
+            "ringbackToneId": ""
+        },
+        "expects": [
+            "ringbackToneId should not be empty",
+            "ringbackToneId invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "ringbackToneId": null
+        },
+        "expects": [
+            "ringbackToneId expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "ringbackToneId": "invalid_ULID"
+        },
+        "expects": [
+            "ringbackToneId invalid ulid"
+        ]
+    }
+]

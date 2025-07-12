@@ -18,8 +18,8 @@ import {
   IsDefined,
   IsObject,
   IsString,
-} from '@decorators/';
-import { DirectMessageStatusEnum } from '@enum/';
+} from '../decorator';
+import { DirectMessageStatusEnum } from '../enums';
 
 export class Profile {}
 
@@ -33,11 +33,6 @@ export class Message extends GeneralMessage {
   @IsString()
   @IsDefined()
   content?: string;
-
-  @ValidIf('userId', '===', '{{userId}}')
-  @IsString()
-  @IsDefined()
-  userId?: string;
 
   @ValidIf('createTime', '===', 'response.updateTime')
   @IsString()

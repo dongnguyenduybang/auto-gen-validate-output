@@ -39,7 +39,7 @@ export function ValidIf(
   conditionOrOptions: string | ValidIfOptions,
   operator?: string,
   value?: any,
-  result?: any
+  result?: any,
 ): PropertyDecorator {
   return (target: any, propertyKey: string | symbol) => {
     let validIfData: ValidIfOptions;
@@ -50,9 +50,9 @@ export function ValidIf(
         conditions: {
           field: conditionOrOptions,
           operator: operator!,
-          value: value
+          value: value,
         },
-        result: result
+        result: result,
       };
     } else {
       // Cách sử dụng mới: ValidIf(options)
@@ -60,12 +60,7 @@ export function ValidIf(
     }
 
     const defineMetadata = (target: any) => {
-      Reflect.defineMetadata(
-        'validIf',
-        validIfData,
-        target,
-        propertyKey
-      );
+      Reflect.defineMetadata('validIf', validIfData, target, propertyKey);
     };
 
     // Lưu metadata vào target

@@ -1,0 +1,138 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Websocket manager",
+    "description": "Websocket manager Service Ajv Decorator Swagger",
+    "version": "3.0.1"
+  },
+  "components": {
+    "schemas": {
+      "V3OpenConnectionRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callId": {
+            "type": "string"
+          },
+          "intent": {
+            "type": "string"
+          }
+        },
+        "$id": "V3OpenConnectionRequest"
+      },
+      "V3SessionMetadataRequest": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "x-user-id": {
+            "type": "string"
+          },
+          "x-device-id": {
+            "type": "string"
+          },
+          "x-country-code": {
+            "type": "string"
+          },
+          "x-device-type": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "x-user-id",
+          "x-device-id",
+          "x-country-code",
+          "x-device-type"
+        ],
+        "$id": "V3SessionMetadataRequest"
+      },
+      "V3ErrorResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "number",
+            "description": "The error code"
+          },
+          "message": {
+            "type": "string",
+            "description": "The error message"
+          },
+          "details": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Detail about the error"
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "details"
+        ],
+        "$id": "V3ErrorResponse"
+      },
+      "V3OpenConnectionResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "The status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          },
+          "connectParams": {
+            "$ref": "#/components/schemas/V3ConnectParams",
+            "description": "The connect params data"
+          }
+        },
+        "$id": "V3OpenConnectionResponse"
+      },
+      "V3ConnectParams": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "url": {
+            "type": "string"
+          }
+        },
+        "$id": "V3ConnectParams"
+      }
+    }
+  },
+  "paths": {
+    "/WebsocketManager/OpenConnection": {
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3OpenConnectionResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "OpenConnection",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "callId",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "intent",
+            "type": "string"
+          }
+        ],
+        "type": "object",
+        "additionalProperties": false
+      }
+    }
+  }
+}

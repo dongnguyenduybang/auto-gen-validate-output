@@ -1,0 +1,1356 @@
+[
+    {
+        "body": {
+            "workspaceId": 123,
+            "channelId": "{{channelId}}",
+            "expiresIn": 1000,
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "channelId": 123,
+            "expiresIn": 1000,
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "expiresIn": 1000,
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "channelId": "",
+            "expiresIn": 1000,
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "channelId": null,
+            "expiresIn": 1000,
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "channelId": "invalid_value",
+            "expiresIn": 1000,
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "channelId": "{{channelId}}",
+            "expiresIn": "invalid_number",
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "channelId": "{{channelId}}",
+            "expiresIn": 0,
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "channelId": "{{channelId}}",
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "channelId": "{{channelId}}",
+            "expiresIn": "",
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "channelId": "{{channelId}}",
+            "expiresIn": 1000,
+            "maxUses": "invalid_number"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "channelId": "{{channelId}}",
+            "expiresIn": 1000
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": 123,
+            "channelId": "{{channelId}}",
+            "expiresIn": 1000,
+            "maxUses": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "expiresIn": 1000,
+            "maxUses": 0
+        },
+        "expects": [
+            "maxUses must be at least 1"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 123,
+            "expiresIn": 1000,
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "expiresIn": 1000,
+            "maxUses": 0
+        },
+        "expects": [
+            "Unsupported permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "expiresIn": 1000,
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": null,
+            "expiresIn": 1000,
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "invalid_value",
+            "expiresIn": 1000,
+            "maxUses": 0
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "expiresIn": "invalid_number",
+            "maxUses": 0
+        },
+        "expects": [
+            "expiresIn must be a number conforming to the specified constraints",
+            "maxUses must be at least 1"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "expiresIn": 0,
+            "maxUses": 0
+        },
+        "expects": [
+            "expiresIn must be at least 1",
+            "maxUses must be at least 1"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "maxUses": 0
+        },
+        "expects": [
+            "expiresIn required",
+            "expiresIn must be a number conforming to the specified constraints",
+            "maxUses must be at least 1"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "expiresIn": "",
+            "maxUses": 0
+        },
+        "expects": [
+            "expiresIn should not be empty",
+            "expiresIn must be a number conforming to the specified constraints",
+            "maxUses must be at least 1"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "expiresIn": 1000,
+            "maxUses": "invalid_number"
+        },
+        "expects": [
+            "maxUses must be a number conforming to the specified constraints"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "expiresIn": 1000
+        },
+        "expects": [
+            "maxUses required",
+            "maxUses must be a number conforming to the specified constraints"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "expiresIn": 1000,
+            "maxUses": ""
+        },
+        "expects": [
+            "maxUses should not be empty",
+            "maxUses must be a number conforming to the specified constraints"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "expiresIn": 1000,
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": 123,
+            "expiresIn": 1000,
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "expiresIn": 1000,
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "",
+            "expiresIn": 1000,
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": null,
+            "expiresIn": 1000,
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "invalid_value",
+            "expiresIn": 1000,
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "expiresIn": "invalid_number",
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "expiresIn": 0,
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "expiresIn": "",
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "expiresIn": 1000,
+            "maxUses": "invalid_number"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "expiresIn": 1000
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "channelId": "{{channelId}}",
+            "expiresIn": 1000,
+            "maxUses": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "expiresIn": 1000,
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 123,
+            "expiresIn": 1000,
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "expiresIn": 1000,
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "expiresIn": 1000,
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": null,
+            "expiresIn": 1000,
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "invalid_value",
+            "expiresIn": 1000,
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "expiresIn": "invalid_number",
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "expiresIn": 0,
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "expiresIn": "",
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "expiresIn": 1000,
+            "maxUses": "invalid_number"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "expiresIn": 1000
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "expiresIn": 1000,
+            "maxUses": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": null,
+            "channelId": "{{channelId}}",
+            "expiresIn": 1000,
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": null,
+            "channelId": 123,
+            "expiresIn": 1000,
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": null,
+            "expiresIn": 1000,
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": null,
+            "channelId": "",
+            "expiresIn": 1000,
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": null,
+            "channelId": null,
+            "expiresIn": 1000,
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": null,
+            "channelId": "invalid_value",
+            "expiresIn": 1000,
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": null,
+            "channelId": "{{channelId}}",
+            "expiresIn": "invalid_number",
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": null,
+            "channelId": "{{channelId}}",
+            "expiresIn": 0,
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": null,
+            "channelId": "{{channelId}}",
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": null,
+            "channelId": "{{channelId}}",
+            "expiresIn": "",
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": null,
+            "channelId": "{{channelId}}",
+            "expiresIn": 1000,
+            "maxUses": "invalid_number"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": null,
+            "channelId": "{{channelId}}",
+            "expiresIn": 1000
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": null,
+            "channelId": "{{channelId}}",
+            "expiresIn": 1000,
+            "maxUses": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "invalid_value",
+            "channelId": "{{channelId}}",
+            "expiresIn": 1000,
+            "maxUses": 0
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "invalid_value",
+            "channelId": 123,
+            "expiresIn": 1000,
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "invalid_value",
+            "expiresIn": 1000,
+            "maxUses": 0
+        },
+        "expects": [
+            "Unsupported permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "invalid_value",
+            "channelId": "",
+            "expiresIn": 1000,
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "invalid_value",
+            "channelId": null,
+            "expiresIn": 1000,
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "invalid_value",
+            "channelId": "invalid_value",
+            "expiresIn": 1000,
+            "maxUses": 0
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "invalid_value",
+            "channelId": "{{channelId}}",
+            "expiresIn": "invalid_number",
+            "maxUses": 0
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "invalid_value",
+            "channelId": "{{channelId}}",
+            "expiresIn": 0,
+            "maxUses": 0
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "invalid_value",
+            "channelId": "{{channelId}}",
+            "maxUses": 0
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "invalid_value",
+            "channelId": "{{channelId}}",
+            "expiresIn": "",
+            "maxUses": 0
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "invalid_value",
+            "channelId": "{{channelId}}",
+            "expiresIn": 1000,
+            "maxUses": "invalid_number"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "invalid_value",
+            "channelId": "{{channelId}}",
+            "expiresIn": 1000
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "invalid_value",
+            "channelId": "{{channelId}}",
+            "expiresIn": 1000,
+            "maxUses": ""
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 123,
+            "expiresIn": "invalid_number",
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 123,
+            "expiresIn": 0,
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 123,
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 123,
+            "expiresIn": "",
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 123,
+            "expiresIn": 1000,
+            "maxUses": "invalid_number"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 123,
+            "expiresIn": 1000
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 123,
+            "expiresIn": 1000,
+            "maxUses": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "expiresIn": "invalid_number",
+            "maxUses": 0
+        },
+        "expects": [
+            "Unsupported permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "expiresIn": 0,
+            "maxUses": 0
+        },
+        "expects": [
+            "Unsupported permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "maxUses": 0
+        },
+        "expects": [
+            "Unsupported permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "expiresIn": "",
+            "maxUses": 0
+        },
+        "expects": [
+            "Unsupported permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "expiresIn": 1000,
+            "maxUses": "invalid_number"
+        },
+        "expects": [
+            "Unsupported permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "expiresIn": 1000
+        },
+        "expects": [
+            "Unsupported permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "expiresIn": 1000,
+            "maxUses": ""
+        },
+        "expects": [
+            "Unsupported permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "expiresIn": "invalid_number",
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "expiresIn": 0,
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "expiresIn": "",
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "expiresIn": 1000,
+            "maxUses": "invalid_number"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "expiresIn": 1000
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "expiresIn": 1000,
+            "maxUses": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": null,
+            "expiresIn": "invalid_number",
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": null,
+            "expiresIn": 0,
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": null,
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": null,
+            "expiresIn": "",
+            "maxUses": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": null,
+            "expiresIn": 1000,
+            "maxUses": "invalid_number"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": null,
+            "expiresIn": 1000
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": null,
+            "expiresIn": 1000,
+            "maxUses": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "invalid_value",
+            "expiresIn": "invalid_number",
+            "maxUses": 0
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "invalid_value",
+            "expiresIn": 0,
+            "maxUses": 0
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "invalid_value",
+            "maxUses": 0
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "invalid_value",
+            "expiresIn": "",
+            "maxUses": 0
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "invalid_value",
+            "expiresIn": 1000,
+            "maxUses": "invalid_number"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "invalid_value",
+            "expiresIn": 1000
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "invalid_value",
+            "expiresIn": 1000,
+            "maxUses": ""
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "expiresIn": "invalid_number",
+            "maxUses": "invalid_number"
+        },
+        "expects": [
+            "expiresIn must be a number conforming to the specified constraints",
+            "maxUses must be a number conforming to the specified constraints"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "expiresIn": "invalid_number"
+        },
+        "expects": [
+            "expiresIn must be a number conforming to the specified constraints",
+            "maxUses required",
+            "maxUses must be a number conforming to the specified constraints"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "expiresIn": "invalid_number",
+            "maxUses": ""
+        },
+        "expects": [
+            "expiresIn must be a number conforming to the specified constraints",
+            "maxUses should not be empty",
+            "maxUses must be a number conforming to the specified constraints"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "expiresIn": 0,
+            "maxUses": "invalid_number"
+        },
+        "expects": [
+            "expiresIn must be at least 1",
+            "maxUses must be a number conforming to the specified constraints"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "expiresIn": 0
+        },
+        "expects": [
+            "expiresIn must be at least 1",
+            "maxUses required",
+            "maxUses must be a number conforming to the specified constraints"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "expiresIn": 0,
+            "maxUses": ""
+        },
+        "expects": [
+            "expiresIn must be at least 1",
+            "maxUses should not be empty",
+            "maxUses must be a number conforming to the specified constraints"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "maxUses": "invalid_number"
+        },
+        "expects": [
+            "expiresIn required",
+            "expiresIn must be a number conforming to the specified constraints",
+            "maxUses must be a number conforming to the specified constraints"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}"
+        },
+        "expects": [
+            "expiresIn required",
+            "expiresIn must be a number conforming to the specified constraints",
+            "maxUses required",
+            "maxUses must be a number conforming to the specified constraints"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "maxUses": ""
+        },
+        "expects": [
+            "expiresIn required",
+            "expiresIn must be a number conforming to the specified constraints",
+            "maxUses should not be empty",
+            "maxUses must be a number conforming to the specified constraints"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "expiresIn": "",
+            "maxUses": "invalid_number"
+        },
+        "expects": [
+            "expiresIn should not be empty",
+            "expiresIn must be a number conforming to the specified constraints",
+            "maxUses must be a number conforming to the specified constraints"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "expiresIn": ""
+        },
+        "expects": [
+            "expiresIn should not be empty",
+            "expiresIn must be a number conforming to the specified constraints",
+            "maxUses required",
+            "maxUses must be a number conforming to the specified constraints"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "expiresIn": "",
+            "maxUses": ""
+        },
+        "expects": [
+            "expiresIn should not be empty",
+            "expiresIn must be a number conforming to the specified constraints",
+            "maxUses should not be empty",
+            "maxUses must be a number conforming to the specified constraints"
+        ]
+    }
+]

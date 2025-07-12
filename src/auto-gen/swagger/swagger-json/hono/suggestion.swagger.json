@@ -1,0 +1,573 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Suggestion Service",
+    "description": "Suggestion Service Ajv Decorator Swagger",
+    "version": "1.0.0"
+  },
+  "components": {
+    "schemas": {
+      "V3SortTypeEnum": {
+        "type": "number",
+        "additionalProperties": false,
+        "$id": "V3SortTypeEnum",
+        "enum": [
+          1,
+          2
+        ],
+        "x-enum-varnames": [
+          "COMMON_CHANNEL",
+          "JOINED_TIME"
+        ]
+      },
+      "V3SuggestionTypeEnum": {
+        "type": "number",
+        "additionalProperties": false,
+        "$id": "V3SuggestionTypeEnum",
+        "enum": [
+          1,
+          2
+        ],
+        "x-enum-varnames": [
+          "SUGGESTION_TYPE_ENUM_CHANNEL",
+          "SUGGESTION_TYPE_ENUM_FRIEND"
+        ]
+      },
+      "V3UserAvatarTypeEnum": {
+        "type": "number",
+        "additionalProperties": false,
+        "$id": "V3UserAvatarTypeEnum",
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "x-enum-varnames": [
+          "USER_AVATAR_TYPE_ENUM_UNSPECIFIED",
+          "USER_AVATAR_TYPE_ENUM_PHOTO",
+          "USER_AVATAR_TYPE_ENUM_VIDEO"
+        ]
+      },
+      "V3UserBadgeTypeEnum": {
+        "type": "number",
+        "additionalProperties": false,
+        "$id": "V3UserBadgeTypeEnum",
+        "enum": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "x-enum-varnames": [
+          "USER_BADGE_TYPE_DEFAULT",
+          "USER_BADGE_TYPE_BLUE",
+          "USER_BADGE_TYPE_GRAY",
+          "USER_BADGE_TYPE_YELLOW"
+        ]
+      },
+      "V3ListSuggestedFriendsByTypeRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "limit": {
+            "type": "string",
+            "isNumber": {
+              "minimum": 1,
+              "maximum": 500,
+              "default": 100
+            },
+            "errorMessage": {
+              "isNumber": "range from 1 to 500"
+            },
+            "description": "It is the limit of the number of records returned in one request"
+          },
+          "nextPageToken": {
+            "type": "string",
+            "isNumber": {
+              "minimum": 1,
+              "maximum": 1000
+            },
+            "errorMessage": {
+              "isNumber": "range from 1 to 1000 values"
+            },
+            "description": "The last audit log identify of this page will be the next_page_token of the next page"
+          },
+          "prevPageToken": {
+            "type": "string",
+            "isNumber": {
+              "minimum": 1,
+              "maximum": 1000
+            },
+            "errorMessage": {
+              "isNumber": "range from 1 to 1000 values"
+            },
+            "description": "The first audit log identify of this page will be the prev_page_token of the next page"
+          },
+          "suggestionType": {
+            "$ref": "#/components/schemas/V3SuggestionTypeEnum",
+            "description": "The type of list suggestion request"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/V3SortTypeEnum",
+            "description": "The type of sort"
+          }
+        },
+        "if": {
+          "properties": {
+            "suggestionType": {
+              "const": "1"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "sort"
+          ]
+        },
+        "required": [
+          "suggestionType"
+        ],
+        "$id": "V3ListSuggestedFriendsByTypeRequest"
+      },
+      "V3ListSuggestedFriendsRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "$id": "V3ListSuggestedFriendsRequest",
+        "properties": {
+          "limit": {
+            "type": "string",
+            "isNumber": {
+              "minimum": 1,
+              "maximum": 500,
+              "default": 100
+            },
+            "errorMessage": {
+              "isNumber": "range from 1 to 500"
+            },
+            "description": "It is the limit of the number of records returned in one request"
+          },
+          "nextPageToken": {
+            "type": "string",
+            "isNumber": {
+              "minimum": 1,
+              "maximum": 1000
+            },
+            "errorMessage": {
+              "isNumber": "range from 1 to 1000 values"
+            },
+            "description": "The last audit log identify of this page will be the next_page_token of the next page"
+          },
+          "prevPageToken": {
+            "type": "string",
+            "isNumber": {
+              "minimum": 1,
+              "maximum": 1000
+            },
+            "errorMessage": {
+              "isNumber": "range from 1 to 1000 values"
+            },
+            "description": "The first audit log identify of this page will be the prev_page_token of the next page"
+          }
+        }
+      },
+      "V3PaginationRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "limit": {
+            "type": "string",
+            "isNumber": {
+              "minimum": 1,
+              "maximum": 500,
+              "default": 100
+            },
+            "errorMessage": {
+              "isNumber": "range from 1 to 500"
+            },
+            "description": "It is the limit of the number of records returned in one request"
+          },
+          "nextPageToken": {
+            "type": "string",
+            "isNumber": {
+              "minimum": 1,
+              "maximum": 1000
+            },
+            "errorMessage": {
+              "isNumber": "range from 1 to 1000 values"
+            },
+            "description": "The last audit log identify of this page will be the next_page_token of the next page"
+          },
+          "prevPageToken": {
+            "type": "string",
+            "isNumber": {
+              "minimum": 1,
+              "maximum": 1000
+            },
+            "errorMessage": {
+              "isNumber": "range from 1 to 1000 values"
+            },
+            "description": "The first audit log identify of this page will be the prev_page_token of the next page"
+          }
+        },
+        "not": {
+          "required": [
+            "nextPageToken",
+            "prevPageToken"
+          ]
+        },
+        "errorMessage": {
+          "not": "enter either prevPageToken or nextPageToken"
+        },
+        "$id": "V3PaginationRequest"
+      },
+      "V3UserMetaDataRequest": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "x-user-id": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid UUID format"
+            }
+          },
+          "x-country-code": {
+            "type": "string",
+            "minLength": 1
+          },
+          "x-geo-data": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isJSON",
+            "errorMessage": {
+              "format": "invalid JSON format"
+            }
+          },
+          "x-device-id": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "x-user-id",
+          "x-device-id",
+          "x-country-code",
+          "x-geo-data"
+        ],
+        "$id": "V3UserMetaDataRequest"
+      },
+      "V3ErrorResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "number",
+            "description": "The error code"
+          },
+          "message": {
+            "type": "string",
+            "description": "The error message"
+          },
+          "details": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Detail about the error"
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "details"
+        ],
+        "$id": "V3ErrorResponse"
+      },
+      "V3ListSuggestedFriendsResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "The status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          },
+          "suggestions": {
+            "$ref": "#/components/schemas/V3Suggestions",
+            "description": "The list suggestion data"
+          }
+        },
+        "$id": "V3ListSuggestedFriendsResponse"
+      },
+      "V3ListSuggestedFriendsByTypeResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "The status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/V3SuggestedFriend"
+            },
+            "description": "The list friend's data"
+          },
+          "paging": {
+            "$ref": "#/components/schemas/V3Paging",
+            "description": " Data pagination information"
+          }
+        },
+        "$id": "V3ListSuggestedFriendsByTypeResponse"
+      },
+      "V3Paging": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "hasNext": {
+            "type": "boolean",
+            "description": "Returns true if there is information on the next page."
+          },
+          "hasPrev": {
+            "type": "boolean",
+            "description": "Returns true if there is information on the prev page."
+          },
+          "nextPageToken": {
+            "type": "string",
+            "description": "is the token to send a request to get the next page's data."
+          },
+          "prevPageToken": {
+            "type": "string",
+            "description": "is the token to send a request to get previous page's data."
+          }
+        },
+        "$id": "V3Paging"
+      },
+      "V3SuggestedFriend": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "userId": {
+            "type": "string",
+            "description": "The user identify"
+          },
+          "displayName": {
+            "type": "string",
+            "description": "The user display name"
+          },
+          "username": {
+            "type": "string",
+            "description": "The username"
+          },
+          "avatar": {
+            "type": "string",
+            "description": "The user avatar"
+          },
+          "videoAvatar": {
+            "type": "string",
+            "description": "The video avatar"
+          },
+          "avatarType": {
+            "$ref": "#/components/schemas/V3UserAvatarTypeEnum",
+            "description": "The type of user avatar"
+          },
+          "decoratedAvatar": {
+            "type": "string",
+            "description": "The decorated avatar"
+          },
+          "userBadgeType": {
+            "$ref": "#/components/schemas/V3UserBadgeTypeEnum",
+            "description": "The user badge type"
+          }
+        },
+        "$id": "V3SuggestedFriend"
+      },
+      "V3Suggestions": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "phones": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/V3SuggestedFriend"
+            },
+            "description": "The list friend's data suggest by phone"
+          },
+          "channels": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/V3SuggestedFriend"
+            },
+            "description": "The list friend's data suggest by channel"
+          },
+          "friends": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/V3SuggestedFriend"
+            },
+            "description": "The list friend's data suggest by friend"
+          }
+        },
+        "$id": "V3Suggestions"
+      }
+    }
+  },
+  "paths": {
+    "/Suggestion/ListSuggestedFriends": {
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3ListSuggestedFriendsResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "ListSuggestedFriends",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "type": "string",
+            "isNumber": {
+              "minimum": 1,
+              "maximum": 500,
+              "default": 100
+            },
+            "errorMessage": {
+              "isNumber": "range from 1 to 500"
+            },
+            "description": "It is the limit of the number of records returned in one request"
+          },
+          {
+            "in": "query",
+            "name": "nextPageToken",
+            "type": "string",
+            "isNumber": {
+              "minimum": 1,
+              "maximum": 1000
+            },
+            "errorMessage": {
+              "isNumber": "range from 1 to 1000 values"
+            },
+            "description": "The last audit log identify of this page will be the next_page_token of the next page"
+          },
+          {
+            "in": "query",
+            "name": "prevPageToken",
+            "type": "string",
+            "isNumber": {
+              "minimum": 1,
+              "maximum": 1000
+            },
+            "errorMessage": {
+              "isNumber": "range from 1 to 1000 values"
+            },
+            "description": "The first audit log identify of this page will be the prev_page_token of the next page"
+          }
+        ],
+        "type": "object",
+        "additionalProperties": false
+      }
+    },
+    "/Suggestion/ListSuggestedFriendsByType": {
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3ListSuggestedFriendsByTypeResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "ListSuggestedFriendsByType",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "type": "string",
+            "isNumber": {
+              "minimum": 1,
+              "maximum": 500,
+              "default": 100
+            },
+            "errorMessage": {
+              "isNumber": "range from 1 to 500"
+            },
+            "description": "It is the limit of the number of records returned in one request"
+          },
+          {
+            "in": "query",
+            "name": "nextPageToken",
+            "type": "string",
+            "isNumber": {
+              "minimum": 1,
+              "maximum": 1000
+            },
+            "errorMessage": {
+              "isNumber": "range from 1 to 1000 values"
+            },
+            "description": "The last audit log identify of this page will be the next_page_token of the next page"
+          },
+          {
+            "in": "query",
+            "name": "prevPageToken",
+            "type": "string",
+            "isNumber": {
+              "minimum": 1,
+              "maximum": 1000
+            },
+            "errorMessage": {
+              "isNumber": "range from 1 to 1000 values"
+            },
+            "description": "The first audit log identify of this page will be the prev_page_token of the next page"
+          },
+          {
+            "in": "query",
+            "name": "suggestionType",
+            "$ref": "#/components/schemas/V3SuggestionTypeEnum",
+            "description": "The type of list suggestion request"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "$ref": "#/components/schemas/V3SortTypeEnum",
+            "description": "The type of sort"
+          }
+        ],
+        "type": "object",
+        "additionalProperties": false,
+        "if": {
+          "properties": {
+            "suggestionType": {
+              "const": "1"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "sort"
+          ]
+        },
+        "required": [
+          "suggestionType"
+        ]
+      }
+    }
+  }
+}

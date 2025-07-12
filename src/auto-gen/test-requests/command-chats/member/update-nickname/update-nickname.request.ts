@@ -1,20 +1,20 @@
-import { VAR, ACTION, HEADER_LIST } from '@enum/';
+import { VAR, ACTION, HEADER_LIST } from '../../../../enums/index';
+import { DTOBuilder } from '../../../../utils/chain-dto';
 
-export const UpdateNicknameRequest = {
-  action: ACTION.UPDATE_NICKNAME,
-  body: {
-    channelId: VAR.channelId,
-    workspaceId: VAR.workspaceId,
-    userId: VAR.userId,
-    nickname: 'test update nickname',
-  },
-  headers: HEADER_LIST.create({ token: VAR.token }),
-  options: [
+export const UpdateNicknameRequest = new DTOBuilder()
+  .startStep('update user nickname in channel')
+  .addAction(
+    'update nickname',
+    'update-nickname',
+    ACTION.UPDATE_NICKNAME,
     {
-      beforeAll: [],
-      beforeEach: [],
-      afterEach: [],
-      afterAll: []
+      headers: HEADER_LIST.create({ token: VAR.token }),
+      body: {
+        channelId: VAR.channelId,
+        workspaceId: VAR.workspaceId,
+        userId: VAR.userId,
+        nickname: 'test update nickname',
+      },
     },
-  ],
-};
+  )
+  .execute();

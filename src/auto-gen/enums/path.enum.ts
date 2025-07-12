@@ -4,7 +4,7 @@ export const APIPath = {
     DeclineInvitation: '/Invitation/DeclineInvitation',
     CreateInvitation: '/Invitation/CreateInvitation',
     SendInvitation: '/Invitation/SendInvitation',
-    RevokeInvitation: '/Invitation/RevokeInvitation'
+    RevokeInvitation: '/Invitation/RevokeInvitation',
   },
   Message: {
     SendMessage: '/Message/SendMessage',
@@ -34,7 +34,14 @@ export const APIPath = {
     SendLocation: '/Message/SendLocation',
     SendDmLocation: '/Message/SendDMLocation',
     SendPokeMessage: '/Message/SendPokeMessage',
-
+    SendDmMessageMedia: '/Message/SendDmMessageMedia',
+    UpdateDmMediaAttachments: '/Message/UpdateDmMediaAttachments',
+    UpdateMediaAttachments: '/Message/UpdateMediaAttachments',
+    SendMessageMedia: '/Message/SendMessageMedia',
+    DeleteDmMessagesOnlyMe: '/Message/DeleteDMMessagesOnlyMe',
+    DeleteDmMessagesForEveryone: '/Message/DeleteDMMessagesForEveryone',
+    DeleteMessagesOnlyMe: '/Message/DeleteMessagesOnlyMe',
+    DeleteMessagesForEveryone: '/Message/DeleteMessagesForEveryone',
   },
   ViewChannel: {
     GetChannel: '/ChannelView/GetChannel',
@@ -53,6 +60,13 @@ export const APIPath = {
     ListDMMessages: '/MessageView/ListDMMessages',
     JumpToDMMessage: '/MessageView/JumpToDMMessage',
     JumpToMessage: '/MessageView/JumpToMessage',
+    ListDMMessageReaction: '/MessageView/ListDMMessageReactions',
+    ListMessageReaction: '/MessageView/ListMessageReactions',
+    GetPinnedMessage: '/MessageView/GetPinnedMessage',
+    GetPinnedDMMessage: '/MessageView/GetPinnedDMMessage',
+    ListMessagesFragment: '/MessageView/ListMessageFragments',
+    ListDmMedia: '/MessageView/ListDMMedia',
+    ListMedia: '/MessageView/ListMedia'
   },
   ViewUser: {
     GetUser: '/UserView/GetUser',
@@ -60,6 +74,16 @@ export const APIPath = {
     GetMe: '/UserView/GetMe',
     SyncUsers: '/UserView/SyncUsers',
     ListBlockedUsers: '/UserView/ListBlockedUsers',
+  },
+  ViewFriend: {
+    ListFriend: '/FriendView/ListFriends',
+    GetFriend: '/FriendView/GetFriend',
+    ListInComingFriendRequests: '/FriendView/ListInComingFriendRequests',
+    ListOutGoingFriendRequests: '/FriendView/ListOutGoingFriendRequests'
+  },
+  ViewInvitation: {
+    ListInvitation: '/InvitationView/ListInvitation',
+    GetInvitation: '/InvitationView/GetInvitation',
   },
   Channel: {
     CreateChannel: '/Channel/CreateChannel',
@@ -69,6 +93,7 @@ export const APIPath = {
     AcceptMessageRequest: '/Channel/AcceptMessageRequest',
     RejectMessageRequest: '/Channel/RejectMessageRequest',
     DeleteChannel: '/Channel/DeleteChannel',
+    DeleteChannelAvatar: '/Channel/DeleteChannelAvatar',
   },
   Search: {
     SearchChannels: '/Search/SearchChannels',
@@ -89,23 +114,36 @@ export const APIPath = {
   },
   Friend: {
     AddFriend: '/Friend/AddFriend',
+    Unfriend: '/Friend/Unfriend',
     RemoveFriend: '/Friend/RemoveFriend',
     BlockUser: '/Friend/BlockUser',
     UnblockUser: '/Friend/UnblockUser',
     AcceptFriendRequest: '/Friend/AcceptFriendRequest',
     RejectFriendRequest: '/Friend/RejectFriendRequest',
     CancelFriendRequest: '/Friend/CancelFriendRequest',
+    DeleteFriendRequest: '/Friend/DeleteFriendRequest',
   },
   UserProfile: {
     UpdateUserDisplayName: '/UserProfile/UpdateUserDisplayName',
     AddUserStatus: '/UserProfile/AddUserStatus',
-    UpdateUserStatus: '/UserProfile/UpdateUserStatus'
+    UpdateUserStatus: '/UserProfile/UpdateUserStatus',
+    DeleteUserVisitProfile: '/UserProfile/DeleteUserVisitedProfile',
+    VisitProfile: '/UserProfile/VisitedProfile',
+    AddCoverPhoto: '/UserProfile/AddCoverPhoto',
+    UpdateCoverPhoto: '/UserProfile/UpdateCoverPhoto',
+    AvatarFramePath: '/AvatarFrame/CreateAvatarFrame',
+    DeleteAvatarFrame: '/AvatarFrame/DeleteAvatarFrame',
+    DeleteUserAvatar: '/UserProfile/DeleteUserAvatar',
+    UpdateUserEmail: '/UserProfile/UpdateUserEmail',
+    UpdateUserAvatar: 'UserProfile/UpdateUserAvatar'
   },
   ViewMember: {
-    ListMembers: '/MemberView/ListMembers'
+    ListMembers: '/MemberView/ListMembers',
+    GetMember: '/MemberView/GetMember',
+    ListBannedUser: '/MemberView/ListBannedUsers'
   },
   UserReport: {
-    ReportUser: '/UserReport/ReportUser'
+    ReportUser: '/UserReport/ReportUser',
   },
   Member: {
     UpdateNickname: '/Member/UpdateNickname',
@@ -114,8 +152,29 @@ export const APIPath = {
     BanFromChannel: '/Member/BanFromChannel',
     UnbanFromChannel: '/Member/UnbanFromChannel',
     TransferOwnership: '/Member/TransferOwnership',
-    TransferOwnershipAndLeaveChannel: '/Member/TransferOwnershipAndLeaveChannel',
+    TransferOwnershipAndLeaveChannel:
+      '/Member/TransferOwnershipAndLeaveChannel',
     LeaveChannel: '/Member/LeaveChannel',
     RemoveFromChannel: '/Member/RemoveFromChannel',
+  },
+  UserSetting: {
+    BlockUser: '/UserSetting/BlockUser',
+    UnBlockUser: '/UserSetting/UnblockUser'
+  },
+  RingBackTone: {
+    RingBackToneCreate: '/RingbackTone/RingbackToneCreate',
+    RingBackToneRename: '/RingbackTone/RingbackToneRename',
+    SetRingBackTone: '/RingbackTone/SetRingbackTone',
+  },
+  Suggestion: {
+    ListSuggestedFriendsByType: '/Suggestion/ListSuggestedFriendsByType'
+  },
+  Notification: {
+    SubscribeAll: '/Notification/SubscribeAll',
+    TurnOnGlobalNotification: '',
+    TurnOffGlobalNotification: '',
+    UnsubscribeAll: '/Notification/UnsubscribeAll',
+    SubscribeChannel: '/Notification/SubscribeChannel',
+    UnsubscribeChannel: '/Notification/UnsubscribeChannel',
   }
 };

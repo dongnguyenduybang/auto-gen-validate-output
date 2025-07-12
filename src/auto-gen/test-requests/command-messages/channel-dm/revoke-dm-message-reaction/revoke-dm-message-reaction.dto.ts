@@ -1,4 +1,4 @@
-import { ErrorMessage } from '@enum/';
+import { ErrorMessage } from '../../../../enums/index';
 import {
   IsDefined,
   IsNotEmpty,
@@ -7,10 +7,9 @@ import {
   IsString,
   IsEmoji,
   IsNotNull,
-} from '@decorators/';
+} from '../../../../decorator/index';
 
 export class RevokeDmMessageReactionDTO {
-
   @IsString({ message: ErrorMessage.COULD_NOT_PERMISSION })
   @IsNotNull({ message: ErrorMessage.COULD_NOT_PERMISSION })
   @IsDefined({ message: ErrorMessage.COULD_NOT_PERMISSION })
@@ -31,5 +30,4 @@ export class RevokeDmMessageReactionDTO {
   @IsNotEmpty()
   @IsNotNull()
   emoji: string = '';
-
 }

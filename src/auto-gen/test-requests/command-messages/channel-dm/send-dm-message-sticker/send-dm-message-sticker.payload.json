@@ -1,0 +1,794 @@
+[
+    {
+        "body": {
+            "userId": 123,
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
+            "ref": "ref"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "stickerId": 123,
+            "ref": "ref"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "ref": "ref"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "stickerId": "",
+            "ref": "ref"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "stickerId": null,
+            "ref": "ref"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "stickerId": "invalid_value",
+            "ref": "ref"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
+            "ref": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
+            "ref": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": 123,
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
+            "ref": null
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
+            "ref": "ref"
+        },
+        "expects": []
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "stickerId": 123,
+            "ref": "ref"
+        },
+        "expects": [
+            "stickerId expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "ref": "ref"
+        },
+        "expects": [
+            "stickerId required"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "stickerId": "",
+            "ref": "ref"
+        },
+        "expects": [
+            "stickerId should not be empty",
+            "Message: This sticker has not been exists."
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "stickerId": null,
+            "ref": "ref"
+        },
+        "expects": [
+            "stickerId expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "stickerId": "invalid_value",
+            "ref": "ref"
+        },
+        "expects": [
+            "Message: This sticker has not been exists."
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
+            "ref": 123
+        },
+        "expects": [
+            "ref expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
+            "ref": ""
+        },
+        "expects": [
+            "ref string must contain at least 1 character(s)"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0"
+        },
+        "expects": [
+            "ref required"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
+            "ref": null
+        },
+        "expects": [
+            "ref expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
+            "ref": "ref"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "stickerId": 123,
+            "ref": "ref"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "ref": "ref"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "stickerId": "",
+            "ref": "ref"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "stickerId": null,
+            "ref": "ref"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "stickerId": "invalid_value",
+            "ref": "ref"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
+            "ref": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
+            "ref": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
+            "ref": null
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
+            "ref": "ref"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "stickerId": 123,
+            "ref": "ref"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "ref": "ref"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "stickerId": "",
+            "ref": "ref"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "stickerId": null,
+            "ref": "ref"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "stickerId": "invalid_value",
+            "ref": "ref"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
+            "ref": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
+            "ref": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
+            "ref": null
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
+            "ref": "ref"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "stickerId": 123,
+            "ref": "ref"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "ref": "ref"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "stickerId": "",
+            "ref": "ref"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "stickerId": null,
+            "ref": "ref"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "stickerId": "invalid_value",
+            "ref": "ref"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
+            "ref": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
+            "ref": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
+            "ref": null
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
+            "ref": "ref"
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "stickerId": 123,
+            "ref": "ref"
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "ref": "ref"
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "stickerId": "",
+            "ref": "ref"
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "stickerId": null,
+            "ref": "ref"
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "stickerId": "invalid_value",
+            "ref": "ref"
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
+            "ref": 123
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
+            "ref": ""
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0"
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
+            "ref": null
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "stickerId": 123,
+            "ref": 123
+        },
+        "expects": [
+            "stickerId expected string, received number",
+            "ref expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "stickerId": 123,
+            "ref": ""
+        },
+        "expects": [
+            "stickerId expected string, received number",
+            "ref string must contain at least 1 character(s)"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "stickerId": 123
+        },
+        "expects": [
+            "stickerId expected string, received number",
+            "ref required"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "stickerId": 123,
+            "ref": null
+        },
+        "expects": [
+            "stickerId expected string, received number",
+            "ref expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "ref": 123
+        },
+        "expects": [
+            "stickerId required",
+            "ref expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "ref": ""
+        },
+        "expects": [
+            "stickerId required",
+            "ref string must contain at least 1 character(s)"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}"
+        },
+        "expects": [
+            "stickerId required",
+            "ref required"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "ref": null
+        },
+        "expects": [
+            "stickerId required",
+            "ref expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "stickerId": "",
+            "ref": 123
+        },
+        "expects": [
+            "stickerId should not be empty",
+            "Message: This sticker has not been exists.",
+            "ref expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "stickerId": "",
+            "ref": ""
+        },
+        "expects": [
+            "stickerId should not be empty",
+            "Message: This sticker has not been exists.",
+            "ref string must contain at least 1 character(s)"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "stickerId": ""
+        },
+        "expects": [
+            "stickerId should not be empty",
+            "Message: This sticker has not been exists.",
+            "ref required"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "stickerId": "",
+            "ref": null
+        },
+        "expects": [
+            "stickerId should not be empty",
+            "Message: This sticker has not been exists.",
+            "ref expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "stickerId": null,
+            "ref": 123
+        },
+        "expects": [
+            "stickerId expected string, received null",
+            "ref expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "stickerId": null,
+            "ref": ""
+        },
+        "expects": [
+            "stickerId expected string, received null",
+            "ref string must contain at least 1 character(s)"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "stickerId": null
+        },
+        "expects": [
+            "stickerId expected string, received null",
+            "ref required"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "stickerId": null,
+            "ref": null
+        },
+        "expects": [
+            "stickerId expected string, received null",
+            "ref expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "stickerId": "invalid_value",
+            "ref": 123
+        },
+        "expects": [
+            "Message: This sticker has not been exists.",
+            "ref expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "stickerId": "invalid_value",
+            "ref": ""
+        },
+        "expects": [
+            "Message: This sticker has not been exists.",
+            "ref string must contain at least 1 character(s)"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "stickerId": "invalid_value"
+        },
+        "expects": [
+            "Message: This sticker has not been exists.",
+            "ref required"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "stickerId": "invalid_value",
+            "ref": null
+        },
+        "expects": [
+            "Message: This sticker has not been exists.",
+            "ref expected string, received null"
+        ]
+    }
+]

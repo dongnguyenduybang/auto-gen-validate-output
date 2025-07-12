@@ -1,0 +1,40 @@
+[
+    {
+        "body": {
+            "avatarPath": 123
+        },
+        "expects": [
+            "avatarPath expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "avatarPath": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg"
+        },
+        "expects": []
+    },
+    {
+        "body": {},
+        "expects": [
+            "avatarPath required",
+            "avatarPath invalid url"
+        ]
+    },
+    {
+        "body": {
+            "avatarPath": ""
+        },
+        "expects": [
+            "avatarPath should not be empty",
+            "avatarPath invalid url"
+        ]
+    },
+    {
+        "body": {
+            "avatarPath": null
+        },
+        "expects": [
+            "avatarPath expected string, received null"
+        ]
+    }
+]

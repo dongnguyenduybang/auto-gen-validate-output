@@ -9,7 +9,7 @@ import {
   IsObject,
   IsOptional,
   IsString,
-} from '@decorators/';
+} from '../decorator';
 import {
   AttachmentTypeEnum,
   MessageTypeEnum,
@@ -20,7 +20,7 @@ import {
   MediaPermissionSettingEnum,
   ChannelTypeEnum,
   DirectMessageStatusEnum,
-} from '@enum/';
+} from '../enums';
 
 export class Dimensions {
   @IsNumber()

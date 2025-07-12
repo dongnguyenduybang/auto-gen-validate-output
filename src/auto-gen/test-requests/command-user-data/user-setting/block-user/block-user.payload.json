@@ -1,0 +1,44 @@
+[
+    {
+        "body": {
+            "targetUserId": 123
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "targetUserId": "{{userId1}}"
+        },
+        "expects": []
+    },
+    {
+        "body": {},
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "targetUserId": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "targetUserId": null
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "targetUserId": "invalid_value"
+        },
+        "expects": []
+    }
+]

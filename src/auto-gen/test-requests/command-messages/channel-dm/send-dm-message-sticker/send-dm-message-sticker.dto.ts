@@ -1,4 +1,4 @@
-import { ErrorMessage } from '@enum/';
+import { ErrorMessage } from '../../../../enums/index';
 import {
   IsString,
   MaxLength,
@@ -7,7 +7,7 @@ import {
   IsDefined,
   IsNotEmpty,
   IsNotNull,
-} from '@decorators/';
+} from '../../../../decorator/index';
 
 export class SendDmMessageStickerDTO {
   @IsString({ message: ErrorMessage.COULD_NOT_PERMISSION })
@@ -22,11 +22,11 @@ export class SendDmMessageStickerDTO {
   @IsNotEmpty()
   @IsNotNull()
   @IsDefined()
-  stickerId: string = ''
+  stickerId: string = '';
 
   @IsString()
   @IsDefined()
   @MinLength(1)
-    @IsNotNull()
+  @IsNotNull()
   ref: string = '';
 }

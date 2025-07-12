@@ -1,27 +1,19 @@
-import { VAR, ACTION, HEADER_LIST } from '@enum/';
+import { ACTION, HEADER_LIST, VAR } from '../../../../enums';
+import { DTOBuilder } from '../../../../utils/chain-dto';
 
-export const LeaveChannelRequest = {
-  action: ACTION.LEAVE_CHANNEL,
-  body: {
-    channelId: VAR.channelId,
-    workspaceId: VAR.workspaceId,
-  },
-  headers: HEADER_LIST.create({ token: VAR.token1 }),
-  options: [
-    {
-      beforeAll: [
-        {
-          action: ACTION.ACCEPT_INVITATION,
-          headers: HEADER_LIST.create({ token: VAR.token1 }),
-          body: {
-            invitationLink: VAR.invitationLink
-          }
-        },
-        
-      ],
-      beforeEach: [],
-      afterEach: [],
-      afterAll: []
+export const LeaveChannelRequest = new DTOBuilder()
+  .startStep('leave channel')
+  .addAction('leave channel', 'leave-channel', ACTION.LEAVE_CHANNEL, {
+    headers: HEADER_LIST.create({ token: VAR.token1 }),
+    body: {
+      channelId: VAR.channelId,
+      workspaceId: VAR.workspaceId,
     },
-  ],
-};
+  })
+  .addBeforeAll('accept invitation', 'accept-invite', ACTION.ACCEPT_INVITATION, {
+    headers: HEADER_LIST.create({ token: VAR.token1 }),
+    body: {
+      invitationLink: VAR.invitationLink,
+    },
+  })
+  .execute();

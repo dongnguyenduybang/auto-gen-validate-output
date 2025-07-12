@@ -1,7 +1,12 @@
 import 'reflect-metadata';
-import { ErrorMessage, VAR } from '@enum/';
+import { ErrorMessage, VAR } from '../enums';
 import { checkRegexULID, checkURL, countEmojis, isEmoji } from './helper';
-import { FieldValueObject, PayloadGen, ValidIfCondition, ValidIfOptions } from './declarations';
+import {
+  FieldValueObject,
+  PayloadGen,
+  ValidIfCondition,
+  ValidIfOptions,
+} from './declarations';
 import { ulid } from 'ulidx';
 
 const decoratorItemValidations = {
@@ -13,14 +18,14 @@ const decoratorItemValidations = {
     valid: () => [ulid()],
   },
   IsUnique: {
-    invalid: () => ['uniqueItem', 'uniqueItem']
+    invalid: () => ['uniqueItem', 'uniqueItem'],
   },
   MinArrayItem: (length: number) => ({
-    invalid: () => length > 0 ? ['a'.repeat(length - 1)] : [''],
+    invalid: () => (length > 0 ? ['a'.repeat(length - 1)] : ['']),
   }),
   IsNotNull: {
-    invalid: () => [null]
-  }
+    invalid: () => [null],
+  },
 };
 
 export function getDecorators(
@@ -50,7 +55,6 @@ export function generateErrorCases(
   dtoClass: any,
   payload: Record<string, any>,
 ): PayloadGen[] {
-
   const instance = new dtoClass();
   const keys = Object.keys(instance);
   if (keys.length === 0) {
@@ -63,7 +67,12 @@ export function generateErrorCases(
     const decorators = getDecorators(instance, field);
     const fieldValue =
       payload[field] !== undefined ? payload[field] : instance[field];
-    const variants = generateErrorVariantsForField(fieldValue, decorators, dtoClass, field);
+    const variants = generateErrorVariantsForField(
+      fieldValue,
+      decorators,
+      dtoClass,
+      field,
+    );
     errorCasesByField[field] = Array.isArray(variants) ? variants : [];
   });
 
@@ -88,7 +97,7 @@ export function generateErrorVariantsForField(
   fieldValue: any,
   decorators: Record<string, any>,
   dtoClass: any,
-  fieldName: string
+  fieldName: string,
 ): unknown[] {
   const variants: unknown[] = [];
 
@@ -99,8 +108,8 @@ export function generateErrorVariantsForField(
       variants.push(123);
       variants.push(fieldValue);
       if (decorators['genEmoji']) {
-        const { emoji, quantity } = decorators['genEmoji']
-        variants.push(emoji)
+        const { emoji, quantity } = decorators['genEmoji'];
+        variants.push(emoji);
       }
       break;
     case 'number':
@@ -111,7 +120,7 @@ export function generateErrorVariantsForField(
       variants.push(fieldValue);
       const usedEnumValues = getUsedEnumValuesFromValidIf(dtoClass, fieldName);
       if (usedEnumValues.length > 0) {
-        usedEnumValues.forEach(enumValue => {
+        usedEnumValues.forEach((enumValue) => {
           variants.push(enumValue);
         });
       }
@@ -121,22 +130,26 @@ export function generateErrorVariantsForField(
     case 'array':
       variants.push('not_an_array'); //invalid type array
       variants.push(fieldValue); // valid case
-      const itemDecorators = decorators['itemDecorators']
-      itemDecorators.forEach((decorator: { name: string; params?: any }) => {
-        const { name, params } = decorator;
-        let filedPush = decoratorItemValidations[name];
-        if (typeof filedPush === 'function' && params !== undefined) {
-          filedPush = filedPush(params);
-        }
-        if (filedPush) {
-          if (filedPush.invalid) {
-            variants.push(filedPush.invalid());
+      const itemDecorators = decorators['itemDecorators'];
+      if (!itemDecorators) {
+        return;
+      } else {
+        itemDecorators.forEach((decorator: { name: string; params?: any }) => {
+          const { name, params } = decorator;
+          let filedPush = decoratorItemValidations[name];
+          if (typeof filedPush === 'function' && params !== undefined) {
+            filedPush = filedPush(params);
           }
-          if (filedPush.valid) {
-            variants.push(filedPush.valid());
+          if (filedPush) {
+            if (filedPush.invalid) {
+              variants.push(filedPush.invalid());
+            }
+            if (filedPush.valid) {
+              variants.push(filedPush.valid());
+            }
           }
-        }
-      });
+        });
+      }
       break;
     case 'boolean':
       variants.push('invalid_boolean');
@@ -156,22 +169,22 @@ export function generateErrorVariantsForField(
   if (decorators['minLength']) {
     variants.push('a'.repeat(decorators['minLength'] - 1));
     if (decorators['genEmoji']) {
-      const { emoji, quantity } = decorators['genEmoji']
-      variants.push(emoji.repeat(decorators['minLength'] - 1))
+      const { emoji, quantity } = decorators['genEmoji'];
+      variants.push(emoji.repeat(decorators['minLength'] - 1));
     }
   }
   if (decorators['maxLength']) {
     variants.push('a'.repeat(decorators['maxLength'] + 1));
     if (decorators['genEmoji']) {
-      const { emoji, quantity } = decorators['genEmoji']
-      variants.push(emoji.repeat(decorators['maxLength'] + 1))
+      const { emoji, quantity } = decorators['genEmoji'];
+      variants.push(emoji.repeat(decorators['maxLength'] + 1));
     }
   }
 
   if (decorators['isEmoji']) {
     const expectedCount = decorators['isEmoji'];
-    variants.push(fieldValue.repeat(expectedCount + 1))
-    variants.push(fieldValue.repeat(expectedCount - 1))
+    variants.push(fieldValue.repeat(expectedCount + 1));
+    variants.push(fieldValue.repeat(expectedCount - 1));
   }
 
   // 5. Vi phạm kích thước mảng
@@ -195,10 +208,10 @@ export function generateErrorVariantsForField(
   }
 
   if (decorators['isULID']) {
-    variants.push('invalid_ULID')
+    variants.push('invalid_ULID');
   }
   if (decorators['isInvalid']) {
-    variants.push('invalid_value')
+    variants.push('invalid_value');
   }
 
   //   if (decorators['isDefined']) {
@@ -207,15 +220,18 @@ export function generateErrorVariantsForField(
 
   return [...new Set(variants)];
 }
-export function combineFields(arrays: FieldValueObject[][]): FieldValueObject[][] {
+export function combineFields(
+  arrays: FieldValueObject[][],
+): FieldValueObject[][] {
   if (!Array.isArray(arrays) || arrays.some((arr) => !Array.isArray(arr))) {
     throw new Error(
       'Invalid input for combineFields: Expected an array of arrays',
     );
   }
 
-  return arrays.reduce<FieldValueObject[][]>((a, b) => a.flatMap(d => b.map(e => [...d, e])),
-    [[]]
+  return arrays.reduce<FieldValueObject[][]>(
+    (a, b) => a.flatMap((d) => b.map((e) => [...d, e])),
+    [[]],
   );
 }
 export function generateCombinations(
@@ -232,15 +248,22 @@ export function generateCombinations(
   });
 }
 
-function addErrorIfNotExist(errors: string[], customMessage: string | null, defaultMessage: string) {
+function addErrorIfNotExist(
+  errors: string[],
+  customMessage: string | null,
+  defaultMessage: string,
+) {
   const errorMessage = customMessage || defaultMessage;
   if (errorMessage && !errors.includes(errorMessage)) {
     errors.push(errorMessage);
   }
 }
 
-function checkOptional(value: unknown, decorators: Record<string, any>): string[] {
-  if (decorators['optional'] && (value === undefined)) {
+function checkOptional(
+  value: unknown,
+  decorators: Record<string, any>,
+): string[] {
+  if (decorators['optional'] && value === undefined) {
     return [];
   }
   return null;
@@ -250,20 +273,26 @@ function checkValidIf(
   field: string,
   value: unknown,
   decorators: Record<string, any>,
-  payload: Record<string, any>
+  payload: Record<string, any>,
 ) {
   if (!decorators['validIf']) return null;
 
   const options: ValidIfOptions = decorators['validIf'];
-  const conditions = Array.isArray(options.conditions) ? options.conditions : [options.conditions];
+  const conditions = Array.isArray(options.conditions)
+    ? options.conditions
+    : [options.conditions];
   const logicalOperator = options.logicalOperator || 'AND';
 
   let conditionMet = false;
 
   if (logicalOperator === 'AND') {
-    conditionMet = conditions.every(condition => evaluateCondition(condition, payload));
+    conditionMet = conditions.every((condition) =>
+      evaluateCondition(condition, payload),
+    );
   } else {
-    conditionMet = conditions.some(condition => evaluateCondition(condition, payload));
+    conditionMet = conditions.some((condition) =>
+      evaluateCondition(condition, payload),
+    );
   }
 
   if (conditionMet) {
@@ -274,14 +303,20 @@ function checkValidIf(
       return { isRequired: true };
     }
     if (options.result?.message) {
-      return { message: options.result.message, isRequired: options.result.required };
+      return {
+        message: options.result.message,
+        isRequired: options.result.required,
+      };
     }
   }
 
   return conditionMet ? null : { isRequired: false };
 }
 
-function evaluateCondition(condition: ValidIfCondition, payload: Record<string, any>): boolean {
+function evaluateCondition(
+  condition: ValidIfCondition,
+  payload: Record<string, any>,
+): boolean {
   const targetValue = payload[condition.field];
 
   switch (condition.operator) {
@@ -302,9 +337,13 @@ function evaluateCondition(condition: ValidIfCondition, payload: Record<string, 
     case '<=':
       return targetValue <= condition.value;
     case 'includes':
-      return Array.isArray(targetValue) ? targetValue.includes(condition.value) : false;
+      return Array.isArray(targetValue)
+        ? targetValue.includes(condition.value)
+        : false;
     case 'in':
-      return Array.isArray(condition.value) ? condition.value.includes(targetValue) : false;
+      return Array.isArray(condition.value)
+        ? condition.value.includes(targetValue)
+        : false;
     case 'regex':
       return new RegExp(condition.value).test(targetValue);
     default:
@@ -324,12 +363,20 @@ function getDefinedErrorMessage(field: string): string {
   }
 }
 
-function checkIsDefined(field: string, value: unknown, decorators: Record<string, any>): string[] {
+function checkIsDefined(
+  field: string,
+  value: unknown,
+  decorators: Record<string, any>,
+): string[] {
   const errors: string[] = [];
   if (value === undefined) {
     if (decorators['isDefined']) {
       if (decorators['isInvalid']) {
-        addErrorIfNotExist(errors, decorators['notUndefinedMessage'], getDefinedErrorMessage(field));
+        addErrorIfNotExist(
+          errors,
+          decorators['notUndefinedMessage'],
+          getDefinedErrorMessage(field),
+        );
       } else {
         addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.DEFINED}`);
       }
@@ -339,12 +386,24 @@ function checkIsDefined(field: string, value: unknown, decorators: Record<string
   return null;
 }
 
-function checkIsNotNull(field: string, value: unknown, decorators: Record<string, any>): string[] {
+function checkIsNotNull(
+  field: string,
+  value: unknown,
+  decorators: Record<string, any>,
+): string[] {
   const errors: string[] = [];
   if (value === null && decorators['isNotNull']) {
     if (decorators['IsInvalid']) {
-      if (field === 'workspaceId' || field === 'channelId' || field === 'userId') {
-        addErrorIfNotExist(errors, decorators['isNotNullMessage'], ErrorMessage.COULD_NOT_PERMISSION);
+      if (
+        field === 'workspaceId' ||
+        field === 'channelId' ||
+        field === 'userId'
+      ) {
+        addErrorIfNotExist(
+          errors,
+          decorators['isNotNullMessage'],
+          ErrorMessage.COULD_NOT_PERMISSION,
+        );
       } else {
         addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.NULL}`);
       }
@@ -355,46 +414,100 @@ function checkIsNotNull(field: string, value: unknown, decorators: Record<string
   return errors;
 }
 
-
-function checkTypeBoolean(field: string, value: any, decorators: Record<string, any>): string[] {
+function checkTypeBoolean(
+  field: string,
+  value: any,
+  decorators: Record<string, any>,
+): string[] {
   const errors: string[] = [];
-  if (decorators['type'] === 'boolean' && typeof value !== 'boolean' && value === null) {
-    addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_TYPE_BOOLEAN} null`);
+  if (
+    decorators['type'] === 'boolean' &&
+    typeof value !== 'boolean' &&
+    value === null
+  ) {
+    addErrorIfNotExist(
+      errors,
+      null,
+      `${field} ${ErrorMessage.INVALID_TYPE_BOOLEAN} null`,
+    );
   }
-  if (decorators['type'] === 'boolean' && typeof value !== 'boolean' && value !== null) {
-    addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_TYPE_BOOLEAN} ${typeof value}`);
+  if (
+    decorators['type'] === 'boolean' &&
+    typeof value !== 'boolean' &&
+    value !== null
+  ) {
+    addErrorIfNotExist(
+      errors,
+      null,
+      `${field} ${ErrorMessage.INVALID_TYPE_BOOLEAN} ${typeof value}`,
+    );
   }
-  return errors
+  return errors;
 }
 
-function checkNotEmpty(field: string, value: unknown, decorators: Record<string, any>): string[] {
+function checkNotEmpty(
+  field: string,
+  value: unknown,
+  decorators: Record<string, any>,
+): string[] {
   const errors: string[] = [];
   if (value === '' && decorators['notEmpty']) {
     if (decorators['IsInvalid']) {
-      if (field === 'workspaceId' || field === 'channelId' || field === 'userId') {
-        addErrorIfNotExist(errors, decorators['notEmptyMessage'], ErrorMessage.COULD_NOT_PERMISSION);
+      if (
+        field === 'workspaceId' ||
+        field === 'channelId' ||
+        field === 'userId'
+      ) {
+        addErrorIfNotExist(
+          errors,
+          decorators['notEmptyMessage'],
+          ErrorMessage.COULD_NOT_PERMISSION,
+        );
       } else {
-        addErrorIfNotExist(errors, decorators['notEmptyMessage'], `${field} ${ErrorMessage.EMPTY}`);
+        addErrorIfNotExist(
+          errors,
+          decorators['notEmptyMessage'],
+          `${field} ${ErrorMessage.EMPTY}`,
+        );
       }
     } else {
-      addErrorIfNotExist(errors, decorators['notEmptyMessage'], `${field} ${ErrorMessage.EMPTY}`);
+      addErrorIfNotExist(
+        errors,
+        decorators['notEmptyMessage'],
+        `${field} ${ErrorMessage.EMPTY}`,
+      );
     }
   }
   return errors;
 }
 
-function checkULID(field: string, value: any, decorators: Record<string, any>): string[] {
+function checkULID(
+  field: string,
+  value: any,
+  decorators: Record<string, any>,
+): string[] {
   const errors: string[] = [];
   if (decorators['isULID']) {
-    if (typeof value === 'string' && (value === '' || !value.startsWith('{{'))) {
+    if (
+      typeof value === 'string' &&
+      (value === '' || !value.startsWith('{{'))
+    ) {
       addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_ULID}`);
-    } else if (typeof value === 'string' && !value.startsWith('{{') && !checkRegexULID(value)) {
+    } else if (
+      typeof value === 'string' &&
+      !value.startsWith('{{') &&
+      !checkRegexULID(value)
+    ) {
       addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_ULID}`);
     }
   }
   return errors;
 }
-function checkEmoji(field: string, value: unknown, decorators: Record<string, any>): string[] {
+function checkEmoji(
+  field: string,
+  value: unknown,
+  decorators: Record<string, any>,
+): string[] {
   const errors: string[] = [];
   if (decorators['isEmoji']) {
     if (typeof value !== 'string') {
@@ -403,25 +516,47 @@ function checkEmoji(field: string, value: unknown, decorators: Record<string, an
     if (decorators['isValidEmoji']) {
       const actualCount = countEmojis(value);
       const isInvalid = value === '' || !isEmoji(value);
-      const isInvalidCount = actualCount > decorators['isValidEmoji'] || actualCount < decorators['isValidEmoji'];
+      const isInvalidCount =
+        actualCount > decorators['isValidEmoji'] ||
+        actualCount < decorators['isValidEmoji'];
 
       if (isInvalid) {
-        addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_EMOJI}`);
+        addErrorIfNotExist(
+          errors,
+          null,
+          `${field} ${ErrorMessage.INVALID_EMOJI}`,
+        );
       }
       if (isInvalidCount) {
-        addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_RANGE_EMOJI} ${decorators['isValidEmoji']} emoji`);
+        addErrorIfNotExist(
+          errors,
+          null,
+          `${field} ${ErrorMessage.INVALID_RANGE_EMOJI} ${decorators['isValidEmoji']} emoji`,
+        );
       }
     } else {
       const isInvalid = value === '' || !isEmoji(value);
       if (isInvalid) {
-        addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_EMOJI}`);
-        addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_EMOJI_LENGTH_1}`);
+        addErrorIfNotExist(
+          errors,
+          null,
+          `${field} ${ErrorMessage.INVALID_EMOJI}`,
+        );
+        addErrorIfNotExist(
+          errors,
+          null,
+          `${field} ${ErrorMessage.INVALID_EMOJI_LENGTH_1}`,
+        );
       }
     }
   }
   return errors;
 }
-function checkTypeString(field: string, value: unknown, decorators: Record<string, any>): string[] {
+function checkTypeString(
+  field: string,
+  value: unknown,
+  decorators: Record<string, any>,
+): string[] {
   const errors: string[] = [];
   if (value === undefined) {
     return [];
@@ -430,47 +565,79 @@ function checkTypeString(field: string, value: unknown, decorators: Record<strin
   if (decorators['type'] === 'string') {
     if (typeof value !== 'string') {
       if (decorators['isInvalid']) {
-        if (field === 'workspaceId' || field === 'channelId' || field === 'userId') {
+        if (
+          field === 'workspaceId' ||
+          field === 'channelId' ||
+          field === 'userId'
+        ) {
           addErrorIfNotExist(errors, decorators['stringMessage'], null);
         } else if (decorators['isNotNull'] && typeof value === 'object') {
-          addErrorIfNotExist(errors, decorators['stringMessage'], `${field} ${ErrorMessage.INVALID_TYPE_STRING} null`);
+          addErrorIfNotExist(
+            errors,
+            decorators['stringMessage'],
+            `${field} ${ErrorMessage.INVALID_TYPE_STRING} null`,
+          );
         } else {
-          addErrorIfNotExist(errors, decorators['stringMessage'], `${field} ${ErrorMessage.INVALID_TYPE_STRING} ${typeof value}`);
+          addErrorIfNotExist(
+            errors,
+            decorators['stringMessage'],
+            `${field} ${ErrorMessage.INVALID_TYPE_STRING} ${typeof value}`,
+          );
         }
-
       } else {
         if (decorators['isNotNull'] && typeof value === 'object') {
-          addErrorIfNotExist(errors, decorators['stringMessage'], `${field} ${ErrorMessage.INVALID_TYPE_STRING} null`);
+          addErrorIfNotExist(
+            errors,
+            decorators['stringMessage'],
+            `${field} ${ErrorMessage.INVALID_TYPE_STRING} null`,
+          );
         } else {
-          addErrorIfNotExist(errors, decorators['stringMessage'], `${field} ${ErrorMessage.INVALID_TYPE_STRING} ${typeof value}`);
+          addErrorIfNotExist(
+            errors,
+            decorators['stringMessage'],
+            `${field} ${ErrorMessage.INVALID_TYPE_STRING} ${typeof value}`,
+          );
         }
-
       }
       return errors;
     }
 
     if (decorators['isValidURL']) {
-      const isInvalid = typeof value === 'string' && (value === '' || !checkURL(value));
+      const isInvalid =
+        typeof value === 'string' && (value === '' || !checkURL(value));
       if (isInvalid) {
-        addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_URL}`);
+        addErrorIfNotExist(
+          errors,
+          null,
+          `${field} ${ErrorMessage.INVALID_URL}`,
+        );
       }
       return errors;
     }
 
     if (decorators['isInvalid']) {
-
       if (field === 'workspaceId' && value !== '0') {
-
-        addErrorIfNotExist(errors, decorators['isInvalidMessage'], 'Invalid channel');
+        addErrorIfNotExist(
+          errors,
+          decorators['isInvalidMessage'],
+          'Invalid channel',
+        );
         return errors;
       }
       if (field === 'channelId' && !value.startsWith('{{')) {
-
-        addErrorIfNotExist(errors, decorators['isInvalidMessage'], 'Invalid channel');
+        addErrorIfNotExist(
+          errors,
+          decorators['isInvalidMessage'],
+          'Invalid channel',
+        );
         return errors;
       }
       if (field === 'userId' && !value.startsWith('{{')) {
-        addErrorIfNotExist(errors, decorators['isInvalidMessage'], 'Unauthorized request');
+        addErrorIfNotExist(
+          errors,
+          decorators['isInvalidMessage'],
+          'Unauthorized request',
+        );
         return errors;
       }
       if (field === 'stickerId' && value !== VAR.stickerId) {
@@ -489,32 +656,60 @@ function checkTypeString(field: string, value: unknown, decorators: Record<strin
       //       }
       //     } else
       if (hasMin && len < decorators['minLength']) {
-        addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.MIN_LENGTH} ${decorators['minLength']} character(s)`);
+        addErrorIfNotExist(
+          errors,
+          null,
+          `${field} ${ErrorMessage.MIN_LENGTH} ${decorators['minLength']} character(s)`,
+        );
       } else if (hasMax && len > decorators['maxLength']) {
-        addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.MAX_LENGTH} ${decorators['maxLength']} character(s)`);
+        addErrorIfNotExist(
+          errors,
+          null,
+          `${field} ${ErrorMessage.MAX_LENGTH} ${decorators['maxLength']} character(s)`,
+        );
       }
     }
   }
   return errors;
 }
-function checkTypeNumber(field: string, value: unknown, decorators: Record<string, any>): string[] {
+function checkTypeNumber(
+  field: string,
+  value: unknown,
+  decorators: Record<string, any>,
+): string[] {
   const errors: string[] = [];
   if (decorators['type'] === 'number') {
     if (typeof value !== 'number' || isNaN(value)) {
-      addErrorIfNotExist(errors, decorators['numberMessage'], `${field} ${ErrorMessage.INVALID_TYPE_NUMBER}`);
+      addErrorIfNotExist(
+        errors,
+        decorators['numberMessage'],
+        `${field} ${ErrorMessage.INVALID_TYPE_NUMBER}`,
+      );
       return errors;
     }
     if (decorators['min'] != null && value < decorators['min']) {
-      addErrorIfNotExist(errors, decorators['minMessage'], `${field} must be at least ${decorators['min']}`);
+      addErrorIfNotExist(
+        errors,
+        decorators['minMessage'],
+        `${field} must be at least ${decorators['min']}`,
+      );
     }
     if (decorators['max'] != null && value > decorators['max']) {
-      addErrorIfNotExist(errors, decorators['maxMessage'], `${field} must be at most ${decorators['max']}`);
+      addErrorIfNotExist(
+        errors,
+        decorators['maxMessage'],
+        `${field} must be at most ${decorators['max']}`,
+      );
     }
   }
   return errors;
 }
 
-function checkTypeArray(field: string, value: unknown, decorators: Record<string, any>): string[] {
+function checkTypeArray(
+  field: string,
+  value: unknown,
+  decorators: Record<string, any>,
+): string[] {
   const errors: string[] = [];
 
   if (decorators['type'] === 'array') {
@@ -523,108 +718,117 @@ function checkTypeArray(field: string, value: unknown, decorators: Record<string
       addErrorIfNotExist(
         errors,
         decorators['arrayMessage'],
-        `${field} ${ErrorMessage.INVALID_TYPE_ARRAY} null`
+        `${field} ${ErrorMessage.INVALID_TYPE_ARRAY} null`,
       );
       return errors;
     } else if (!Array.isArray(value)) {
       addErrorIfNotExist(
         errors,
         decorators['arrayMessage'],
-        `${field} ${ErrorMessage.INVALID_TYPE_ARRAY} ${typeof value}`
+        `${field} ${ErrorMessage.INVALID_TYPE_ARRAY} ${typeof value}`,
       );
       return errors;
     }
 
     // Kiểm tra độ dài tối thiểu của mảng
-    if (decorators['minArray'] != null && value.length < decorators['minArray']) {
+    if (
+      decorators['minArray'] != null &&
+      value.length < decorators['minArray']
+    ) {
       addErrorIfNotExist(
         errors,
         decorators['minArrayMessage'],
-        `${field} ${ErrorMessage.MIN_ARRAY} ${decorators['minArray']} element(s)`
+        `${field} ${ErrorMessage.MIN_ARRAY} ${decorators['minArray']} element(s)`,
       );
     }
 
     // Kiểm tra độ dài tối đa của mảng
-    if (decorators['maxArray'] != null && value.length > decorators['maxArray']) {
+    if (
+      decorators['maxArray'] != null &&
+      value.length > decorators['maxArray']
+    ) {
       addErrorIfNotExist(
         errors,
         decorators['maxArrayMessage'],
-        `${field} ${ErrorMessage.MAX_ARRAY} ${decorators['maxArray']} element(s)`
+        `${field} ${ErrorMessage.MAX_ARRAY} ${decorators['maxArray']} element(s)`,
       );
     }
 
     value.forEach((item: unknown, index: number) => {
       if (typeof item === 'string') {
-
         const itemDecorator = decorators['itemDecorators'];
-        itemDecorator.forEach((dec: { name: string; params?: any; message?: string }) => {
-          const { name, params, message } = dec;
+        itemDecorator.forEach(
+          (dec: { name: string; params?: any; message?: string }) => {
+            const { name, params, message } = dec;
 
-          //check type
-          if (typeof item !== 'string' && name === 'IsString') {
-            addErrorIfNotExist(
-              errors,
-              null,
-              `${field} has element ${index} ${ErrorMessage.INVALID_TYPE_STRING} ${typeof item}`
-            )
-          }
-
-          //check min item
-          if (item === "" && name === 'MinArrayItem') {
-            addErrorIfNotExist(
-              errors,
-              null,
-              `${field} has element ${index} ${ErrorMessage.MIN_LENGTH} ${params} character(s)`
-            )
-            addErrorIfNotExist(
-              errors,
-              null,
-              `${field} has element ${index} ${ErrorMessage.INVALID_ULID}`
-            )
-          }
-          //check ulid
-          if (name === 'IsULID' && !checkRegexULID(item) && !item.startsWith('{{')) {
-            addErrorIfNotExist(
-              errors,
-              null,
-              `${field} has element ${index} ${ErrorMessage.INVALID_ULID}`
-            )
-          }
-          if (name === 'IsULID' && checkRegexULID(item) && !item.startsWith('{{')) {
-            addErrorIfNotExist(
-              errors,
-              message,
-              `${field} ${message}`
-            )
-          }
-
-          //check unique item
-          if (name === 'IsUnique') {
-            const uniqueItems = new Set(value);
-            if (uniqueItems.size !== value.length) {
+            //check type
+            if (typeof item !== 'string' && name === 'IsString') {
               addErrorIfNotExist(
                 errors,
                 null,
-                `${field} ${ErrorMessage.UNIQUE_ARRAY_ITEM}`
+                `${field} has element ${index} ${ErrorMessage.INVALID_TYPE_STRING} ${typeof item}`,
               );
             }
-          }
 
-        });
+            //check min item
+            if (item === '' && name === 'MinArrayItem') {
+              addErrorIfNotExist(
+                errors,
+                null,
+                `${field} has element ${index} ${ErrorMessage.MIN_LENGTH} ${params} character(s)`,
+              );
+              addErrorIfNotExist(
+                errors,
+                null,
+                `${field} has element ${index} ${ErrorMessage.INVALID_ULID}`,
+              );
+            }
+            //check ulid
+            if (
+              name === 'IsULID' &&
+              !checkRegexULID(item) &&
+              !item.startsWith('{{')
+            ) {
+              addErrorIfNotExist(
+                errors,
+                null,
+                `${field} has element ${index} ${ErrorMessage.INVALID_ULID}`,
+              );
+            }
+            if (
+              name === 'IsULID' &&
+              checkRegexULID(item) &&
+              !item.startsWith('{{')
+            ) {
+              addErrorIfNotExist(errors, message, `${field} ${message}`);
+            }
 
+            //check unique item
+            if (name === 'IsUnique') {
+              const uniqueItems = new Set(value);
+              if (uniqueItems.size !== value.length) {
+                addErrorIfNotExist(
+                  errors,
+                  null,
+                  `${field} ${ErrorMessage.UNIQUE_ARRAY_ITEM}`,
+                );
+              }
+            }
+          },
+        );
       } else {
         if (item === null) {
           addErrorIfNotExist(
             errors,
             null,
-            `${field} has element ${index} ${ErrorMessage.INVALID_TYPE_STRING} null`
-          )
+            `${field} has element ${index} ${ErrorMessage.INVALID_TYPE_STRING} null`,
+          );
         } else {
           addErrorIfNotExist(
             errors,
             null,
-            `${field} has element ${index} ${ErrorMessage.INVALID_TYPE_STRING} ${typeof item}`
-          )
+            `${field} has element ${index} ${ErrorMessage.INVALID_TYPE_STRING} ${typeof item}`,
+          );
         }
       }
     });
@@ -633,51 +837,80 @@ function checkTypeArray(field: string, value: unknown, decorators: Record<string
   return errors;
 }
 
-function checkTypeObject(field: string, value: unknown, decorators: Record<string, any>): string[] {
+function checkTypeObject(
+  field: string,
+  value: unknown,
+  decorators: Record<string, any>,
+): string[] {
   const errors: string[] = [];
   if (decorators['type'] === 'object') {
     if (typeof value !== 'object' || Array.isArray(value) || value === null) {
-      addErrorIfNotExist(errors, decorators['objectMessage'], `${field} ${ErrorMessage.INVALID_TYPE_OBJ}`);
+      addErrorIfNotExist(
+        errors,
+        decorators['objectMessage'],
+        `${field} ${ErrorMessage.INVALID_TYPE_OBJ}`,
+      );
       return errors;
     }
   }
   return errors;
 }
 
-function checkEnum(field: string, value: unknown, decorators: Record<string, any>): string[] {
+function checkEnum(
+  field: string,
+  value: unknown,
+  decorators: Record<string, any>,
+): string[] {
   const errors: string[] = [];
   if (decorators['type'] === 'enum') {
-    if (!decorators['enumType'] || !Object.values(decorators['enumType']).includes(value)) {
-
-      const enumValues = Object.values(decorators['enumType']).filter(v => typeof v === 'number') as number[];
+    if (
+      !decorators['enumType'] ||
+      !Object.values(decorators['enumType']).includes(value)
+    ) {
+      const enumValues = Object.values(decorators['enumType']).filter(
+        (v) => typeof v === 'number',
+      ) as number[];
       const expectedText = enumValues.join(' | ');
-      addErrorIfNotExist(errors, decorators['enumMessage'], `${field} ${ErrorMessage.INVALID_ENUM} ${expectedText}, received '${value}'`);
+      addErrorIfNotExist(
+        errors,
+        decorators['enumMessage'],
+        `${field} ${ErrorMessage.INVALID_ENUM} ${expectedText}, received '${value}'`,
+      );
       return errors;
     }
   }
   return errors;
 }
 
-function checkValidURL(field: string, value: unknown, decorators: Record<string, any>): string[] {
+function checkValidURL(
+  field: string,
+  value: unknown,
+  decorators: Record<string, any>,
+): string[] {
   const errors: string[] = [];
   if (decorators['isValidURL']) {
-    const isValid = checkURL(String(value))
+    const isValid = checkURL(String(value));
     if (!isValid) {
       addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_URL}`);
     }
   }
-  return errors
+  return errors;
 }
 
-export function mapError(field: string, value: unknown, decorators: Record<string, any>, dto) {
+export function mapError(
+  field: string,
+  value: unknown,
+  decorators: Record<string, any>,
+  dto,
+) {
   // Kiểm tra từng nhóm lỗi
   const errors: string[] = [];
-
 
   const validIfErrors = checkValidIf(field, value, decorators, dto);
   if (validIfErrors !== null) {
     if (validIfErrors.message) {
       errors.push(validIfErrors.message);
+      return errors;
     }
 
     if (!validIfErrors.isRequired) {
@@ -702,14 +935,23 @@ export function mapError(field: string, value: unknown, decorators: Record<strin
     checkEnum,
     checkValidURL,
     checkTypeBoolean,
-    checkIsNotNull
+    checkIsNotNull,
   ];
 
   for (const check of checks) {
     const result = check(field, value, decorators);
     if (result && result.length > 0) {
       errors.push(...result);
-      if (check === checkIsNotNull || check === checkTypeBoolean || check === checkValidURL || check === checkTypeString || check === checkTypeNumber || check === checkTypeArray || check === checkTypeObject || check === checkEnum) {
+      if (
+        check === checkIsNotNull ||
+        check === checkTypeBoolean ||
+        check === checkValidURL ||
+        check === checkTypeString ||
+        check === checkTypeNumber ||
+        check === checkTypeArray ||
+        check === checkTypeObject ||
+        check === checkEnum
+      ) {
         break;
       }
     }
@@ -750,7 +992,7 @@ export function softErrorFromMap(
       'workspaceId',
       workspaceId,
       workspaceIdDecorators,
-      payload
+      payload,
     );
     if (workspaceIdErrors.length > 0) {
       return ['Could not resolve permission type'];
@@ -764,7 +1006,7 @@ export function softErrorFromMap(
       'channelId',
       channelId,
       channelIdDecorators,
-      payload
+      payload,
     );
     if (channelIdErrors.length > 0) {
       return ['Could not resolve permission type'];
@@ -778,7 +1020,7 @@ export function softErrorFromMap(
       'channelId',
       undefined,
       channelIdDecorators,
-      payload
+      payload,
     );
     if (channelIdErrors.length > 0) {
       return ['Unsupported permission type'];
@@ -792,7 +1034,7 @@ export function softErrorFromMap(
       'channelId',
       undefined,
       channelIdDecorators,
-      payload
+      payload,
     );
     if (channelIdErrors.length > 0) {
       return ['Could not resolve permission type'];
@@ -806,7 +1048,7 @@ export function softErrorFromMap(
       'workspaceId',
       undefined,
       workspaceIdDecorators,
-      payload
+      payload,
     );
     if (workspaceIdErrors.length > 0) {
       return ['Could not resolve permission type'];
@@ -825,7 +1067,7 @@ export function softErrorFromMap(
       'channelId',
       channelId,
       channelIdDecorators,
-      payload
+      payload,
     );
     if (channelIdErrors.length > 0) {
       return ['Invalid channel'];
@@ -844,7 +1086,7 @@ export function softErrorFromMap(
       'workspaceId',
       workspaceId,
       workspaceIdDecorators,
-      payload
+      payload,
     );
     if (workspaceIdErrors.length > 0) {
       return ['Invalid channel'];
@@ -858,7 +1100,7 @@ export function softErrorFromMap(
       'channelId',
       channelId,
       channelIdDecorators,
-      payload
+      payload,
     );
     if (channelIdErrors.length > 0) {
       return ['Could not resolve permission type'];
@@ -884,15 +1126,14 @@ export function softErrorFromMap(
 
 export function getUsedEnumValuesFromValidIf(
   dtoClass: any,
-  targetFieldName: string
+  targetFieldName: string,
 ): any[] {
   const instance = new dtoClass();
   const keys = Object.keys(instance);
   const usedValues: any[] = [];
-
   // Duyệt qua tất cả các fields để tìm ValidIf conditions
   keys.forEach((fieldName) => {
-    if (fieldName === targetFieldName) return; // Skip chính field đó
+    // if (fieldName === targetFieldName) return; // Skip chính field đó
 
     const decorators = getDecorators(instance, fieldName);
     const validIfConditions = decorators['validIf'];
@@ -912,8 +1153,11 @@ export function getUsedEnumValuesFromValidIf(
             }
           }
           // Với operator 'in', lấy tất cả values trong array
-          else if (condition.operator === 'in' && Array.isArray(condition.value)) {
-            condition.value.forEach(val => {
+          else if (
+            condition.operator === 'in' &&
+            Array.isArray(condition.value)
+          ) {
+            condition.value.forEach((val) => {
               if (!usedValues.includes(val)) {
                 usedValues.push(val);
               }

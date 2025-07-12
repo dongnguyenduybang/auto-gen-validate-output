@@ -1,0 +1,538 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Search Module",
+    "description": "Search module Ajv decorator swagger documents",
+    "version": "v3"
+  },
+  "components": {
+    "schemas": {
+      "V3UserAvatarTypeEnum": {
+        "type": "number",
+        "additionalProperties": false,
+        "$id": "V3UserAvatarTypeEnum",
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "x-enum-varnames": [
+          "USER_AVATAR_TYPE_ENUM_UNSPECIFIED",
+          "USER_AVATAR_TYPE_ENUM_PHOTO",
+          "USER_AVATAR_TYPE_ENUM_VIDEO"
+        ]
+      },
+      "V3UserBadgeTypeEnum": {
+        "type": "number",
+        "additionalProperties": false,
+        "$id": "V3UserBadgeTypeEnum",
+        "enum": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "x-enum-varnames": [
+          "USER_BADGE_TYPE_DEFAULT",
+          "USER_BADGE_TYPE_BLUE",
+          "USER_BADGE_TYPE_GRAY",
+          "USER_BADGE_TYPE_YELLOW"
+        ]
+      },
+      "V3UserTypeEnum": {
+        "type": "number",
+        "additionalProperties": false,
+        "$id": "V3UserTypeEnum",
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "x-enum-varnames": [
+          "USER_TYPE_ENUM_DEFAULT",
+          "USER_TYPE_ENUM_BOT",
+          "USER_TYPE_ENUM_GHOST"
+        ]
+      },
+      "V3SearchChannelsRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "keyword": {
+            "type": "string",
+            "nullable": true,
+            "description": "The keyword used for searching channels"
+          },
+          "limit": {
+            "type": "string",
+            "isNumber": {
+              "minimum": 1,
+              "maximum": 500
+            },
+            "errorMessage": {
+              "isNumber": "must range from 1 to 500"
+            },
+            "nullable": true,
+            "description": "The maximum number of search results to retrieve"
+          },
+          "nextPageToken": {
+            "type": "string",
+            "isNumber": {
+              "minimum": 1,
+              "maximum": 1000
+            },
+            "errorMessage": {
+              "isNumber": "must range from 1 to 1000"
+            },
+            "nullable": true,
+            "description": "A token to retrieve the next page of search results"
+          },
+          "prevPageToken": {
+            "type": "string",
+            "isNumber": {
+              "minimum": 1,
+              "maximum": 1000
+            },
+            "errorMessage": {
+              "isNumber": "must range from 1 to 1000"
+            },
+            "nullable": true,
+            "description": "A token to retrieve the previous page of search"
+          }
+        },
+        "not": {
+          "required": [
+            "nextPageToken",
+            "prevPageToken"
+          ]
+        },
+        "errorMessage": {
+          "not": "enter either prevPageToken or nextPageToken"
+        },
+        "$id": "V3SearchChannelsRequest"
+      },
+      "V3SearchUsersRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "keyword": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1,
+              "max": 1000
+            },
+            "errorMessage": {
+              "isTrimData": "must range from 1 to 1000 length"
+            },
+            "description": "The keyword used for searching users"
+          },
+          "limit": {
+            "type": "string",
+            "isNumber": {
+              "minimum": 1,
+              "maximum": 500
+            },
+            "errorMessage": {
+              "isNumber": "must range from 1 to 500"
+            },
+            "nullable": true,
+            "description": "The maximum number of search results to retrieve"
+          },
+          "nextPageToken": {
+            "type": "string",
+            "isNumber": {
+              "minimum": 1,
+              "maximum": 1000
+            },
+            "errorMessage": {
+              "isNumber": "must range from 1 to 1000"
+            },
+            "nullable": true,
+            "description": "A token to retrieve the next page of search results"
+          },
+          "prevPageToken": {
+            "type": "string",
+            "isNumber": {
+              "minimum": 1,
+              "maximum": 1000
+            },
+            "errorMessage": {
+              "isNumber": "must range from 1 to 1000"
+            },
+            "nullable": true,
+            "description": "A token to retrieve the previous page of search"
+          }
+        },
+        "not": {
+          "required": [
+            "nextPageToken",
+            "prevPageToken"
+          ]
+        },
+        "errorMessage": {
+          "not": "enter either prevPageToken or nextPageToken"
+        },
+        "required": [
+          "keyword"
+        ],
+        "$id": "V3SearchUsersRequest"
+      },
+      "V3UserMetadataRequest": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "x-user-id": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            }
+          }
+        },
+        "required": [
+          "x-user-id"
+        ],
+        "$id": "V3UserMetadataRequest"
+      },
+      "V3Error": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "number",
+            "description": "The error code"
+          },
+          "message": {
+            "type": "string",
+            "description": "The error message"
+          },
+          "details": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "Detail about the error"
+            }
+          }
+        },
+        "required": [
+          "code",
+          "message"
+        ],
+        "$id": "V3Error"
+      },
+      "V3Pagination": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "nextPageToken": {
+            "type": "number",
+            "description": "Is the token to send a request to get the next page's data"
+          },
+          "prevPageToken": {
+            "type": "number",
+            "description": "Is the token to send a request to get previous page data"
+          },
+          "hasNext": {
+            "type": "boolean",
+            "description": "Returns true if there is information on the next page"
+          },
+          "hasPrev": {
+            "type": "boolean",
+            "description": "Returns true if there is information on the prev page"
+          }
+        },
+        "required": [
+          "hasNext",
+          "hasPrev"
+        ],
+        "$id": "V3Pagination"
+      },
+      "V3SearchChannelsResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Indicates whether the search operation was successful"
+          },
+          "paging": {
+            "$ref": "#/components/schemas/V3Pagination",
+            "description": "Information about pagination, such as the current page, total pages, etc"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/V3SearchChannelResult"
+            },
+            "description": "An array of search result items containing channel information. Only have value when OK is true. "
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3Error",
+            "description": "An error message in case the search operation encountered any issues. Only have value when OK is false. "
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3SearchChannelsResponse"
+      },
+      "V3SearchChannelResult": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "workspaceId": {
+            "type": "string",
+            "description": "The workspace identify"
+          },
+          "channelId": {
+            "type": "string",
+            "description": "The channel identify"
+          },
+          "totalMembers": {
+            "type": "number",
+            "description": "The total member in channel"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of channel"
+          },
+          "avatar": {
+            "type": "string",
+            "description": "The avatar of channel"
+          },
+          "isPrivate": {
+            "type": "boolean",
+            "description": "The is private or not"
+          },
+          "type": {
+            "type": "number",
+            "description": "The type of the channel"
+          },
+          "invitationLink": {
+            "type": "string",
+            "description": "The invitation link"
+          },
+          "createTime": {
+            "type": "string",
+            "description": "The first time channel created"
+          },
+          "updateTime": {
+            "type": "string",
+            "description": "The time channel updated"
+          }
+        },
+        "required": [
+          "workspaceId",
+          "channelId",
+          "totalMembers",
+          "name",
+          "avatar",
+          "isPrivate",
+          "type",
+          "invitationLink",
+          "createTime",
+          "updateTime"
+        ],
+        "$id": "V3SearchChannelResult"
+      },
+      "V3SearchUserResult": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "userId": {
+            "type": "string",
+            "description": "The user identify"
+          },
+          "displayName": {
+            "type": "string",
+            "description": "The user display name"
+          },
+          "username": {
+            "type": "string",
+            "description": "The username of user"
+          },
+          "avatar": {
+            "type": "string",
+            "description": "The thumbnail avatar of user"
+          },
+          "videoAvatar": {
+            "type": "string",
+            "description": "The video avatar URL"
+          },
+          "decoratedAvatar": {
+            "type": "string",
+            "description": "The decoratedAvatar of user"
+          },
+          "avatarType": {
+            "$ref": "#/components/schemas/V3UserAvatarTypeEnum",
+            "description": "The avatar type"
+          },
+          "userBadgeType": {
+            "$ref": "#/components/schemas/V3UserBadgeTypeEnum",
+            "description": "The user badge type"
+          }
+        },
+        "required": [
+          "userId",
+          "displayName",
+          "username",
+          "avatar",
+          "videoAvatar",
+          "decoratedAvatar",
+          "avatarType",
+          "userBadgeType"
+        ],
+        "$id": "V3SearchUserResult"
+      },
+      "V3SearchUsersResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Indicates whether the search operation was successful"
+          },
+          "paging": {
+            "$ref": "#/components/schemas/V3Pagination",
+            "description": "Information about pagination, such as the current page, total pages, etc"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/V3SearchUserResult"
+            },
+            "description": "An array of search result items containing user information. Only have value when OK is true"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3Error",
+            "description": "An error message in case the search operation encountered any issues. Only have value when OK is false"
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3SearchUsersResponse"
+      }
+    }
+  },
+  "paths": {
+    "/Search/SearchUsers": {
+      "post": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3SearchUsersResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "Search/SearchUsers",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "not": {
+          "required": [
+            "nextPageToken",
+            "prevPageToken"
+          ]
+        },
+        "errorMessage": {
+          "not": "enter either prevPageToken or nextPageToken"
+        },
+        "required": [
+          "keyword"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3SearchUsersRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Search/SearchChannels": {
+      "post": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3SearchChannelsResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "Search/SearchChannels",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "not": {
+          "required": [
+            "nextPageToken",
+            "prevPageToken"
+          ]
+        },
+        "errorMessage": {
+          "not": "enter either prevPageToken or nextPageToken"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3SearchChannelsRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Search/SearchEverything": {
+      "post": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3SearchUsersResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "Search/SearchEverything",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "not": {
+          "required": [
+            "nextPageToken",
+            "prevPageToken"
+          ]
+        },
+        "errorMessage": {
+          "not": "enter either prevPageToken or nextPageToken"
+        },
+        "required": [
+          "keyword"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3SearchUsersRequest"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

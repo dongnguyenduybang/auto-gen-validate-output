@@ -1,0 +1,183 @@
+[
+    {
+        "body": {
+            "workspaceId": 123,
+            "name": "channelname1",
+            "avatar": "",
+            "channelType": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "name": "channelname1",
+            "avatar": "",
+            "channelType": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": null,
+            "name": "channelname1",
+            "avatar": "",
+            "channelType": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "invalid_value",
+            "name": "channelname1",
+            "avatar": "",
+            "channelType": 1
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "name": 123,
+            "avatar": "",
+            "channelType": 1
+        },
+        "expects": [
+            "name expected string, received number",
+            "avatar should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "name": "aa",
+            "avatar": "",
+            "channelType": 1
+        },
+        "expects": [
+            "name string must contain at least 3 character(s)",
+            "avatar should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "avatar": "",
+            "channelType": 1
+        },
+        "expects": [
+            "name string must contain at most 50 character(s)",
+            "avatar should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "name": "",
+            "avatar": "",
+            "channelType": 1
+        },
+        "expects": [
+            "name should not be empty",
+            "name string must contain at least 3 character(s)",
+            "avatar should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "name": "channelname1",
+            "avatar": 123,
+            "channelType": 1
+        },
+        "expects": [
+            "avatar expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "name": "channelname1",
+            "channelType": 1
+        },
+        "expects": []
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "name": "channelname1",
+            "avatar": "",
+            "channelType": 1
+        },
+        "expects": [
+            "avatar should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "name": "channelname1",
+            "avatar": null,
+            "channelType": 1
+        },
+        "expects": [
+            "avatar expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "name": "channelname1",
+            "avatar": "",
+            "channelType": "invalid_enum_value"
+        },
+        "expects": [
+            "avatar should not be empty",
+            "channelType expected 0 | 1 | 2, received nan"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "name": "channelname1",
+            "avatar": "",
+            "channelType": 0
+        },
+        "expects": [
+            "avatar should not be empty",
+            "channelType is not accept DM Channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "name": "channelname1",
+            "avatar": ""
+        },
+        "expects": [
+            "avatar should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "name": "channelname1",
+            "avatar": "",
+            "channelType": ""
+        },
+        "expects": [
+            "avatar should not be empty",
+            "channelType should not be empty",
+            "channelType expected 0 | 1 | 2, received nan"
+        ]
+    }
+]

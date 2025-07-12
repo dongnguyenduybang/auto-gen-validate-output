@@ -12,18 +12,19 @@ async function genTestCase(
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join('');
   const responseModule = await import(responsePath);
-  const responseConfig = responseModule[`${classNameCapitalized}ResponseConfig`];
+  const responseConfig =
+    responseModule[`${classNameCapitalized}ResponseConfig`];
   const specContent = `
     import fs from 'fs';
     import path from 'path';
     let allSteps = [];
-    import { getTime, summarizeErrors, resolveCallAPI, resolveVariables } from '@ultils/helper';
+    import { getTime, summarizeErrors, resolveCallAPI, resolveVariables } from '../utils/helper.ts';
     import { ${classNameCapitalized}Response } from '../../response/${className}.response';
     import { plainToInstance } from 'class-transformer';
     import { validateResponses } from '../../validates/validate-response';
-    import { TestContext } from '@ultils/text-context';
+    import { TestContext } from '../utils/text-context';
     import { ${classNameCapitalized}ResponseConfig } from './${responseFilePathWithoutExt}.response';
-    import { executeSteps } from '@ultils/text-execute-test';
+    import { executeSteps } from '../utils/text-execute-test';
     describe('Test response for ${className}', () => {
       let failedTests = [];
       let failedStep = []

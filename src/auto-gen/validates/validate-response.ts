@@ -1,8 +1,8 @@
 import 'reflect-metadata';
-import { ErrorMessage } from '@enum/';
-import { getDecorators } from '@utils/dto-helper';
-import { resolveValidIf, resolveVariables } from '@utils/helper';
-import { TestContext } from '@utils/text-context';
+import { ErrorMessage } from '../enums';
+import { getDecorators } from '../utils/dto-helper';
+import { resolveValidIf, resolveVariables } from '../utils/helper';
+import { TestContext } from '../utils/text-context';
 
 export async function validateResponses(
   payload: any,

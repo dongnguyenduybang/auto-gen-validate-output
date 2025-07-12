@@ -1,4 +1,4 @@
-import { Entry, ErrorItem } from "./declarations";
+import { Entry, ErrorItem } from './declarations';
 
 // Template cho type 'request'
 export const combinedReportTemplate = (
@@ -9,9 +9,9 @@ export const combinedReportTemplate = (
   passedTests?: number,
   failedTests?: any[],
   totalTests?: number,
-  logicTests?: any[],
   summary?: any,
   type?: string,
+  warnings?: any[],
 ) => {
   className = className || 'Unknown Class';
   url = url || 'N/A';
@@ -20,7 +20,6 @@ export const combinedReportTemplate = (
   passedTests = passedTests || 0;
   failedTests = failedTests || [];
   totalTests = totalTests || 0;
-  logicTests = logicTests || [];
   summary = summary || { statusCodes: {} };
   type = type;
 
@@ -34,8 +33,8 @@ export const combinedReportTemplate = (
         passedTests,
         failedTests,
         totalTests,
-        logicTests,
         summary,
+        warnings,
       );
 
     case 'response':
@@ -72,14 +71,12 @@ const requestReportTemplate = (
   passedTests,
   failedTests,
   totalTests,
-  logicTests,
   summary,
+  warnings,
 ) => {
-
   const uniqueErrors = new Map();
   if (failedTests) {
     failedTests.forEach((failCase) => {
-     
       // if (failCase.missing && Array.isArray(failCase.missing)) {
       //   failCase.missing.forEach((error) => {
       //     uniqueErrors.set(
@@ -91,10 +88,7 @@ const requestReportTemplate = (
 
       if (failCase.extra && Array.isArray(failCase.extra)) {
         failCase.extra.forEach((error) => {
-          uniqueErrors.set(
-            error,
-            (uniqueErrors.get(error) || 0) + 1,
-          );
+          uniqueErrors.set(error, (uniqueErrors.get(error) || 0) + 1);
         });
       }
     });
@@ -107,15 +101,19 @@ const requestReportTemplate = (
     '',
     '=== Execution Steps ===',
     ...failedStep.map((step, index) => {
-      const errorDetails = step.error
-        ? `\n     └─ ${step.error.split('\n').join('\n       ')}`
-        : '';
-      return `  ${index + 1}. [${step.status ? '✅ PASSED' : '❌ FAILED'}] ${step.stepName}${errorDetails}`;
+      // const parsedError = step.error ? JSON.parse(step.error) : [];
+      // const errorDetails = parsedError.length
+      //   ? `\n     └─ ${parsedError.join('\n       ')}`
+      //   : '';
+      // const typeLine = step.type ? `\n     type: ${step.type}` : '';
+      // return `  ${index + 1}. [${step.status ? '✅ PASSED' : '❌ FAILED'}] ${step.stepName}${typeLine}${errorDetails}`;
     }),
+
     '',
     '=== Test Summary ===',
     `✅ Passed: ${passedTests}`,
     `❌ Failed: ${failedTests.length}`,
+    `⚠️ Warnings: ${warnings.length}`,
     `📊 Total: ${totalTests}`,
     '',
     '=== System Metrics ===',
@@ -127,9 +125,23 @@ const requestReportTemplate = (
     ` 🟠 404: ${summary.statusCodes[404] || 0}`,
     ` 🔴 500: ${summary.statusCodes[500] || 0}`,
     '',
+    '=== Warnings ===',
+    ...(warnings.length > 0
+      ? warnings.map((warning, index) => [
+        ` 🟠 ${index + 1}. Case #${warning.testcase}`,
+        `     ├─ Status: ${warning.code || 'N/A'}`,
+        `     ├─ Body: ${JSON.stringify(warning.body) || 'None'}`,
+        `     ├─ Actual Errors: ${warning.actualErrors?.join(', ') || 'None'}`,
+        `     ├─ Expected Errors: ${warning.expectedErrors?.join(', ') || 'None'}`,
+        `     └─ Message: ${warning.message || 'No details'}`,
+      ].join('\n'))
+      : ['✅ No warnings']
+    ),
+    '',
     '=== Unique Errors ===',
-    ...Array.from(uniqueErrors.entries()).map(([error, count], index) =>
-      ` 🟣 ${index + 1}. ${error} (Occurred: ${count} time${count > 1 ? 's' : ''})`
+    ...Array.from(uniqueErrors.entries()).map(
+      ([error, count], index) =>
+        ` 🟣 ${index + 1}. ${error} (Occurred: ${count} time${count > 1 ? 's' : ''})`,
     ),
     '',
     '[DTO Validation Issues]',
@@ -139,8 +151,8 @@ const requestReportTemplate = (
         ` 🟣 ${index + 1}. Case #${test.testcase}`,
         `     ├─ Status: ${test.code || 'N/A'}`,
         `     ├─ Body: ${JSON.stringify(test.body) || 'None'}`,
-        `     ├─ Missing: ${test.missing?.join(', ') || 'None'}`,
-        `     ├─ Extra: ${test.extra?.join(', ') || 'None'}`,
+        `     ├─ Actual: ${test.missing?.join(', ') || 'None'}`,
+        `     ├─ Expected: ${test.extra?.join(', ') || 'None'}`,
         `     └─ Details: ${test.errorDetails || 'No details'}`,
       ].join('\n'),
     ),
@@ -207,11 +219,12 @@ const sagaReportTemplate = (
   sagaName: string,
   failedSteps: any[],
 ) => {
-
   const beforeAllFailures = failedSteps.filter((s) => s.phase === 'beforeAll');
   const testCaseFailures = failedSteps.filter((s) => s.phase === 'test');
   const afterAllFailures = failedSteps.filter((s) => s.phase === 'afterAll');
-  const beforeEachFailures = failedSteps.filter((s) => s.phase === 'beforeEach');
+  const beforeEachFailures = failedSteps.filter(
+    (s) => s.phase === 'beforeEach',
+  );
   const afterEachFailures = failedSteps.filter((s) => s.phase === 'afterEach');
 
   // group beforeEach
@@ -260,11 +273,13 @@ const sagaReportTemplate = (
     ...(Object.keys(beforeEachGroups).length > 0
       ? [
         '=== BeforeEach Failures ===',
-        ...Object.entries(beforeEachGroups).flatMap(([caseTitle, failures]) => [
-          `📄 Case: ${caseTitle}`,
-          ...(failures as any[]).map((step, i) => formatStep(step, i)),
-          '',
-        ]),
+        ...Object.entries(beforeEachGroups).flatMap(
+          ([caseTitle, failures]) => [
+            `📄 Case: ${caseTitle}`,
+            ...(failures as any[]).map((step, i) => formatStep(step, i)),
+            '',
+          ],
+        ),
       ]
       : []),
     '',
@@ -280,11 +295,13 @@ const sagaReportTemplate = (
     ...(Object.keys(afterEachGroups).length > 0
       ? [
         '=== AfterEach Failures ===',
-        ...Object.entries(afterEachGroups).flatMap(([caseTitle, failures]) => [
-          `📄 Case: ${caseTitle}`,
-          ...(failures as any[]).map((step, i) => formatStep(step, i)),
-          '',
-        ]),
+        ...Object.entries(afterEachGroups).flatMap(
+          ([caseTitle, failures]) => [
+            `📄 Case: ${caseTitle}`,
+            ...(failures as any[]).map((step, i) => formatStep(step, i)),
+            '',
+          ],
+        ),
       ]
       : []),
     '',
@@ -322,7 +339,11 @@ function groupEntriesByPath(entries: Entry[]): Record<string, ErrorItem[]> {
   }, {});
 }
 
-function formatGroupedPath(path: string, items: ErrorItem[], errorType: string): string {
+function formatGroupedPath(
+  path: string,
+  items: ErrorItem[],
+  errorType: string,
+): string {
   const lines = [`         └─ Path: ${path}`];
 
   for (const item of items) {
@@ -334,7 +355,7 @@ function formatGroupedPath(path: string, items: ErrorItem[], errorType: string):
     ) {
       lines.push(
         `                  - ActualValue: ${JSON.stringify(item.actualValue)}`,
-        `                  - ExpectedValue: ${JSON.stringify(item.expectedValue)}`
+        `                  - ExpectedValue: ${JSON.stringify(item.expectedValue)}`,
       );
     }
   }
@@ -342,19 +363,20 @@ function formatGroupedPath(path: string, items: ErrorItem[], errorType: string):
   return lines.join('\n');
 }
 function formatErrorDetails(error: Record<string, Entry[]>): string {
-  return Object.entries(error).map(([errorType, entries]) => {
+  return Object.entries(error)
+    .map(([errorType, entries]) => {
       if (!Array.isArray(entries)) return '';
 
       const groupedByPath = groupEntriesByPath(entries);
 
-      const formattedGroups = Object.entries(groupedByPath)
-        .map(([path, items]) => formatGroupedPath(path, items, errorType));
+      const formattedGroups = Object.entries(groupedByPath).map(
+        ([path, items]) => formatGroupedPath(path, items, errorType),
+      );
 
       return `      └─ ${errorType}:\n${formattedGroups.join('\n')}`;
     })
     .join('\n');
 }
-
 
 // const formatError = (error: any) => {
 //   const formatSingleError = (err: any) => {
@@ -402,3 +424,18 @@ function formatErrorDetails(error: Record<string, Entry[]>): string {
 
 //   return `    └─ Message: ${String(error)}`;
 // };
+
+const formatError = (error: any) => {
+  if (!error) return [];
+  if (typeof error === 'string') {
+    try {
+      return JSON.parse(error);
+    } catch {
+      return [error]; // Return as array with single item if not valid JSON
+    }
+  } else {
+    return error;
+  }
+
+  return [JSON.stringify(error)]; // Convert object to string if it's not already
+};

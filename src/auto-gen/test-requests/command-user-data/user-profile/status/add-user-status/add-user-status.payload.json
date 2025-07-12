@@ -1,0 +1,685 @@
+[
+    {
+        "body": {
+            "content": 123,
+            "status": "🚀",
+            "expireAfterTime": 1
+        },
+        "expects": [
+            "content expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "content": 123,
+            "status": 123,
+            "expireAfterTime": 1
+        },
+        "expects": [
+            "content expected string, received number",
+            "status expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "content": 123,
+            "status": "🚀🚀",
+            "expireAfterTime": 1
+        },
+        "expects": [
+            "content expected string, received number",
+            "status only accepts 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "content": 123,
+            "status": "",
+            "expireAfterTime": 1
+        },
+        "expects": [
+            "content expected string, received number",
+            "status invalid emoji",
+            "status only accepts 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "content": 123,
+            "status": null,
+            "expireAfterTime": 1
+        },
+        "expects": [
+            "content expected string, received number",
+            "status expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "content": 123,
+            "status": "🚀",
+            "expireAfterTime": "invalid_enum_value"
+        },
+        "expects": [
+            "content expected string, received number",
+            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'invalid_enum_value'"
+        ]
+    },
+    {
+        "body": {
+            "content": 123,
+            "status": "🚀"
+        },
+        "expects": [
+            "content expected string, received number",
+            "expireAfterTime required",
+            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'undefined'"
+        ]
+    },
+    {
+        "body": {
+            "content": 123,
+            "status": "🚀",
+            "expireAfterTime": ""
+        },
+        "expects": [
+            "content expected string, received number",
+            "expireAfterTime should not be empty",
+            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received ''"
+        ]
+    },
+    {
+        "body": {
+            "content": 123,
+            "status": "🚀",
+            "expireAfterTime": null
+        },
+        "expects": [
+            "content expected string, received number",
+            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'null'"
+        ]
+    },
+    {
+        "body": {
+            "content": "Hi hi",
+            "status": "🚀",
+            "expireAfterTime": 1
+        },
+        "expects": []
+    },
+    {
+        "body": {
+            "content": "Hi hi",
+            "status": 123,
+            "expireAfterTime": 1
+        },
+        "expects": [
+            "status expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "content": "Hi hi",
+            "status": "🚀🚀",
+            "expireAfterTime": 1
+        },
+        "expects": [
+            "status only accepts 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "content": "Hi hi",
+            "status": "",
+            "expireAfterTime": 1
+        },
+        "expects": [
+            "status invalid emoji",
+            "status only accepts 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "content": "Hi hi",
+            "status": null,
+            "expireAfterTime": 1
+        },
+        "expects": [
+            "status expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "content": "Hi hi",
+            "status": "🚀",
+            "expireAfterTime": "invalid_enum_value"
+        },
+        "expects": [
+            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'invalid_enum_value'"
+        ]
+    },
+    {
+        "body": {
+            "content": "Hi hi",
+            "status": "🚀"
+        },
+        "expects": [
+            "expireAfterTime required",
+            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'undefined'"
+        ]
+    },
+    {
+        "body": {
+            "content": "Hi hi",
+            "status": "🚀",
+            "expireAfterTime": ""
+        },
+        "expects": [
+            "expireAfterTime should not be empty",
+            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received ''"
+        ]
+    },
+    {
+        "body": {
+            "content": "Hi hi",
+            "status": "🚀",
+            "expireAfterTime": null
+        },
+        "expects": [
+            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'null'"
+        ]
+    },
+    {
+        "body": {
+            "content": "",
+            "status": "🚀",
+            "expireAfterTime": 1
+        },
+        "expects": [
+            "content should not be empty",
+            "content string must contain at least 1 character(s)"
+        ]
+    },
+    {
+        "body": {
+            "content": "",
+            "status": 123,
+            "expireAfterTime": 1
+        },
+        "expects": [
+            "content should not be empty",
+            "content string must contain at least 1 character(s)",
+            "status expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "content": "",
+            "status": "🚀🚀",
+            "expireAfterTime": 1
+        },
+        "expects": [
+            "content should not be empty",
+            "content string must contain at least 1 character(s)",
+            "status only accepts 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "content": "",
+            "status": "",
+            "expireAfterTime": 1
+        },
+        "expects": [
+            "content should not be empty",
+            "content string must contain at least 1 character(s)",
+            "status invalid emoji",
+            "status only accepts 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "content": "",
+            "status": null,
+            "expireAfterTime": 1
+        },
+        "expects": [
+            "content should not be empty",
+            "content string must contain at least 1 character(s)",
+            "status expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "content": "",
+            "status": "🚀",
+            "expireAfterTime": "invalid_enum_value"
+        },
+        "expects": [
+            "content should not be empty",
+            "content string must contain at least 1 character(s)",
+            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'invalid_enum_value'"
+        ]
+    },
+    {
+        "body": {
+            "content": "",
+            "status": "🚀"
+        },
+        "expects": [
+            "content should not be empty",
+            "content string must contain at least 1 character(s)",
+            "expireAfterTime required",
+            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'undefined'"
+        ]
+    },
+    {
+        "body": {
+            "content": "",
+            "status": "🚀",
+            "expireAfterTime": ""
+        },
+        "expects": [
+            "content should not be empty",
+            "content string must contain at least 1 character(s)",
+            "expireAfterTime should not be empty",
+            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received ''"
+        ]
+    },
+    {
+        "body": {
+            "content": "",
+            "status": "🚀",
+            "expireAfterTime": null
+        },
+        "expects": [
+            "content should not be empty",
+            "content string must contain at least 1 character(s)",
+            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'null'"
+        ]
+    },
+    {
+        "body": {
+            "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "status": "🚀",
+            "expireAfterTime": 1
+        },
+        "expects": [
+            "content string must contain at most 50 character(s)"
+        ]
+    },
+    {
+        "body": {
+            "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "status": 123,
+            "expireAfterTime": 1
+        },
+        "expects": [
+            "content string must contain at most 50 character(s)",
+            "status expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "status": "🚀🚀",
+            "expireAfterTime": 1
+        },
+        "expects": [
+            "content string must contain at most 50 character(s)",
+            "status only accepts 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "status": "",
+            "expireAfterTime": 1
+        },
+        "expects": [
+            "content string must contain at most 50 character(s)",
+            "status invalid emoji",
+            "status only accepts 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "status": null,
+            "expireAfterTime": 1
+        },
+        "expects": [
+            "content string must contain at most 50 character(s)",
+            "status expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "status": "🚀",
+            "expireAfterTime": "invalid_enum_value"
+        },
+        "expects": [
+            "content string must contain at most 50 character(s)",
+            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'invalid_enum_value'"
+        ]
+    },
+    {
+        "body": {
+            "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "status": "🚀"
+        },
+        "expects": [
+            "content string must contain at most 50 character(s)",
+            "expireAfterTime required",
+            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'undefined'"
+        ]
+    },
+    {
+        "body": {
+            "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "status": "🚀",
+            "expireAfterTime": ""
+        },
+        "expects": [
+            "content string must contain at most 50 character(s)",
+            "expireAfterTime should not be empty",
+            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received ''"
+        ]
+    },
+    {
+        "body": {
+            "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "status": "🚀",
+            "expireAfterTime": null
+        },
+        "expects": [
+            "content string must contain at most 50 character(s)",
+            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'null'"
+        ]
+    },
+    {
+        "body": {
+            "content": null,
+            "status": "🚀",
+            "expireAfterTime": 1
+        },
+        "expects": [
+            "content expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "content": null,
+            "status": 123,
+            "expireAfterTime": 1
+        },
+        "expects": [
+            "content expected string, received null",
+            "status expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "content": null,
+            "status": "🚀🚀",
+            "expireAfterTime": 1
+        },
+        "expects": [
+            "content expected string, received null",
+            "status only accepts 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "content": null,
+            "status": "",
+            "expireAfterTime": 1
+        },
+        "expects": [
+            "content expected string, received null",
+            "status invalid emoji",
+            "status only accepts 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "content": null,
+            "status": null,
+            "expireAfterTime": 1
+        },
+        "expects": [
+            "content expected string, received null",
+            "status expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "content": null,
+            "status": "🚀",
+            "expireAfterTime": "invalid_enum_value"
+        },
+        "expects": [
+            "content expected string, received null",
+            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'invalid_enum_value'"
+        ]
+    },
+    {
+        "body": {
+            "content": null,
+            "status": "🚀"
+        },
+        "expects": [
+            "content expected string, received null",
+            "expireAfterTime required",
+            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'undefined'"
+        ]
+    },
+    {
+        "body": {
+            "content": null,
+            "status": "🚀",
+            "expireAfterTime": ""
+        },
+        "expects": [
+            "content expected string, received null",
+            "expireAfterTime should not be empty",
+            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received ''"
+        ]
+    },
+    {
+        "body": {
+            "content": null,
+            "status": "🚀",
+            "expireAfterTime": null
+        },
+        "expects": [
+            "content expected string, received null",
+            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'null'"
+        ]
+    },
+    {
+        "body": {
+            "content": "Hi hi",
+            "status": 123,
+            "expireAfterTime": "invalid_enum_value"
+        },
+        "expects": [
+            "status expected string, received number",
+            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'invalid_enum_value'"
+        ]
+    },
+    {
+        "body": {
+            "content": "Hi hi",
+            "status": 123
+        },
+        "expects": [
+            "status expected string, received number",
+            "expireAfterTime required",
+            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'undefined'"
+        ]
+    },
+    {
+        "body": {
+            "content": "Hi hi",
+            "status": 123,
+            "expireAfterTime": ""
+        },
+        "expects": [
+            "status expected string, received number",
+            "expireAfterTime should not be empty",
+            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received ''"
+        ]
+    },
+    {
+        "body": {
+            "content": "Hi hi",
+            "status": 123,
+            "expireAfterTime": null
+        },
+        "expects": [
+            "status expected string, received number",
+            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'null'"
+        ]
+    },
+    {
+        "body": {
+            "content": "Hi hi",
+            "status": "🚀🚀",
+            "expireAfterTime": "invalid_enum_value"
+        },
+        "expects": [
+            "status only accepts 1 emoji",
+            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'invalid_enum_value'"
+        ]
+    },
+    {
+        "body": {
+            "content": "Hi hi",
+            "status": "🚀🚀"
+        },
+        "expects": [
+            "status only accepts 1 emoji",
+            "expireAfterTime required",
+            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'undefined'"
+        ]
+    },
+    {
+        "body": {
+            "content": "Hi hi",
+            "status": "🚀🚀",
+            "expireAfterTime": ""
+        },
+        "expects": [
+            "status only accepts 1 emoji",
+            "expireAfterTime should not be empty",
+            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received ''"
+        ]
+    },
+    {
+        "body": {
+            "content": "Hi hi",
+            "status": "🚀🚀",
+            "expireAfterTime": null
+        },
+        "expects": [
+            "status only accepts 1 emoji",
+            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'null'"
+        ]
+    },
+    {
+        "body": {
+            "content": "Hi hi",
+            "status": "",
+            "expireAfterTime": "invalid_enum_value"
+        },
+        "expects": [
+            "status invalid emoji",
+            "status only accepts 1 emoji",
+            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'invalid_enum_value'"
+        ]
+    },
+    {
+        "body": {
+            "content": "Hi hi",
+            "status": ""
+        },
+        "expects": [
+            "status invalid emoji",
+            "status only accepts 1 emoji",
+            "expireAfterTime required",
+            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'undefined'"
+        ]
+    },
+    {
+        "body": {
+            "content": "Hi hi",
+            "status": "",
+            "expireAfterTime": ""
+        },
+        "expects": [
+            "status invalid emoji",
+            "status only accepts 1 emoji",
+            "expireAfterTime should not be empty",
+            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received ''"
+        ]
+    },
+    {
+        "body": {
+            "content": "Hi hi",
+            "status": "",
+            "expireAfterTime": null
+        },
+        "expects": [
+            "status invalid emoji",
+            "status only accepts 1 emoji",
+            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'null'"
+        ]
+    },
+    {
+        "body": {
+            "content": "Hi hi",
+            "status": null,
+            "expireAfterTime": "invalid_enum_value"
+        },
+        "expects": [
+            "status expected string, received null",
+            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'invalid_enum_value'"
+        ]
+    },
+    {
+        "body": {
+            "content": "Hi hi",
+            "status": null
+        },
+        "expects": [
+            "status expected string, received null",
+            "expireAfterTime required",
+            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'undefined'"
+        ]
+    },
+    {
+        "body": {
+            "content": "Hi hi",
+            "status": null,
+            "expireAfterTime": ""
+        },
+        "expects": [
+            "status expected string, received null",
+            "expireAfterTime should not be empty",
+            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received ''"
+        ]
+    },
+    {
+        "body": {
+            "content": "Hi hi",
+            "status": null,
+            "expireAfterTime": null
+        },
+        "expects": [
+            "status expected string, received null",
+            "expireAfterTime invalid enum value. Expected 0 | 1 | 2 | 3 | 4 | 99, received 'null'"
+        ]
+    }
+]

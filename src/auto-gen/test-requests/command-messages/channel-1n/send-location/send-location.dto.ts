@@ -1,4 +1,4 @@
-import { ErrorMessage } from '@enum/';
+import { ErrorMessage } from '../../../../enums/index';
 import {
   IsDefined,
   IsNotEmpty,
@@ -8,7 +8,7 @@ import {
   MinLength,
   IsNotNull,
   IsOptional,
-} from '@decorators/';
+} from '../../../../decorator/index';
 
 export class SendLocationDTO {
   @IsDefined({ message: ErrorMessage.COULD_NOT_PERMISSION })
