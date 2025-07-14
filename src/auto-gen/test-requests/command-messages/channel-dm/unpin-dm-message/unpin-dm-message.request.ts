@@ -1,45 +1,30 @@
-import { VAR, ACTION, HEADER_LIST } from '../../../../enums/index';
-import { DTOBuilder } from '../../../../utils/chain-dto';
+import { createAIEnhancedDTO } from '../../../../utils/swagger-execute';
+import { ACTION } from '../../../../enums';
 
-export const UnpinDmMessageRequest = new DTOBuilder()
+export const UnpinDmMessageRequest = () => createAIEnhancedDTO()
   .startStep('unpin dm message')
-  .addAction(
+  .addBeforeAllActionAI(
     'send dm message',
     'send-dm-message',
     ACTION.SEND_DM_MESSAGE,
     {
-      headers: HEADER_LIST.create({ token: VAR.token }),
-      body: {
-        userId: VAR.userId1,
-        content: 'duybang12345',
-        ref: 'abc',
-      },
+      body: ACTION.SEND_DM_MESSAGE,
     }
   )
-  .addAction(
+  .addBeforeAllActionAI(
     'pin dm message',
     'pin-dm-message',
     ACTION.PIN_UNPIN_DM_MESSAGE,
     {
-      headers: HEADER_LIST.create({ token: VAR.token }),
-      body: {
-        userId: VAR.userId1,
-        messageId: VAR.messageId,
-        status: true,
-      },
+      body: ACTION.PIN_UNPIN_DM_MESSAGE,
     }
   )
-  .addAction(
+  .addActionAI(
     'unpin dm message',
     'unpin-dm-message',
     ACTION.PIN_UNPIN_DM_MESSAGE,
     {
-      headers: HEADER_LIST.create({ token: VAR.token }),
-      body: {
-        userId: VAR.userId1,
-        messageId: VAR.messageId,
-        status: false,
-      },
+      body: ACTION.PIN_UNPIN_DM_MESSAGE,
     }
   )
   .execute();

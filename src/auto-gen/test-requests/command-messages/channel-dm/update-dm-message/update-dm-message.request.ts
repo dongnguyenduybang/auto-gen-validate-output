@@ -1,23 +1,22 @@
-import { ACTION, HEADER_LIST, VAR } from "../../../../enums";
-import { DTOBuilder } from "../../../../utils/chain-dto";
+import { createAIEnhancedDTO } from '../../../../utils/swagger-execute';
+import { ACTION } from '../../../../enums';
 
-export const UpdateDmMessage = new DTOBuilder()
+export const UpdateDmMessageRequest = () => createAIEnhancedDTO()
   .startStep('update dm message')
-  .addAction('update dm message', 'aa', ACTION.UPDATE_DM_MESSAGE, {
-    headers: HEADER_LIST.create({ token: VAR.token }),
-    body: {
-      userId: VAR.userId1,
-      messageId: VAR.messageId,
-      content: 'dm message chain update',
-      ref: 'ref'
+  .addBeforeAllActionAI(
+    'send dm message',
+    'send-dm-message',
+    ACTION.SEND_DM_MESSAGE,
+    {
+      body: ACTION.SEND_DM_MESSAGE,
     }
-  })
-  .addBeforeAll('send dm message', 'aaa', ACTION.SEND_DM_MESSAGE, {
-    headers: HEADER_LIST.create({ token: VAR.token }),
-    body: {
-      userId: VAR.userId1,
-      content: 'dm message chain',
-      ref: 'ref'
+  )
+  .addActionAI(
+    'update dm message',
+    'update-dm-message',
+    ACTION.UPDATE_DM_MESSAGE,
+    {
+      body: ACTION.UPDATE_DM_MESSAGE,
     }
-  })
-  .execute()
+  )
+  .execute();

@@ -1,22 +1,22 @@
-import { ACTION, HEADER_LIST, VAR } from "../../../../enums";
-import { DTOBuilder } from "../../../../utils/chain-dto";
+import { createAIEnhancedDTO } from '../../../../utils/swagger-execute';
+import { ACTION } from '../../../../enums';
 
-export const AddDmMessageReaction = new DTOBuilder()
+export const AddDmMessageReaction = () => createAIEnhancedDTO()
   .startStep('add dm message reaction')
-  .addAction('add dm message reaction', 'add-reaction', ACTION.ADD_DM_MESSAGE_REACTION, {
-    headers: HEADER_LIST.create({ token: VAR.token }),
-    body: {
-      userId: VAR.userId1,
-      messageId: VAR.messageId,
-      emoji: '🚀',
+  .addBeforeAllActionAI(
+    'send dm message',
+    'send-message',
+    ACTION.SEND_DM_MESSAGE,
+    {
+      body: ACTION.SEND_DM_MESSAGE,
     },
-  })
-  .addBeforeAll('send dm message', 'send-message', ACTION.SEND_DM_MESSAGE, {
-    headers: HEADER_LIST.create({ token: VAR.token }),
-    body: {
-      userId: VAR.userId1,
-      content: 'duybang12345',
-      ref: 'abc',
+  )
+  .addActionAI(
+    'add dm message reaction',
+    'add-reaction',
+    ACTION.ADD_DM_MESSAGE_REACTION,
+    {
+      body: ACTION.ADD_DM_MESSAGE_REACTION,
     },
-  })
+  )
   .execute();

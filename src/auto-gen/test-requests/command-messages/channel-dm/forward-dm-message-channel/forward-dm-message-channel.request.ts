@@ -1,22 +1,22 @@
-import { ACTION, HEADER_LIST, VAR } from '../../../../enums/index';
-import { DTOBuilder } from '../../../../utils/chain-dto';
+import { createAIEnhancedDTO } from '../../../../utils/swagger-execute';
+import { ACTION } from '../../../../enums';
 
-export const ForwardDmMessageChannelRequest = new DTOBuilder()
+export const ForwardDmMessageChannelRequest = () => createAIEnhancedDTO()
   .startStep('forward DM message to channel')
-  .addAction('forward dm message channel', 'forward-dm-msg-channel', ACTION.FORWARD_DM_MESSAGE_CHANNEL, {
-    headers: HEADER_LIST.create({ token: VAR.token }),
-    body: {
-      userId: VAR.userId1,
-      originalMessageIds: [VAR.messageId],
+  .addBeforeAllActionAI(
+    'send message',
+    'send-message',
+    ACTION.SEND_MESSAGE,
+    {
+      body: ACTION.SEND_MESSAGE,
     },
-  })
-  .addBeforeAll('send message', 'send-message', ACTION.SEND_MESSAGE, {
-    headers: HEADER_LIST.create({ token: VAR.token }),
-    body: {
-      workspaceId: VAR.workspaceId,
-      channelId: VAR.channelId,
-      content: 'duybang12345',
-      ref: 'abc',
+  )
+  .addActionAI(
+    'forward dm message channel',
+    'forward-dm-msg-channel',
+    ACTION.FORWARD_DM_MESSAGE_CHANNEL,
+    {
+      body: ACTION.FORWARD_DM_MESSAGE_CHANNEL,
     },
-  })
+  )
   .execute();

@@ -24,7 +24,7 @@ function toInterfaceName(requestName: string): string {
   // Chuyển thành PascalCase và xử lý từ đặc biệt
   const pascalCase = words
     .map((word) => {
-      if (word.toUpperCase() === 'DM') return 'DM'; // Chuyển Dm/DM/dm thành DM
+      if (word.toUpperCase() === 'DM') return 'Dm'; // Chuyển Dm/DM/dm thành DM
       return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
     })
     .join('');
@@ -37,6 +37,53 @@ function toInterfaceName(requestName: string): string {
 
   // Thay $ trong VAR.versionSwagger bằng V3 + pascalCase
   return CONST.versionSwagger.replace('$', pascalCase);
+}
+
+function resolveSchema(
+  schema: any,
+  allSchemas: Record<string, any>,
+  visited: Set<string> = new Set()
+): any {
+  if (!schema || typeof schema !== 'object') return schema;
+
+  // Nếu schema có $ref
+  if (schema['$ref']) {
+    const refPath = schema['$ref'].replace('#/components/schemas/', '');
+    // Tạo một bản sao của visited để tránh ảnh hưởng đến các nhánh khác
+    const newVisited = new Set(visited);
+    if (newVisited.has(refPath)) {
+      console.warn(`⚠️ Phát hiện tham chiếu đệ quy cho ${refPath}`);
+      return { $ref: refPath, recursive: true }; // Trả về đánh dấu thay vì {}
+    }
+    newVisited.add(refPath);
+    const resolvedSchema = allSchemas[refPath];
+    if (!resolvedSchema) {
+      throw new Error(`Không tìm thấy schema cho $ref: ${refPath}`);
+    }
+    return resolveSchema(resolvedSchema, allSchemas, newVisited);
+  }
+
+  // Xử lý mảng
+  if (schema.type === 'array' && schema.items) {
+    return {
+      ...schema,
+      items: resolveSchema(schema.items, allSchemas, new Set(visited)), // Dùng new Set để reset visited
+    };
+  }
+
+  // Xử lý các thuộc tính của object
+  if (schema.type === 'object' && schema.properties) {
+    const resolvedProperties: Record<string, any> = {};
+    for (const [key, prop] of Object.entries(schema.properties)) {
+      resolvedProperties[key] = resolveSchema(prop, allSchemas, new Set(visited)); // Reset visited cho mỗi thuộc tính
+    }
+    return {
+      ...schema,
+      properties: resolvedProperties,
+    };
+  }
+
+  return { ...schema };
 }
 
 interface Schema {
@@ -622,7 +669,9 @@ class AIEnhancedDTOBuilder {
     let userIdPrediction: PredictionResult | null = null;
     let hasUserIdField = false;
 
-    if (!schema || !schema.properties) {
+    const resolvedSchema = resolveSchema(schema, schemas);
+    console.log('resolve schema', JSON.stringify(resolvedSchema, null,2))
+    if (!resolvedSchema || !resolvedSchema.properties) {
       console.warn(`⚠️ Không tìm thấy thuộc tính schema cho ${action}, sử dụng mô tả fallback`);
       if (action === 'deleteMockedUsers' || schema?.schema === 'V3DeleteMockedUsersRequest') {
         processedBody.prefix = CONST.prefix;
@@ -636,8 +685,10 @@ class AIEnhancedDTOBuilder {
         };
       }
     } else {
-      for (const [propKey, propValue] of Object.entries(schema.properties || {}) as [string, any]) {
-        const isRequired = schema?.required?.includes(propKey) || false;
+      for (const [propKey, propValue] of Object.entries(resolvedSchema.properties || {}) as [string, any]) {
+        const isRequired = resolvedSchema?.required?.includes(propKey) || false;
+
+        // Tạo metadata cho property
         processedBody.metadata!.resolvedFields[propKey] = {
           originalValue: undefined,
           resolvedValue: undefined,
@@ -663,14 +714,10 @@ class AIEnhancedDTOBuilder {
             resolvedValue: processedBody[propKey],
             aiResult,
           };
-        } else if (isRequired) {
-          processedBody[propKey] = this.getDefaultValueForProperty(propKey, propValue);
-          processedBody.metadata!.resolvedFields[propKey].resolvedValue = processedBody[propKey];
         } else {
-          const value = CONST[propKey as keyof typeof CONST];
-          processedBody[propKey] = value !== undefined ? value : (propKey === 'badge' ?  0 : undefined);
+          // Xử lý recursive tất cả các property
+          processedBody[propKey] = this.resolvePropertyValue(propKey, propValue);
           processedBody.metadata!.resolvedFields[propKey].resolvedValue = processedBody[propKey];
-
         }
       }
 
@@ -690,7 +737,7 @@ class AIEnhancedDTOBuilder {
     const headerKey = 'x-session-token';
     let headerValue = VAR.token;
     if (hasUserIdField && userIdPrediction) {
-      headerValue = userIdPrediction.userIdMeaning === 'receiver' ? VAR.token : VAR.token1;
+      headerValue = userIdPrediction.userIdMeaning === 'receiver' ? VAR.token1 : VAR.token;
     }
 
     processedBody.headers = {
@@ -710,7 +757,58 @@ class AIEnhancedDTOBuilder {
     return processedBody;
   }
 
+
+  private resolvePropertyValue(propKey: string, propSchema: any): any {
+    console.log(propSchema)
+    // 1. Kiểm tra trong CONST trước
+    const constValue = CONST[propKey as keyof typeof CONST];
+    if (constValue !== undefined) {
+      return constValue;
+    }
+
+    // 2. Xử lý theo type của property
+    switch (propSchema.type) {
+      case 'array':
+        return this.resolveArrayProperty(propKey, propSchema);
+      case 'object':
+        return this.resolveObjectProperty(propKey, propSchema);
+      default:
+        return this.getDefaultValueForProperty(propKey, propSchema);
+    }
+  }
+
+  /**
+   * Xử lý property kiểu array
+   */
+  private resolveArrayProperty(propKey: string, propSchema: any): any[] {
+    if (!propSchema.items) {
+      return [];
+    }
+
+    // Tạo 1 phần tử trong array để demo
+    const itemValue = this.resolvePropertyValue(propKey, propSchema.items);
+    console.log('array valu', itemValue)
+    return [itemValue];
+
+  }
+
+  /**
+   * Xử lý property kiểu object
+   */
+  private resolveObjectProperty(propKey: string, propSchema: any): any {
+    if (!propSchema.properties) {
+      return {};
+    }
+
+    const result: any = {};
+    for (const [nestedPropKey, nestedPropSchema] of Object.entries(propSchema.properties) as [string, any]) {
+      result[nestedPropKey] = this.resolvePropertyValue(nestedPropKey, nestedPropSchema);
+    }
+    return result;
+  }
+
   private getDefaultValueForProperty(propKey: string, propSchema: any): any {
+    console.log('propKey', propKey)
     const value = CONST[propKey as keyof typeof CONST];
     if (!value) {
       console.warn(`⚠️ PropKey not found in CONST: ${propKey}`);

@@ -1,18 +1,14 @@
-import { VAR, ACTION, HEADER_LIST } from '../../../../enums/index';
-import { DTOBuilder } from '../../../../utils/chain-dto';
+import { createAIEnhancedDTO } from '../../../../utils/swagger-execute';
+import { ACTION } from '../../../../enums';
 
-export const SendPokeMessageRequest = new DTOBuilder()
+export const SendPokeMessageRequest = () => createAIEnhancedDTO()
   .startStep('send poke message')
-  .addAction(
+  .addActionAI(
     'send poke message',
     'send-poke-message',
     ACTION.SEND_POKE_MESSAGE,
     {
-      headers: HEADER_LIST.create({ token: VAR.token }),
-      body: {
-        userId: VAR.userId1,
-        ref: 'ref',
-      },
-    }
+      body: ACTION.SEND_POKE_MESSAGE,
+    },
   )
   .execute();

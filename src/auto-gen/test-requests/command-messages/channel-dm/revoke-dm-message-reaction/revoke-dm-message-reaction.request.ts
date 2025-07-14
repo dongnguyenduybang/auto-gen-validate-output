@@ -1,40 +1,30 @@
-import { VAR, ACTION, HEADER_LIST } from '../../../../enums/index';
-import { DTOBuilder } from '../../../../utils/chain-dto';
+import { createAIEnhancedDTO } from '../../../../utils/swagger-execute';
+import { ACTION } from '../../../../enums';
 
-export const RevokeDmMessageReactionRequest = new DTOBuilder()
+export const RevokeDmMessageReactionRequest = () => createAIEnhancedDTO()
   .startStep('revoke dm message reaction')
-  .addAction(
-    'revoke dm message reaction',
-    'revoke-dm-msg-reaction',
-    ACTION.REVOKE_DM_MESSAGE_REACTION,
+  .addBeforeAllActionAI(
+    'send dm message',
+    'send-dm-msg',
+    ACTION.SEND_DM_MESSAGE,
     {
-      headers: HEADER_LIST.create({ token: VAR.token }),
-      body: {
-        userId: VAR.userId1,
-        messageId: VAR.messageId,
-        emoji: '🚀',
-      },
-    }
-  )
-  .addBeforeAll('send dm message', 'send-dm-msg', ACTION.SEND_DM_MESSAGE, {
-    headers: HEADER_LIST.create({ token: VAR.token }),
-    body: {
-      userId: VAR.userId1,
-      content: 'duybang12345',
-      ref: 'abc',
+      body: ACTION.SEND_DM_MESSAGE,
     },
-  })
-  .addBeforeAll(
+  )
+  .addBeforeAllActionAI(
     'add dm message reaction',
     'add-dm-msg-reaction',
     ACTION.ADD_DM_MESSAGE_REACTION,
     {
-      headers: HEADER_LIST.create({ token: VAR.token }),
-      body: {
-        messageId: VAR.messageId,
-        userId: VAR.userId1,
-        emoji: '🚀',
-      },
-    }
+      body: ACTION.ADD_DM_MESSAGE_REACTION,
+    },
+  )
+  .addActionAI(
+    'revoke dm message reaction',
+    'revoke-dm-msg-reaction',
+    ACTION.REVOKE_DM_MESSAGE_REACTION,
+    {
+      body: ACTION.REVOKE_DM_MESSAGE_REACTION,
+    },
   )
   .execute();

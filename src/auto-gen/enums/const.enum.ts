@@ -3,6 +3,7 @@ import { ChannelTypeEnum } from './channel-type.enum';
 import { ExpireAfterTimeEnum } from './expire-after-time.enum';
 import { BadgeEnum } from './badge.enum';
 import { VAR } from './var-placeholder.enum';
+import { AttachmentTypeEnum } from './attachment-type.enum';
 
 export const CONST = {
   workspaceId: VAR.workspaceId,
@@ -32,5 +33,10 @@ export const CONST = {
   nextPageToken: ulid(), // ✅ OK
   status: '🚀',
   expireAfterTime: ExpireAfterTimeEnum.USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_1_HOUR,
-  channelId: VAR.channelId
+  channelId: VAR.channelId,
+  attachmentType: AttachmentTypeEnum.ATTACHMENT_TYPE_ENUM_PHOTO,
+  fileUrl: "https://fs.ugc.ziicdn.net/01JEZJ0GPMSHH2RVX9QTSJJNRX/heic_300kB.heic",
+  mimetype: "text/plain",
+  filename: "text.txt",
+  extension: "text.txt",
 } as const;
