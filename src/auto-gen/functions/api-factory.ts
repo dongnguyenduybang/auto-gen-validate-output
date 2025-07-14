@@ -65,11 +65,11 @@ export function createApiFunction(config: ApiConfig, context: TestContext) {
       const clusterEndpoint =
         moduleName.charAt(0).toLowerCase() + moduleName.slice(1);
       const resolveHeader = resolveVariables(headers, context);
-
       const resolveBody = resolveVariables(body, context);
       const toCamelCase = extractActionName(path);
 
       const apiDetail = client[clusterEndpoint];
+
       const callAPI = await getResponseSuccess(
         resolveBody,
         apiDetail[toCamelCase],
@@ -101,7 +101,13 @@ function getHttpClient(moduleName: string, http: HttpClient) {
 }
 
 function extractActionName(path: string): string {
-  const parts = path.split('/').filter(Boolean); // ['Channel', 'RejectMessageRequest']
-  const last = parts[parts.length - 1]; // 'RejectMessageRequest'
-  return last.charAt(0).toLowerCase() + last.slice(1); // 'rejectMessageRequest'
+  const parts = path.split('/').filter(Boolean);
+  const last = parts[parts.length - 1];
+
+  // DM -> Dm
+  const adjusted = last.replace(/([A-Z]{2,})(?=[A-Z][a-z]|$)/g, (match) =>
+    match.charAt(0) + match.slice(1).toLowerCase()
+  );
+
+  return adjusted.charAt(0).toLowerCase() + adjusted.slice(1);
 }
