@@ -89,11 +89,10 @@ export default function (data) {
         { headers }
       );
 
-     
       let expectDetails = [];
       let softExpectDetails = [];
       
-      if ([200, 201, 400, 403].includes(response.status)) {
+      if ([200, 201, 400, 403, 404, 500].includes(response.status)) {
         const contentType = response.headers['Content-Type']?.toLowerCase() || '';
         if (contentType.includes('application/json')) {
           try {
@@ -107,6 +106,8 @@ export default function (data) {
                   : data !== undefined && data !== null
                     ? [JSON.stringify(data)]
                     : [];
+
+      
           } catch (e) {
             console.error(\`Failed to parse JSON for test \${test.number}: \${e.message}\`);
             expectDetails = [response.body || ''];
@@ -116,7 +117,8 @@ export default function (data) {
         }
         softExpectDetails = [...expectDetails].sort();
       }
-      console.log(softExpectDetails, test.expectedErrors )
+
+      console.log(softExpectDetails, test.expectedErrors)
       const allErrorsMatched = softExpectDetails.every(actualError => 
         test.expectedErrors.includes(actualError)
       );
@@ -175,9 +177,9 @@ export function handleSummary(data) {
       metrics: {
         http_reqs: data.metrics.http_reqs?.values || { count: 0 },
         http_req_duration: data.metrics.http_req_duration?.values || { avg: 0 },
-        passedTestsMetric: metrics.passed_tests.values || { count: 0 },
-        failedTestsMetric: metrics.failed_tests.values || { count: 0 },
-        warningsMetric: metrics.warnings.values || { count: 0 }
+        passedTestsMetric: metrics.passed_tests?.values || { count: 0 },
+        failedTestsMetric: metrics.failed_tests?.values || { count: 0 },
+        warningsMetric: metrics.warnings?.values || { count: 0 }
       },
       testResults
     }, null, 2)
