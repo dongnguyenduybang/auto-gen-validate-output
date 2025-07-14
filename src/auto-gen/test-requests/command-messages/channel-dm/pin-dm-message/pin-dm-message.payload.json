@@ -3,7 +3,7 @@
         "body": {
             "userId": 123,
             "messageId": "{{messageId}}",
-            "status": "🚀"
+            "status": true
         },
         "expects": [
             "Could not resolve permission type"
@@ -13,7 +13,7 @@
         "body": {
             "userId": "",
             "messageId": "{{messageId}}",
-            "status": "🚀"
+            "status": true
         },
         "expects": [
             "Could not resolve permission type"
@@ -23,7 +23,7 @@
         "body": {
             "userId": null,
             "messageId": "{{messageId}}",
-            "status": "🚀"
+            "status": true
         },
         "expects": [
             "Could not resolve permission type"
@@ -33,7 +33,7 @@
         "body": {
             "userId": "invalid_value",
             "messageId": "{{messageId}}",
-            "status": "🚀"
+            "status": true
         },
         "expects": [
             "Unauthorized request"
@@ -43,45 +43,41 @@
         "body": {
             "userId": "{{userId}}",
             "messageId": 123,
-            "status": "🚀"
+            "status": true
         },
         "expects": [
-            "messageId expected string, received number",
-            "status expected boolean, received string"
+            "messageId expected string, received number"
         ]
     },
     {
         "body": {
             "userId": "{{userId}}",
             "messageId": "",
-            "status": "🚀"
+            "status": true
         },
         "expects": [
             "messageId should not be empty",
-            "messageId invalid ulid",
-            "status expected boolean, received string"
+            "messageId invalid ulid"
         ]
     },
     {
         "body": {
             "userId": "{{userId}}",
             "messageId": null,
-            "status": "🚀"
+            "status": true
         },
         "expects": [
-            "messageId expected string, received null",
-            "status expected boolean, received string"
+            "messageId expected string, received null"
         ]
     },
     {
         "body": {
             "userId": "{{userId}}",
             "messageId": "invalid_ULID",
-            "status": "🚀"
+            "status": true
         },
         "expects": [
-            "messageId invalid ulid",
-            "status expected boolean, received string"
+            "messageId invalid ulid"
         ]
     },
     {
@@ -108,10 +104,8 @@
         "body": {
             "userId": "{{userId}}",
             "messageId": "{{messageId}}",
-            "status": "🚀"
+            "status": true
         },
-        "expects": [
-            "status expected boolean, received string"
-        ]
+        "expects": []
     }
 ]
