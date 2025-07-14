@@ -4,6 +4,8 @@ import { ExpireAfterTimeEnum } from './expire-after-time.enum';
 import { BadgeEnum } from './badge.enum';
 import { VAR } from './var-placeholder.enum';
 import { AttachmentTypeEnum } from './attachment-type.enum';
+import { ReportCategory } from './report-category.enum';
+import { PretendingTo } from './pretending-to.enum';
 
 export const CONST = {
   workspaceId: VAR.workspaceId,
@@ -39,4 +41,12 @@ export const CONST = {
   mimetype: "text/plain",
   filename: "text.txt",
   extension: "text.txt",
+  messageId: VAR.messageId,
+  emoji: '🎉',
+  messageIds: [VAR.messageId],
+  originalMessageIds: [VAR.messageId],
+  reportCategory: ReportCategory.REPORT_CATEGORY_HARASSMENT,
+  pretendingTo: PretendingTo.PRETENDING_TO_ME,
+  reportReason: 'default report reason',
+  
 } as const;
