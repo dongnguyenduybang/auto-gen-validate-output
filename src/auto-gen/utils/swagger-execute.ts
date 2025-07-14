@@ -1,5 +1,5 @@
 import { ACTION, ACTION_CONFIG, METHOD, VAR } from '../enums';
-import schemas from '../swagger/schemas.json';
+import schemas from '../swagger/hono.swagger.json';
 import * as tf from '@tensorflow/tfjs';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -24,7 +24,7 @@ function toInterfaceName(requestName: string): string {
   // Chuyển thành PascalCase và xử lý từ đặc biệt
   const pascalCase = words
     .map((word) => {
-      if (word.toUpperCase() === 'DM') return 'Dm'; // Chuyển Dm/DM/dm thành DM
+      if (word.toUpperCase() === 'DM') return 'DM'; // Chuyển Dm/DM/dm thành DM
       return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
     })
     .join('');
@@ -150,7 +150,7 @@ class AIUserIdResolver {
 
   public async initializeFromSwagger(): Promise<void> {
     try {
-      const swaggerPath = path.resolve(__dirname, '../swagger/schemas.json');
+      const swaggerPath = path.resolve(__dirname, '../swagger/hono.swagger.json');
       if (!(await exists(swaggerPath))) {
         throw new Error(`File Swagger không tồn tại tại: ${swaggerPath}`);
       }
@@ -183,7 +183,7 @@ class AIUserIdResolver {
       return trainingData;
     }
 
-    Object.entries(swaggerJson).forEach(([schemaName, schema]: [string, any]) => {
+    Object.entries(swaggerJson.components.schemas).forEach(([schemaName, schema]: [string, any]) => {
       if (!schema?.properties?.userId) {
         console.log(`ℹ️ Schema ${schemaName} không có trường userId, bỏ qua`);
         return;
@@ -260,7 +260,7 @@ class AIUserIdResolver {
       console.warn('⚠️ schemaName không hợp lệ');
       return null;
     }
-    const schema = (schemas as Record<string, any>)[schemaName];
+    const schema = (schemas.components.schemas as Record<string, any>)[schemaName];
     if (!schema || !schema.properties || !schema.properties.userId) {
       console.log(`ℹ️ Schema ${schemaName} không có trường userId`);
       return null;
@@ -527,7 +527,7 @@ class AIEnhancedDTOBuilder {
     }
 
     const schemaName = this.generateSchemaName(action);
-    const schema = (schemas as Record<string, any>)[schemaName];
+    const schema = (schemas.components.schemas as Record<string, any>)[schemaName];
     let shouldRetrain = false;
 
     if (AIEnhancedDTOBuilder.aiResolverInstance && schema?.properties?.userId) {
@@ -669,8 +669,8 @@ class AIEnhancedDTOBuilder {
     let userIdPrediction: PredictionResult | null = null;
     let hasUserIdField = false;
 
-    const resolvedSchema = resolveSchema(schema, schemas);
-    console.log('resolve schema', JSON.stringify(resolvedSchema, null,2))
+    const resolvedSchema = resolveSchema(schema, schemas.components.schemas);
+    // console.log('resolve schema', JSON.stringify(resolvedSchema, null, 2))
     if (!resolvedSchema || !resolvedSchema.properties) {
       console.warn(`⚠️ Không tìm thấy thuộc tính schema cho ${action}, sử dụng mô tả fallback`);
       if (action === 'deleteMockedUsers' || schema?.schema === 'V3DeleteMockedUsersRequest') {
@@ -682,6 +682,35 @@ class AIEnhancedDTOBuilder {
           propKey: 'prefix',
           propType: 'string',
           description: 'Prefix for deleting mocked users',
+        };
+      }
+      if (action === 'mockUsers') {
+        processedBody.prefix = CONST.prefix;
+        processedBody.quantity = CONST.quantity;
+        processedBody.badge = CONST.badge
+        processedBody.metadata!.resolvedFields.prefix = {
+          originalValue: 'prefix',
+          resolvedValue: CONST.prefix,
+          isRequired: true,
+          propKey: 'prefix',
+          propType: 'string',
+          description: 'Prefix for mocked users',
+        };
+        processedBody.metadata!.resolvedFields.badge = {
+          originalValue: 'badge',
+          resolvedValue: CONST.badge,
+          isRequired: true,
+          propKey: 'badge',
+          propType: 'integer',
+          description: 'badge for mocked users',
+        };
+        processedBody.metadata!.resolvedFields.quantity = {
+          originalValue: 'quantity',
+          resolvedValue: CONST.quantity,
+          isRequired: true,
+          propKey: 'quantity',
+          propType: 'integer',
+          description: 'The number of accounts you want to create.',
         };
       }
     } else {
@@ -737,7 +766,7 @@ class AIEnhancedDTOBuilder {
     const headerKey = 'x-session-token';
     let headerValue = VAR.token;
     if (hasUserIdField && userIdPrediction) {
-      headerValue = userIdPrediction.userIdMeaning === 'receiver' ? VAR.token1 : VAR.token;
+      headerValue = userIdPrediction.userIdMeaning === 'receiver' ? VAR.token : VAR.token1;
     }
 
     processedBody.headers = {
@@ -759,14 +788,11 @@ class AIEnhancedDTOBuilder {
 
 
   private resolvePropertyValue(propKey: string, propSchema: any): any {
-    console.log(propSchema)
-    // 1. Kiểm tra trong CONST trước
     const constValue = CONST[propKey as keyof typeof CONST];
     if (constValue !== undefined) {
       return constValue;
     }
 
-    // 2. Xử lý theo type của property
     switch (propSchema.type) {
       case 'array':
         return this.resolveArrayProperty(propKey, propSchema);
@@ -787,7 +813,6 @@ class AIEnhancedDTOBuilder {
 
     // Tạo 1 phần tử trong array để demo
     const itemValue = this.resolvePropertyValue(propKey, propSchema.items);
-    console.log('array valu', itemValue)
     return [itemValue];
 
   }
@@ -808,7 +833,6 @@ class AIEnhancedDTOBuilder {
   }
 
   private getDefaultValueForProperty(propKey: string, propSchema: any): any {
-    console.log('propKey', propKey)
     const value = CONST[propKey as keyof typeof CONST];
     if (!value) {
       console.warn(`⚠️ PropKey not found in CONST: ${propKey}`);
