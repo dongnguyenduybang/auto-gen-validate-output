@@ -32,8 +32,10 @@ export const CONST = {
   prefix: VAR.prefix,
   quantity: 2,
   badge: BadgeEnum.USER_BADGE_TYPE_DEFAULT,
-  nextPageToken: ulid(), // ✅ OK
+  nextPageToken: ulid(),
   status: '🚀',
+  statusPin: true,
+  statusUnpin: false,
   expireAfterTime: ExpireAfterTimeEnum.USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_1_HOUR,
   channelId: VAR.channelId,
   attachmentType: AttachmentTypeEnum.ATTACHMENT_TYPE_ENUM_PHOTO,
