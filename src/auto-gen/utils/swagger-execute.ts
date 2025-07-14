@@ -1,41 +1,36 @@
-import { ACTION, ACTION_CONFIG, METHOD, VAR } from '../enums';
+import { ACTION_CONFIG, METHOD, VAR } from '../enums';
 import schemas from '../swagger/hono.swagger.json';
 import * as tf from '@tensorflow/tfjs';
 import * as fs from 'fs';
 import * as path from 'path';
 import { promisify } from 'util';
 import { CONST } from '../enums/const.enum';
+import { ActionConfig, TrainingData, PredictionResult, ProcessedBody } from './declarations';
 import { createFeatureVector, getOrCreateTrainedModel, getOrCreateVocabulary, guessUserIdMeaning } from './ai-service';
 
 const readFile = promisify(fs.readFile);
 
 function toInterfaceName(requestName: string): string {
-  // Kiểm tra định dạng của requestName
+
   if (!requestName || typeof requestName !== 'string') {
     console.warn(`⚠️ requestName không hợp lệ: ${requestName}`);
     return CONST.versionSwagger;
   }
-
-  // Tách chuỗi camelCase thành các từ
   const words = requestName
-    .replace(/([a-z])([A-Z])/g, '$1 $2') // Thêm khoảng trắng trước chữ hoa
-    .split(' '); // Tách thành mảng từ
+    .replace(/([a-z])([A-Z])/g, '$1 $2')
+    .split(' ');
 
-  // Chuyển thành PascalCase và xử lý từ đặc biệt
   const pascalCase = words
     .map((word) => {
-      if (word.toUpperCase() === 'DM') return 'DM'; // Chuyển Dm/DM/dm thành DM
+      if (word.toUpperCase() === 'DM') return 'DM';
       return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
     })
     .join('');
 
-  // Kiểm tra CONST.versionSwagger
   if (!CONST.versionSwagger.includes('$')) {
     console.warn(`⚠️ CONST.versionSwagger không chứa ký tự $: ${CONST.versionSwagger}`);
     return `${CONST.versionSwagger}${pascalCase}`;
   }
-
-  // Thay $ trong VAR.versionSwagger bằng V3 + pascalCase
   return CONST.versionSwagger.replace('$', pascalCase);
 }
 
@@ -46,14 +41,13 @@ function resolveSchema(
 ): any {
   if (!schema || typeof schema !== 'object') return schema;
 
-  // Nếu schema có $ref
   if (schema['$ref']) {
     const refPath = schema['$ref'].replace('#/components/schemas/', '');
-    // Tạo một bản sao của visited để tránh ảnh hưởng đến các nhánh khác
+
     const newVisited = new Set(visited);
     if (newVisited.has(refPath)) {
       console.warn(`⚠️ Phát hiện tham chiếu đệ quy cho ${refPath}`);
-      return { $ref: refPath, recursive: true }; // Trả về đánh dấu thay vì {}
+      return { $ref: refPath, recursive: true };
     }
     newVisited.add(refPath);
     const resolvedSchema = allSchemas[refPath];
@@ -63,7 +57,6 @@ function resolveSchema(
     return resolveSchema(resolvedSchema, allSchemas, newVisited);
   }
 
-  // Xử lý mảng
   if (schema.type === 'array' && schema.items) {
     return {
       ...schema,
@@ -71,7 +64,6 @@ function resolveSchema(
     };
   }
 
-  // Xử lý các thuộc tính của object
   if (schema.type === 'object' && schema.properties) {
     const resolvedProperties: Record<string, any> = {};
     for (const [key, prop] of Object.entries(schema.properties)) {
@@ -86,57 +78,6 @@ function resolveSchema(
   return { ...schema };
 }
 
-interface Schema {
-  type?: string;
-  description?: string;
-  properties?: Record<string, Schema>;
-  required?: string[];
-  enum?: any[];
-  items?: Schema;
-}
-
-interface ActionConfig {
-  method: string;
-  path: string;
-}
-
-interface TrainingData {
-  action: string;
-  apiEndpoint: string;
-  swaggerDesc: string;
-  contextClues: string[];
-  httpMethod?: string;
-  schemaId?: string;
-  fieldName?: string;
-}
-
-interface PredictionResult {
-  userIdMeaning: string;
-  confidence: number;
-  probabilities?: Record<string, number>;
-  reasoning: string;
-  method?: string;
-  suggestedVariableName?: string;
-}
-
-interface ProcessedBody {
-  [key: string]: any;
-  metadata?: {
-    resolvedFields: Record<
-      string,
-      {
-        originalValue: any;
-        resolvedValue: any;
-        isRequired?: boolean;
-        propKey?: string;
-        propType?: string;
-        description?: string;
-        reasoning?: string;
-        aiResult?: PredictionResult;
-      }
-    >;
-  };
-}
 
 class AIUserIdResolver {
   private _trainingData: TrainingData[] = [];
@@ -538,7 +479,7 @@ class AIEnhancedDTOBuilder {
         const newTraining = await AIEnhancedDTOBuilder.aiResolverInstance.autoGenerateTrainingDataFromSchema(schemaName);
         if (newTraining) {
           AIEnhancedDTOBuilder.aiResolverInstance.addTrainingData(newTraining);
-          // Chỉ retrain nếu số lượng dữ liệu mới vượt ngưỡng
+
           const newDataCount = AIEnhancedDTOBuilder.aiResolverInstance.getTrainingData().length;
           if (newDataCount % this.trainingDataThreshold === 0) {
             shouldRetrain = true;
@@ -744,8 +685,8 @@ class AIEnhancedDTOBuilder {
             aiResult,
           };
         } else {
-          // Xử lý recursive tất cả các property
-          processedBody[propKey] = this.resolvePropertyValue(propKey, propValue);
+
+          processedBody[propKey] = this.resolvePropertyValue(propKey, propValue, action);
           processedBody.metadata!.resolvedFields[propKey].resolvedValue = processedBody[propKey];
         }
       }
@@ -787,52 +728,57 @@ class AIEnhancedDTOBuilder {
   }
 
 
-  private resolvePropertyValue(propKey: string, propSchema: any): any {
+  private resolvePropertyValue(propKey: string, propSchema: any, action: string): any {
     const constValue = CONST[propKey as keyof typeof CONST];
     if (constValue !== undefined) {
+      if (propKey === 'status') {
+        if (action.includes('status')) {
+          return CONST.status;
+        } else if (action.includes('pin')) {
+          return CONST.statusPin
+        } else if (action.includes('unpin')) {
+          return CONST.statusUnpin
+        }
+      }
+
       return constValue;
     }
 
+
     switch (propSchema.type) {
       case 'array':
-        return this.resolveArrayProperty(propKey, propSchema);
+        return this.resolveArrayProperty(propKey, propSchema, action);
       case 'object':
-        return this.resolveObjectProperty(propKey, propSchema);
+        return this.resolveObjectProperty(propKey, propSchema, action);
       default:
-        return this.getDefaultValueForProperty(propKey, propSchema);
+        return this.getDefaultValueForProperty(propKey, propSchema, action);
     }
   }
 
-  /**
-   * Xử lý property kiểu array
-   */
-  private resolveArrayProperty(propKey: string, propSchema: any): any[] {
+
+  private resolveArrayProperty(propKey: string, propSchema: any, action: string): any[] {
     if (!propSchema.items) {
       return [];
     }
 
-    // Tạo 1 phần tử trong array để demo
-    const itemValue = this.resolvePropertyValue(propKey, propSchema.items);
+    const itemValue = this.resolvePropertyValue(propKey, propSchema.items, action);
     return [itemValue];
 
   }
 
-  /**
-   * Xử lý property kiểu object
-   */
-  private resolveObjectProperty(propKey: string, propSchema: any): any {
+  private resolveObjectProperty(propKey: string, propSchema: any, action: string): any {
     if (!propSchema.properties) {
       return {};
     }
 
     const result: any = {};
     for (const [nestedPropKey, nestedPropSchema] of Object.entries(propSchema.properties) as [string, any]) {
-      result[nestedPropKey] = this.resolvePropertyValue(nestedPropKey, nestedPropSchema);
+      result[nestedPropKey] = this.resolvePropertyValue(nestedPropKey, nestedPropSchema, action);
     }
     return result;
   }
 
-  private getDefaultValueForProperty(propKey: string, propSchema: any): any {
+  private getDefaultValueForProperty(propKey: string, propSchema: any, action: string): any {
     const value = CONST[propKey as keyof typeof CONST];
     if (!value) {
       console.warn(`⚠️ PropKey not found in CONST: ${propKey}`);
@@ -846,7 +792,6 @@ export function createAIEnhancedDTO(): AIEnhancedDTOBuilder {
   return new AIEnhancedDTOBuilder();
 }
 
-// Hàm tiện ích để kiểm tra file tồn tại
 async function exists(filePath: string): Promise<boolean> {
   try {
     await fs.promises.access(filePath);

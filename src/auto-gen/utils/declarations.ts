@@ -286,6 +286,7 @@ export interface ReportData {
   detailFilePath: string | null;
   reportCategory: string;
 }
+
 export interface TrainingData {
   action: string;
   apiEndpoint: string;
@@ -294,4 +295,37 @@ export interface TrainingData {
   httpMethod?: string;
   schemaId?: string;
   fieldName?: string;
+}
+
+export interface ActionConfig {
+  method: string;
+  path: string;
+}
+
+export interface PredictionResult {
+  userIdMeaning: string;
+  confidence: number;
+  probabilities?: Record<string, number>;
+  reasoning: string;
+  method?: string;
+  suggestedVariableName?: string;
+}
+
+export interface ProcessedBody {
+  [key: string]: any;
+  metadata?: {
+    resolvedFields: Record<
+      string,
+      {
+        originalValue: any;
+        resolvedValue: any;
+        isRequired?: boolean;
+        propKey?: string;
+        propType?: string;
+        description?: string;
+        reasoning?: string;
+        aiResult?: PredictionResult;
+      }
+    >;
+  };
 }
