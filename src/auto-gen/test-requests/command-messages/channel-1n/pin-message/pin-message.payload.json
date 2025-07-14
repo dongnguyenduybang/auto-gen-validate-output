@@ -1,0 +1,184 @@
+[
+    {
+        "body": {
+            "workspaceId": 123,
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "status": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "status": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": null,
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "status": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "invalid_value",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "status": "🚀"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 123,
+            "messageId": "{{messageId}}",
+            "status": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "messageId": "{{messageId}}",
+            "status": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": null,
+            "messageId": "{{messageId}}",
+            "status": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "invalid_value",
+            "messageId": "{{messageId}}",
+            "status": "🚀"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": 123,
+            "status": "🚀"
+        },
+        "expects": [
+            "messageId expected string, received number",
+            "status expected boolean, received string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "",
+            "status": "🚀"
+        },
+        "expects": [
+            "messageId should not be empty",
+            "messageId invalid ulid",
+            "status expected boolean, received string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": null,
+            "status": "🚀"
+        },
+        "expects": [
+            "messageId expected string, received null",
+            "status expected boolean, received string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "invalid_ULID",
+            "status": "🚀"
+        },
+        "expects": [
+            "messageId invalid ulid",
+            "status expected boolean, received string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "status": "invalid_boolean"
+        },
+        "expects": [
+            "status expected boolean, received string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "status": ""
+        },
+        "expects": [
+            "status should not be empty",
+            "status expected boolean, received string"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "status": null
+        },
+        "expects": [
+            "status expected boolean, received null"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "status": "🚀"
+        },
+        "expects": [
+            "status expected boolean, received string"
+        ]
+    }
+]

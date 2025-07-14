@@ -1,0 +1,289 @@
+[
+    {
+        "body": {
+            "userId": 123,
+            "content": "defaultContent",
+            "ref": "ref",
+            "description": "",
+            "latitude": "10.0324312",
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "content": "defaultContent",
+            "ref": "ref",
+            "description": "",
+            "latitude": "10.0324312",
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "content": "defaultContent",
+            "ref": "ref",
+            "description": "",
+            "latitude": "10.0324312",
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "content": "defaultContent",
+            "ref": "ref",
+            "description": "",
+            "latitude": "10.0324312",
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
+            "content": 123,
+            "ref": "ref",
+            "description": "",
+            "latitude": "10.0324312",
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "content expected string, received number",
+            "description should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
+            "content": "",
+            "ref": "ref",
+            "description": "",
+            "latitude": "10.0324312",
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "content should not be empty",
+            "content string must contain at least 1 character(s)",
+            "description should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
+            "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "ref": "ref",
+            "description": "",
+            "latitude": "10.0324312",
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "content string must contain at most 2000 character(s)",
+            "description should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
+            "content": null,
+            "ref": "ref",
+            "description": "",
+            "latitude": "10.0324312",
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "content expected string, received null",
+            "description should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
+            "content": "defaultContent",
+            "ref": 123,
+            "description": "",
+            "latitude": "10.0324312",
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "ref expected string, received number",
+            "description should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
+            "content": "defaultContent",
+            "ref": "",
+            "description": "",
+            "latitude": "10.0324312",
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "ref should not be empty",
+            "ref string must contain at least 1 character(s)",
+            "description should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
+            "content": "defaultContent",
+            "ref": null,
+            "description": "",
+            "latitude": "10.0324312",
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "ref expected string, received null",
+            "description should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
+            "content": "defaultContent",
+            "ref": "ref",
+            "description": 123,
+            "latitude": "10.0324312",
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "description expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
+            "content": "defaultContent",
+            "ref": "ref",
+            "latitude": "10.0324312",
+            "longitude": "105.7833368"
+        },
+        "expects": []
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
+            "content": "defaultContent",
+            "ref": "ref",
+            "description": "",
+            "latitude": "10.0324312",
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "description should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
+            "content": "defaultContent",
+            "ref": "ref",
+            "description": null,
+            "latitude": "10.0324312",
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "description expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
+            "content": "defaultContent",
+            "ref": "ref",
+            "description": "",
+            "latitude": 123,
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "description should not be empty",
+            "latitude expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
+            "content": "defaultContent",
+            "ref": "ref",
+            "description": "",
+            "latitude": "",
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "description should not be empty",
+            "latitude should not be empty",
+            "latitude string must contain at least 1 character(s)"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
+            "content": "defaultContent",
+            "ref": "ref",
+            "description": "",
+            "latitude": null,
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "description should not be empty",
+            "latitude expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
+            "content": "defaultContent",
+            "ref": "ref",
+            "description": "",
+            "latitude": "10.0324312",
+            "longitude": 123
+        },
+        "expects": [
+            "description should not be empty",
+            "longitude expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
+            "content": "defaultContent",
+            "ref": "ref",
+            "description": "",
+            "latitude": "10.0324312",
+            "longitude": ""
+        },
+        "expects": [
+            "description should not be empty",
+            "longitude should not be empty",
+            "longitude string must contain at least 1 character(s)"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
+            "content": "defaultContent",
+            "ref": "ref",
+            "description": "",
+            "latitude": "10.0324312",
+            "longitude": null
+        },
+        "expects": [
+            "description should not be empty",
+            "longitude expected string, received null"
+        ]
+    }
+]

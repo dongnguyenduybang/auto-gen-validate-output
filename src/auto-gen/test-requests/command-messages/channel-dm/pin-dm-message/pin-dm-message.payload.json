@@ -1,0 +1,117 @@
+[
+    {
+        "body": {
+            "userId": 123,
+            "messageId": "{{messageId}}",
+            "status": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "messageId": "{{messageId}}",
+            "status": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "messageId": "{{messageId}}",
+            "status": "🚀"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "messageId": "{{messageId}}",
+            "status": "🚀"
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
+            "messageId": 123,
+            "status": "🚀"
+        },
+        "expects": [
+            "messageId expected string, received number",
+            "status expected boolean, received string"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
+            "messageId": "",
+            "status": "🚀"
+        },
+        "expects": [
+            "messageId should not be empty",
+            "messageId invalid ulid",
+            "status expected boolean, received string"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
+            "messageId": null,
+            "status": "🚀"
+        },
+        "expects": [
+            "messageId expected string, received null",
+            "status expected boolean, received string"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
+            "messageId": "invalid_ULID",
+            "status": "🚀"
+        },
+        "expects": [
+            "messageId invalid ulid",
+            "status expected boolean, received string"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
+            "messageId": "{{messageId}}",
+            "status": "invalid_boolean"
+        },
+        "expects": [
+            "status expected boolean, received string"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
+            "messageId": "{{messageId}}",
+            "status": null
+        },
+        "expects": [
+            "status expected boolean, received null"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
+            "messageId": "{{messageId}}",
+            "status": "🚀"
+        },
+        "expects": [
+            "status expected boolean, received string"
+        ]
+    }
+]

@@ -1,7 +1,7 @@
 import { createAIEnhancedDTO } from '../../../../utils/swagger-execute';
 import { ACTION } from '../../../../enums';
 
-export const AddDmMessageReaction = () => createAIEnhancedDTO()
+export const AddDmMessageReactionRequest = () => createAIEnhancedDTO()
   .startStep('add dm message reaction')
   .addBeforeAllActionAI(
     'send dm message',

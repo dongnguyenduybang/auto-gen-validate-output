@@ -1,0 +1,129 @@
+[
+    {
+        "body": {
+            "userId": 123,
+            "messageIds": [
+                "{{messageId}}"
+            ]
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "messageIds": [
+                "{{messageId}}"
+            ]
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "messageIds": [
+                "{{messageId}}"
+            ]
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "messageIds": [
+                "{{messageId}}"
+            ]
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageIds": "not_an_array"
+        },
+        "expects": [
+            "messageIds expected array, received string"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageIds": [
+                123
+            ]
+        },
+        "expects": [
+            "messageIds has element 0 expected string, received number",
+            "messageIds has element 0 invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageIds": [
+                "valid_string"
+            ]
+        },
+        "expects": [
+            "messageIds has element 0 invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageIds": [
+                null
+            ]
+        },
+        "expects": [
+            "messageIds has element 0 expected string, received object",
+            "messageIds has element 0 invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageIds": [
+                "01K03XY1AYS2S64BJ59J8G6JZV"
+            ]
+        },
+        "expects": [
+            "Messages not exist"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageIds": ""
+        },
+        "expects": [
+            "messageIds should not be empty",
+            "messageIds expected array, received string"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageIds": null
+        },
+        "expects": [
+            "messageIds expected array, received null"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageIds": [
+                "{{messageId}}"
+            ]
+        },
+        "expects": []
+    }
+]

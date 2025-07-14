@@ -1,0 +1,165 @@
+[
+    {
+        "body": {
+            "userId": 123,
+            "content": "defaultContent",
+            "messageId": "{{messageId}}",
+            "ref": "ref"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "content": "defaultContent",
+            "messageId": "{{messageId}}",
+            "ref": "ref"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "content": "defaultContent",
+            "messageId": "{{messageId}}",
+            "ref": "ref"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "content": "defaultContent",
+            "messageId": "{{messageId}}",
+            "ref": "ref"
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "content": 123,
+            "messageId": "{{messageId}}",
+            "ref": "ref"
+        },
+        "expects": [
+            "content expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "content": "",
+            "messageId": "{{messageId}}",
+            "ref": "ref"
+        },
+        "expects": [
+            "content should not be empty",
+            "content string must contain at least 1 character(s)"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "messageId": "{{messageId}}",
+            "ref": "ref"
+        },
+        "expects": [
+            "content string must contain at most 2000 character(s)"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "content": null,
+            "messageId": "{{messageId}}",
+            "ref": "ref"
+        },
+        "expects": [
+            "content expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "content": "defaultContent",
+            "messageId": 123,
+            "ref": "ref"
+        },
+        "expects": [
+            "messageId expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "content": "defaultContent",
+            "messageId": "",
+            "ref": "ref"
+        },
+        "expects": [
+            "messageId should not be empty",
+            "messageId invalid ulid",
+            "messageId string must contain at least 1 character(s)"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "content": "defaultContent",
+            "messageId": "invalid_ULID",
+            "ref": "ref"
+        },
+        "expects": [
+            "messageId invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "content": "defaultContent",
+            "messageId": "{{messageId}}",
+            "ref": 123
+        },
+        "expects": [
+            "ref expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "content": "defaultContent",
+            "messageId": "{{messageId}}",
+            "ref": ""
+        },
+        "expects": [
+            "ref string must contain at least 1 character(s)"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "content": "defaultContent",
+            "messageId": "{{messageId}}"
+        },
+        "expects": []
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "content": "defaultContent",
+            "messageId": "{{messageId}}",
+            "ref": "ref"
+        },
+        "expects": []
+    }
+]

@@ -2,7 +2,6 @@
     {
         "body": {
             "userId": 123,
-            "messageId": "{{messageId}}",
             "content": "defaultContent",
             "ref": "ref"
         },
@@ -13,7 +12,6 @@
     {
         "body": {
             "userId": "",
-            "messageId": "{{messageId}}",
             "content": "defaultContent",
             "ref": "ref"
         },
@@ -24,7 +22,6 @@
     {
         "body": {
             "userId": null,
-            "messageId": "{{messageId}}",
             "content": "defaultContent",
             "ref": "ref"
         },
@@ -35,7 +32,6 @@
     {
         "body": {
             "userId": "invalid_value",
-            "messageId": "{{messageId}}",
             "content": "defaultContent",
             "ref": "ref"
         },
@@ -46,52 +42,6 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "messageId": 123,
-            "content": "defaultContent",
-            "ref": "ref"
-        },
-        "expects": [
-            "messageId expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "messageId": "",
-            "content": "defaultContent",
-            "ref": "ref"
-        },
-        "expects": [
-            "messageId should not be empty",
-            "messageId invalid ulid"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "messageId": null,
-            "content": "defaultContent",
-            "ref": "ref"
-        },
-        "expects": [
-            "messageId expected string, received null"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "messageId": "invalid_ULID",
-            "content": "defaultContent",
-            "ref": "ref"
-        },
-        "expects": [
-            "messageId invalid ulid"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "messageId": "{{messageId}}",
             "content": 123,
             "ref": "ref"
         },
@@ -102,7 +52,6 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "messageId": "{{messageId}}",
             "content": "",
             "ref": "ref"
         },
@@ -114,7 +63,6 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "messageId": "{{messageId}}",
             "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
             "ref": "ref"
         },
@@ -125,7 +73,6 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "messageId": "{{messageId}}",
             "content": null,
             "ref": "ref"
         },
@@ -136,7 +83,6 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "messageId": "{{messageId}}",
             "content": "defaultContent",
             "ref": 123
         },
@@ -147,7 +93,6 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "messageId": "{{messageId}}",
             "content": "defaultContent",
             "ref": ""
         },
@@ -159,7 +104,6 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "messageId": "{{messageId}}",
             "content": "defaultContent",
             "ref": null
         },
@@ -170,7 +114,6 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "messageId": "{{messageId}}",
             "content": "defaultContent",
             "ref": "ref"
         },

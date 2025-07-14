@@ -1,0 +1,145 @@
+[
+    {
+        "body": {
+            "userId": 123,
+            "originalMessageIds": [
+                "{{messageId}}"
+            ]
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "originalMessageIds": [
+                "{{messageId}}"
+            ]
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "originalMessageIds": [
+                "{{messageId}}"
+            ]
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "originalMessageIds": [
+                "{{messageId}}"
+            ]
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "originalMessageIds": "not_an_array"
+        },
+        "expects": [
+            "originalMessageIds expected array, received string"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "originalMessageIds": []
+        },
+        "expects": [
+            "originalMessageIds array must contain at least 1 element(s)"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "originalMessageIds": [
+                123
+            ]
+        },
+        "expects": [
+            "originalMessageIds has element 0 expected string, received number",
+            "originalMessageIds has element 0 invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "originalMessageIds": [
+                "valid_string"
+            ]
+        },
+        "expects": [
+            "originalMessageIds has element 0 invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "originalMessageIds": [
+                "01K03XY2PEBP4D0M58ZR1B8QC1"
+            ]
+        },
+        "expects": [
+            "Code: 404. Message: Data not found. Details: Data not found."
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "originalMessageIds": [
+                "uniqueItem",
+                "uniqueItem"
+            ]
+        },
+        "expects": [
+            "originalMessageIds has element 0 invalid ulid",
+            "originalMessageIds array must contain unique items",
+            "originalMessageIds has element 1 invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "originalMessageIds": [
+                null
+            ]
+        },
+        "expects": [
+            "originalMessageIds has element 0 expected string, received object",
+            "originalMessageIds has element 0 invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "originalMessageIds": [
+                ""
+            ]
+        },
+        "expects": [
+            "originalMessageIds has element 0 invalid ulid",
+            "originalMessageIds has element 0 string must contain at least 1 character(s)"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "originalMessageIds": [
+                "{{messageId}}"
+            ]
+        },
+        "expects": []
+    }
+]

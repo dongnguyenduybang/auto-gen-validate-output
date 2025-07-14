@@ -1,0 +1,198 @@
+[
+    {
+        "body": {
+            "workspaceId": 123,
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": "🎉"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": "🎉"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": null,
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": "🎉"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "invalid_value",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": "🎉"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 123,
+            "messageId": "{{messageId}}",
+            "emoji": "🎉"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "messageId": "{{messageId}}",
+            "emoji": "🎉"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": null,
+            "messageId": "{{messageId}}",
+            "emoji": "🎉"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "invalid_value",
+            "messageId": "{{messageId}}",
+            "emoji": "🎉"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": 123,
+            "emoji": "🎉"
+        },
+        "expects": [
+            "messageId expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "",
+            "emoji": "🎉"
+        },
+        "expects": [
+            "messageId should not be empty",
+            "messageId invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": null,
+            "emoji": "🎉"
+        },
+        "expects": [
+            "messageId expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "invalid_ULID",
+            "emoji": "🎉"
+        },
+        "expects": [
+            "messageId invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": 123
+        },
+        "expects": [
+            "emoji expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": "🎉🎉"
+        },
+        "expects": [
+            "emoji only accepts 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": ""
+        },
+        "expects": [
+            "emoji should not be empty",
+            "emoji invalid emoji",
+            "emoji only accepts 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}"
+        },
+        "expects": []
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": null
+        },
+        "expects": [
+            "emoji expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": "🎉"
+        },
+        "expects": []
+    }
+]

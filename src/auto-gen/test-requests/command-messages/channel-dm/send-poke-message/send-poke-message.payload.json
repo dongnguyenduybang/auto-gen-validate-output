@@ -1,0 +1,73 @@
+[
+    {
+        "body": {
+            "userId": 123,
+            "ref": "ref"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "ref": "ref"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "ref": "ref"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "ref": "ref"
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
+            "ref": 123
+        },
+        "expects": [
+            "ref expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
+            "ref": ""
+        },
+        "expects": [
+            "ref should not be empty",
+            "ref string must contain at least 1 character(s)"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
+            "ref": null
+        },
+        "expects": [
+            "ref expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
+            "ref": "ref"
+        },
+        "expects": []
+    }
+]

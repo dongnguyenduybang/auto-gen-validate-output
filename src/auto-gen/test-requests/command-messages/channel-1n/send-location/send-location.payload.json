@@ -1,0 +1,366 @@
+[
+    {
+        "body": {
+            "workspaceId": 123,
+            "channelId": "{{channelId}}",
+            "content": "defaultContent",
+            "ref": "ref",
+            "description": "",
+            "latitude": "10.0324312",
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "content": "defaultContent",
+            "ref": "ref",
+            "description": "",
+            "latitude": "10.0324312",
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": null,
+            "channelId": "{{channelId}}",
+            "content": "defaultContent",
+            "ref": "ref",
+            "description": "",
+            "latitude": "10.0324312",
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "invalid_value",
+            "channelId": "{{channelId}}",
+            "content": "defaultContent",
+            "ref": "ref",
+            "description": "",
+            "latitude": "10.0324312",
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 123,
+            "content": "defaultContent",
+            "ref": "ref",
+            "description": "",
+            "latitude": "10.0324312",
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "content": "defaultContent",
+            "ref": "ref",
+            "description": "",
+            "latitude": "10.0324312",
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": null,
+            "content": "defaultContent",
+            "ref": "ref",
+            "description": "",
+            "latitude": "10.0324312",
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "invalid_value",
+            "content": "defaultContent",
+            "ref": "ref",
+            "description": "",
+            "latitude": "10.0324312",
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "content": 123,
+            "ref": "ref",
+            "description": "",
+            "latitude": "10.0324312",
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "content expected string, received number",
+            "description should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "content": "",
+            "ref": "ref",
+            "description": "",
+            "latitude": "10.0324312",
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "content should not be empty",
+            "content string must contain at least 1 character(s)",
+            "description should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "ref": "ref",
+            "description": "",
+            "latitude": "10.0324312",
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "content string must contain at most 2000 character(s)",
+            "description should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "content": null,
+            "ref": "ref",
+            "description": "",
+            "latitude": "10.0324312",
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "content expected string, received null",
+            "description should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "content": "defaultContent",
+            "ref": 123,
+            "description": "",
+            "latitude": "10.0324312",
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "ref expected string, received number",
+            "description should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "content": "defaultContent",
+            "ref": "",
+            "description": "",
+            "latitude": "10.0324312",
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "ref should not be empty",
+            "ref string must contain at least 1 character(s)",
+            "description should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "content": "defaultContent",
+            "ref": null,
+            "description": "",
+            "latitude": "10.0324312",
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "ref expected string, received null",
+            "description should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "content": "defaultContent",
+            "ref": "ref",
+            "description": 123,
+            "latitude": "10.0324312",
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "description expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "content": "defaultContent",
+            "ref": "ref",
+            "latitude": "10.0324312",
+            "longitude": "105.7833368"
+        },
+        "expects": []
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "content": "defaultContent",
+            "ref": "ref",
+            "description": "",
+            "latitude": "10.0324312",
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "description should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "content": "defaultContent",
+            "ref": "ref",
+            "description": null,
+            "latitude": "10.0324312",
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "description expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "content": "defaultContent",
+            "ref": "ref",
+            "description": "",
+            "latitude": 123,
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "description should not be empty",
+            "latitude expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "content": "defaultContent",
+            "ref": "ref",
+            "description": "",
+            "latitude": "",
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "description should not be empty",
+            "latitude should not be empty",
+            "latitude string must contain at least 1 character(s)"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "content": "defaultContent",
+            "ref": "ref",
+            "description": "",
+            "latitude": null,
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "description should not be empty",
+            "latitude expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "content": "defaultContent",
+            "ref": "ref",
+            "description": "",
+            "latitude": "10.0324312",
+            "longitude": 123
+        },
+        "expects": [
+            "description should not be empty",
+            "longitude expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "content": "defaultContent",
+            "ref": "ref",
+            "description": "",
+            "latitude": "10.0324312",
+            "longitude": ""
+        },
+        "expects": [
+            "description should not be empty",
+            "longitude should not be empty",
+            "longitude string must contain at least 1 character(s)"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "content": "defaultContent",
+            "ref": "ref",
+            "description": "",
+            "latitude": "10.0324312",
+            "longitude": null
+        },
+        "expects": [
+            "description should not be empty",
+            "longitude expected string, received null"
+        ]
+    }
+]

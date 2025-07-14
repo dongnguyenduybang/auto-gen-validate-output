@@ -1,0 +1,120 @@
+[
+    {
+        "body": {
+            "userId": 123,
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
+            "ref": "ref"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
+            "ref": "ref"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
+            "ref": "ref"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
+            "ref": "ref"
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
+            "stickerId": 123,
+            "ref": "ref"
+        },
+        "expects": [
+            "stickerId expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
+            "stickerId": "",
+            "ref": "ref"
+        },
+        "expects": [
+            "stickerId should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
+            "stickerId": null,
+            "ref": "ref"
+        },
+        "expects": [
+            "stickerId expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
+            "stickerId": "invalid_value",
+            "ref": "ref"
+        },
+        "expects": [
+            "Message: This sticker has not been exists."
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
+            "ref": 123
+        },
+        "expects": [
+            "ref expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
+            "ref": ""
+        },
+        "expects": [
+            "ref string must contain at least 1 character(s)"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
+            "ref": null
+        },
+        "expects": [
+            "ref expected string, received null"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
+            "ref": "ref"
+        },
+        "expects": []
+    }
+]
