@@ -13,7 +13,7 @@
         },
         "expects": [
             "ringbackToneId should not be empty",
-            "ringbackToneId invalid ulid"
+            "ringbackToneId invalid ulids"
         ]
     },
     {
@@ -21,7 +21,7 @@
             "ringbackToneId": null
         },
         "expects": [
-            "ringbackToneId expected string, received null"
+            "ringbackToneId should not be null"
         ]
     },
     {
@@ -29,7 +29,13 @@
             "ringbackToneId": "invalid_ULID"
         },
         "expects": [
-            "ringbackToneId invalid ulid"
+            "ringbackToneId invalid ulids"
         ]
+    },
+    {
+        "body": {
+            "ringbackToneId": "{{ringbackToneId}}"
+        },
+        "expects": []
     }
 ]

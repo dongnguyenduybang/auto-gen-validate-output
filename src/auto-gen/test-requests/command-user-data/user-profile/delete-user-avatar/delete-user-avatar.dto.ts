@@ -7,7 +7,6 @@ import {
 } from '../../../../decorator/index';
 
 export class DeleteUserAvatarDTO {
-
   @IsDefined()
   @IsString()
   @isValidURL()

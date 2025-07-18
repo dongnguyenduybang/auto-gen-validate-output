@@ -21,7 +21,7 @@
             "avatarFramePath": null
         },
         "expects": [
-            "avatarFramePath expected string, received null"
+            "avatarFramePath should not be null"
         ]
     }
 ]

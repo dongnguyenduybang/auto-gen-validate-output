@@ -21,7 +21,7 @@
             "avatarPath": null
         },
         "expects": [
-            "avatarPath expected string, received null"
+            "avatarPath should not be null"
         ]
     },
     {

@@ -7,7 +7,6 @@ import {
 } from '../../../../decorator/index';
 
 export class UpdateUserAvatarDTO {
-
   @IsDefined()
   @IsString()
   @isValidURL()

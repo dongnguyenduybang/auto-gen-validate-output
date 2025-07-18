@@ -20,7 +20,7 @@
             "email": null
         },
         "expects": [
-            "email expected string, received null"
+            "email should not be null"
         ]
     },
     {

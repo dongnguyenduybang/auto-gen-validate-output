@@ -1,17 +1,16 @@
 import {
-    IsDefined,
-    IsNotEmpty,
-    IsString,
-    IsNotNull,
-    IsULID,
+  IsDefined,
+  IsNotEmpty,
+  IsString,
+  IsNotNull,
+  IsULID,
 } from '../../../../decorator/index';
 
 export class SetRingBackToneDTO {
-
-    @IsDefined()
-    @IsString()
-    @IsNotEmpty()
-    @IsNotNull()
-    @IsULID()
-    ringbackToneId: string = ''
+  @IsDefined()
+  @IsString()
+  @IsNotEmpty()
+  @IsNotNull()
+  @IsULID()
+  ringbackToneId: string = '';
 }

@@ -8,7 +8,6 @@ import {
 } from '../../../../decorator/index';
 
 export class UnblockUserDTO {
-
   @IsString({ message: ErrorMessage.COULD_NOT_PERMISSION })
   @IsNotNull({ message: ErrorMessage.COULD_NOT_PERMISSION })
   @IsDefined({ message: ErrorMessage.COULD_NOT_PERMISSION })

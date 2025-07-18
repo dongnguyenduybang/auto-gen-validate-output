@@ -28,7 +28,7 @@
             "displayName": null
         },
         "expects": [
-            "displayName expected string, received null"
+            "displayName should not be null"
         ]
     }
 ]

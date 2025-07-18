@@ -2,75 +2,81 @@
     {
         "body": {
             "name": 123,
-            "ringbackToneId": ""
+            "ringbackToneId": "{{ringbackToneId}}"
         },
         "expects": [
-            "name expected string, received number",
-            "ringbackToneId should not be empty",
-            "ringbackToneId invalid ulid"
+            "name expected string, received number"
         ]
     },
     {
         "body": {
             "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "ringbackToneId": ""
+            "ringbackToneId": "{{ringbackToneId}}"
         },
         "expects": [
-            "name string must contain at most 50 character(s)",
-            "ringbackToneId should not be empty",
-            "ringbackToneId invalid ulid"
+            "name string must contain at most 50 character(s)"
         ]
     },
     {
         "body": {
             "name": "",
-            "ringbackToneId": ""
+            "ringbackToneId": "{{ringbackToneId}}"
         },
         "expects": [
-            "name should not be empty",
-            "ringbackToneId should not be empty",
-            "ringbackToneId invalid ulid"
+            "name should not be empty"
         ]
     },
     {
         "body": {
             "name": null,
-            "ringbackToneId": ""
+            "ringbackToneId": "{{ringbackToneId}}"
         },
         "expects": [
-            "name expected string, received null",
-            "ringbackToneId should not be empty",
-            "ringbackToneId invalid ulid"
+            "name should not be null"
         ]
     },
     {
         "body": {
-            "name": "",
+            "name": "channelname1",
             "ringbackToneId": 123
         },
         "expects": [
-            "name should not be empty",
             "ringbackToneId expected string, received number"
         ]
     },
     {
         "body": {
-            "name": "",
-            "ringbackToneId": null
+            "name": "channelname1",
+            "ringbackToneId": ""
         },
         "expects": [
-            "name should not be empty",
-            "ringbackToneId expected string, received null"
+            "ringbackToneId should not be empty",
+            "ringbackToneId invalid ulids"
         ]
     },
     {
         "body": {
-            "name": "",
+            "name": "channelname1",
+            "ringbackToneId": null
+        },
+        "expects": [
+            "ringbackToneId should not be null"
+        ]
+    },
+    {
+        "body": {
+            "name": "channelname1",
             "ringbackToneId": "invalid_ULID"
         },
         "expects": [
-            "name should not be empty",
-            "ringbackToneId invalid ulid"
+            "ringbackToneId invalid ulids"
         ]
+    },
+    {
+        "body": {
+            "name": "channelname1",
+            "ringbackToneId": "{{ringbackToneId}}"
+        },
+        "expects": []
     }
 ]

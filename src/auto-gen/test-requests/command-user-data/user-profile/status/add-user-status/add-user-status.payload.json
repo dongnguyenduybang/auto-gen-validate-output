@@ -44,7 +44,7 @@
             "expireAfterTime": 1
         },
         "expects": [
-            "content expected string, received null"
+            "content should not be null"
         ]
     },
     {
@@ -92,7 +92,7 @@
             "expireAfterTime": 1
         },
         "expects": [
-            "status expected string, received null"
+            "status should not be null"
         ]
     },
     {
@@ -123,7 +123,7 @@
             "expireAfterTime": null
         },
         "expects": [
-            "expireAfterTime expected 0 | 1 | 2 | 3 | 4 | 99, received null"
+            "expireAfterTime should not be null"
         ]
     },
     {

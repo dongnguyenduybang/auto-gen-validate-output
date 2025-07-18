@@ -20,12 +20,20 @@
             "targetUserId": null
         },
         "expects": [
-            "Could not resolve permission type"
+            "targetUserId should not be null"
         ]
     },
     {
         "body": {
             "targetUserId": "invalid_value"
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "targetUserId": "{{userId1}}"
         },
         "expects": []
     }

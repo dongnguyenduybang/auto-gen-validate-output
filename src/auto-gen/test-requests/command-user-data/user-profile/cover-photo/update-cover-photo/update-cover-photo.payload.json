@@ -21,7 +21,7 @@
             "coverPath": null
         },
         "expects": [
-            "coverPath expected string, received null"
+            "coverPath should not be null"
         ]
     },
     {

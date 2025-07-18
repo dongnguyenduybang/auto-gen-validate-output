@@ -2,9 +2,9 @@
     {
         "body": {
             "userId": 123,
-            "reportCategory": 0,
-            "reportReason": "",
-            "pretendingTo": 0
+            "reportCategory": 1,
+            "reportReason": "default report reason",
+            "pretendingTo": 1
         },
         "expects": [
             "Could not resolve permission type"
@@ -13,9 +13,9 @@
     {
         "body": {
             "userId": "",
-            "reportCategory": 0,
-            "reportReason": "",
-            "pretendingTo": 0
+            "reportCategory": 1,
+            "reportReason": "default report reason",
+            "pretendingTo": 1
         },
         "expects": [
             "Could not resolve permission type"
@@ -24,9 +24,9 @@
     {
         "body": {
             "userId": "invalid_value",
-            "reportCategory": 0,
-            "reportReason": "",
-            "pretendingTo": 0
+            "reportCategory": 1,
+            "reportReason": "default report reason",
+            "pretendingTo": 1
         },
         "expects": [
             "Unauthorized request"
@@ -36,59 +36,49 @@
         "body": {
             "userId": "{{userId1}}",
             "reportCategory": "invalid_enum_value",
-            "reportReason": "",
-            "pretendingTo": 0
+            "reportReason": "default report reason",
+            "pretendingTo": 1
         },
         "expects": [
-            "reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan",
-            "reportReason should not be empty",
-            "reportReason string must contain at least 1 character(s)"
+            "reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan"
         ]
     },
     {
         "body": {
             "userId": "{{userId1}}",
             "reportCategory": 20,
-            "reportReason": "",
-            "pretendingTo": 0
+            "reportReason": "default report reason",
+            "pretendingTo": 1
         },
-        "expects": [
-            "reportReason should not be empty",
-            "reportReason string must contain at least 1 character(s)"
-        ]
+        "expects": []
     },
     {
         "body": {
             "userId": "{{userId1}}",
             "reportCategory": 3,
-            "reportReason": "",
-            "pretendingTo": 0
+            "reportReason": "default report reason",
+            "pretendingTo": 1
         },
-        "expects": [
-            "reportReason should not be empty",
-            "reportReason string must contain at least 1 character(s)"
-        ]
+        "expects": []
     },
     {
         "body": {
             "userId": "{{userId1}}",
             "reportCategory": "",
-            "reportReason": "",
-            "pretendingTo": 0
+            "reportReason": "default report reason",
+            "pretendingTo": 1
         },
         "expects": [
             "reportCategory should not be empty",
-            "reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan",
-            "reportReason should not be empty",
-            "reportReason string must contain at least 1 character(s)"
+            "reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received nan"
         ]
     },
     {
         "body": {
             "userId": "{{userId1}}",
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": 123,
-            "pretendingTo": 0
+            "pretendingTo": 1
         },
         "expects": [
             "reportReason expected string, received number"
@@ -97,9 +87,9 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": "",
-            "pretendingTo": 0
+            "pretendingTo": 1
         },
         "expects": [
             "reportReason should not be empty",
@@ -109,9 +99,9 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "pretendingTo": 0
+            "pretendingTo": 1
         },
         "expects": [
             "reportReason string must contain at most 255 character(s)"
@@ -120,9 +110,9 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "reportCategory": 0,
+            "reportCategory": 1,
             "reportReason": "🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀",
-            "pretendingTo": 0
+            "pretendingTo": 1
         },
         "expects": [
             "reportReason string must contain at most 255 character(s)"
@@ -131,14 +121,21 @@
     {
         "body": {
             "userId": "{{userId1}}",
-            "reportCategory": 0,
-            "reportReason": "",
+            "reportCategory": 1,
+            "reportReason": "default report reason",
             "pretendingTo": "invalid_enum_value"
         },
         "expects": [
-            "reportReason should not be empty",
-            "reportReason string must contain at least 1 character(s)",
             "pretendingTo expected 0 | 1 | 2 | 3, received nan"
         ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "reportCategory": 1,
+            "reportReason": "default report reason",
+            "pretendingTo": 1
+        },
+        "expects": []
     }
 ]

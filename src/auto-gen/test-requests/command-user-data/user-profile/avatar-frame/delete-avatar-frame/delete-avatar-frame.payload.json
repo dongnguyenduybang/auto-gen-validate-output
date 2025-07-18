@@ -21,7 +21,7 @@
             "avatarFrameId": null
         },
         "expects": [
-            "avatarFrameId expected string, received null"
+            "avatarFrameId should not be null"
         ]
     },
     {
