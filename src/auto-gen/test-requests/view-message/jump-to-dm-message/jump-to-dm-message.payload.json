@@ -1,0 +1,119 @@
+[
+    {
+        "body": {
+            "userId": 123,
+            "messageId": "{{messageId}}",
+            "limit": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "messageId": "{{messageId}}",
+            "limit": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "messageId": "{{messageId}}",
+            "limit": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "messageId": "{{messageId}}",
+            "limit": 1
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": 123,
+            "limit": 1
+        },
+        "expects": [
+            "messageId expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": "",
+            "limit": 1
+        },
+        "expects": [
+            "messageId should not be empty",
+            "messageId invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": null,
+            "limit": 1
+        },
+        "expects": [
+            "messageId should not be null"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": "invalid_ULID",
+            "limit": 1
+        },
+        "expects": [
+            "messageId invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": "{{messageId}}",
+            "limit": "invalid_number"
+        },
+        "expects": [
+            "limit expected number, received nan"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": "{{messageId}}"
+        },
+        "expects": []
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": "{{messageId}}",
+            "limit": ""
+        },
+        "expects": [
+            "limit should not be empty",
+            "limit range from 1 to 500"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": "{{messageId}}",
+            "limit": 1
+        },
+        "expects": []
+    }
+]

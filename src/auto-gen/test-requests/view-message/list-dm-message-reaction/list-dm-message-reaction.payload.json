@@ -1,0 +1,124 @@
+[
+    {
+        "body": {
+            "userId": 123,
+            "messageId": "{{messageId}}",
+            "emoji": "🎉"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "messageId": "{{messageId}}",
+            "emoji": "🎉"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "messageId": "{{messageId}}",
+            "emoji": "🎉"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "messageId": "{{messageId}}",
+            "emoji": "🎉"
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": 123,
+            "emoji": "🎉"
+        },
+        "expects": [
+            "messageId expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": "",
+            "emoji": "🎉"
+        },
+        "expects": [
+            "messageId should not be empty",
+            "messageId invalid ulid",
+            "messageId string must contain at least 1 character(s)"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": "invalid_ULID",
+            "emoji": "🎉"
+        },
+        "expects": [
+            "messageId invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": "{{messageId}}",
+            "emoji": 123
+        },
+        "expects": [
+            "emoji expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": "{{messageId}}",
+            "emoji": "🎉🎉"
+        },
+        "expects": [
+            "emoji only accepts 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": "{{messageId}}",
+            "emoji": ""
+        },
+        "expects": [
+            "emoji should not be empty",
+            "emoji invalid emoji",
+            "emoji only accepts 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": "{{messageId}}",
+            "emoji": null
+        },
+        "expects": [
+            "emoji should not be null"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": "{{messageId}}",
+            "emoji": "🎉"
+        },
+        "expects": []
+    }
+]

@@ -1,0 +1,112 @@
+[
+    {
+        "body": {
+            "workspaceId": 123,
+            "channelId": "",
+            "limit": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "limit": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": null,
+            "channelId": "",
+            "limit": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "invalid_value",
+            "channelId": "",
+            "limit": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": 123,
+            "limit": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": null,
+            "limit": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "invalid_value",
+            "limit": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "limit": "invalid_number"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "limit": 501
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "limit": ""
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "",
+            "limit": null
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    }
+]

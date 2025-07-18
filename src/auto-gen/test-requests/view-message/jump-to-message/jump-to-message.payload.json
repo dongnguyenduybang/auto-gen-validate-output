@@ -1,0 +1,195 @@
+[
+    {
+        "body": {
+            "workspaceId": 123,
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "limit": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "limit": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": null,
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "limit": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "invalid_value",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "limit": 0
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 123,
+            "messageId": "{{messageId}}",
+            "limit": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "messageId": "{{messageId}}",
+            "limit": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": null,
+            "messageId": "{{messageId}}",
+            "limit": 0
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "invalid_value",
+            "messageId": "{{messageId}}",
+            "limit": 0
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": 123,
+            "limit": 0
+        },
+        "expects": [
+            "messageId expected string, received number",
+            "limit must be at least 1"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "",
+            "limit": 0
+        },
+        "expects": [
+            "messageId should not be empty",
+            "messageId invalid ulid",
+            "limit must be at least 1"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": null,
+            "limit": 0
+        },
+        "expects": [
+            "messageId should not be null",
+            "limit must be at least 1"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "invalid_ULID",
+            "limit": 0
+        },
+        "expects": [
+            "messageId invalid ulid",
+            "limit must be at least 1"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "limit": "invalid_number"
+        },
+        "expects": [
+            "limit must be a number conforming to the specified constraints"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "limit": 0
+        },
+        "expects": [
+            "limit must be at least 1"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "limit": 501
+        },
+        "expects": [
+            "limit must be at most 500"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "limit": ""
+        },
+        "expects": [
+            "limit should not be empty",
+            "limit must be a number conforming to the specified constraints"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "limit": null
+        },
+        "expects": [
+            "limit should not be null"
+        ]
+    }
+]

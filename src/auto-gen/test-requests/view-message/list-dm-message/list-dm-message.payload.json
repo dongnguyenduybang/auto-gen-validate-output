@@ -1,0 +1,70 @@
+[
+    {
+        "body": {
+            "userId": 123,
+            "limit": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "",
+            "limit": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": null,
+            "limit": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "userId": "invalid_value",
+            "limit": 1
+        },
+        "expects": [
+            "Unauthorized request"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "limit": "invalid_number"
+        },
+        "expects": [
+            "limit expected number, received nan"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}"
+        },
+        "expects": []
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "limit": ""
+        },
+        "expects": [
+            "limit should not be empty",
+            "limit range from 1 to 500"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "limit": 1
+        },
+        "expects": []
+    }
+]

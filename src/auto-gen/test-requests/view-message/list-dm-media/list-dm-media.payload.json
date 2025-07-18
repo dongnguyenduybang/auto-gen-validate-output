@@ -2,9 +2,9 @@
     {
         "body": {
             "userId": 123,
-            "type": 0,
-            "limit": 0,
-            "nextPageToken": ""
+            "type": 1,
+            "limit": 1,
+            "nextPageToken": "01K0E7GMEAJ41KFFXYJ64NN24E"
         },
         "expects": [
             "Could not resolve permission type"
@@ -13,9 +13,9 @@
     {
         "body": {
             "userId": "",
-            "type": 0,
-            "limit": 0,
-            "nextPageToken": ""
+            "type": 1,
+            "limit": 1,
+            "nextPageToken": "01K0E7GMEAJ41KFFXYJ64NN24E"
         },
         "expects": [
             "Could not resolve permission type"
@@ -24,9 +24,9 @@
     {
         "body": {
             "userId": null,
-            "type": 0,
-            "limit": 0,
-            "nextPageToken": ""
+            "type": 1,
+            "limit": 1,
+            "nextPageToken": "01K0E7GMEAJ41KFFXYJ64NN24E"
         },
         "expects": [
             "Could not resolve permission type"
@@ -35,9 +35,9 @@
     {
         "body": {
             "userId": "invalid_value",
-            "type": 0,
-            "limit": 0,
-            "nextPageToken": ""
+            "type": 1,
+            "limit": 1,
+            "nextPageToken": "01K0E7GMEAJ41KFFXYJ64NN24E"
         },
         "expects": [
             "Unauthorized request"
@@ -45,110 +45,126 @@
     },
     {
         "body": {
-            "userId": "",
+            "userId": "{{userId1}}",
             "type": "invalid_enum_value",
-            "limit": 0,
-            "nextPageToken": ""
+            "limit": 1,
+            "nextPageToken": "01K0E7GMEAJ41KFFXYJ64NN24E"
         },
         "expects": [
-            "Could not resolve permission type"
+            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan",
+            "nextPageToken invalid ulid"
         ]
     },
     {
         "body": {
-            "userId": "",
+            "userId": "{{userId1}}",
             "type": "",
-            "limit": 0,
-            "nextPageToken": ""
+            "limit": 1,
+            "nextPageToken": "01K0E7GMEAJ41KFFXYJ64NN24E"
         },
         "expects": [
-            "Could not resolve permission type"
+            "type should not be empty",
+            "type expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11, received nan",
+            "nextPageToken invalid ulid"
         ]
     },
     {
         "body": {
-            "userId": "",
-            "type": 0,
+            "userId": "{{userId1}}",
+            "type": 1,
             "limit": "invalid_number",
-            "nextPageToken": ""
+            "nextPageToken": "01K0E7GMEAJ41KFFXYJ64NN24E"
         },
         "expects": [
-            "Could not resolve permission type"
+            "limit expected number, received nan",
+            "nextPageToken invalid ulid"
         ]
     },
     {
         "body": {
-            "userId": "",
-            "type": 0,
-            "nextPageToken": ""
+            "userId": "{{userId1}}",
+            "type": 1,
+            "nextPageToken": "01K0E7GMEAJ41KFFXYJ64NN24E"
         },
         "expects": [
-            "Could not resolve permission type"
+            "nextPageToken invalid ulid"
         ]
     },
     {
         "body": {
-            "userId": "",
-            "type": 0,
+            "userId": "{{userId1}}",
+            "type": 1,
             "limit": "",
-            "nextPageToken": ""
+            "nextPageToken": "01K0E7GMEAJ41KFFXYJ64NN24E"
         },
         "expects": [
-            "Could not resolve permission type"
+            "limit should not be empty",
+            "limit range from 1 to 500",
+            "nextPageToken invalid ulid"
         ]
     },
     {
         "body": {
-            "userId": "",
-            "type": 0,
-            "limit": null,
-            "nextPageToken": ""
-        },
-        "expects": [
-            "Could not resolve permission type"
-        ]
-    },
-    {
-        "body": {
-            "userId": "",
-            "type": 0,
-            "limit": 0,
+            "userId": "{{userId1}}",
+            "type": 1,
+            "limit": 1,
             "nextPageToken": 123
         },
         "expects": [
-            "Could not resolve permission type"
+            "nextPageToken expected string, received number"
         ]
     },
     {
         "body": {
-            "userId": "",
-            "type": 0,
-            "limit": 0
+            "userId": "{{userId1}}",
+            "type": 1,
+            "limit": 1
+        },
+        "expects": []
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": 1,
+            "limit": 1,
+            "nextPageToken": ""
         },
         "expects": [
-            "Could not resolve permission type"
+            "nextPageToken should not be empty",
+            "nextPageToken invalid ulid"
         ]
     },
     {
         "body": {
-            "userId": "",
-            "type": 0,
-            "limit": 0,
+            "userId": "{{userId1}}",
+            "type": 1,
+            "limit": 1,
             "nextPageToken": null
         },
         "expects": [
-            "Could not resolve permission type"
+            "nextPageToken should not be null"
         ]
     },
     {
         "body": {
-            "userId": "",
-            "type": 0,
-            "limit": 0,
+            "userId": "{{userId1}}",
+            "type": 1,
+            "limit": 1,
             "nextPageToken": "invalid_ULID"
         },
         "expects": [
-            "Could not resolve permission type"
+            "nextPageToken invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "type": 1,
+            "limit": 1,
+            "nextPageToken": "01K0E7GMEAJ41KFFXYJ64NN24E"
+        },
+        "expects": [
+            "nextPageToken invalid ulid"
         ]
     }
 ]

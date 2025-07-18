@@ -1,0 +1,250 @@
+[
+    {
+        "body": {
+            "workspaceId": 123,
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": "🎉",
+            "limit": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": "🎉",
+            "limit": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": null,
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": "🎉",
+            "limit": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "invalid_value",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": "🎉",
+            "limit": 1
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": 123,
+            "messageId": "{{messageId}}",
+            "emoji": "🎉",
+            "limit": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "",
+            "messageId": "{{messageId}}",
+            "emoji": "🎉",
+            "limit": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": null,
+            "messageId": "{{messageId}}",
+            "emoji": "🎉",
+            "limit": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "invalid_value",
+            "messageId": "{{messageId}}",
+            "emoji": "🎉",
+            "limit": 1
+        },
+        "expects": [
+            "Invalid channel"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": 123,
+            "emoji": "🎉",
+            "limit": 1
+        },
+        "expects": [
+            "messageId expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "",
+            "emoji": "🎉",
+            "limit": 1
+        },
+        "expects": [
+            "messageId should not be empty",
+            "messageId invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": null,
+            "emoji": "🎉",
+            "limit": 1
+        },
+        "expects": [
+            "messageId should not be null"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "invalid_ULID",
+            "emoji": "🎉",
+            "limit": 1
+        },
+        "expects": [
+            "messageId invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": 123,
+            "limit": 1
+        },
+        "expects": [
+            "emoji expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": "🎉🎉",
+            "limit": 1
+        },
+        "expects": [
+            "emoji only accepts 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": "",
+            "limit": 1
+        },
+        "expects": [
+            "emoji should not be empty",
+            "emoji invalid emoji",
+            "emoji only accepts 1 emoji"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "limit": 1
+        },
+        "expects": []
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": null,
+            "limit": 1
+        },
+        "expects": [
+            "emoji should not be null"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": "🎉",
+            "limit": "invalid_number"
+        },
+        "expects": [
+            "limit expected number, received nan"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": "🎉"
+        },
+        "expects": []
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": "🎉",
+            "limit": ""
+        },
+        "expects": [
+            "limit should not be empty",
+            "limit range from 1 to 500"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": "🎉",
+            "limit": 1
+        },
+        "expects": []
+    }
+]
