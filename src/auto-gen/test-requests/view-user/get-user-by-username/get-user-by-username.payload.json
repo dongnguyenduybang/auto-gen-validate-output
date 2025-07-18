@@ -1,0 +1,41 @@
+[
+    {
+        "body": {
+            "username": 123
+        },
+        "expects": [
+            "username expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "username": ""
+        },
+        "expects": [
+            "username should not be empty",
+            "User not exists"
+        ]
+    },
+    {
+        "body": {
+            "username": null
+        },
+        "expects": [
+            "username should not be null"
+        ]
+    },
+    {
+        "body": {
+            "username": "invalid_value"
+        },
+        "expects": [
+            "User not exists"
+        ]
+    },
+    {
+        "body": {
+            "username": "{{username}}"
+        },
+        "expects": []
+    }
+]
