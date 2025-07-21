@@ -8,6 +8,7 @@ import {
 import { commandsChatHttpClient } from '../swagger-hono/commands-chat-client';
 import { fakerHttpClient } from '../swagger-hono/faker-client';
 import { commandsUserDataHttpClient } from '../swagger-hono/commands-user-data-client';
+import { viewsChatHttpClient } from '../swagger-hono/views-chat-client';
 
 export type HEADERS = Record<string, unknown>;
 
@@ -33,7 +34,6 @@ export const getResponseSuccess = async <TReq, TRes>(
       : await method(request);
 
     const { data } = response;
-
     return data;
   } catch (err: any) {
     // Nếu `err` là Response object thì đọc body
@@ -77,6 +77,7 @@ export function createApiFunction(config: ApiConfig, context: TestContext) {
       );
       return callAPI;
     } catch (error: any) {
+      console.log(error)
       return {
         error:
           error.response?.data?.error?.details ||
@@ -92,8 +93,11 @@ function getHttpClient(moduleName: string, http: HttpClient) {
     InternalFaker: fakerHttpClient,
     Message: commandsMessageHttpClient,
     Channel: commandsChatHttpClient,
+    Friend:commandsChatHttpClient,
+    Invitation: commandsChatHttpClient,
     UserProfile: commandsUserDataHttpClient,
-    default: commandsChatHttpClient,
+    ChannelView: viewsChatHttpClient,
+    default: commandsUserDataHttpClient,
   };
 
   const Client = map[moduleName] || map.default;
@@ -105,8 +109,9 @@ function extractActionName(path: string): string {
   const last = parts[parts.length - 1];
 
   // DM -> Dm
-  const adjusted = last.replace(/([A-Z]{2,})(?=[A-Z][a-z]|$)/g, (match) =>
-    match.charAt(0) + match.slice(1).toLowerCase()
+  const adjusted = last.replace(
+    /([A-Z]{2,})(?=[A-Z][a-z]|$)/g,
+    (match) => match.charAt(0) + match.slice(1).toLowerCase(),
   );
 
   return adjusted.charAt(0).toLowerCase() + adjusted.slice(1);

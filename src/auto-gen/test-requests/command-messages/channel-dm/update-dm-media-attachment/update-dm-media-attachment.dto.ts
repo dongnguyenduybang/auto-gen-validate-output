@@ -4,13 +4,11 @@ import {
   ValidateNested,
   IsDefined,
   IsNotEmpty,
-  IsNumber,
   IsString,
   IsNotNull,
   IsInvalid,
   IsEnum,
   MinLength,
-  IsObject,
   isValidURL,
 } from '../../../../decorator';
 import { AttachmentTypeEnum, ErrorMessage } from '../../../../enums';

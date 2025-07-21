@@ -12,6 +12,16 @@
     },
     {
         "body": {
+            "content": "defaultContent",
+            "messageId": "{{messageId}}",
+            "ref": "ref"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
             "userId": "",
             "content": "defaultContent",
             "messageId": "{{messageId}}",
@@ -80,12 +90,22 @@
     {
         "body": {
             "userId": "{{userId1}}",
+            "messageId": "{{messageId}}",
+            "ref": "ref"
+        },
+        "expects": [
+            "content required"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
             "content": null,
             "messageId": "{{messageId}}",
             "ref": "ref"
         },
         "expects": [
-            "content expected string, received null"
+            "content should not be null"
         ]
     },
     {
@@ -96,6 +116,7 @@
             "ref": "ref"
         },
         "expects": [
+            "messageId invalid ulid",
             "messageId expected string, received number"
         ]
     },
@@ -110,6 +131,17 @@
             "messageId should not be empty",
             "messageId invalid ulid",
             "messageId string must contain at least 1 character(s)"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "content": "defaultContent",
+            "ref": "ref"
+        },
+        "expects": [
+            "messageId required",
+            "messageId invalid ulid"
         ]
     },
     {

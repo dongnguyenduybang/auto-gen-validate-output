@@ -10,6 +10,14 @@
     },
     {
         "body": {
+            "messageId": "{{messageId}}"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
             "userId": "",
             "messageId": "{{messageId}}"
         },
@@ -41,7 +49,17 @@
             "messageId": 123
         },
         "expects": [
+            "messageId invalid ulid",
             "messageId expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}"
+        },
+        "expects": [
+            "messageId required",
+            "messageId invalid ulid"
         ]
     },
     {
@@ -60,7 +78,7 @@
             "messageId": null
         },
         "expects": [
-            "messageId expected string, received null"
+            "messageId should not be null"
         ]
     },
     {

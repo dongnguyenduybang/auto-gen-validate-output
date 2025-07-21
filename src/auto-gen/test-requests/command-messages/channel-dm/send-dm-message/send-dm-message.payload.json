@@ -11,6 +11,15 @@
     },
     {
         "body": {
+            "content": "defaultContent",
+            "ref": "ref"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
             "userId": "",
             "content": "defaultContent",
             "ref": "ref"
@@ -73,11 +82,20 @@
     {
         "body": {
             "userId": "{{userId1}}",
+            "ref": "ref"
+        },
+        "expects": [
+            "content required"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
             "content": null,
             "ref": "ref"
         },
         "expects": [
-            "content expected string, received null"
+            "content should not be null"
         ]
     },
     {
@@ -104,11 +122,20 @@
     {
         "body": {
             "userId": "{{userId1}}",
+            "content": "defaultContent"
+        },
+        "expects": [
+            "ref required"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
             "content": "defaultContent",
             "ref": null
         },
         "expects": [
-            "ref expected string, received null"
+            "ref should not be null"
         ]
     },
     {

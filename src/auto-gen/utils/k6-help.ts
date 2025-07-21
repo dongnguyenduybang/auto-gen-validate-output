@@ -37,8 +37,7 @@ export function mapOption(
 
 export async function generateSetupData(dtoPath) {
   try {
-const resolveVar =
-  `export function resolveVariables(obj, context) {
+    const resolveVar = `export function resolveVariables(obj, context) {
   if (typeof obj === 'string') {
     return obj.replace(
       /\\{\\{(.+?)\\}\\}/g,
@@ -58,19 +57,67 @@ const resolveVar =
   }
   return obj;
 }
+  export function parseErrors(errorString) {
+  if (!errorString.trim()) return [];
+  
+  // Cải tiến regex để bắt cả trường hợp chữ thường
+  const expectedReceivedRegex = /(.*(expected|Expected).*(received|Received).*?(?=(,|$)))/i;
+  const matches = errorString.match(expectedReceivedRegex);
+  
+  if (matches) {
+    const fullError = matches[0].trim();
+    const remaining = errorString.replace(fullError, '').replace(/^,/, '').trim();
+    
+    if (remaining) {
+      return [fullError, ...parseErrors(remaining)];
+    }
+    return [fullError];
+  }
+  
+  // Nếu không có pattern đặc biệt thì tách bằng dấu phẩy thông thường
+  return errorString.split(',')
+    .map(e => e.trim())
+    .filter(e => e);
+}
+export function cleanErrors(errors) {
+  return errors.map(error => {
+    return error.replace(/^"+|"+$/g, '').replace(/\\\\/g, '');
+  });
+}
+
+
 `;
 
-    const context = globalThis.globalContext
+    const context = globalThis.globalContext;
     const dtoName = basename(dtoPath);
 
+    const moduleSetup = await import('../setup/jest.setup.request');
+    const requestModuleSetup = findRequestFunction(
+      moduleSetup,
+      '../setup/jest.setup.request.ts',
+    );
+    const requestModule = await requestModuleSetup();
+    const requestSetup = requestModule.steps?.[0]?.actions?.main || [];
+    const resultsSetup = await executeSteps(requestSetup, context);
+
+    resultsSetup.forEach((result) => {
+      if (!result.status) {
+        console.error(`Error: ${JSON.stringify(result.error, null, 2)}`);
+      } else {
+        console.log(`Step ${result.stepName} executed successfully`);
+        console.log('Global setup completed successfully');
+      }
+    });
+
     const foundFolders = getDtoFolderPath(dtoName);
-    const pathFile = path.join(foundFolders, `${dtoName}.request.ts`)
-    const module = require(pathFile)
+    const pathFile = path.join(foundFolders, `${dtoName}.request.ts`);
+    const module = await import(pathFile);
 
     const requestFunction = findRequestFunction(module, '');
     const request = await requestFunction();
 
     const requestBefore = request.steps?.[0]?.actions?.beforeAll || [];
+    console.log(JSON.stringify(requestBefore, null, 2))
     const results = await executeSteps(requestBefore, context);
 
     if (results.length > 0) {
@@ -90,7 +137,7 @@ const resolveVar =
       'k6-studio',
       'Scripts',
       'common',
-    )
+    );
     const utils = path.join(utilsPaths, `utils.js`);
     fs.mkdirSync(path.dirname(utils), { recursive: true });
     fs.writeFileSync(utils, resolveVar);
@@ -107,7 +154,6 @@ const resolveVar =
     fs.mkdirSync(path.dirname(filePath), { recursive: true });
     fs.writeFileSync(filePath, JSON.stringify(setupData, null, 2));
     console.log('Setup data generated');
-
   } catch (error) {
     console.error('Error generating setup data:', error.message);
     throw error;
@@ -115,7 +161,6 @@ const resolveVar =
 }
 
 export function findRequestFunction(module, fileName) {
-
   const fnPattern1 =
     fileName
       .replace('.request.ts', '')

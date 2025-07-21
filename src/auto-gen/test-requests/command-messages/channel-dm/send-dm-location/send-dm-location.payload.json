@@ -14,6 +14,18 @@
     },
     {
         "body": {
+            "content": "defaultContent",
+            "ref": "ref",
+            "description": "",
+            "latitude": "10.0324312",
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
             "userId": "",
             "content": "defaultContent",
             "ref": "ref",
@@ -97,6 +109,19 @@
     {
         "body": {
             "userId": "{{userId}}",
+            "ref": "ref",
+            "description": "",
+            "latitude": "10.0324312",
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "content required",
+            "description should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
             "content": null,
             "ref": "ref",
             "description": "",
@@ -104,7 +129,7 @@
             "longitude": "105.7833368"
         },
         "expects": [
-            "content expected string, received null",
+            "content should not be null",
             "description should not be empty"
         ]
     },
@@ -141,13 +166,26 @@
         "body": {
             "userId": "{{userId}}",
             "content": "defaultContent",
+            "description": "",
+            "latitude": "10.0324312",
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "ref required",
+            "description should not be empty"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
+            "content": "defaultContent",
             "ref": null,
             "description": "",
             "latitude": "10.0324312",
             "longitude": "105.7833368"
         },
         "expects": [
-            "ref expected string, received null",
+            "ref should not be null",
             "description should not be empty"
         ]
     },
@@ -197,7 +235,7 @@
             "longitude": "105.7833368"
         },
         "expects": [
-            "description expected string, received null"
+            "description should not be null"
         ]
     },
     {
@@ -235,12 +273,25 @@
             "content": "defaultContent",
             "ref": "ref",
             "description": "",
+            "longitude": "105.7833368"
+        },
+        "expects": [
+            "description should not be empty",
+            "latitude required"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
+            "content": "defaultContent",
+            "ref": "ref",
+            "description": "",
             "latitude": null,
             "longitude": "105.7833368"
         },
         "expects": [
             "description should not be empty",
-            "latitude expected string, received null"
+            "latitude should not be null"
         ]
     },
     {
@@ -278,12 +329,25 @@
             "content": "defaultContent",
             "ref": "ref",
             "description": "",
+            "latitude": "10.0324312"
+        },
+        "expects": [
+            "description should not be empty",
+            "longitude required"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
+            "content": "defaultContent",
+            "ref": "ref",
+            "description": "",
             "latitude": "10.0324312",
             "longitude": null
         },
         "expects": [
             "description should not be empty",
-            "longitude expected string, received null"
+            "longitude should not be null"
         ]
     }
 ]

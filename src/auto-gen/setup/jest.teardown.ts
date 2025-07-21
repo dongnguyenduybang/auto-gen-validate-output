@@ -8,11 +8,17 @@ export default async function () {
   try {
     console.log('Global teardown: Cleaning up after tests');
 
-    const module = require('./jest.teardown.request.ts');
-    const requestFunction = findRequestFunction(module, './jest.teardown.request.ts');
+    const module = await import('./jest.teardown.request');
+    const requestFunction = findRequestFunction(
+      module,
+      './jest.teardown.request.ts',
+    );
     const request = await requestFunction();
     const requestBeforeAll = request.steps?.[0]?.actions?.main || [];
-    const results = await executeSteps(requestBeforeAll, globalThis.globalContext);
+    const results = await executeSteps(
+      requestBeforeAll,
+      globalThis.globalContext,
+    );
 
     results.forEach((result) => {
       if (!result.status) {
@@ -25,8 +31,6 @@ export default async function () {
         delete globalThis.urls;
       }
     });
-
-
   } catch (error) {
     console.error('Global teardown failed:', error);
     throw error;

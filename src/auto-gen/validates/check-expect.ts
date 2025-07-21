@@ -14,7 +14,7 @@ export async function handleExpectConfig(
   // ok
   if (expectConfig.ok) {
     const resultData: ExpectResult[] = [];
-    const data = getValueByPath(responseChecking, 'ok');
+    const data = getValueByPath(responseChecking as object, 'ok');
     const rs = validateExpectValues(data, expectConfig.ok, `ok`);
     if (rs?.length) resultData.push(...rs);
     if (resultData.length > 0) results.push(...resultData);
@@ -25,19 +25,10 @@ export async function handleExpectConfig(
     let itemData, itemPayload;
     const { path, action, payload, filter, isArrayMapping, headers } =
       expectConfig.data;
-    const pathKey = path.split('.').pop();
-    const nestedKey =
-      pathKey === 'users'
-        ? 'user'
-        : pathKey === 'messages'
-          ? 'message'
-          : pathKey === 'members'
-            ? 'member'
-            : undefined;
     const resolveHeader = resolveVariables(headers, context);
     const actionInfo = ACTION_CONFIG[action as keyof typeof ACTION_CONFIG];
 
-    const data = getValueByPath(responseChecking, path);
+    const data = getValueByPath(responseChecking as object, path);
     if (isArrayMapping && Array.isArray(payload) && Array.isArray(data)) {
       for (let i = 0; i < payload.length; i++) {
         const itemPayload = payload[i];
@@ -94,7 +85,7 @@ export async function handleExpectConfig(
               ? 'member'
               : undefined;
 
-      const dataInclude = getValueByPath(responseChecking, path);
+      const dataInclude = getValueByPath(responseChecking as object, path);
       const resolveHeader = resolveVariables(headers, context);
 
       if (
@@ -156,12 +147,12 @@ export async function handleExpectConfig(
 }
 
 // Helper functions
-function getValueByPath(obj: Object, path: string): Object {
+function getValueByPath<T extends object>(obj: T, path: string): any {
   if (!path) return obj;
-  return path.split('.').reduce((acc, part) => acc?.[part], obj);
+  return path.split('.').reduce((acc, part) => acc?.[part], obj as any);
 }
 
-function processNestedKey(data: unknown, nestedKey: string): Object {
+function processNestedKey(data: unknown, nestedKey: string): unknown {
   if (Array.isArray(data)) {
     return data.map((item) => item[nestedKey] || item);
   } else if (data && typeof data === 'object') {
@@ -170,7 +161,7 @@ function processNestedKey(data: unknown, nestedKey: string): Object {
   return data;
 }
 
-function pickFields(obj: Object, fields: string[]): Object {
+function pickFields(obj: Object, fields: string[]): Record<string, any> {
   if (!obj || typeof obj !== 'object') return obj;
   if (!fields || fields.length === 0) return obj;
 

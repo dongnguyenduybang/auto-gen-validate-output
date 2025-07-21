@@ -13,6 +13,17 @@
     },
     {
         "body": {
+            "messageId": "{{messageId}}",
+            "reportCategory": 1,
+            "reportReason": "default report reason",
+            "pretendingTo": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
             "userId": "",
             "messageId": "{{messageId}}",
             "reportCategory": 1,
@@ -49,19 +60,32 @@
     },
     {
         "body": {
-            "userId": "{{userId}}",
+            "userId": "{{userId1}}",
             "messageId": 123,
             "reportCategory": 1,
             "reportReason": "default report reason",
             "pretendingTo": 1
         },
         "expects": [
+            "messageId invalid ulid",
             "messageId expected string, received number"
         ]
     },
     {
         "body": {
-            "userId": "{{userId}}",
+            "userId": "{{userId1}}",
+            "reportCategory": 1,
+            "reportReason": "default report reason",
+            "pretendingTo": 1
+        },
+        "expects": [
+            "messageId required",
+            "messageId invalid ulid"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
             "messageId": "",
             "reportCategory": 1,
             "reportReason": "default report reason",
@@ -74,19 +98,19 @@
     },
     {
         "body": {
-            "userId": "{{userId}}",
+            "userId": "{{userId1}}",
             "messageId": null,
             "reportCategory": 1,
             "reportReason": "default report reason",
             "pretendingTo": 1
         },
         "expects": [
-            "messageId expected string, received null"
+            "messageId should not be null"
         ]
     },
     {
         "body": {
-            "userId": "{{userId}}",
+            "userId": "{{userId1}}",
             "messageId": "invalid_ULID",
             "reportCategory": 1,
             "reportReason": "default report reason",
@@ -98,7 +122,7 @@
     },
     {
         "body": {
-            "userId": "{{userId}}",
+            "userId": "{{userId1}}",
             "messageId": "{{messageId}}",
             "reportCategory": "invalid_enum_value",
             "reportReason": "default report reason",
@@ -110,7 +134,7 @@
     },
     {
         "body": {
-            "userId": "{{userId}}",
+            "userId": "{{userId1}}",
             "messageId": "{{messageId}}",
             "reportCategory": 20,
             "reportReason": "default report reason",
@@ -120,7 +144,7 @@
     },
     {
         "body": {
-            "userId": "{{userId}}",
+            "userId": "{{userId1}}",
             "messageId": "{{messageId}}",
             "reportCategory": 3,
             "reportReason": "default report reason",
@@ -130,7 +154,19 @@
     },
     {
         "body": {
-            "userId": "{{userId}}",
+            "userId": "{{userId1}}",
+            "messageId": "{{messageId}}",
+            "reportReason": "default report reason",
+            "pretendingTo": 1
+        },
+        "expects": [
+            "reportCategory required",
+            "reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received undefined"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
             "messageId": "{{messageId}}",
             "reportCategory": "",
             "reportReason": "default report reason",
@@ -143,19 +179,19 @@
     },
     {
         "body": {
-            "userId": "{{userId}}",
+            "userId": "{{userId1}}",
             "messageId": "{{messageId}}",
             "reportCategory": null,
             "reportReason": "default report reason",
             "pretendingTo": 1
         },
         "expects": [
-            "reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received null"
+            "reportCategory should not be null"
         ]
     },
     {
         "body": {
-            "userId": "{{userId}}",
+            "userId": "{{userId1}}",
             "messageId": "{{messageId}}",
             "reportCategory": 1,
             "reportReason": 123,
@@ -167,7 +203,7 @@
     },
     {
         "body": {
-            "userId": "{{userId}}",
+            "userId": "{{userId1}}",
             "messageId": "{{messageId}}",
             "reportCategory": 1,
             "reportReason": "",
@@ -180,7 +216,7 @@
     },
     {
         "body": {
-            "userId": "{{userId}}",
+            "userId": "{{userId1}}",
             "messageId": "{{messageId}}",
             "reportCategory": 1,
             "reportReason": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -192,7 +228,7 @@
     },
     {
         "body": {
-            "userId": "{{userId}}",
+            "userId": "{{userId1}}",
             "messageId": "{{messageId}}",
             "reportCategory": 1,
             "pretendingTo": 1
@@ -201,7 +237,7 @@
     },
     {
         "body": {
-            "userId": "{{userId}}",
+            "userId": "{{userId1}}",
             "messageId": "{{messageId}}",
             "reportCategory": 1,
             "reportReason": null,
@@ -211,7 +247,7 @@
     },
     {
         "body": {
-            "userId": "{{userId}}",
+            "userId": "{{userId1}}",
             "messageId": "{{messageId}}",
             "reportCategory": 1,
             "reportReason": "default report reason",
@@ -223,7 +259,7 @@
     },
     {
         "body": {
-            "userId": "{{userId}}",
+            "userId": "{{userId1}}",
             "messageId": "{{messageId}}",
             "reportCategory": 1,
             "reportReason": "default report reason"
@@ -232,7 +268,7 @@
     },
     {
         "body": {
-            "userId": "{{userId}}",
+            "userId": "{{userId1}}",
             "messageId": "{{messageId}}",
             "reportCategory": 1,
             "reportReason": "default report reason",
@@ -242,7 +278,7 @@
     },
     {
         "body": {
-            "userId": "{{userId}}",
+            "userId": "{{userId1}}",
             "messageId": "{{messageId}}",
             "reportCategory": 1,
             "reportReason": "default report reason",

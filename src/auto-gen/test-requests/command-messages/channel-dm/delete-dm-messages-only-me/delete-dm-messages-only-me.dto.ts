@@ -4,7 +4,6 @@ import {
   IsNotEmpty,
   IsInvalid,
   IsString,
-  IsULID,
   IsNotNull,
   IsArray,
 } from '../../../../decorator/index';
@@ -28,6 +27,4 @@ export class DeleteDmMessagesOnlyMeDTO {
   @IsNotNull()
   @IsDefined()
   messageIds: string[] = [];
-
-
 }

@@ -12,6 +12,16 @@
     },
     {
         "body": {
+            "messageIds": [
+                "{{messageId}}"
+            ]
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
             "userId": "",
             "messageIds": [
                 "{{messageId}}"
@@ -91,11 +101,20 @@
         "body": {
             "userId": "{{userId1}}",
             "messageIds": [
-                "01K03XY1AYS2S64BJ59J8G6JZV"
+                "01K0GPP6JK4EVPNK4EVP4KCFWX"
             ]
         },
         "expects": [
             "Messages not exist"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}"
+        },
+        "expects": [
+            "messageIds required",
+            "messageIds expected array, received undefined"
         ]
     },
     {
@@ -114,7 +133,7 @@
             "messageIds": null
         },
         "expects": [
-            "messageIds expected array, received null"
+            "messageIds should not be null"
         ]
     },
     {

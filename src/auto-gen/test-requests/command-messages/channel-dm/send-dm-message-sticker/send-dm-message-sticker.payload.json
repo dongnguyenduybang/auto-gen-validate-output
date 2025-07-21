@@ -11,6 +11,15 @@
     },
     {
         "body": {
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
+            "ref": "ref"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
             "userId": "",
             "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": "ref"
@@ -52,6 +61,15 @@
     {
         "body": {
             "userId": "{{userId}}",
+            "ref": "ref"
+        },
+        "expects": [
+            "stickerId required"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
             "stickerId": "",
             "ref": "ref"
         },
@@ -66,7 +84,7 @@
             "ref": "ref"
         },
         "expects": [
-            "stickerId expected string, received null"
+            "stickerId should not be null"
         ]
     },
     {
@@ -102,11 +120,20 @@
     {
         "body": {
             "userId": "{{userId}}",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0"
+        },
+        "expects": [
+            "ref required"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId}}",
             "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": null
         },
         "expects": [
-            "ref expected string, received null"
+            "ref should not be null"
         ]
     },
     {

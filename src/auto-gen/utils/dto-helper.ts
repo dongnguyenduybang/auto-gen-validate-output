@@ -108,7 +108,7 @@ export function generateErrorVariantsForField(
       variants.push(123);
       variants.push(fieldValue);
       if (decorators['genEmoji']) {
-        const { emoji, quantity } = decorators['genEmoji'];
+        const { emoji } = decorators['genEmoji'];
         variants.push(emoji);
       }
       break;
@@ -169,14 +169,14 @@ export function generateErrorVariantsForField(
   if (decorators['minLength']) {
     variants.push('a'.repeat(decorators['minLength'] - 1));
     if (decorators['genEmoji']) {
-      const { emoji, quantity } = decorators['genEmoji'];
+      const { emoji } = decorators['genEmoji'];
       variants.push(emoji.repeat(decorators['minLength'] - 1));
     }
   }
   if (decorators['maxLength']) {
     variants.push('a'.repeat(decorators['maxLength'] + 1));
     if (decorators['genEmoji']) {
-      const { emoji, quantity } = decorators['genEmoji'];
+      const { emoji } = decorators['genEmoji'];
       variants.push(emoji.repeat(decorators['maxLength'] + 1));
     }
   }

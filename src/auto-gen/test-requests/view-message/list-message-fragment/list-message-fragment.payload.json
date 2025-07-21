@@ -10,6 +10,14 @@
     },
     {
         "body": {
+            "channelId": "{{channelId}}"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
             "workspaceId": "",
             "channelId": "{{channelId}}"
         },
@@ -42,6 +50,14 @@
         },
         "expects": [
             "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0"
+        },
+        "expects": [
+            "Unsupported permission type"
         ]
     },
     {

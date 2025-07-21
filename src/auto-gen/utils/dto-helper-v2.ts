@@ -3,6 +3,8 @@ import { getUsedEnumValuesFromValidIf } from './dto-helper';
 import { ErrorMessage, VAR } from '../enums';
 import { checkRegexULID, checkURL, countEmojis, isEmoji } from './helper';
 import { ValidIfCondition, ValidIfOptions } from './declarations';
+import { CONST } from '../enums/const.enum';
+import { startsWith } from 'lodash';
 
 export function generateStructuredErrorCases(
   dtoClass: any,
@@ -199,14 +201,14 @@ export function generateErrorVariantsForField(
       if (decorators['minLength']) {
         variants.push('a'.repeat(decorators['minLength'] - 1));
         if (decorators['genEmoji']) {
-          const { emoji, quantity } = decorators['genEmoji'];
+          const { emoji } = decorators['genEmoji'];
           variants.push(emoji.repeat(decorators['minLength'] - 1));
         }
       }
       if (decorators['maxLength']) {
         variants.push('a'.repeat(decorators['maxLength'] + 1));
         if (decorators['genEmoji']) {
-          const { emoji, quantity } = decorators['genEmoji'];
+          const { emoji } = decorators['genEmoji'];
           variants.push(emoji.repeat(decorators['maxLength'] + 1));
         }
       }
@@ -294,7 +296,7 @@ export function generateErrorVariantsForField(
 
   // 5. Vi phạm kích thước mảng
 
-  if (decorators['optional']) {
+  if (decorators['optional'] || decorators['isDefined']) {
     variants.push(undefined);
   }
 
@@ -508,6 +510,7 @@ function checkValidIf(
   decorators: Record<string, any>,
   payload: Record<string, any>,
 ) {
+
   if (!decorators['validIf']) return null;
 
   const options: ValidIfOptions = decorators['validIf'];
@@ -626,7 +629,7 @@ function checkIsNotNull(
 ): string[] {
   const errors: string[] = [];
   if (value === null && decorators['isNotNull']) {
-    if (decorators['IsInvalid']) {
+    if (decorators['isInvalid']) {
       if (
         field === 'workspaceId' ||
         field === 'channelId' ||
@@ -641,6 +644,7 @@ function checkIsNotNull(
         addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.NULL}`);
       }
     } else {
+
       addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.NULL}`);
     }
   }
@@ -721,21 +725,47 @@ function checkULID(
 ): string[] {
   const errors: string[] = [];
   if (decorators['isULID']) {
-    if (
-      typeof value === 'string' &&
-      (value === '' || !value.startsWith('{{'))
-    ) {
+    // if (
+    //   typeof value === 'string' && 
+    //   (value === '' || value !== CONST.stickerId)
+    // ) {
+    //   addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_ULID}`);
+    // } else if (
+    //   typeof value === 'string' &&
+    //   !checkRegexULID(value)
+    // ) {
+    //   addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_ULID}`);
+    // }
+    const isString = typeof value === 'string';
+
+    if (!isString || value === null || value === undefined || value.trim() === '') {
+      // Trường hợp không phải chuỗi, hoặc chuỗi rỗng/null → lỗi
       addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_ULID}`);
-    } else if (
-      typeof value === 'string' &&
-      !value.startsWith('{{') &&
-      !checkRegexULID(value)
-    ) {
-      addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_ULID}`);
+    } else {
+      const isPlaceholder = value.startsWith('{{') && value.endsWith('}}');
+
+      if (isPlaceholder) {
+        const inner = value.slice(2, -2);
+
+        if (checkRegexULID(inner)) {
+          addErrorIfNotExist(errors, null, `${field} should not contain a ULID inside a placeholder`);
+        }
+      } else {
+        const isULID = checkRegexULID(value);
+
+        if (!isULID) {
+          addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_ULID}`);
+        }
+      }
     }
+
+
+
   }
+
   return errors;
 }
+
 function checkEmoji(
   field: string,
   value: unknown,
@@ -785,6 +815,7 @@ function checkEmoji(
   }
   return errors;
 }
+
 function checkTypeString(
   field: string,
   value: unknown,
@@ -801,6 +832,7 @@ function checkTypeString(
         if (
           field === 'workspaceId' ||
           field === 'channelId' ||
+          field === 'targetUserId' ||
           field === 'userId'
         ) {
           addErrorIfNotExist(errors, decorators['stringMessage'], null);
@@ -835,6 +867,8 @@ function checkTypeString(
       return errors;
     }
 
+
+
     if (decorators['isValidURL']) {
       const isInvalid =
         typeof value === 'string' && (value === '' || !checkURL(value));
@@ -845,10 +879,10 @@ function checkTypeString(
           `${field} ${ErrorMessage.INVALID_URL}`,
         );
       }
-      return errors;
     }
 
     if (decorators['isInvalid']) {
+
       if (field === 'workspaceId' && value !== '0') {
         addErrorIfNotExist(
           errors,
@@ -857,7 +891,7 @@ function checkTypeString(
         );
         return errors;
       }
-      if (field === 'channelId' && !value.startsWith('{{')) {
+      else if (field === 'channelId' && !value.startsWith('{{')) {
         addErrorIfNotExist(
           errors,
           decorators['isInvalidMessage'],
@@ -865,7 +899,8 @@ function checkTypeString(
         );
         return errors;
       }
-      if (field === 'userId' && !value.startsWith('{{')) {
+      else if ((field === 'userId' || field === 'targetUserId') &&
+        !(typeof value === 'string' && value.startsWith('{{'))) {
         addErrorIfNotExist(
           errors,
           decorators['isInvalidMessage'],
@@ -873,7 +908,7 @@ function checkTypeString(
         );
         return errors;
       }
-      if (
+      else if (
         field === 'stickerId' &&
         value !== VAR.stickerId &&
         value != null &&
@@ -882,17 +917,22 @@ function checkTypeString(
         addErrorIfNotExist(errors, decorators['isInvalidMessage'], null);
         return errors;
       }
+      else if (
+        !decorators['isInvalid'] &&
+        !value.startsWith('{{')
+      ) {
+        addErrorIfNotExist(
+          errors,
+          decorators['isInvalidMessage'],
+          null,
+        );
+      }
     }
 
     if (decorators['minLength'] || decorators['maxLength']) {
       const len = value.length;
-      const hasMin = decorators['minLength'] != null;
-      const hasMax = decorators['maxLength'] != null;
-      //  if (hasMin && hasMax) {
-      //       if (len < decorators['minLength'] || len > decorators['maxLength']) {
-      //         addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_RANGE_STRING_LENGTH} ${decorators['minLength']} to ${decorators['maxLength']} length`);
-      //       }
-      //     } else
+      const hasMin = decorators['minLength'];
+      const hasMax = decorators['maxLength'];
       if (hasMin && len < decorators['minLength']) {
         addErrorIfNotExist(
           errors,
@@ -910,6 +950,7 @@ function checkTypeString(
   }
   return errors;
 }
+
 function checkTypeNumber(
   field: string,
   value: unknown,
@@ -917,29 +958,45 @@ function checkTypeNumber(
 ): string[] {
   const errors: string[] = [];
   if (decorators['type'] === 'number') {
-    if (typeof value !== 'number' || isNaN(value)) {
+
+    const num = Number(value);
+    if (isNaN(num)) {
       addErrorIfNotExist(
         errors,
         decorators['numberMessage'],
-        `${field} ${ErrorMessage.INVALID_TYPE_NUMBER}`,
+        `${field} ${ErrorMessage.INVALID_TYPE_NUMBER} nan`,
       );
       return errors;
     }
-    if (decorators['min'] != null && value < decorators['min']) {
+
+    if (decorators['min'] != null && num < decorators['min']) {
       addErrorIfNotExist(
         errors,
         decorators['minMessage'],
         `${field} must be at least ${decorators['min']}`,
       );
     }
-    if (decorators['max'] != null && value > decorators['max']) {
+
+    if (decorators['max'] != null && num > decorators['max']) {
       addErrorIfNotExist(
         errors,
         decorators['maxMessage'],
         `${field} must be at most ${decorators['max']}`,
       );
     }
+
+    if (decorators['rangeNumber']) {
+      const { start, end } = decorators['rangeNumber'];
+      if (num < start || num > end) {
+        addErrorIfNotExist(
+          errors,
+          decorators['rangeMessage'],
+          `${field} ${ErrorMessage.INVALID_RANGE_NUMBER} ${start} to ${end}`,
+        );
+      }
+    }
   }
+
   return errors;
 }
 
@@ -992,7 +1049,6 @@ function checkTypeArray(
     }
 
     value.forEach((item: unknown, index: number) => {
-      const typeItem = typeof item;
       const itemDecorator = decorators['itemDecorators'];
       if (!itemDecorator) return;
       itemDecorator.forEach(
@@ -1120,7 +1176,7 @@ function checkEnum(
       addErrorIfNotExist(
         errors,
         decorators['enumMessage'],
-        `${field} ${ErrorMessage.INVALID_ENUM} ${expectedText}, received ${receivedText}`,
+        `${field} ${ErrorMessage.INVALID_ENUM} ${expectedText}, received '${value}'`,
       );
       return errors;
     }
@@ -1171,6 +1227,7 @@ export function mapError(
 
   const checks = [
     checkIsDefined,
+    checkIsNotNull,
     checkNotEmpty,
     checkULID,
     checkEmoji,
@@ -1181,7 +1238,7 @@ export function mapError(
     checkEnum,
     checkValidURL,
     checkTypeBoolean,
-    checkIsNotNull,
+
   ];
 
   for (const check of checks) {
@@ -1332,12 +1389,11 @@ function checkNestedValidation(
   }
   // Xử lý nested array
   if (decorators['type'] === 'array' && Array.isArray(value)) {
-    value.forEach((item, index) => {
+    value.forEach((item) => {
       if (item && typeof item === 'object') {
         const nestedErrors = validateNestedObject(
           item,
           nestedClass,
-          `${field}[${index}]`,
         );
         errors.push(...nestedErrors);
       }
@@ -1349,10 +1405,10 @@ function checkNestedValidation(
     value &&
     typeof value === 'object'
   ) {
-    const nestedErrors = validateNestedObject(value, nestedClass, field);
+    const nestedErrors = validateNestedObject(value, nestedClass);
     errors.push(...nestedErrors);
   } else {
-    const nestedErrors = validateNestedObject(value, nestedClass, field);
+    const nestedErrors = validateNestedObject(value, nestedClass);
     errors.push(...nestedErrors);
   }
 
@@ -1362,7 +1418,6 @@ function checkNestedValidation(
 function validateNestedObject(
   obj: any,
   nestedClass: any,
-  parentField: string,
 ): string[] {
   const errors: string[] = [];
   const nestedInstance = new nestedClass();

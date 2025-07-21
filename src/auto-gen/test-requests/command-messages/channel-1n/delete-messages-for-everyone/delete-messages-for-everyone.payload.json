@@ -148,7 +148,7 @@
             "workspaceId": "0",
             "channelId": "{{channelId}}",
             "messageIds": [
-                "01K03XXPX57KKPX6G7SWZTG7EN"
+                "01K08Y7XBKZAQA3C95D6HQJVTM"
             ]
         },
         "expects": [
@@ -173,7 +173,7 @@
             "messageIds": null
         },
         "expects": [
-            "messageIds expected array, received null"
+            "messageIds should not be null"
         ]
     },
     {

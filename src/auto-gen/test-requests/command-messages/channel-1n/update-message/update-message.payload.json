@@ -13,6 +13,17 @@
     },
     {
         "body": {
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "content": "defaultContent",
+            "ref": "ref"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
             "workspaceId": "",
             "channelId": "{{channelId}}",
             "messageId": "{{messageId}}",
@@ -62,6 +73,17 @@
     {
         "body": {
             "workspaceId": "0",
+            "messageId": "{{messageId}}",
+            "content": "defaultContent",
+            "ref": "ref"
+        },
+        "expects": [
+            "Unsupported permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
             "channelId": "",
             "messageId": "{{messageId}}",
             "content": "defaultContent",
@@ -104,7 +126,20 @@
             "ref": "ref"
         },
         "expects": [
+            "messageId invalid ulid",
             "messageId expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "content": "defaultContent",
+            "ref": "ref"
+        },
+        "expects": [
+            "messageId required",
+            "messageId invalid ulid"
         ]
     },
     {
@@ -129,7 +164,7 @@
             "ref": "ref"
         },
         "expects": [
-            "messageId expected string, received null"
+            "messageId should not be null"
         ]
     },
     {
@@ -186,11 +221,22 @@
             "workspaceId": "0",
             "channelId": "{{channelId}}",
             "messageId": "{{messageId}}",
+            "ref": "ref"
+        },
+        "expects": [
+            "content required"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
             "content": null,
             "ref": "ref"
         },
         "expects": [
-            "content expected string, received null"
+            "content should not be null"
         ]
     },
     {

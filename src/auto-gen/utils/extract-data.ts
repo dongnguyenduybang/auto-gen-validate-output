@@ -14,7 +14,7 @@ export function extractDatas(
   // Kiểm tra response
   if (!response) return data;
 
-  Object.entries(config).forEach(([section, { path, fields }]) => {
+  Object.entries(config).forEach(([_, { path, fields }]) => {
     let source = response;
     for (const key of path) {
       source = source?.[key];

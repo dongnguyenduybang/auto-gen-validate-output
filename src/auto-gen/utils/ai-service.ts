@@ -8,9 +8,6 @@ const writeFile = promisify(fs.writeFile);
 const readFile = promisify(fs.readFile);
 const exists = promisify(fs.exists);
 const mkdir = promisify(fs.mkdir);
-const unlink = promisify(fs.unlink);
-const readdir = promisify(fs.readdir);
-const rmdir = promisify(fs.rmdir);
 
 const modelSavePath = path.join(__dirname, 'saved_model');
 const modelPath = path.join(modelSavePath, 'model.json');
@@ -25,18 +22,23 @@ let vocabulary: Map<string, number> | null = null;
 export const loadAIModel = async (): Promise<typeof tf> => {
   if (!modelPromise) {
     console.log('🤖 Khởi tạo TensorFlow...');
-    modelPromise = tf.ready().then(() => {
-      console.log('✅ TensorFlow đã sẵn sàng');
-      return tf;
-    }).catch((error) => {
-      console.error('❌ Lỗi khởi tạo TensorFlow:', error);
-      throw error;
-    });
+    modelPromise = tf
+      .ready()
+      .then(() => {
+        console.log('✅ TensorFlow đã sẵn sàng');
+        return tf;
+      })
+      .catch((error) => {
+        console.error('❌ Lỗi khởi tạo TensorFlow:', error);
+        throw error;
+      });
   }
   return modelPromise;
 };
 
-export const getOrCreateTrainedModel = async (trainingData: TrainingData[]): Promise<tf.LayersModel> => {
+export const getOrCreateTrainedModel = async (
+  trainingData: TrainingData[],
+): Promise<tf.LayersModel> => {
   await loadAIModel();
 
   if (loadedModel) {
@@ -45,8 +47,11 @@ export const getOrCreateTrainedModel = async (trainingData: TrainingData[]): Pro
   }
 
   try {
-    // Kiểm tra xem model đã được lưu chưa
-    if (await exists(modelPath) && await exists(weightsPath) && await exists(weightSpecsPath)) {
+    if (
+      (await exists(modelPath)) &&
+      (await exists(weightsPath)) &&
+      (await exists(weightSpecsPath))
+    ) {
       const modelTopology = JSON.parse(await readFile(modelPath, 'utf-8'));
       const weightSpecs = JSON.parse(await readFile(weightSpecsPath, 'utf-8'));
       const weightsBuffer = await readFile(weightsPath);
@@ -56,7 +61,7 @@ export const getOrCreateTrainedModel = async (trainingData: TrainingData[]): Pro
           modelTopology,
           weightSpecs,
           weightData,
-        })
+        }),
       );
       console.log('📦 Đã load model từ local storage');
       return loadedModel;
@@ -65,20 +70,23 @@ export const getOrCreateTrainedModel = async (trainingData: TrainingData[]): Pro
     console.log('🚧 Không tìm thấy model hoặc lỗi load, đang train mới...', e);
   }
 
-  // Kiểm tra dữ liệu huấn luyện
   if (trainingData.length === 0) {
     throw new Error('Không có dữ liệu training');
   }
 
-  // Lấy vocabulary trước khi train
   const vocab = await getOrCreateVocabulary(trainingData);
-
   const trainX: number[][] = [];
   const trainY: number[] = [];
   const labelMap: Record<string, number> = { sender: 0, receiver: 1 };
 
   trainingData.forEach((data) => {
-    if (!data.action || !data.swaggerDesc || !data.apiEndpoint || !data.httpMethod) {
+    if (
+      !data.action ||
+      !data.swaggerDesc ||
+      !data.apiEndpoint ||
+      !data.httpMethod ||
+      !data.userIdMeaning
+    ) {
       console.warn(`⚠️ Dữ liệu huấn luyện không hợp lệ:`, data);
       return;
     }
@@ -87,18 +95,16 @@ export const getOrCreateTrainedModel = async (trainingData: TrainingData[]): Pro
       data.swaggerDesc,
       data.apiEndpoint,
       data.httpMethod,
-      vocab
+      vocab,
     );
     trainX.push(features);
-    const userIdMeaning = guessUserIdMeaning(data.action, data.swaggerDesc);
-    trainY.push(labelMap[userIdMeaning]);
+    trainY.push(labelMap[data.userIdMeaning]);
   });
 
   if (trainX.length === 0 || trainY.length === 0) {
     throw new Error('Không có dữ liệu huấn luyện hợp lệ sau khi lọc');
   }
 
-  // Train model mới
   const model = tf.sequential();
   model.add(
     tf.layers.dense({
@@ -106,7 +112,7 @@ export const getOrCreateTrainedModel = async (trainingData: TrainingData[]): Pro
       inputShape: [trainX[0].length],
       activation: 'relu',
       kernelRegularizer: tf.regularizers.l2({ l2: 0.01 }),
-    })
+    }),
   );
   model.add(tf.layers.batchNormalization());
   model.add(tf.layers.dropout({ rate: 0.5 }));
@@ -115,7 +121,7 @@ export const getOrCreateTrainedModel = async (trainingData: TrainingData[]): Pro
       units: 32,
       activation: 'relu',
       kernelRegularizer: tf.regularizers.l2({ l2: 0.01 }),
-    })
+    }),
   );
   model.add(tf.layers.batchNormalization());
   model.add(tf.layers.dropout({ rate: 0.3 }));
@@ -123,7 +129,7 @@ export const getOrCreateTrainedModel = async (trainingData: TrainingData[]): Pro
     tf.layers.dense({
       units: 2,
       activation: 'softmax',
-    })
+    }),
   );
 
   model.compile({
@@ -145,7 +151,9 @@ export const getOrCreateTrainedModel = async (trainingData: TrainingData[]): Pro
     callbacks: {
       onEpochEnd: (epoch, logs) => {
         if (epoch % 10 === 0) {
-          console.log(`Epoch ${epoch}: loss=${logs?.loss?.toFixed(4)}, accuracy=${logs?.acc?.toFixed(4)}`);
+          console.log(
+            `Epoch ${epoch}: loss=${logs?.loss?.toFixed(4)}, accuracy=${logs?.acc?.toFixed(4)}`,
+          );
         }
       },
     },
@@ -155,7 +163,6 @@ export const getOrCreateTrainedModel = async (trainingData: TrainingData[]): Pro
   ys.dispose();
   ysCategorical.dispose();
 
-  // Lưu model
   if (!(await exists(modelSavePath))) {
     await mkdir(modelSavePath, { recursive: true });
   }
@@ -164,7 +171,10 @@ export const getOrCreateTrainedModel = async (trainingData: TrainingData[]): Pro
       tf.io.withSaveHandler(async (artifacts) => {
         await writeFile(modelPath, JSON.stringify(artifacts.modelTopology));
         if (artifacts.weightData) {
-          await writeFile(weightsPath, Buffer.from(artifacts.weightData as ArrayBuffer));
+          await writeFile(
+            weightsPath,
+            Buffer.from(artifacts.weightData as ArrayBuffer),
+          );
         }
         await writeFile(weightSpecsPath, JSON.stringify(artifacts.weightSpecs));
         return {
@@ -173,10 +183,12 @@ export const getOrCreateTrainedModel = async (trainingData: TrainingData[]): Pro
             modelTopologyType: 'JSON',
             modelTopologyBytes: JSON.stringify(artifacts.modelTopology).length,
             weightSpecsBytes: JSON.stringify(artifacts.weightSpecs).length,
-            weightDataBytes: artifacts.weightData ? (artifacts.weightData as ArrayBuffer).byteLength : 0,
+            weightDataBytes: artifacts.weightData
+              ? (artifacts.weightData as ArrayBuffer).byteLength
+              : 0,
           },
         };
-      })
+      }),
     );
     console.log('✅ TensorFlow mới đã được tạo và lưu!');
   } catch (e) {
@@ -188,7 +200,9 @@ export const getOrCreateTrainedModel = async (trainingData: TrainingData[]): Pro
   return loadedModel;
 };
 
-export const getOrCreateVocabulary = async (trainingData: TrainingData[]): Promise<Map<string, number>> => {
+export const getOrCreateVocabulary = async (
+  trainingData: TrainingData[],
+): Promise<Map<string, number>> => {
   if (vocabulary) {
     console.log('📚 Sử dụng vocabulary đã load');
     return vocabulary;
@@ -205,7 +219,6 @@ export const getOrCreateVocabulary = async (trainingData: TrainingData[]): Promi
     console.log('🚧 Không tìm thấy vocabulary hoặc lỗi load, đang tạo mới...', e);
   }
 
-  // Tạo vocabulary mới
   vocabulary = new Map();
   const allWords = new Set<string>();
   trainingData.forEach((data) => {
@@ -230,12 +243,14 @@ export const getOrCreateVocabulary = async (trainingData: TrainingData[]): Promi
     vocabulary!.set(word, index + 1);
   });
 
-  // Lưu vocabulary
   if (!(await exists(modelSavePath))) {
     await mkdir(modelSavePath, { recursive: true });
   }
   try {
-    await writeFile(vocabSavePath, JSON.stringify(Object.fromEntries(vocabulary)));
+    await writeFile(
+      vocabSavePath,
+      JSON.stringify(Object.fromEntries(vocabulary)),
+    );
     console.log('💾 Đã lưu vocabulary thành công');
   } catch (e) {
     console.error('❌ Lỗi khi lưu vocabulary:', e);
@@ -250,7 +265,7 @@ export function createFeatureVector(
   swaggerDesc: string = '',
   endpoint: string = '',
   method: string = 'POST',
-  vocabulary: Map<string, number> // Thêm tham số vocabulary
+  vocabulary: Map<string, number>,
 ): number[] {
   if (!vocabulary) {
     throw new Error('Vocabulary chưa được khởi tạo');
@@ -297,16 +312,36 @@ export function createFeatureVector(
     endpoint.includes('forward') ? 1 : 0,
     endpoint.includes('add') ? 1 : 0,
     endpoint.includes('mark') ? 1 : 0,
+    endpoint.includes('invitation') ? 1 : 0, // Thêm feature cho invitation
   ];
   features.push(...endpointFeatures);
   const fullText = `${actionName} ${swaggerDesc} ${endpoint}`.toLowerCase();
   const semanticFeatures = [
-    /send.*to|recipient|receive|destination|message.*to|dm.*to|direct.*to|add.*friend|cancel.*request|unfriend|assign.*admin|dismiss.*admin|ban.*channel|unban.*channel|report.*user|block.*user|unblock.*user|poke.*message|pin.*message|quote.*message|forward.*message|mark.*read|update.*message|add.*reaction|revoke.*reaction|whom/i.test(fullText) ? 1 : 0,
-    /whom.*receive|who.*will.*receive|for.*user|to.*user/i.test(fullText) ? 1 : 0,
-    /accept.*from|request.*from|reject.*from|reject.*request|sender.*request|accept.*request|delete.*request|report.*message/i.test(fullText) ? 1 : 0,
+    /send.*to|recipient|receive|destination|message.*to|dm.*to|direct.*to|add.*friend|cancel.*request|unfriend|assign.*admin|dismiss.*admin|ban.*channel|unban.*channel|report.*user|block.*user|unblock.*user|poke.*message|pin.*message|quote.*message|forward.*message|mark.*read|update.*message|add.*reaction|revoke.*reaction|whom/i.test(
+      fullText,
+    )
+      ? 1
+      : 0,
+    /whom.*receive|who.*will.*receive|for.*user|to.*user/i.test(fullText)
+      ? 1
+      : 0,
+    /accept.*from|request.*from|reject.*from|reject.*request|sender.*request|accept.*request|delete.*request|report.*message/i.test(
+      fullText,
+    )
+      ? 1
+      : 0,
     /who.*sent|sender/i.test(fullText) ? 1 : 0,
-    /^send|^message|^add.*friend|^cancel.*request|^unfriend|^assign.*admin|^dismiss.*admin|^ban.*channel|^unban.*channel|^report.*user|^block.*user|^unblock.*user|^poke.*message|^pin.*message|^quote.*message|^forward.*message|^mark.*read|^update.*message|^add.*reaction|^revoke.*reaction/i.test(actionName.toLowerCase()) ? 1 : 0,
-    /^accept|^reject|^delete.*request|^report.*message/i.test(actionName.toLowerCase()) ? 1 : 0,
+    /accept.*invitation|join.*group|join.*channel/i.test(fullText) ? 1 : 0, // Thêm feature cho accept invitation
+    /^send|^message|^add.*friend|^cancel.*request|^unfriend|^assign.*admin|^dismiss.*admin|^ban.*channel|^unban.*channel|^report.*user|^block.*user|^unblock.*user|^poke.*message|^pin.*message|^quote.*message|^forward.*message|^mark.*read|^update.*message|^add.*reaction|^revoke.*reaction/i.test(
+      actionName.toLowerCase(),
+    )
+      ? 1
+      : 0,
+    /^accept|^reject|^delete.*request|^report.*message/i.test(
+      actionName.toLowerCase(),
+    )
+      ? 1
+      : 0,
     /^get|^fetch/i.test(actionName.toLowerCase()) ? 1 : 0,
     /^mark/i.test(actionName.toLowerCase()) ? 1 : 0,
   ];
@@ -314,7 +349,10 @@ export function createFeatureVector(
   return features;
 }
 
-export function guessUserIdMeaning(actionName: string, description: string): 'sender' | 'receiver' {
+export function guessUserIdMeaning(
+  actionName: string,
+  description: string,
+): 'sender' | 'receiver' {
   const fullText = `${actionName} ${description}`.toLowerCase();
   const receiverPatterns = [
     /send.*to|recipient|receive|destination|message.*to|dm.*to|direct.*to/i,
@@ -323,6 +361,7 @@ export function guessUserIdMeaning(actionName: string, description: string): 'se
     /poke.*message|pin.*message|quote.*message|forward.*message/i,
     /mark.*read|update.*message|add.*reaction|revoke.*reaction/i,
     /whom|for.*user|to.*user|identifies.*recipient/i,
+    /accept.*invitation|join.*group|join.*channel/i, // Thêm pattern cho accept invitation
   ];
   const senderPatterns = [
     /accept.*from|request.*from|reject.*from|reject.*request/i,
@@ -337,11 +376,17 @@ export function guessUserIdMeaning(actionName: string, description: string): 'se
   }
   const actionLower = actionName.toLowerCase();
   if (
-    /^send|^message|^add.*friend|^cancel.*request|^unfriend|^assign.*admin|^dismiss.*admin|^ban.*channel|^unban.*channel|^report.*user|^block.*user|^unblock.*user|^poke.*message|^pin.*message|^quote.*message|^forward.*message|^mark.*read|^update.*message|^add.*reaction|^revoke.*reaction/i.test(actionLower)
+    /^send|^message|^add.*friend|^cancel.*request|^unfriend|^assign.*admin|^dismiss.*admin|^ban.*channel|^unban.*channel|^report.*user|^block.*user|^unblock.*user|^poke.*message|^pin.*message|^quote.*message|^forward.*message|^mark.*read|^update.*message|^add.*reaction|^revoke.*reaction|^accept|^join/i.test(
+      actionLower,
+    )
   ) {
     return 'receiver';
   }
-  if (/^accept|^approve|^reject|^report.*message|^delete.*request/i.test(actionLower)) {
+  if (
+    /^accept.*request|^approve|^reject|^report.*message|^delete.*request/i.test(
+      actionLower,
+    )
+  ) {
     return 'sender';
   }
   return 'sender';

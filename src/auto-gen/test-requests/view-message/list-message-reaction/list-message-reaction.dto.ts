@@ -37,7 +37,6 @@ export class ListMessageReactionDTO {
     @IsEmoji({ value: 1 })
     @IsDefined()
     @IsString()
-    @IsOptional()
     @IsNotEmpty()
     @IsNotNull()
     emoji: string = '';

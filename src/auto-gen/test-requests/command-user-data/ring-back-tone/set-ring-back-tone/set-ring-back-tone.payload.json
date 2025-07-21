@@ -4,7 +4,15 @@
             "ringbackToneId": 123
         },
         "expects": [
+            "ringbackToneId invalid ulid",
             "ringbackToneId expected string, received number"
+        ]
+    },
+    {
+        "body": {},
+        "expects": [
+            "ringbackToneId required",
+            "ringbackToneId invalid ulid"
         ]
     },
     {
@@ -13,15 +21,7 @@
         },
         "expects": [
             "ringbackToneId should not be empty",
-            "ringbackToneId invalid ulids"
-        ]
-    },
-    {
-        "body": {
-            "ringbackToneId": null
-        },
-        "expects": [
-            "ringbackToneId should not be null"
+            "ringbackToneId invalid ulid"
         ]
     },
     {
@@ -29,7 +29,7 @@
             "ringbackToneId": "invalid_ULID"
         },
         "expects": [
-            "ringbackToneId invalid ulids"
+            "ringbackToneId invalid ulid"
         ]
     },
     {

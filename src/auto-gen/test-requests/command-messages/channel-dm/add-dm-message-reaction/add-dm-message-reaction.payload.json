@@ -11,6 +11,15 @@
     },
     {
         "body": {
+            "messageId": "{{messageId}}",
+            "emoji": "🎉"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
             "userId": "",
             "messageId": "{{messageId}}",
             "emoji": "🎉"
@@ -46,7 +55,18 @@
             "emoji": "🎉"
         },
         "expects": [
+            "messageId invalid ulid",
             "messageId expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "emoji": "🎉"
+        },
+        "expects": [
+            "messageId required",
+            "messageId invalid ulid"
         ]
     },
     {
@@ -67,7 +87,7 @@
             "emoji": "🎉"
         },
         "expects": [
-            "messageId expected string, received null"
+            "messageId should not be null"
         ]
     },
     {
@@ -115,11 +135,20 @@
     {
         "body": {
             "userId": "{{userId1}}",
+            "messageId": "{{messageId}}"
+        },
+        "expects": [
+            "emoji required"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
             "messageId": "{{messageId}}",
             "emoji": null
         },
         "expects": [
-            "emoji expected string, received null"
+            "emoji should not be null"
         ]
     },
     {

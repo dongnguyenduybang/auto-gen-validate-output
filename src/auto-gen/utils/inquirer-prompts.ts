@@ -259,6 +259,7 @@ export async function interactiveCLI(): Promise<void> {
             // validate: (input) => {
             //   return !input || /^\d+$/.test(input) ? true : 'VUs must be a number';
             // },
+            default: 'per-vu-iterations'
           },
           {
             type: 'input',
@@ -324,6 +325,7 @@ export async function interactiveCLI(): Promise<void> {
             // validate: (input) => {
             //   return !input || /^\d+$/.test(input) ? true : 'VUs must be a number';
             // },
+            default: '30s'
           },
         ]);
 
@@ -374,7 +376,6 @@ export async function interactiveCLI(): Promise<void> {
             paths: [payloadPath, k6ScriptPath],
             timestamp: Date.now(),
           });
-
         } catch (error) {
           console.error('❌ Error running k6 tests:', error.message);
         }
@@ -788,7 +789,6 @@ async function selectFoldersRecursive(
 
       if (selectedOptions.includes('__SEARCH__') && type !== 'json') {
         while (true) {
-          let dataDTO: any;
           const { dtoName } = await inquirer.prompt<{ dtoName: string }>([
             {
               type: 'input',
@@ -803,7 +803,6 @@ async function selectFoldersRecursive(
                 if (!result.status) {
                   return result.data as string;
                 }
-                dataDTO = result.data;
 
                 const matches = await searchDtoInTestRequests(input);
                 if (matches.length === 0) {

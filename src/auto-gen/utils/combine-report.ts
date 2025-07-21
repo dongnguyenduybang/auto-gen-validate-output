@@ -16,11 +16,6 @@ interface TestResult {
   [key: string]: any;
 }
 
-function isResultFile(file: string, className: string): boolean {
-  const baseName = file.replace('.result.json', '');
-  return baseName === className;
-}
-
 function parseResultFile(reportDir: string, file: string): TestResult {
   const filePath = path.join(reportDir, file);
   let content: string;

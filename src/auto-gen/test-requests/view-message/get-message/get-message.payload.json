@@ -86,6 +86,7 @@
             "messageId": 123
         },
         "expects": [
+            "messageId invalid ulid",
             "messageId expected string, received number"
         ]
     },

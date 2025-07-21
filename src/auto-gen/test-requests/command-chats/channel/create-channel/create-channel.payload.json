@@ -130,7 +130,7 @@
             "channelType": 1
         },
         "expects": [
-            "avatar expected string, received null"
+            "avatar should not be null"
         ]
     },
     {

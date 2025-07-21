@@ -4,7 +4,7 @@
             "workspaceId": 123,
             "channelId": "{{channelId}}",
             "messageId": "{{messageId}}",
-            "status": "🚀"
+            "status": true
         },
         "expects": [
             "Could not resolve permission type"
@@ -15,7 +15,7 @@
             "workspaceId": "",
             "channelId": "{{channelId}}",
             "messageId": "{{messageId}}",
-            "status": "🚀"
+            "status": true
         },
         "expects": [
             "Could not resolve permission type"
@@ -26,7 +26,7 @@
             "workspaceId": null,
             "channelId": "{{channelId}}",
             "messageId": "{{messageId}}",
-            "status": "🚀"
+            "status": true
         },
         "expects": [
             "Could not resolve permission type"
@@ -37,7 +37,7 @@
             "workspaceId": "invalid_value",
             "channelId": "{{channelId}}",
             "messageId": "{{messageId}}",
-            "status": "🚀"
+            "status": true
         },
         "expects": [
             "Invalid channel"
@@ -48,7 +48,7 @@
             "workspaceId": "0",
             "channelId": 123,
             "messageId": "{{messageId}}",
-            "status": "🚀"
+            "status": true
         },
         "expects": [
             "Could not resolve permission type"
@@ -59,7 +59,7 @@
             "workspaceId": "0",
             "channelId": "",
             "messageId": "{{messageId}}",
-            "status": "🚀"
+            "status": true
         },
         "expects": [
             "Could not resolve permission type"
@@ -70,7 +70,7 @@
             "workspaceId": "0",
             "channelId": null,
             "messageId": "{{messageId}}",
-            "status": "🚀"
+            "status": true
         },
         "expects": [
             "Could not resolve permission type"
@@ -81,7 +81,7 @@
             "workspaceId": "0",
             "channelId": "invalid_value",
             "messageId": "{{messageId}}",
-            "status": "🚀"
+            "status": true
         },
         "expects": [
             "Invalid channel"
@@ -92,11 +92,10 @@
             "workspaceId": "0",
             "channelId": "{{channelId}}",
             "messageId": 123,
-            "status": "🚀"
+            "status": true
         },
         "expects": [
-            "messageId expected string, received number",
-            "status expected boolean, received string"
+            "messageId expected string, received number"
         ]
     },
     {
@@ -104,12 +103,11 @@
             "workspaceId": "0",
             "channelId": "{{channelId}}",
             "messageId": "",
-            "status": "🚀"
+            "status": true
         },
         "expects": [
             "messageId should not be empty",
-            "messageId invalid ulid",
-            "status expected boolean, received string"
+            "messageId invalid ulid"
         ]
     },
     {
@@ -117,11 +115,10 @@
             "workspaceId": "0",
             "channelId": "{{channelId}}",
             "messageId": null,
-            "status": "🚀"
+            "status": true
         },
         "expects": [
-            "messageId expected string, received null",
-            "status expected boolean, received string"
+            "messageId should not be null"
         ]
     },
     {
@@ -129,11 +126,10 @@
             "workspaceId": "0",
             "channelId": "{{channelId}}",
             "messageId": "invalid_ULID",
-            "status": "🚀"
+            "status": true
         },
         "expects": [
-            "messageId invalid ulid",
-            "status expected boolean, received string"
+            "messageId invalid ulid"
         ]
     },
     {
@@ -167,7 +163,7 @@
             "status": null
         },
         "expects": [
-            "status expected boolean, received null"
+            "status should not be null"
         ]
     },
     {
@@ -175,10 +171,8 @@
             "workspaceId": "0",
             "channelId": "{{channelId}}",
             "messageId": "{{messageId}}",
-            "status": "🚀"
+            "status": true
         },
-        "expects": [
-            "status expected boolean, received string"
-        ]
+        "expects": []
     }
 ]

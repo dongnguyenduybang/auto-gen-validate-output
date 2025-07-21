@@ -1,7 +1,6 @@
 import { ErrorMessage } from '../../../../enums/index';
 import {
   IsString,
-  MaxLength,
   MinLength,
   IsInvalid,
   IsDefined,

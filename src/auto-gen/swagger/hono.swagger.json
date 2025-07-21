@@ -11,6 +11,7 @@
     "application/json"
   ],
   "paths": {
+    
     "/WebsocketManager/OpenConnection": {
       "get": {
         "responses": {

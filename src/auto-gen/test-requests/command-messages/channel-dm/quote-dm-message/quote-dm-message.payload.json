@@ -12,6 +12,16 @@
     },
     {
         "body": {
+            "messageId": "{{messageId}}",
+            "content": "defaultContent",
+            "ref": "ref"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
             "userId": "",
             "messageId": "{{messageId}}",
             "content": "defaultContent",
@@ -51,7 +61,19 @@
             "ref": "ref"
         },
         "expects": [
+            "messageId invalid ulid",
             "messageId expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "content": "defaultContent",
+            "ref": "ref"
+        },
+        "expects": [
+            "messageId required",
+            "messageId invalid ulid"
         ]
     },
     {
@@ -74,7 +96,7 @@
             "ref": "ref"
         },
         "expects": [
-            "messageId expected string, received null"
+            "messageId should not be null"
         ]
     },
     {
@@ -126,11 +148,21 @@
         "body": {
             "userId": "{{userId1}}",
             "messageId": "{{messageId}}",
+            "ref": "ref"
+        },
+        "expects": [
+            "content required"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": "{{messageId}}",
             "content": null,
             "ref": "ref"
         },
         "expects": [
-            "content expected string, received null"
+            "content should not be null"
         ]
     },
     {
@@ -160,11 +192,21 @@
         "body": {
             "userId": "{{userId1}}",
             "messageId": "{{messageId}}",
+            "content": "defaultContent"
+        },
+        "expects": [
+            "ref required"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}",
+            "messageId": "{{messageId}}",
             "content": "defaultContent",
             "ref": null
         },
         "expects": [
-            "ref expected string, received null"
+            "ref should not be null"
         ]
     },
     {

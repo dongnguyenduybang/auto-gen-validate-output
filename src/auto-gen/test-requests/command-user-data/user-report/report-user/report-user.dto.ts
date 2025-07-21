@@ -32,6 +32,7 @@ export class ReportUserDTO {
 
   @IsEnum(ReportCategory)
   @IsDefined()
+  @IsString()
   @IsNotEmpty()
   reportCategory: ReportCategory = 0;
 

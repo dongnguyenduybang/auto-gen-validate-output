@@ -13,6 +13,17 @@
     },
     {
         "body": {
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "emoji": "🎉",
+            "limit": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
             "workspaceId": "",
             "channelId": "{{channelId}}",
             "messageId": "{{messageId}}",
@@ -62,6 +73,17 @@
     {
         "body": {
             "workspaceId": "0",
+            "messageId": "{{messageId}}",
+            "emoji": "🎉",
+            "limit": 1
+        },
+        "expects": [
+            "Unsupported permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
             "channelId": "",
             "messageId": "{{messageId}}",
             "emoji": "🎉",
@@ -104,7 +126,20 @@
             "limit": 1
         },
         "expects": [
+            "messageId invalid ulid",
             "messageId expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "emoji": "🎉",
+            "limit": 1
+        },
+        "expects": [
+            "messageId required",
+            "messageId invalid ulid"
         ]
     },
     {
@@ -189,7 +224,9 @@
             "messageId": "{{messageId}}",
             "limit": 1
         },
-        "expects": []
+        "expects": [
+            "emoji required"
+        ]
     },
     {
         "body": {

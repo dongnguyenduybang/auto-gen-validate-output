@@ -22,7 +22,7 @@ function isPromise(obj: any): obj is Promise<any> {
   return obj && typeof obj === 'object' && typeof obj.then === 'function';
 }
 
-function isFunction(obj: any): obj is Function {
+function isFunction(obj: unknown): obj is (...args: unknown[]) => unknown {
   return typeof obj === 'function';
 }
 
@@ -32,9 +32,6 @@ function hasValidSteps(obj: any): obj is { steps: any[] } {
 
 export async function genBodyRequest(dtoName: string) {
   try {
-    const baseRequestsPath = path.join(__dirname, '../test-requests');
-    const searchPath = path.join(baseRequestsPath, dtoName);
-
     if (!fs.existsSync(dtoName)) {
       console.error(`❌ Target folder does not exist: ${dtoName}`);
       return;
@@ -70,7 +67,7 @@ export async function genBodyRequest(dtoName: string) {
         try {
           // Load DTO class
           delete require.cache[require.resolve(dtoPath)];
-          const dtoModule = require(dtoPath);
+          const dtoModule = await import(dtoPath);
 
           const classNameCapitalized = className
             .split('-')

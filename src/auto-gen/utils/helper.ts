@@ -983,7 +983,7 @@ export function findReportsDirectory(startDir: string): string {
 }
 
 export function transformPayload(resolved: Record<string, any>) {
-  const { headers, metadata, ...rest } = resolved;
+  const { headers, ...rest } = resolved;
   return {
     headers: headers ?? {},
     body: rest,
@@ -1014,5 +1014,3 @@ export function getDtoFolderPath(dtoName: string): string | null {
 
   return searchDir(rootDir);
 }
-
-

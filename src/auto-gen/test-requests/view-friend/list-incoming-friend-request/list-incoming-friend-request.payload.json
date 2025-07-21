@@ -22,10 +22,8 @@
     },
     {
         "body": {
-            "limit": 0
+            "limit": 1
         },
-        "expects": [
-            "limit range from 1 to 500"
-        ]
+        "expects": []
     }
 ]

@@ -14,8 +14,6 @@ async function generateK6Content(
   requestConfig: any,
   className: string,
 ): Promise<string> {
-  // Get the primary action from the new structure
-  console.log(JSON.stringify(requestConfig, null, 2))
   const primaryStep = requestConfig.steps?.[0];
   const primaryAction = primaryStep?.actions?.main?.[0];
   const primaryHeaders = primaryAction?.headers || {};
@@ -23,11 +21,13 @@ async function generateK6Content(
   const primaryMethod = primaryAction?.config?.method;
   const methodLowCase = primaryMethod.toLowerCase();
 
+  const isGetRequest = methodLowCase === 'get';
+
   return `
 import http from 'k6/http';
 import { check, group, sleep } from 'k6';
 import { Counter } from 'k6/metrics';
-import { resolveVariables } from '../common/utils.js'
+import { resolveVariables, parseErrors, cleanErrors } from '../common/utils.js'
 import { textSummary } from 'https://jslib.k6.io/k6-summary/0.0.1/index.js';
 
 // Read the file during init stage
@@ -50,7 +50,15 @@ let testResults = {
   warnings: [],
   passedTests: 0,
   totalTests: 0,
-  failedStep: []
+  failedStep: [],
+  executionDate: new Date().toISOString(),
+  environment: "dev",
+  detailedResults: {
+    summary: {},
+    failedTests: [],
+    warnings: [],
+    passedTests: []
+  }
 };
 
 export const options = optionData;
@@ -61,7 +69,6 @@ export function setup() {
 
 export default function (data) {
   let setupContext = data.data;
-  let testCaseNumber = 0;
 
   const testCases = [
     ${testCases
@@ -83,11 +90,21 @@ export default function (data) {
       const resolvedData = resolveVariables(test.payload, setupContext);
       const headers = resolveVariables(${JSON.stringify(primaryHeaders)}, setupContext);
       
-      const response = http.${methodLowCase}(
-        'https://api-dev.ziichat.dev${actionPath}', 
-        JSON.stringify(resolvedData), 
-        { headers }
-      );
+      ${isGetRequest ?
+      `const params = Object.keys(resolvedData).map(key => \`\${key}=\${encodeURIComponent(resolvedData[key])}\`).join('&');
+      const url = 'https://api-dev.ziichat.dev${actionPath}' + (params ? \`?\${params}\` : '');
+      const response = http.get(url, { headers });` :
+      methodLowCase === 'delete' ?
+        `const response = http.del(
+          'https://api-dev.ziichat.dev${actionPath}', 
+          JSON.stringify(resolvedData), 
+          { headers }
+        );` :
+        `const response = http.${methodLowCase}(
+          'https://api-dev.ziichat.dev${actionPath}', 
+          JSON.stringify(resolvedData), 
+          { headers }
+        );`}
 
       let expectDetails = [];
       let softExpectDetails = [];
@@ -106,8 +123,6 @@ export default function (data) {
                   : data !== undefined && data !== null
                     ? [JSON.stringify(data)]
                     : [];
-
-      
           } catch (e) {
             console.error(\`Failed to parse JSON for test \${test.number}: \${e.message}\`);
             expectDetails = [response.body || ''];
@@ -118,7 +133,6 @@ export default function (data) {
         softExpectDetails = [...expectDetails].sort();
       }
 
-      console.log(softExpectDetails, test.expectedErrors)
       const allErrorsMatched = softExpectDetails.every(actualError => 
         test.expectedErrors.includes(actualError)
       );
@@ -127,72 +141,170 @@ export default function (data) {
 
       let passed = exactMatch;
       let warning = !exactMatch && allErrorsMatched;
-      check(response, {
-        [\`Errors match for testcase #\${test.number}\`]: () =>  passed || warning
-      });
+      console.log(test.expectedErrors, softExpectDetails )
+      // Store complete test result details
+      const testResult = {
+        testcase: test.number,
+        title: test.title,
+        status: passed ? 'passed' : warning ? 'warning' : 'failed',
+        code: response.status,
+        request: {
+          method: '${primaryMethod}',
+          headers: headers,
+          body: resolvedData
+        },
+        response: {
+          status: response.status,
+          headers: response.headers,
+          body: response.body
+        },
+        actualErrors: softExpectDetails,
+        expectedErrors: test.expectedErrors,
+        timestamp: new Date().toISOString()
+      };
 
-      if (exactMatch) {
+      if (passed) {
         passedTests.add(1);
         testResults.passedTests++;
-        testResults.codedTest.push({
-          testcase: test.number,
-          code: response.status,
-          body: resolvedData
-        });
-      } else if (allErrorsMatched) {
+        testResults.codedTest.push(testResult);
+        testResults.detailedResults.passedTests.push(testResult);
+      } else if (warning) {
         warnings.add(1);
-        testResults.warnings.push({
-          testcase: test.number,
-          code: response.status,
-          body: resolvedData,
-          actualErrors: softExpectDetails,
-          expectedErrors: test.expectedErrors,
-          message: "Actual errors include expected errors"
-        });
+        testResult.message = "Actual errors include expected errors but don't match exactly";
+        testResults.warnings.push(testResult);
+        testResults.detailedResults.warnings.push(testResult);
       } else {
         failedTests.add(1);
-        testResults.failedTests.push({
-          testcase: test.number,
-          code: response.status,
-          body: resolvedData,
-          missing: softExpectDetails.filter(x => !test.expectedErrors.includes(x)),
-          extra: test.expectedErrors.filter(x => !softExpectDetails.includes(x))
-        });
+        testResult.missing = softExpectDetails.filter(x => !test.expectedErrors.includes(x));
+        testResult.extra = test.expectedErrors.filter(x => !softExpectDetails.includes(x));
+        testResults.failedTests.push(testResult);
+        testResults.detailedResults.failedTests.push(testResult);
       }
+      
+      testResults.allSteps.push(testResult);
       testResults.totalTests++;
+      
+      check(response, {
+        [\`Errors match for testcase # [\${testResult.status}]: \${test.number}\ \${test.expectedErrors}\; \${softExpectDetails}\`]: () => passed
+      });
+      
       sleep(1);
     });
   });
 }
 
-export function teardown(data) {
-  
-}
-
 export function handleSummary(data) {
   const metrics = data.metrics || {};
-
-  const jsonOutput = {
-    stdout: JSON.stringify({
-      metrics: {
-        http_reqs: data.metrics.http_reqs?.values || { count: 0 },
-        http_req_duration: data.metrics.http_req_duration?.values || { avg: 0 },
-        passedTestsMetric: metrics.passed_tests?.values || { count: 0 },
-        failedTestsMetric: metrics.failed_tests?.values || { count: 0 },
-        warningsMetric: metrics.warnings?.values || { count: 0 }
+  const testResults = {
+    detailedResults: {
+      summary: {
+        totalTests: 0,
+        passed: 0,
+        failed: 0,
+        warnings: 0,
+        successRate: "0%",
       },
-      testResults
-    }, null, 2)
+      failedTests: [],
+      warnings: [],
+      passedTests: [],
+    },
   };
 
-  // Add the default text summary
+  data.root_group.groups.forEach(group => {
+    const check = group.checks[0];
+    const log = check.name;
+    const path = group.path;
+
+    // extract status from name ([passed], [failed], [warning])
+    const testCaseStatusMatch = log.match(/\\[(\\w+)\\]/);
+    const testCaseStatus = testCaseStatusMatch ? testCaseStatusMatch[1].toLowerCase() : 'passed';
+
+    // parse expected errors from the path field
+    let expectedErrors = [];
+    const expectedErrorsMatch = path.match(/should return errors \\[(.*?)\\]/);
+    if (expectedErrorsMatch) {
+      expectedErrors = parseErrors(expectedErrorsMatch[1]);
+    }
+
+    // Parse actual errors from the name field (after the semicolon)
+    let actualErrors = [];
+    const stripped = log.replace(/Errors match for testcase #\\s*\\[\\w+\\]:\\s*\\d+\\s*/, '');
+    const semicolonIndex = stripped.indexOf(';');
+    if (semicolonIndex !== -1) {
+      const actualErrorsRaw = stripped.substring(semicolonIndex + 1).trim();
+      actualErrors = parseErrors(actualErrorsRaw);
+    } else {
+      // If no semicolon, assume only actual errors are present
+      actualErrors = parseErrors(stripped);
+    }
+
+    // Create result entry
+    const resultEntry = {
+      expectedErrors: cleanErrors(expectedErrors),
+      actualErrors: cleanErrors(actualErrors),
+      path: group.path,
+      id: check.id || '',
+      timestamp: new Date().toISOString(),
+    };
+
+    // Categorize based on status
+    if (testCaseStatus === 'failed') {
+      resultEntry.missing = actualErrors.filter(x => !expectedErrors.includes(x));
+      resultEntry.extra = expectedErrors.filter(x => !actualErrors.includes(x));
+      testResults.detailedResults.failedTests.push(resultEntry);
+    } else if (testCaseStatus === 'warning') {
+      resultEntry.warningMessage = \`Actual errors include expected errors but don\'t match exactly\`;
+      testResults.detailedResults.warnings.push(resultEntry);
+    } else {
+      testResults.detailedResults.passedTests.push(resultEntry);
+    }
+  });
+
+  // Update summary metrics
+  testResults.detailedResults.summary.totalTests = data.root_group.groups.length;
+  testResults.detailedResults.summary.passed = testResults.detailedResults.passedTests.length;
+  testResults.detailedResults.summary.failed = testResults.detailedResults.failedTests.length;
+  testResults.detailedResults.summary.warnings = testResults.detailedResults.warnings.length;
+  testResults.detailedResults.summary.successRate =
+    testResults.detailedResults.summary.totalTests > 0
+      ? (
+        (testResults.detailedResults.summary.passed /
+          testResults.detailedResults.summary.totalTests) *
+        100
+      ).toFixed(2) + '%'
+      : '0%';
+
+  const summary = {
+    testResults: testResults,
+    metrics: {
+      http_reqs: metrics.http_reqs?.values || { count: 0 },
+      http_req_duration: metrics.http_req_duration?.values || { avg: 0 },
+      http_req_connecting: metrics.http_req_connecting?.values || { avg: 0 },
+      http_req_tls_handshaking: metrics.http_req_tls_handshaking?.values || { avg: 0 },
+      http_req_duration: metrics.http_req_duration?.values || { avg: 0 },
+      iteration_duration: metrics.iteration_duration?.values || { avg: 0 },
+      http_req_waiting: metrics.http_req_waiting?.values || { avg: 0 },
+      http_req_sending: metrics.http_req_sending?.values || { avg: 0 },
+      http_req_receiving: metrics.http_req_receiving?.values || { avg: 0 },
+      http_req_blocked: metrics.http_req_blocked?.values || { avg: 0 },
+      vus: metrics.vus?.values || { count: 0 },
+      vus_max: metrics.vus_max?.values || { count: 0 },
+      totalTestsMetric: metrics.total_tests?.values || { count: 0 },
+      passedTestsMetric: metrics.passed_tests?.values || { count: 0 },
+      failedTestsMetric: metrics.failed_tests?.values || { count: 0 },
+      warningsMetric: metrics.warnings?.values || { count: 0 },
+    },
+  };
+
   return {
-    ...jsonOutput,
-    'stdout': textSummary(data, { indent: ' ', enableColors: true })
+    'summary.json': JSON.stringify(summary, null, 2),
+    stdout: textSummary(data, { indent: ' ', enableColors: true }),
   };
 }
+
 `;
 }
+
 
 async function genK6TestCase(
   payloadPath: string,
@@ -200,7 +312,6 @@ async function genK6TestCase(
   className: string,
   outputDir: string,
 ) {
-
   const payloadData = readJsonFile(payloadPath);
   const requestModule = await import(requestPath);
 
@@ -279,8 +390,6 @@ async function genK6TestCase(
 }
 
 export function genK6Request(dtoName: string) {
-
-
   if (!fs.existsSync(dtoName)) {
     console.error(`❌ Target folder does not exist: ${dtoName}`);
     return;

@@ -46,6 +46,7 @@
             "limit": 1
         },
         "expects": [
+            "messageId invalid ulid",
             "messageId expected string, received number"
         ]
     },

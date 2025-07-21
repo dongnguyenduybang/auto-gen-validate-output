@@ -14,6 +14,18 @@
     },
     {
         "body": {
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "reportCategory": 1,
+            "reportReason": "default report reason",
+            "pretendingTo": 1
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
             "workspaceId": "",
             "channelId": "{{channelId}}",
             "messageId": "{{messageId}}",
@@ -67,6 +79,18 @@
     {
         "body": {
             "workspaceId": "0",
+            "messageId": "{{messageId}}",
+            "reportCategory": 1,
+            "reportReason": "default report reason",
+            "pretendingTo": 1
+        },
+        "expects": [
+            "Unsupported permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
             "channelId": "",
             "messageId": "{{messageId}}",
             "reportCategory": 1,
@@ -113,7 +137,21 @@
             "pretendingTo": 1
         },
         "expects": [
+            "messageId invalid ulid",
             "messageId expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "reportCategory": 1,
+            "reportReason": "default report reason",
+            "pretendingTo": 1
+        },
+        "expects": [
+            "messageId required",
+            "messageId invalid ulid"
         ]
     },
     {
@@ -140,7 +178,7 @@
             "pretendingTo": 1
         },
         "expects": [
-            "messageId expected string, received null"
+            "messageId should not be null"
         ]
     },
     {
@@ -190,6 +228,19 @@
             "pretendingTo": 1
         },
         "expects": []
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "reportReason": "default report reason",
+            "pretendingTo": 1
+        },
+        "expects": [
+            "reportCategory required",
+            "reportCategory expected 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 20, received undefined"
+        ]
     },
     {
         "body": {
@@ -251,12 +302,32 @@
             "channelId": "{{channelId}}",
             "messageId": "{{messageId}}",
             "reportCategory": 1,
+            "pretendingTo": 1
+        },
+        "expects": []
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "reportCategory": 1,
             "reportReason": "default report reason",
             "pretendingTo": "invalid_enum_value"
         },
         "expects": [
             "pretendingTo expected 0 | 1 | 2 | 3, received nan"
         ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
+            "messageId": "{{messageId}}",
+            "reportCategory": 1,
+            "reportReason": "default report reason"
+        },
+        "expects": []
     },
     {
         "body": {

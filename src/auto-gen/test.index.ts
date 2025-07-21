@@ -112,7 +112,7 @@ function runTests(subType: string): ActionHandler {
 
 function runTestsK6(): ActionHandler {
   return async (filePaths: string | string[]) => {
-    await setup()
+    await setup();
     await generateSetupData(filePaths);
     if (Array.isArray(filePaths)) {
       for (const filePath of filePaths) {
@@ -129,7 +129,7 @@ function runTestsK6(): ActionHandler {
 }
 
 function runK6TestScript(scriptFolderPath: string, scriptFile: string) {
-  return new Promise<void>((resolve, reject) => {
+  return new Promise<void>((resolve) => {
     const fullPath = `${scriptFolderPath}/${scriptFile}`;
     const k6Process = spawn('k6', ['run', fullPath], {
       cwd: scriptFolderPath,
@@ -137,7 +137,7 @@ function runK6TestScript(scriptFolderPath: string, scriptFile: string) {
       shell: true,
     });
 
-    k6Process.on('close', (code) => {
+    k6Process.on('close', () => {
       console.log(`✅ K6 test for ${scriptFile} completed successfully.`);
       resolve();
     });
@@ -146,8 +146,8 @@ function runK6TestScript(scriptFolderPath: string, scriptFile: string) {
 
 export async function genAllRequests(dto: string) {
   try {
-    await setup()
-    await loadAIModel()
+    await setup();
+    await loadAIModel();
     const [bodyResult, testResult] = await Promise.all([
       genBodyRequest(dto),
       // genTestRequest(dto)

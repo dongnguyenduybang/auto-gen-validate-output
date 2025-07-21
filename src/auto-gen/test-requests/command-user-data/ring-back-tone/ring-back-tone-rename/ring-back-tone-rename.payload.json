@@ -10,29 +10,29 @@
     },
     {
         "body": {
-            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "ringbackToneId": "{{ringbackToneId}}"
-        },
-        "expects": [
-            "name string must contain at most 50 character(s)"
-        ]
-    },
-    {
-        "body": {
             "name": "",
             "ringbackToneId": "{{ringbackToneId}}"
         },
         "expects": [
-            "name should not be empty"
+            "name should not be empty",
+            "name string must contain at least 1 character(s)"
         ]
     },
     {
         "body": {
-            "name": null,
+            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
             "ringbackToneId": "{{ringbackToneId}}"
         },
         "expects": [
-            "name should not be null"
+            "name string must contain at most 255 character(s)"
+        ]
+    },
+    {
+        "body": {
+            "ringbackToneId": "{{ringbackToneId}}"
+        },
+        "expects": [
+            "name required"
         ]
     },
     {
@@ -41,7 +41,17 @@
             "ringbackToneId": 123
         },
         "expects": [
+            "ringbackToneId invalid ulid",
             "ringbackToneId expected string, received number"
+        ]
+    },
+    {
+        "body": {
+            "name": "channelname1"
+        },
+        "expects": [
+            "ringbackToneId required",
+            "ringbackToneId invalid ulid"
         ]
     },
     {
@@ -51,16 +61,7 @@
         },
         "expects": [
             "ringbackToneId should not be empty",
-            "ringbackToneId invalid ulids"
-        ]
-    },
-    {
-        "body": {
-            "name": "channelname1",
-            "ringbackToneId": null
-        },
-        "expects": [
-            "ringbackToneId should not be null"
+            "ringbackToneId invalid ulid"
         ]
     },
     {
@@ -69,7 +70,7 @@
             "ringbackToneId": "invalid_ULID"
         },
         "expects": [
-            "ringbackToneId invalid ulids"
+            "ringbackToneId invalid ulid"
         ]
     },
     {

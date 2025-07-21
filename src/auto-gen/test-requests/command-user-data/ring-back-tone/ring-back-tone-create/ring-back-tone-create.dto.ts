@@ -11,16 +11,15 @@ import {
 export class RingBackToneCreateDTO {
   @IsString()
   @IsDefined()
-  @IsNotEmpty()
   @IsNotNull()
-  @MinLength(3)
-  @MaxLength(50)
+  @MinLength(1)
+  @MaxLength(255)
   name: string = '';
 
   @IsDefined()
   @IsString()
   @isValidURL()
-  @IsNotEmpty()
   @IsNotNull()
+  @MinLength(1)
   ringbackTonePath: string = '';
 }

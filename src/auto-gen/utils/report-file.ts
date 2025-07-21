@@ -100,14 +100,14 @@ const requestReportTemplate = (
     `• Date: ${new Date().toLocaleString()}`,
     '',
     '=== Execution Steps ===',
-    ...failedStep.map((step, index) => {
-      // const parsedError = step.error ? JSON.parse(step.error) : [];
-      // const errorDetails = parsedError.length
-      //   ? `\n     └─ ${parsedError.join('\n       ')}`
-      //   : '';
-      // const typeLine = step.type ? `\n     type: ${step.type}` : '';
-      // return `  ${index + 1}. [${step.status ? '✅ PASSED' : '❌ FAILED'}] ${step.stepName}${typeLine}${errorDetails}`;
-    }),
+    // ...failedStep.map((step, index) => {
+    // const parsedError = step.error ? JSON.parse(step.error) : [];
+    // const errorDetails = parsedError.length
+    //   ? `\n     └─ ${parsedError.join('\n       ')}`
+    //   : '';
+    // const typeLine = step.type ? `\n     type: ${step.type}` : '';
+    // return `  ${index + 1}. [${step.status ? '✅ PASSED' : '❌ FAILED'}] ${step.stepName}${typeLine}${errorDetails}`;
+    // }),
 
     '',
     '=== Test Summary ===',
@@ -425,18 +425,3 @@ function formatErrorDetails(error: Record<string, Entry[]>): string {
 
 //   return `    └─ Message: ${String(error)}`;
 // };
-
-const formatError = (error: any) => {
-  if (!error) return [];
-  if (typeof error === 'string') {
-    try {
-      return JSON.parse(error);
-    } catch {
-      return [error]; // Return as array with single item if not valid JSON
-    }
-  } else {
-    return error;
-  }
-
-  return [JSON.stringify(error)]; // Convert object to string if it's not already
-};

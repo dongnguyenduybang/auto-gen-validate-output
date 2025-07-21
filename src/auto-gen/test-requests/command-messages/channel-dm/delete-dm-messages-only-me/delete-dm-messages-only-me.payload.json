@@ -91,7 +91,7 @@
         "body": {
             "userId": "{{userId1}}",
             "messageIds": [
-                "01K03XY205YWTCA2QHKBGTR2X2"
+                "01K09KPVT4MEQDZ5AZ1WJHD6NV"
             ]
         },
         "expects": [
@@ -114,7 +114,7 @@
             "messageIds": null
         },
         "expects": [
-            "messageIds expected array, received null"
+            "messageIds should not be null"
         ]
     },
     {

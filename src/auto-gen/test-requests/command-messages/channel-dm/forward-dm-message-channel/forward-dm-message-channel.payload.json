@@ -12,6 +12,16 @@
     },
     {
         "body": {
+            "originalMessageIds": [
+                "{{messageId}}"
+            ]
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
             "userId": "",
             "originalMessageIds": [
                 "{{messageId}}"
@@ -88,7 +98,7 @@
         "body": {
             "userId": "{{userId1}}",
             "originalMessageIds": [
-                "01K03XY2PEBP4D0M58ZR1B8QC1"
+                "01K0GQ1558KV4YJ3TPG3KVRTDY"
             ]
         },
         "expects": [
@@ -131,6 +141,15 @@
         "expects": [
             "originalMessageIds has element 0 invalid ulid",
             "originalMessageIds has element 0 string must contain at least 1 character(s)"
+        ]
+    },
+    {
+        "body": {
+            "userId": "{{userId1}}"
+        },
+        "expects": [
+            "originalMessageIds required",
+            "originalMessageIds expected array, received undefined"
         ]
     },
     {

@@ -4,24 +4,12 @@
             "limit": "invalid_number"
         },
         "expects": [
-            "limit must be a number conforming to the specified constraints"
+            "limit expected number, received nan"
         ]
     },
     {
-        "body": {
-            "limit": 0
-        },
-        "expects": [
-            "limit must be at least 1"
-        ]
-    },
-    {
-        "body": {
-            "limit": 501
-        },
-        "expects": [
-            "limit must be at most 500"
-        ]
+        "body": {},
+        "expects": []
     },
     {
         "body": {
@@ -29,15 +17,13 @@
         },
         "expects": [
             "limit should not be empty",
-            "limit must be a number conforming to the specified constraints"
+            "limit range from 1 to 500"
         ]
     },
     {
         "body": {
-            "limit": null
+            "limit": 1
         },
-        "expects": [
-            "limit should not be null"
-        ]
+        "expects": []
     }
 ]

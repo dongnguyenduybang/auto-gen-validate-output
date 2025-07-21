@@ -19,7 +19,6 @@ export class GetDmMessageDTO {
 
     @IsString()
     @IsULID()
-    @IsNotEmpty()
     @IsNotNull()
     @IsDefined()
     messageId: string = '';

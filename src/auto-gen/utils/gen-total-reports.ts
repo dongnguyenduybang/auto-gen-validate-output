@@ -52,8 +52,6 @@ export async function generateTotalReportsFromJSON(
           (f) => f.endsWith('.report.txt') && f.includes(dtoName),
         );
 
-        let detailFilePath: string | null = null;
-
         if (reportFiles.length > 0) {
           const fileStats = await Promise.all(
             reportFiles.map(async (file) => {

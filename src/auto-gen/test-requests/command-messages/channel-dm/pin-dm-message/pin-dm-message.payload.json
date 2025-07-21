@@ -67,7 +67,7 @@
             "status": true
         },
         "expects": [
-            "messageId expected string, received null"
+            "messageId should not be null"
         ]
     },
     {
@@ -97,7 +97,7 @@
             "status": null
         },
         "expects": [
-            "status expected boolean, received null"
+            "status should not be null"
         ]
     },
     {

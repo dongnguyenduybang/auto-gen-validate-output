@@ -20,7 +20,6 @@ async function generateSpecContent(
   outputPath: string,
   chunkNumber?: number,
   startIndex: number = 0,
-  totalChunks?: number,
 ): Promise<string> {
   const requestFilePathWithoutExt = className.replace('.request.ts', '');
   const classNameCapitalized =
@@ -290,12 +289,11 @@ async function generateSpecContent(
   `;
 }
 
-// Type guard functions
 function isPromise(obj: any): obj is Promise<any> {
   return obj && typeof obj === 'object' && typeof obj.then === 'function';
 }
 
-function isFunction(obj: any): obj is Function {
+function isFunction(obj: unknown): obj is (...args: any[]) => any {
   return typeof obj === 'function';
 }
 
@@ -456,7 +454,6 @@ async function genTestCase(
         outputPath,
         i + 1,
         startIdx,
-        totalChunks,
       );
 
       fs.writeFileSync(outputPath, chunkSpecContent, 'utf-8');

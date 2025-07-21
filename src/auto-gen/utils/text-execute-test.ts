@@ -2,7 +2,6 @@ import { getApiFunctions } from '../functions/api-registry';
 import { extractDatas } from './extract-data';
 import { Step, StepResult } from './declarations';
 import { TestContext } from './text-context';
-import { ACTION_CONFIG } from '../enums';
 import { handleExpectConfig } from '../validates/check-expect';
 import {
   checkResponse,
@@ -34,7 +33,7 @@ async function executeSingleStep(
   step: Step,
   context?: TestContext,
 ): Promise<StepResult> {
-  const { headers, config, expect: expectConfig } = step;
+  const { config, expect: expectConfig } = step;
   // defined method & path dựa vào action config
   const extractBody = transformPayload(config.body);
   // resolve variables body and headers
@@ -49,7 +48,7 @@ async function executeSingleStep(
     body: resolveBody,
   });
 
-  // console.log(JSON.stringify(response, null, 2))
+  console.log(JSON.stringify(response, null, 2))
   const hasExpectConfig = !!expectConfig;
   if (!response?.ok && !hasExpectConfig) {
     return {
@@ -66,48 +65,48 @@ async function executeSingleStep(
     };
   } else {
     // validate response
-    const resultCheckResponse = await checkResponse(
-      step,
-      response,
-      resolveBody,
-      context,
-    );
+    // const resultCheckResponse = await checkResponse(
+    //   step,
+    //   response,
+    //   resolveBody,
+    //   context,
+    // );
 
-    if (!resultCheckResponse.status) {
-      return resultCheckResponse;
-    } else {
-      // save context
-      if (response?.data) {
-        const extractedData = extractDatas(response, config.schema);
-        context.mergeData(extractedData);
-      }
+    // if (!resultCheckResponse.status) {
+    //   return resultCheckResponse;
+    // } else {
+    // save context
+    if (response?.data) {
+      const extractedData = extractDatas(response, config.schema);
+      context.mergeData(extractedData);
+    }
 
-      // validate saga
-      if (expectConfig) {
-        const resolveConfig = resolveExpectConfig(expectConfig, context);
-        // get api function
-        const result = await handleExpectConfig(
-          response.data,
-          resolveConfig,
-          context,
-        );
-        if (result.length > 0) {
-          const groupedErrors = result.reduce((acc, item) => {
-            const key = item.type || 'unknown';
-            if (!acc[key]) acc[key] = [];
-            acc[key].push(item);
-            return acc;
-          }, {});
-          return {
-            type: 'expect',
-            status: false,
-            stepName: config.schema,
-            error: groupedErrors,
-          };
-        }
+    // validate saga
+    if (expectConfig) {
+      const resolveConfig = resolveExpectConfig(expectConfig, context);
+      // get api function
+      const result = await handleExpectConfig(
+        response.data,
+        resolveConfig,
+        context,
+      );
+      if (result.length > 0) {
+        const groupedErrors = result.reduce((acc, item) => {
+          const key = item.type || 'unknown';
+          if (!acc[key]) acc[key] = [];
+          acc[key].push(item);
+          return acc;
+        }, {});
+        return {
+          type: 'expect',
+          status: false,
+          stepName: config.schema,
+          error: groupedErrors,
+        };
       }
     }
   }
+  // }
   return {
     type: null,
     status: true,

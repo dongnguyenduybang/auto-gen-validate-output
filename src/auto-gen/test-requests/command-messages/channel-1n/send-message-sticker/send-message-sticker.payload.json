@@ -12,6 +12,16 @@
     },
     {
         "body": {
+            "channelId": "{{channelId}}",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
+            "ref": "ref"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
             "workspaceId": "",
             "channelId": "{{channelId}}",
             "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
@@ -52,6 +62,16 @@
         },
         "expects": [
             "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
+            "ref": "ref"
+        },
+        "expects": [
+            "Unsupported permission type"
         ]
     },
     {
@@ -102,6 +122,16 @@
         "body": {
             "workspaceId": "0",
             "channelId": "{{channelId}}",
+            "ref": "ref"
+        },
+        "expects": [
+            "stickerId required"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
             "stickerId": "",
             "ref": "ref"
         },
@@ -117,7 +147,7 @@
             "ref": "ref"
         },
         "expects": [
-            "stickerId expected string, received null"
+            "stickerId should not be null"
         ]
     },
     {
@@ -157,11 +187,21 @@
         "body": {
             "workspaceId": "0",
             "channelId": "{{channelId}}",
+            "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0"
+        },
+        "expects": [
+            "ref required"
+        ]
+    },
+    {
+        "body": {
+            "workspaceId": "0",
+            "channelId": "{{channelId}}",
             "stickerId": "01JPPHQFHA85NG58H2TYTMCXK0",
             "ref": null
         },
         "expects": [
-            "ref expected string, received null"
+            "ref should not be null"
         ]
     },
     {

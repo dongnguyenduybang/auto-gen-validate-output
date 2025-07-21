@@ -10,6 +10,14 @@
     },
     {
         "body": {
+            "ref": "ref"
+        },
+        "expects": [
+            "Could not resolve permission type"
+        ]
+    },
+    {
+        "body": {
             "userId": "",
             "ref": "ref"
         },
@@ -56,11 +64,19 @@
     },
     {
         "body": {
+            "userId": "{{userId}}"
+        },
+        "expects": [
+            "ref required"
+        ]
+    },
+    {
+        "body": {
             "userId": "{{userId}}",
             "ref": null
         },
         "expects": [
-            "ref expected string, received null"
+            "ref should not be null"
         ]
     },
     {

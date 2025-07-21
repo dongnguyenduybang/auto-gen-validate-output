@@ -12,8 +12,12 @@ export const CONST = {
   code: '{{code}}',
   avatarPath:
     'https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/26.jpg',
+  avatarPath1:
+    'https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/262.jpg',
   coverPath:
     'https://fs.ugc.ziicdn.net/01JEWASZD3TK58P25Y1QJSYRPC/heic_300kB.heic',
+  coverPath1:
+    'https://fs.ugc.ziicdn.net/01JEWASZD3TK58P25Y1QJSYRPC/heic_400kB.heic',
   latitude: '10.0324312',
   longitude: '105.7833368',
   stickerId: '01JPPHQFHA85NG58H2TYTMCXK0',
@@ -22,7 +26,7 @@ export const CONST = {
     'https://fs.ugc.ziicdn.net/01JEZJ0GPMSHH2RVX9QTSJJNRX/heic_300kB.heic',
   ringBackToneId: '{{ringbackToneId}}',
   defaultEmoji: '🚀',
-  defaultCollectionId: '01JPPHQFHCC697M93K6PTZTZ8Q',
+  collectionId: '01JPPHQFHCC697M93K6PTZTZ8Q',
   name: 'channelname1',
   versionSwagger: 'V3$Request',
   content: 'defaultContent',
@@ -36,13 +40,15 @@ export const CONST = {
   status: '🚀',
   statusPin: true,
   statusUnpin: false,
-  expireAfterTime: ExpireAfterTimeEnum.USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_1_HOUR,
+  expireAfterTime:
+    ExpireAfterTimeEnum.USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_1_HOUR,
   channelId: VAR.channelId,
   attachmentType: AttachmentTypeEnum.ATTACHMENT_TYPE_ENUM_PHOTO,
-  fileUrl: "https://fs.ugc.ziicdn.net/01JEZJ0GPMSHH2RVX9QTSJJNRX/heic_300kB.heic",
-  mimetype: "text/plain",
-  filename: "text.txt",
-  extension: "text.txt",
+  fileUrl:
+    'https://fs.ugc.ziicdn.net/01JEZJ0GPMSHH2RVX9QTSJJNRX/heic_300kB.heic',
+  mimetype: 'text/plain',
+  filename: 'text.txt',
+  extension: 'text.txt',
   messageId: VAR.messageId,
   emoji: '🎉',
   messageIds: [VAR.messageId],
@@ -50,5 +56,14 @@ export const CONST = {
   reportCategory: ReportCategory.REPORT_CATEGORY_HARASSMENT,
   pretendingTo: PretendingTo.PRETENDING_TO_ME,
   reportReason: 'default report reason',
-  
+  userIds: [VAR.userId1],
+  targetUserId: VAR.userId1,
+  invitationLink: VAR.invitationLink,
+  limit: 1,
+  username: VAR.username,
+  type: AttachmentTypeEnum.ATTACHMENT_TYPE_ENUM_PHOTO,
+  ringbackTonePath: VAR.ringBackTone,
+  ringbackToneId: VAR.ringBackToneId,
+  avatarFramePath: VAR.avatarPath
+
 } as const;

@@ -46,6 +46,7 @@
             "emoji": "🎉"
         },
         "expects": [
+            "messageId invalid ulid",
             "messageId expected string, received number"
         ]
     },

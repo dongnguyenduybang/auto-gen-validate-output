@@ -4,7 +4,6 @@ import {
   IsNotEmpty,
   IsInvalid,
   IsString,
-  IsULID,
   IsNotNull,
   IsArray,
 } from '../../../../decorator/index';
@@ -35,5 +34,4 @@ export class DeleteMessagesForEveryoneDTO {
   @IsNotNull()
   @IsDefined()
   messageIds: string[] = [];
-
 }

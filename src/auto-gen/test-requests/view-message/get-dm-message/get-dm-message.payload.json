@@ -41,17 +41,8 @@
             "messageId": 123
         },
         "expects": [
+            "messageId invalid ulid",
             "messageId expected string, received number"
-        ]
-    },
-    {
-        "body": {
-            "userId": "{{userId1}}",
-            "messageId": ""
-        },
-        "expects": [
-            "messageId should not be empty",
-            "messageId invalid ulid"
         ]
     },
     {

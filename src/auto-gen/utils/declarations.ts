@@ -90,7 +90,7 @@ export interface StepResult {
   type?: string;
   status: boolean;
   stepName: string;
-  error?: Object;
+  error?: any;
 }
 
 export interface IContext {
@@ -205,7 +205,7 @@ export type ErrorItem = {
 };
 
 export interface PayloadGen {
-  body: Object;
+  body: Record<string, any>;
   expects: string[];
 }
 
@@ -295,6 +295,7 @@ export interface TrainingData {
   httpMethod?: string;
   schemaId?: string;
   fieldName?: string;
+  userIdMeaning?: 'sender' | 'receiver';
 }
 
 export interface ActionConfig {
