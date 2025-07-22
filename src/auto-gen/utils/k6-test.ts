@@ -1,13 +1,10 @@
 import * as path from 'path';
 import * as fs from 'fs';
 import * as os from 'os';
-import {
-  findAllFoldersWithDtoAndRequest,
-  formatExpectErrors,
-  getMatchedFilePaths,
-  pairFiles,
-  readJsonFile,
-} from './helper';
+import { CHUNK_SIZE, MAX_TEST_CASES_PER_FILE } from '../types/const';
+import { formatExpectErrors } from '../helpers/format-helper';
+import { pairFiles } from '../helpers/file-matching';
+import { readJsonFile, findAllFoldersWithDtoAndRequest, getMatchedFilePaths } from '../helpers/fs-helpers';
 
 async function generateK6Content(
   testCases: any[],
@@ -305,7 +302,6 @@ export function handleSummary(data) {
 `;
 }
 
-
 async function genK6TestCase(
   payloadPath: string,
   requestPath: string,
@@ -314,8 +310,8 @@ async function genK6TestCase(
 ) {
   const payloadData = readJsonFile(payloadPath);
   const requestModule = await import(requestPath);
-
   let requestConfig;
+
   const possibleExports = [
     className
       .split('-')
@@ -346,10 +342,7 @@ async function genK6TestCase(
     fs.mkdirSync(outputDir, { recursive: true });
   }
 
-  const MAX_TEST_CASES_PER_FILE = 500;
-  const CHUNK_SIZE = 500;
   const totalChunks = Math.ceil(payloadData.length / CHUNK_SIZE);
-
   if (payloadData.length > MAX_TEST_CASES_PER_FILE) {
     for (let i = 0; i < totalChunks; i++) {
       const startIdx = i * CHUNK_SIZE;

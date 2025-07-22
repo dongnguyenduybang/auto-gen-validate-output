@@ -19,8 +19,7 @@
     "skipLibCheck": true,
     "esModuleInterop": true, 
     "paths": {
-      "@utils/*": ["src/utils/*"],
-      "@test-requests/*": ["src/test-requests/*"]
+      "@utils/*": ["src/utils/*"]
     },
   }
 }

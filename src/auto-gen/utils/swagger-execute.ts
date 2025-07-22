@@ -1,317 +1,20 @@
-import { ACTION_CONFIG, METHOD, VAR } from '../enums';
-import schemas from '../swagger/hono.swagger.json';
-import schemas1 from '../swagger/swagger-json/hono/faker.swagger.json';
 import * as tf from '@tensorflow/tfjs';
 import * as fs from 'fs';
 import * as path from 'path';
 import { promisify } from 'util';
-import { CONST } from '../enums/const.enum';
-import {
-  ActionConfig,
-  TrainingData,
-  PredictionResult,
-  ProcessedBody,
-} from './declarations';
 import {
   createFeatureVector,
   getOrCreateTrainedModel,
   getOrCreateVocabulary,
   guessUserIdMeaning,
 } from './ai-service';
+import { PredictionResult, TrainingData } from '../types/prediction.types';
+import { ActionConfig } from '../types/api.types';
+import { ProcessedBody } from '../types/shared.types';
+import { resolveSchema } from '../helpers/resolve-helpers';
+import { toInterfaceName } from '../helpers/file-matching';
 
 const readFile = promisify(fs.readFile);
-
-function toInterfaceName(requestName: string): string {
-  if (!requestName || typeof requestName !== 'string') {
-    console.warn(`⚠️ requestName không hợp lệ: ${requestName}`);
-    return CONST.versionSwagger;
-  }
-  const words = requestName.replace(/([a-z])([A-Z])/g, '$1 $2').split(' ');
-
-  const pascalCase = words
-    .map((word) => {
-      if (word.toUpperCase() === 'DM') return 'DM';
-      return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-    })
-    .join('');
-
-  if (!CONST.versionSwagger.includes('$')) {
-    console.warn(
-      `⚠️ CONST.versionSwagger không chứa ký tự $: ${CONST.versionSwagger}`,
-    );
-    return `${CONST.versionSwagger}${pascalCase}`;
-  }
-  return CONST.versionSwagger.replace('$', pascalCase);
-}
-
-function normalizeActionName(action: string): string {
-
-  const words = action.match(/[A-Z]?[a-z]+|[0-9]+/g);
-  if (!words) return action;
-
-  const normalized = words
-    .map((word) => {
-      return word.toLowerCase() === 'dm'
-        ? 'DM'
-        : word.charAt(0).toUpperCase() + word.slice(1);
-    })
-    .join('');
-
-  return normalized;
-}
-
-
-
-// function resolveSchema(
-//   action: string,
-//   swaggerFiles: any[],
-//   visited: Set<string> = new Set(),
-// ): any {
-//   const normalizedAction = normalizeActionName(action);
-
-//   for (const schemas of swaggerFiles) {
-//     const allPaths = schemas.paths;
-//     const allSchemas = schemas.components?.schemas || schemas.definitions || {};
-
-//     let foundPath: string | null = null;
-//     let foundMethod: string | null = null;
-//     let methodObj: any = null;
-
-//     // Tìm path & method theo operationId
-//     for (const [pathKey, pathItem] of Object.entries(allPaths)) {
-//       for (const method of Object.keys(pathItem)) {
-//         const op = pathItem[method];
-//         if (op?.operationId === normalizedAction) {
-//           foundPath = pathKey;
-//           foundMethod = method;
-//           methodObj = op;
-//           break;
-//         }
-//       }
-//       if (foundPath) break;
-//     }
-
-//     if (!foundPath || !foundMethod || !methodObj) {
-//       continue; // thử tiếp swagger tiếp theo
-//     }
-
-//     // Lấy schema từ requestBody hoặc fallback sang parameters
-//     let rawSchema =
-//       methodObj?.requestBody?.content?.['application/json']?.schema || null;
-
-//     if (!rawSchema && methodObj?.parameters?.length > 0) {
-//       rawSchema = {
-//         type: 'object',
-//         properties: {},
-//         required: [],
-//       };
-
-//       for (const param of methodObj.parameters) {
-//         rawSchema.properties[param.name] = param.schema || {};
-//         if (param.required) {
-//           rawSchema.required.push(param.name);
-//         }
-//       }
-//     }
-
-//     if (!rawSchema) {
-//       continue;
-//     }
-
-//     // Hàm đệ quy để resolve schema
-//     function doResolve(schema: any, visited: Set<string>): any {
-//       if (!schema || typeof schema !== 'object') return schema;
-
-//       if (schema['$ref']) {
-//         const ref = schema['$ref'];
-//         const refPath =
-//           ref.replace('#/components/schemas/', '').replace('#/definitions/', '');
-//         if (visited.has(refPath)) {
-//           console.warn(`⚠️ Phát hiện tham chiếu đệ quy cho ${refPath}`);
-//           return { $ref: refPath, recursive: true };
-//         }
-
-//         const resolved = allSchemas[refPath];
-//         if (!resolved) {
-//           throw new Error(`Không tìm thấy schema cho $ref: ${ref}`);
-//         }
-
-//         const newVisited = new Set(visited);
-//         newVisited.add(refPath);
-//         return doResolve(resolved, newVisited);
-//       }
-
-//       if (schema.type === 'array' && schema.items) {
-//         return {
-//           ...schema,
-//           items: doResolve(schema.items, new Set(visited)),
-//         };
-//       }
-
-//       if (schema.type === 'object' && schema.properties) {
-//         const resolvedProps: Record<string, any> = {};
-//         for (const [key, prop] of Object.entries(schema.properties)) {
-//           resolvedProps[key] = doResolve(prop, new Set(visited));
-//         }
-//         return {
-//           ...schema,
-//           properties: resolvedProps,
-//         };
-//       }
-
-//       return { ...schema };
-//     }
-
-//     // Resolve schema và đính kèm metadata
-//     const resolved = doResolve(rawSchema, visited);
-//     resolved.__meta = {
-//       operationId: methodObj.operationId,
-//       method: foundMethod.toUpperCase(),
-//       path: foundPath,
-//       tags: methodObj.tags || [],
-//     };
-
-//     return resolved;
-//   }
-
-//   throw new Error(`❌ Không tìm thấy operationId: ${action} trong bất kỳ swagger nào`);
-// }
-
-function resolveSchema(
-  action: string,
-  schemasList: any[], // Cho phép truyền nhiều schema (file)
-  visited: Set<string> = new Set(),
-): any {
-  const normalizedAction = normalizeActionName(action);
-
-  let foundSchema: any = null;
-  let foundPath: string | null = null;
-  let foundMethod: string | null = null;
-  let methodObj: any = null;
-  let definitionsMap: Record<string, any> = {};
-
-  for (const schemas of schemasList) {
-    const allPaths = schemas.paths;
-    const allSchemas =
-      schemas.components?.schemas || schemas.definitions || {};
-
-    for (const [pathKey, pathItem] of Object.entries(allPaths)) {
-      for (const method of Object.keys(pathItem)) {
-        const op = pathItem[method];
-        if (op?.operationId === normalizedAction) {
-          foundPath = pathKey;
-          foundMethod = method;
-          methodObj = pathItem[method];
-          definitionsMap = allSchemas;
-          break;
-        }
-      }
-      if (foundPath) break;
-    }
-
-    if (methodObj) break;
-  }
-
-  if (!methodObj || !foundPath || !foundMethod) {
-    throw new Error(`❌ Không tìm thấy operationId: ${action}`);
-  }
-
-  let rawSchema = methodObj?.requestBody?.content?.['application/json']?.schema;
-
-  if (!rawSchema && methodObj?.parameters?.length > 0) {
-    const bodyParam = methodObj.parameters.find((p: any) => p.in === 'body');
-    if (bodyParam?.schema) {
-      rawSchema = bodyParam.schema;
-    } else {
-      rawSchema = {
-        type: 'object',
-        properties: {},
-        required: [],
-      };
-
-      for (const param of methodObj.parameters) {
-        if (param.in !== 'body') {
-          rawSchema.properties[param.name] = param.schema || {};
-          if (param.required) {
-            rawSchema.required.push(param.name);
-          }
-        }
-      }
-    }
-  }
-
-  if (!rawSchema) {
-    throw new Error(`❌ Không tìm thấy schema trong requestBody hoặc parameters của ${normalizedAction}`);
-  }
-
-  // Hàm resolve đệ quy
-  function doResolve(schema: any, visited: Set<string>): any {
-    if (!schema || typeof schema !== 'object') return schema;
-
-    if (schema['$ref']) {
-      const refPath = schema['$ref']
-        .replace('#/components/schemas/', '')
-        .replace('#/definitions/', '');
-      if (visited.has(refPath)) {
-        console.warn(`⚠️ Phát hiện tham chiếu đệ quy cho ${refPath}`);
-        return { $ref: refPath, recursive: true };
-      }
-
-      const resolved = definitionsMap[refPath];
-      if (!resolved) {
-        throw new Error(`❌ Không tìm thấy schema cho $ref: ${refPath}`);
-      }
-
-      const newVisited = new Set(visited);
-      newVisited.add(refPath);
-      return doResolve(resolved, newVisited);
-    }
-
-    if (schema.type === 'array' && schema.items) {
-      return {
-        ...schema,
-        items: doResolve(schema.items, new Set(visited)),
-      };
-    }
-
-    if (schema.type === 'object' && schema.properties) {
-      const resolvedProps: Record<string, any> = {};
-      for (const [key, prop] of Object.entries(schema.properties)) {
-        resolvedProps[key] = doResolve(prop, new Set(visited));
-      }
-      return {
-        ...schema,
-        properties: resolvedProps,
-      };
-    }
-
-    return { ...schema };
-  }
-
-  const resolved = doResolve(rawSchema, visited);
-  if (
-    resolved.type === 'object' &&
-    resolved.properties &&
-    Object.keys(resolved.properties).length === 1 &&
-    resolved.properties.body?.type === 'object'
-  ) {
-    const bodySchema = resolved.properties.body;
-    resolved.type = 'object';
-    resolved.properties = bodySchema.properties || {};
-    resolved.required = bodySchema.required || [];
-  }
-
-  resolved.__meta = {
-    operationId: methodObj.operationId,
-    method: foundMethod.toUpperCase(),
-    path: foundPath,
-    tags: methodObj.tags || [],
-  };
-
-  return resolved;
-}
-
-
 class AIUserIdResolver {
   private _trainingData: TrainingData[] = [];
   private model: tf.LayersModel | null = null;
@@ -326,14 +29,14 @@ class AIUserIdResolver {
     try {
       const swaggerPath = path.resolve(__dirname, '../swagger/hono.swagger.json');
       if (!(await exists(swaggerPath))) {
-        throw new Error(`File Swagger không tồn tại tại: ${swaggerPath}`);
+        throw new Error(`The Swagger file does not exist at: ${swaggerPath}`);
       }
       const fileContent = await readFile(swaggerPath, 'utf-8');
       const swaggerJson = JSON.parse(fileContent);
       this._trainingData = this.generateTrainingDataFromSwagger(swaggerJson);
-      console.log(`✅ Đã tải ${this._trainingData.length} mẫu training từ Swagger`);
+      console.log(`✅ Loaded ${this._trainingData.length} Swagger training sample`);
     } catch (error) {
-      console.error('❌ Lỗi khi khởi tạo từ Swagger:', error);
+      console.error('❌ Error when initializing from Swagger:', error);
       throw error;
     }
   }
@@ -343,9 +46,9 @@ class AIUserIdResolver {
       this.vocabulary = await getOrCreateVocabulary(this._trainingData);
       this.model = await getOrCreateTrainedModel(this._trainingData);
       this.isModelLoaded = true;
-      console.log('✅ AIUserIdResolver đã sẵn sàng!');
+      console.log('✅ AIUserIdResolver is ready!');
     } catch (error) {
-      console.error('❌ Lỗi khởi tạo AI:', error);
+      console.error('❌ AI initialization error:', error);
       throw error;
     }
   }
@@ -353,7 +56,7 @@ class AIUserIdResolver {
   private generateTrainingDataFromSwagger(swaggerJson: any): TrainingData[] {
     const trainingData: TrainingData[] = [];
     if (!swaggerJson || typeof swaggerJson !== 'object') {
-      console.warn('⚠️ Swagger JSON không hợp lệ');
+      console.warn('⚠️ Invalid Swagger JSON');
       return trainingData;
     }
 
@@ -361,7 +64,7 @@ class AIUserIdResolver {
       try {
         const action = this.normalizeActionName(schemaName);
         if (!action) {
-          console.warn(`⚠️ Bỏ qua schema ${schemaName} do không xác định được action`);
+          console.warn(`⚠️ Ignore schema ${schemaName} due to undefined action`);
           return;
         }
         const contextClues = this.extractContextClues(schemaName, schema);
@@ -391,7 +94,7 @@ class AIUserIdResolver {
           userIdMeaning,
         });
       } catch (error) {
-        console.warn(`❌ Lỗi khi xử lý schema ${schemaName}:`, error);
+        console.warn(`❌ Error processing schema ${schemaName}:`, error);
       }
     });
     return trainingData;
@@ -476,12 +179,12 @@ class AIUserIdResolver {
 
   public async autoGenerateTrainingDataFromSchema(schemaName: string): Promise<TrainingData | null> {
     if (!schemaName) {
-      console.warn('⚠️ schemaName không hợp lệ');
+      console.warn('⚠️ Invalid schemaName');
       return null;
     }
     const schema = (schemas.components.schemas as Record<string, any>)[schemaName];
     if (!schema || !schema.properties) {
-      console.log(`ℹ️ Schema ${schemaName} không hợp lệ`);
+      console.log(`ℹ️ Schema ${schemaName} not valid`);
       return null;
     }
     const actionName = schemaName.replace(/Request$/, '').replace(/^V3/, '');
@@ -546,7 +249,7 @@ class AIUserIdResolver {
     method: string = '',
   ): Promise<PredictionResult> {
     if (!this.isModelLoaded || !this.model || !this.vocabulary) {
-      throw new Error('AI chưa được khởi tạo. Gọi initializeAI() trước.');
+      throw new Error('AI is not initialized yet. Call initializeAI() first.');
     }
     const features = createFeatureVector(actionName, swaggerDesc, endpoint, method, this.vocabulary);
     const inputTensor = tf.tensor2d([features]);
@@ -561,7 +264,7 @@ class AIUserIdResolver {
       userIdMeaning: labels[maxIndex],
       confidence,
       probabilities: { sender: probabilities[0], receiver: probabilities[1] },
-      reasoning: `Dự đoán ${labels[maxIndex]} với ${(confidence * 100).toFixed(1)}%`,
+      reasoning: `Forecast ${labels[maxIndex]} with ${(confidence * 100).toFixed(1)}%`,
       method: 'ai',
       suggestedVariableName: this.generateVariableName(labels[maxIndex]),
     };
@@ -614,7 +317,7 @@ class AIUserIdResolver {
         suggestedVariableName: this.generateVariableName(aiResult.userIdMeaning),
       };
     } catch (error) {
-      console.error('❌ Dự đoán thất bại:', error);
+      console.error('❌ Prediction of failure:', error);
       return this.fallbackToRules(actionName, swaggerSchema, endpoint, fieldName);
     }
   }
@@ -626,7 +329,7 @@ class AIUserIdResolver {
 
   private fallbackToRules(actionName: string, swaggerSchema: any, endpoint: string, fieldName: string): PredictionResult {
     const desc = (swaggerSchema?.properties?.[fieldName]?.description || swaggerSchema.description || '').toLowerCase();
-    console.log('desc', desc)
+
     const action = actionName.toLowerCase();
     const fullText = `${action} ${desc} ${endpoint}`.toLowerCase();
 
@@ -651,7 +354,7 @@ class AIUserIdResolver {
           userIdMeaning: 'receiver',
           confidence: 0.95,
           method: 'rules',
-          reasoning: `Dựa trên quy tắc: Mẫu "${pattern.source}" khớp`,
+          reasoning: `Rule-based: Pattern "${pattern.source}" matches`,
           suggestedVariableName: this.generateVariableName('receiver'),
         };
       }
@@ -662,27 +365,17 @@ class AIUserIdResolver {
           userIdMeaning: 'sender',
           confidence: 0.95,
           method: 'rules',
-          reasoning: `Dựa trên quy tắc: Mẫu "${pattern.source}" khớp`,
+          reasoning: `Rule-based: Pattern "${pattern.source}" matches`,
           suggestedVariableName: this.generateVariableName('sender'),
         };
       }
-    }
-
-    if (/accept|join/i.test(action)) {
-      return {
-        userIdMeaning: 'receiver',
-        confidence: 0.9,
-        method: 'rules',
-        reasoning: 'Dựa trên quy tắc: Hành động accept/join thường liên quan đến receiver',
-        suggestedVariableName: this.generateVariableName('receiver'),
-      };
     }
 
     return {
       userIdMeaning: 'sender',
       confidence: 0.5,
       method: 'rules',
-      reasoning: 'Fallback mặc định: Không phát hiện mẫu rõ ràng',
+      reasoning: 'Default fallback: No explicit pattern detected',
       suggestedVariableName: this.generateVariableName('sender'),
     };
   }
@@ -697,7 +390,7 @@ class AIUserIdResolver {
 
   public addTrainingData(data: TrainingData): void {
     if (!data.action || !data.swaggerDesc) {
-      console.warn('⚠️ Dữ liệu huấn luyện không hợp lệ:', data);
+      console.warn('⚠️ Invalid training data:', data);
       return;
     }
     const exists = this._trainingData.some((t) => t.action === data.action);
@@ -742,7 +435,7 @@ class AIEnhancedDTOBuilder {
 
   startStep(stepName: string): this {
     if (!stepName) {
-      console.warn('⚠️ stepName không hợp lệ');
+      console.warn('⚠️ StepName is invalid');
       return this;
     }
     this.currentStep = {
@@ -763,7 +456,7 @@ class AIEnhancedDTOBuilder {
   ): Promise<void> {
     if (!name || !key || !action) {
       console.warn(
-        `⚠️ Tham số không hợp lệ: name=${name}, key=${key}, action=${action}`,
+        `⚠️ Invalid parameter: name=${name}, key=${key}, action=${action}`,
       );
       return;
     }
@@ -898,7 +591,7 @@ class AIEnhancedDTOBuilder {
       try {
         await pendingAction();
       } catch (error) {
-        console.error('❌ Lỗi khi thực thi action:', error);
+        console.error('❌ Error when executing action:', error);
       }
     }
     this.pendingActions = [];
@@ -955,7 +648,6 @@ class AIEnhancedDTOBuilder {
     let userIdPrediction: PredictionResult | null = null;
     let hasUserIdField = false;
     const resolvedSchema = resolveSchema(action, [schemas, schemas1]);
-    console.log(JSON.stringify(resolvedSchema,null,2))
     // First, try to get userId prediction regardless of schema
     if (AIEnhancedDTOBuilder.aiResolverInstance) {
       try {
@@ -972,7 +664,7 @@ class AIEnhancedDTOBuilder {
 
     if (!resolvedSchema || !resolvedSchema.properties) {
       console.warn(
-        `⚠️ Không tìm thấy thuộc tính schema cho ${action}, sử dụng mô tả fallback`,
+        `⚠️ No schema attribute found for ${action}, use fallback description`,
       );
       if (
         action === 'deleteMockedUsers'
@@ -1074,32 +766,20 @@ class AIEnhancedDTOBuilder {
 
         }
       }
-
-      // if (resolvedSchema.__meta.operationId === 'DeleteMockedUsersRequest') {
-      //   processedBody.prefix = CONST.prefix;
-      //   processedBody.metadata!.resolvedFields.prefix = {
-      //     originalValue: 'prefix',
-      //     resolvedValue: CONST.prefix,
-      //     isRequired: true,
-      //     propKey: 'prefix',
-      //     propType: 'string',
-      //     description: 'Prefix for deleting mocked users',
-      //   };
-      // }
     }
 
     const headerKey = 'x-session-token';
     let headerValue = VAR.token;
-    let reasoning = 'Header mặc định (sender) vì không có trường userId hoặc AI prediction';
+    let reasoning = 'Default header (sender) because there is no userId or AI prediction field';
 
     if (userIdPrediction) {
       headerValue = userIdPrediction.userIdMeaning === 'receiver' ? VAR.token : VAR.token1;
-      reasoning = `Header tự động thêm (ngược với userId): ${userIdPrediction.userIdMeaning === 'receiver' ? 'sender' : 'receiver'
+      reasoning = `Header automatically added (opposite to userId): ${userIdPrediction.userIdMeaning === 'receiver' ? 'sender' : 'receiver'
         }`;
     } else if (hasUserIdField) {
 
       headerValue = VAR.token1;
-      reasoning = 'Header mặc định cho receiver (vì có trường userId nhưng không có AI prediction)';
+      reasoning = 'Default header for receiver (because there is userId field but no AI prediction)';
     } else {
       // Fallback heuristic khi không có userId field và không có prediction
       const isReceiverContext = (action: string, path: string) => {
@@ -1112,7 +792,7 @@ class AIEnhancedDTOBuilder {
       };
 
       headerValue = isReceiverContext(action, actionInfo.path) ? VAR.token1 : VAR.token;
-      reasoning = `Header dựa trên heuristic (action: ${action}, path: ${actionInfo.path})`;
+      reasoning = `Heuristic-based Header (action: ${action}, path: ${actionInfo.path})`;
     }
 
 

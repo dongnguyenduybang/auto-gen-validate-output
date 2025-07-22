@@ -1,9 +1,10 @@
 import path, { basename } from 'path';
 import fs from 'fs';
 import * as os from 'os';
-import { setupConfiguration } from './get-config.js';
-import { getDtoFolderPath } from './helper.js';
-import { executeSteps } from './text-execute-test.js';
+import { setupConfiguration } from './get-config';
+import { executeSteps } from './execute-test';
+import { getDtoFolderPath } from '../helpers/fs-helpers';
+import { findRequestFunction } from '../helpers/file-matching';
 setupConfiguration();
 
 export function mapOption(
@@ -117,7 +118,7 @@ export function cleanErrors(errors) {
     const request = await requestFunction();
 
     const requestBefore = request.steps?.[0]?.actions?.beforeAll || [];
-    console.log(JSON.stringify(requestBefore, null, 2))
+
     const results = await executeSteps(requestBefore, context);
 
     if (results.length > 0) {
@@ -160,18 +161,3 @@ export function cleanErrors(errors) {
   }
 }
 
-export function findRequestFunction(module, fileName) {
-  const fnPattern1 =
-    fileName
-      .replace('.request.js', '')
-      .split('-')
-      .map((s, i) => (i === 0 ? s : s[0].toUpperCase() + s.slice(1)))
-      .join('') + 'Request';
-
-  // Pattern 2: Tìm hàm có chứa "Request" trong tên
-  const fnPattern2 = Object.keys(module).find(
-    (k) => typeof module[k] === 'function' && /Request$/i.test(k),
-  );
-
-  return module[fnPattern1] || module[fnPattern2] || module.default;
-}

@@ -2,7 +2,7 @@ import * as tf from '@tensorflow/tfjs';
 import * as fs from 'fs';
 import * as path from 'path';
 import { promisify } from 'util';
-import { TrainingData } from './declarations';
+import { TrainingData } from '../types/prediction.types';
 
 const writeFile = promisify(fs.writeFile);
 const readFile = promisify(fs.readFile);

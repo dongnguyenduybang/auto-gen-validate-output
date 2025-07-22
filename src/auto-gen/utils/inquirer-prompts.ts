@@ -2,14 +2,13 @@ import inquirer from 'inquirer';
 import fs from 'fs';
 import { glob } from 'glob';
 import path from 'path';
-import { RecentSelection } from './declarations';
 import { actionHandlers } from '../test.index';
-import { normalizePath, searchDtoInTestRequests } from './helper';
 import { mapOption } from './k6-help';
-
-const recentSelections: RecentSelection[] = [];
-const MAX_RECENT_ITEMS = 100;
-const REPORT_LENGTH = 5;
+import { normalizePath } from '../helpers/path-utils';
+import { searchDtoInTestRequests } from '../helpers/fs-helpers';
+import { addToRecentSelections, validateDtoName } from '../helpers/file-matching';
+import { MAX_RECENT_ITEMS, recentSelections, REPORT_LENGTH } from '../types/const';
+import { formatPaths } from '../helpers/format-helper';
 
 export async function interactiveCLI(): Promise<void> {
   console.log('🚀 Auto-gen CLI');
@@ -88,7 +87,7 @@ export async function interactiveCLI(): Promise<void> {
             type: 'single',
             paths: selectedPaths,
             timestamp: Date.now(),
-          });
+          }, recentSelections);
         }
       } else if (reportType === 'all') {
         const { confirm } = await inquirer.prompt<{ confirm: boolean }>([
@@ -107,7 +106,7 @@ export async function interactiveCLI(): Promise<void> {
             type: 'all',
             paths: ['ALL'],
             timestamp: Date.now(),
-          });
+          }, recentSelections);
         }
       } else if (reportType === 'view') {
         const selectedPaths = await selectFoldersRecursive(true);
@@ -133,7 +132,7 @@ export async function interactiveCLI(): Promise<void> {
             type: 'view',
             paths: selectedPaths,
             timestamp: Date.now(),
-          });
+          }, recentSelections);
         }
       }
       continue;
@@ -217,7 +216,7 @@ export async function interactiveCLI(): Promise<void> {
           type: 'request',
           paths: allPaths,
           timestamp: Date.now(),
-        });
+        }, recentSelections);
         continue;
       } else if (quickTestChoice === 'k6') {
         // Xử lý Test with k6
@@ -375,7 +374,7 @@ export async function interactiveCLI(): Promise<void> {
             type: 'k6',
             paths: [payloadPath, k6ScriptPath],
             timestamp: Date.now(),
-          });
+          }, recentSelections);
         } catch (error) {
           console.error('❌ Error running k6 tests:', error.message);
         }
@@ -396,7 +395,7 @@ export async function interactiveCLI(): Promise<void> {
           type: selectedItem.type,
           paths: selectedItem.paths,
           timestamp: Date.now(),
-        });
+        }, recentSelections);
         continue;
       }
     }
@@ -444,7 +443,7 @@ export async function interactiveCLI(): Promise<void> {
           type,
           paths: ['ALL'],
           timestamp: Date.now(),
-        });
+        }, recentSelections);
         continue;
       }
     }
@@ -477,21 +476,7 @@ export async function interactiveCLI(): Promise<void> {
       type,
       paths: selectedPaths,
       timestamp: Date.now(),
-    });
-  }
-}
-
-function formatPaths(paths: string[]): string {
-  if (paths.length === 0) return '';
-  if (paths.length === 1) return paths[0];
-  if (paths.length <= 3) return paths.join(', ');
-  return `${paths[0]} +${paths.length - 1} more`;
-}
-
-function addToRecentSelections(item: RecentSelection): void {
-  recentSelections.unshift(item);
-  if (recentSelections.length > MAX_RECENT_ITEMS) {
-    recentSelections.pop();
+    }, recentSelections);
   }
 }
 
@@ -639,42 +624,6 @@ export async function executeAction(
   }
 
   return results;
-}
-
-function transformDtoName(dtoName: string): string {
-  const specialAcronyms = new Set(['dm']);
-
-  const words = dtoName.split('-');
-  const capitalizedWords = words.map((word) => {
-    if (specialAcronyms.has(word.toLowerCase())) {
-      return word.toUpperCase();
-    }
-    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-  });
-
-  return `V3${capitalizedWords.join('')}Request`;
-}
-
-function validateDtoName(dtoName: string): { status: boolean; data: any } {
-  const schemaPath = path.join(__dirname, '../swagger/schemas.json');
-  try {
-    const fileContent = fs.readFileSync(schemaPath, 'utf-8');
-    const schema = JSON.parse(fileContent);
-    const transformedName = transformDtoName(dtoName);
-
-    if (schema[transformedName]) {
-      return { status: true, data: schema[transformedName] };
-    }
-    return {
-      status: false,
-      data: `DTO name '${transformedName}' not found in schema.`,
-    };
-  } catch (error) {
-    return {
-      status: false,
-      data: `Error reading schema: ${(error as Error).message}`,
-    };
-  }
 }
 
 async function selectFoldersRecursive(

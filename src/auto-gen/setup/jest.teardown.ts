@@ -1,6 +1,6 @@
 import { setupConfiguration } from '../utils/get-config';
-import { findRequestFunction } from '../utils/k6-help';
-import { executeSteps } from '../utils/text-execute-test';
+import { executeSteps } from '../utils/execute-test';
+import { findRequestFunction } from '../helpers/file-matching';
 
 setupConfiguration();
 

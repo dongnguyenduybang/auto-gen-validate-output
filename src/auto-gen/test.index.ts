@@ -1,23 +1,14 @@
 #!/usr/bin/env node
-
 import 'reflect-metadata';
 import { genBodyRequest } from './utils/gen-body-request';
-import { exec, spawn } from 'child_process';
-import { genTestResponse } from './utils/gen-test-response';
-import { genTestSaga } from './utils/gen-test-saga';
-import { clearFiles, normalizePath } from './utils/helper';
-import { generateAllReports, viewReports } from './utils/combine-report';
+import { spawn } from 'child_process';
 import { interactiveCLI } from './utils/inquirer-prompts';
-import util from 'util';
 import { loadAIModel } from './utils/ai-service';
 import { genK6Request } from './utils/k6-test';
 import { generateSetupData } from './utils/k6-help';
 import { default as runTeardown } from './setup/jest.teardown';
 import setup from './setup/jest.setup';
-
-type ActionHandler = (
-  input: string | string[],
-) => void | Promise<void> | Promise<string[]>;
+import { ActionHandler } from './types/shared.types';
 
 const args = process.argv.slice(2);
 if (args.length > 0 && !args.includes('--started')) {
@@ -36,81 +27,11 @@ export const actionHandlers: Record<string, Record<string, ActionHandler[]>> = {
         genAllRequests(dto);
       },
     ],
-    response: [(dto: string) => Promise.resolve(genTestResponse(dto))],
-    saga: [(dto: string) => Promise.resolve(genTestSaga(dto))],
-  },
-  report: {
-    single: [
-      async (reportName: string) => {
-        console.log(`📊 Generating report for: ${reportName}`);
-        const normalizedDtoName = reportName.replace(/\//g, '-');
-        try {
-          await generateAllReports(normalizedDtoName);
-        } catch (error) {
-          console.error(
-            '❌ Failed to generate report:',
-            (error as Error).message,
-          );
-          throw error;
-        }
-      },
-    ],
-    all: [
-      async () => {
-        console.log('📊 Generating all reports');
-        await generateAllReports();
-      },
-    ],
-    view: [
-      async (dtoName: string) => {
-        console.log('📊 View reports:');
-        await viewReports(dtoName);
-      },
-    ],
   },
   test: {
-    request: [runTests('test-requests')],
-    response: [runTests('test-responses')],
-    saga: [runTests('test-sagas')],
-    ws: [runTests('test-ws')],
     k6: [runTestsK6()],
-  },
-  clear: {
-    request: [clearFiles('test-requests')],
-    response: [clearFiles('test-responses')],
-    saga: [clearFiles('test-sagas')],
-    ws: [clearFiles('test-ws')],
-  },
+  }
 };
-
-const execPromise = util.promisify(exec);
-function runTests(subType: string): ActionHandler {
-  return async (filePaths: string | string[]) => {
-    const paths = Array.isArray(filePaths) ? filePaths : [filePaths];
-
-    const testPromises = paths.map(async (filePath) => {
-      try {
-        const normalizedPath = normalizePath(filePath);
-        const testPathPattern = `${normalizedPath}/.*\\.spec\\.ts$`;
-        console.log(`🔄 Processing: ${normalizedPath}`);
-        console.log(`Running test for ${subType} "${normalizedPath}"...`);
-        await execPromise(`jest ${testPathPattern}`);
-        // console.log(stderr, stdout)
-        console.log(`✅ Success: ${normalizedPath}`);
-        return normalizedPath;
-      } catch (error) {
-        console.error(
-          `❌ Failed to run test for ${filePath}:`,
-          (error as Error).message,
-        );
-        return null;
-      }
-    });
-
-    const results = await Promise.all(testPromises);
-    return results.filter(Boolean) as string[];
-  };
-}
 
 function runTestsK6(): ActionHandler {
   return async (filePaths: string | string[]) => {

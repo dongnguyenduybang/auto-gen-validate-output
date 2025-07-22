@@ -1,6 +1,4 @@
-import { TestContext } from '../utils/text-context';
-import { ApiConfig, ApiFunctionParams } from '../utils/declarations';
-import { resolveVariables } from '../utils/helper';
+import { TestContext } from './text-context';
 import {
   commandsMessageHttpClient,
   HttpClient,
@@ -9,19 +7,10 @@ import { commandsChatHttpClient } from '../swagger-hono/commands-chat-client';
 import { fakerHttpClient } from '../swagger-hono/faker-client';
 import { commandsUserDataHttpClient } from '../swagger-hono/commands-user-data-client';
 import { viewsChatHttpClient } from '../swagger-hono/views-chat-client';
-
-export type HEADERS = Record<string, unknown>;
-
-export type ClientMethod<TReq, TRes> = {
-  (
-    request: TReq,
-    headers?: HEADERS,
-  ): Promise<{
-    status: number;
-    data: TRes;
-    error: object;
-  }>;
-};
+import { resolveVariables } from '../helpers/utils';
+import { ApiConfig, ApiFunctionParams } from '../types/api.types';
+import { ClientMethod, HEADERS } from '../types/shared.types';
+import { extractActionName } from '../helpers/resolve-helpers';
 
 export const getResponseSuccess = async <TReq, TRes>(
   request: TReq,
@@ -54,9 +43,8 @@ export const getResponseSuccess = async <TReq, TRes>(
 export function createApiFunction(config: ApiConfig, context: TestContext) {
   return async ({ path, headers, body }: ApiFunctionParams): Promise<any> => {
     try {
-      // 1. Validate required headers
+
       const url = `${globalThis.urls}`;
-      // 4. Make API call
       const moduleName = path.split('/').filter(Boolean)[0];
       const http = new HttpClient({ baseUrl: url });
 
@@ -93,7 +81,7 @@ function getHttpClient(moduleName: string, http: HttpClient) {
     InternalFaker: fakerHttpClient,
     Message: commandsMessageHttpClient,
     Channel: commandsChatHttpClient,
-    Friend:commandsChatHttpClient,
+    Friend: commandsChatHttpClient,
     Invitation: commandsChatHttpClient,
     UserProfile: commandsUserDataHttpClient,
     ChannelView: viewsChatHttpClient,
@@ -104,15 +92,3 @@ function getHttpClient(moduleName: string, http: HttpClient) {
   return new Client(http);
 }
 
-function extractActionName(path: string): string {
-  const parts = path.split('/').filter(Boolean);
-  const last = parts[parts.length - 1];
-
-  // DM -> Dm
-  const adjusted = last.replace(
-    /([A-Z]{2,})(?=[A-Z][a-z]|$)/g,
-    (match) => match.charAt(0) + match.slice(1).toLowerCase(),
-  );
-
-  return adjusted.charAt(0).toLowerCase() + adjusted.slice(1);
-}

@@ -1,12 +1,8 @@
 import * as path from 'path';
 import * as fs from 'fs';
-import {
-  findAllFoldersWithDtoAndRequest,
-  formatExpectErrors,
-  getMatchedFilePaths,
-  pairFiles,
-  readJsonFile,
-} from './helper';
+import { findAllFoldersWithDtoAndRequest, getMatchedFilePaths, readJsonFile } from '../helpers/fs-helpers';
+import { pairFiles } from '../helpers/file-matching';
+import { formatExpectErrors } from '../helpers/format-helper';
 
 function getRelativeImportPath(fromPath: string, toPath: string): string {
   const relativePath = path.relative(path.dirname(fromPath), toPath);

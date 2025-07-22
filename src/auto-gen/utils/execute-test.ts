@@ -1,11 +1,8 @@
-import { getApiFunctions } from '../functions/api-registry';
-import { extractDatas } from './extract-data';
-import { Step, StepResult } from './declarations';
+import { getApiFunctions } from './api-registry';
 import { TestContext } from './text-context';
-import {
-  transformPayload,
-  resolveVariables,
-} from './helper';
+import { Step, StepResult } from '../types/test-suites.types';
+import { extractionData } from './extract-data';
+import { resolveVariables, transformPayload } from '../helpers/utils';
 
 export async function executeSteps(
   steps: Step[],
@@ -63,7 +60,7 @@ async function executeSingleStep(
   } else {
     // save context
     if (response?.data) {
-      const extractedData = extractDatas(response, config.schema);
+      const extractedData = extractionData(response, config.schema);
       context.mergeData(extractedData);
     }
   }

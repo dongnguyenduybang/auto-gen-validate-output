@@ -1,11 +1,8 @@
 import * as path from 'path';
 import * as fs from 'fs';
 import { generateErrorCases } from './dto-helper-v2';
-import {
-  findAllFoldersWithDtoAndRequest,
-  getMatchedFilePaths,
-  groupFilesByName,
-} from './helper';
+import { groupFilesByName } from '../helpers/file-matching';
+import { findAllFoldersWithDtoAndRequest, getMatchedFilePaths } from '../helpers/fs-helpers';
 
 // Type guard functions
 function isDTOBuilderInstance(
