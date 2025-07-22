@@ -1,9 +1,8 @@
 import { execSync } from 'child_process';
 import * as fs from 'fs';
 import * as path from 'path';
+import { getFilesSwagger } from '../helpers/fs-helpers';
 // Path file JSON Swagger
-
-import { getFilesSwagger } from '../utils/helper';
 
 export function genClientSwagger() {
   const outputDir = path.join(__dirname, '../swagger-hono');

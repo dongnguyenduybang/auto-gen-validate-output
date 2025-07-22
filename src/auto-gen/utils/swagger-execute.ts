@@ -13,6 +13,9 @@ import { ActionConfig } from '../types/api.types';
 import { ProcessedBody } from '../types/shared.types';
 import { resolveSchema } from '../helpers/resolve-helpers';
 import { toInterfaceName } from '../helpers/file-matching';
+import { ACTION_CONFIG, CONST, METHOD, VAR } from '../types/const';
+import schemas from '../swagger/hono.swagger.json';
+import schemas1 from '../swagger/swagger-json/hono/faker.swagger.json';
 
 const readFile = promisify(fs.readFile);
 class AIUserIdResolver {
@@ -274,7 +277,7 @@ class AIUserIdResolver {
     actionName: string,
     swaggerSchema: any = {},
     endpoint: string = '',
-    method: string | METHOD,
+    method: string,
     fieldName: string = 'userId'
   ): Promise<PredictionResult> {
     try {

@@ -228,3 +228,24 @@ export function getDtoFolderPath(dtoName: string): string | null {
 
     return searchDir(globalThis.testRequestDir);
 }
+
+// gen file swagger 
+export const getFilesSwagger = (dirPath: string): string[] => {
+  let jsonFiles: string[] = [];
+
+  // Read directory contents
+  const filesAndDirs = fs.readdirSync(dirPath);
+
+  for (const item of filesAndDirs) {
+    const fullPath = path.join(dirPath, item);
+    const stat = fs.statSync(fullPath);
+
+    if (stat.isDirectory()) {
+      jsonFiles = jsonFiles.concat(getAllFiles(fullPath));
+    } else if (stat.isFile() && fullPath.endsWith('.json')) {
+      jsonFiles.push(fullPath);
+    }
+  }
+
+  return jsonFiles;
+};

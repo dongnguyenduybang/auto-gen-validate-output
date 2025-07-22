@@ -1,10 +1,12 @@
 import path, { basename } from 'path';
 import fs from 'fs';
 import * as os from 'os';
+import yaml from 'js-yaml';
 import { setupConfiguration } from './get-config';
 import { executeSteps } from './execute-test';
 import { getDtoFolderPath } from '../helpers/fs-helpers';
 import { findRequestFunction } from '../helpers/file-matching';
+import { SetupConfig } from '../types/shared.types';
 setupConfiguration();
 
 export function mapOption(
@@ -89,14 +91,32 @@ export function cleanErrors(errors) {
 
 `;
 
+
+    let setupFilePath
+    const configPath = path.resolve(process.cwd(), 'config.yaml');
+    const configContent = fs.readFileSync(configPath, 'utf8');
+    const config = yaml.load(configContent) as SetupConfig;
     const context = globalThis.globalContext;
     const dtoName = basename(dtoPath);
+    setupFilePath = config.setupRequestFile;
+    if (!setupFilePath) {
+      const configPath = path.resolve(process.cwd(), 'config.yaml');
+      try {
+        const configContent = fs.readFileSync(configPath, 'utf8');
+        const config = yaml.load(configContent) as SetupConfig;
+        setupFilePath = config.setupRequestFile;
+      } catch (error) {
+        console.warn('No config.yaml found or no setupRequestFile specified, using default path');
+      }
+    }
 
-    const moduleSetup = await import('../setup/jest.setup.request.js');
-    const requestModuleSetup = findRequestFunction(
-      moduleSetup,
-      '../setup/jest.setup.request.js',
-    );
+    const absolutePath = path.resolve(process.cwd(), setupFilePath);
+    if (!absolutePath.startsWith(process.cwd())) {
+      throw new Error('Invalid setup file path: Path must be within the project directory');
+    }
+
+    const moduleSetup = await import(absolutePath);
+    const requestModuleSetup = findRequestFunction(moduleSetup, absolutePath);
     const requestModule = await requestModuleSetup();
     const requestSetup = requestModule.steps?.[0]?.actions?.main || [];
     const resultsSetup = await executeSteps(requestSetup, context);

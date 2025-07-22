@@ -1,6 +1,7 @@
 import { ulid } from 'ulidx';
-import { checkRegexULID, checkURL, countEmojis, isEmoji } from './helper';
 import { ValidIfCondition, ValidIfOptions } from '../types/validations.types';
+import { ErrorMessage, VAR } from '../types/const';
+import { checkRegexULID, checkURL, countEmojis, isEmoji } from '../helpers/regex-helpers';
 
 export function getUsedEnumValuesFromValidIf(
   dtoClass: any,

@@ -51,3 +51,10 @@ export type ClientMethod<TReq, TRes> = {
     error: object;
   }>;
 };
+
+export interface TeardownConfig {
+  teardownRequestFile?: string;
+}
+export interface SetupConfig {
+  setupRequestFile?: string;
+}

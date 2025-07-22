@@ -1,4 +1,5 @@
-import { HEADER_LIST, VAR } from '../enums';
+import { HEADER_LIST, VAR } from "../types/const";
+
 export function executeFunction(
   path: string,
   action: string,

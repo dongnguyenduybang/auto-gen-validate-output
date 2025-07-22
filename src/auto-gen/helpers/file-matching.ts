@@ -1,7 +1,7 @@
 import * as path from 'path';
 import * as fs from 'fs';
 import { RecentSelection } from '../types/prediction.types';
-import { MAX_RECENT_ITEMS } from '../types/const';
+import { CONST, MAX_RECENT_ITEMS } from '../types/const';
 // group file same name 
 export function groupFilesByName(
     files: string[],
@@ -143,3 +143,4 @@ export function findRequestFunction(module, fileName) {
 
     return module[fnPattern1] || module[fnPattern2] || module.default;
 }
+
