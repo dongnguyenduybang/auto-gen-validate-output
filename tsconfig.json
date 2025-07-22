@@ -12,6 +12,7 @@
     "target": "ES6",
     "sourceMap": true,
     "outDir": "./dist",
+    "rootDir": "./",
     "baseUrl": ".",
     "incremental": true,
     "forceConsistentCasingInFileNames": true,

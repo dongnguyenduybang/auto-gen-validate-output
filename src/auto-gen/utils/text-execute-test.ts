@@ -2,11 +2,8 @@ import { getApiFunctions } from '../functions/api-registry';
 import { extractDatas } from './extract-data';
 import { Step, StepResult } from './declarations';
 import { TestContext } from './text-context';
-import { handleExpectConfig } from '../validates/check-expect';
 import {
-  checkResponse,
   transformPayload,
-  resolveExpectConfig,
   resolveVariables,
 } from './helper';
 
@@ -64,46 +61,10 @@ async function executeSingleStep(
         response?.data,
     };
   } else {
-    // validate response
-    // const resultCheckResponse = await checkResponse(
-    //   step,
-    //   response,
-    //   resolveBody,
-    //   context,
-    // );
-
-    // if (!resultCheckResponse.status) {
-    //   return resultCheckResponse;
-    // } else {
     // save context
     if (response?.data) {
       const extractedData = extractDatas(response, config.schema);
       context.mergeData(extractedData);
-    }
-
-    // validate saga
-    if (expectConfig) {
-      const resolveConfig = resolveExpectConfig(expectConfig, context);
-      // get api function
-      const result = await handleExpectConfig(
-        response.data,
-        resolveConfig,
-        context,
-      );
-      if (result.length > 0) {
-        const groupedErrors = result.reduce((acc, item) => {
-          const key = item.type || 'unknown';
-          if (!acc[key]) acc[key] = [];
-          acc[key].push(item);
-          return acc;
-        }, {});
-        return {
-          type: 'expect',
-          status: false,
-          stepName: config.schema,
-          error: groupedErrors,
-        };
-      }
     }
   }
   // }

@@ -1,9 +1,9 @@
 import path, { basename } from 'path';
 import fs from 'fs';
 import * as os from 'os';
-import { setupConfiguration } from './get-config';
-import { getDtoFolderPath } from './helper';
-import { executeSteps } from './text-execute-test';
+import { setupConfiguration } from './get-config.js';
+import { getDtoFolderPath } from './helper.js';
+import { executeSteps } from './text-execute-test.js';
 setupConfiguration();
 
 export function mapOption(
@@ -91,10 +91,10 @@ export function cleanErrors(errors) {
     const context = globalThis.globalContext;
     const dtoName = basename(dtoPath);
 
-    const moduleSetup = await import('../setup/jest.setup.request');
+    const moduleSetup = await import('../setup/jest.setup.request.js');
     const requestModuleSetup = findRequestFunction(
       moduleSetup,
-      '../setup/jest.setup.request.ts',
+      '../setup/jest.setup.request.js',
     );
     const requestModule = await requestModuleSetup();
     const requestSetup = requestModule.steps?.[0]?.actions?.main || [];
@@ -110,7 +110,7 @@ export function cleanErrors(errors) {
     });
 
     const foundFolders = getDtoFolderPath(dtoName);
-    const pathFile = path.join(foundFolders, `${dtoName}.request.ts`);
+    const pathFile = path.join(foundFolders, `${dtoName}.request.js`);
     const module = await import(pathFile);
 
     const requestFunction = findRequestFunction(module, '');
@@ -163,7 +163,7 @@ export function cleanErrors(errors) {
 export function findRequestFunction(module, fileName) {
   const fnPattern1 =
     fileName
-      .replace('.request.ts', '')
+      .replace('.request.js', '')
       .split('-')
       .map((s, i) => (i === 0 ? s : s[0].toUpperCase() + s.slice(1)))
       .join('') + 'Request';

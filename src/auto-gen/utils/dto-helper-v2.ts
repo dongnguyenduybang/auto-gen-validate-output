@@ -1,10 +1,60 @@
 import { ulid } from 'ulidx';
-import { getUsedEnumValuesFromValidIf } from './dto-helper';
-import { ErrorMessage, VAR } from '../enums';
 import { checkRegexULID, checkURL, countEmojis, isEmoji } from './helper';
 import { ValidIfCondition, ValidIfOptions } from './declarations';
-import { CONST } from '../enums/const.enum';
-import { startsWith } from 'lodash';
+
+export function getUsedEnumValuesFromValidIf(
+  dtoClass: any,
+  targetFieldName: string,
+): any[] {
+  const instance = new dtoClass();
+  const keys = Object.keys(instance);
+  const usedValues: any[] = [];
+  // Duyệt qua tất cả các fields để tìm ValidIf conditions
+  keys.forEach((fieldName) => {
+    // if (fieldName === targetFieldName) return; // Skip chính field đó
+
+    const decorators = getDecorators(instance, fieldName);
+    const validIfConditions = decorators['validIf'];
+
+    if (validIfConditions) {
+      const conditions = Array.isArray(validIfConditions.conditions)
+        ? validIfConditions.conditions
+        : [validIfConditions.conditions];
+
+      conditions.forEach((condition: ValidIfCondition) => {
+        // Kiểm tra nếu condition tham chiếu đến targetFieldName
+        if (condition.field === targetFieldName) {
+          // Chỉ lấy values từ các operator so sành trực tiếp
+          if (['===', '==', '!==', '!='].includes(condition.operator)) {
+            if (!usedValues.includes(condition.value)) {
+              usedValues.push(condition.value);
+            }
+          }
+          // Với operator 'in', lấy tất cả values trong array
+          else if (
+            condition.operator === 'in' &&
+            Array.isArray(condition.value)
+          ) {
+            condition.value.forEach((val) => {
+              if (!usedValues.includes(val)) {
+                usedValues.push(val);
+              }
+            });
+          }
+          // Với operator 'includes', lấy value được includes
+          else if (condition.operator === 'includes') {
+            if (!usedValues.includes(condition.value)) {
+              usedValues.push(condition.value);
+            }
+          }
+        }
+      });
+    }
+  });
+
+  return usedValues;
+}
+
 
 export function generateStructuredErrorCases(
   dtoClass: any,

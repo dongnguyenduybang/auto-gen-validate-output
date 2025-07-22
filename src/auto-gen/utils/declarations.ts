@@ -1,12 +1,4 @@
-import {
-  GetChannelResponse,
-  MockUserResponse,
-  AcceptInvitationResponse,
-  CreateChannelResponse,
-  SendDmMessageResponse,
-  SendMessageResponse,
-  UpdateMessageResponse,
-} from '../response';
+
 import { TestContext } from './text-context';
 
 export interface GenRequestOptions {
@@ -177,16 +169,6 @@ export type Actual = {
   ok: boolean;
   data: object;
   includes: object;
-};
-
-export const responseClassMap = {
-  CreateChannelResponse,
-  GetChannelResponse,
-  AcceptInvitationResponse,
-  SendMessageResponse,
-  MockUserResponse,
-  SendDmMessageResponse,
-  UpdateMessageResponse,
 };
 
 export type Entry = {

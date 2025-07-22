@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import 'reflect-metadata';
 import { genBodyRequest } from './utils/gen-body-request';
 import { exec, spawn } from 'child_process';
