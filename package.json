@@ -1,7 +1,7 @@
 {
   "name": "k6-dto",
   "private": false,
-  "version": "1.0.11",
+  "version": "1.0.20",
   "description": "Nest TypeScript starter repository",
   "license": "MIT",
   "main": "dist/src/auto-gen/test.index.js",
@@ -10,7 +10,7 @@
     "dist"
   ],
   "bin": {
-    "k6-start": "dist/src/auto-gen/index.ts"
+    "k6-start": "dist/src/auto-gen/test.index.js"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",

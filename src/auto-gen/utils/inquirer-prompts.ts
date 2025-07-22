@@ -5,10 +5,10 @@ import path from 'path';
 import { actionHandlers } from '../test.index';
 import { mapOption } from './k6-help';
 import { normalizePath } from '../helpers/path-utils';
-import { searchDtoInTestRequests } from '../helpers/fs-helpers';
 import { addToRecentSelections, validateDtoName } from '../helpers/file-matching';
 import { formatPaths } from '../helpers/format-helper';
-import { MAX_RECENT_ITEMS, recentSelections, REPORT_LENGTH } from './get-config';
+import { getConfig, MAX_RECENT_ITEMS, recentSelections, REPORT_LENGTH } from './get-config';
+import { PathHelper } from '../helpers/path-helper';
 
 export async function interactiveCLI(): Promise<void> {
   console.log('🚀 Auto-gen CLI');
@@ -633,12 +633,21 @@ async function selectFoldersRecursive(
 ): Promise<string[]> {
   const selectedPaths: string[] = [];
   let currentPath = '';
-  let basePath =
-    basePathOverride ||
-    (isReport
-      ? path.join(__dirname, '../test-requests', '.reports')
-      : path.join(__dirname, '../test-requests'));
+  const workingDir = process.cwd();
+  let basePath: string;
+
+  if (basePathOverride) {
+    basePath = basePathOverride;
+  } else if (isReport) {
+    basePath = PathHelper.getReportsSubPath();
+  } else {
+    basePath = PathHelper.getTestRequestsPath();
+  }
+
   let fullPath: string;
+
+  // Tạo thư mục nếu chưa tồn tại
+  PathHelper.ensureDir(basePath);
 
   while (true) {
     fullPath = path.join(basePath, currentPath);
@@ -718,8 +727,11 @@ async function selectFoldersRecursive(
               nodir: true,
             });
             testFiles.forEach((file) => {
+              // Tính đường dẫn relative từ test-requests directory
+              const testRequestsDir = getConfig<string>('testRequestsDir', './test-requests');
+              const testRequestsPath = path.resolve(workingDir, testRequestsDir);
               const relativePath = path
-                .relative(path.join(__dirname, '../test-requests'), file)
+                .relative(testRequestsPath, file)
                 .replace(/\\/g, '/');
               if (!selectedPaths.includes(relativePath)) {
                 selectedPaths.push(relativePath);
@@ -869,7 +881,37 @@ async function selectFoldersRecursive(
       }
     } catch (error) {
       console.error(`Error reading directory: ${(error as Error).message}`);
+      console.error(`Attempted path: ${fullPath}`);
+      console.error(`Working directory: ${workingDir}`);
+      console.error(`Base path: ${basePath}`);
       return [];
     }
+  }
+}
+
+// Cập nhật hàm searchDtoInTestRequests để cũng sử dụng working directory
+async function searchDtoInTestRequests(dtoName: string): Promise<string[]> {
+  const workingDir = process.cwd();
+  const testRequestsDir = getConfig<string>('testRequestsDir', './test-requests');
+  const testRequestsPath = path.resolve(workingDir, testRequestsDir);
+
+  if (!fs.existsSync(testRequestsPath)) {
+    console.warn(`📁 Test requests directory not found: ${testRequestsPath}`);
+    return [];
+  }
+
+  try {
+    const pattern = path.join(testRequestsPath, `**/*${dtoName}*`);
+    const matches = await glob(pattern, {
+      nodir: false,
+      ignore: ['**/node_modules/**', '**/.git/**']
+    });
+
+    return matches.map(match =>
+      path.relative(testRequestsPath, match).replace(/\\/g, '/')
+    );
+  } catch (error) {
+    console.error(`Error searching for DTO '${dtoName}':`, error);
+    return [];
   }
 }

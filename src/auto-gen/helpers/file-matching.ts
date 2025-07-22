@@ -1,7 +1,7 @@
 import * as path from 'path';
 import * as fs from 'fs';
 import { RecentSelection } from '../types/prediction.types';
-import { CONST, MAX_RECENT_ITEMS } from '../types/const';
+import { CONST, MAX_RECENT_ITEMS } from '../utils/get-config';
 // group file same name 
 export function groupFilesByName(
     files: string[],
