@@ -7,8 +7,8 @@ import { mapOption } from './k6-help';
 import { normalizePath } from '../helpers/path-utils';
 import { searchDtoInTestRequests } from '../helpers/fs-helpers';
 import { addToRecentSelections, validateDtoName } from '../helpers/file-matching';
-import { MAX_RECENT_ITEMS, recentSelections, REPORT_LENGTH } from '../types/const';
 import { formatPaths } from '../helpers/format-helper';
+import { MAX_RECENT_ITEMS, recentSelections, REPORT_LENGTH } from './get-config';
 
 export async function interactiveCLI(): Promise<void> {
   console.log('🚀 Auto-gen CLI');

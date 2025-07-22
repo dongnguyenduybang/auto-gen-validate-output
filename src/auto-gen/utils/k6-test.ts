@@ -1,10 +1,10 @@
 import * as path from 'path';
 import * as fs from 'fs';
 import * as os from 'os';
-import { CHUNK_SIZE, MAX_TEST_CASES_PER_FILE } from '../types/const';
 import { formatExpectErrors } from '../helpers/format-helper';
 import { pairFiles } from '../helpers/file-matching';
 import { readJsonFile, findAllFoldersWithDtoAndRequest, getMatchedFilePaths } from '../helpers/fs-helpers';
+import { CHUNK_SIZE, MAX_TEST_CASES_PER_FILE } from './get-config';
 
 async function generateK6Content(
   testCases: any[],
