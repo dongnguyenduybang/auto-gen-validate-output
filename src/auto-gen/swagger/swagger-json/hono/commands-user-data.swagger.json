@@ -1,0 +1,2799 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Commands User Data",
+    "description": "Command user data ajv decorator swagger",
+    "version": "1.0.0"
+  },
+  "components": {
+    "schemas": {
+      "V3MediaPermissionSettingEnum": {
+        "type": "number",
+        "additionalProperties": false,
+        "$id": "V3MediaPermissionSettingEnum",
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "x-enum-varnames": [
+          "MEDIA_PERMISSION_SETTING_ENUM_ALWAYS_ASK",
+          "MEDIA_PERMISSION_SETTING_ENUM_ALLOW",
+          "MEDIA_PERMISSION_SETTING_ENUM_NOT_ALLOW"
+        ]
+      },
+      "V3PretendingTo": {
+        "type": "number",
+        "additionalProperties": false,
+        "$id": "V3PretendingTo",
+        "enum": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "x-enum-varnames": [
+          "PRETENDING_TO_UNSPECIFIED",
+          "PRETENDING_TO_ME",
+          "PRETENDING_TO_FRIEND",
+          "PRETENDING_TO_CELEBRITY"
+        ]
+      },
+      "V3ReportCategory": {
+        "type": "number",
+        "additionalProperties": false,
+        "$id": "V3ReportCategory",
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          20
+        ],
+        "x-enum-varnames": [
+          "REPORT_CATEGORY_UNSPECIFIED",
+          "REPORT_CATEGORY_HARASSMENT",
+          "REPORT_CATEGORY_SUICIDE_OR_SELF_INJURY",
+          "REPORT_CATEGORY_PRETENDING_TO_BE_SOMEONE",
+          "REPORT_CATEGORY_SHARING_INAPPROPRIATE_CONTENT",
+          "REPORT_CATEGORY_HATE_SPEECH",
+          "REPORT_CATEGORY_UNAUTHORIZED_SALES",
+          "REPORT_CATEGORY_SCAMS",
+          "REPORT_CATEGORY_SPAM",
+          "REPORT_CATEGORY_COPYRIGHT",
+          "REPORT_CATEGORY_OTHER"
+        ]
+      },
+      "V3UserAvatarTypeEnum": {
+        "type": "number",
+        "additionalProperties": false,
+        "$id": "V3UserAvatarTypeEnum",
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "x-enum-varnames": [
+          "USER_AVATAR_TYPE_ENUM_UNSPECIFIED",
+          "USER_AVATAR_TYPE_ENUM_PHOTO",
+          "USER_AVATAR_TYPE_ENUM_VIDEO"
+        ]
+      },
+      "V3UserScopeEnum": {
+        "type": "number",
+        "additionalProperties": false,
+        "$id": "V3UserScopeEnum",
+        "enum": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "x-enum-varnames": [
+          "UNSPECIFIED",
+          "EVERYBODY",
+          "ONLY_FRIENDS",
+          "NO_BODY"
+        ]
+      },
+      "V3UserStatusExpireAfterTimeEnum": {
+        "type": "number",
+        "additionalProperties": false,
+        "$id": "V3UserStatusExpireAfterTimeEnum",
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          99
+        ],
+        "x-enum-varnames": [
+          "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_UNSPECIFIED",
+          "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_1_HOUR",
+          "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_4_HOUR",
+          "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_8_HOUR",
+          "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_24_HOUR",
+          "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_NEVER"
+        ]
+      },
+      "V3UserTypeEnum": {
+        "type": "number",
+        "additionalProperties": false,
+        "$id": "V3UserTypeEnum",
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "x-enum-varnames": [
+          "USER_TYPE_ENUM_DEFAULT",
+          "USER_TYPE_ENUM_BOT",
+          "USER_TYPE_ENUM_GHOST"
+        ]
+      },
+      "V3RingbackToneCreateRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1,
+              "max": 256
+            },
+            "errorMessage": {
+              "isTrimData": "range from 1 to 256 length"
+            },
+            "description": "Name of ringback tone"
+          },
+          "ringbackTonePath": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isURL",
+            "errorMessage": {
+              "format": "invalid URL format"
+            },
+            "description": "Audio URL path"
+          }
+        },
+        "required": [
+          "name",
+          "ringbackTonePath"
+        ],
+        "$id": "V3RingbackToneCreateRequest"
+      },
+      "V3RingbackToneDeleteRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ringbackToneId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The ringback tone identify"
+          }
+        },
+        "required": [
+          "ringbackToneId"
+        ],
+        "$id": "V3RingbackToneDeleteRequest"
+      },
+      "V3RingbackToneRenameRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ringbackToneId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The ringback tone identify"
+          },
+          "name": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1,
+              "max": 256
+            },
+            "errorMessage": {
+              "isTrimData": "range from 1 to 256 length"
+            },
+            "description": "The ringback tone name"
+          }
+        },
+        "required": [
+          "ringbackToneId",
+          "name"
+        ],
+        "$id": "V3RingbackToneRenameRequest"
+      },
+      "V3SetRingbackToneRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ringbackToneId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The ringback tone identify"
+          }
+        },
+        "required": [
+          "ringbackToneId"
+        ],
+        "$id": "V3SetRingbackToneRequest"
+      },
+      "V3SessionMetadataRequest": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "x-user-id": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            }
+          },
+          "x-device-id": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "x-user-id",
+          "x-device-id"
+        ],
+        "$id": "V3SessionMetadataRequest"
+      },
+      "V3CreateUserAvatarFrameRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "avatarFramePath": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isURL",
+            "errorMessage": {
+              "format": "invalid URL format"
+            },
+            "description": "Avatar frame data"
+          }
+        },
+        "required": [
+          "avatarFramePath"
+        ],
+        "$id": "V3CreateUserAvatarFrameRequest"
+      },
+      "V3DeleteUserAvatarFrameRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "avatarFrameId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "Avatar frame identify"
+          }
+        },
+        "required": [
+          "avatarFrameId"
+        ],
+        "$id": "V3DeleteUserAvatarFrameRequest"
+      },
+      "V3RemoveDecoratedAvatarRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "$id": "V3RemoveDecoratedAvatarRequest",
+        "properties": { }
+      },
+      "V3UploadDecoratedAvatarRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "avatarFrameId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "Avatar frame identify"
+          },
+          "decoratedAvatarPath": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isURL",
+            "errorMessage": {
+              "format": "invalid URL format"
+            },
+            "description": "The URL path"
+          }
+        },
+        "required": [
+          "avatarFrameId",
+          "decoratedAvatarPath"
+        ],
+        "$id": "V3UploadDecoratedAvatarRequest"
+      },
+      "V3DecodeUserConnectLinkRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "link": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isURL",
+            "errorMessage": {
+              "format": "invalid URL format"
+            },
+            "description": "The user connect link to decode"
+          }
+        },
+        "required": [
+          "link"
+        ],
+        "$id": "V3DecodeUserConnectLinkRequest"
+      },
+      "V3GenerateUserConnectLinkRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "userId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The generate user connect link"
+          }
+        },
+        "required": [
+          "userId"
+        ],
+        "$id": "V3GenerateUserConnectLinkRequest"
+      },
+      "V3AddCoverPhotoRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "coverPath": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isURL",
+            "errorMessage": {
+              "format": "invalid URL format"
+            },
+            "description": "Photo URL path"
+          }
+        },
+        "required": [
+          "coverPath"
+        ],
+        "$id": "V3AddCoverPhotoRequest"
+      },
+      "V3AddUserStatusRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "content": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1,
+              "max": 50
+            },
+            "nullable": true,
+            "errorMessage": {
+              "isTrimData": "range from 1 to 50 length"
+            },
+            "description": "The content of user status"
+          },
+          "status": {
+            "type": "string",
+            "nullable": true,
+            "isTrimData": {
+              "min": 1,
+              "max": 1
+            },
+            "format": "isEmoji",
+            "errorMessage": {
+              "format": "invalid Emoji format",
+              "isTrimData": "must to length equals 1"
+            },
+            "description": "The emoji status"
+          },
+          "expireAfterTime": {
+            "$ref": "#/components/schemas/V3UserStatusExpireAfterTimeEnum",
+            "description": "The expires time"
+          }
+        },
+        "anyOf": [
+          {
+            "required": [
+              "content"
+            ]
+          },
+          {
+            "required": [
+              "status"
+            ]
+          }
+        ],
+        "errorMessage": "must have required property 'content' or 'status'",
+        "required": [
+          "expireAfterTime"
+        ],
+        "$id": "V3AddUserStatusRequest"
+      },
+      "V3ClearUserVisitedProfileNotificationsRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "$id": "V3ClearUserVisitedProfileNotificationsRequest",
+        "properties": { }
+      },
+      "V3DeleteCoverPhotoRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "$id": "V3DeleteCoverPhotoRequest",
+        "properties": { }
+      },
+      "V3DeleteUserAvatarRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "$id": "V3DeleteUserAvatarRequest",
+        "properties": { }
+      },
+      "V3DeleteUserStatusRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "$id": "V3DeleteUserStatusRequest",
+        "properties": { }
+      },
+      "V3DeleteUserVideoAvatarRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "$id": "V3DeleteUserVideoAvatarRequest",
+        "properties": { }
+      },
+      "V3DeleteUserVisitedProfileRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "userId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The user identify"
+          }
+        },
+        "required": [
+          "userId"
+        ],
+        "$id": "V3DeleteUserVisitedProfileRequest"
+      },
+      "V3UpdateCoverPhotoRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "coverPath": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isURL",
+            "errorMessage": {
+              "format": "invalid URL format"
+            },
+            "description": "The photo URL path"
+          }
+        },
+        "required": [
+          "coverPath"
+        ],
+        "$id": "V3UpdateCoverPhotoRequest"
+      },
+      "V3UpdateUserAvatarRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "avatarPath": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isURL",
+            "errorMessage": {
+              "format": "invalid URL format"
+            },
+            "description": "The avatar URL path"
+          }
+        },
+        "required": [
+          "avatarPath"
+        ],
+        "$id": "V3UpdateUserAvatarRequest"
+      },
+      "V3UpdateUserDisplayNameRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "displayName": {
+            "type": "string",
+            "isTrimData": {
+              "max": 50
+            },
+            "errorMessage": {
+              "isTrimData": "max 50 length"
+            },
+            "nullable": true,
+            "description": "The new display name to set for the user"
+          }
+        },
+        "$id": "V3UpdateUserDisplayNameRequest"
+      },
+      "V3UpdateUserEmailRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "email": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isEmail",
+            "errorMessage": "invalid Email format",
+            "description": " The email of user"
+          }
+        },
+        "required": [
+          "email"
+        ],
+        "$id": "V3UpdateUserEmailRequest"
+      },
+      "V3UpdateUserPhoneRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "phoneNumber": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isPhone",
+            "errorMessage": {
+              "format": "invalid Phone format"
+            },
+            "description": "The phone number of user"
+          }
+        },
+        "required": [
+          "phoneNumber"
+        ],
+        "$id": "V3UpdateUserPhoneRequest"
+      },
+      "V3UpdateUserStatusRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "content": {
+            "type": "string",
+            "isTrimData": {
+              "max": 50
+            },
+            "nullable": true,
+            "errorMessage": {
+              "isTrimData": "range from 1 to 50 length"
+            },
+            "description": "The content of user status"
+          },
+          "status": {
+            "type": "string",
+            "nullable": true,
+            "description": "The emoji status"
+          }
+        },
+        "if": {
+          "properties": {
+            "status": {
+              "isTrimData": {
+                "min": 1
+              }
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "status": {
+              "isTrimData": {
+                "max": 1
+              },
+              "format": "isEmoji",
+              "errorMessage": {
+                "format": "invalid Emoji format",
+                "isTrimData": "must to length equals 1"
+              }
+            }
+          }
+        },
+        "$id": "V3UpdateUserStatusRequest"
+      },
+      "V3UpdateUserVideoAvatarRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "avatarPath": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isURL",
+            "errorMessage": {
+              "format": "invalid URL format"
+            },
+            "description": "The video avatar URL path"
+          }
+        },
+        "required": [
+          "avatarPath"
+        ],
+        "$id": "V3UpdateUserVideoAvatarRequest"
+      },
+      "V3VisitedProfileRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "userId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The user identify whom visited"
+          }
+        },
+        "required": [
+          "userId"
+        ],
+        "$id": "V3VisitedProfileRequest"
+      },
+      "V3ReportUserRequestRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "userId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The user identify to report"
+          },
+          "reportCategory": {
+            "$ref": "#/components/schemas/V3ReportCategory",
+            "description": "The report category"
+          },
+          "pretendingTo": {
+            "$ref": "#/components/schemas/V3PretendingTo",
+            "description": "The type of pretending to"
+          },
+          "reportReason": {
+            "type": "string",
+            "isTrimData": {
+              "min": 1,
+              "max": 255
+            },
+            "errorMessage": {
+              "isTrimData": "range from 1 to 255 length"
+            },
+            "description": "The reason for report"
+          }
+        },
+        "required": [
+          "userId",
+          "reportCategory"
+        ],
+        "if": {
+          "properties": {
+            "reportCategory": {
+              "const": 3
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "pretendingTo"
+          ]
+        },
+        "else": {
+          "if": {
+            "properties": {
+              "reportCategory": {
+                "const": 20
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "reportReason"
+            ]
+          }
+        },
+        "$id": "V3ReportUserRequestRequest"
+      },
+      "V3BlockUserRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "targetUserId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The user identify of user target for block"
+          }
+        },
+        "required": [
+          "targetUserId"
+        ],
+        "$id": "V3BlockUserRequest"
+      },
+      "V3UnblockUserRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "targetUserId": {
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The user identify of user target for unblock"
+          }
+        },
+        "required": [
+          "targetUserId"
+        ],
+        "$id": "V3UnblockUserRequest"
+      },
+      "V3UpdateMediaPermissionSettingRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "permissionType": {
+            "$ref": "#/components/schemas/V3MediaPermissionSettingEnum",
+            "description": "Media sharing permission"
+          }
+        },
+        "required": [
+          "permissionType"
+        ],
+        "$id": "V3UpdateMediaPermissionSettingRequest"
+      },
+      "V3UpdateRecoveryCodeSettingRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "enable": {
+            "type": "boolean",
+            "description": "Recovery code setting"
+          },
+          "userId": {
+            "type": "string",
+            "description": "User identify"
+          }
+        },
+        "required": [
+          "enable"
+        ],
+        "$id": "V3UpdateRecoveryCodeSettingRequest"
+      },
+      "V3UpdateSmartOtpSettingRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "enable": {
+            "type": "boolean",
+            "description": "Smart OTP setting"
+          }
+        },
+        "required": [
+          "enable"
+        ],
+        "$id": "V3UpdateSmartOtpSettingRequest"
+      },
+      "V3UpdateUserScopeForCallRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "userScope": {
+            "$ref": "#/components/schemas/V3UserScopeEnum",
+            "description": "The scope of user for update call case"
+          }
+        },
+        "required": [
+          "userScope"
+        ],
+        "$id": "V3UpdateUserScopeForCallRequest"
+      },
+      "V3UpdateUserScopeForMessageRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "userScope": {
+            "$ref": "#/components/schemas/V3UserScopeEnum",
+            "description": "The scope of user for update message case"
+          }
+        },
+        "required": [
+          "userScope"
+        ],
+        "$id": "V3UpdateUserScopeForMessageRequest"
+      },
+      "V3RingbackToneCreateResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "The status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3RingbackToneCreateResponse"
+      },
+      "V3RingbackToneData": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ringbackToneId": {
+            "type": "string",
+            "description": "The ringback tone identify"
+          },
+          "ringbackTonePath": {
+            "type": "string",
+            "description": "The ringback tone path file"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of ringback tone"
+          },
+          "isDefault": {
+            "type": "boolean",
+            "description": "Is default"
+          },
+          "isActive": {
+            "type": "boolean",
+            "description": "Is active"
+          },
+          "createTime": {
+            "type": "string",
+            "description": "Create time"
+          },
+          "updateTime": {
+            "type": "string",
+            "description": "Update time"
+          }
+        },
+        "required": [
+          "ringbackToneId",
+          "ringbackTonePath",
+          "name",
+          "isDefault",
+          "isActive",
+          "createTime",
+          "updateTime"
+        ],
+        "$id": "V3RingbackToneData"
+      },
+      "V3RingbackToneDeleteResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "The status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          }
+        },
+        "required": [
+          "ok",
+          "error"
+        ],
+        "$id": "V3RingbackToneDeleteResponse"
+      },
+      "V3RingbackToneRenameResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "The status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          },
+          "data": {
+            "$ref": "#/components/schemas/V3RingbackToneData",
+            "description": "The ringback tone response"
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3RingbackToneRenameResponse"
+      },
+      "V3SetRingbackToneResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "The status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          },
+          "data": {
+            "$ref": "#/components/schemas/V3RingbackToneData",
+            "description": "The ringback tone response"
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3SetRingbackToneResponse"
+      },
+      "V3RemoveDecoratedAvatarResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          }
+        },
+        "$id": "V3RemoveDecoratedAvatarResponse"
+      },
+      "V3UploadDecoratedAvatarResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          },
+          "data": {
+            "$ref": "#/components/schemas/V3AvatarFrameDecoratedData",
+            "description": "The avatar frame data"
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3UploadDecoratedAvatarResponse"
+      },
+      "V3DeleteUserAvatarFrameResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          },
+          "data": {
+            "$ref": "#/components/schemas/V3AvatarFrameData",
+            "description": "The avatar frame data"
+          }
+        },
+        "required": [
+          "avatarFrameId"
+        ],
+        "$id": "V3DeleteUserAvatarFrameResponse"
+      },
+      "V3AvatarFrameData": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "avatarFrameId": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The avatar frame identify"
+          },
+          "avatarFramePath": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The avatar frame path"
+          },
+          "isDefault": {
+            "type": "boolean",
+            "description": "Is default avatar frame"
+          },
+          "isActive": {
+            "type": "boolean",
+            "description": "Is active avatar frame"
+          },
+          "createTime": {
+            "type": "string",
+            "description": "The create time"
+          },
+          "updateTime": {
+            "type": "string",
+            "description": "The update time"
+          }
+        },
+        "required": [
+          "avatarFrameId",
+          "avatarFramePath",
+          "isDefault",
+          "isActive",
+          "createTime",
+          "updateTime"
+        ],
+        "$id": "V3AvatarFrameData"
+      },
+      "V3CreateUserAvatarFrameResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          },
+          "data": {
+            "$ref": "#/components/schemas/V3AvatarFrameDecoratedData",
+            "description": "The avatar frame data"
+          }
+        },
+        "required": [
+          "avatarFramePath"
+        ],
+        "$id": "V3CreateUserAvatarFrameResponse"
+      },
+      "V3AvatarFrameDecoratedData": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "avatarFrame": {
+            "$ref": "#/components/schemas/V3AvatarFrameData",
+            "description": "The avatar frame data"
+          },
+          "decoratedAvatar": {
+            "type": "string",
+            "description": "The decorated avatar URL"
+          },
+          "originalDecoratedAvatar": {
+            "type": "string",
+            "description": "The original decorated avatar"
+          }
+        },
+        "required": [
+          "avatarFrame",
+          "avatarDecorated",
+          "originalDecoratedAvatar"
+        ],
+        "$id": "V3AvatarFrameDecoratedData"
+      },
+      "V3DecodeUserConnectLinkResponseData": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "userId": {
+            "type": "string",
+            "description": "The decoded user connect link"
+          }
+        },
+        "required": [
+          "userId"
+        ],
+        "$id": "V3DecodeUserConnectLinkResponseData"
+      },
+      "V3DecodeUserConnectLinkResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          },
+          "data": {
+            "$ref": "#/components/schemas/V3DecodeUserConnectLinkResponseData",
+            "description": "The link of user connect"
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3DecodeUserConnectLinkResponse"
+      },
+      "V3GenerateUserConnectLinkResponseData": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "link": {
+            "type": "string",
+            "description": "User connected link"
+          }
+        },
+        "required": [
+          "userId"
+        ],
+        "$id": "V3GenerateUserConnectLinkResponseData"
+      },
+      "V3GenerateUserConnectLinkResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          },
+          "data": {
+            "$ref": "#/components/schemas/V3GenerateUserConnectLinkResponseData",
+            "description": "The link of user connect"
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3GenerateUserConnectLinkResponse"
+      },
+      "V3AddCoverPhotoResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          },
+          "data": {
+            "$ref": "#/components/schemas/V3CoverData",
+            "description": "The cover url"
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3AddCoverPhotoResponse"
+      },
+      "V3AddUserStatusResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          },
+          "data": {
+            "$ref": "#/components/schemas/V3UserStatusData",
+            "description": "The status data"
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3AddUserStatusResponse"
+      },
+      "V3ClearUserVisitedProfileNotificationsResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          }
+        },
+        "$id": "V3ClearUserVisitedProfileNotificationsResponse"
+      },
+      "V3DeleteCoverPhotoResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          }
+        },
+        "$id": "V3DeleteCoverPhotoResponse"
+      },
+      "V3DeleteUserAvatarResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          }
+        },
+        "$id": "V3DeleteUserAvatarResponse"
+      },
+      "V3DeleteUserStatusResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          }
+        },
+        "$id": "V3DeleteUserStatusResponse"
+      },
+      "V3DeleteUserVideoAvatarResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          }
+        },
+        "$id": "V3DeleteUserVideoAvatarResponse"
+      },
+      "V3DeleteUserVisitedProfileResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3DeleteUserVisitedProfileResponse"
+      },
+      "V3UpdateCoverPhotoResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          },
+          "data": {
+            "$ref": "#/components/schemas/V3CoverData",
+            "description": "The cover url"
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3UpdateCoverPhotoResponse"
+      },
+      "V3UpdateUserAvatarData": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "avatar": {
+            "type": "string",
+            "description": "The avatar image to set for user"
+          }
+        },
+        "required": [
+          "avatar"
+        ],
+        "$id": "V3UpdateUserAvatarData"
+      },
+      "V3UpdateUserAvatarResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          },
+          "data": {
+            "$ref": "#/components/schemas/V3UpdateUserAvatarData",
+            "description": "The avatar's data"
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3UpdateUserAvatarResponse"
+      },
+      "V3UpdateUserDisplayNameResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3UpdateUserDisplayNameResponse"
+      },
+      "V3UpdateUserEmailResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3UpdateUserEmailResponse"
+      },
+      "V3UpdateUserPhoneResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3UpdateUserPhoneResponse"
+      },
+      "V3UpdateUserStatusResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          },
+          "data": {
+            "$ref": "#/components/schemas/V3UserStatusData",
+            "description": "The emoji status"
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3UpdateUserStatusResponse"
+      },
+      "V3UpdateUserVideoAvatarData": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "avatar": {
+            "type": "string",
+            "description": "The avatar image to set for user"
+          }
+        },
+        "required": [
+          "avatar"
+        ],
+        "$id": "V3UpdateUserVideoAvatarData"
+      },
+      "V3UpdateUserVideoAvatarResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          },
+          "data": {
+            "$ref": "#/components/schemas/V3UpdateUserVideoAvatarData",
+            "description": "The avatar's data"
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3UpdateUserVideoAvatarResponse"
+      },
+      "V3VisitedProfileResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3VisitedProfileResponse"
+      },
+      "V3UserStatusData": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "content": {
+            "type": "string",
+            "description": "The content of user status"
+          },
+          "status": {
+            "type": "string",
+            "description": "The emoji status"
+          },
+          "expireAfterTime": {
+            "$ref": "#/components/schemas/V3UserStatusExpireAfterTimeEnum",
+            "description": "The expires time after create"
+          },
+          "createTime": {
+            "type": "string",
+            "description": "The create time"
+          },
+          "updateTime": {
+            "type": "string",
+            "description": "The update time"
+          },
+          "endTime": {
+            "type": "string",
+            "description": "The end time (create time + expires time)"
+          }
+        },
+        "required": [
+          "content",
+          "status",
+          "expireAfterTime",
+          "createTime",
+          "updateTime",
+          "endTime"
+        ],
+        "$id": "V3UserStatusData"
+      },
+      "V3CoverData": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "cover": {
+            "type": "string",
+            "description": "The cover photo path"
+          }
+        },
+        "required": [
+          "cover"
+        ],
+        "$id": "V3CoverData"
+      },
+      "V3ReportUserRequestResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "$id": "V3ReportUserRequestResponse"
+      },
+      "V3ErrorResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "number",
+            "description": "The error code"
+          },
+          "message": {
+            "type": "string",
+            "description": "The error message"
+          },
+          "details": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Detail about the error"
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "details"
+        ],
+        "$id": "V3ErrorResponse"
+      },
+      "V3BlockUserResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          }
+        },
+        "required": [
+          "targetUserId"
+        ],
+        "$id": "V3BlockUserResponse"
+      },
+      "V3UnblockUserResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          }
+        },
+        "required": [
+          "targetUserId"
+        ],
+        "$id": "V3UnblockUserResponse"
+      },
+      "V3UpdateMediaPermissionSettingResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          }
+        },
+        "required": [
+          "permissionType"
+        ],
+        "$id": "V3UpdateMediaPermissionSettingResponse"
+      },
+      "V3UpdateRecoveryCodeSettingResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          }
+        },
+        "required": [
+          "enable"
+        ],
+        "$id": "V3UpdateRecoveryCodeSettingResponse"
+      },
+      "V3UpdateSmartOtpSettingResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          }
+        },
+        "required": [
+          "enable"
+        ],
+        "$id": "V3UpdateSmartOtpSettingResponse"
+      },
+      "V3UpdateUserScopeForCallResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          }
+        },
+        "required": [
+          "userScope"
+        ],
+        "$id": "V3UpdateUserScopeForCallResponse"
+      },
+      "V3UpdateUserScopeForMessageResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Status response"
+          },
+          "error": {
+            "$ref": "#/components/schemas/V3ErrorResponse",
+            "description": "It only has a value when 'ok' is false and includes detailed error information and an error code."
+          }
+        },
+        "required": [
+          "userScope"
+        ],
+        "$id": "V3UpdateUserScopeForMessageResponse"
+      }
+    }
+  },
+  "paths": {
+    "/RingbackTone/RingbackToneCreate": {
+      "post": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3RingbackToneCreateResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "RingbackToneCreate",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "ringbackTonePath"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3RingbackToneCreateRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/RingbackTone/RingbackToneRename": {
+      "put": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3RingbackToneRenameResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "RingbackToneRename",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "ringbackToneId",
+          "name"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3RingbackToneRenameRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/RingbackTone/SetRingbackTone": {
+      "put": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3SetRingbackToneResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "SetRingbackTone",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "ringbackToneId"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3SetRingbackToneRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/RingbackTone/RingbackToneDelete": {
+      "delete": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3RingbackToneDeleteResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "RingbackToneDelete",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "ringbackToneId",
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The ringback tone identify"
+          }
+        ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "ringbackToneId"
+        ]
+      }
+    },
+    "/AvatarFrame/CreateAvatarFrame": {
+      "post": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3CreateUserAvatarFrameResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "CreateAvatarFrame",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "avatarFramePath"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3CreateUserAvatarFrameRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/AvatarFrame/DeleteAvatarFrame": {
+      "delete": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3DeleteUserAvatarFrameResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "DeleteAvatarFrame",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "avatarFrameId",
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "Avatar frame identify"
+          }
+        ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "avatarFrameId"
+        ]
+      }
+    },
+    "/AvatarFrame/UploadDecoratedAvatar": {
+      "post": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3UploadDecoratedAvatarResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "UploadDecoratedAvatar",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "avatarFrameId",
+          "decoratedAvatarPath"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3UploadDecoratedAvatarRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/AvatarFrame/RemoveDecoratedAvatar": {
+      "delete": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3RemoveDecoratedAvatarResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "RemoveDecoratedAvatar",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false
+      }
+    },
+    "/UserConnect/GenerateUserConnectLink": {
+      "post": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3GenerateUserConnectLinkResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "GenerateUserConnectLink",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "userId",
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The generate user connect link"
+          }
+        ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "userId"
+        ]
+      }
+    },
+    "/UserConnect/DecodeUserConnectLink": {
+      "post": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3DecodeUserConnectLinkResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "DecodeUserConnectLink",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "link"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3DecodeUserConnectLinkRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UserReport/ReportUser": {
+      "post": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3ReportUserRequestResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "ReportUser",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "userId",
+          "reportCategory"
+        ],
+        "if": {
+          "properties": {
+            "reportCategory": {
+              "const": 3
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "pretendingTo"
+          ]
+        },
+        "else": {
+          "if": {
+            "properties": {
+              "reportCategory": {
+                "const": 20
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "reportReason"
+            ]
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3ReportUserRequestRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UserProfile/AddCoverPhoto": {
+      "post": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3AddCoverPhotoResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "AddCoverPhoto",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "coverPath"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3AddCoverPhotoRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UserProfile/UpdateCoverPhoto": {
+      "put": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3UpdateCoverPhotoResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "UpdateCoverPhoto",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "coverPath"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3UpdateCoverPhotoRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UserProfile/DeleteCoverPhoto": {
+      "delete": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3DeleteCoverPhotoResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "DeleteCoverPhoto",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false
+      }
+    },
+    "/UserProfile/AddUserStatus": {
+      "post": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3AddUserStatusResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "AddUserStatus",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "anyOf": [
+          {
+            "required": [
+              "content"
+            ]
+          },
+          {
+            "required": [
+              "status"
+            ]
+          }
+        ],
+        "errorMessage": "must have required property 'content' or 'status'",
+        "required": [
+          "expireAfterTime"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3AddUserStatusRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UserProfile/UpdateUserStatus": {
+      "put": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3UpdateUserStatusResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "UpdateUserStatus",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "if": {
+          "properties": {
+            "status": {
+              "isTrimData": {
+                "min": 1
+              }
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "status": {
+              "isTrimData": {
+                "max": 1
+              },
+              "format": "isEmoji",
+              "errorMessage": {
+                "format": "invalid Emoji format",
+                "isTrimData": "must to length equals 1"
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3UpdateUserStatusRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UserProfile/DeleteUserStatus": {
+      "delete": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3DeleteUserStatusResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "DeleteUserStatus",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false
+      }
+    },
+    "/UserProfile/UpdateUserDisplayName": {
+      "put": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3UpdateUserDisplayNameResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "UpdateUserDisplayName",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3UpdateUserDisplayNameRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UserProfile/UpdateUserAvatar": {
+      "put": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3UpdateUserAvatarResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "UpdateUserAvatar",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "avatarPath"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3UpdateUserAvatarRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UserProfile/UpdateUserVideoAvatar": {
+      "put": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3UpdateUserVideoAvatarResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "UpdateUserVideoAvatar",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "avatarPath"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3UpdateUserVideoAvatarRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UserProfile/UpdateUserEmail": {
+      "put": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3UpdateUserEmailResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "UpdateUserEmail",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "email"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3UpdateUserEmailRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UserProfile/UpdateUserPhone": {
+      "put": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3UpdateUserPhoneResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "UpdateUserPhone",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "phoneNumber"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3UpdateUserPhoneRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UserProfile/VisitedProfile": {
+      "post": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3VisitedProfileResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "VisitedProfile",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "userId"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3VisitedProfileRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UserProfile/ClearUserVisitedProfileNotifications": {
+      "delete": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3ClearUserVisitedProfileNotificationsResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "ClearUserVisitedProfileNotifications",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false
+      }
+    },
+    "/UserProfile/DeleteUserVisitedProfile": {
+      "delete": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3DeleteUserVisitedProfileResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "DeleteUserVisitedProfile",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "userId",
+            "type": "string",
+            "minLength": 1,
+            "format": "isULID",
+            "errorMessage": {
+              "format": "invalid ULID format"
+            },
+            "description": "The user identify"
+          }
+        ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "userId"
+        ]
+      }
+    },
+    "/UserProfile/DeleteUserAvatar": {
+      "delete": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3DeleteUserAvatarResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "DeleteUserAvatar",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false
+      }
+    },
+    "/UserProfile/DeleteUserVideoAvatar": {
+      "delete": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3DeleteUserVideoAvatarResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "DeleteUserVideoAvatar",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false
+      }
+    },
+    "/UserSetting/BlockUser": {
+      "post": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3BlockUserResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "BlockUser",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "targetUserId"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3BlockUserRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UserSetting/UnblockUser": {
+      "post": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3UnblockUserResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "UnblockUser",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "targetUserId"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3UnblockUserRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UserSetting/UpdateMediaPermissionSetting": {
+      "put": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3UpdateMediaPermissionSettingResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "UpdateMediaPermissionSetting",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "permissionType"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3UpdateMediaPermissionSettingRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UserSetting/UpdateRecoveryCodeSetting": {
+      "put": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3UpdateRecoveryCodeSettingResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "UpdateRecoveryCodeSetting",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "enable"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3UpdateRecoveryCodeSettingRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UserSetting/UpdateUserScopeForCall": {
+      "put": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3UpdateUserScopeForCallResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "UpdateUserScopeForCall",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "userScope"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3UpdateUserScopeForCallRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UserSetting/UpdateUserScopeForMessage": {
+      "put": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3UpdateUserScopeForMessageResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "UpdateUserScopeForMessage",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "userScope"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3UpdateUserScopeForMessageRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UserSetting/UpdateSmartOtpSetting": {
+      "put": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/V3UpdateSmartOtpSettingResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "UpdateSmartOtpSetting",
+        "parameters": [ ],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "enable"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V3UpdateSmartOtpSettingRequest"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
