@@ -21,15 +21,15 @@ let vocabulary: Map<string, number> | null = null;
 
 export const loadAIModel = async (): Promise<typeof tf> => {
   if (!modelPromise) {
-    console.log('🤖 Khởi tạo TensorFlow...');
+    console.log('🤖 Initialize TensorFlow...');
     modelPromise = tf
       .ready()
       .then(() => {
-        console.log('✅ TensorFlow đã sẵn sàng');
+        console.log('✅ TensorFlow is ready');
         return tf;
       })
       .catch((error) => {
-        console.error('❌ Lỗi khởi tạo TensorFlow:', error);
+        console.error('❌ TensorFlow initialization error:', error);
         throw error;
       });
   }
@@ -42,7 +42,7 @@ export const getOrCreateTrainedModel = async (
   await loadAIModel();
 
   if (loadedModel) {
-    console.log('📦 Sử dụng model đã load');
+    console.log('📦 Use loaded model');
     return loadedModel;
   }
 
@@ -63,15 +63,15 @@ export const getOrCreateTrainedModel = async (
           weightData,
         }),
       );
-      console.log('📦 Đã load model từ local storage');
+      console.log('📦 Loaded model from local storage');
       return loadedModel;
     }
   } catch (e) {
-    console.log('🚧 Không tìm thấy model hoặc lỗi load, đang train mới...', e);
+    console.log('🚧 Model not found or loading error, new training...', e);
   }
 
   if (trainingData.length === 0) {
-    throw new Error('Không có dữ liệu training');
+    throw new Error('No training data');
   }
 
   const vocab = await getOrCreateVocabulary(trainingData);
@@ -87,7 +87,7 @@ export const getOrCreateTrainedModel = async (
       !data.httpMethod ||
       !data.userIdMeaning
     ) {
-      console.warn(`⚠️ Dữ liệu huấn luyện không hợp lệ:`, data);
+      console.warn(`⚠️ Invalid training data:`, data);
       return;
     }
     const features = createFeatureVector(
@@ -102,7 +102,7 @@ export const getOrCreateTrainedModel = async (
   });
 
   if (trainX.length === 0 || trainY.length === 0) {
-    throw new Error('Không có dữ liệu huấn luyện hợp lệ sau khi lọc');
+    throw new Error('No valid training data after filtering');
   }
 
   const model = tf.sequential();
@@ -190,9 +190,9 @@ export const getOrCreateTrainedModel = async (
         };
       }),
     );
-    console.log('✅ TensorFlow mới đã được tạo và lưu!');
+    console.log('✅ New TensorFlow has been created and saved!');
   } catch (e) {
-    console.error('❌ Lỗi khi lưu model:', e);
+    console.error('❌ Error when saving model:', e);
     throw e;
   }
 
@@ -204,7 +204,7 @@ export const getOrCreateVocabulary = async (
   trainingData: TrainingData[],
 ): Promise<Map<string, number>> => {
   if (vocabulary) {
-    console.log('📚 Sử dụng vocabulary đã load');
+    console.log('📚 Use loaded vocabulary');
     return vocabulary;
   }
 
@@ -212,18 +212,18 @@ export const getOrCreateVocabulary = async (
     if (await exists(vocabSavePath)) {
       const vocabData = await readFile(vocabSavePath, 'utf-8');
       vocabulary = new Map(Object.entries(JSON.parse(vocabData)));
-      console.log('📚 Đã load vocabulary từ local storage');
+      console.log('📚 Loaded vocabulary from local storage');
       return vocabulary;
     }
   } catch (e) {
-    console.log('🚧 Không tìm thấy vocabulary hoặc lỗi load, đang tạo mới...', e);
+    console.log('🚧 Vocabulary not found or load error, creating new...', e);
   }
 
   vocabulary = new Map();
   const allWords = new Set<string>();
   trainingData.forEach((data) => {
     if (!data.action || !data.swaggerDesc || !data.contextClues) {
-      console.warn(`⚠️ Dữ liệu huấn luyện không hợp lệ:`, data);
+      console.warn(`⚠️ Invalid training data:`, data);
       return;
     }
     data.action
@@ -251,9 +251,9 @@ export const getOrCreateVocabulary = async (
       vocabSavePath,
       JSON.stringify(Object.fromEntries(vocabulary)),
     );
-    console.log('💾 Đã lưu vocabulary thành công');
+    console.log('💾 Vocabulary saved successfully');
   } catch (e) {
-    console.error('❌ Lỗi khi lưu vocabulary:', e);
+    console.error('❌ Error when saving vocabulary:', e);
     throw e;
   }
 
@@ -268,7 +268,7 @@ export function createFeatureVector(
   vocabulary: Map<string, number>,
 ): number[] {
   if (!vocabulary) {
-    throw new Error('Vocabulary chưa được khởi tạo');
+    throw new Error('Vocabulary not initialized');
   }
 
   function textToVector(text: string, maxLength: number = 20): number[] {

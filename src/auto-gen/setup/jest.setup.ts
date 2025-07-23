@@ -6,7 +6,6 @@ export default async function setup() {
   try {
     // set urls from file yaml
     globalThis.urls = getOrThrow<string>('host');
-    globalThis.testRequestDir = getOrThrow<string>('testRequestDir');
     globalThis.globalVar = new Map<string, any>();
     globalThis.globalContext = new TestContext(); // set context
   } catch (error) {

@@ -1,7 +1,7 @@
 {
   "name": "k6-dto",
   "private": false,
-  "version": "1.0.20",
+  "version": "1.0.24",
   "description": "Nest TypeScript starter repository",
   "license": "MIT",
   "main": "dist/src/auto-gen/test.index.js",
@@ -17,7 +17,6 @@
     "clean": "rimraf dist",
     "prepare": "pnpm build",
     "reinstall": "rimraf node_modules && del package-lock.json",
-    "start": "ts-node  src/auto-gen/test.index.ts",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix"
   },

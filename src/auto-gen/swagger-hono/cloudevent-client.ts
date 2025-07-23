@@ -565,7 +565,7 @@ export interface ProtobufAny {
    * Schemes other than `http`, `https` (or the empty scheme) might be
    * used with implementation specific semantics.
    */
-  "@type"?: string;
+  '@type'?: string;
   [key: string]: any;
 }
 
@@ -2240,9 +2240,9 @@ export interface AllMessagesDeletedEventDataTParams {
   /** The user identify whom delete message */
   actorId?: string;
   /** The workspace identify */
-  "destination.workspaceId"?: string;
+  'destination.workspaceId'?: string;
   /** The channel identify */
-  "destination.channelId"?: string;
+  'destination.channelId'?: string;
   /**
    * The channel type
    *
@@ -2251,14 +2251,14 @@ export interface AllMessagesDeletedEventDataTParams {
    *  - CHANNEL_TYPE_ENUM_BROADCAST: BROADCAST: A broadcast channel consists of a single sender and multiple receivers
    * @default "CHANNEL_TYPE_ENUM_DM"
    */
-  "destination.channelType"?:
-    | "CHANNEL_TYPE_ENUM_DM"
-    | "CHANNEL_TYPE_ENUM_CHANNEL"
-    | "CHANNEL_TYPE_ENUM_BROADCAST";
+  'destination.channelType'?:
+    | 'CHANNEL_TYPE_ENUM_DM'
+    | 'CHANNEL_TYPE_ENUM_CHANNEL'
+    | 'CHANNEL_TYPE_ENUM_BROADCAST';
   /** The user identify whom receive message */
-  "destination.recipientId"?: string;
+  'destination.recipientId'?: string;
   /** The dm channel identify */
-  "destination.dmId"?: string;
+  'destination.dmId'?: string;
   /**
    * The dm message status
    *
@@ -2266,9 +2266,9 @@ export interface AllMessagesDeletedEventDataTParams {
    *  - DIRECT_MESSAGE_STATUS_ENUM_CONTACTED: CONTACTED: The recipient has accepted the message request or they were friends
    * @default "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
    */
-  "destination.dmStatus"?:
-    | "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
-    | "DIRECT_MESSAGE_STATUS_ENUM_CONTACTED";
+  'destination.dmStatus'?:
+    | 'DIRECT_MESSAGE_STATUS_ENUM_PENDING'
+    | 'DIRECT_MESSAGE_STATUS_ENUM_CONTACTED';
 }
 
 export interface AllUserMessagesDeletedEventDataTParams {
@@ -2279,9 +2279,9 @@ export interface AllUserMessagesDeletedEventDataTParams {
   /** The user identify whom delete message */
   actorId?: string;
   /** The workspace identify */
-  "destination.workspaceId"?: string;
+  'destination.workspaceId'?: string;
   /** The channel identify */
-  "destination.channelId"?: string;
+  'destination.channelId'?: string;
   /**
    * The channel type
    *
@@ -2290,14 +2290,14 @@ export interface AllUserMessagesDeletedEventDataTParams {
    *  - CHANNEL_TYPE_ENUM_BROADCAST: BROADCAST: A broadcast channel consists of a single sender and multiple receivers
    * @default "CHANNEL_TYPE_ENUM_DM"
    */
-  "destination.channelType"?:
-    | "CHANNEL_TYPE_ENUM_DM"
-    | "CHANNEL_TYPE_ENUM_CHANNEL"
-    | "CHANNEL_TYPE_ENUM_BROADCAST";
+  'destination.channelType'?:
+    | 'CHANNEL_TYPE_ENUM_DM'
+    | 'CHANNEL_TYPE_ENUM_CHANNEL'
+    | 'CHANNEL_TYPE_ENUM_BROADCAST';
   /** The user identify whom receive message */
-  "destination.recipientId"?: string;
+  'destination.recipientId'?: string;
   /** The dm channel identify */
-  "destination.dmId"?: string;
+  'destination.dmId'?: string;
   /**
    * The dm message status
    *
@@ -2305,9 +2305,9 @@ export interface AllUserMessagesDeletedEventDataTParams {
    *  - DIRECT_MESSAGE_STATUS_ENUM_CONTACTED: CONTACTED: The recipient has accepted the message request or they were friends
    * @default "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
    */
-  "destination.dmStatus"?:
-    | "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
-    | "DIRECT_MESSAGE_STATUS_ENUM_CONTACTED";
+  'destination.dmStatus'?:
+    | 'DIRECT_MESSAGE_STATUS_ENUM_PENDING'
+    | 'DIRECT_MESSAGE_STATUS_ENUM_CONTACTED';
 }
 
 export interface AvatarFrameCreatedEventDataTParams {
@@ -2326,7 +2326,7 @@ export interface AvatarFrameDeletedEventDataTParams {
 
 export interface CallCreatedEventDataTParams {
   /** The call identify */
-  "callData.callId"?: string;
+  'callData.callId'?: string;
   /**
    * The state of call
    *
@@ -2340,15 +2340,15 @@ export interface CallCreatedEventDataTParams {
    *  - CALL_STATE_ENDED: Call state when either of the two users ends the call, cancels the call, or rejects the call
    * @default "CALL_STATE_UNSPECIFIED"
    */
-  "callData.state"?:
-    | "CALL_STATE_UNSPECIFIED"
-    | "CALL_STATE_DIALING"
-    | "CALL_STATE_CALLING"
-    | "CALL_STATE_READY_TO_CONNECT"
-    | "CALL_STATE_CONNECTING"
-    | "CALL_STATE_CONNECTED"
-    | "CALL_STATE_RECONNECTING"
-    | "CALL_STATE_ENDED";
+  'callData.state'?:
+    | 'CALL_STATE_UNSPECIFIED'
+    | 'CALL_STATE_DIALING'
+    | 'CALL_STATE_CALLING'
+    | 'CALL_STATE_READY_TO_CONNECT'
+    | 'CALL_STATE_CONNECTING'
+    | 'CALL_STATE_CONNECTED'
+    | 'CALL_STATE_RECONNECTING'
+    | 'CALL_STATE_ENDED';
   /**
    * The type of call
    *
@@ -2357,10 +2357,10 @@ export interface CallCreatedEventDataTParams {
    *  - CALL_TYPE_AUDIO: The audio call
    * @default "CALL_TYPE_UNSPECIFIED"
    */
-  "callData.type"?:
-    | "CALL_TYPE_UNSPECIFIED"
-    | "CALL_TYPE_VIDEO"
-    | "CALL_TYPE_AUDIO";
+  'callData.type'?:
+    | 'CALL_TYPE_UNSPECIFIED'
+    | 'CALL_TYPE_VIDEO'
+    | 'CALL_TYPE_AUDIO';
   /**
    * The ended reason of call
    *
@@ -2372,27 +2372,27 @@ export interface CallCreatedEventDataTParams {
    *  - CALL_ENDED_REASON_DECLINED_ELSEWHERE: The call ended due to reason declined elsewhere
    * @default "CALL_ENDED_REASON_UNSPECIFIED"
    */
-  "callData.endedReason"?:
-    | "CALL_ENDED_REASON_UNSPECIFIED"
-    | "CALL_ENDED_REASON_FAILED"
-    | "CALL_ENDED_REASON_REMOTE_ENDED"
-    | "CALL_ENDED_REASON_UNANSWERED"
-    | "CALL_ENDED_REASON_ANSWERED_ELSEWHERE"
-    | "CALL_ENDED_REASON_DECLINED_ELSEWHERE";
+  'callData.endedReason'?:
+    | 'CALL_ENDED_REASON_UNSPECIFIED'
+    | 'CALL_ENDED_REASON_FAILED'
+    | 'CALL_ENDED_REASON_REMOTE_ENDED'
+    | 'CALL_ENDED_REASON_UNANSWERED'
+    | 'CALL_ENDED_REASON_ANSWERED_ELSEWHERE'
+    | 'CALL_ENDED_REASON_DECLINED_ELSEWHERE';
   /** The create time */
-  "callData.createTime"?: string;
+  'callData.createTime'?: string;
   /** The deadline */
-  "callData.deadline"?: string;
+  'callData.deadline'?: string;
   /** The user identify */
-  "callData.caller.userId"?: string;
+  'callData.caller.userId'?: string;
   /** The username */
-  "callData.caller.username"?: string;
+  'callData.caller.username'?: string;
   /** The display name */
-  "callData.caller.displayName"?: string;
+  'callData.caller.displayName'?: string;
   /** Path to avatar */
-  "callData.caller.avatar"?: string;
+  'callData.caller.avatar'?: string;
   /** The display avatar of user */
-  "callData.caller.originalAvatar"?: string;
+  'callData.caller.originalAvatar'?: string;
   /**
    * The type of session description
    *
@@ -2403,14 +2403,14 @@ export interface CallCreatedEventDataTParams {
    *  - SESSION_DESCRIPTION_TYPE_ROLLBACK: This special type with an empty session description is used to roll back to the previous stable state.
    * @default "SESSION_DESCRIPTION_TYPE_UNSPECIFIED"
    */
-  "callData.caller.rtcSessionDescription.rtcSessionDescriptionType"?:
-    | "SESSION_DESCRIPTION_TYPE_UNSPECIFIED"
-    | "SESSION_DESCRIPTION_TYPE_ANSWER"
-    | "SESSION_DESCRIPTION_TYPE_OFFER"
-    | "SESSION_DESCRIPTION_TYPE_PRANSWER"
-    | "SESSION_DESCRIPTION_TYPE_ROLLBACK";
+  'callData.caller.rtcSessionDescription.rtcSessionDescriptionType'?:
+    | 'SESSION_DESCRIPTION_TYPE_UNSPECIFIED'
+    | 'SESSION_DESCRIPTION_TYPE_ANSWER'
+    | 'SESSION_DESCRIPTION_TYPE_OFFER'
+    | 'SESSION_DESCRIPTION_TYPE_PRANSWER'
+    | 'SESSION_DESCRIPTION_TYPE_ROLLBACK';
   /** The SDP which describes the session. */
-  "callData.caller.rtcSessionDescription.rtcSessionDescriptionSdp"?: string;
+  'callData.caller.rtcSessionDescription.rtcSessionDescriptionSdp'?: string;
   /**
    * The avatar type
    *
@@ -2419,37 +2419,37 @@ export interface CallCreatedEventDataTParams {
    *  - USER_AVATAR_TYPE_ENUM_VIDEO: User avatar type is video
    * @default "USER_AVATAR_TYPE_ENUM_UNSPECIFIED"
    */
-  "callData.caller.avatarType"?:
-    | "USER_AVATAR_TYPE_ENUM_UNSPECIFIED"
-    | "USER_AVATAR_TYPE_ENUM_PHOTO"
-    | "USER_AVATAR_TYPE_ENUM_VIDEO";
+  'callData.caller.avatarType'?:
+    | 'USER_AVATAR_TYPE_ENUM_UNSPECIFIED'
+    | 'USER_AVATAR_TYPE_ENUM_PHOTO'
+    | 'USER_AVATAR_TYPE_ENUM_VIDEO';
   /**
    * The user badge type
    * @default "USER_BADGE_TYPE_DEFAULT"
    */
-  "callData.caller.userBadgeType"?:
-    | "USER_BADGE_TYPE_DEFAULT"
-    | "USER_BADGE_TYPE_BLUE"
-    | "USER_BADGE_TYPE_GRAY"
-    | "USER_BADGE_TYPE_YELLOW";
+  'callData.caller.userBadgeType'?:
+    | 'USER_BADGE_TYPE_DEFAULT'
+    | 'USER_BADGE_TYPE_BLUE'
+    | 'USER_BADGE_TYPE_GRAY'
+    | 'USER_BADGE_TYPE_YELLOW';
   /** The video avatar */
-  "callData.caller.videoAvatar"?: string;
+  'callData.caller.videoAvatar'?: string;
   /** The decorated avatar */
-  "callData.caller.decoratedAvatar"?: string;
+  'callData.caller.decoratedAvatar'?: string;
   /** The decorated avatar */
-  "callData.caller.originalDecoratedAvatar"?: string;
+  'callData.caller.originalDecoratedAvatar'?: string;
   /** The thumbnail video avatar */
-  "callData.caller.thumbVideoAvatar"?: string;
+  'callData.caller.thumbVideoAvatar'?: string;
   /** The user identify */
-  "callData.callee.userId"?: string;
+  'callData.callee.userId'?: string;
   /** The username */
-  "callData.callee.username"?: string;
+  'callData.callee.username'?: string;
   /** The display name */
-  "callData.callee.displayName"?: string;
+  'callData.callee.displayName'?: string;
   /** Path to avatar */
-  "callData.callee.avatar"?: string;
+  'callData.callee.avatar'?: string;
   /** The display avatar of user */
-  "callData.callee.originalAvatar"?: string;
+  'callData.callee.originalAvatar'?: string;
   /**
    * The type of session description
    *
@@ -2460,14 +2460,14 @@ export interface CallCreatedEventDataTParams {
    *  - SESSION_DESCRIPTION_TYPE_ROLLBACK: This special type with an empty session description is used to roll back to the previous stable state.
    * @default "SESSION_DESCRIPTION_TYPE_UNSPECIFIED"
    */
-  "callData.callee.rtcSessionDescription.rtcSessionDescriptionType"?:
-    | "SESSION_DESCRIPTION_TYPE_UNSPECIFIED"
-    | "SESSION_DESCRIPTION_TYPE_ANSWER"
-    | "SESSION_DESCRIPTION_TYPE_OFFER"
-    | "SESSION_DESCRIPTION_TYPE_PRANSWER"
-    | "SESSION_DESCRIPTION_TYPE_ROLLBACK";
+  'callData.callee.rtcSessionDescription.rtcSessionDescriptionType'?:
+    | 'SESSION_DESCRIPTION_TYPE_UNSPECIFIED'
+    | 'SESSION_DESCRIPTION_TYPE_ANSWER'
+    | 'SESSION_DESCRIPTION_TYPE_OFFER'
+    | 'SESSION_DESCRIPTION_TYPE_PRANSWER'
+    | 'SESSION_DESCRIPTION_TYPE_ROLLBACK';
   /** The SDP which describes the session. */
-  "callData.callee.rtcSessionDescription.rtcSessionDescriptionSdp"?: string;
+  'callData.callee.rtcSessionDescription.rtcSessionDescriptionSdp'?: string;
   /**
    * The avatar type
    *
@@ -2476,27 +2476,27 @@ export interface CallCreatedEventDataTParams {
    *  - USER_AVATAR_TYPE_ENUM_VIDEO: User avatar type is video
    * @default "USER_AVATAR_TYPE_ENUM_UNSPECIFIED"
    */
-  "callData.callee.avatarType"?:
-    | "USER_AVATAR_TYPE_ENUM_UNSPECIFIED"
-    | "USER_AVATAR_TYPE_ENUM_PHOTO"
-    | "USER_AVATAR_TYPE_ENUM_VIDEO";
+  'callData.callee.avatarType'?:
+    | 'USER_AVATAR_TYPE_ENUM_UNSPECIFIED'
+    | 'USER_AVATAR_TYPE_ENUM_PHOTO'
+    | 'USER_AVATAR_TYPE_ENUM_VIDEO';
   /**
    * The user badge type
    * @default "USER_BADGE_TYPE_DEFAULT"
    */
-  "callData.callee.userBadgeType"?:
-    | "USER_BADGE_TYPE_DEFAULT"
-    | "USER_BADGE_TYPE_BLUE"
-    | "USER_BADGE_TYPE_GRAY"
-    | "USER_BADGE_TYPE_YELLOW";
+  'callData.callee.userBadgeType'?:
+    | 'USER_BADGE_TYPE_DEFAULT'
+    | 'USER_BADGE_TYPE_BLUE'
+    | 'USER_BADGE_TYPE_GRAY'
+    | 'USER_BADGE_TYPE_YELLOW';
   /** The video avatar */
-  "callData.callee.videoAvatar"?: string;
+  'callData.callee.videoAvatar'?: string;
   /** The decorated avatar */
-  "callData.callee.decoratedAvatar"?: string;
+  'callData.callee.decoratedAvatar'?: string;
   /** The decorated avatar */
-  "callData.callee.originalDecoratedAvatar"?: string;
+  'callData.callee.originalDecoratedAvatar'?: string;
   /** The thumbnail video avatar */
-  "callData.callee.thumbVideoAvatar"?: string;
+  'callData.callee.thumbVideoAvatar'?: string;
   /**
    * ICE connection state
    *
@@ -2510,17 +2510,17 @@ export interface CallCreatedEventDataTParams {
    *  - ICE_CONNECTION_STATE_CLOSE: The connection state is close
    * @default "ICE_CONNECTION_STATE_UNSPECIFIED"
    */
-  "callData.iceConnectionState"?:
-    | "ICE_CONNECTION_STATE_UNSPECIFIED"
-    | "ICE_CONNECTION_STATE_NEW"
-    | "ICE_CONNECTION_STATE_CHECKING"
-    | "ICE_CONNECTION_STATE_CONNECTED"
-    | "ICE_CONNECTION_STATE_COMPLETED"
-    | "ICE_CONNECTION_STATE_FAILED"
-    | "ICE_CONNECTION_STATE_DISCONNECTED"
-    | "ICE_CONNECTION_STATE_CLOSE";
+  'callData.iceConnectionState'?:
+    | 'ICE_CONNECTION_STATE_UNSPECIFIED'
+    | 'ICE_CONNECTION_STATE_NEW'
+    | 'ICE_CONNECTION_STATE_CHECKING'
+    | 'ICE_CONNECTION_STATE_CONNECTED'
+    | 'ICE_CONNECTION_STATE_COMPLETED'
+    | 'ICE_CONNECTION_STATE_FAILED'
+    | 'ICE_CONNECTION_STATE_DISCONNECTED'
+    | 'ICE_CONNECTION_STATE_CLOSE';
   /** The ringback tone file url */
-  "callData.ringbackToneUrl"?: string;
+  'callData.ringbackToneUrl'?: string;
 }
 
 export interface CallSignalUpdatedEventDataTParams {
@@ -2531,9 +2531,9 @@ export interface CallSignalUpdatedEventDataTParams {
   /** The device identify */
   deviceId?: string;
   /** The user identify */
-  "recipientInfo.userId"?: string;
+  'recipientInfo.userId'?: string;
   /** The device identify */
-  "recipientInfo.deviceId"?: string;
+  'recipientInfo.deviceId'?: string;
   /** Describes the protocols and routing needed for WebRTC to be able to communicate with a remote device. When starting a WebRTC peer connection */
   rtcIceCandidate?: string;
   /**
@@ -2546,14 +2546,14 @@ export interface CallSignalUpdatedEventDataTParams {
    *  - SESSION_DESCRIPTION_TYPE_ROLLBACK: This special type with an empty session description is used to roll back to the previous stable state.
    * @default "SESSION_DESCRIPTION_TYPE_UNSPECIFIED"
    */
-  "rtcSessionDescription.rtcSessionDescriptionType"?:
-    | "SESSION_DESCRIPTION_TYPE_UNSPECIFIED"
-    | "SESSION_DESCRIPTION_TYPE_ANSWER"
-    | "SESSION_DESCRIPTION_TYPE_OFFER"
-    | "SESSION_DESCRIPTION_TYPE_PRANSWER"
-    | "SESSION_DESCRIPTION_TYPE_ROLLBACK";
+  'rtcSessionDescription.rtcSessionDescriptionType'?:
+    | 'SESSION_DESCRIPTION_TYPE_UNSPECIFIED'
+    | 'SESSION_DESCRIPTION_TYPE_ANSWER'
+    | 'SESSION_DESCRIPTION_TYPE_OFFER'
+    | 'SESSION_DESCRIPTION_TYPE_PRANSWER'
+    | 'SESSION_DESCRIPTION_TYPE_ROLLBACK';
   /** The SDP which describes the session. */
-  "rtcSessionDescription.rtcSessionDescriptionSdp"?: string;
+  'rtcSessionDescription.rtcSessionDescriptionSdp'?: string;
   /**
    * The call signal intent data
    *
@@ -2566,17 +2566,17 @@ export interface CallSignalUpdatedEventDataTParams {
    * @default "CALL_SIGNAL_INTENT_UNSPECIFIED"
    */
   intent?:
-    | "CALL_SIGNAL_INTENT_UNSPECIFIED"
-    | "CALL_SIGNAL_INTENT_CAMERA_ON"
-    | "CALL_SIGNAL_INTENT_CAMERA_OFF"
-    | "CALL_SIGNAL_INTENT_MIC_ON"
-    | "CALL_SIGNAL_INTENT_MIC_OFF"
-    | "CALL_SIGNAL_INTENT_WILL_END";
+    | 'CALL_SIGNAL_INTENT_UNSPECIFIED'
+    | 'CALL_SIGNAL_INTENT_CAMERA_ON'
+    | 'CALL_SIGNAL_INTENT_CAMERA_OFF'
+    | 'CALL_SIGNAL_INTENT_MIC_ON'
+    | 'CALL_SIGNAL_INTENT_MIC_OFF'
+    | 'CALL_SIGNAL_INTENT_WILL_END';
 }
 
 export interface CallUpdatedEventDataTParams {
   /** The call identify */
-  "callData.callId"?: string;
+  'callData.callId'?: string;
   /**
    * The state of call
    *
@@ -2590,15 +2590,15 @@ export interface CallUpdatedEventDataTParams {
    *  - CALL_STATE_ENDED: Call state when either of the two users ends the call, cancels the call, or rejects the call
    * @default "CALL_STATE_UNSPECIFIED"
    */
-  "callData.state"?:
-    | "CALL_STATE_UNSPECIFIED"
-    | "CALL_STATE_DIALING"
-    | "CALL_STATE_CALLING"
-    | "CALL_STATE_READY_TO_CONNECT"
-    | "CALL_STATE_CONNECTING"
-    | "CALL_STATE_CONNECTED"
-    | "CALL_STATE_RECONNECTING"
-    | "CALL_STATE_ENDED";
+  'callData.state'?:
+    | 'CALL_STATE_UNSPECIFIED'
+    | 'CALL_STATE_DIALING'
+    | 'CALL_STATE_CALLING'
+    | 'CALL_STATE_READY_TO_CONNECT'
+    | 'CALL_STATE_CONNECTING'
+    | 'CALL_STATE_CONNECTED'
+    | 'CALL_STATE_RECONNECTING'
+    | 'CALL_STATE_ENDED';
   /**
    * The type of call
    *
@@ -2607,10 +2607,10 @@ export interface CallUpdatedEventDataTParams {
    *  - CALL_TYPE_AUDIO: The audio call
    * @default "CALL_TYPE_UNSPECIFIED"
    */
-  "callData.type"?:
-    | "CALL_TYPE_UNSPECIFIED"
-    | "CALL_TYPE_VIDEO"
-    | "CALL_TYPE_AUDIO";
+  'callData.type'?:
+    | 'CALL_TYPE_UNSPECIFIED'
+    | 'CALL_TYPE_VIDEO'
+    | 'CALL_TYPE_AUDIO';
   /**
    * The ended reason of call
    *
@@ -2622,27 +2622,27 @@ export interface CallUpdatedEventDataTParams {
    *  - CALL_ENDED_REASON_DECLINED_ELSEWHERE: The call ended due to reason declined elsewhere
    * @default "CALL_ENDED_REASON_UNSPECIFIED"
    */
-  "callData.endedReason"?:
-    | "CALL_ENDED_REASON_UNSPECIFIED"
-    | "CALL_ENDED_REASON_FAILED"
-    | "CALL_ENDED_REASON_REMOTE_ENDED"
-    | "CALL_ENDED_REASON_UNANSWERED"
-    | "CALL_ENDED_REASON_ANSWERED_ELSEWHERE"
-    | "CALL_ENDED_REASON_DECLINED_ELSEWHERE";
+  'callData.endedReason'?:
+    | 'CALL_ENDED_REASON_UNSPECIFIED'
+    | 'CALL_ENDED_REASON_FAILED'
+    | 'CALL_ENDED_REASON_REMOTE_ENDED'
+    | 'CALL_ENDED_REASON_UNANSWERED'
+    | 'CALL_ENDED_REASON_ANSWERED_ELSEWHERE'
+    | 'CALL_ENDED_REASON_DECLINED_ELSEWHERE';
   /** The create time */
-  "callData.createTime"?: string;
+  'callData.createTime'?: string;
   /** The deadline */
-  "callData.deadline"?: string;
+  'callData.deadline'?: string;
   /** The user identify */
-  "callData.caller.userId"?: string;
+  'callData.caller.userId'?: string;
   /** The username */
-  "callData.caller.username"?: string;
+  'callData.caller.username'?: string;
   /** The display name */
-  "callData.caller.displayName"?: string;
+  'callData.caller.displayName'?: string;
   /** Path to avatar */
-  "callData.caller.avatar"?: string;
+  'callData.caller.avatar'?: string;
   /** The display avatar of user */
-  "callData.caller.originalAvatar"?: string;
+  'callData.caller.originalAvatar'?: string;
   /**
    * The type of session description
    *
@@ -2653,14 +2653,14 @@ export interface CallUpdatedEventDataTParams {
    *  - SESSION_DESCRIPTION_TYPE_ROLLBACK: This special type with an empty session description is used to roll back to the previous stable state.
    * @default "SESSION_DESCRIPTION_TYPE_UNSPECIFIED"
    */
-  "callData.caller.rtcSessionDescription.rtcSessionDescriptionType"?:
-    | "SESSION_DESCRIPTION_TYPE_UNSPECIFIED"
-    | "SESSION_DESCRIPTION_TYPE_ANSWER"
-    | "SESSION_DESCRIPTION_TYPE_OFFER"
-    | "SESSION_DESCRIPTION_TYPE_PRANSWER"
-    | "SESSION_DESCRIPTION_TYPE_ROLLBACK";
+  'callData.caller.rtcSessionDescription.rtcSessionDescriptionType'?:
+    | 'SESSION_DESCRIPTION_TYPE_UNSPECIFIED'
+    | 'SESSION_DESCRIPTION_TYPE_ANSWER'
+    | 'SESSION_DESCRIPTION_TYPE_OFFER'
+    | 'SESSION_DESCRIPTION_TYPE_PRANSWER'
+    | 'SESSION_DESCRIPTION_TYPE_ROLLBACK';
   /** The SDP which describes the session. */
-  "callData.caller.rtcSessionDescription.rtcSessionDescriptionSdp"?: string;
+  'callData.caller.rtcSessionDescription.rtcSessionDescriptionSdp'?: string;
   /**
    * The avatar type
    *
@@ -2669,37 +2669,37 @@ export interface CallUpdatedEventDataTParams {
    *  - USER_AVATAR_TYPE_ENUM_VIDEO: User avatar type is video
    * @default "USER_AVATAR_TYPE_ENUM_UNSPECIFIED"
    */
-  "callData.caller.avatarType"?:
-    | "USER_AVATAR_TYPE_ENUM_UNSPECIFIED"
-    | "USER_AVATAR_TYPE_ENUM_PHOTO"
-    | "USER_AVATAR_TYPE_ENUM_VIDEO";
+  'callData.caller.avatarType'?:
+    | 'USER_AVATAR_TYPE_ENUM_UNSPECIFIED'
+    | 'USER_AVATAR_TYPE_ENUM_PHOTO'
+    | 'USER_AVATAR_TYPE_ENUM_VIDEO';
   /**
    * The user badge type
    * @default "USER_BADGE_TYPE_DEFAULT"
    */
-  "callData.caller.userBadgeType"?:
-    | "USER_BADGE_TYPE_DEFAULT"
-    | "USER_BADGE_TYPE_BLUE"
-    | "USER_BADGE_TYPE_GRAY"
-    | "USER_BADGE_TYPE_YELLOW";
+  'callData.caller.userBadgeType'?:
+    | 'USER_BADGE_TYPE_DEFAULT'
+    | 'USER_BADGE_TYPE_BLUE'
+    | 'USER_BADGE_TYPE_GRAY'
+    | 'USER_BADGE_TYPE_YELLOW';
   /** The video avatar */
-  "callData.caller.videoAvatar"?: string;
+  'callData.caller.videoAvatar'?: string;
   /** The decorated avatar */
-  "callData.caller.decoratedAvatar"?: string;
+  'callData.caller.decoratedAvatar'?: string;
   /** The decorated avatar */
-  "callData.caller.originalDecoratedAvatar"?: string;
+  'callData.caller.originalDecoratedAvatar'?: string;
   /** The thumbnail video avatar */
-  "callData.caller.thumbVideoAvatar"?: string;
+  'callData.caller.thumbVideoAvatar'?: string;
   /** The user identify */
-  "callData.callee.userId"?: string;
+  'callData.callee.userId'?: string;
   /** The username */
-  "callData.callee.username"?: string;
+  'callData.callee.username'?: string;
   /** The display name */
-  "callData.callee.displayName"?: string;
+  'callData.callee.displayName'?: string;
   /** Path to avatar */
-  "callData.callee.avatar"?: string;
+  'callData.callee.avatar'?: string;
   /** The display avatar of user */
-  "callData.callee.originalAvatar"?: string;
+  'callData.callee.originalAvatar'?: string;
   /**
    * The type of session description
    *
@@ -2710,14 +2710,14 @@ export interface CallUpdatedEventDataTParams {
    *  - SESSION_DESCRIPTION_TYPE_ROLLBACK: This special type with an empty session description is used to roll back to the previous stable state.
    * @default "SESSION_DESCRIPTION_TYPE_UNSPECIFIED"
    */
-  "callData.callee.rtcSessionDescription.rtcSessionDescriptionType"?:
-    | "SESSION_DESCRIPTION_TYPE_UNSPECIFIED"
-    | "SESSION_DESCRIPTION_TYPE_ANSWER"
-    | "SESSION_DESCRIPTION_TYPE_OFFER"
-    | "SESSION_DESCRIPTION_TYPE_PRANSWER"
-    | "SESSION_DESCRIPTION_TYPE_ROLLBACK";
+  'callData.callee.rtcSessionDescription.rtcSessionDescriptionType'?:
+    | 'SESSION_DESCRIPTION_TYPE_UNSPECIFIED'
+    | 'SESSION_DESCRIPTION_TYPE_ANSWER'
+    | 'SESSION_DESCRIPTION_TYPE_OFFER'
+    | 'SESSION_DESCRIPTION_TYPE_PRANSWER'
+    | 'SESSION_DESCRIPTION_TYPE_ROLLBACK';
   /** The SDP which describes the session. */
-  "callData.callee.rtcSessionDescription.rtcSessionDescriptionSdp"?: string;
+  'callData.callee.rtcSessionDescription.rtcSessionDescriptionSdp'?: string;
   /**
    * The avatar type
    *
@@ -2726,27 +2726,27 @@ export interface CallUpdatedEventDataTParams {
    *  - USER_AVATAR_TYPE_ENUM_VIDEO: User avatar type is video
    * @default "USER_AVATAR_TYPE_ENUM_UNSPECIFIED"
    */
-  "callData.callee.avatarType"?:
-    | "USER_AVATAR_TYPE_ENUM_UNSPECIFIED"
-    | "USER_AVATAR_TYPE_ENUM_PHOTO"
-    | "USER_AVATAR_TYPE_ENUM_VIDEO";
+  'callData.callee.avatarType'?:
+    | 'USER_AVATAR_TYPE_ENUM_UNSPECIFIED'
+    | 'USER_AVATAR_TYPE_ENUM_PHOTO'
+    | 'USER_AVATAR_TYPE_ENUM_VIDEO';
   /**
    * The user badge type
    * @default "USER_BADGE_TYPE_DEFAULT"
    */
-  "callData.callee.userBadgeType"?:
-    | "USER_BADGE_TYPE_DEFAULT"
-    | "USER_BADGE_TYPE_BLUE"
-    | "USER_BADGE_TYPE_GRAY"
-    | "USER_BADGE_TYPE_YELLOW";
+  'callData.callee.userBadgeType'?:
+    | 'USER_BADGE_TYPE_DEFAULT'
+    | 'USER_BADGE_TYPE_BLUE'
+    | 'USER_BADGE_TYPE_GRAY'
+    | 'USER_BADGE_TYPE_YELLOW';
   /** The video avatar */
-  "callData.callee.videoAvatar"?: string;
+  'callData.callee.videoAvatar'?: string;
   /** The decorated avatar */
-  "callData.callee.decoratedAvatar"?: string;
+  'callData.callee.decoratedAvatar'?: string;
   /** The decorated avatar */
-  "callData.callee.originalDecoratedAvatar"?: string;
+  'callData.callee.originalDecoratedAvatar'?: string;
   /** The thumbnail video avatar */
-  "callData.callee.thumbVideoAvatar"?: string;
+  'callData.callee.thumbVideoAvatar'?: string;
   /**
    * ICE connection state
    *
@@ -2760,17 +2760,17 @@ export interface CallUpdatedEventDataTParams {
    *  - ICE_CONNECTION_STATE_CLOSE: The connection state is close
    * @default "ICE_CONNECTION_STATE_UNSPECIFIED"
    */
-  "callData.iceConnectionState"?:
-    | "ICE_CONNECTION_STATE_UNSPECIFIED"
-    | "ICE_CONNECTION_STATE_NEW"
-    | "ICE_CONNECTION_STATE_CHECKING"
-    | "ICE_CONNECTION_STATE_CONNECTED"
-    | "ICE_CONNECTION_STATE_COMPLETED"
-    | "ICE_CONNECTION_STATE_FAILED"
-    | "ICE_CONNECTION_STATE_DISCONNECTED"
-    | "ICE_CONNECTION_STATE_CLOSE";
+  'callData.iceConnectionState'?:
+    | 'ICE_CONNECTION_STATE_UNSPECIFIED'
+    | 'ICE_CONNECTION_STATE_NEW'
+    | 'ICE_CONNECTION_STATE_CHECKING'
+    | 'ICE_CONNECTION_STATE_CONNECTED'
+    | 'ICE_CONNECTION_STATE_COMPLETED'
+    | 'ICE_CONNECTION_STATE_FAILED'
+    | 'ICE_CONNECTION_STATE_DISCONNECTED'
+    | 'ICE_CONNECTION_STATE_CLOSE';
   /** The ringback tone file url */
-  "callData.ringbackToneUrl"?: string;
+  'callData.ringbackToneUrl'?: string;
 }
 
 export interface ChannelAvatarUploadFailedEventDataTParams {
@@ -2784,17 +2784,17 @@ export interface ChannelAvatarUploadFailedEventDataTParams {
 
 export interface ChannelCreatedEventDataTParams {
   /** The workspace identify */
-  "channel.workspaceId"?: string;
+  'channel.workspaceId'?: string;
   /** The channel identify */
-  "channel.channelId"?: string;
+  'channel.channelId'?: string;
   /** The channel's creator is identified by the user. */
-  "channel.userId"?: string;
+  'channel.userId'?: string;
   /** The name of channel */
-  "channel.name"?: string;
+  'channel.name'?: string;
   /** The avatar of channel */
-  "channel.avatar"?: string;
+  'channel.avatar'?: string;
   /** The channel is not yet private. */
-  "channel.isPrivate"?: boolean;
+  'channel.isPrivate'?: boolean;
   /**
    * The type of channel
    *
@@ -2803,22 +2803,22 @@ export interface ChannelCreatedEventDataTParams {
    *  - CHANNEL_TYPE_ENUM_BROADCAST: BROADCAST: A broadcast channel consists of a single sender and multiple receivers
    * @default "CHANNEL_TYPE_ENUM_DM"
    */
-  "channel.type"?:
-    | "CHANNEL_TYPE_ENUM_DM"
-    | "CHANNEL_TYPE_ENUM_CHANNEL"
-    | "CHANNEL_TYPE_ENUM_BROADCAST";
+  'channel.type'?:
+    | 'CHANNEL_TYPE_ENUM_DM'
+    | 'CHANNEL_TYPE_ENUM_CHANNEL'
+    | 'CHANNEL_TYPE_ENUM_BROADCAST';
   /** Invitation link after create channel */
-  "channel.invitationLink"?: string;
+  'channel.invitationLink'?: string;
   /** Is limited saving enabled? */
-  "channel.privacySettings.restrictSavingContent.enable"?: boolean;
-  "channel.premiumSettings.boosted.enable"?: boolean;
+  'channel.privacySettings.restrictSavingContent.enable'?: boolean;
+  'channel.premiumSettings.boosted.enable'?: boolean;
   /** The original avatar */
-  "channel.originalAvatar"?: string;
+  'channel.originalAvatar'?: string;
   /**
    * Only return when get get channel
    * @format int64
    */
-  "channel.totalMembers"?: number;
+  'channel.totalMembers'?: number;
   /**
    * Status of channel has type DM
    *
@@ -2826,21 +2826,21 @@ export interface ChannelCreatedEventDataTParams {
    *  - DIRECT_MESSAGE_STATUS_ENUM_CONTACTED: CONTACTED: The recipient has accepted the message request or they were friends
    * @default "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
    */
-  "channel.dmStatus"?:
-    | "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
-    | "DIRECT_MESSAGE_STATUS_ENUM_CONTACTED";
+  'channel.dmStatus'?:
+    | 'DIRECT_MESSAGE_STATUS_ENUM_PENDING'
+    | 'DIRECT_MESSAGE_STATUS_ENUM_CONTACTED';
   /** The workspace identify */
-  "channel.pinnedMessage.workspaceId"?: string;
+  'channel.pinnedMessage.workspaceId'?: string;
   /** The channel identify */
-  "channel.pinnedMessage.channelId"?: string;
+  'channel.pinnedMessage.channelId'?: string;
   /** The message identify */
-  "channel.pinnedMessage.messageId"?: string;
+  'channel.pinnedMessage.messageId'?: string;
   /** UserId send message */
-  "channel.pinnedMessage.userId"?: string;
+  'channel.pinnedMessage.userId'?: string;
   /** Content of message */
-  "channel.pinnedMessage.content"?: string;
+  'channel.pinnedMessage.content'?: string;
   /** Is a random value created by the client, which is used as a similar attribute to the local ID */
-  "channel.pinnedMessage.ref"?: string;
+  'channel.pinnedMessage.ref'?: string;
   /**
    * Message type and message status
    *
@@ -2848,9 +2848,9 @@ export interface ChannelCreatedEventDataTParams {
    *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
    * @default "MESSAGE_TYPE_ENUM_DEFAULT"
    */
-  "channel.pinnedMessage.messageType"?:
-    | "MESSAGE_TYPE_ENUM_DEFAULT"
-    | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+  'channel.pinnedMessage.messageType'?:
+    | 'MESSAGE_TYPE_ENUM_DEFAULT'
+    | 'MESSAGE_TYPE_ENUM_AUDIT_LOG';
   /**
    * Status of message
    *
@@ -2859,14 +2859,14 @@ export interface ChannelCreatedEventDataTParams {
    *  - MESSAGE_STATUS_ENUM_FAILURE: Send message failed
    * @default "MESSAGE_STATUS_ENUM_PENDING"
    */
-  "channel.pinnedMessage.messageStatus"?:
-    | "MESSAGE_STATUS_ENUM_PENDING"
-    | "MESSAGE_STATUS_ENUM_SUCCESS"
-    | "MESSAGE_STATUS_ENUM_FAILURE";
+  'channel.pinnedMessage.messageStatus'?:
+    | 'MESSAGE_STATUS_ENUM_PENDING'
+    | 'MESSAGE_STATUS_ENUM_SUCCESS'
+    | 'MESSAGE_STATUS_ENUM_FAILURE';
   /** The message identify */
-  "channel.pinnedMessage.originalMessage.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.messageId'?: string;
   /** The message content */
-  "channel.pinnedMessage.originalMessage.content"?: string;
+  'channel.pinnedMessage.originalMessage.content'?: string;
   /**
    * Attachment type
    *
@@ -2884,19 +2884,19 @@ export interface ChannelCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /**
    * types
    *
@@ -2914,27 +2914,27 @@ export interface ChannelCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.link.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.link.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** url */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.link.url"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.link.url'?: string;
   /** short url */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.link.shortUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.link.shortUrl'?: string;
   /** collection_id of sticker file */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.collectionId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.collectionId'?: string;
   /** sticker_id of sticker */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerId'?: string;
   /**
    * types
    *
@@ -2952,27 +2952,27 @@ export interface ChannelCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** url of sticker if attachment type is sticker */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerUrl'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentId'?: string;
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.fileRef'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileId'?: string;
   /**
    * types
    *
@@ -2990,63 +2990,63 @@ export interface ChannelCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileId'?: string;
   /**
    * types
    *
@@ -3064,63 +3064,63 @@ export interface ChannelCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileId'?: string;
   /**
    * types
    *
@@ -3138,63 +3138,63 @@ export interface ChannelCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileId'?: string;
   /**
    * types
    *
@@ -3212,63 +3212,63 @@ export interface ChannelCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileId'?: string;
   /**
    * types
    *
@@ -3286,63 +3286,63 @@ export interface ChannelCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileId'?: string;
   /**
    * types
    *
@@ -3360,63 +3360,63 @@ export interface ChannelCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileId'?: string;
   /**
    * types
    *
@@ -3434,61 +3434,61 @@ export interface ChannelCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.messageId'?: string;
   /**
    * Message type
    *
@@ -3496,29 +3496,29 @@ export interface ChannelCreatedEventDataTParams {
    *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
    * @default "MESSAGE_TYPE_ENUM_DEFAULT"
    */
-  "channel.pinnedMessage.originalMessage.messageType"?:
-    | "MESSAGE_TYPE_ENUM_DEFAULT"
-    | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+  'channel.pinnedMessage.originalMessage.messageType'?:
+    | 'MESSAGE_TYPE_ENUM_DEFAULT'
+    | 'MESSAGE_TYPE_ENUM_AUDIT_LOG';
   /** The location language of content */
-  "channel.pinnedMessage.originalMessage.contentLocale"?: string;
+  'channel.pinnedMessage.originalMessage.contentLocale'?: string;
   /** The list arguments to replace in content message */
-  "channel.pinnedMessage.originalMessage.contentArguments"?: string[];
+  'channel.pinnedMessage.originalMessage.contentArguments'?: string[];
   /** The user identify */
-  "channel.pinnedMessage.originalMessage.userId"?: string;
+  'channel.pinnedMessage.originalMessage.userId'?: string;
   /** Time edit message */
-  "channel.pinnedMessage.originalMessage.editTime"?: string;
+  'channel.pinnedMessage.originalMessage.editTime'?: string;
   /** The create time */
-  "channel.pinnedMessage.originalMessage.createTime"?: string;
+  'channel.pinnedMessage.originalMessage.createTime'?: string;
   /** The update time */
-  "channel.pinnedMessage.originalMessage.updateTime"?: string;
+  'channel.pinnedMessage.originalMessage.updateTime'?: string;
   /**
    * Statistical react of message
    *
    * This is a request variable of the map type. The query format is "map_name[key]=value", e.g. If the map name is Age, the key type is string, and the value type is integer, the query parameter is expressed as Age["bob"]=18
    */
-  "channel.pinnedMessage.reactions"?: any;
+  'channel.pinnedMessage.reactions'?: any;
   /** List username mentions */
-  "channel.pinnedMessage.mentions"?: string[];
+  'channel.pinnedMessage.mentions'?: string[];
   /**
    * Attachment type
    *
@@ -3536,57 +3536,57 @@ export interface ChannelCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** State is thread of message, default = false */
-  "channel.pinnedMessage.isThread"?: boolean;
+  'channel.pinnedMessage.isThread'?: boolean;
   /**
    * Number of times reported, default = 0
    * @format int64
    */
-  "channel.pinnedMessage.reportCount"?: number;
+  'channel.pinnedMessage.reportCount'?: number;
   /** Flag report, default = false */
-  "channel.pinnedMessage.isReported"?: boolean;
+  'channel.pinnedMessage.isReported'?: boolean;
   /**
    * Number of files, using for upload album
    * @format int64
    */
-  "channel.pinnedMessage.attachmentCount"?: number;
+  'channel.pinnedMessage.attachmentCount'?: number;
   /** The location language of content */
-  "channel.pinnedMessage.contentLocale"?: string;
+  'channel.pinnedMessage.contentLocale'?: string;
   /** The list arguments to replace in content message */
-  "channel.pinnedMessage.contentArguments"?: string[];
+  'channel.pinnedMessage.contentArguments'?: string[];
   /** Is pinned */
-  "channel.pinnedMessage.isPinned"?: boolean;
+  'channel.pinnedMessage.isPinned'?: boolean;
   /** Pin time */
-  "channel.pinnedMessage.pinTime"?: string;
+  'channel.pinnedMessage.pinTime'?: string;
   /** Time edit message */
-  "channel.pinnedMessage.editTime"?: string;
+  'channel.pinnedMessage.editTime'?: string;
   /** The first time message created */
-  "channel.pinnedMessage.createTime"?: string;
+  'channel.pinnedMessage.createTime'?: string;
   /** The time message updated */
-  "channel.pinnedMessage.updateTime"?: string;
+  'channel.pinnedMessage.updateTime'?: string;
   /** The list participant id */
-  "channel.participantIds"?: string[];
+  'channel.participantIds'?: string[];
   /** Time recipient reject message request */
-  "channel.rejectTime"?: string;
+  'channel.rejectTime'?: string;
   /** Time recipient accept message request */
-  "channel.acceptTime"?: string;
+  'channel.acceptTime'?: string;
   /** The first time channel created */
-  "channel.createTime"?: string;
+  'channel.createTime'?: string;
   /** The time channel updated */
-  "channel.updateTime"?: string;
+  'channel.updateTime'?: string;
 }
 
 export interface ChannelCreationCompletedEventDataTParams {
@@ -3626,9 +3626,9 @@ export interface ChannelDestinationCloudEventTParams {
    * @default "CHANNEL_TYPE_ENUM_DM"
    */
   channelType?:
-    | "CHANNEL_TYPE_ENUM_DM"
-    | "CHANNEL_TYPE_ENUM_CHANNEL"
-    | "CHANNEL_TYPE_ENUM_BROADCAST";
+    | 'CHANNEL_TYPE_ENUM_DM'
+    | 'CHANNEL_TYPE_ENUM_CHANNEL'
+    | 'CHANNEL_TYPE_ENUM_BROADCAST';
   /** The user identify whom receive message */
   recipientId?: string;
   /** The dm channel identify */
@@ -3641,8 +3641,8 @@ export interface ChannelDestinationCloudEventTParams {
    * @default "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
    */
   dmStatus?:
-    | "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
-    | "DIRECT_MESSAGE_STATUS_ENUM_CONTACTED";
+    | 'DIRECT_MESSAGE_STATUS_ENUM_PENDING'
+    | 'DIRECT_MESSAGE_STATUS_ENUM_CONTACTED';
 }
 
 export interface ChannelNotificationStatusUpdatedEventDataTParams {
@@ -3655,9 +3655,9 @@ export interface ChannelNotificationStatusUpdatedEventDataTParams {
   /** The notification status */
   notificationStatus?: boolean;
   /** The workspace identify */
-  "destination.workspaceId"?: string;
+  'destination.workspaceId'?: string;
   /** The channel identify */
-  "destination.channelId"?: string;
+  'destination.channelId'?: string;
   /**
    * The channel type
    *
@@ -3666,14 +3666,14 @@ export interface ChannelNotificationStatusUpdatedEventDataTParams {
    *  - CHANNEL_TYPE_ENUM_BROADCAST: BROADCAST: A broadcast channel consists of a single sender and multiple receivers
    * @default "CHANNEL_TYPE_ENUM_DM"
    */
-  "destination.channelType"?:
-    | "CHANNEL_TYPE_ENUM_DM"
-    | "CHANNEL_TYPE_ENUM_CHANNEL"
-    | "CHANNEL_TYPE_ENUM_BROADCAST";
+  'destination.channelType'?:
+    | 'CHANNEL_TYPE_ENUM_DM'
+    | 'CHANNEL_TYPE_ENUM_CHANNEL'
+    | 'CHANNEL_TYPE_ENUM_BROADCAST';
   /** The user identify whom receive message */
-  "destination.recipientId"?: string;
+  'destination.recipientId'?: string;
   /** The dm channel identify */
-  "destination.dmId"?: string;
+  'destination.dmId'?: string;
   /**
    * The dm message status
    *
@@ -3681,9 +3681,9 @@ export interface ChannelNotificationStatusUpdatedEventDataTParams {
    *  - DIRECT_MESSAGE_STATUS_ENUM_CONTACTED: CONTACTED: The recipient has accepted the message request or they were friends
    * @default "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
    */
-  "destination.dmStatus"?:
-    | "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
-    | "DIRECT_MESSAGE_STATUS_ENUM_CONTACTED";
+  'destination.dmStatus'?:
+    | 'DIRECT_MESSAGE_STATUS_ENUM_PENDING'
+    | 'DIRECT_MESSAGE_STATUS_ENUM_CONTACTED';
 }
 
 export interface ChannelTypingEventDataTParams {
@@ -3701,17 +3701,17 @@ export interface ChannelTypingEventDataTParams {
 
 export interface ChannelUpdatedEventDataTParams {
   /** The workspace identify */
-  "channel.workspaceId"?: string;
+  'channel.workspaceId'?: string;
   /** The channel identify */
-  "channel.channelId"?: string;
+  'channel.channelId'?: string;
   /** The channel's creator is identified by the user. */
-  "channel.userId"?: string;
+  'channel.userId'?: string;
   /** The name of channel */
-  "channel.name"?: string;
+  'channel.name'?: string;
   /** The avatar of channel */
-  "channel.avatar"?: string;
+  'channel.avatar'?: string;
   /** The channel is not yet private. */
-  "channel.isPrivate"?: boolean;
+  'channel.isPrivate'?: boolean;
   /**
    * The type of channel
    *
@@ -3720,22 +3720,22 @@ export interface ChannelUpdatedEventDataTParams {
    *  - CHANNEL_TYPE_ENUM_BROADCAST: BROADCAST: A broadcast channel consists of a single sender and multiple receivers
    * @default "CHANNEL_TYPE_ENUM_DM"
    */
-  "channel.type"?:
-    | "CHANNEL_TYPE_ENUM_DM"
-    | "CHANNEL_TYPE_ENUM_CHANNEL"
-    | "CHANNEL_TYPE_ENUM_BROADCAST";
+  'channel.type'?:
+    | 'CHANNEL_TYPE_ENUM_DM'
+    | 'CHANNEL_TYPE_ENUM_CHANNEL'
+    | 'CHANNEL_TYPE_ENUM_BROADCAST';
   /** Invitation link after create channel */
-  "channel.invitationLink"?: string;
+  'channel.invitationLink'?: string;
   /** Is limited saving enabled? */
-  "channel.privacySettings.restrictSavingContent.enable"?: boolean;
-  "channel.premiumSettings.boosted.enable"?: boolean;
+  'channel.privacySettings.restrictSavingContent.enable'?: boolean;
+  'channel.premiumSettings.boosted.enable'?: boolean;
   /** The original avatar */
-  "channel.originalAvatar"?: string;
+  'channel.originalAvatar'?: string;
   /**
    * Only return when get get channel
    * @format int64
    */
-  "channel.totalMembers"?: number;
+  'channel.totalMembers'?: number;
   /**
    * Status of channel has type DM
    *
@@ -3743,21 +3743,21 @@ export interface ChannelUpdatedEventDataTParams {
    *  - DIRECT_MESSAGE_STATUS_ENUM_CONTACTED: CONTACTED: The recipient has accepted the message request or they were friends
    * @default "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
    */
-  "channel.dmStatus"?:
-    | "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
-    | "DIRECT_MESSAGE_STATUS_ENUM_CONTACTED";
+  'channel.dmStatus'?:
+    | 'DIRECT_MESSAGE_STATUS_ENUM_PENDING'
+    | 'DIRECT_MESSAGE_STATUS_ENUM_CONTACTED';
   /** The workspace identify */
-  "channel.pinnedMessage.workspaceId"?: string;
+  'channel.pinnedMessage.workspaceId'?: string;
   /** The channel identify */
-  "channel.pinnedMessage.channelId"?: string;
+  'channel.pinnedMessage.channelId'?: string;
   /** The message identify */
-  "channel.pinnedMessage.messageId"?: string;
+  'channel.pinnedMessage.messageId'?: string;
   /** UserId send message */
-  "channel.pinnedMessage.userId"?: string;
+  'channel.pinnedMessage.userId'?: string;
   /** Content of message */
-  "channel.pinnedMessage.content"?: string;
+  'channel.pinnedMessage.content'?: string;
   /** Is a random value created by the client, which is used as a similar attribute to the local ID */
-  "channel.pinnedMessage.ref"?: string;
+  'channel.pinnedMessage.ref'?: string;
   /**
    * Message type and message status
    *
@@ -3765,9 +3765,9 @@ export interface ChannelUpdatedEventDataTParams {
    *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
    * @default "MESSAGE_TYPE_ENUM_DEFAULT"
    */
-  "channel.pinnedMessage.messageType"?:
-    | "MESSAGE_TYPE_ENUM_DEFAULT"
-    | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+  'channel.pinnedMessage.messageType'?:
+    | 'MESSAGE_TYPE_ENUM_DEFAULT'
+    | 'MESSAGE_TYPE_ENUM_AUDIT_LOG';
   /**
    * Status of message
    *
@@ -3776,14 +3776,14 @@ export interface ChannelUpdatedEventDataTParams {
    *  - MESSAGE_STATUS_ENUM_FAILURE: Send message failed
    * @default "MESSAGE_STATUS_ENUM_PENDING"
    */
-  "channel.pinnedMessage.messageStatus"?:
-    | "MESSAGE_STATUS_ENUM_PENDING"
-    | "MESSAGE_STATUS_ENUM_SUCCESS"
-    | "MESSAGE_STATUS_ENUM_FAILURE";
+  'channel.pinnedMessage.messageStatus'?:
+    | 'MESSAGE_STATUS_ENUM_PENDING'
+    | 'MESSAGE_STATUS_ENUM_SUCCESS'
+    | 'MESSAGE_STATUS_ENUM_FAILURE';
   /** The message identify */
-  "channel.pinnedMessage.originalMessage.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.messageId'?: string;
   /** The message content */
-  "channel.pinnedMessage.originalMessage.content"?: string;
+  'channel.pinnedMessage.originalMessage.content'?: string;
   /**
    * Attachment type
    *
@@ -3801,19 +3801,19 @@ export interface ChannelUpdatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /**
    * types
    *
@@ -3831,27 +3831,27 @@ export interface ChannelUpdatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.link.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.link.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** url */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.link.url"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.link.url'?: string;
   /** short url */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.link.shortUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.link.shortUrl'?: string;
   /** collection_id of sticker file */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.collectionId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.collectionId'?: string;
   /** sticker_id of sticker */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerId'?: string;
   /**
    * types
    *
@@ -3869,27 +3869,27 @@ export interface ChannelUpdatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** url of sticker if attachment type is sticker */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerUrl'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentId'?: string;
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.fileRef'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileId'?: string;
   /**
    * types
    *
@@ -3907,63 +3907,63 @@ export interface ChannelUpdatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileId'?: string;
   /**
    * types
    *
@@ -3981,63 +3981,63 @@ export interface ChannelUpdatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileId'?: string;
   /**
    * types
    *
@@ -4055,63 +4055,63 @@ export interface ChannelUpdatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileId'?: string;
   /**
    * types
    *
@@ -4129,63 +4129,63 @@ export interface ChannelUpdatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileId'?: string;
   /**
    * types
    *
@@ -4203,63 +4203,63 @@ export interface ChannelUpdatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileId'?: string;
   /**
    * types
    *
@@ -4277,63 +4277,63 @@ export interface ChannelUpdatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileId'?: string;
   /**
    * types
    *
@@ -4351,61 +4351,61 @@ export interface ChannelUpdatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.messageId'?: string;
   /**
    * Message type
    *
@@ -4413,29 +4413,29 @@ export interface ChannelUpdatedEventDataTParams {
    *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
    * @default "MESSAGE_TYPE_ENUM_DEFAULT"
    */
-  "channel.pinnedMessage.originalMessage.messageType"?:
-    | "MESSAGE_TYPE_ENUM_DEFAULT"
-    | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+  'channel.pinnedMessage.originalMessage.messageType'?:
+    | 'MESSAGE_TYPE_ENUM_DEFAULT'
+    | 'MESSAGE_TYPE_ENUM_AUDIT_LOG';
   /** The location language of content */
-  "channel.pinnedMessage.originalMessage.contentLocale"?: string;
+  'channel.pinnedMessage.originalMessage.contentLocale'?: string;
   /** The list arguments to replace in content message */
-  "channel.pinnedMessage.originalMessage.contentArguments"?: string[];
+  'channel.pinnedMessage.originalMessage.contentArguments'?: string[];
   /** The user identify */
-  "channel.pinnedMessage.originalMessage.userId"?: string;
+  'channel.pinnedMessage.originalMessage.userId'?: string;
   /** Time edit message */
-  "channel.pinnedMessage.originalMessage.editTime"?: string;
+  'channel.pinnedMessage.originalMessage.editTime'?: string;
   /** The create time */
-  "channel.pinnedMessage.originalMessage.createTime"?: string;
+  'channel.pinnedMessage.originalMessage.createTime'?: string;
   /** The update time */
-  "channel.pinnedMessage.originalMessage.updateTime"?: string;
+  'channel.pinnedMessage.originalMessage.updateTime'?: string;
   /**
    * Statistical react of message
    *
    * This is a request variable of the map type. The query format is "map_name[key]=value", e.g. If the map name is Age, the key type is string, and the value type is integer, the query parameter is expressed as Age["bob"]=18
    */
-  "channel.pinnedMessage.reactions"?: any;
+  'channel.pinnedMessage.reactions'?: any;
   /** List username mentions */
-  "channel.pinnedMessage.mentions"?: string[];
+  'channel.pinnedMessage.mentions'?: string[];
   /**
    * Attachment type
    *
@@ -4453,57 +4453,57 @@ export interface ChannelUpdatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** State is thread of message, default = false */
-  "channel.pinnedMessage.isThread"?: boolean;
+  'channel.pinnedMessage.isThread'?: boolean;
   /**
    * Number of times reported, default = 0
    * @format int64
    */
-  "channel.pinnedMessage.reportCount"?: number;
+  'channel.pinnedMessage.reportCount'?: number;
   /** Flag report, default = false */
-  "channel.pinnedMessage.isReported"?: boolean;
+  'channel.pinnedMessage.isReported'?: boolean;
   /**
    * Number of files, using for upload album
    * @format int64
    */
-  "channel.pinnedMessage.attachmentCount"?: number;
+  'channel.pinnedMessage.attachmentCount'?: number;
   /** The location language of content */
-  "channel.pinnedMessage.contentLocale"?: string;
+  'channel.pinnedMessage.contentLocale'?: string;
   /** The list arguments to replace in content message */
-  "channel.pinnedMessage.contentArguments"?: string[];
+  'channel.pinnedMessage.contentArguments'?: string[];
   /** Is pinned */
-  "channel.pinnedMessage.isPinned"?: boolean;
+  'channel.pinnedMessage.isPinned'?: boolean;
   /** Pin time */
-  "channel.pinnedMessage.pinTime"?: string;
+  'channel.pinnedMessage.pinTime'?: string;
   /** Time edit message */
-  "channel.pinnedMessage.editTime"?: string;
+  'channel.pinnedMessage.editTime'?: string;
   /** The first time message created */
-  "channel.pinnedMessage.createTime"?: string;
+  'channel.pinnedMessage.createTime'?: string;
   /** The time message updated */
-  "channel.pinnedMessage.updateTime"?: string;
+  'channel.pinnedMessage.updateTime'?: string;
   /** The list participant id */
-  "channel.participantIds"?: string[];
+  'channel.participantIds'?: string[];
   /** Time recipient reject message request */
-  "channel.rejectTime"?: string;
+  'channel.rejectTime'?: string;
   /** Time recipient accept message request */
-  "channel.acceptTime"?: string;
+  'channel.acceptTime'?: string;
   /** The first time channel created */
-  "channel.createTime"?: string;
+  'channel.createTime'?: string;
   /** The time channel updated */
-  "channel.updateTime"?: string;
+  'channel.updateTime'?: string;
 }
 
 export interface CloudEventTParams {
@@ -4552,12 +4552,12 @@ export interface CloudEventTParams {
    * Schemes other than `http`, `https` (or the empty scheme) might be
    * used with implementation specific semantics.
    */
-  "data.typeUrl"?: string;
+  'data.typeUrl'?: string;
   /**
    * Must be a valid serialized protocol buffer of the above specified type.
    * @format byte
    */
-  "data.value"?: string;
+  'data.value'?: string;
 }
 
 export interface CoverPhotoCreatedEventDataTParams {
@@ -4581,17 +4581,17 @@ export interface CoverPhotoUpdatedDataTParams {
 
 export interface DmChannelCreatedEventDataTParams {
   /** The workspace identify */
-  "channel.workspaceId"?: string;
+  'channel.workspaceId'?: string;
   /** The channel identify */
-  "channel.channelId"?: string;
+  'channel.channelId'?: string;
   /** The channel's creator is identified by the user. */
-  "channel.userId"?: string;
+  'channel.userId'?: string;
   /** The name of channel */
-  "channel.name"?: string;
+  'channel.name'?: string;
   /** The avatar of channel */
-  "channel.avatar"?: string;
+  'channel.avatar'?: string;
   /** The channel is not yet private. */
-  "channel.isPrivate"?: boolean;
+  'channel.isPrivate'?: boolean;
   /**
    * The type of channel
    *
@@ -4600,22 +4600,22 @@ export interface DmChannelCreatedEventDataTParams {
    *  - CHANNEL_TYPE_ENUM_BROADCAST: BROADCAST: A broadcast channel consists of a single sender and multiple receivers
    * @default "CHANNEL_TYPE_ENUM_DM"
    */
-  "channel.type"?:
-    | "CHANNEL_TYPE_ENUM_DM"
-    | "CHANNEL_TYPE_ENUM_CHANNEL"
-    | "CHANNEL_TYPE_ENUM_BROADCAST";
+  'channel.type'?:
+    | 'CHANNEL_TYPE_ENUM_DM'
+    | 'CHANNEL_TYPE_ENUM_CHANNEL'
+    | 'CHANNEL_TYPE_ENUM_BROADCAST';
   /** Invitation link after create channel */
-  "channel.invitationLink"?: string;
+  'channel.invitationLink'?: string;
   /** Is limited saving enabled? */
-  "channel.privacySettings.restrictSavingContent.enable"?: boolean;
-  "channel.premiumSettings.boosted.enable"?: boolean;
+  'channel.privacySettings.restrictSavingContent.enable'?: boolean;
+  'channel.premiumSettings.boosted.enable'?: boolean;
   /** The original avatar */
-  "channel.originalAvatar"?: string;
+  'channel.originalAvatar'?: string;
   /**
    * Only return when get get channel
    * @format int64
    */
-  "channel.totalMembers"?: number;
+  'channel.totalMembers'?: number;
   /**
    * Status of channel has type DM
    *
@@ -4623,21 +4623,21 @@ export interface DmChannelCreatedEventDataTParams {
    *  - DIRECT_MESSAGE_STATUS_ENUM_CONTACTED: CONTACTED: The recipient has accepted the message request or they were friends
    * @default "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
    */
-  "channel.dmStatus"?:
-    | "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
-    | "DIRECT_MESSAGE_STATUS_ENUM_CONTACTED";
+  'channel.dmStatus'?:
+    | 'DIRECT_MESSAGE_STATUS_ENUM_PENDING'
+    | 'DIRECT_MESSAGE_STATUS_ENUM_CONTACTED';
   /** The workspace identify */
-  "channel.pinnedMessage.workspaceId"?: string;
+  'channel.pinnedMessage.workspaceId'?: string;
   /** The channel identify */
-  "channel.pinnedMessage.channelId"?: string;
+  'channel.pinnedMessage.channelId'?: string;
   /** The message identify */
-  "channel.pinnedMessage.messageId"?: string;
+  'channel.pinnedMessage.messageId'?: string;
   /** UserId send message */
-  "channel.pinnedMessage.userId"?: string;
+  'channel.pinnedMessage.userId'?: string;
   /** Content of message */
-  "channel.pinnedMessage.content"?: string;
+  'channel.pinnedMessage.content'?: string;
   /** Is a random value created by the client, which is used as a similar attribute to the local ID */
-  "channel.pinnedMessage.ref"?: string;
+  'channel.pinnedMessage.ref'?: string;
   /**
    * Message type and message status
    *
@@ -4645,9 +4645,9 @@ export interface DmChannelCreatedEventDataTParams {
    *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
    * @default "MESSAGE_TYPE_ENUM_DEFAULT"
    */
-  "channel.pinnedMessage.messageType"?:
-    | "MESSAGE_TYPE_ENUM_DEFAULT"
-    | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+  'channel.pinnedMessage.messageType'?:
+    | 'MESSAGE_TYPE_ENUM_DEFAULT'
+    | 'MESSAGE_TYPE_ENUM_AUDIT_LOG';
   /**
    * Status of message
    *
@@ -4656,14 +4656,14 @@ export interface DmChannelCreatedEventDataTParams {
    *  - MESSAGE_STATUS_ENUM_FAILURE: Send message failed
    * @default "MESSAGE_STATUS_ENUM_PENDING"
    */
-  "channel.pinnedMessage.messageStatus"?:
-    | "MESSAGE_STATUS_ENUM_PENDING"
-    | "MESSAGE_STATUS_ENUM_SUCCESS"
-    | "MESSAGE_STATUS_ENUM_FAILURE";
+  'channel.pinnedMessage.messageStatus'?:
+    | 'MESSAGE_STATUS_ENUM_PENDING'
+    | 'MESSAGE_STATUS_ENUM_SUCCESS'
+    | 'MESSAGE_STATUS_ENUM_FAILURE';
   /** The message identify */
-  "channel.pinnedMessage.originalMessage.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.messageId'?: string;
   /** The message content */
-  "channel.pinnedMessage.originalMessage.content"?: string;
+  'channel.pinnedMessage.originalMessage.content'?: string;
   /**
    * Attachment type
    *
@@ -4681,19 +4681,19 @@ export interface DmChannelCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /**
    * types
    *
@@ -4711,27 +4711,27 @@ export interface DmChannelCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.link.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.link.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** url */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.link.url"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.link.url'?: string;
   /** short url */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.link.shortUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.link.shortUrl'?: string;
   /** collection_id of sticker file */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.collectionId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.collectionId'?: string;
   /** sticker_id of sticker */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerId'?: string;
   /**
    * types
    *
@@ -4749,27 +4749,27 @@ export interface DmChannelCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** url of sticker if attachment type is sticker */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerUrl'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentId'?: string;
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.fileRef'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileId'?: string;
   /**
    * types
    *
@@ -4787,63 +4787,63 @@ export interface DmChannelCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileId'?: string;
   /**
    * types
    *
@@ -4861,63 +4861,63 @@ export interface DmChannelCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileId'?: string;
   /**
    * types
    *
@@ -4935,63 +4935,63 @@ export interface DmChannelCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileId'?: string;
   /**
    * types
    *
@@ -5009,63 +5009,63 @@ export interface DmChannelCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileId'?: string;
   /**
    * types
    *
@@ -5083,63 +5083,63 @@ export interface DmChannelCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileId'?: string;
   /**
    * types
    *
@@ -5157,63 +5157,63 @@ export interface DmChannelCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileId'?: string;
   /**
    * types
    *
@@ -5231,61 +5231,61 @@ export interface DmChannelCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.messageId'?: string;
   /**
    * Message type
    *
@@ -5293,29 +5293,29 @@ export interface DmChannelCreatedEventDataTParams {
    *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
    * @default "MESSAGE_TYPE_ENUM_DEFAULT"
    */
-  "channel.pinnedMessage.originalMessage.messageType"?:
-    | "MESSAGE_TYPE_ENUM_DEFAULT"
-    | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+  'channel.pinnedMessage.originalMessage.messageType'?:
+    | 'MESSAGE_TYPE_ENUM_DEFAULT'
+    | 'MESSAGE_TYPE_ENUM_AUDIT_LOG';
   /** The location language of content */
-  "channel.pinnedMessage.originalMessage.contentLocale"?: string;
+  'channel.pinnedMessage.originalMessage.contentLocale'?: string;
   /** The list arguments to replace in content message */
-  "channel.pinnedMessage.originalMessage.contentArguments"?: string[];
+  'channel.pinnedMessage.originalMessage.contentArguments'?: string[];
   /** The user identify */
-  "channel.pinnedMessage.originalMessage.userId"?: string;
+  'channel.pinnedMessage.originalMessage.userId'?: string;
   /** Time edit message */
-  "channel.pinnedMessage.originalMessage.editTime"?: string;
+  'channel.pinnedMessage.originalMessage.editTime'?: string;
   /** The create time */
-  "channel.pinnedMessage.originalMessage.createTime"?: string;
+  'channel.pinnedMessage.originalMessage.createTime'?: string;
   /** The update time */
-  "channel.pinnedMessage.originalMessage.updateTime"?: string;
+  'channel.pinnedMessage.originalMessage.updateTime'?: string;
   /**
    * Statistical react of message
    *
    * This is a request variable of the map type. The query format is "map_name[key]=value", e.g. If the map name is Age, the key type is string, and the value type is integer, the query parameter is expressed as Age["bob"]=18
    */
-  "channel.pinnedMessage.reactions"?: any;
+  'channel.pinnedMessage.reactions'?: any;
   /** List username mentions */
-  "channel.pinnedMessage.mentions"?: string[];
+  'channel.pinnedMessage.mentions'?: string[];
   /**
    * Attachment type
    *
@@ -5333,72 +5333,72 @@ export interface DmChannelCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** State is thread of message, default = false */
-  "channel.pinnedMessage.isThread"?: boolean;
+  'channel.pinnedMessage.isThread'?: boolean;
   /**
    * Number of times reported, default = 0
    * @format int64
    */
-  "channel.pinnedMessage.reportCount"?: number;
+  'channel.pinnedMessage.reportCount'?: number;
   /** Flag report, default = false */
-  "channel.pinnedMessage.isReported"?: boolean;
+  'channel.pinnedMessage.isReported'?: boolean;
   /**
    * Number of files, using for upload album
    * @format int64
    */
-  "channel.pinnedMessage.attachmentCount"?: number;
+  'channel.pinnedMessage.attachmentCount'?: number;
   /** The location language of content */
-  "channel.pinnedMessage.contentLocale"?: string;
+  'channel.pinnedMessage.contentLocale'?: string;
   /** The list arguments to replace in content message */
-  "channel.pinnedMessage.contentArguments"?: string[];
+  'channel.pinnedMessage.contentArguments'?: string[];
   /** Is pinned */
-  "channel.pinnedMessage.isPinned"?: boolean;
+  'channel.pinnedMessage.isPinned'?: boolean;
   /** Pin time */
-  "channel.pinnedMessage.pinTime"?: string;
+  'channel.pinnedMessage.pinTime'?: string;
   /** Time edit message */
-  "channel.pinnedMessage.editTime"?: string;
+  'channel.pinnedMessage.editTime'?: string;
   /** The first time message created */
-  "channel.pinnedMessage.createTime"?: string;
+  'channel.pinnedMessage.createTime'?: string;
   /** The time message updated */
-  "channel.pinnedMessage.updateTime"?: string;
+  'channel.pinnedMessage.updateTime'?: string;
   /** The list participant id */
-  "channel.participantIds"?: string[];
+  'channel.participantIds'?: string[];
   /** Time recipient reject message request */
-  "channel.rejectTime"?: string;
+  'channel.rejectTime'?: string;
   /** Time recipient accept message request */
-  "channel.acceptTime"?: string;
+  'channel.acceptTime'?: string;
   /** The first time channel created */
-  "channel.createTime"?: string;
+  'channel.createTime'?: string;
   /** The time channel updated */
-  "channel.updateTime"?: string;
+  'channel.updateTime'?: string;
 }
 
 export interface DmChannelUpdatedEventDataTParams {
   /** The workspace identify */
-  "channel.workspaceId"?: string;
+  'channel.workspaceId'?: string;
   /** The channel identify */
-  "channel.channelId"?: string;
+  'channel.channelId'?: string;
   /** The channel's creator is identified by the user. */
-  "channel.userId"?: string;
+  'channel.userId'?: string;
   /** The name of channel */
-  "channel.name"?: string;
+  'channel.name'?: string;
   /** The avatar of channel */
-  "channel.avatar"?: string;
+  'channel.avatar'?: string;
   /** The channel is not yet private. */
-  "channel.isPrivate"?: boolean;
+  'channel.isPrivate'?: boolean;
   /**
    * The type of channel
    *
@@ -5407,22 +5407,22 @@ export interface DmChannelUpdatedEventDataTParams {
    *  - CHANNEL_TYPE_ENUM_BROADCAST: BROADCAST: A broadcast channel consists of a single sender and multiple receivers
    * @default "CHANNEL_TYPE_ENUM_DM"
    */
-  "channel.type"?:
-    | "CHANNEL_TYPE_ENUM_DM"
-    | "CHANNEL_TYPE_ENUM_CHANNEL"
-    | "CHANNEL_TYPE_ENUM_BROADCAST";
+  'channel.type'?:
+    | 'CHANNEL_TYPE_ENUM_DM'
+    | 'CHANNEL_TYPE_ENUM_CHANNEL'
+    | 'CHANNEL_TYPE_ENUM_BROADCAST';
   /** Invitation link after create channel */
-  "channel.invitationLink"?: string;
+  'channel.invitationLink'?: string;
   /** Is limited saving enabled? */
-  "channel.privacySettings.restrictSavingContent.enable"?: boolean;
-  "channel.premiumSettings.boosted.enable"?: boolean;
+  'channel.privacySettings.restrictSavingContent.enable'?: boolean;
+  'channel.premiumSettings.boosted.enable'?: boolean;
   /** The original avatar */
-  "channel.originalAvatar"?: string;
+  'channel.originalAvatar'?: string;
   /**
    * Only return when get get channel
    * @format int64
    */
-  "channel.totalMembers"?: number;
+  'channel.totalMembers'?: number;
   /**
    * Status of channel has type DM
    *
@@ -5430,21 +5430,21 @@ export interface DmChannelUpdatedEventDataTParams {
    *  - DIRECT_MESSAGE_STATUS_ENUM_CONTACTED: CONTACTED: The recipient has accepted the message request or they were friends
    * @default "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
    */
-  "channel.dmStatus"?:
-    | "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
-    | "DIRECT_MESSAGE_STATUS_ENUM_CONTACTED";
+  'channel.dmStatus'?:
+    | 'DIRECT_MESSAGE_STATUS_ENUM_PENDING'
+    | 'DIRECT_MESSAGE_STATUS_ENUM_CONTACTED';
   /** The workspace identify */
-  "channel.pinnedMessage.workspaceId"?: string;
+  'channel.pinnedMessage.workspaceId'?: string;
   /** The channel identify */
-  "channel.pinnedMessage.channelId"?: string;
+  'channel.pinnedMessage.channelId'?: string;
   /** The message identify */
-  "channel.pinnedMessage.messageId"?: string;
+  'channel.pinnedMessage.messageId'?: string;
   /** UserId send message */
-  "channel.pinnedMessage.userId"?: string;
+  'channel.pinnedMessage.userId'?: string;
   /** Content of message */
-  "channel.pinnedMessage.content"?: string;
+  'channel.pinnedMessage.content'?: string;
   /** Is a random value created by the client, which is used as a similar attribute to the local ID */
-  "channel.pinnedMessage.ref"?: string;
+  'channel.pinnedMessage.ref'?: string;
   /**
    * Message type and message status
    *
@@ -5452,9 +5452,9 @@ export interface DmChannelUpdatedEventDataTParams {
    *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
    * @default "MESSAGE_TYPE_ENUM_DEFAULT"
    */
-  "channel.pinnedMessage.messageType"?:
-    | "MESSAGE_TYPE_ENUM_DEFAULT"
-    | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+  'channel.pinnedMessage.messageType'?:
+    | 'MESSAGE_TYPE_ENUM_DEFAULT'
+    | 'MESSAGE_TYPE_ENUM_AUDIT_LOG';
   /**
    * Status of message
    *
@@ -5463,14 +5463,14 @@ export interface DmChannelUpdatedEventDataTParams {
    *  - MESSAGE_STATUS_ENUM_FAILURE: Send message failed
    * @default "MESSAGE_STATUS_ENUM_PENDING"
    */
-  "channel.pinnedMessage.messageStatus"?:
-    | "MESSAGE_STATUS_ENUM_PENDING"
-    | "MESSAGE_STATUS_ENUM_SUCCESS"
-    | "MESSAGE_STATUS_ENUM_FAILURE";
+  'channel.pinnedMessage.messageStatus'?:
+    | 'MESSAGE_STATUS_ENUM_PENDING'
+    | 'MESSAGE_STATUS_ENUM_SUCCESS'
+    | 'MESSAGE_STATUS_ENUM_FAILURE';
   /** The message identify */
-  "channel.pinnedMessage.originalMessage.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.messageId'?: string;
   /** The message content */
-  "channel.pinnedMessage.originalMessage.content"?: string;
+  'channel.pinnedMessage.originalMessage.content'?: string;
   /**
    * Attachment type
    *
@@ -5488,19 +5488,19 @@ export interface DmChannelUpdatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /**
    * types
    *
@@ -5518,27 +5518,27 @@ export interface DmChannelUpdatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.link.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.link.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** url */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.link.url"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.link.url'?: string;
   /** short url */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.link.shortUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.link.shortUrl'?: string;
   /** collection_id of sticker file */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.collectionId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.collectionId'?: string;
   /** sticker_id of sticker */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerId'?: string;
   /**
    * types
    *
@@ -5556,27 +5556,27 @@ export interface DmChannelUpdatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** url of sticker if attachment type is sticker */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerUrl'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentId'?: string;
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.fileRef'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileId'?: string;
   /**
    * types
    *
@@ -5594,63 +5594,63 @@ export interface DmChannelUpdatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileId'?: string;
   /**
    * types
    *
@@ -5668,63 +5668,63 @@ export interface DmChannelUpdatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileId'?: string;
   /**
    * types
    *
@@ -5742,63 +5742,63 @@ export interface DmChannelUpdatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileId'?: string;
   /**
    * types
    *
@@ -5816,63 +5816,63 @@ export interface DmChannelUpdatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileId'?: string;
   /**
    * types
    *
@@ -5890,63 +5890,63 @@ export interface DmChannelUpdatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileId'?: string;
   /**
    * types
    *
@@ -5964,63 +5964,63 @@ export interface DmChannelUpdatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileId'?: string;
   /**
    * types
    *
@@ -6038,61 +6038,61 @@ export interface DmChannelUpdatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.messageId'?: string;
   /**
    * Message type
    *
@@ -6100,29 +6100,29 @@ export interface DmChannelUpdatedEventDataTParams {
    *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
    * @default "MESSAGE_TYPE_ENUM_DEFAULT"
    */
-  "channel.pinnedMessage.originalMessage.messageType"?:
-    | "MESSAGE_TYPE_ENUM_DEFAULT"
-    | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+  'channel.pinnedMessage.originalMessage.messageType'?:
+    | 'MESSAGE_TYPE_ENUM_DEFAULT'
+    | 'MESSAGE_TYPE_ENUM_AUDIT_LOG';
   /** The location language of content */
-  "channel.pinnedMessage.originalMessage.contentLocale"?: string;
+  'channel.pinnedMessage.originalMessage.contentLocale'?: string;
   /** The list arguments to replace in content message */
-  "channel.pinnedMessage.originalMessage.contentArguments"?: string[];
+  'channel.pinnedMessage.originalMessage.contentArguments'?: string[];
   /** The user identify */
-  "channel.pinnedMessage.originalMessage.userId"?: string;
+  'channel.pinnedMessage.originalMessage.userId'?: string;
   /** Time edit message */
-  "channel.pinnedMessage.originalMessage.editTime"?: string;
+  'channel.pinnedMessage.originalMessage.editTime'?: string;
   /** The create time */
-  "channel.pinnedMessage.originalMessage.createTime"?: string;
+  'channel.pinnedMessage.originalMessage.createTime'?: string;
   /** The update time */
-  "channel.pinnedMessage.originalMessage.updateTime"?: string;
+  'channel.pinnedMessage.originalMessage.updateTime'?: string;
   /**
    * Statistical react of message
    *
    * This is a request variable of the map type. The query format is "map_name[key]=value", e.g. If the map name is Age, the key type is string, and the value type is integer, the query parameter is expressed as Age["bob"]=18
    */
-  "channel.pinnedMessage.reactions"?: any;
+  'channel.pinnedMessage.reactions'?: any;
   /** List username mentions */
-  "channel.pinnedMessage.mentions"?: string[];
+  'channel.pinnedMessage.mentions'?: string[];
   /**
    * Attachment type
    *
@@ -6140,57 +6140,57 @@ export interface DmChannelUpdatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** State is thread of message, default = false */
-  "channel.pinnedMessage.isThread"?: boolean;
+  'channel.pinnedMessage.isThread'?: boolean;
   /**
    * Number of times reported, default = 0
    * @format int64
    */
-  "channel.pinnedMessage.reportCount"?: number;
+  'channel.pinnedMessage.reportCount'?: number;
   /** Flag report, default = false */
-  "channel.pinnedMessage.isReported"?: boolean;
+  'channel.pinnedMessage.isReported'?: boolean;
   /**
    * Number of files, using for upload album
    * @format int64
    */
-  "channel.pinnedMessage.attachmentCount"?: number;
+  'channel.pinnedMessage.attachmentCount'?: number;
   /** The location language of content */
-  "channel.pinnedMessage.contentLocale"?: string;
+  'channel.pinnedMessage.contentLocale'?: string;
   /** The list arguments to replace in content message */
-  "channel.pinnedMessage.contentArguments"?: string[];
+  'channel.pinnedMessage.contentArguments'?: string[];
   /** Is pinned */
-  "channel.pinnedMessage.isPinned"?: boolean;
+  'channel.pinnedMessage.isPinned'?: boolean;
   /** Pin time */
-  "channel.pinnedMessage.pinTime"?: string;
+  'channel.pinnedMessage.pinTime'?: string;
   /** Time edit message */
-  "channel.pinnedMessage.editTime"?: string;
+  'channel.pinnedMessage.editTime'?: string;
   /** The first time message created */
-  "channel.pinnedMessage.createTime"?: string;
+  'channel.pinnedMessage.createTime'?: string;
   /** The time message updated */
-  "channel.pinnedMessage.updateTime"?: string;
+  'channel.pinnedMessage.updateTime'?: string;
   /** The list participant id */
-  "channel.participantIds"?: string[];
+  'channel.participantIds'?: string[];
   /** Time recipient reject message request */
-  "channel.rejectTime"?: string;
+  'channel.rejectTime'?: string;
   /** Time recipient accept message request */
-  "channel.acceptTime"?: string;
+  'channel.acceptTime'?: string;
   /** The first time channel created */
-  "channel.createTime"?: string;
+  'channel.createTime'?: string;
   /** The time channel updated */
-  "channel.updateTime"?: string;
+  'channel.updateTime'?: string;
 }
 
 export interface DecoratedAvatarRemovedEventDataTParams {
@@ -6253,10 +6253,10 @@ export interface FileUploadedEventDataTParams {
    * @default "ATTACHMENT_FILE_STATUS_ENUM_UNSPECIFIED"
    */
   attachmentFileStatus?:
-    | "ATTACHMENT_FILE_STATUS_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_FILE_STATUS_ENUM_UPLOADING"
-    | "ATTACHMENT_FILE_STATUS_ENUM_SUCCESS"
-    | "ATTACHMENT_FILE_STATUS_ENUM_FAILURE";
+    | 'ATTACHMENT_FILE_STATUS_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_FILE_STATUS_ENUM_UPLOADING'
+    | 'ATTACHMENT_FILE_STATUS_ENUM_SUCCESS'
+    | 'ATTACHMENT_FILE_STATUS_ENUM_FAILURE';
   /** The file ref */
   fileRef?: string;
   /** The file name */
@@ -6286,9 +6286,9 @@ export interface GatewayConnectedEventDataTParams {
 
 export interface IncomingFriendRequestAcceptedEventDataTParams {
   /** The user identify whom send request */
-  "friendRequest.requestedFromUserId"?: string;
+  'friendRequest.requestedFromUserId'?: string;
   /** The user identify whom receive request */
-  "friendRequest.requestedToUserId"?: string;
+  'friendRequest.requestedToUserId'?: string;
   /**
    * The status of friend
    *
@@ -6300,34 +6300,34 @@ export interface IncomingFriendRequestAcceptedEventDataTParams {
    *  - FRIEND_STATUS_ENUM_FRIEND: FRIEND: Two user are friends.
    * @default "FRIEND_STATUS_ENUM_UNSPECIFIED"
    */
-  "friendRequest.status"?:
-    | "FRIEND_STATUS_ENUM_UNSPECIFIED"
-    | "FRIEND_STATUS_ENUM_NOT_FRIEND"
-    | "FRIEND_STATUS_ENUM_REQUEST_SENT"
-    | "FRIEND_STATUS_ENUM_REQUEST_RECEIVED"
-    | "FRIEND_STATUS_ENUM_REQUEST_DELETED"
-    | "FRIEND_STATUS_ENUM_FRIEND";
+  'friendRequest.status'?:
+    | 'FRIEND_STATUS_ENUM_UNSPECIFIED'
+    | 'FRIEND_STATUS_ENUM_NOT_FRIEND'
+    | 'FRIEND_STATUS_ENUM_REQUEST_SENT'
+    | 'FRIEND_STATUS_ENUM_REQUEST_RECEIVED'
+    | 'FRIEND_STATUS_ENUM_REQUEST_DELETED'
+    | 'FRIEND_STATUS_ENUM_FRIEND';
   /** The friend identify */
-  "friendRequest.friendId"?: string;
+  'friendRequest.friendId'?: string;
   /** The list participant id */
-  "friendRequest.participantIds"?: string[];
+  'friendRequest.participantIds'?: string[];
   /** The time has been read by the receiver. */
-  "friendRequest.readTime"?: string;
+  'friendRequest.readTime'?: string;
   /** The time to accept friend */
-  "friendRequest.acceptTime"?: string;
+  'friendRequest.acceptTime'?: string;
   /** The first time friend created */
-  "friendRequest.createTime"?: string;
+  'friendRequest.createTime'?: string;
   /** The time of friend updated */
-  "friendRequest.updateTime"?: string;
+  'friendRequest.updateTime'?: string;
   /** The timestamp when the friend request was deleted */
-  "friendRequest.deleteTime"?: string;
+  'friendRequest.deleteTime'?: string;
 }
 
 export interface IncomingFriendRequestCanceledEventDataTParams {
   /** The user identify whom send request */
-  "friendRequest.requestedFromUserId"?: string;
+  'friendRequest.requestedFromUserId'?: string;
   /** The user identify whom receive request */
-  "friendRequest.requestedToUserId"?: string;
+  'friendRequest.requestedToUserId'?: string;
   /**
    * The status of friend
    *
@@ -6339,34 +6339,34 @@ export interface IncomingFriendRequestCanceledEventDataTParams {
    *  - FRIEND_STATUS_ENUM_FRIEND: FRIEND: Two user are friends.
    * @default "FRIEND_STATUS_ENUM_UNSPECIFIED"
    */
-  "friendRequest.status"?:
-    | "FRIEND_STATUS_ENUM_UNSPECIFIED"
-    | "FRIEND_STATUS_ENUM_NOT_FRIEND"
-    | "FRIEND_STATUS_ENUM_REQUEST_SENT"
-    | "FRIEND_STATUS_ENUM_REQUEST_RECEIVED"
-    | "FRIEND_STATUS_ENUM_REQUEST_DELETED"
-    | "FRIEND_STATUS_ENUM_FRIEND";
+  'friendRequest.status'?:
+    | 'FRIEND_STATUS_ENUM_UNSPECIFIED'
+    | 'FRIEND_STATUS_ENUM_NOT_FRIEND'
+    | 'FRIEND_STATUS_ENUM_REQUEST_SENT'
+    | 'FRIEND_STATUS_ENUM_REQUEST_RECEIVED'
+    | 'FRIEND_STATUS_ENUM_REQUEST_DELETED'
+    | 'FRIEND_STATUS_ENUM_FRIEND';
   /** The friend identify */
-  "friendRequest.friendId"?: string;
+  'friendRequest.friendId'?: string;
   /** The list participant id */
-  "friendRequest.participantIds"?: string[];
+  'friendRequest.participantIds'?: string[];
   /** The time has been read by the receiver. */
-  "friendRequest.readTime"?: string;
+  'friendRequest.readTime'?: string;
   /** The time to accept friend */
-  "friendRequest.acceptTime"?: string;
+  'friendRequest.acceptTime'?: string;
   /** The first time friend created */
-  "friendRequest.createTime"?: string;
+  'friendRequest.createTime'?: string;
   /** The time of friend updated */
-  "friendRequest.updateTime"?: string;
+  'friendRequest.updateTime'?: string;
   /** The timestamp when the friend request was deleted */
-  "friendRequest.deleteTime"?: string;
+  'friendRequest.deleteTime'?: string;
 }
 
 export interface IncomingFriendRequestCreatedEventDataTParams {
   /** The user identify whom send request */
-  "friendRequest.requestedFromUserId"?: string;
+  'friendRequest.requestedFromUserId'?: string;
   /** The user identify whom receive request */
-  "friendRequest.requestedToUserId"?: string;
+  'friendRequest.requestedToUserId'?: string;
   /**
    * The status of friend
    *
@@ -6378,34 +6378,34 @@ export interface IncomingFriendRequestCreatedEventDataTParams {
    *  - FRIEND_STATUS_ENUM_FRIEND: FRIEND: Two user are friends.
    * @default "FRIEND_STATUS_ENUM_UNSPECIFIED"
    */
-  "friendRequest.status"?:
-    | "FRIEND_STATUS_ENUM_UNSPECIFIED"
-    | "FRIEND_STATUS_ENUM_NOT_FRIEND"
-    | "FRIEND_STATUS_ENUM_REQUEST_SENT"
-    | "FRIEND_STATUS_ENUM_REQUEST_RECEIVED"
-    | "FRIEND_STATUS_ENUM_REQUEST_DELETED"
-    | "FRIEND_STATUS_ENUM_FRIEND";
+  'friendRequest.status'?:
+    | 'FRIEND_STATUS_ENUM_UNSPECIFIED'
+    | 'FRIEND_STATUS_ENUM_NOT_FRIEND'
+    | 'FRIEND_STATUS_ENUM_REQUEST_SENT'
+    | 'FRIEND_STATUS_ENUM_REQUEST_RECEIVED'
+    | 'FRIEND_STATUS_ENUM_REQUEST_DELETED'
+    | 'FRIEND_STATUS_ENUM_FRIEND';
   /** The friend identify */
-  "friendRequest.friendId"?: string;
+  'friendRequest.friendId'?: string;
   /** The list participant id */
-  "friendRequest.participantIds"?: string[];
+  'friendRequest.participantIds'?: string[];
   /** The time has been read by the receiver. */
-  "friendRequest.readTime"?: string;
+  'friendRequest.readTime'?: string;
   /** The time to accept friend */
-  "friendRequest.acceptTime"?: string;
+  'friendRequest.acceptTime'?: string;
   /** The first time friend created */
-  "friendRequest.createTime"?: string;
+  'friendRequest.createTime'?: string;
   /** The time of friend updated */
-  "friendRequest.updateTime"?: string;
+  'friendRequest.updateTime'?: string;
   /** The timestamp when the friend request was deleted */
-  "friendRequest.deleteTime"?: string;
+  'friendRequest.deleteTime'?: string;
 }
 
 export interface IncomingFriendRequestDeletedEventDataTParams {
   /** The user identify whom send request */
-  "friendRequest.requestedFromUserId"?: string;
+  'friendRequest.requestedFromUserId'?: string;
   /** The user identify whom receive request */
-  "friendRequest.requestedToUserId"?: string;
+  'friendRequest.requestedToUserId'?: string;
   /**
    * The status of friend
    *
@@ -6417,42 +6417,42 @@ export interface IncomingFriendRequestDeletedEventDataTParams {
    *  - FRIEND_STATUS_ENUM_FRIEND: FRIEND: Two user are friends.
    * @default "FRIEND_STATUS_ENUM_UNSPECIFIED"
    */
-  "friendRequest.status"?:
-    | "FRIEND_STATUS_ENUM_UNSPECIFIED"
-    | "FRIEND_STATUS_ENUM_NOT_FRIEND"
-    | "FRIEND_STATUS_ENUM_REQUEST_SENT"
-    | "FRIEND_STATUS_ENUM_REQUEST_RECEIVED"
-    | "FRIEND_STATUS_ENUM_REQUEST_DELETED"
-    | "FRIEND_STATUS_ENUM_FRIEND";
+  'friendRequest.status'?:
+    | 'FRIEND_STATUS_ENUM_UNSPECIFIED'
+    | 'FRIEND_STATUS_ENUM_NOT_FRIEND'
+    | 'FRIEND_STATUS_ENUM_REQUEST_SENT'
+    | 'FRIEND_STATUS_ENUM_REQUEST_RECEIVED'
+    | 'FRIEND_STATUS_ENUM_REQUEST_DELETED'
+    | 'FRIEND_STATUS_ENUM_FRIEND';
   /** The friend identify */
-  "friendRequest.friendId"?: string;
+  'friendRequest.friendId'?: string;
   /** The list participant id */
-  "friendRequest.participantIds"?: string[];
+  'friendRequest.participantIds'?: string[];
   /** The time has been read by the receiver. */
-  "friendRequest.readTime"?: string;
+  'friendRequest.readTime'?: string;
   /** The time to accept friend */
-  "friendRequest.acceptTime"?: string;
+  'friendRequest.acceptTime'?: string;
   /** The first time friend created */
-  "friendRequest.createTime"?: string;
+  'friendRequest.createTime'?: string;
   /** The time of friend updated */
-  "friendRequest.updateTime"?: string;
+  'friendRequest.updateTime'?: string;
   /** The timestamp when the friend request was deleted */
-  "friendRequest.deleteTime"?: string;
+  'friendRequest.deleteTime'?: string;
 }
 
 export interface IncomingMessageRequestAcceptedEventDataTParams {
   /** The workspace identify */
-  "channel.workspaceId"?: string;
+  'channel.workspaceId'?: string;
   /** The channel identify */
-  "channel.channelId"?: string;
+  'channel.channelId'?: string;
   /** The channel's creator is identified by the user. */
-  "channel.userId"?: string;
+  'channel.userId'?: string;
   /** The name of channel */
-  "channel.name"?: string;
+  'channel.name'?: string;
   /** The avatar of channel */
-  "channel.avatar"?: string;
+  'channel.avatar'?: string;
   /** The channel is not yet private. */
-  "channel.isPrivate"?: boolean;
+  'channel.isPrivate'?: boolean;
   /**
    * The type of channel
    *
@@ -6461,22 +6461,22 @@ export interface IncomingMessageRequestAcceptedEventDataTParams {
    *  - CHANNEL_TYPE_ENUM_BROADCAST: BROADCAST: A broadcast channel consists of a single sender and multiple receivers
    * @default "CHANNEL_TYPE_ENUM_DM"
    */
-  "channel.type"?:
-    | "CHANNEL_TYPE_ENUM_DM"
-    | "CHANNEL_TYPE_ENUM_CHANNEL"
-    | "CHANNEL_TYPE_ENUM_BROADCAST";
+  'channel.type'?:
+    | 'CHANNEL_TYPE_ENUM_DM'
+    | 'CHANNEL_TYPE_ENUM_CHANNEL'
+    | 'CHANNEL_TYPE_ENUM_BROADCAST';
   /** Invitation link after create channel */
-  "channel.invitationLink"?: string;
+  'channel.invitationLink'?: string;
   /** Is limited saving enabled? */
-  "channel.privacySettings.restrictSavingContent.enable"?: boolean;
-  "channel.premiumSettings.boosted.enable"?: boolean;
+  'channel.privacySettings.restrictSavingContent.enable'?: boolean;
+  'channel.premiumSettings.boosted.enable'?: boolean;
   /** The original avatar */
-  "channel.originalAvatar"?: string;
+  'channel.originalAvatar'?: string;
   /**
    * Only return when get get channel
    * @format int64
    */
-  "channel.totalMembers"?: number;
+  'channel.totalMembers'?: number;
   /**
    * Status of channel has type DM
    *
@@ -6484,21 +6484,21 @@ export interface IncomingMessageRequestAcceptedEventDataTParams {
    *  - DIRECT_MESSAGE_STATUS_ENUM_CONTACTED: CONTACTED: The recipient has accepted the message request or they were friends
    * @default "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
    */
-  "channel.dmStatus"?:
-    | "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
-    | "DIRECT_MESSAGE_STATUS_ENUM_CONTACTED";
+  'channel.dmStatus'?:
+    | 'DIRECT_MESSAGE_STATUS_ENUM_PENDING'
+    | 'DIRECT_MESSAGE_STATUS_ENUM_CONTACTED';
   /** The workspace identify */
-  "channel.pinnedMessage.workspaceId"?: string;
+  'channel.pinnedMessage.workspaceId'?: string;
   /** The channel identify */
-  "channel.pinnedMessage.channelId"?: string;
+  'channel.pinnedMessage.channelId'?: string;
   /** The message identify */
-  "channel.pinnedMessage.messageId"?: string;
+  'channel.pinnedMessage.messageId'?: string;
   /** UserId send message */
-  "channel.pinnedMessage.userId"?: string;
+  'channel.pinnedMessage.userId'?: string;
   /** Content of message */
-  "channel.pinnedMessage.content"?: string;
+  'channel.pinnedMessage.content'?: string;
   /** Is a random value created by the client, which is used as a similar attribute to the local ID */
-  "channel.pinnedMessage.ref"?: string;
+  'channel.pinnedMessage.ref'?: string;
   /**
    * Message type and message status
    *
@@ -6506,9 +6506,9 @@ export interface IncomingMessageRequestAcceptedEventDataTParams {
    *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
    * @default "MESSAGE_TYPE_ENUM_DEFAULT"
    */
-  "channel.pinnedMessage.messageType"?:
-    | "MESSAGE_TYPE_ENUM_DEFAULT"
-    | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+  'channel.pinnedMessage.messageType'?:
+    | 'MESSAGE_TYPE_ENUM_DEFAULT'
+    | 'MESSAGE_TYPE_ENUM_AUDIT_LOG';
   /**
    * Status of message
    *
@@ -6517,14 +6517,14 @@ export interface IncomingMessageRequestAcceptedEventDataTParams {
    *  - MESSAGE_STATUS_ENUM_FAILURE: Send message failed
    * @default "MESSAGE_STATUS_ENUM_PENDING"
    */
-  "channel.pinnedMessage.messageStatus"?:
-    | "MESSAGE_STATUS_ENUM_PENDING"
-    | "MESSAGE_STATUS_ENUM_SUCCESS"
-    | "MESSAGE_STATUS_ENUM_FAILURE";
+  'channel.pinnedMessage.messageStatus'?:
+    | 'MESSAGE_STATUS_ENUM_PENDING'
+    | 'MESSAGE_STATUS_ENUM_SUCCESS'
+    | 'MESSAGE_STATUS_ENUM_FAILURE';
   /** The message identify */
-  "channel.pinnedMessage.originalMessage.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.messageId'?: string;
   /** The message content */
-  "channel.pinnedMessage.originalMessage.content"?: string;
+  'channel.pinnedMessage.originalMessage.content'?: string;
   /**
    * Attachment type
    *
@@ -6542,19 +6542,19 @@ export interface IncomingMessageRequestAcceptedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /**
    * types
    *
@@ -6572,27 +6572,27 @@ export interface IncomingMessageRequestAcceptedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.link.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.link.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** url */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.link.url"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.link.url'?: string;
   /** short url */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.link.shortUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.link.shortUrl'?: string;
   /** collection_id of sticker file */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.collectionId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.collectionId'?: string;
   /** sticker_id of sticker */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerId'?: string;
   /**
    * types
    *
@@ -6610,27 +6610,27 @@ export interface IncomingMessageRequestAcceptedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** url of sticker if attachment type is sticker */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerUrl'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentId'?: string;
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.fileRef'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileId'?: string;
   /**
    * types
    *
@@ -6648,63 +6648,63 @@ export interface IncomingMessageRequestAcceptedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileId'?: string;
   /**
    * types
    *
@@ -6722,63 +6722,63 @@ export interface IncomingMessageRequestAcceptedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileId'?: string;
   /**
    * types
    *
@@ -6796,63 +6796,63 @@ export interface IncomingMessageRequestAcceptedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileId'?: string;
   /**
    * types
    *
@@ -6870,63 +6870,63 @@ export interface IncomingMessageRequestAcceptedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileId'?: string;
   /**
    * types
    *
@@ -6944,63 +6944,63 @@ export interface IncomingMessageRequestAcceptedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileId'?: string;
   /**
    * types
    *
@@ -7018,63 +7018,63 @@ export interface IncomingMessageRequestAcceptedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileId'?: string;
   /**
    * types
    *
@@ -7092,61 +7092,61 @@ export interface IncomingMessageRequestAcceptedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.messageId'?: string;
   /**
    * Message type
    *
@@ -7154,29 +7154,29 @@ export interface IncomingMessageRequestAcceptedEventDataTParams {
    *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
    * @default "MESSAGE_TYPE_ENUM_DEFAULT"
    */
-  "channel.pinnedMessage.originalMessage.messageType"?:
-    | "MESSAGE_TYPE_ENUM_DEFAULT"
-    | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+  'channel.pinnedMessage.originalMessage.messageType'?:
+    | 'MESSAGE_TYPE_ENUM_DEFAULT'
+    | 'MESSAGE_TYPE_ENUM_AUDIT_LOG';
   /** The location language of content */
-  "channel.pinnedMessage.originalMessage.contentLocale"?: string;
+  'channel.pinnedMessage.originalMessage.contentLocale'?: string;
   /** The list arguments to replace in content message */
-  "channel.pinnedMessage.originalMessage.contentArguments"?: string[];
+  'channel.pinnedMessage.originalMessage.contentArguments'?: string[];
   /** The user identify */
-  "channel.pinnedMessage.originalMessage.userId"?: string;
+  'channel.pinnedMessage.originalMessage.userId'?: string;
   /** Time edit message */
-  "channel.pinnedMessage.originalMessage.editTime"?: string;
+  'channel.pinnedMessage.originalMessage.editTime'?: string;
   /** The create time */
-  "channel.pinnedMessage.originalMessage.createTime"?: string;
+  'channel.pinnedMessage.originalMessage.createTime'?: string;
   /** The update time */
-  "channel.pinnedMessage.originalMessage.updateTime"?: string;
+  'channel.pinnedMessage.originalMessage.updateTime'?: string;
   /**
    * Statistical react of message
    *
    * This is a request variable of the map type. The query format is "map_name[key]=value", e.g. If the map name is Age, the key type is string, and the value type is integer, the query parameter is expressed as Age["bob"]=18
    */
-  "channel.pinnedMessage.reactions"?: any;
+  'channel.pinnedMessage.reactions'?: any;
   /** List username mentions */
-  "channel.pinnedMessage.mentions"?: string[];
+  'channel.pinnedMessage.mentions'?: string[];
   /**
    * Attachment type
    *
@@ -7194,72 +7194,72 @@ export interface IncomingMessageRequestAcceptedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** State is thread of message, default = false */
-  "channel.pinnedMessage.isThread"?: boolean;
+  'channel.pinnedMessage.isThread'?: boolean;
   /**
    * Number of times reported, default = 0
    * @format int64
    */
-  "channel.pinnedMessage.reportCount"?: number;
+  'channel.pinnedMessage.reportCount'?: number;
   /** Flag report, default = false */
-  "channel.pinnedMessage.isReported"?: boolean;
+  'channel.pinnedMessage.isReported'?: boolean;
   /**
    * Number of files, using for upload album
    * @format int64
    */
-  "channel.pinnedMessage.attachmentCount"?: number;
+  'channel.pinnedMessage.attachmentCount'?: number;
   /** The location language of content */
-  "channel.pinnedMessage.contentLocale"?: string;
+  'channel.pinnedMessage.contentLocale'?: string;
   /** The list arguments to replace in content message */
-  "channel.pinnedMessage.contentArguments"?: string[];
+  'channel.pinnedMessage.contentArguments'?: string[];
   /** Is pinned */
-  "channel.pinnedMessage.isPinned"?: boolean;
+  'channel.pinnedMessage.isPinned'?: boolean;
   /** Pin time */
-  "channel.pinnedMessage.pinTime"?: string;
+  'channel.pinnedMessage.pinTime'?: string;
   /** Time edit message */
-  "channel.pinnedMessage.editTime"?: string;
+  'channel.pinnedMessage.editTime'?: string;
   /** The first time message created */
-  "channel.pinnedMessage.createTime"?: string;
+  'channel.pinnedMessage.createTime'?: string;
   /** The time message updated */
-  "channel.pinnedMessage.updateTime"?: string;
+  'channel.pinnedMessage.updateTime'?: string;
   /** The list participant id */
-  "channel.participantIds"?: string[];
+  'channel.participantIds'?: string[];
   /** Time recipient reject message request */
-  "channel.rejectTime"?: string;
+  'channel.rejectTime'?: string;
   /** Time recipient accept message request */
-  "channel.acceptTime"?: string;
+  'channel.acceptTime'?: string;
   /** The first time channel created */
-  "channel.createTime"?: string;
+  'channel.createTime'?: string;
   /** The time channel updated */
-  "channel.updateTime"?: string;
+  'channel.updateTime'?: string;
 }
 
 export interface IncomingMessageRequestCreatedEventDataTParams {
   /** The workspace identify */
-  "channel.workspaceId"?: string;
+  'channel.workspaceId'?: string;
   /** The channel identify */
-  "channel.channelId"?: string;
+  'channel.channelId'?: string;
   /** The channel's creator is identified by the user. */
-  "channel.userId"?: string;
+  'channel.userId'?: string;
   /** The name of channel */
-  "channel.name"?: string;
+  'channel.name'?: string;
   /** The avatar of channel */
-  "channel.avatar"?: string;
+  'channel.avatar'?: string;
   /** The channel is not yet private. */
-  "channel.isPrivate"?: boolean;
+  'channel.isPrivate'?: boolean;
   /**
    * The type of channel
    *
@@ -7268,22 +7268,22 @@ export interface IncomingMessageRequestCreatedEventDataTParams {
    *  - CHANNEL_TYPE_ENUM_BROADCAST: BROADCAST: A broadcast channel consists of a single sender and multiple receivers
    * @default "CHANNEL_TYPE_ENUM_DM"
    */
-  "channel.type"?:
-    | "CHANNEL_TYPE_ENUM_DM"
-    | "CHANNEL_TYPE_ENUM_CHANNEL"
-    | "CHANNEL_TYPE_ENUM_BROADCAST";
+  'channel.type'?:
+    | 'CHANNEL_TYPE_ENUM_DM'
+    | 'CHANNEL_TYPE_ENUM_CHANNEL'
+    | 'CHANNEL_TYPE_ENUM_BROADCAST';
   /** Invitation link after create channel */
-  "channel.invitationLink"?: string;
+  'channel.invitationLink'?: string;
   /** Is limited saving enabled? */
-  "channel.privacySettings.restrictSavingContent.enable"?: boolean;
-  "channel.premiumSettings.boosted.enable"?: boolean;
+  'channel.privacySettings.restrictSavingContent.enable'?: boolean;
+  'channel.premiumSettings.boosted.enable'?: boolean;
   /** The original avatar */
-  "channel.originalAvatar"?: string;
+  'channel.originalAvatar'?: string;
   /**
    * Only return when get get channel
    * @format int64
    */
-  "channel.totalMembers"?: number;
+  'channel.totalMembers'?: number;
   /**
    * Status of channel has type DM
    *
@@ -7291,21 +7291,21 @@ export interface IncomingMessageRequestCreatedEventDataTParams {
    *  - DIRECT_MESSAGE_STATUS_ENUM_CONTACTED: CONTACTED: The recipient has accepted the message request or they were friends
    * @default "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
    */
-  "channel.dmStatus"?:
-    | "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
-    | "DIRECT_MESSAGE_STATUS_ENUM_CONTACTED";
+  'channel.dmStatus'?:
+    | 'DIRECT_MESSAGE_STATUS_ENUM_PENDING'
+    | 'DIRECT_MESSAGE_STATUS_ENUM_CONTACTED';
   /** The workspace identify */
-  "channel.pinnedMessage.workspaceId"?: string;
+  'channel.pinnedMessage.workspaceId'?: string;
   /** The channel identify */
-  "channel.pinnedMessage.channelId"?: string;
+  'channel.pinnedMessage.channelId'?: string;
   /** The message identify */
-  "channel.pinnedMessage.messageId"?: string;
+  'channel.pinnedMessage.messageId'?: string;
   /** UserId send message */
-  "channel.pinnedMessage.userId"?: string;
+  'channel.pinnedMessage.userId'?: string;
   /** Content of message */
-  "channel.pinnedMessage.content"?: string;
+  'channel.pinnedMessage.content'?: string;
   /** Is a random value created by the client, which is used as a similar attribute to the local ID */
-  "channel.pinnedMessage.ref"?: string;
+  'channel.pinnedMessage.ref'?: string;
   /**
    * Message type and message status
    *
@@ -7313,9 +7313,9 @@ export interface IncomingMessageRequestCreatedEventDataTParams {
    *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
    * @default "MESSAGE_TYPE_ENUM_DEFAULT"
    */
-  "channel.pinnedMessage.messageType"?:
-    | "MESSAGE_TYPE_ENUM_DEFAULT"
-    | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+  'channel.pinnedMessage.messageType'?:
+    | 'MESSAGE_TYPE_ENUM_DEFAULT'
+    | 'MESSAGE_TYPE_ENUM_AUDIT_LOG';
   /**
    * Status of message
    *
@@ -7324,14 +7324,14 @@ export interface IncomingMessageRequestCreatedEventDataTParams {
    *  - MESSAGE_STATUS_ENUM_FAILURE: Send message failed
    * @default "MESSAGE_STATUS_ENUM_PENDING"
    */
-  "channel.pinnedMessage.messageStatus"?:
-    | "MESSAGE_STATUS_ENUM_PENDING"
-    | "MESSAGE_STATUS_ENUM_SUCCESS"
-    | "MESSAGE_STATUS_ENUM_FAILURE";
+  'channel.pinnedMessage.messageStatus'?:
+    | 'MESSAGE_STATUS_ENUM_PENDING'
+    | 'MESSAGE_STATUS_ENUM_SUCCESS'
+    | 'MESSAGE_STATUS_ENUM_FAILURE';
   /** The message identify */
-  "channel.pinnedMessage.originalMessage.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.messageId'?: string;
   /** The message content */
-  "channel.pinnedMessage.originalMessage.content"?: string;
+  'channel.pinnedMessage.originalMessage.content'?: string;
   /**
    * Attachment type
    *
@@ -7349,19 +7349,19 @@ export interface IncomingMessageRequestCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /**
    * types
    *
@@ -7379,27 +7379,27 @@ export interface IncomingMessageRequestCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.link.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.link.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** url */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.link.url"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.link.url'?: string;
   /** short url */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.link.shortUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.link.shortUrl'?: string;
   /** collection_id of sticker file */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.collectionId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.collectionId'?: string;
   /** sticker_id of sticker */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerId'?: string;
   /**
    * types
    *
@@ -7417,27 +7417,27 @@ export interface IncomingMessageRequestCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** url of sticker if attachment type is sticker */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerUrl'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentId'?: string;
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.fileRef'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileId'?: string;
   /**
    * types
    *
@@ -7455,63 +7455,63 @@ export interface IncomingMessageRequestCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileId'?: string;
   /**
    * types
    *
@@ -7529,63 +7529,63 @@ export interface IncomingMessageRequestCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileId'?: string;
   /**
    * types
    *
@@ -7603,63 +7603,63 @@ export interface IncomingMessageRequestCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileId'?: string;
   /**
    * types
    *
@@ -7677,63 +7677,63 @@ export interface IncomingMessageRequestCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileId'?: string;
   /**
    * types
    *
@@ -7751,63 +7751,63 @@ export interface IncomingMessageRequestCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileId'?: string;
   /**
    * types
    *
@@ -7825,63 +7825,63 @@ export interface IncomingMessageRequestCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileId'?: string;
   /**
    * types
    *
@@ -7899,61 +7899,61 @@ export interface IncomingMessageRequestCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.messageId'?: string;
   /**
    * Message type
    *
@@ -7961,29 +7961,29 @@ export interface IncomingMessageRequestCreatedEventDataTParams {
    *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
    * @default "MESSAGE_TYPE_ENUM_DEFAULT"
    */
-  "channel.pinnedMessage.originalMessage.messageType"?:
-    | "MESSAGE_TYPE_ENUM_DEFAULT"
-    | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+  'channel.pinnedMessage.originalMessage.messageType'?:
+    | 'MESSAGE_TYPE_ENUM_DEFAULT'
+    | 'MESSAGE_TYPE_ENUM_AUDIT_LOG';
   /** The location language of content */
-  "channel.pinnedMessage.originalMessage.contentLocale"?: string;
+  'channel.pinnedMessage.originalMessage.contentLocale'?: string;
   /** The list arguments to replace in content message */
-  "channel.pinnedMessage.originalMessage.contentArguments"?: string[];
+  'channel.pinnedMessage.originalMessage.contentArguments'?: string[];
   /** The user identify */
-  "channel.pinnedMessage.originalMessage.userId"?: string;
+  'channel.pinnedMessage.originalMessage.userId'?: string;
   /** Time edit message */
-  "channel.pinnedMessage.originalMessage.editTime"?: string;
+  'channel.pinnedMessage.originalMessage.editTime'?: string;
   /** The create time */
-  "channel.pinnedMessage.originalMessage.createTime"?: string;
+  'channel.pinnedMessage.originalMessage.createTime'?: string;
   /** The update time */
-  "channel.pinnedMessage.originalMessage.updateTime"?: string;
+  'channel.pinnedMessage.originalMessage.updateTime'?: string;
   /**
    * Statistical react of message
    *
    * This is a request variable of the map type. The query format is "map_name[key]=value", e.g. If the map name is Age, the key type is string, and the value type is integer, the query parameter is expressed as Age["bob"]=18
    */
-  "channel.pinnedMessage.reactions"?: any;
+  'channel.pinnedMessage.reactions'?: any;
   /** List username mentions */
-  "channel.pinnedMessage.mentions"?: string[];
+  'channel.pinnedMessage.mentions'?: string[];
   /**
    * Attachment type
    *
@@ -8001,57 +8001,57 @@ export interface IncomingMessageRequestCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** State is thread of message, default = false */
-  "channel.pinnedMessage.isThread"?: boolean;
+  'channel.pinnedMessage.isThread'?: boolean;
   /**
    * Number of times reported, default = 0
    * @format int64
    */
-  "channel.pinnedMessage.reportCount"?: number;
+  'channel.pinnedMessage.reportCount'?: number;
   /** Flag report, default = false */
-  "channel.pinnedMessage.isReported"?: boolean;
+  'channel.pinnedMessage.isReported'?: boolean;
   /**
    * Number of files, using for upload album
    * @format int64
    */
-  "channel.pinnedMessage.attachmentCount"?: number;
+  'channel.pinnedMessage.attachmentCount'?: number;
   /** The location language of content */
-  "channel.pinnedMessage.contentLocale"?: string;
+  'channel.pinnedMessage.contentLocale'?: string;
   /** The list arguments to replace in content message */
-  "channel.pinnedMessage.contentArguments"?: string[];
+  'channel.pinnedMessage.contentArguments'?: string[];
   /** Is pinned */
-  "channel.pinnedMessage.isPinned"?: boolean;
+  'channel.pinnedMessage.isPinned'?: boolean;
   /** Pin time */
-  "channel.pinnedMessage.pinTime"?: string;
+  'channel.pinnedMessage.pinTime'?: string;
   /** Time edit message */
-  "channel.pinnedMessage.editTime"?: string;
+  'channel.pinnedMessage.editTime'?: string;
   /** The first time message created */
-  "channel.pinnedMessage.createTime"?: string;
+  'channel.pinnedMessage.createTime'?: string;
   /** The time message updated */
-  "channel.pinnedMessage.updateTime"?: string;
+  'channel.pinnedMessage.updateTime'?: string;
   /** The list participant id */
-  "channel.participantIds"?: string[];
+  'channel.participantIds'?: string[];
   /** Time recipient reject message request */
-  "channel.rejectTime"?: string;
+  'channel.rejectTime'?: string;
   /** Time recipient accept message request */
-  "channel.acceptTime"?: string;
+  'channel.acceptTime'?: string;
   /** The first time channel created */
-  "channel.createTime"?: string;
+  'channel.createTime'?: string;
   /** The time channel updated */
-  "channel.updateTime"?: string;
+  'channel.updateTime'?: string;
 }
 
 export interface MarkAllChannelsAsReadEventDataTParams {
@@ -8151,17 +8151,17 @@ export interface MemberUnbannedEventDataTParams {
 
 export interface MessageCreatedEventDataTParams {
   /** The workspace identify */
-  "message.workspaceId"?: string;
+  'message.workspaceId'?: string;
   /** The channel identify */
-  "message.channelId"?: string;
+  'message.channelId'?: string;
   /** The message identify */
-  "message.messageId"?: string;
+  'message.messageId'?: string;
   /** UserId send message */
-  "message.userId"?: string;
+  'message.userId'?: string;
   /** Content of message */
-  "message.content"?: string;
+  'message.content'?: string;
   /** Is a random value created by the client, which is used as a similar attribute to the local ID */
-  "message.ref"?: string;
+  'message.ref'?: string;
   /**
    * Message type and message status
    *
@@ -8169,9 +8169,9 @@ export interface MessageCreatedEventDataTParams {
    *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
    * @default "MESSAGE_TYPE_ENUM_DEFAULT"
    */
-  "message.messageType"?:
-    | "MESSAGE_TYPE_ENUM_DEFAULT"
-    | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+  'message.messageType'?:
+    | 'MESSAGE_TYPE_ENUM_DEFAULT'
+    | 'MESSAGE_TYPE_ENUM_AUDIT_LOG';
   /**
    * Status of message
    *
@@ -8180,14 +8180,14 @@ export interface MessageCreatedEventDataTParams {
    *  - MESSAGE_STATUS_ENUM_FAILURE: Send message failed
    * @default "MESSAGE_STATUS_ENUM_PENDING"
    */
-  "message.messageStatus"?:
-    | "MESSAGE_STATUS_ENUM_PENDING"
-    | "MESSAGE_STATUS_ENUM_SUCCESS"
-    | "MESSAGE_STATUS_ENUM_FAILURE";
+  'message.messageStatus'?:
+    | 'MESSAGE_STATUS_ENUM_PENDING'
+    | 'MESSAGE_STATUS_ENUM_SUCCESS'
+    | 'MESSAGE_STATUS_ENUM_FAILURE';
   /** The message identify */
-  "message.originalMessage.messageId"?: string;
+  'message.originalMessage.messageId'?: string;
   /** The message content */
-  "message.originalMessage.content"?: string;
+  'message.originalMessage.content'?: string;
   /**
    * Attachment type
    *
@@ -8205,19 +8205,19 @@ export interface MessageCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.originalMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.originalMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /**
    * types
    *
@@ -8235,27 +8235,27 @@ export interface MessageCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.originalMessage.mediaAttachments.link.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.originalMessage.mediaAttachments.link.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** url */
-  "message.originalMessage.mediaAttachments.link.url"?: string;
+  'message.originalMessage.mediaAttachments.link.url'?: string;
   /** short url */
-  "message.originalMessage.mediaAttachments.link.shortUrl"?: string;
+  'message.originalMessage.mediaAttachments.link.shortUrl'?: string;
   /** collection_id of sticker file */
-  "message.originalMessage.mediaAttachments.sticker.collectionId"?: string;
+  'message.originalMessage.mediaAttachments.sticker.collectionId'?: string;
   /** sticker_id of sticker */
-  "message.originalMessage.mediaAttachments.sticker.stickerId"?: string;
+  'message.originalMessage.mediaAttachments.sticker.stickerId'?: string;
   /**
    * types
    *
@@ -8273,27 +8273,27 @@ export interface MessageCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.originalMessage.mediaAttachments.sticker.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.originalMessage.mediaAttachments.sticker.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** url of sticker if attachment type is sticker */
-  "message.originalMessage.mediaAttachments.sticker.stickerUrl"?: string;
+  'message.originalMessage.mediaAttachments.sticker.stickerUrl'?: string;
   /** attachment id */
-  "message.originalMessage.mediaAttachments.sticker.attachmentId"?: string;
+  'message.originalMessage.mediaAttachments.sticker.attachmentId'?: string;
   /** file ref */
-  "message.originalMessage.mediaAttachments.sticker.fileRef"?: string;
+  'message.originalMessage.mediaAttachments.sticker.fileRef'?: string;
   /** file_id to handle file operations */
-  "message.originalMessage.mediaAttachments.photo.fileId"?: string;
+  'message.originalMessage.mediaAttachments.photo.fileId'?: string;
   /**
    * types
    *
@@ -8311,63 +8311,63 @@ export interface MessageCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.originalMessage.mediaAttachments.photo.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.originalMessage.mediaAttachments.photo.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "message.originalMessage.mediaAttachments.photo.fileUrl"?: string;
+  'message.originalMessage.mediaAttachments.photo.fileUrl'?: string;
   /** The name of file. */
-  "message.originalMessage.mediaAttachments.photo.fileMetadata.filename"?: string;
+  'message.originalMessage.mediaAttachments.photo.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.photo.fileMetadata.filesize"?: number;
+  'message.originalMessage.mediaAttachments.photo.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "message.originalMessage.mediaAttachments.photo.fileMetadata.extension"?: string;
+  'message.originalMessage.mediaAttachments.photo.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "message.originalMessage.mediaAttachments.photo.fileMetadata.mimetype"?: string;
+  'message.originalMessage.mediaAttachments.photo.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height"?: number;
+  'message.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width"?: number;
+  'message.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.photo.fileMetadata.duration"?: number;
+  'message.originalMessage.mediaAttachments.photo.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "message.originalMessage.mediaAttachments.photo.thumbnailUrl"?: string;
+  'message.originalMessage.mediaAttachments.photo.thumbnailUrl'?: string;
   /** audio samples rate */
-  "message.originalMessage.mediaAttachments.photo.audioMetadata.samples"?: number[];
+  'message.originalMessage.mediaAttachments.photo.audioMetadata.samples'?: number[];
   /** file ref */
-  "message.originalMessage.mediaAttachments.photo.fileRef"?: string;
+  'message.originalMessage.mediaAttachments.photo.fileRef'?: string;
   /** attachment id */
-  "message.originalMessage.mediaAttachments.photo.attachmentId"?: string;
+  'message.originalMessage.mediaAttachments.photo.attachmentId'?: string;
   /** channel id */
-  "message.originalMessage.mediaAttachments.photo.channelId"?: string;
+  'message.originalMessage.mediaAttachments.photo.channelId'?: string;
   /** user id */
-  "message.originalMessage.mediaAttachments.photo.userId"?: string;
+  'message.originalMessage.mediaAttachments.photo.userId'?: string;
   /** message id */
-  "message.originalMessage.mediaAttachments.photo.messageId"?: string;
+  'message.originalMessage.mediaAttachments.photo.messageId'?: string;
   /** file_id to handle file operations */
-  "message.originalMessage.mediaAttachments.audio.fileId"?: string;
+  'message.originalMessage.mediaAttachments.audio.fileId'?: string;
   /**
    * types
    *
@@ -8385,63 +8385,63 @@ export interface MessageCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.originalMessage.mediaAttachments.audio.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.originalMessage.mediaAttachments.audio.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "message.originalMessage.mediaAttachments.audio.fileUrl"?: string;
+  'message.originalMessage.mediaAttachments.audio.fileUrl'?: string;
   /** The name of file. */
-  "message.originalMessage.mediaAttachments.audio.fileMetadata.filename"?: string;
+  'message.originalMessage.mediaAttachments.audio.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.audio.fileMetadata.filesize"?: number;
+  'message.originalMessage.mediaAttachments.audio.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "message.originalMessage.mediaAttachments.audio.fileMetadata.extension"?: string;
+  'message.originalMessage.mediaAttachments.audio.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "message.originalMessage.mediaAttachments.audio.fileMetadata.mimetype"?: string;
+  'message.originalMessage.mediaAttachments.audio.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height"?: number;
+  'message.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width"?: number;
+  'message.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.audio.fileMetadata.duration"?: number;
+  'message.originalMessage.mediaAttachments.audio.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "message.originalMessage.mediaAttachments.audio.thumbnailUrl"?: string;
+  'message.originalMessage.mediaAttachments.audio.thumbnailUrl'?: string;
   /** audio samples rate */
-  "message.originalMessage.mediaAttachments.audio.audioMetadata.samples"?: number[];
+  'message.originalMessage.mediaAttachments.audio.audioMetadata.samples'?: number[];
   /** file ref */
-  "message.originalMessage.mediaAttachments.audio.fileRef"?: string;
+  'message.originalMessage.mediaAttachments.audio.fileRef'?: string;
   /** attachment id */
-  "message.originalMessage.mediaAttachments.audio.attachmentId"?: string;
+  'message.originalMessage.mediaAttachments.audio.attachmentId'?: string;
   /** channel id */
-  "message.originalMessage.mediaAttachments.audio.channelId"?: string;
+  'message.originalMessage.mediaAttachments.audio.channelId'?: string;
   /** user id */
-  "message.originalMessage.mediaAttachments.audio.userId"?: string;
+  'message.originalMessage.mediaAttachments.audio.userId'?: string;
   /** message id */
-  "message.originalMessage.mediaAttachments.audio.messageId"?: string;
+  'message.originalMessage.mediaAttachments.audio.messageId'?: string;
   /** file_id to handle file operations */
-  "message.originalMessage.mediaAttachments.video.fileId"?: string;
+  'message.originalMessage.mediaAttachments.video.fileId'?: string;
   /**
    * types
    *
@@ -8459,63 +8459,63 @@ export interface MessageCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.originalMessage.mediaAttachments.video.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.originalMessage.mediaAttachments.video.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "message.originalMessage.mediaAttachments.video.fileUrl"?: string;
+  'message.originalMessage.mediaAttachments.video.fileUrl'?: string;
   /** The name of file. */
-  "message.originalMessage.mediaAttachments.video.fileMetadata.filename"?: string;
+  'message.originalMessage.mediaAttachments.video.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.video.fileMetadata.filesize"?: number;
+  'message.originalMessage.mediaAttachments.video.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "message.originalMessage.mediaAttachments.video.fileMetadata.extension"?: string;
+  'message.originalMessage.mediaAttachments.video.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "message.originalMessage.mediaAttachments.video.fileMetadata.mimetype"?: string;
+  'message.originalMessage.mediaAttachments.video.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height"?: number;
+  'message.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width"?: number;
+  'message.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.video.fileMetadata.duration"?: number;
+  'message.originalMessage.mediaAttachments.video.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "message.originalMessage.mediaAttachments.video.thumbnailUrl"?: string;
+  'message.originalMessage.mediaAttachments.video.thumbnailUrl'?: string;
   /** audio samples rate */
-  "message.originalMessage.mediaAttachments.video.audioMetadata.samples"?: number[];
+  'message.originalMessage.mediaAttachments.video.audioMetadata.samples'?: number[];
   /** file ref */
-  "message.originalMessage.mediaAttachments.video.fileRef"?: string;
+  'message.originalMessage.mediaAttachments.video.fileRef'?: string;
   /** attachment id */
-  "message.originalMessage.mediaAttachments.video.attachmentId"?: string;
+  'message.originalMessage.mediaAttachments.video.attachmentId'?: string;
   /** channel id */
-  "message.originalMessage.mediaAttachments.video.channelId"?: string;
+  'message.originalMessage.mediaAttachments.video.channelId'?: string;
   /** user id */
-  "message.originalMessage.mediaAttachments.video.userId"?: string;
+  'message.originalMessage.mediaAttachments.video.userId'?: string;
   /** message id */
-  "message.originalMessage.mediaAttachments.video.messageId"?: string;
+  'message.originalMessage.mediaAttachments.video.messageId'?: string;
   /** file_id to handle file operations */
-  "message.originalMessage.mediaAttachments.voiceMessage.fileId"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.fileId'?: string;
   /**
    * types
    *
@@ -8533,63 +8533,63 @@ export interface MessageCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.originalMessage.mediaAttachments.voiceMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.originalMessage.mediaAttachments.voiceMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "message.originalMessage.mediaAttachments.voiceMessage.fileUrl"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.fileUrl'?: string;
   /** The name of file. */
-  "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize"?: number;
+  'message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height"?: number;
+  'message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width"?: number;
+  'message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration"?: number;
+  'message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "message.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "message.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples"?: number[];
+  'message.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "message.originalMessage.mediaAttachments.voiceMessage.fileRef"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.fileRef'?: string;
   /** attachment id */
-  "message.originalMessage.mediaAttachments.voiceMessage.attachmentId"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.attachmentId'?: string;
   /** channel id */
-  "message.originalMessage.mediaAttachments.voiceMessage.channelId"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.channelId'?: string;
   /** user id */
-  "message.originalMessage.mediaAttachments.voiceMessage.userId"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.userId'?: string;
   /** message id */
-  "message.originalMessage.mediaAttachments.voiceMessage.messageId"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "message.originalMessage.mediaAttachments.videoMessage.fileId"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.fileId'?: string;
   /**
    * types
    *
@@ -8607,63 +8607,63 @@ export interface MessageCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.originalMessage.mediaAttachments.videoMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.originalMessage.mediaAttachments.videoMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "message.originalMessage.mediaAttachments.videoMessage.fileUrl"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.fileUrl'?: string;
   /** The name of file. */
-  "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize"?: number;
+  'message.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height"?: number;
+  'message.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width"?: number;
+  'message.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration"?: number;
+  'message.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "message.originalMessage.mediaAttachments.videoMessage.thumbnailUrl"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "message.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples"?: number[];
+  'message.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "message.originalMessage.mediaAttachments.videoMessage.fileRef"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.fileRef'?: string;
   /** attachment id */
-  "message.originalMessage.mediaAttachments.videoMessage.attachmentId"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.attachmentId'?: string;
   /** channel id */
-  "message.originalMessage.mediaAttachments.videoMessage.channelId"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.channelId'?: string;
   /** user id */
-  "message.originalMessage.mediaAttachments.videoMessage.userId"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.userId'?: string;
   /** message id */
-  "message.originalMessage.mediaAttachments.videoMessage.messageId"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "message.originalMessage.mediaAttachments.mediaMessage.fileId"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.fileId'?: string;
   /**
    * types
    *
@@ -8681,63 +8681,63 @@ export interface MessageCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.originalMessage.mediaAttachments.mediaMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.originalMessage.mediaAttachments.mediaMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "message.originalMessage.mediaAttachments.mediaMessage.fileUrl"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.fileUrl'?: string;
   /** The name of file. */
-  "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize"?: number;
+  'message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height"?: number;
+  'message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width"?: number;
+  'message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration"?: number;
+  'message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "message.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "message.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples"?: number[];
+  'message.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "message.originalMessage.mediaAttachments.mediaMessage.fileRef"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.fileRef'?: string;
   /** attachment id */
-  "message.originalMessage.mediaAttachments.mediaMessage.attachmentId"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.attachmentId'?: string;
   /** channel id */
-  "message.originalMessage.mediaAttachments.mediaMessage.channelId"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.channelId'?: string;
   /** user id */
-  "message.originalMessage.mediaAttachments.mediaMessage.userId"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.userId'?: string;
   /** message id */
-  "message.originalMessage.mediaAttachments.mediaMessage.messageId"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "message.originalMessage.mediaAttachments.file.fileId"?: string;
+  'message.originalMessage.mediaAttachments.file.fileId'?: string;
   /**
    * types
    *
@@ -8755,61 +8755,61 @@ export interface MessageCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.originalMessage.mediaAttachments.file.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.originalMessage.mediaAttachments.file.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "message.originalMessage.mediaAttachments.file.fileUrl"?: string;
+  'message.originalMessage.mediaAttachments.file.fileUrl'?: string;
   /** The name of file. */
-  "message.originalMessage.mediaAttachments.file.fileMetadata.filename"?: string;
+  'message.originalMessage.mediaAttachments.file.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.file.fileMetadata.filesize"?: number;
+  'message.originalMessage.mediaAttachments.file.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "message.originalMessage.mediaAttachments.file.fileMetadata.extension"?: string;
+  'message.originalMessage.mediaAttachments.file.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "message.originalMessage.mediaAttachments.file.fileMetadata.mimetype"?: string;
+  'message.originalMessage.mediaAttachments.file.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height"?: number;
+  'message.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width"?: number;
+  'message.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.file.fileMetadata.duration"?: number;
+  'message.originalMessage.mediaAttachments.file.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "message.originalMessage.mediaAttachments.file.thumbnailUrl"?: string;
+  'message.originalMessage.mediaAttachments.file.thumbnailUrl'?: string;
   /** audio samples rate */
-  "message.originalMessage.mediaAttachments.file.audioMetadata.samples"?: number[];
+  'message.originalMessage.mediaAttachments.file.audioMetadata.samples'?: number[];
   /** file ref */
-  "message.originalMessage.mediaAttachments.file.fileRef"?: string;
+  'message.originalMessage.mediaAttachments.file.fileRef'?: string;
   /** attachment id */
-  "message.originalMessage.mediaAttachments.file.attachmentId"?: string;
+  'message.originalMessage.mediaAttachments.file.attachmentId'?: string;
   /** channel id */
-  "message.originalMessage.mediaAttachments.file.channelId"?: string;
+  'message.originalMessage.mediaAttachments.file.channelId'?: string;
   /** user id */
-  "message.originalMessage.mediaAttachments.file.userId"?: string;
+  'message.originalMessage.mediaAttachments.file.userId'?: string;
   /** message id */
-  "message.originalMessage.mediaAttachments.file.messageId"?: string;
+  'message.originalMessage.mediaAttachments.file.messageId'?: string;
   /**
    * Message type
    *
@@ -8817,29 +8817,29 @@ export interface MessageCreatedEventDataTParams {
    *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
    * @default "MESSAGE_TYPE_ENUM_DEFAULT"
    */
-  "message.originalMessage.messageType"?:
-    | "MESSAGE_TYPE_ENUM_DEFAULT"
-    | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+  'message.originalMessage.messageType'?:
+    | 'MESSAGE_TYPE_ENUM_DEFAULT'
+    | 'MESSAGE_TYPE_ENUM_AUDIT_LOG';
   /** The location language of content */
-  "message.originalMessage.contentLocale"?: string;
+  'message.originalMessage.contentLocale'?: string;
   /** The list arguments to replace in content message */
-  "message.originalMessage.contentArguments"?: string[];
+  'message.originalMessage.contentArguments'?: string[];
   /** The user identify */
-  "message.originalMessage.userId"?: string;
+  'message.originalMessage.userId'?: string;
   /** Time edit message */
-  "message.originalMessage.editTime"?: string;
+  'message.originalMessage.editTime'?: string;
   /** The create time */
-  "message.originalMessage.createTime"?: string;
+  'message.originalMessage.createTime'?: string;
   /** The update time */
-  "message.originalMessage.updateTime"?: string;
+  'message.originalMessage.updateTime'?: string;
   /**
    * Statistical react of message
    *
    * This is a request variable of the map type. The query format is "map_name[key]=value", e.g. If the map name is Age, the key type is string, and the value type is integer, the query parameter is expressed as Age["bob"]=18
    */
-  "message.reactions"?: any;
+  'message.reactions'?: any;
   /** List username mentions */
-  "message.mentions"?: string[];
+  'message.mentions'?: string[];
   /**
    * Attachment type
    *
@@ -8857,47 +8857,47 @@ export interface MessageCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** State is thread of message, default = false */
-  "message.isThread"?: boolean;
+  'message.isThread'?: boolean;
   /**
    * Number of times reported, default = 0
    * @format int64
    */
-  "message.reportCount"?: number;
+  'message.reportCount'?: number;
   /** Flag report, default = false */
-  "message.isReported"?: boolean;
+  'message.isReported'?: boolean;
   /**
    * Number of files, using for upload album
    * @format int64
    */
-  "message.attachmentCount"?: number;
+  'message.attachmentCount'?: number;
   /** The location language of content */
-  "message.contentLocale"?: string;
+  'message.contentLocale'?: string;
   /** The list arguments to replace in content message */
-  "message.contentArguments"?: string[];
+  'message.contentArguments'?: string[];
   /** Is pinned */
-  "message.isPinned"?: boolean;
+  'message.isPinned'?: boolean;
   /** Pin time */
-  "message.pinTime"?: string;
+  'message.pinTime'?: string;
   /** Time edit message */
-  "message.editTime"?: string;
+  'message.editTime'?: string;
   /** The first time message created */
-  "message.createTime"?: string;
+  'message.createTime'?: string;
   /** The time message updated */
-  "message.updateTime"?: string;
+  'message.updateTime'?: string;
 }
 
 export interface MessagePinnedEventDataTParams {
@@ -8908,17 +8908,17 @@ export interface MessagePinnedEventDataTParams {
   /** The user identify whom pine message */
   actorId?: string;
   /** The workspace identify */
-  "channel.workspaceId"?: string;
+  'channel.workspaceId'?: string;
   /** The channel identify */
-  "channel.channelId"?: string;
+  'channel.channelId'?: string;
   /** The channel's creator is identified by the user. */
-  "channel.userId"?: string;
+  'channel.userId'?: string;
   /** The name of channel */
-  "channel.name"?: string;
+  'channel.name'?: string;
   /** The avatar of channel */
-  "channel.avatar"?: string;
+  'channel.avatar'?: string;
   /** The channel is not yet private. */
-  "channel.isPrivate"?: boolean;
+  'channel.isPrivate'?: boolean;
   /**
    * The type of channel
    *
@@ -8927,22 +8927,22 @@ export interface MessagePinnedEventDataTParams {
    *  - CHANNEL_TYPE_ENUM_BROADCAST: BROADCAST: A broadcast channel consists of a single sender and multiple receivers
    * @default "CHANNEL_TYPE_ENUM_DM"
    */
-  "channel.type"?:
-    | "CHANNEL_TYPE_ENUM_DM"
-    | "CHANNEL_TYPE_ENUM_CHANNEL"
-    | "CHANNEL_TYPE_ENUM_BROADCAST";
+  'channel.type'?:
+    | 'CHANNEL_TYPE_ENUM_DM'
+    | 'CHANNEL_TYPE_ENUM_CHANNEL'
+    | 'CHANNEL_TYPE_ENUM_BROADCAST';
   /** Invitation link after create channel */
-  "channel.invitationLink"?: string;
+  'channel.invitationLink'?: string;
   /** Is limited saving enabled? */
-  "channel.privacySettings.restrictSavingContent.enable"?: boolean;
-  "channel.premiumSettings.boosted.enable"?: boolean;
+  'channel.privacySettings.restrictSavingContent.enable'?: boolean;
+  'channel.premiumSettings.boosted.enable'?: boolean;
   /** The original avatar */
-  "channel.originalAvatar"?: string;
+  'channel.originalAvatar'?: string;
   /**
    * Only return when get get channel
    * @format int64
    */
-  "channel.totalMembers"?: number;
+  'channel.totalMembers'?: number;
   /**
    * Status of channel has type DM
    *
@@ -8950,21 +8950,21 @@ export interface MessagePinnedEventDataTParams {
    *  - DIRECT_MESSAGE_STATUS_ENUM_CONTACTED: CONTACTED: The recipient has accepted the message request or they were friends
    * @default "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
    */
-  "channel.dmStatus"?:
-    | "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
-    | "DIRECT_MESSAGE_STATUS_ENUM_CONTACTED";
+  'channel.dmStatus'?:
+    | 'DIRECT_MESSAGE_STATUS_ENUM_PENDING'
+    | 'DIRECT_MESSAGE_STATUS_ENUM_CONTACTED';
   /** The workspace identify */
-  "channel.pinnedMessage.workspaceId"?: string;
+  'channel.pinnedMessage.workspaceId'?: string;
   /** The channel identify */
-  "channel.pinnedMessage.channelId"?: string;
+  'channel.pinnedMessage.channelId'?: string;
   /** The message identify */
-  "channel.pinnedMessage.messageId"?: string;
+  'channel.pinnedMessage.messageId'?: string;
   /** UserId send message */
-  "channel.pinnedMessage.userId"?: string;
+  'channel.pinnedMessage.userId'?: string;
   /** Content of message */
-  "channel.pinnedMessage.content"?: string;
+  'channel.pinnedMessage.content'?: string;
   /** Is a random value created by the client, which is used as a similar attribute to the local ID */
-  "channel.pinnedMessage.ref"?: string;
+  'channel.pinnedMessage.ref'?: string;
   /**
    * Message type and message status
    *
@@ -8972,9 +8972,9 @@ export interface MessagePinnedEventDataTParams {
    *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
    * @default "MESSAGE_TYPE_ENUM_DEFAULT"
    */
-  "channel.pinnedMessage.messageType"?:
-    | "MESSAGE_TYPE_ENUM_DEFAULT"
-    | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+  'channel.pinnedMessage.messageType'?:
+    | 'MESSAGE_TYPE_ENUM_DEFAULT'
+    | 'MESSAGE_TYPE_ENUM_AUDIT_LOG';
   /**
    * Status of message
    *
@@ -8983,14 +8983,14 @@ export interface MessagePinnedEventDataTParams {
    *  - MESSAGE_STATUS_ENUM_FAILURE: Send message failed
    * @default "MESSAGE_STATUS_ENUM_PENDING"
    */
-  "channel.pinnedMessage.messageStatus"?:
-    | "MESSAGE_STATUS_ENUM_PENDING"
-    | "MESSAGE_STATUS_ENUM_SUCCESS"
-    | "MESSAGE_STATUS_ENUM_FAILURE";
+  'channel.pinnedMessage.messageStatus'?:
+    | 'MESSAGE_STATUS_ENUM_PENDING'
+    | 'MESSAGE_STATUS_ENUM_SUCCESS'
+    | 'MESSAGE_STATUS_ENUM_FAILURE';
   /** The message identify */
-  "channel.pinnedMessage.originalMessage.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.messageId'?: string;
   /** The message content */
-  "channel.pinnedMessage.originalMessage.content"?: string;
+  'channel.pinnedMessage.originalMessage.content'?: string;
   /**
    * Attachment type
    *
@@ -9008,19 +9008,19 @@ export interface MessagePinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /**
    * types
    *
@@ -9038,27 +9038,27 @@ export interface MessagePinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.link.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.link.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** url */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.link.url"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.link.url'?: string;
   /** short url */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.link.shortUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.link.shortUrl'?: string;
   /** collection_id of sticker file */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.collectionId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.collectionId'?: string;
   /** sticker_id of sticker */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerId'?: string;
   /**
    * types
    *
@@ -9076,27 +9076,27 @@ export interface MessagePinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** url of sticker if attachment type is sticker */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerUrl'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentId'?: string;
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.fileRef'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileId'?: string;
   /**
    * types
    *
@@ -9114,63 +9114,63 @@ export interface MessagePinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileId'?: string;
   /**
    * types
    *
@@ -9188,63 +9188,63 @@ export interface MessagePinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileId'?: string;
   /**
    * types
    *
@@ -9262,63 +9262,63 @@ export interface MessagePinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileId'?: string;
   /**
    * types
    *
@@ -9336,63 +9336,63 @@ export interface MessagePinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileId'?: string;
   /**
    * types
    *
@@ -9410,63 +9410,63 @@ export interface MessagePinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileId'?: string;
   /**
    * types
    *
@@ -9484,63 +9484,63 @@ export interface MessagePinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileId'?: string;
   /**
    * types
    *
@@ -9558,61 +9558,61 @@ export interface MessagePinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.messageId'?: string;
   /**
    * Message type
    *
@@ -9620,29 +9620,29 @@ export interface MessagePinnedEventDataTParams {
    *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
    * @default "MESSAGE_TYPE_ENUM_DEFAULT"
    */
-  "channel.pinnedMessage.originalMessage.messageType"?:
-    | "MESSAGE_TYPE_ENUM_DEFAULT"
-    | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+  'channel.pinnedMessage.originalMessage.messageType'?:
+    | 'MESSAGE_TYPE_ENUM_DEFAULT'
+    | 'MESSAGE_TYPE_ENUM_AUDIT_LOG';
   /** The location language of content */
-  "channel.pinnedMessage.originalMessage.contentLocale"?: string;
+  'channel.pinnedMessage.originalMessage.contentLocale'?: string;
   /** The list arguments to replace in content message */
-  "channel.pinnedMessage.originalMessage.contentArguments"?: string[];
+  'channel.pinnedMessage.originalMessage.contentArguments'?: string[];
   /** The user identify */
-  "channel.pinnedMessage.originalMessage.userId"?: string;
+  'channel.pinnedMessage.originalMessage.userId'?: string;
   /** Time edit message */
-  "channel.pinnedMessage.originalMessage.editTime"?: string;
+  'channel.pinnedMessage.originalMessage.editTime'?: string;
   /** The create time */
-  "channel.pinnedMessage.originalMessage.createTime"?: string;
+  'channel.pinnedMessage.originalMessage.createTime'?: string;
   /** The update time */
-  "channel.pinnedMessage.originalMessage.updateTime"?: string;
+  'channel.pinnedMessage.originalMessage.updateTime'?: string;
   /**
    * Statistical react of message
    *
    * This is a request variable of the map type. The query format is "map_name[key]=value", e.g. If the map name is Age, the key type is string, and the value type is integer, the query parameter is expressed as Age["bob"]=18
    */
-  "channel.pinnedMessage.reactions"?: any;
+  'channel.pinnedMessage.reactions'?: any;
   /** List username mentions */
-  "channel.pinnedMessage.mentions"?: string[];
+  'channel.pinnedMessage.mentions'?: string[];
   /**
    * Attachment type
    *
@@ -9660,69 +9660,69 @@ export interface MessagePinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** State is thread of message, default = false */
-  "channel.pinnedMessage.isThread"?: boolean;
+  'channel.pinnedMessage.isThread'?: boolean;
   /**
    * Number of times reported, default = 0
    * @format int64
    */
-  "channel.pinnedMessage.reportCount"?: number;
+  'channel.pinnedMessage.reportCount'?: number;
   /** Flag report, default = false */
-  "channel.pinnedMessage.isReported"?: boolean;
+  'channel.pinnedMessage.isReported'?: boolean;
   /**
    * Number of files, using for upload album
    * @format int64
    */
-  "channel.pinnedMessage.attachmentCount"?: number;
+  'channel.pinnedMessage.attachmentCount'?: number;
   /** The location language of content */
-  "channel.pinnedMessage.contentLocale"?: string;
+  'channel.pinnedMessage.contentLocale'?: string;
   /** The list arguments to replace in content message */
-  "channel.pinnedMessage.contentArguments"?: string[];
+  'channel.pinnedMessage.contentArguments'?: string[];
   /** Is pinned */
-  "channel.pinnedMessage.isPinned"?: boolean;
+  'channel.pinnedMessage.isPinned'?: boolean;
   /** Pin time */
-  "channel.pinnedMessage.pinTime"?: string;
+  'channel.pinnedMessage.pinTime'?: string;
   /** Time edit message */
-  "channel.pinnedMessage.editTime"?: string;
+  'channel.pinnedMessage.editTime'?: string;
   /** The first time message created */
-  "channel.pinnedMessage.createTime"?: string;
+  'channel.pinnedMessage.createTime'?: string;
   /** The time message updated */
-  "channel.pinnedMessage.updateTime"?: string;
+  'channel.pinnedMessage.updateTime'?: string;
   /** The list participant id */
-  "channel.participantIds"?: string[];
+  'channel.participantIds'?: string[];
   /** Time recipient reject message request */
-  "channel.rejectTime"?: string;
+  'channel.rejectTime'?: string;
   /** Time recipient accept message request */
-  "channel.acceptTime"?: string;
+  'channel.acceptTime'?: string;
   /** The first time channel created */
-  "channel.createTime"?: string;
+  'channel.createTime'?: string;
   /** The time channel updated */
-  "channel.updateTime"?: string;
+  'channel.updateTime'?: string;
   /** The workspace identify */
-  "message.workspaceId"?: string;
+  'message.workspaceId'?: string;
   /** The channel identify */
-  "message.channelId"?: string;
+  'message.channelId'?: string;
   /** The message identify */
-  "message.messageId"?: string;
+  'message.messageId'?: string;
   /** UserId send message */
-  "message.userId"?: string;
+  'message.userId'?: string;
   /** Content of message */
-  "message.content"?: string;
+  'message.content'?: string;
   /** Is a random value created by the client, which is used as a similar attribute to the local ID */
-  "message.ref"?: string;
+  'message.ref'?: string;
   /**
    * Message type and message status
    *
@@ -9730,9 +9730,9 @@ export interface MessagePinnedEventDataTParams {
    *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
    * @default "MESSAGE_TYPE_ENUM_DEFAULT"
    */
-  "message.messageType"?:
-    | "MESSAGE_TYPE_ENUM_DEFAULT"
-    | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+  'message.messageType'?:
+    | 'MESSAGE_TYPE_ENUM_DEFAULT'
+    | 'MESSAGE_TYPE_ENUM_AUDIT_LOG';
   /**
    * Status of message
    *
@@ -9741,14 +9741,14 @@ export interface MessagePinnedEventDataTParams {
    *  - MESSAGE_STATUS_ENUM_FAILURE: Send message failed
    * @default "MESSAGE_STATUS_ENUM_PENDING"
    */
-  "message.messageStatus"?:
-    | "MESSAGE_STATUS_ENUM_PENDING"
-    | "MESSAGE_STATUS_ENUM_SUCCESS"
-    | "MESSAGE_STATUS_ENUM_FAILURE";
+  'message.messageStatus'?:
+    | 'MESSAGE_STATUS_ENUM_PENDING'
+    | 'MESSAGE_STATUS_ENUM_SUCCESS'
+    | 'MESSAGE_STATUS_ENUM_FAILURE';
   /** The message identify */
-  "message.originalMessage.messageId"?: string;
+  'message.originalMessage.messageId'?: string;
   /** The message content */
-  "message.originalMessage.content"?: string;
+  'message.originalMessage.content'?: string;
   /**
    * Attachment type
    *
@@ -9766,19 +9766,19 @@ export interface MessagePinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.originalMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.originalMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /**
    * types
    *
@@ -9796,27 +9796,27 @@ export interface MessagePinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.originalMessage.mediaAttachments.link.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.originalMessage.mediaAttachments.link.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** url */
-  "message.originalMessage.mediaAttachments.link.url"?: string;
+  'message.originalMessage.mediaAttachments.link.url'?: string;
   /** short url */
-  "message.originalMessage.mediaAttachments.link.shortUrl"?: string;
+  'message.originalMessage.mediaAttachments.link.shortUrl'?: string;
   /** collection_id of sticker file */
-  "message.originalMessage.mediaAttachments.sticker.collectionId"?: string;
+  'message.originalMessage.mediaAttachments.sticker.collectionId'?: string;
   /** sticker_id of sticker */
-  "message.originalMessage.mediaAttachments.sticker.stickerId"?: string;
+  'message.originalMessage.mediaAttachments.sticker.stickerId'?: string;
   /**
    * types
    *
@@ -9834,27 +9834,27 @@ export interface MessagePinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.originalMessage.mediaAttachments.sticker.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.originalMessage.mediaAttachments.sticker.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** url of sticker if attachment type is sticker */
-  "message.originalMessage.mediaAttachments.sticker.stickerUrl"?: string;
+  'message.originalMessage.mediaAttachments.sticker.stickerUrl'?: string;
   /** attachment id */
-  "message.originalMessage.mediaAttachments.sticker.attachmentId"?: string;
+  'message.originalMessage.mediaAttachments.sticker.attachmentId'?: string;
   /** file ref */
-  "message.originalMessage.mediaAttachments.sticker.fileRef"?: string;
+  'message.originalMessage.mediaAttachments.sticker.fileRef'?: string;
   /** file_id to handle file operations */
-  "message.originalMessage.mediaAttachments.photo.fileId"?: string;
+  'message.originalMessage.mediaAttachments.photo.fileId'?: string;
   /**
    * types
    *
@@ -9872,63 +9872,63 @@ export interface MessagePinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.originalMessage.mediaAttachments.photo.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.originalMessage.mediaAttachments.photo.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "message.originalMessage.mediaAttachments.photo.fileUrl"?: string;
+  'message.originalMessage.mediaAttachments.photo.fileUrl'?: string;
   /** The name of file. */
-  "message.originalMessage.mediaAttachments.photo.fileMetadata.filename"?: string;
+  'message.originalMessage.mediaAttachments.photo.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.photo.fileMetadata.filesize"?: number;
+  'message.originalMessage.mediaAttachments.photo.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "message.originalMessage.mediaAttachments.photo.fileMetadata.extension"?: string;
+  'message.originalMessage.mediaAttachments.photo.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "message.originalMessage.mediaAttachments.photo.fileMetadata.mimetype"?: string;
+  'message.originalMessage.mediaAttachments.photo.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height"?: number;
+  'message.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width"?: number;
+  'message.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.photo.fileMetadata.duration"?: number;
+  'message.originalMessage.mediaAttachments.photo.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "message.originalMessage.mediaAttachments.photo.thumbnailUrl"?: string;
+  'message.originalMessage.mediaAttachments.photo.thumbnailUrl'?: string;
   /** audio samples rate */
-  "message.originalMessage.mediaAttachments.photo.audioMetadata.samples"?: number[];
+  'message.originalMessage.mediaAttachments.photo.audioMetadata.samples'?: number[];
   /** file ref */
-  "message.originalMessage.mediaAttachments.photo.fileRef"?: string;
+  'message.originalMessage.mediaAttachments.photo.fileRef'?: string;
   /** attachment id */
-  "message.originalMessage.mediaAttachments.photo.attachmentId"?: string;
+  'message.originalMessage.mediaAttachments.photo.attachmentId'?: string;
   /** channel id */
-  "message.originalMessage.mediaAttachments.photo.channelId"?: string;
+  'message.originalMessage.mediaAttachments.photo.channelId'?: string;
   /** user id */
-  "message.originalMessage.mediaAttachments.photo.userId"?: string;
+  'message.originalMessage.mediaAttachments.photo.userId'?: string;
   /** message id */
-  "message.originalMessage.mediaAttachments.photo.messageId"?: string;
+  'message.originalMessage.mediaAttachments.photo.messageId'?: string;
   /** file_id to handle file operations */
-  "message.originalMessage.mediaAttachments.audio.fileId"?: string;
+  'message.originalMessage.mediaAttachments.audio.fileId'?: string;
   /**
    * types
    *
@@ -9946,63 +9946,63 @@ export interface MessagePinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.originalMessage.mediaAttachments.audio.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.originalMessage.mediaAttachments.audio.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "message.originalMessage.mediaAttachments.audio.fileUrl"?: string;
+  'message.originalMessage.mediaAttachments.audio.fileUrl'?: string;
   /** The name of file. */
-  "message.originalMessage.mediaAttachments.audio.fileMetadata.filename"?: string;
+  'message.originalMessage.mediaAttachments.audio.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.audio.fileMetadata.filesize"?: number;
+  'message.originalMessage.mediaAttachments.audio.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "message.originalMessage.mediaAttachments.audio.fileMetadata.extension"?: string;
+  'message.originalMessage.mediaAttachments.audio.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "message.originalMessage.mediaAttachments.audio.fileMetadata.mimetype"?: string;
+  'message.originalMessage.mediaAttachments.audio.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height"?: number;
+  'message.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width"?: number;
+  'message.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.audio.fileMetadata.duration"?: number;
+  'message.originalMessage.mediaAttachments.audio.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "message.originalMessage.mediaAttachments.audio.thumbnailUrl"?: string;
+  'message.originalMessage.mediaAttachments.audio.thumbnailUrl'?: string;
   /** audio samples rate */
-  "message.originalMessage.mediaAttachments.audio.audioMetadata.samples"?: number[];
+  'message.originalMessage.mediaAttachments.audio.audioMetadata.samples'?: number[];
   /** file ref */
-  "message.originalMessage.mediaAttachments.audio.fileRef"?: string;
+  'message.originalMessage.mediaAttachments.audio.fileRef'?: string;
   /** attachment id */
-  "message.originalMessage.mediaAttachments.audio.attachmentId"?: string;
+  'message.originalMessage.mediaAttachments.audio.attachmentId'?: string;
   /** channel id */
-  "message.originalMessage.mediaAttachments.audio.channelId"?: string;
+  'message.originalMessage.mediaAttachments.audio.channelId'?: string;
   /** user id */
-  "message.originalMessage.mediaAttachments.audio.userId"?: string;
+  'message.originalMessage.mediaAttachments.audio.userId'?: string;
   /** message id */
-  "message.originalMessage.mediaAttachments.audio.messageId"?: string;
+  'message.originalMessage.mediaAttachments.audio.messageId'?: string;
   /** file_id to handle file operations */
-  "message.originalMessage.mediaAttachments.video.fileId"?: string;
+  'message.originalMessage.mediaAttachments.video.fileId'?: string;
   /**
    * types
    *
@@ -10020,63 +10020,63 @@ export interface MessagePinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.originalMessage.mediaAttachments.video.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.originalMessage.mediaAttachments.video.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "message.originalMessage.mediaAttachments.video.fileUrl"?: string;
+  'message.originalMessage.mediaAttachments.video.fileUrl'?: string;
   /** The name of file. */
-  "message.originalMessage.mediaAttachments.video.fileMetadata.filename"?: string;
+  'message.originalMessage.mediaAttachments.video.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.video.fileMetadata.filesize"?: number;
+  'message.originalMessage.mediaAttachments.video.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "message.originalMessage.mediaAttachments.video.fileMetadata.extension"?: string;
+  'message.originalMessage.mediaAttachments.video.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "message.originalMessage.mediaAttachments.video.fileMetadata.mimetype"?: string;
+  'message.originalMessage.mediaAttachments.video.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height"?: number;
+  'message.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width"?: number;
+  'message.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.video.fileMetadata.duration"?: number;
+  'message.originalMessage.mediaAttachments.video.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "message.originalMessage.mediaAttachments.video.thumbnailUrl"?: string;
+  'message.originalMessage.mediaAttachments.video.thumbnailUrl'?: string;
   /** audio samples rate */
-  "message.originalMessage.mediaAttachments.video.audioMetadata.samples"?: number[];
+  'message.originalMessage.mediaAttachments.video.audioMetadata.samples'?: number[];
   /** file ref */
-  "message.originalMessage.mediaAttachments.video.fileRef"?: string;
+  'message.originalMessage.mediaAttachments.video.fileRef'?: string;
   /** attachment id */
-  "message.originalMessage.mediaAttachments.video.attachmentId"?: string;
+  'message.originalMessage.mediaAttachments.video.attachmentId'?: string;
   /** channel id */
-  "message.originalMessage.mediaAttachments.video.channelId"?: string;
+  'message.originalMessage.mediaAttachments.video.channelId'?: string;
   /** user id */
-  "message.originalMessage.mediaAttachments.video.userId"?: string;
+  'message.originalMessage.mediaAttachments.video.userId'?: string;
   /** message id */
-  "message.originalMessage.mediaAttachments.video.messageId"?: string;
+  'message.originalMessage.mediaAttachments.video.messageId'?: string;
   /** file_id to handle file operations */
-  "message.originalMessage.mediaAttachments.voiceMessage.fileId"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.fileId'?: string;
   /**
    * types
    *
@@ -10094,63 +10094,63 @@ export interface MessagePinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.originalMessage.mediaAttachments.voiceMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.originalMessage.mediaAttachments.voiceMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "message.originalMessage.mediaAttachments.voiceMessage.fileUrl"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.fileUrl'?: string;
   /** The name of file. */
-  "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize"?: number;
+  'message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height"?: number;
+  'message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width"?: number;
+  'message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration"?: number;
+  'message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "message.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "message.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples"?: number[];
+  'message.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "message.originalMessage.mediaAttachments.voiceMessage.fileRef"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.fileRef'?: string;
   /** attachment id */
-  "message.originalMessage.mediaAttachments.voiceMessage.attachmentId"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.attachmentId'?: string;
   /** channel id */
-  "message.originalMessage.mediaAttachments.voiceMessage.channelId"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.channelId'?: string;
   /** user id */
-  "message.originalMessage.mediaAttachments.voiceMessage.userId"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.userId'?: string;
   /** message id */
-  "message.originalMessage.mediaAttachments.voiceMessage.messageId"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "message.originalMessage.mediaAttachments.videoMessage.fileId"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.fileId'?: string;
   /**
    * types
    *
@@ -10168,63 +10168,63 @@ export interface MessagePinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.originalMessage.mediaAttachments.videoMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.originalMessage.mediaAttachments.videoMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "message.originalMessage.mediaAttachments.videoMessage.fileUrl"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.fileUrl'?: string;
   /** The name of file. */
-  "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize"?: number;
+  'message.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height"?: number;
+  'message.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width"?: number;
+  'message.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration"?: number;
+  'message.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "message.originalMessage.mediaAttachments.videoMessage.thumbnailUrl"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "message.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples"?: number[];
+  'message.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "message.originalMessage.mediaAttachments.videoMessage.fileRef"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.fileRef'?: string;
   /** attachment id */
-  "message.originalMessage.mediaAttachments.videoMessage.attachmentId"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.attachmentId'?: string;
   /** channel id */
-  "message.originalMessage.mediaAttachments.videoMessage.channelId"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.channelId'?: string;
   /** user id */
-  "message.originalMessage.mediaAttachments.videoMessage.userId"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.userId'?: string;
   /** message id */
-  "message.originalMessage.mediaAttachments.videoMessage.messageId"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "message.originalMessage.mediaAttachments.mediaMessage.fileId"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.fileId'?: string;
   /**
    * types
    *
@@ -10242,63 +10242,63 @@ export interface MessagePinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.originalMessage.mediaAttachments.mediaMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.originalMessage.mediaAttachments.mediaMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "message.originalMessage.mediaAttachments.mediaMessage.fileUrl"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.fileUrl'?: string;
   /** The name of file. */
-  "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize"?: number;
+  'message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height"?: number;
+  'message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width"?: number;
+  'message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration"?: number;
+  'message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "message.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "message.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples"?: number[];
+  'message.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "message.originalMessage.mediaAttachments.mediaMessage.fileRef"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.fileRef'?: string;
   /** attachment id */
-  "message.originalMessage.mediaAttachments.mediaMessage.attachmentId"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.attachmentId'?: string;
   /** channel id */
-  "message.originalMessage.mediaAttachments.mediaMessage.channelId"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.channelId'?: string;
   /** user id */
-  "message.originalMessage.mediaAttachments.mediaMessage.userId"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.userId'?: string;
   /** message id */
-  "message.originalMessage.mediaAttachments.mediaMessage.messageId"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "message.originalMessage.mediaAttachments.file.fileId"?: string;
+  'message.originalMessage.mediaAttachments.file.fileId'?: string;
   /**
    * types
    *
@@ -10316,61 +10316,61 @@ export interface MessagePinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.originalMessage.mediaAttachments.file.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.originalMessage.mediaAttachments.file.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "message.originalMessage.mediaAttachments.file.fileUrl"?: string;
+  'message.originalMessage.mediaAttachments.file.fileUrl'?: string;
   /** The name of file. */
-  "message.originalMessage.mediaAttachments.file.fileMetadata.filename"?: string;
+  'message.originalMessage.mediaAttachments.file.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.file.fileMetadata.filesize"?: number;
+  'message.originalMessage.mediaAttachments.file.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "message.originalMessage.mediaAttachments.file.fileMetadata.extension"?: string;
+  'message.originalMessage.mediaAttachments.file.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "message.originalMessage.mediaAttachments.file.fileMetadata.mimetype"?: string;
+  'message.originalMessage.mediaAttachments.file.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height"?: number;
+  'message.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width"?: number;
+  'message.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.file.fileMetadata.duration"?: number;
+  'message.originalMessage.mediaAttachments.file.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "message.originalMessage.mediaAttachments.file.thumbnailUrl"?: string;
+  'message.originalMessage.mediaAttachments.file.thumbnailUrl'?: string;
   /** audio samples rate */
-  "message.originalMessage.mediaAttachments.file.audioMetadata.samples"?: number[];
+  'message.originalMessage.mediaAttachments.file.audioMetadata.samples'?: number[];
   /** file ref */
-  "message.originalMessage.mediaAttachments.file.fileRef"?: string;
+  'message.originalMessage.mediaAttachments.file.fileRef'?: string;
   /** attachment id */
-  "message.originalMessage.mediaAttachments.file.attachmentId"?: string;
+  'message.originalMessage.mediaAttachments.file.attachmentId'?: string;
   /** channel id */
-  "message.originalMessage.mediaAttachments.file.channelId"?: string;
+  'message.originalMessage.mediaAttachments.file.channelId'?: string;
   /** user id */
-  "message.originalMessage.mediaAttachments.file.userId"?: string;
+  'message.originalMessage.mediaAttachments.file.userId'?: string;
   /** message id */
-  "message.originalMessage.mediaAttachments.file.messageId"?: string;
+  'message.originalMessage.mediaAttachments.file.messageId'?: string;
   /**
    * Message type
    *
@@ -10378,29 +10378,29 @@ export interface MessagePinnedEventDataTParams {
    *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
    * @default "MESSAGE_TYPE_ENUM_DEFAULT"
    */
-  "message.originalMessage.messageType"?:
-    | "MESSAGE_TYPE_ENUM_DEFAULT"
-    | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+  'message.originalMessage.messageType'?:
+    | 'MESSAGE_TYPE_ENUM_DEFAULT'
+    | 'MESSAGE_TYPE_ENUM_AUDIT_LOG';
   /** The location language of content */
-  "message.originalMessage.contentLocale"?: string;
+  'message.originalMessage.contentLocale'?: string;
   /** The list arguments to replace in content message */
-  "message.originalMessage.contentArguments"?: string[];
+  'message.originalMessage.contentArguments'?: string[];
   /** The user identify */
-  "message.originalMessage.userId"?: string;
+  'message.originalMessage.userId'?: string;
   /** Time edit message */
-  "message.originalMessage.editTime"?: string;
+  'message.originalMessage.editTime'?: string;
   /** The create time */
-  "message.originalMessage.createTime"?: string;
+  'message.originalMessage.createTime'?: string;
   /** The update time */
-  "message.originalMessage.updateTime"?: string;
+  'message.originalMessage.updateTime'?: string;
   /**
    * Statistical react of message
    *
    * This is a request variable of the map type. The query format is "map_name[key]=value", e.g. If the map name is Age, the key type is string, and the value type is integer, the query parameter is expressed as Age["bob"]=18
    */
-  "message.reactions"?: any;
+  'message.reactions'?: any;
   /** List username mentions */
-  "message.mentions"?: string[];
+  'message.mentions'?: string[];
   /**
    * Attachment type
    *
@@ -10418,47 +10418,47 @@ export interface MessagePinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** State is thread of message, default = false */
-  "message.isThread"?: boolean;
+  'message.isThread'?: boolean;
   /**
    * Number of times reported, default = 0
    * @format int64
    */
-  "message.reportCount"?: number;
+  'message.reportCount'?: number;
   /** Flag report, default = false */
-  "message.isReported"?: boolean;
+  'message.isReported'?: boolean;
   /**
    * Number of files, using for upload album
    * @format int64
    */
-  "message.attachmentCount"?: number;
+  'message.attachmentCount'?: number;
   /** The location language of content */
-  "message.contentLocale"?: string;
+  'message.contentLocale'?: string;
   /** The list arguments to replace in content message */
-  "message.contentArguments"?: string[];
+  'message.contentArguments'?: string[];
   /** Is pinned */
-  "message.isPinned"?: boolean;
+  'message.isPinned'?: boolean;
   /** Pin time */
-  "message.pinTime"?: string;
+  'message.pinTime'?: string;
   /** Time edit message */
-  "message.editTime"?: string;
+  'message.editTime'?: string;
   /** The first time message created */
-  "message.createTime"?: string;
+  'message.createTime'?: string;
   /** The time message updated */
-  "message.updateTime"?: string;
+  'message.updateTime'?: string;
 }
 
 export interface MessageReactionUpdatedEventDataTParams {
@@ -10469,9 +10469,9 @@ export interface MessageReactionUpdatedEventDataTParams {
   /** The message identify */
   messageId?: string;
   /** The workspace identify */
-  "destination.workspaceId"?: string;
+  'destination.workspaceId'?: string;
   /** The channel identify */
-  "destination.channelId"?: string;
+  'destination.channelId'?: string;
   /**
    * The channel type
    *
@@ -10480,14 +10480,14 @@ export interface MessageReactionUpdatedEventDataTParams {
    *  - CHANNEL_TYPE_ENUM_BROADCAST: BROADCAST: A broadcast channel consists of a single sender and multiple receivers
    * @default "CHANNEL_TYPE_ENUM_DM"
    */
-  "destination.channelType"?:
-    | "CHANNEL_TYPE_ENUM_DM"
-    | "CHANNEL_TYPE_ENUM_CHANNEL"
-    | "CHANNEL_TYPE_ENUM_BROADCAST";
+  'destination.channelType'?:
+    | 'CHANNEL_TYPE_ENUM_DM'
+    | 'CHANNEL_TYPE_ENUM_CHANNEL'
+    | 'CHANNEL_TYPE_ENUM_BROADCAST';
   /** The user identify whom receive message */
-  "destination.recipientId"?: string;
+  'destination.recipientId'?: string;
   /** The dm channel identify */
-  "destination.dmId"?: string;
+  'destination.dmId'?: string;
   /**
    * The dm message status
    *
@@ -10495,9 +10495,9 @@ export interface MessageReactionUpdatedEventDataTParams {
    *  - DIRECT_MESSAGE_STATUS_ENUM_CONTACTED: CONTACTED: The recipient has accepted the message request or they were friends
    * @default "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
    */
-  "destination.dmStatus"?:
-    | "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
-    | "DIRECT_MESSAGE_STATUS_ENUM_CONTACTED";
+  'destination.dmStatus'?:
+    | 'DIRECT_MESSAGE_STATUS_ENUM_PENDING'
+    | 'DIRECT_MESSAGE_STATUS_ENUM_CONTACTED';
   /**
    * Statistical react of message
    *
@@ -10525,17 +10525,17 @@ export interface MessageUnpinnedEventDataTParams {
   /** The user identify */
   actorId?: string;
   /** The workspace identify */
-  "channel.workspaceId"?: string;
+  'channel.workspaceId'?: string;
   /** The channel identify */
-  "channel.channelId"?: string;
+  'channel.channelId'?: string;
   /** The channel's creator is identified by the user. */
-  "channel.userId"?: string;
+  'channel.userId'?: string;
   /** The name of channel */
-  "channel.name"?: string;
+  'channel.name'?: string;
   /** The avatar of channel */
-  "channel.avatar"?: string;
+  'channel.avatar'?: string;
   /** The channel is not yet private. */
-  "channel.isPrivate"?: boolean;
+  'channel.isPrivate'?: boolean;
   /**
    * The type of channel
    *
@@ -10544,22 +10544,22 @@ export interface MessageUnpinnedEventDataTParams {
    *  - CHANNEL_TYPE_ENUM_BROADCAST: BROADCAST: A broadcast channel consists of a single sender and multiple receivers
    * @default "CHANNEL_TYPE_ENUM_DM"
    */
-  "channel.type"?:
-    | "CHANNEL_TYPE_ENUM_DM"
-    | "CHANNEL_TYPE_ENUM_CHANNEL"
-    | "CHANNEL_TYPE_ENUM_BROADCAST";
+  'channel.type'?:
+    | 'CHANNEL_TYPE_ENUM_DM'
+    | 'CHANNEL_TYPE_ENUM_CHANNEL'
+    | 'CHANNEL_TYPE_ENUM_BROADCAST';
   /** Invitation link after create channel */
-  "channel.invitationLink"?: string;
+  'channel.invitationLink'?: string;
   /** Is limited saving enabled? */
-  "channel.privacySettings.restrictSavingContent.enable"?: boolean;
-  "channel.premiumSettings.boosted.enable"?: boolean;
+  'channel.privacySettings.restrictSavingContent.enable'?: boolean;
+  'channel.premiumSettings.boosted.enable'?: boolean;
   /** The original avatar */
-  "channel.originalAvatar"?: string;
+  'channel.originalAvatar'?: string;
   /**
    * Only return when get get channel
    * @format int64
    */
-  "channel.totalMembers"?: number;
+  'channel.totalMembers'?: number;
   /**
    * Status of channel has type DM
    *
@@ -10567,21 +10567,21 @@ export interface MessageUnpinnedEventDataTParams {
    *  - DIRECT_MESSAGE_STATUS_ENUM_CONTACTED: CONTACTED: The recipient has accepted the message request or they were friends
    * @default "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
    */
-  "channel.dmStatus"?:
-    | "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
-    | "DIRECT_MESSAGE_STATUS_ENUM_CONTACTED";
+  'channel.dmStatus'?:
+    | 'DIRECT_MESSAGE_STATUS_ENUM_PENDING'
+    | 'DIRECT_MESSAGE_STATUS_ENUM_CONTACTED';
   /** The workspace identify */
-  "channel.pinnedMessage.workspaceId"?: string;
+  'channel.pinnedMessage.workspaceId'?: string;
   /** The channel identify */
-  "channel.pinnedMessage.channelId"?: string;
+  'channel.pinnedMessage.channelId'?: string;
   /** The message identify */
-  "channel.pinnedMessage.messageId"?: string;
+  'channel.pinnedMessage.messageId'?: string;
   /** UserId send message */
-  "channel.pinnedMessage.userId"?: string;
+  'channel.pinnedMessage.userId'?: string;
   /** Content of message */
-  "channel.pinnedMessage.content"?: string;
+  'channel.pinnedMessage.content'?: string;
   /** Is a random value created by the client, which is used as a similar attribute to the local ID */
-  "channel.pinnedMessage.ref"?: string;
+  'channel.pinnedMessage.ref'?: string;
   /**
    * Message type and message status
    *
@@ -10589,9 +10589,9 @@ export interface MessageUnpinnedEventDataTParams {
    *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
    * @default "MESSAGE_TYPE_ENUM_DEFAULT"
    */
-  "channel.pinnedMessage.messageType"?:
-    | "MESSAGE_TYPE_ENUM_DEFAULT"
-    | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+  'channel.pinnedMessage.messageType'?:
+    | 'MESSAGE_TYPE_ENUM_DEFAULT'
+    | 'MESSAGE_TYPE_ENUM_AUDIT_LOG';
   /**
    * Status of message
    *
@@ -10600,14 +10600,14 @@ export interface MessageUnpinnedEventDataTParams {
    *  - MESSAGE_STATUS_ENUM_FAILURE: Send message failed
    * @default "MESSAGE_STATUS_ENUM_PENDING"
    */
-  "channel.pinnedMessage.messageStatus"?:
-    | "MESSAGE_STATUS_ENUM_PENDING"
-    | "MESSAGE_STATUS_ENUM_SUCCESS"
-    | "MESSAGE_STATUS_ENUM_FAILURE";
+  'channel.pinnedMessage.messageStatus'?:
+    | 'MESSAGE_STATUS_ENUM_PENDING'
+    | 'MESSAGE_STATUS_ENUM_SUCCESS'
+    | 'MESSAGE_STATUS_ENUM_FAILURE';
   /** The message identify */
-  "channel.pinnedMessage.originalMessage.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.messageId'?: string;
   /** The message content */
-  "channel.pinnedMessage.originalMessage.content"?: string;
+  'channel.pinnedMessage.originalMessage.content'?: string;
   /**
    * Attachment type
    *
@@ -10625,19 +10625,19 @@ export interface MessageUnpinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /**
    * types
    *
@@ -10655,27 +10655,27 @@ export interface MessageUnpinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.link.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.link.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** url */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.link.url"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.link.url'?: string;
   /** short url */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.link.shortUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.link.shortUrl'?: string;
   /** collection_id of sticker file */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.collectionId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.collectionId'?: string;
   /** sticker_id of sticker */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerId'?: string;
   /**
    * types
    *
@@ -10693,27 +10693,27 @@ export interface MessageUnpinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** url of sticker if attachment type is sticker */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerUrl'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentId'?: string;
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.fileRef'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileId'?: string;
   /**
    * types
    *
@@ -10731,63 +10731,63 @@ export interface MessageUnpinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileId'?: string;
   /**
    * types
    *
@@ -10805,63 +10805,63 @@ export interface MessageUnpinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileId'?: string;
   /**
    * types
    *
@@ -10879,63 +10879,63 @@ export interface MessageUnpinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileId'?: string;
   /**
    * types
    *
@@ -10953,63 +10953,63 @@ export interface MessageUnpinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileId'?: string;
   /**
    * types
    *
@@ -11027,63 +11027,63 @@ export interface MessageUnpinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileId'?: string;
   /**
    * types
    *
@@ -11101,63 +11101,63 @@ export interface MessageUnpinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileId'?: string;
   /**
    * types
    *
@@ -11175,61 +11175,61 @@ export interface MessageUnpinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.messageId'?: string;
   /**
    * Message type
    *
@@ -11237,29 +11237,29 @@ export interface MessageUnpinnedEventDataTParams {
    *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
    * @default "MESSAGE_TYPE_ENUM_DEFAULT"
    */
-  "channel.pinnedMessage.originalMessage.messageType"?:
-    | "MESSAGE_TYPE_ENUM_DEFAULT"
-    | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+  'channel.pinnedMessage.originalMessage.messageType'?:
+    | 'MESSAGE_TYPE_ENUM_DEFAULT'
+    | 'MESSAGE_TYPE_ENUM_AUDIT_LOG';
   /** The location language of content */
-  "channel.pinnedMessage.originalMessage.contentLocale"?: string;
+  'channel.pinnedMessage.originalMessage.contentLocale'?: string;
   /** The list arguments to replace in content message */
-  "channel.pinnedMessage.originalMessage.contentArguments"?: string[];
+  'channel.pinnedMessage.originalMessage.contentArguments'?: string[];
   /** The user identify */
-  "channel.pinnedMessage.originalMessage.userId"?: string;
+  'channel.pinnedMessage.originalMessage.userId'?: string;
   /** Time edit message */
-  "channel.pinnedMessage.originalMessage.editTime"?: string;
+  'channel.pinnedMessage.originalMessage.editTime'?: string;
   /** The create time */
-  "channel.pinnedMessage.originalMessage.createTime"?: string;
+  'channel.pinnedMessage.originalMessage.createTime'?: string;
   /** The update time */
-  "channel.pinnedMessage.originalMessage.updateTime"?: string;
+  'channel.pinnedMessage.originalMessage.updateTime'?: string;
   /**
    * Statistical react of message
    *
    * This is a request variable of the map type. The query format is "map_name[key]=value", e.g. If the map name is Age, the key type is string, and the value type is integer, the query parameter is expressed as Age["bob"]=18
    */
-  "channel.pinnedMessage.reactions"?: any;
+  'channel.pinnedMessage.reactions'?: any;
   /** List username mentions */
-  "channel.pinnedMessage.mentions"?: string[];
+  'channel.pinnedMessage.mentions'?: string[];
   /**
    * Attachment type
    *
@@ -11277,69 +11277,69 @@ export interface MessageUnpinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** State is thread of message, default = false */
-  "channel.pinnedMessage.isThread"?: boolean;
+  'channel.pinnedMessage.isThread'?: boolean;
   /**
    * Number of times reported, default = 0
    * @format int64
    */
-  "channel.pinnedMessage.reportCount"?: number;
+  'channel.pinnedMessage.reportCount'?: number;
   /** Flag report, default = false */
-  "channel.pinnedMessage.isReported"?: boolean;
+  'channel.pinnedMessage.isReported'?: boolean;
   /**
    * Number of files, using for upload album
    * @format int64
    */
-  "channel.pinnedMessage.attachmentCount"?: number;
+  'channel.pinnedMessage.attachmentCount'?: number;
   /** The location language of content */
-  "channel.pinnedMessage.contentLocale"?: string;
+  'channel.pinnedMessage.contentLocale'?: string;
   /** The list arguments to replace in content message */
-  "channel.pinnedMessage.contentArguments"?: string[];
+  'channel.pinnedMessage.contentArguments'?: string[];
   /** Is pinned */
-  "channel.pinnedMessage.isPinned"?: boolean;
+  'channel.pinnedMessage.isPinned'?: boolean;
   /** Pin time */
-  "channel.pinnedMessage.pinTime"?: string;
+  'channel.pinnedMessage.pinTime'?: string;
   /** Time edit message */
-  "channel.pinnedMessage.editTime"?: string;
+  'channel.pinnedMessage.editTime'?: string;
   /** The first time message created */
-  "channel.pinnedMessage.createTime"?: string;
+  'channel.pinnedMessage.createTime'?: string;
   /** The time message updated */
-  "channel.pinnedMessage.updateTime"?: string;
+  'channel.pinnedMessage.updateTime'?: string;
   /** The list participant id */
-  "channel.participantIds"?: string[];
+  'channel.participantIds'?: string[];
   /** Time recipient reject message request */
-  "channel.rejectTime"?: string;
+  'channel.rejectTime'?: string;
   /** Time recipient accept message request */
-  "channel.acceptTime"?: string;
+  'channel.acceptTime'?: string;
   /** The first time channel created */
-  "channel.createTime"?: string;
+  'channel.createTime'?: string;
   /** The time channel updated */
-  "channel.updateTime"?: string;
+  'channel.updateTime'?: string;
   /** The workspace identify */
-  "message.workspaceId"?: string;
+  'message.workspaceId'?: string;
   /** The channel identify */
-  "message.channelId"?: string;
+  'message.channelId'?: string;
   /** The message identify */
-  "message.messageId"?: string;
+  'message.messageId'?: string;
   /** UserId send message */
-  "message.userId"?: string;
+  'message.userId'?: string;
   /** Content of message */
-  "message.content"?: string;
+  'message.content'?: string;
   /** Is a random value created by the client, which is used as a similar attribute to the local ID */
-  "message.ref"?: string;
+  'message.ref'?: string;
   /**
    * Message type and message status
    *
@@ -11347,9 +11347,9 @@ export interface MessageUnpinnedEventDataTParams {
    *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
    * @default "MESSAGE_TYPE_ENUM_DEFAULT"
    */
-  "message.messageType"?:
-    | "MESSAGE_TYPE_ENUM_DEFAULT"
-    | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+  'message.messageType'?:
+    | 'MESSAGE_TYPE_ENUM_DEFAULT'
+    | 'MESSAGE_TYPE_ENUM_AUDIT_LOG';
   /**
    * Status of message
    *
@@ -11358,14 +11358,14 @@ export interface MessageUnpinnedEventDataTParams {
    *  - MESSAGE_STATUS_ENUM_FAILURE: Send message failed
    * @default "MESSAGE_STATUS_ENUM_PENDING"
    */
-  "message.messageStatus"?:
-    | "MESSAGE_STATUS_ENUM_PENDING"
-    | "MESSAGE_STATUS_ENUM_SUCCESS"
-    | "MESSAGE_STATUS_ENUM_FAILURE";
+  'message.messageStatus'?:
+    | 'MESSAGE_STATUS_ENUM_PENDING'
+    | 'MESSAGE_STATUS_ENUM_SUCCESS'
+    | 'MESSAGE_STATUS_ENUM_FAILURE';
   /** The message identify */
-  "message.originalMessage.messageId"?: string;
+  'message.originalMessage.messageId'?: string;
   /** The message content */
-  "message.originalMessage.content"?: string;
+  'message.originalMessage.content'?: string;
   /**
    * Attachment type
    *
@@ -11383,19 +11383,19 @@ export interface MessageUnpinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.originalMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.originalMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /**
    * types
    *
@@ -11413,27 +11413,27 @@ export interface MessageUnpinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.originalMessage.mediaAttachments.link.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.originalMessage.mediaAttachments.link.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** url */
-  "message.originalMessage.mediaAttachments.link.url"?: string;
+  'message.originalMessage.mediaAttachments.link.url'?: string;
   /** short url */
-  "message.originalMessage.mediaAttachments.link.shortUrl"?: string;
+  'message.originalMessage.mediaAttachments.link.shortUrl'?: string;
   /** collection_id of sticker file */
-  "message.originalMessage.mediaAttachments.sticker.collectionId"?: string;
+  'message.originalMessage.mediaAttachments.sticker.collectionId'?: string;
   /** sticker_id of sticker */
-  "message.originalMessage.mediaAttachments.sticker.stickerId"?: string;
+  'message.originalMessage.mediaAttachments.sticker.stickerId'?: string;
   /**
    * types
    *
@@ -11451,27 +11451,27 @@ export interface MessageUnpinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.originalMessage.mediaAttachments.sticker.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.originalMessage.mediaAttachments.sticker.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** url of sticker if attachment type is sticker */
-  "message.originalMessage.mediaAttachments.sticker.stickerUrl"?: string;
+  'message.originalMessage.mediaAttachments.sticker.stickerUrl'?: string;
   /** attachment id */
-  "message.originalMessage.mediaAttachments.sticker.attachmentId"?: string;
+  'message.originalMessage.mediaAttachments.sticker.attachmentId'?: string;
   /** file ref */
-  "message.originalMessage.mediaAttachments.sticker.fileRef"?: string;
+  'message.originalMessage.mediaAttachments.sticker.fileRef'?: string;
   /** file_id to handle file operations */
-  "message.originalMessage.mediaAttachments.photo.fileId"?: string;
+  'message.originalMessage.mediaAttachments.photo.fileId'?: string;
   /**
    * types
    *
@@ -11489,63 +11489,63 @@ export interface MessageUnpinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.originalMessage.mediaAttachments.photo.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.originalMessage.mediaAttachments.photo.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "message.originalMessage.mediaAttachments.photo.fileUrl"?: string;
+  'message.originalMessage.mediaAttachments.photo.fileUrl'?: string;
   /** The name of file. */
-  "message.originalMessage.mediaAttachments.photo.fileMetadata.filename"?: string;
+  'message.originalMessage.mediaAttachments.photo.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.photo.fileMetadata.filesize"?: number;
+  'message.originalMessage.mediaAttachments.photo.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "message.originalMessage.mediaAttachments.photo.fileMetadata.extension"?: string;
+  'message.originalMessage.mediaAttachments.photo.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "message.originalMessage.mediaAttachments.photo.fileMetadata.mimetype"?: string;
+  'message.originalMessage.mediaAttachments.photo.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height"?: number;
+  'message.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width"?: number;
+  'message.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.photo.fileMetadata.duration"?: number;
+  'message.originalMessage.mediaAttachments.photo.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "message.originalMessage.mediaAttachments.photo.thumbnailUrl"?: string;
+  'message.originalMessage.mediaAttachments.photo.thumbnailUrl'?: string;
   /** audio samples rate */
-  "message.originalMessage.mediaAttachments.photo.audioMetadata.samples"?: number[];
+  'message.originalMessage.mediaAttachments.photo.audioMetadata.samples'?: number[];
   /** file ref */
-  "message.originalMessage.mediaAttachments.photo.fileRef"?: string;
+  'message.originalMessage.mediaAttachments.photo.fileRef'?: string;
   /** attachment id */
-  "message.originalMessage.mediaAttachments.photo.attachmentId"?: string;
+  'message.originalMessage.mediaAttachments.photo.attachmentId'?: string;
   /** channel id */
-  "message.originalMessage.mediaAttachments.photo.channelId"?: string;
+  'message.originalMessage.mediaAttachments.photo.channelId'?: string;
   /** user id */
-  "message.originalMessage.mediaAttachments.photo.userId"?: string;
+  'message.originalMessage.mediaAttachments.photo.userId'?: string;
   /** message id */
-  "message.originalMessage.mediaAttachments.photo.messageId"?: string;
+  'message.originalMessage.mediaAttachments.photo.messageId'?: string;
   /** file_id to handle file operations */
-  "message.originalMessage.mediaAttachments.audio.fileId"?: string;
+  'message.originalMessage.mediaAttachments.audio.fileId'?: string;
   /**
    * types
    *
@@ -11563,63 +11563,63 @@ export interface MessageUnpinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.originalMessage.mediaAttachments.audio.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.originalMessage.mediaAttachments.audio.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "message.originalMessage.mediaAttachments.audio.fileUrl"?: string;
+  'message.originalMessage.mediaAttachments.audio.fileUrl'?: string;
   /** The name of file. */
-  "message.originalMessage.mediaAttachments.audio.fileMetadata.filename"?: string;
+  'message.originalMessage.mediaAttachments.audio.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.audio.fileMetadata.filesize"?: number;
+  'message.originalMessage.mediaAttachments.audio.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "message.originalMessage.mediaAttachments.audio.fileMetadata.extension"?: string;
+  'message.originalMessage.mediaAttachments.audio.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "message.originalMessage.mediaAttachments.audio.fileMetadata.mimetype"?: string;
+  'message.originalMessage.mediaAttachments.audio.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height"?: number;
+  'message.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width"?: number;
+  'message.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.audio.fileMetadata.duration"?: number;
+  'message.originalMessage.mediaAttachments.audio.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "message.originalMessage.mediaAttachments.audio.thumbnailUrl"?: string;
+  'message.originalMessage.mediaAttachments.audio.thumbnailUrl'?: string;
   /** audio samples rate */
-  "message.originalMessage.mediaAttachments.audio.audioMetadata.samples"?: number[];
+  'message.originalMessage.mediaAttachments.audio.audioMetadata.samples'?: number[];
   /** file ref */
-  "message.originalMessage.mediaAttachments.audio.fileRef"?: string;
+  'message.originalMessage.mediaAttachments.audio.fileRef'?: string;
   /** attachment id */
-  "message.originalMessage.mediaAttachments.audio.attachmentId"?: string;
+  'message.originalMessage.mediaAttachments.audio.attachmentId'?: string;
   /** channel id */
-  "message.originalMessage.mediaAttachments.audio.channelId"?: string;
+  'message.originalMessage.mediaAttachments.audio.channelId'?: string;
   /** user id */
-  "message.originalMessage.mediaAttachments.audio.userId"?: string;
+  'message.originalMessage.mediaAttachments.audio.userId'?: string;
   /** message id */
-  "message.originalMessage.mediaAttachments.audio.messageId"?: string;
+  'message.originalMessage.mediaAttachments.audio.messageId'?: string;
   /** file_id to handle file operations */
-  "message.originalMessage.mediaAttachments.video.fileId"?: string;
+  'message.originalMessage.mediaAttachments.video.fileId'?: string;
   /**
    * types
    *
@@ -11637,63 +11637,63 @@ export interface MessageUnpinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.originalMessage.mediaAttachments.video.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.originalMessage.mediaAttachments.video.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "message.originalMessage.mediaAttachments.video.fileUrl"?: string;
+  'message.originalMessage.mediaAttachments.video.fileUrl'?: string;
   /** The name of file. */
-  "message.originalMessage.mediaAttachments.video.fileMetadata.filename"?: string;
+  'message.originalMessage.mediaAttachments.video.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.video.fileMetadata.filesize"?: number;
+  'message.originalMessage.mediaAttachments.video.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "message.originalMessage.mediaAttachments.video.fileMetadata.extension"?: string;
+  'message.originalMessage.mediaAttachments.video.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "message.originalMessage.mediaAttachments.video.fileMetadata.mimetype"?: string;
+  'message.originalMessage.mediaAttachments.video.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height"?: number;
+  'message.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width"?: number;
+  'message.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.video.fileMetadata.duration"?: number;
+  'message.originalMessage.mediaAttachments.video.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "message.originalMessage.mediaAttachments.video.thumbnailUrl"?: string;
+  'message.originalMessage.mediaAttachments.video.thumbnailUrl'?: string;
   /** audio samples rate */
-  "message.originalMessage.mediaAttachments.video.audioMetadata.samples"?: number[];
+  'message.originalMessage.mediaAttachments.video.audioMetadata.samples'?: number[];
   /** file ref */
-  "message.originalMessage.mediaAttachments.video.fileRef"?: string;
+  'message.originalMessage.mediaAttachments.video.fileRef'?: string;
   /** attachment id */
-  "message.originalMessage.mediaAttachments.video.attachmentId"?: string;
+  'message.originalMessage.mediaAttachments.video.attachmentId'?: string;
   /** channel id */
-  "message.originalMessage.mediaAttachments.video.channelId"?: string;
+  'message.originalMessage.mediaAttachments.video.channelId'?: string;
   /** user id */
-  "message.originalMessage.mediaAttachments.video.userId"?: string;
+  'message.originalMessage.mediaAttachments.video.userId'?: string;
   /** message id */
-  "message.originalMessage.mediaAttachments.video.messageId"?: string;
+  'message.originalMessage.mediaAttachments.video.messageId'?: string;
   /** file_id to handle file operations */
-  "message.originalMessage.mediaAttachments.voiceMessage.fileId"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.fileId'?: string;
   /**
    * types
    *
@@ -11711,63 +11711,63 @@ export interface MessageUnpinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.originalMessage.mediaAttachments.voiceMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.originalMessage.mediaAttachments.voiceMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "message.originalMessage.mediaAttachments.voiceMessage.fileUrl"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.fileUrl'?: string;
   /** The name of file. */
-  "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize"?: number;
+  'message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height"?: number;
+  'message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width"?: number;
+  'message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration"?: number;
+  'message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "message.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "message.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples"?: number[];
+  'message.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "message.originalMessage.mediaAttachments.voiceMessage.fileRef"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.fileRef'?: string;
   /** attachment id */
-  "message.originalMessage.mediaAttachments.voiceMessage.attachmentId"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.attachmentId'?: string;
   /** channel id */
-  "message.originalMessage.mediaAttachments.voiceMessage.channelId"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.channelId'?: string;
   /** user id */
-  "message.originalMessage.mediaAttachments.voiceMessage.userId"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.userId'?: string;
   /** message id */
-  "message.originalMessage.mediaAttachments.voiceMessage.messageId"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "message.originalMessage.mediaAttachments.videoMessage.fileId"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.fileId'?: string;
   /**
    * types
    *
@@ -11785,63 +11785,63 @@ export interface MessageUnpinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.originalMessage.mediaAttachments.videoMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.originalMessage.mediaAttachments.videoMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "message.originalMessage.mediaAttachments.videoMessage.fileUrl"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.fileUrl'?: string;
   /** The name of file. */
-  "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize"?: number;
+  'message.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height"?: number;
+  'message.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width"?: number;
+  'message.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration"?: number;
+  'message.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "message.originalMessage.mediaAttachments.videoMessage.thumbnailUrl"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "message.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples"?: number[];
+  'message.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "message.originalMessage.mediaAttachments.videoMessage.fileRef"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.fileRef'?: string;
   /** attachment id */
-  "message.originalMessage.mediaAttachments.videoMessage.attachmentId"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.attachmentId'?: string;
   /** channel id */
-  "message.originalMessage.mediaAttachments.videoMessage.channelId"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.channelId'?: string;
   /** user id */
-  "message.originalMessage.mediaAttachments.videoMessage.userId"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.userId'?: string;
   /** message id */
-  "message.originalMessage.mediaAttachments.videoMessage.messageId"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "message.originalMessage.mediaAttachments.mediaMessage.fileId"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.fileId'?: string;
   /**
    * types
    *
@@ -11859,63 +11859,63 @@ export interface MessageUnpinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.originalMessage.mediaAttachments.mediaMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.originalMessage.mediaAttachments.mediaMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "message.originalMessage.mediaAttachments.mediaMessage.fileUrl"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.fileUrl'?: string;
   /** The name of file. */
-  "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize"?: number;
+  'message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height"?: number;
+  'message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width"?: number;
+  'message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration"?: number;
+  'message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "message.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "message.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples"?: number[];
+  'message.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "message.originalMessage.mediaAttachments.mediaMessage.fileRef"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.fileRef'?: string;
   /** attachment id */
-  "message.originalMessage.mediaAttachments.mediaMessage.attachmentId"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.attachmentId'?: string;
   /** channel id */
-  "message.originalMessage.mediaAttachments.mediaMessage.channelId"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.channelId'?: string;
   /** user id */
-  "message.originalMessage.mediaAttachments.mediaMessage.userId"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.userId'?: string;
   /** message id */
-  "message.originalMessage.mediaAttachments.mediaMessage.messageId"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "message.originalMessage.mediaAttachments.file.fileId"?: string;
+  'message.originalMessage.mediaAttachments.file.fileId'?: string;
   /**
    * types
    *
@@ -11933,61 +11933,61 @@ export interface MessageUnpinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.originalMessage.mediaAttachments.file.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.originalMessage.mediaAttachments.file.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "message.originalMessage.mediaAttachments.file.fileUrl"?: string;
+  'message.originalMessage.mediaAttachments.file.fileUrl'?: string;
   /** The name of file. */
-  "message.originalMessage.mediaAttachments.file.fileMetadata.filename"?: string;
+  'message.originalMessage.mediaAttachments.file.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.file.fileMetadata.filesize"?: number;
+  'message.originalMessage.mediaAttachments.file.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "message.originalMessage.mediaAttachments.file.fileMetadata.extension"?: string;
+  'message.originalMessage.mediaAttachments.file.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "message.originalMessage.mediaAttachments.file.fileMetadata.mimetype"?: string;
+  'message.originalMessage.mediaAttachments.file.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height"?: number;
+  'message.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width"?: number;
+  'message.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.file.fileMetadata.duration"?: number;
+  'message.originalMessage.mediaAttachments.file.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "message.originalMessage.mediaAttachments.file.thumbnailUrl"?: string;
+  'message.originalMessage.mediaAttachments.file.thumbnailUrl'?: string;
   /** audio samples rate */
-  "message.originalMessage.mediaAttachments.file.audioMetadata.samples"?: number[];
+  'message.originalMessage.mediaAttachments.file.audioMetadata.samples'?: number[];
   /** file ref */
-  "message.originalMessage.mediaAttachments.file.fileRef"?: string;
+  'message.originalMessage.mediaAttachments.file.fileRef'?: string;
   /** attachment id */
-  "message.originalMessage.mediaAttachments.file.attachmentId"?: string;
+  'message.originalMessage.mediaAttachments.file.attachmentId'?: string;
   /** channel id */
-  "message.originalMessage.mediaAttachments.file.channelId"?: string;
+  'message.originalMessage.mediaAttachments.file.channelId'?: string;
   /** user id */
-  "message.originalMessage.mediaAttachments.file.userId"?: string;
+  'message.originalMessage.mediaAttachments.file.userId'?: string;
   /** message id */
-  "message.originalMessage.mediaAttachments.file.messageId"?: string;
+  'message.originalMessage.mediaAttachments.file.messageId'?: string;
   /**
    * Message type
    *
@@ -11995,29 +11995,29 @@ export interface MessageUnpinnedEventDataTParams {
    *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
    * @default "MESSAGE_TYPE_ENUM_DEFAULT"
    */
-  "message.originalMessage.messageType"?:
-    | "MESSAGE_TYPE_ENUM_DEFAULT"
-    | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+  'message.originalMessage.messageType'?:
+    | 'MESSAGE_TYPE_ENUM_DEFAULT'
+    | 'MESSAGE_TYPE_ENUM_AUDIT_LOG';
   /** The location language of content */
-  "message.originalMessage.contentLocale"?: string;
+  'message.originalMessage.contentLocale'?: string;
   /** The list arguments to replace in content message */
-  "message.originalMessage.contentArguments"?: string[];
+  'message.originalMessage.contentArguments'?: string[];
   /** The user identify */
-  "message.originalMessage.userId"?: string;
+  'message.originalMessage.userId'?: string;
   /** Time edit message */
-  "message.originalMessage.editTime"?: string;
+  'message.originalMessage.editTime'?: string;
   /** The create time */
-  "message.originalMessage.createTime"?: string;
+  'message.originalMessage.createTime'?: string;
   /** The update time */
-  "message.originalMessage.updateTime"?: string;
+  'message.originalMessage.updateTime'?: string;
   /**
    * Statistical react of message
    *
    * This is a request variable of the map type. The query format is "map_name[key]=value", e.g. If the map name is Age, the key type is string, and the value type is integer, the query parameter is expressed as Age["bob"]=18
    */
-  "message.reactions"?: any;
+  'message.reactions'?: any;
   /** List username mentions */
-  "message.mentions"?: string[];
+  'message.mentions'?: string[];
   /**
    * Attachment type
    *
@@ -12035,62 +12035,62 @@ export interface MessageUnpinnedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** State is thread of message, default = false */
-  "message.isThread"?: boolean;
+  'message.isThread'?: boolean;
   /**
    * Number of times reported, default = 0
    * @format int64
    */
-  "message.reportCount"?: number;
+  'message.reportCount'?: number;
   /** Flag report, default = false */
-  "message.isReported"?: boolean;
+  'message.isReported'?: boolean;
   /**
    * Number of files, using for upload album
    * @format int64
    */
-  "message.attachmentCount"?: number;
+  'message.attachmentCount'?: number;
   /** The location language of content */
-  "message.contentLocale"?: string;
+  'message.contentLocale'?: string;
   /** The list arguments to replace in content message */
-  "message.contentArguments"?: string[];
+  'message.contentArguments'?: string[];
   /** Is pinned */
-  "message.isPinned"?: boolean;
+  'message.isPinned'?: boolean;
   /** Pin time */
-  "message.pinTime"?: string;
+  'message.pinTime'?: string;
   /** Time edit message */
-  "message.editTime"?: string;
+  'message.editTime'?: string;
   /** The first time message created */
-  "message.createTime"?: string;
+  'message.createTime'?: string;
   /** The time message updated */
-  "message.updateTime"?: string;
+  'message.updateTime'?: string;
 }
 
 export interface MessageUpdatedEventDataTParams {
   /** The workspace identify */
-  "message.workspaceId"?: string;
+  'message.workspaceId'?: string;
   /** The channel identify */
-  "message.channelId"?: string;
+  'message.channelId'?: string;
   /** The message identify */
-  "message.messageId"?: string;
+  'message.messageId'?: string;
   /** UserId send message */
-  "message.userId"?: string;
+  'message.userId'?: string;
   /** Content of message */
-  "message.content"?: string;
+  'message.content'?: string;
   /** Is a random value created by the client, which is used as a similar attribute to the local ID */
-  "message.ref"?: string;
+  'message.ref'?: string;
   /**
    * Message type and message status
    *
@@ -12098,9 +12098,9 @@ export interface MessageUpdatedEventDataTParams {
    *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
    * @default "MESSAGE_TYPE_ENUM_DEFAULT"
    */
-  "message.messageType"?:
-    | "MESSAGE_TYPE_ENUM_DEFAULT"
-    | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+  'message.messageType'?:
+    | 'MESSAGE_TYPE_ENUM_DEFAULT'
+    | 'MESSAGE_TYPE_ENUM_AUDIT_LOG';
   /**
    * Status of message
    *
@@ -12109,14 +12109,14 @@ export interface MessageUpdatedEventDataTParams {
    *  - MESSAGE_STATUS_ENUM_FAILURE: Send message failed
    * @default "MESSAGE_STATUS_ENUM_PENDING"
    */
-  "message.messageStatus"?:
-    | "MESSAGE_STATUS_ENUM_PENDING"
-    | "MESSAGE_STATUS_ENUM_SUCCESS"
-    | "MESSAGE_STATUS_ENUM_FAILURE";
+  'message.messageStatus'?:
+    | 'MESSAGE_STATUS_ENUM_PENDING'
+    | 'MESSAGE_STATUS_ENUM_SUCCESS'
+    | 'MESSAGE_STATUS_ENUM_FAILURE';
   /** The message identify */
-  "message.originalMessage.messageId"?: string;
+  'message.originalMessage.messageId'?: string;
   /** The message content */
-  "message.originalMessage.content"?: string;
+  'message.originalMessage.content'?: string;
   /**
    * Attachment type
    *
@@ -12134,19 +12134,19 @@ export interface MessageUpdatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.originalMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.originalMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /**
    * types
    *
@@ -12164,27 +12164,27 @@ export interface MessageUpdatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.originalMessage.mediaAttachments.link.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.originalMessage.mediaAttachments.link.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** url */
-  "message.originalMessage.mediaAttachments.link.url"?: string;
+  'message.originalMessage.mediaAttachments.link.url'?: string;
   /** short url */
-  "message.originalMessage.mediaAttachments.link.shortUrl"?: string;
+  'message.originalMessage.mediaAttachments.link.shortUrl'?: string;
   /** collection_id of sticker file */
-  "message.originalMessage.mediaAttachments.sticker.collectionId"?: string;
+  'message.originalMessage.mediaAttachments.sticker.collectionId'?: string;
   /** sticker_id of sticker */
-  "message.originalMessage.mediaAttachments.sticker.stickerId"?: string;
+  'message.originalMessage.mediaAttachments.sticker.stickerId'?: string;
   /**
    * types
    *
@@ -12202,27 +12202,27 @@ export interface MessageUpdatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.originalMessage.mediaAttachments.sticker.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.originalMessage.mediaAttachments.sticker.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** url of sticker if attachment type is sticker */
-  "message.originalMessage.mediaAttachments.sticker.stickerUrl"?: string;
+  'message.originalMessage.mediaAttachments.sticker.stickerUrl'?: string;
   /** attachment id */
-  "message.originalMessage.mediaAttachments.sticker.attachmentId"?: string;
+  'message.originalMessage.mediaAttachments.sticker.attachmentId'?: string;
   /** file ref */
-  "message.originalMessage.mediaAttachments.sticker.fileRef"?: string;
+  'message.originalMessage.mediaAttachments.sticker.fileRef'?: string;
   /** file_id to handle file operations */
-  "message.originalMessage.mediaAttachments.photo.fileId"?: string;
+  'message.originalMessage.mediaAttachments.photo.fileId'?: string;
   /**
    * types
    *
@@ -12240,63 +12240,63 @@ export interface MessageUpdatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.originalMessage.mediaAttachments.photo.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.originalMessage.mediaAttachments.photo.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "message.originalMessage.mediaAttachments.photo.fileUrl"?: string;
+  'message.originalMessage.mediaAttachments.photo.fileUrl'?: string;
   /** The name of file. */
-  "message.originalMessage.mediaAttachments.photo.fileMetadata.filename"?: string;
+  'message.originalMessage.mediaAttachments.photo.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.photo.fileMetadata.filesize"?: number;
+  'message.originalMessage.mediaAttachments.photo.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "message.originalMessage.mediaAttachments.photo.fileMetadata.extension"?: string;
+  'message.originalMessage.mediaAttachments.photo.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "message.originalMessage.mediaAttachments.photo.fileMetadata.mimetype"?: string;
+  'message.originalMessage.mediaAttachments.photo.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height"?: number;
+  'message.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width"?: number;
+  'message.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.photo.fileMetadata.duration"?: number;
+  'message.originalMessage.mediaAttachments.photo.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "message.originalMessage.mediaAttachments.photo.thumbnailUrl"?: string;
+  'message.originalMessage.mediaAttachments.photo.thumbnailUrl'?: string;
   /** audio samples rate */
-  "message.originalMessage.mediaAttachments.photo.audioMetadata.samples"?: number[];
+  'message.originalMessage.mediaAttachments.photo.audioMetadata.samples'?: number[];
   /** file ref */
-  "message.originalMessage.mediaAttachments.photo.fileRef"?: string;
+  'message.originalMessage.mediaAttachments.photo.fileRef'?: string;
   /** attachment id */
-  "message.originalMessage.mediaAttachments.photo.attachmentId"?: string;
+  'message.originalMessage.mediaAttachments.photo.attachmentId'?: string;
   /** channel id */
-  "message.originalMessage.mediaAttachments.photo.channelId"?: string;
+  'message.originalMessage.mediaAttachments.photo.channelId'?: string;
   /** user id */
-  "message.originalMessage.mediaAttachments.photo.userId"?: string;
+  'message.originalMessage.mediaAttachments.photo.userId'?: string;
   /** message id */
-  "message.originalMessage.mediaAttachments.photo.messageId"?: string;
+  'message.originalMessage.mediaAttachments.photo.messageId'?: string;
   /** file_id to handle file operations */
-  "message.originalMessage.mediaAttachments.audio.fileId"?: string;
+  'message.originalMessage.mediaAttachments.audio.fileId'?: string;
   /**
    * types
    *
@@ -12314,63 +12314,63 @@ export interface MessageUpdatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.originalMessage.mediaAttachments.audio.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.originalMessage.mediaAttachments.audio.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "message.originalMessage.mediaAttachments.audio.fileUrl"?: string;
+  'message.originalMessage.mediaAttachments.audio.fileUrl'?: string;
   /** The name of file. */
-  "message.originalMessage.mediaAttachments.audio.fileMetadata.filename"?: string;
+  'message.originalMessage.mediaAttachments.audio.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.audio.fileMetadata.filesize"?: number;
+  'message.originalMessage.mediaAttachments.audio.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "message.originalMessage.mediaAttachments.audio.fileMetadata.extension"?: string;
+  'message.originalMessage.mediaAttachments.audio.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "message.originalMessage.mediaAttachments.audio.fileMetadata.mimetype"?: string;
+  'message.originalMessage.mediaAttachments.audio.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height"?: number;
+  'message.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width"?: number;
+  'message.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.audio.fileMetadata.duration"?: number;
+  'message.originalMessage.mediaAttachments.audio.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "message.originalMessage.mediaAttachments.audio.thumbnailUrl"?: string;
+  'message.originalMessage.mediaAttachments.audio.thumbnailUrl'?: string;
   /** audio samples rate */
-  "message.originalMessage.mediaAttachments.audio.audioMetadata.samples"?: number[];
+  'message.originalMessage.mediaAttachments.audio.audioMetadata.samples'?: number[];
   /** file ref */
-  "message.originalMessage.mediaAttachments.audio.fileRef"?: string;
+  'message.originalMessage.mediaAttachments.audio.fileRef'?: string;
   /** attachment id */
-  "message.originalMessage.mediaAttachments.audio.attachmentId"?: string;
+  'message.originalMessage.mediaAttachments.audio.attachmentId'?: string;
   /** channel id */
-  "message.originalMessage.mediaAttachments.audio.channelId"?: string;
+  'message.originalMessage.mediaAttachments.audio.channelId'?: string;
   /** user id */
-  "message.originalMessage.mediaAttachments.audio.userId"?: string;
+  'message.originalMessage.mediaAttachments.audio.userId'?: string;
   /** message id */
-  "message.originalMessage.mediaAttachments.audio.messageId"?: string;
+  'message.originalMessage.mediaAttachments.audio.messageId'?: string;
   /** file_id to handle file operations */
-  "message.originalMessage.mediaAttachments.video.fileId"?: string;
+  'message.originalMessage.mediaAttachments.video.fileId'?: string;
   /**
    * types
    *
@@ -12388,63 +12388,63 @@ export interface MessageUpdatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.originalMessage.mediaAttachments.video.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.originalMessage.mediaAttachments.video.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "message.originalMessage.mediaAttachments.video.fileUrl"?: string;
+  'message.originalMessage.mediaAttachments.video.fileUrl'?: string;
   /** The name of file. */
-  "message.originalMessage.mediaAttachments.video.fileMetadata.filename"?: string;
+  'message.originalMessage.mediaAttachments.video.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.video.fileMetadata.filesize"?: number;
+  'message.originalMessage.mediaAttachments.video.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "message.originalMessage.mediaAttachments.video.fileMetadata.extension"?: string;
+  'message.originalMessage.mediaAttachments.video.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "message.originalMessage.mediaAttachments.video.fileMetadata.mimetype"?: string;
+  'message.originalMessage.mediaAttachments.video.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height"?: number;
+  'message.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width"?: number;
+  'message.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.video.fileMetadata.duration"?: number;
+  'message.originalMessage.mediaAttachments.video.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "message.originalMessage.mediaAttachments.video.thumbnailUrl"?: string;
+  'message.originalMessage.mediaAttachments.video.thumbnailUrl'?: string;
   /** audio samples rate */
-  "message.originalMessage.mediaAttachments.video.audioMetadata.samples"?: number[];
+  'message.originalMessage.mediaAttachments.video.audioMetadata.samples'?: number[];
   /** file ref */
-  "message.originalMessage.mediaAttachments.video.fileRef"?: string;
+  'message.originalMessage.mediaAttachments.video.fileRef'?: string;
   /** attachment id */
-  "message.originalMessage.mediaAttachments.video.attachmentId"?: string;
+  'message.originalMessage.mediaAttachments.video.attachmentId'?: string;
   /** channel id */
-  "message.originalMessage.mediaAttachments.video.channelId"?: string;
+  'message.originalMessage.mediaAttachments.video.channelId'?: string;
   /** user id */
-  "message.originalMessage.mediaAttachments.video.userId"?: string;
+  'message.originalMessage.mediaAttachments.video.userId'?: string;
   /** message id */
-  "message.originalMessage.mediaAttachments.video.messageId"?: string;
+  'message.originalMessage.mediaAttachments.video.messageId'?: string;
   /** file_id to handle file operations */
-  "message.originalMessage.mediaAttachments.voiceMessage.fileId"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.fileId'?: string;
   /**
    * types
    *
@@ -12462,63 +12462,63 @@ export interface MessageUpdatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.originalMessage.mediaAttachments.voiceMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.originalMessage.mediaAttachments.voiceMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "message.originalMessage.mediaAttachments.voiceMessage.fileUrl"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.fileUrl'?: string;
   /** The name of file. */
-  "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize"?: number;
+  'message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height"?: number;
+  'message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width"?: number;
+  'message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration"?: number;
+  'message.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "message.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "message.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples"?: number[];
+  'message.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "message.originalMessage.mediaAttachments.voiceMessage.fileRef"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.fileRef'?: string;
   /** attachment id */
-  "message.originalMessage.mediaAttachments.voiceMessage.attachmentId"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.attachmentId'?: string;
   /** channel id */
-  "message.originalMessage.mediaAttachments.voiceMessage.channelId"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.channelId'?: string;
   /** user id */
-  "message.originalMessage.mediaAttachments.voiceMessage.userId"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.userId'?: string;
   /** message id */
-  "message.originalMessage.mediaAttachments.voiceMessage.messageId"?: string;
+  'message.originalMessage.mediaAttachments.voiceMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "message.originalMessage.mediaAttachments.videoMessage.fileId"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.fileId'?: string;
   /**
    * types
    *
@@ -12536,63 +12536,63 @@ export interface MessageUpdatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.originalMessage.mediaAttachments.videoMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.originalMessage.mediaAttachments.videoMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "message.originalMessage.mediaAttachments.videoMessage.fileUrl"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.fileUrl'?: string;
   /** The name of file. */
-  "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize"?: number;
+  'message.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height"?: number;
+  'message.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width"?: number;
+  'message.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration"?: number;
+  'message.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "message.originalMessage.mediaAttachments.videoMessage.thumbnailUrl"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "message.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples"?: number[];
+  'message.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "message.originalMessage.mediaAttachments.videoMessage.fileRef"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.fileRef'?: string;
   /** attachment id */
-  "message.originalMessage.mediaAttachments.videoMessage.attachmentId"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.attachmentId'?: string;
   /** channel id */
-  "message.originalMessage.mediaAttachments.videoMessage.channelId"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.channelId'?: string;
   /** user id */
-  "message.originalMessage.mediaAttachments.videoMessage.userId"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.userId'?: string;
   /** message id */
-  "message.originalMessage.mediaAttachments.videoMessage.messageId"?: string;
+  'message.originalMessage.mediaAttachments.videoMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "message.originalMessage.mediaAttachments.mediaMessage.fileId"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.fileId'?: string;
   /**
    * types
    *
@@ -12610,63 +12610,63 @@ export interface MessageUpdatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.originalMessage.mediaAttachments.mediaMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.originalMessage.mediaAttachments.mediaMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "message.originalMessage.mediaAttachments.mediaMessage.fileUrl"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.fileUrl'?: string;
   /** The name of file. */
-  "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize"?: number;
+  'message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height"?: number;
+  'message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width"?: number;
+  'message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration"?: number;
+  'message.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "message.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "message.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples"?: number[];
+  'message.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "message.originalMessage.mediaAttachments.mediaMessage.fileRef"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.fileRef'?: string;
   /** attachment id */
-  "message.originalMessage.mediaAttachments.mediaMessage.attachmentId"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.attachmentId'?: string;
   /** channel id */
-  "message.originalMessage.mediaAttachments.mediaMessage.channelId"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.channelId'?: string;
   /** user id */
-  "message.originalMessage.mediaAttachments.mediaMessage.userId"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.userId'?: string;
   /** message id */
-  "message.originalMessage.mediaAttachments.mediaMessage.messageId"?: string;
+  'message.originalMessage.mediaAttachments.mediaMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "message.originalMessage.mediaAttachments.file.fileId"?: string;
+  'message.originalMessage.mediaAttachments.file.fileId'?: string;
   /**
    * types
    *
@@ -12684,61 +12684,61 @@ export interface MessageUpdatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.originalMessage.mediaAttachments.file.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.originalMessage.mediaAttachments.file.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "message.originalMessage.mediaAttachments.file.fileUrl"?: string;
+  'message.originalMessage.mediaAttachments.file.fileUrl'?: string;
   /** The name of file. */
-  "message.originalMessage.mediaAttachments.file.fileMetadata.filename"?: string;
+  'message.originalMessage.mediaAttachments.file.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.file.fileMetadata.filesize"?: number;
+  'message.originalMessage.mediaAttachments.file.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "message.originalMessage.mediaAttachments.file.fileMetadata.extension"?: string;
+  'message.originalMessage.mediaAttachments.file.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "message.originalMessage.mediaAttachments.file.fileMetadata.mimetype"?: string;
+  'message.originalMessage.mediaAttachments.file.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height"?: number;
+  'message.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width"?: number;
+  'message.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "message.originalMessage.mediaAttachments.file.fileMetadata.duration"?: number;
+  'message.originalMessage.mediaAttachments.file.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "message.originalMessage.mediaAttachments.file.thumbnailUrl"?: string;
+  'message.originalMessage.mediaAttachments.file.thumbnailUrl'?: string;
   /** audio samples rate */
-  "message.originalMessage.mediaAttachments.file.audioMetadata.samples"?: number[];
+  'message.originalMessage.mediaAttachments.file.audioMetadata.samples'?: number[];
   /** file ref */
-  "message.originalMessage.mediaAttachments.file.fileRef"?: string;
+  'message.originalMessage.mediaAttachments.file.fileRef'?: string;
   /** attachment id */
-  "message.originalMessage.mediaAttachments.file.attachmentId"?: string;
+  'message.originalMessage.mediaAttachments.file.attachmentId'?: string;
   /** channel id */
-  "message.originalMessage.mediaAttachments.file.channelId"?: string;
+  'message.originalMessage.mediaAttachments.file.channelId'?: string;
   /** user id */
-  "message.originalMessage.mediaAttachments.file.userId"?: string;
+  'message.originalMessage.mediaAttachments.file.userId'?: string;
   /** message id */
-  "message.originalMessage.mediaAttachments.file.messageId"?: string;
+  'message.originalMessage.mediaAttachments.file.messageId'?: string;
   /**
    * Message type
    *
@@ -12746,29 +12746,29 @@ export interface MessageUpdatedEventDataTParams {
    *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
    * @default "MESSAGE_TYPE_ENUM_DEFAULT"
    */
-  "message.originalMessage.messageType"?:
-    | "MESSAGE_TYPE_ENUM_DEFAULT"
-    | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+  'message.originalMessage.messageType'?:
+    | 'MESSAGE_TYPE_ENUM_DEFAULT'
+    | 'MESSAGE_TYPE_ENUM_AUDIT_LOG';
   /** The location language of content */
-  "message.originalMessage.contentLocale"?: string;
+  'message.originalMessage.contentLocale'?: string;
   /** The list arguments to replace in content message */
-  "message.originalMessage.contentArguments"?: string[];
+  'message.originalMessage.contentArguments'?: string[];
   /** The user identify */
-  "message.originalMessage.userId"?: string;
+  'message.originalMessage.userId'?: string;
   /** Time edit message */
-  "message.originalMessage.editTime"?: string;
+  'message.originalMessage.editTime'?: string;
   /** The create time */
-  "message.originalMessage.createTime"?: string;
+  'message.originalMessage.createTime'?: string;
   /** The update time */
-  "message.originalMessage.updateTime"?: string;
+  'message.originalMessage.updateTime'?: string;
   /**
    * Statistical react of message
    *
    * This is a request variable of the map type. The query format is "map_name[key]=value", e.g. If the map name is Age, the key type is string, and the value type is integer, the query parameter is expressed as Age["bob"]=18
    */
-  "message.reactions"?: any;
+  'message.reactions'?: any;
   /** List username mentions */
-  "message.mentions"?: string[];
+  'message.mentions'?: string[];
   /**
    * Attachment type
    *
@@ -12786,47 +12786,47 @@ export interface MessageUpdatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "message.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'message.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** State is thread of message, default = false */
-  "message.isThread"?: boolean;
+  'message.isThread'?: boolean;
   /**
    * Number of times reported, default = 0
    * @format int64
    */
-  "message.reportCount"?: number;
+  'message.reportCount'?: number;
   /** Flag report, default = false */
-  "message.isReported"?: boolean;
+  'message.isReported'?: boolean;
   /**
    * Number of files, using for upload album
    * @format int64
    */
-  "message.attachmentCount"?: number;
+  'message.attachmentCount'?: number;
   /** The location language of content */
-  "message.contentLocale"?: string;
+  'message.contentLocale'?: string;
   /** The list arguments to replace in content message */
-  "message.contentArguments"?: string[];
+  'message.contentArguments'?: string[];
   /** Is pinned */
-  "message.isPinned"?: boolean;
+  'message.isPinned'?: boolean;
   /** Pin time */
-  "message.pinTime"?: string;
+  'message.pinTime'?: string;
   /** Time edit message */
-  "message.editTime"?: string;
+  'message.editTime'?: string;
   /** The first time message created */
-  "message.createTime"?: string;
+  'message.createTime'?: string;
   /** The time message updated */
-  "message.updateTime"?: string;
+  'message.updateTime'?: string;
 }
 
 export interface MessagesDeletedEventDataTParams {
@@ -12839,9 +12839,9 @@ export interface MessagesDeletedEventDataTParams {
   /** The list message identify to delete */
   messageIds?: string[];
   /** The workspace identify */
-  "destination.workspaceId"?: string;
+  'destination.workspaceId'?: string;
   /** The channel identify */
-  "destination.channelId"?: string;
+  'destination.channelId'?: string;
   /**
    * The channel type
    *
@@ -12850,14 +12850,14 @@ export interface MessagesDeletedEventDataTParams {
    *  - CHANNEL_TYPE_ENUM_BROADCAST: BROADCAST: A broadcast channel consists of a single sender and multiple receivers
    * @default "CHANNEL_TYPE_ENUM_DM"
    */
-  "destination.channelType"?:
-    | "CHANNEL_TYPE_ENUM_DM"
-    | "CHANNEL_TYPE_ENUM_CHANNEL"
-    | "CHANNEL_TYPE_ENUM_BROADCAST";
+  'destination.channelType'?:
+    | 'CHANNEL_TYPE_ENUM_DM'
+    | 'CHANNEL_TYPE_ENUM_CHANNEL'
+    | 'CHANNEL_TYPE_ENUM_BROADCAST';
   /** The user identify whom receive message */
-  "destination.recipientId"?: string;
+  'destination.recipientId'?: string;
   /** The dm channel identify */
-  "destination.dmId"?: string;
+  'destination.dmId'?: string;
   /**
    * The dm message status
    *
@@ -12865,16 +12865,16 @@ export interface MessagesDeletedEventDataTParams {
    *  - DIRECT_MESSAGE_STATUS_ENUM_CONTACTED: CONTACTED: The recipient has accepted the message request or they were friends
    * @default "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
    */
-  "destination.dmStatus"?:
-    | "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
-    | "DIRECT_MESSAGE_STATUS_ENUM_CONTACTED";
+  'destination.dmStatus'?:
+    | 'DIRECT_MESSAGE_STATUS_ENUM_PENDING'
+    | 'DIRECT_MESSAGE_STATUS_ENUM_CONTACTED';
 }
 
 export interface OutgoingFriendRequestAcceptedEventDataTParams {
   /** The user identify whom send request */
-  "friendRequest.requestedFromUserId"?: string;
+  'friendRequest.requestedFromUserId'?: string;
   /** The user identify whom receive request */
-  "friendRequest.requestedToUserId"?: string;
+  'friendRequest.requestedToUserId'?: string;
   /**
    * The status of friend
    *
@@ -12886,34 +12886,34 @@ export interface OutgoingFriendRequestAcceptedEventDataTParams {
    *  - FRIEND_STATUS_ENUM_FRIEND: FRIEND: Two user are friends.
    * @default "FRIEND_STATUS_ENUM_UNSPECIFIED"
    */
-  "friendRequest.status"?:
-    | "FRIEND_STATUS_ENUM_UNSPECIFIED"
-    | "FRIEND_STATUS_ENUM_NOT_FRIEND"
-    | "FRIEND_STATUS_ENUM_REQUEST_SENT"
-    | "FRIEND_STATUS_ENUM_REQUEST_RECEIVED"
-    | "FRIEND_STATUS_ENUM_REQUEST_DELETED"
-    | "FRIEND_STATUS_ENUM_FRIEND";
+  'friendRequest.status'?:
+    | 'FRIEND_STATUS_ENUM_UNSPECIFIED'
+    | 'FRIEND_STATUS_ENUM_NOT_FRIEND'
+    | 'FRIEND_STATUS_ENUM_REQUEST_SENT'
+    | 'FRIEND_STATUS_ENUM_REQUEST_RECEIVED'
+    | 'FRIEND_STATUS_ENUM_REQUEST_DELETED'
+    | 'FRIEND_STATUS_ENUM_FRIEND';
   /** The friend identify */
-  "friendRequest.friendId"?: string;
+  'friendRequest.friendId'?: string;
   /** The list participant id */
-  "friendRequest.participantIds"?: string[];
+  'friendRequest.participantIds'?: string[];
   /** The time has been read by the receiver. */
-  "friendRequest.readTime"?: string;
+  'friendRequest.readTime'?: string;
   /** The time to accept friend */
-  "friendRequest.acceptTime"?: string;
+  'friendRequest.acceptTime'?: string;
   /** The first time friend created */
-  "friendRequest.createTime"?: string;
+  'friendRequest.createTime'?: string;
   /** The time of friend updated */
-  "friendRequest.updateTime"?: string;
+  'friendRequest.updateTime'?: string;
   /** The timestamp when the friend request was deleted */
-  "friendRequest.deleteTime"?: string;
+  'friendRequest.deleteTime'?: string;
 }
 
 export interface OutgoingFriendRequestCanceledEventDataTParams {
   /** The user identify whom send request */
-  "friendRequest.requestedFromUserId"?: string;
+  'friendRequest.requestedFromUserId'?: string;
   /** The user identify whom receive request */
-  "friendRequest.requestedToUserId"?: string;
+  'friendRequest.requestedToUserId'?: string;
   /**
    * The status of friend
    *
@@ -12925,34 +12925,34 @@ export interface OutgoingFriendRequestCanceledEventDataTParams {
    *  - FRIEND_STATUS_ENUM_FRIEND: FRIEND: Two user are friends.
    * @default "FRIEND_STATUS_ENUM_UNSPECIFIED"
    */
-  "friendRequest.status"?:
-    | "FRIEND_STATUS_ENUM_UNSPECIFIED"
-    | "FRIEND_STATUS_ENUM_NOT_FRIEND"
-    | "FRIEND_STATUS_ENUM_REQUEST_SENT"
-    | "FRIEND_STATUS_ENUM_REQUEST_RECEIVED"
-    | "FRIEND_STATUS_ENUM_REQUEST_DELETED"
-    | "FRIEND_STATUS_ENUM_FRIEND";
+  'friendRequest.status'?:
+    | 'FRIEND_STATUS_ENUM_UNSPECIFIED'
+    | 'FRIEND_STATUS_ENUM_NOT_FRIEND'
+    | 'FRIEND_STATUS_ENUM_REQUEST_SENT'
+    | 'FRIEND_STATUS_ENUM_REQUEST_RECEIVED'
+    | 'FRIEND_STATUS_ENUM_REQUEST_DELETED'
+    | 'FRIEND_STATUS_ENUM_FRIEND';
   /** The friend identify */
-  "friendRequest.friendId"?: string;
+  'friendRequest.friendId'?: string;
   /** The list participant id */
-  "friendRequest.participantIds"?: string[];
+  'friendRequest.participantIds'?: string[];
   /** The time has been read by the receiver. */
-  "friendRequest.readTime"?: string;
+  'friendRequest.readTime'?: string;
   /** The time to accept friend */
-  "friendRequest.acceptTime"?: string;
+  'friendRequest.acceptTime'?: string;
   /** The first time friend created */
-  "friendRequest.createTime"?: string;
+  'friendRequest.createTime'?: string;
   /** The time of friend updated */
-  "friendRequest.updateTime"?: string;
+  'friendRequest.updateTime'?: string;
   /** The timestamp when the friend request was deleted */
-  "friendRequest.deleteTime"?: string;
+  'friendRequest.deleteTime'?: string;
 }
 
 export interface OutgoingFriendRequestCreatedEventDataTParams {
   /** The user identify whom send request */
-  "friendRequest.requestedFromUserId"?: string;
+  'friendRequest.requestedFromUserId'?: string;
   /** The user identify whom receive request */
-  "friendRequest.requestedToUserId"?: string;
+  'friendRequest.requestedToUserId'?: string;
   /**
    * The status of friend
    *
@@ -12964,34 +12964,34 @@ export interface OutgoingFriendRequestCreatedEventDataTParams {
    *  - FRIEND_STATUS_ENUM_FRIEND: FRIEND: Two user are friends.
    * @default "FRIEND_STATUS_ENUM_UNSPECIFIED"
    */
-  "friendRequest.status"?:
-    | "FRIEND_STATUS_ENUM_UNSPECIFIED"
-    | "FRIEND_STATUS_ENUM_NOT_FRIEND"
-    | "FRIEND_STATUS_ENUM_REQUEST_SENT"
-    | "FRIEND_STATUS_ENUM_REQUEST_RECEIVED"
-    | "FRIEND_STATUS_ENUM_REQUEST_DELETED"
-    | "FRIEND_STATUS_ENUM_FRIEND";
+  'friendRequest.status'?:
+    | 'FRIEND_STATUS_ENUM_UNSPECIFIED'
+    | 'FRIEND_STATUS_ENUM_NOT_FRIEND'
+    | 'FRIEND_STATUS_ENUM_REQUEST_SENT'
+    | 'FRIEND_STATUS_ENUM_REQUEST_RECEIVED'
+    | 'FRIEND_STATUS_ENUM_REQUEST_DELETED'
+    | 'FRIEND_STATUS_ENUM_FRIEND';
   /** The friend identify */
-  "friendRequest.friendId"?: string;
+  'friendRequest.friendId'?: string;
   /** The list participant id */
-  "friendRequest.participantIds"?: string[];
+  'friendRequest.participantIds'?: string[];
   /** The time has been read by the receiver. */
-  "friendRequest.readTime"?: string;
+  'friendRequest.readTime'?: string;
   /** The time to accept friend */
-  "friendRequest.acceptTime"?: string;
+  'friendRequest.acceptTime'?: string;
   /** The first time friend created */
-  "friendRequest.createTime"?: string;
+  'friendRequest.createTime'?: string;
   /** The time of friend updated */
-  "friendRequest.updateTime"?: string;
+  'friendRequest.updateTime'?: string;
   /** The timestamp when the friend request was deleted */
-  "friendRequest.deleteTime"?: string;
+  'friendRequest.deleteTime'?: string;
 }
 
 export interface OutgoingFriendRequestDeletedEventDataTParams {
   /** The user identify whom send request */
-  "friendRequest.requestedFromUserId"?: string;
+  'friendRequest.requestedFromUserId'?: string;
   /** The user identify whom receive request */
-  "friendRequest.requestedToUserId"?: string;
+  'friendRequest.requestedToUserId'?: string;
   /**
    * The status of friend
    *
@@ -13003,42 +13003,42 @@ export interface OutgoingFriendRequestDeletedEventDataTParams {
    *  - FRIEND_STATUS_ENUM_FRIEND: FRIEND: Two user are friends.
    * @default "FRIEND_STATUS_ENUM_UNSPECIFIED"
    */
-  "friendRequest.status"?:
-    | "FRIEND_STATUS_ENUM_UNSPECIFIED"
-    | "FRIEND_STATUS_ENUM_NOT_FRIEND"
-    | "FRIEND_STATUS_ENUM_REQUEST_SENT"
-    | "FRIEND_STATUS_ENUM_REQUEST_RECEIVED"
-    | "FRIEND_STATUS_ENUM_REQUEST_DELETED"
-    | "FRIEND_STATUS_ENUM_FRIEND";
+  'friendRequest.status'?:
+    | 'FRIEND_STATUS_ENUM_UNSPECIFIED'
+    | 'FRIEND_STATUS_ENUM_NOT_FRIEND'
+    | 'FRIEND_STATUS_ENUM_REQUEST_SENT'
+    | 'FRIEND_STATUS_ENUM_REQUEST_RECEIVED'
+    | 'FRIEND_STATUS_ENUM_REQUEST_DELETED'
+    | 'FRIEND_STATUS_ENUM_FRIEND';
   /** The friend identify */
-  "friendRequest.friendId"?: string;
+  'friendRequest.friendId'?: string;
   /** The list participant id */
-  "friendRequest.participantIds"?: string[];
+  'friendRequest.participantIds'?: string[];
   /** The time has been read by the receiver. */
-  "friendRequest.readTime"?: string;
+  'friendRequest.readTime'?: string;
   /** The time to accept friend */
-  "friendRequest.acceptTime"?: string;
+  'friendRequest.acceptTime'?: string;
   /** The first time friend created */
-  "friendRequest.createTime"?: string;
+  'friendRequest.createTime'?: string;
   /** The time of friend updated */
-  "friendRequest.updateTime"?: string;
+  'friendRequest.updateTime'?: string;
   /** The timestamp when the friend request was deleted */
-  "friendRequest.deleteTime"?: string;
+  'friendRequest.deleteTime'?: string;
 }
 
 export interface OutgoingMessageRequestAcceptedEventDataTParams {
   /** The workspace identify */
-  "channel.workspaceId"?: string;
+  'channel.workspaceId'?: string;
   /** The channel identify */
-  "channel.channelId"?: string;
+  'channel.channelId'?: string;
   /** The channel's creator is identified by the user. */
-  "channel.userId"?: string;
+  'channel.userId'?: string;
   /** The name of channel */
-  "channel.name"?: string;
+  'channel.name'?: string;
   /** The avatar of channel */
-  "channel.avatar"?: string;
+  'channel.avatar'?: string;
   /** The channel is not yet private. */
-  "channel.isPrivate"?: boolean;
+  'channel.isPrivate'?: boolean;
   /**
    * The type of channel
    *
@@ -13047,22 +13047,22 @@ export interface OutgoingMessageRequestAcceptedEventDataTParams {
    *  - CHANNEL_TYPE_ENUM_BROADCAST: BROADCAST: A broadcast channel consists of a single sender and multiple receivers
    * @default "CHANNEL_TYPE_ENUM_DM"
    */
-  "channel.type"?:
-    | "CHANNEL_TYPE_ENUM_DM"
-    | "CHANNEL_TYPE_ENUM_CHANNEL"
-    | "CHANNEL_TYPE_ENUM_BROADCAST";
+  'channel.type'?:
+    | 'CHANNEL_TYPE_ENUM_DM'
+    | 'CHANNEL_TYPE_ENUM_CHANNEL'
+    | 'CHANNEL_TYPE_ENUM_BROADCAST';
   /** Invitation link after create channel */
-  "channel.invitationLink"?: string;
+  'channel.invitationLink'?: string;
   /** Is limited saving enabled? */
-  "channel.privacySettings.restrictSavingContent.enable"?: boolean;
-  "channel.premiumSettings.boosted.enable"?: boolean;
+  'channel.privacySettings.restrictSavingContent.enable'?: boolean;
+  'channel.premiumSettings.boosted.enable'?: boolean;
   /** The original avatar */
-  "channel.originalAvatar"?: string;
+  'channel.originalAvatar'?: string;
   /**
    * Only return when get get channel
    * @format int64
    */
-  "channel.totalMembers"?: number;
+  'channel.totalMembers'?: number;
   /**
    * Status of channel has type DM
    *
@@ -13070,21 +13070,21 @@ export interface OutgoingMessageRequestAcceptedEventDataTParams {
    *  - DIRECT_MESSAGE_STATUS_ENUM_CONTACTED: CONTACTED: The recipient has accepted the message request or they were friends
    * @default "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
    */
-  "channel.dmStatus"?:
-    | "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
-    | "DIRECT_MESSAGE_STATUS_ENUM_CONTACTED";
+  'channel.dmStatus'?:
+    | 'DIRECT_MESSAGE_STATUS_ENUM_PENDING'
+    | 'DIRECT_MESSAGE_STATUS_ENUM_CONTACTED';
   /** The workspace identify */
-  "channel.pinnedMessage.workspaceId"?: string;
+  'channel.pinnedMessage.workspaceId'?: string;
   /** The channel identify */
-  "channel.pinnedMessage.channelId"?: string;
+  'channel.pinnedMessage.channelId'?: string;
   /** The message identify */
-  "channel.pinnedMessage.messageId"?: string;
+  'channel.pinnedMessage.messageId'?: string;
   /** UserId send message */
-  "channel.pinnedMessage.userId"?: string;
+  'channel.pinnedMessage.userId'?: string;
   /** Content of message */
-  "channel.pinnedMessage.content"?: string;
+  'channel.pinnedMessage.content'?: string;
   /** Is a random value created by the client, which is used as a similar attribute to the local ID */
-  "channel.pinnedMessage.ref"?: string;
+  'channel.pinnedMessage.ref'?: string;
   /**
    * Message type and message status
    *
@@ -13092,9 +13092,9 @@ export interface OutgoingMessageRequestAcceptedEventDataTParams {
    *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
    * @default "MESSAGE_TYPE_ENUM_DEFAULT"
    */
-  "channel.pinnedMessage.messageType"?:
-    | "MESSAGE_TYPE_ENUM_DEFAULT"
-    | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+  'channel.pinnedMessage.messageType'?:
+    | 'MESSAGE_TYPE_ENUM_DEFAULT'
+    | 'MESSAGE_TYPE_ENUM_AUDIT_LOG';
   /**
    * Status of message
    *
@@ -13103,14 +13103,14 @@ export interface OutgoingMessageRequestAcceptedEventDataTParams {
    *  - MESSAGE_STATUS_ENUM_FAILURE: Send message failed
    * @default "MESSAGE_STATUS_ENUM_PENDING"
    */
-  "channel.pinnedMessage.messageStatus"?:
-    | "MESSAGE_STATUS_ENUM_PENDING"
-    | "MESSAGE_STATUS_ENUM_SUCCESS"
-    | "MESSAGE_STATUS_ENUM_FAILURE";
+  'channel.pinnedMessage.messageStatus'?:
+    | 'MESSAGE_STATUS_ENUM_PENDING'
+    | 'MESSAGE_STATUS_ENUM_SUCCESS'
+    | 'MESSAGE_STATUS_ENUM_FAILURE';
   /** The message identify */
-  "channel.pinnedMessage.originalMessage.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.messageId'?: string;
   /** The message content */
-  "channel.pinnedMessage.originalMessage.content"?: string;
+  'channel.pinnedMessage.originalMessage.content'?: string;
   /**
    * Attachment type
    *
@@ -13128,19 +13128,19 @@ export interface OutgoingMessageRequestAcceptedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /**
    * types
    *
@@ -13158,27 +13158,27 @@ export interface OutgoingMessageRequestAcceptedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.link.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.link.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** url */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.link.url"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.link.url'?: string;
   /** short url */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.link.shortUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.link.shortUrl'?: string;
   /** collection_id of sticker file */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.collectionId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.collectionId'?: string;
   /** sticker_id of sticker */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerId'?: string;
   /**
    * types
    *
@@ -13196,27 +13196,27 @@ export interface OutgoingMessageRequestAcceptedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** url of sticker if attachment type is sticker */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerUrl'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentId'?: string;
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.fileRef'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileId'?: string;
   /**
    * types
    *
@@ -13234,63 +13234,63 @@ export interface OutgoingMessageRequestAcceptedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileId'?: string;
   /**
    * types
    *
@@ -13308,63 +13308,63 @@ export interface OutgoingMessageRequestAcceptedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileId'?: string;
   /**
    * types
    *
@@ -13382,63 +13382,63 @@ export interface OutgoingMessageRequestAcceptedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileId'?: string;
   /**
    * types
    *
@@ -13456,63 +13456,63 @@ export interface OutgoingMessageRequestAcceptedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileId'?: string;
   /**
    * types
    *
@@ -13530,63 +13530,63 @@ export interface OutgoingMessageRequestAcceptedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileId'?: string;
   /**
    * types
    *
@@ -13604,63 +13604,63 @@ export interface OutgoingMessageRequestAcceptedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileId'?: string;
   /**
    * types
    *
@@ -13678,61 +13678,61 @@ export interface OutgoingMessageRequestAcceptedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.messageId'?: string;
   /**
    * Message type
    *
@@ -13740,29 +13740,29 @@ export interface OutgoingMessageRequestAcceptedEventDataTParams {
    *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
    * @default "MESSAGE_TYPE_ENUM_DEFAULT"
    */
-  "channel.pinnedMessage.originalMessage.messageType"?:
-    | "MESSAGE_TYPE_ENUM_DEFAULT"
-    | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+  'channel.pinnedMessage.originalMessage.messageType'?:
+    | 'MESSAGE_TYPE_ENUM_DEFAULT'
+    | 'MESSAGE_TYPE_ENUM_AUDIT_LOG';
   /** The location language of content */
-  "channel.pinnedMessage.originalMessage.contentLocale"?: string;
+  'channel.pinnedMessage.originalMessage.contentLocale'?: string;
   /** The list arguments to replace in content message */
-  "channel.pinnedMessage.originalMessage.contentArguments"?: string[];
+  'channel.pinnedMessage.originalMessage.contentArguments'?: string[];
   /** The user identify */
-  "channel.pinnedMessage.originalMessage.userId"?: string;
+  'channel.pinnedMessage.originalMessage.userId'?: string;
   /** Time edit message */
-  "channel.pinnedMessage.originalMessage.editTime"?: string;
+  'channel.pinnedMessage.originalMessage.editTime'?: string;
   /** The create time */
-  "channel.pinnedMessage.originalMessage.createTime"?: string;
+  'channel.pinnedMessage.originalMessage.createTime'?: string;
   /** The update time */
-  "channel.pinnedMessage.originalMessage.updateTime"?: string;
+  'channel.pinnedMessage.originalMessage.updateTime'?: string;
   /**
    * Statistical react of message
    *
    * This is a request variable of the map type. The query format is "map_name[key]=value", e.g. If the map name is Age, the key type is string, and the value type is integer, the query parameter is expressed as Age["bob"]=18
    */
-  "channel.pinnedMessage.reactions"?: any;
+  'channel.pinnedMessage.reactions'?: any;
   /** List username mentions */
-  "channel.pinnedMessage.mentions"?: string[];
+  'channel.pinnedMessage.mentions'?: string[];
   /**
    * Attachment type
    *
@@ -13780,72 +13780,72 @@ export interface OutgoingMessageRequestAcceptedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** State is thread of message, default = false */
-  "channel.pinnedMessage.isThread"?: boolean;
+  'channel.pinnedMessage.isThread'?: boolean;
   /**
    * Number of times reported, default = 0
    * @format int64
    */
-  "channel.pinnedMessage.reportCount"?: number;
+  'channel.pinnedMessage.reportCount'?: number;
   /** Flag report, default = false */
-  "channel.pinnedMessage.isReported"?: boolean;
+  'channel.pinnedMessage.isReported'?: boolean;
   /**
    * Number of files, using for upload album
    * @format int64
    */
-  "channel.pinnedMessage.attachmentCount"?: number;
+  'channel.pinnedMessage.attachmentCount'?: number;
   /** The location language of content */
-  "channel.pinnedMessage.contentLocale"?: string;
+  'channel.pinnedMessage.contentLocale'?: string;
   /** The list arguments to replace in content message */
-  "channel.pinnedMessage.contentArguments"?: string[];
+  'channel.pinnedMessage.contentArguments'?: string[];
   /** Is pinned */
-  "channel.pinnedMessage.isPinned"?: boolean;
+  'channel.pinnedMessage.isPinned'?: boolean;
   /** Pin time */
-  "channel.pinnedMessage.pinTime"?: string;
+  'channel.pinnedMessage.pinTime'?: string;
   /** Time edit message */
-  "channel.pinnedMessage.editTime"?: string;
+  'channel.pinnedMessage.editTime'?: string;
   /** The first time message created */
-  "channel.pinnedMessage.createTime"?: string;
+  'channel.pinnedMessage.createTime'?: string;
   /** The time message updated */
-  "channel.pinnedMessage.updateTime"?: string;
+  'channel.pinnedMessage.updateTime'?: string;
   /** The list participant id */
-  "channel.participantIds"?: string[];
+  'channel.participantIds'?: string[];
   /** Time recipient reject message request */
-  "channel.rejectTime"?: string;
+  'channel.rejectTime'?: string;
   /** Time recipient accept message request */
-  "channel.acceptTime"?: string;
+  'channel.acceptTime'?: string;
   /** The first time channel created */
-  "channel.createTime"?: string;
+  'channel.createTime'?: string;
   /** The time channel updated */
-  "channel.updateTime"?: string;
+  'channel.updateTime'?: string;
 }
 
 export interface OutgoingMessageRequestCreatedEventDataTParams {
   /** The workspace identify */
-  "channel.workspaceId"?: string;
+  'channel.workspaceId'?: string;
   /** The channel identify */
-  "channel.channelId"?: string;
+  'channel.channelId'?: string;
   /** The channel's creator is identified by the user. */
-  "channel.userId"?: string;
+  'channel.userId'?: string;
   /** The name of channel */
-  "channel.name"?: string;
+  'channel.name'?: string;
   /** The avatar of channel */
-  "channel.avatar"?: string;
+  'channel.avatar'?: string;
   /** The channel is not yet private. */
-  "channel.isPrivate"?: boolean;
+  'channel.isPrivate'?: boolean;
   /**
    * The type of channel
    *
@@ -13854,22 +13854,22 @@ export interface OutgoingMessageRequestCreatedEventDataTParams {
    *  - CHANNEL_TYPE_ENUM_BROADCAST: BROADCAST: A broadcast channel consists of a single sender and multiple receivers
    * @default "CHANNEL_TYPE_ENUM_DM"
    */
-  "channel.type"?:
-    | "CHANNEL_TYPE_ENUM_DM"
-    | "CHANNEL_TYPE_ENUM_CHANNEL"
-    | "CHANNEL_TYPE_ENUM_BROADCAST";
+  'channel.type'?:
+    | 'CHANNEL_TYPE_ENUM_DM'
+    | 'CHANNEL_TYPE_ENUM_CHANNEL'
+    | 'CHANNEL_TYPE_ENUM_BROADCAST';
   /** Invitation link after create channel */
-  "channel.invitationLink"?: string;
+  'channel.invitationLink'?: string;
   /** Is limited saving enabled? */
-  "channel.privacySettings.restrictSavingContent.enable"?: boolean;
-  "channel.premiumSettings.boosted.enable"?: boolean;
+  'channel.privacySettings.restrictSavingContent.enable'?: boolean;
+  'channel.premiumSettings.boosted.enable'?: boolean;
   /** The original avatar */
-  "channel.originalAvatar"?: string;
+  'channel.originalAvatar'?: string;
   /**
    * Only return when get get channel
    * @format int64
    */
-  "channel.totalMembers"?: number;
+  'channel.totalMembers'?: number;
   /**
    * Status of channel has type DM
    *
@@ -13877,21 +13877,21 @@ export interface OutgoingMessageRequestCreatedEventDataTParams {
    *  - DIRECT_MESSAGE_STATUS_ENUM_CONTACTED: CONTACTED: The recipient has accepted the message request or they were friends
    * @default "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
    */
-  "channel.dmStatus"?:
-    | "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
-    | "DIRECT_MESSAGE_STATUS_ENUM_CONTACTED";
+  'channel.dmStatus'?:
+    | 'DIRECT_MESSAGE_STATUS_ENUM_PENDING'
+    | 'DIRECT_MESSAGE_STATUS_ENUM_CONTACTED';
   /** The workspace identify */
-  "channel.pinnedMessage.workspaceId"?: string;
+  'channel.pinnedMessage.workspaceId'?: string;
   /** The channel identify */
-  "channel.pinnedMessage.channelId"?: string;
+  'channel.pinnedMessage.channelId'?: string;
   /** The message identify */
-  "channel.pinnedMessage.messageId"?: string;
+  'channel.pinnedMessage.messageId'?: string;
   /** UserId send message */
-  "channel.pinnedMessage.userId"?: string;
+  'channel.pinnedMessage.userId'?: string;
   /** Content of message */
-  "channel.pinnedMessage.content"?: string;
+  'channel.pinnedMessage.content'?: string;
   /** Is a random value created by the client, which is used as a similar attribute to the local ID */
-  "channel.pinnedMessage.ref"?: string;
+  'channel.pinnedMessage.ref'?: string;
   /**
    * Message type and message status
    *
@@ -13899,9 +13899,9 @@ export interface OutgoingMessageRequestCreatedEventDataTParams {
    *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
    * @default "MESSAGE_TYPE_ENUM_DEFAULT"
    */
-  "channel.pinnedMessage.messageType"?:
-    | "MESSAGE_TYPE_ENUM_DEFAULT"
-    | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+  'channel.pinnedMessage.messageType'?:
+    | 'MESSAGE_TYPE_ENUM_DEFAULT'
+    | 'MESSAGE_TYPE_ENUM_AUDIT_LOG';
   /**
    * Status of message
    *
@@ -13910,14 +13910,14 @@ export interface OutgoingMessageRequestCreatedEventDataTParams {
    *  - MESSAGE_STATUS_ENUM_FAILURE: Send message failed
    * @default "MESSAGE_STATUS_ENUM_PENDING"
    */
-  "channel.pinnedMessage.messageStatus"?:
-    | "MESSAGE_STATUS_ENUM_PENDING"
-    | "MESSAGE_STATUS_ENUM_SUCCESS"
-    | "MESSAGE_STATUS_ENUM_FAILURE";
+  'channel.pinnedMessage.messageStatus'?:
+    | 'MESSAGE_STATUS_ENUM_PENDING'
+    | 'MESSAGE_STATUS_ENUM_SUCCESS'
+    | 'MESSAGE_STATUS_ENUM_FAILURE';
   /** The message identify */
-  "channel.pinnedMessage.originalMessage.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.messageId'?: string;
   /** The message content */
-  "channel.pinnedMessage.originalMessage.content"?: string;
+  'channel.pinnedMessage.originalMessage.content'?: string;
   /**
    * Attachment type
    *
@@ -13935,19 +13935,19 @@ export interface OutgoingMessageRequestCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /**
    * types
    *
@@ -13965,27 +13965,27 @@ export interface OutgoingMessageRequestCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.link.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.link.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** url */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.link.url"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.link.url'?: string;
   /** short url */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.link.shortUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.link.shortUrl'?: string;
   /** collection_id of sticker file */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.collectionId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.collectionId'?: string;
   /** sticker_id of sticker */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerId'?: string;
   /**
    * types
    *
@@ -14003,27 +14003,27 @@ export interface OutgoingMessageRequestCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** url of sticker if attachment type is sticker */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.stickerUrl'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.attachmentId'?: string;
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.sticker.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.sticker.fileRef'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileId'?: string;
   /**
    * types
    *
@@ -14041,63 +14041,63 @@ export interface OutgoingMessageRequestCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.photo.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.photo.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileId'?: string;
   /**
    * types
    *
@@ -14115,63 +14115,63 @@ export interface OutgoingMessageRequestCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.audio.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.audio.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileId'?: string;
   /**
    * types
    *
@@ -14189,63 +14189,63 @@ export interface OutgoingMessageRequestCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.video.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.video.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileId'?: string;
   /**
    * types
    *
@@ -14263,63 +14263,63 @@ export interface OutgoingMessageRequestCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.voiceMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileId'?: string;
   /**
    * types
    *
@@ -14337,63 +14337,63 @@ export interface OutgoingMessageRequestCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.videoMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileId'?: string;
   /**
    * types
    *
@@ -14411,63 +14411,63 @@ export interface OutgoingMessageRequestCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.mediaMessage.messageId'?: string;
   /** file_id to handle file operations */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileId'?: string;
   /**
    * types
    *
@@ -14485,61 +14485,61 @@ export interface OutgoingMessageRequestCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** Readable file object */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileUrl'?: string;
   /** The name of file. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filename"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filename'?: string;
   /**
    * The size of the file in bytes.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filesize"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.filesize'?: number;
   /** The file extension. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.extension"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.extension'?: string;
   /** The MIME type of the file. MIME types are used to identify the nature and format of a file on the internet. */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.mimetype"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.mimetype'?: string;
   /**
    * The height of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.height'?: number;
   /**
    * The width of file.
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.dimensions.width'?: number;
   /**
    * duration of video or record file, unit second
    * @format int64
    */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.duration"?: number;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileMetadata.duration'?: number;
   /** Readable thumbnail, OPTIONAL */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.thumbnailUrl"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.thumbnailUrl'?: string;
   /** audio samples rate */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.audioMetadata.samples"?: number[];
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.audioMetadata.samples'?: number[];
   /** file ref */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.fileRef"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.fileRef'?: string;
   /** attachment id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.attachmentId'?: string;
   /** channel id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.channelId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.channelId'?: string;
   /** user id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.userId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.userId'?: string;
   /** message id */
-  "channel.pinnedMessage.originalMessage.mediaAttachments.file.messageId"?: string;
+  'channel.pinnedMessage.originalMessage.mediaAttachments.file.messageId'?: string;
   /**
    * Message type
    *
@@ -14547,29 +14547,29 @@ export interface OutgoingMessageRequestCreatedEventDataTParams {
    *  - MESSAGE_TYPE_ENUM_AUDIT_LOG: Message from system
    * @default "MESSAGE_TYPE_ENUM_DEFAULT"
    */
-  "channel.pinnedMessage.originalMessage.messageType"?:
-    | "MESSAGE_TYPE_ENUM_DEFAULT"
-    | "MESSAGE_TYPE_ENUM_AUDIT_LOG";
+  'channel.pinnedMessage.originalMessage.messageType'?:
+    | 'MESSAGE_TYPE_ENUM_DEFAULT'
+    | 'MESSAGE_TYPE_ENUM_AUDIT_LOG';
   /** The location language of content */
-  "channel.pinnedMessage.originalMessage.contentLocale"?: string;
+  'channel.pinnedMessage.originalMessage.contentLocale'?: string;
   /** The list arguments to replace in content message */
-  "channel.pinnedMessage.originalMessage.contentArguments"?: string[];
+  'channel.pinnedMessage.originalMessage.contentArguments'?: string[];
   /** The user identify */
-  "channel.pinnedMessage.originalMessage.userId"?: string;
+  'channel.pinnedMessage.originalMessage.userId'?: string;
   /** Time edit message */
-  "channel.pinnedMessage.originalMessage.editTime"?: string;
+  'channel.pinnedMessage.originalMessage.editTime'?: string;
   /** The create time */
-  "channel.pinnedMessage.originalMessage.createTime"?: string;
+  'channel.pinnedMessage.originalMessage.createTime'?: string;
   /** The update time */
-  "channel.pinnedMessage.originalMessage.updateTime"?: string;
+  'channel.pinnedMessage.originalMessage.updateTime'?: string;
   /**
    * Statistical react of message
    *
    * This is a request variable of the map type. The query format is "map_name[key]=value", e.g. If the map name is Age, the key type is string, and the value type is integer, the query parameter is expressed as Age["bob"]=18
    */
-  "channel.pinnedMessage.reactions"?: any;
+  'channel.pinnedMessage.reactions'?: any;
   /** List username mentions */
-  "channel.pinnedMessage.mentions"?: string[];
+  'channel.pinnedMessage.mentions'?: string[];
   /**
    * Attachment type
    *
@@ -14587,57 +14587,57 @@ export interface OutgoingMessageRequestCreatedEventDataTParams {
    *  - ATTACHMENT_TYPE_ENUM_FILE: Include file
    * @default "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
    */
-  "channel.pinnedMessage.attachmentType"?:
-    | "ATTACHMENT_TYPE_ENUM_UNSPECIFIED"
-    | "ATTACHMENT_TYPE_ENUM_PHOTO"
-    | "ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE"
-    | "ATTACHMENT_TYPE_ENUM_AUDIO"
-    | "ATTACHMENT_TYPE_ENUM_VIDEO"
-    | "ATTACHMENT_TYPE_ENUM_LINKS"
-    | "ATTACHMENT_TYPE_ENUM_STICKER"
-    | "ATTACHMENT_TYPE_ENUM_MEDIA"
-    | "ATTACHMENT_TYPE_ENUM_MENTION"
-    | "ATTACHMENT_TYPE_ENUM_LOCATION"
-    | "ATTACHMENT_TYPE_ENUM_FILE";
+  'channel.pinnedMessage.attachmentType'?:
+    | 'ATTACHMENT_TYPE_ENUM_UNSPECIFIED'
+    | 'ATTACHMENT_TYPE_ENUM_PHOTO'
+    | 'ATTACHMENT_TYPE_ENUM_VOICE_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO_MESSAGE'
+    | 'ATTACHMENT_TYPE_ENUM_AUDIO'
+    | 'ATTACHMENT_TYPE_ENUM_VIDEO'
+    | 'ATTACHMENT_TYPE_ENUM_LINKS'
+    | 'ATTACHMENT_TYPE_ENUM_STICKER'
+    | 'ATTACHMENT_TYPE_ENUM_MEDIA'
+    | 'ATTACHMENT_TYPE_ENUM_MENTION'
+    | 'ATTACHMENT_TYPE_ENUM_LOCATION'
+    | 'ATTACHMENT_TYPE_ENUM_FILE';
   /** State is thread of message, default = false */
-  "channel.pinnedMessage.isThread"?: boolean;
+  'channel.pinnedMessage.isThread'?: boolean;
   /**
    * Number of times reported, default = 0
    * @format int64
    */
-  "channel.pinnedMessage.reportCount"?: number;
+  'channel.pinnedMessage.reportCount'?: number;
   /** Flag report, default = false */
-  "channel.pinnedMessage.isReported"?: boolean;
+  'channel.pinnedMessage.isReported'?: boolean;
   /**
    * Number of files, using for upload album
    * @format int64
    */
-  "channel.pinnedMessage.attachmentCount"?: number;
+  'channel.pinnedMessage.attachmentCount'?: number;
   /** The location language of content */
-  "channel.pinnedMessage.contentLocale"?: string;
+  'channel.pinnedMessage.contentLocale'?: string;
   /** The list arguments to replace in content message */
-  "channel.pinnedMessage.contentArguments"?: string[];
+  'channel.pinnedMessage.contentArguments'?: string[];
   /** Is pinned */
-  "channel.pinnedMessage.isPinned"?: boolean;
+  'channel.pinnedMessage.isPinned'?: boolean;
   /** Pin time */
-  "channel.pinnedMessage.pinTime"?: string;
+  'channel.pinnedMessage.pinTime'?: string;
   /** Time edit message */
-  "channel.pinnedMessage.editTime"?: string;
+  'channel.pinnedMessage.editTime'?: string;
   /** The first time message created */
-  "channel.pinnedMessage.createTime"?: string;
+  'channel.pinnedMessage.createTime'?: string;
   /** The time message updated */
-  "channel.pinnedMessage.updateTime"?: string;
+  'channel.pinnedMessage.updateTime'?: string;
   /** The list participant id */
-  "channel.participantIds"?: string[];
+  'channel.participantIds'?: string[];
   /** Time recipient reject message request */
-  "channel.rejectTime"?: string;
+  'channel.rejectTime'?: string;
   /** Time recipient accept message request */
-  "channel.acceptTime"?: string;
+  'channel.acceptTime'?: string;
   /** The first time channel created */
-  "channel.createTime"?: string;
+  'channel.createTime'?: string;
   /** The time channel updated */
-  "channel.updateTime"?: string;
+  'channel.updateTime'?: string;
 }
 
 export interface PresenceUpdatedEventDataTParams {
@@ -14648,9 +14648,9 @@ export interface PresenceUpdatedEventDataTParams {
   /** The device is online */
   isOnline?: boolean;
   /** The channel identify unread */
-  "badgeValueArgument.unreadChannelIds"?: string[];
+  'badgeValueArgument.unreadChannelIds'?: string[];
   /** The user identify of friend request */
-  "badgeValueArgument.unreadFriendRequestIds"?: string[];
+  'badgeValueArgument.unreadFriendRequestIds'?: string[];
 }
 
 export interface RevokeChannelsNotificationPushedEventDataTParams {
@@ -14711,9 +14711,9 @@ export interface UserAvatarDeletedEventDataTParams {
    * @default "USER_AVATAR_TYPE_ENUM_UNSPECIFIED"
    */
   avatarType?:
-    | "USER_AVATAR_TYPE_ENUM_UNSPECIFIED"
-    | "USER_AVATAR_TYPE_ENUM_PHOTO"
-    | "USER_AVATAR_TYPE_ENUM_VIDEO";
+    | 'USER_AVATAR_TYPE_ENUM_UNSPECIFIED'
+    | 'USER_AVATAR_TYPE_ENUM_PHOTO'
+    | 'USER_AVATAR_TYPE_ENUM_VIDEO';
 }
 
 export interface UserAvatarUpdatedEventDataTParams {
@@ -14732,9 +14732,9 @@ export interface UserAvatarUpdatedEventDataTParams {
    * @default "USER_AVATAR_TYPE_ENUM_UNSPECIFIED"
    */
   avatarType?:
-    | "USER_AVATAR_TYPE_ENUM_UNSPECIFIED"
-    | "USER_AVATAR_TYPE_ENUM_PHOTO"
-    | "USER_AVATAR_TYPE_ENUM_VIDEO";
+    | 'USER_AVATAR_TYPE_ENUM_UNSPECIFIED'
+    | 'USER_AVATAR_TYPE_ENUM_PHOTO'
+    | 'USER_AVATAR_TYPE_ENUM_VIDEO';
 }
 
 export interface UserBadgeCountUpdatedEventDataTParams {
@@ -14760,7 +14760,7 @@ export interface UserCreatedEventDataTParams {
   /** The username of user */
   username?: string;
   /** The country code */
-  "geolocation.countryCode"?: string;
+  'geolocation.countryCode'?: string;
 }
 
 export interface UserCreationFailedDataTParams {
@@ -14769,7 +14769,7 @@ export interface UserCreationFailedDataTParams {
   /** The username of user */
   username?: string;
   /** The country code */
-  "geolocation.countryCode"?: string;
+  'geolocation.countryCode'?: string;
 }
 
 export interface UserDeletedEventDataTParams {
@@ -14807,9 +14807,9 @@ export interface UserGlobalMediaPermissionSettingUpdatedEventDataTParams {
    * @default "MEDIA_PERMISSION_SETTING_ENUM_ALWAYS_ASK"
    */
   globalMediaPermissionSetting?:
-    | "MEDIA_PERMISSION_SETTING_ENUM_ALWAYS_ASK"
-    | "MEDIA_PERMISSION_SETTING_ENUM_ALLOW"
-    | "MEDIA_PERMISSION_SETTING_ENUM_NOT_ALLOW";
+    | 'MEDIA_PERMISSION_SETTING_ENUM_ALWAYS_ASK'
+    | 'MEDIA_PERMISSION_SETTING_ENUM_ALLOW'
+    | 'MEDIA_PERMISSION_SETTING_ENUM_NOT_ALLOW';
 }
 
 export interface UserGlobalNotificationStatusUpdatedEventDataTParams {
@@ -14833,9 +14833,9 @@ export interface UserMessageReactionUpdatedEventDataTParams {
   /** True if react, false if revoke */
   isReacted?: boolean;
   /** The workspace identify */
-  "destination.workspaceId"?: string;
+  'destination.workspaceId'?: string;
   /** The channel identify */
-  "destination.channelId"?: string;
+  'destination.channelId'?: string;
   /**
    * The channel type
    *
@@ -14844,14 +14844,14 @@ export interface UserMessageReactionUpdatedEventDataTParams {
    *  - CHANNEL_TYPE_ENUM_BROADCAST: BROADCAST: A broadcast channel consists of a single sender and multiple receivers
    * @default "CHANNEL_TYPE_ENUM_DM"
    */
-  "destination.channelType"?:
-    | "CHANNEL_TYPE_ENUM_DM"
-    | "CHANNEL_TYPE_ENUM_CHANNEL"
-    | "CHANNEL_TYPE_ENUM_BROADCAST";
+  'destination.channelType'?:
+    | 'CHANNEL_TYPE_ENUM_DM'
+    | 'CHANNEL_TYPE_ENUM_CHANNEL'
+    | 'CHANNEL_TYPE_ENUM_BROADCAST';
   /** The user identify whom receive message */
-  "destination.recipientId"?: string;
+  'destination.recipientId'?: string;
   /** The dm channel identify */
-  "destination.dmId"?: string;
+  'destination.dmId'?: string;
   /**
    * The dm message status
    *
@@ -14859,9 +14859,9 @@ export interface UserMessageReactionUpdatedEventDataTParams {
    *  - DIRECT_MESSAGE_STATUS_ENUM_CONTACTED: CONTACTED: The recipient has accepted the message request or they were friends
    * @default "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
    */
-  "destination.dmStatus"?:
-    | "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
-    | "DIRECT_MESSAGE_STATUS_ENUM_CONTACTED";
+  'destination.dmStatus'?:
+    | 'DIRECT_MESSAGE_STATUS_ENUM_PENDING'
+    | 'DIRECT_MESSAGE_STATUS_ENUM_CONTACTED';
   /**
    * Statistical react of message
    *
@@ -14880,9 +14880,9 @@ export interface UserMessagesDeletedEventDataTParams {
   /** The list message identify deleted */
   messageIds?: string[];
   /** The workspace identify */
-  "destination.workspaceId"?: string;
+  'destination.workspaceId'?: string;
   /** The channel identify */
-  "destination.channelId"?: string;
+  'destination.channelId'?: string;
   /**
    * The channel type
    *
@@ -14891,14 +14891,14 @@ export interface UserMessagesDeletedEventDataTParams {
    *  - CHANNEL_TYPE_ENUM_BROADCAST: BROADCAST: A broadcast channel consists of a single sender and multiple receivers
    * @default "CHANNEL_TYPE_ENUM_DM"
    */
-  "destination.channelType"?:
-    | "CHANNEL_TYPE_ENUM_DM"
-    | "CHANNEL_TYPE_ENUM_CHANNEL"
-    | "CHANNEL_TYPE_ENUM_BROADCAST";
+  'destination.channelType'?:
+    | 'CHANNEL_TYPE_ENUM_DM'
+    | 'CHANNEL_TYPE_ENUM_CHANNEL'
+    | 'CHANNEL_TYPE_ENUM_BROADCAST';
   /** The user identify whom receive message */
-  "destination.recipientId"?: string;
+  'destination.recipientId'?: string;
   /** The dm channel identify */
-  "destination.dmId"?: string;
+  'destination.dmId'?: string;
   /**
    * The dm message status
    *
@@ -14906,9 +14906,9 @@ export interface UserMessagesDeletedEventDataTParams {
    *  - DIRECT_MESSAGE_STATUS_ENUM_CONTACTED: CONTACTED: The recipient has accepted the message request or they were friends
    * @default "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
    */
-  "destination.dmStatus"?:
-    | "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
-    | "DIRECT_MESSAGE_STATUS_ENUM_CONTACTED";
+  'destination.dmStatus'?:
+    | 'DIRECT_MESSAGE_STATUS_ENUM_PENDING'
+    | 'DIRECT_MESSAGE_STATUS_ENUM_CONTACTED';
 }
 
 export interface UserPhoneUpdatedEventDataTParams {
@@ -14923,22 +14923,22 @@ export interface UserPhoneUpdatedEventDataTParams {
 export interface UserScopeForCallUpdatedEventDataTParams {
   actorId?: string;
   /** @default "UNSPECIFIED" */
-  userScope?: "UNSPECIFIED" | "EVERYBODY" | "ONLY_FRIENDS" | "NO_BODY";
+  userScope?: 'UNSPECIFIED' | 'EVERYBODY' | 'ONLY_FRIENDS' | 'NO_BODY';
 }
 
 export interface UserScopeForMessageUpdatedEventDataTParams {
   actorId?: string;
   /** @default "UNSPECIFIED" */
-  userScope?: "UNSPECIFIED" | "EVERYBODY" | "ONLY_FRIENDS" | "NO_BODY";
+  userScope?: 'UNSPECIFIED' | 'EVERYBODY' | 'ONLY_FRIENDS' | 'NO_BODY';
 }
 
 export interface UserStatusCreatedEventDataTParams {
   /** The user identify */
   userId?: string;
   /** The content of user status */
-  "statusData.content"?: string;
+  'statusData.content'?: string;
   /** The emoji status */
-  "statusData.status"?: string;
+  'statusData.status'?: string;
   /**
    * The expires time after create
    *
@@ -14950,19 +14950,19 @@ export interface UserStatusCreatedEventDataTParams {
    *  - USER_STATUS_EXPIRES_AFTER_TIME_ENUM_NEVER: The user status never expires
    * @default "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_UNSPECIFIED"
    */
-  "statusData.expireAfterTime"?:
-    | "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_UNSPECIFIED"
-    | "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_1_HOUR"
-    | "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_4_HOUR"
-    | "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_8_HOUR"
-    | "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_24_HOUR"
-    | "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_NEVER";
+  'statusData.expireAfterTime'?:
+    | 'USER_STATUS_EXPIRES_AFTER_TIME_ENUM_UNSPECIFIED'
+    | 'USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_1_HOUR'
+    | 'USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_4_HOUR'
+    | 'USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_8_HOUR'
+    | 'USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_24_HOUR'
+    | 'USER_STATUS_EXPIRES_AFTER_TIME_ENUM_NEVER';
   /** The create time */
-  "statusData.createTime"?: string;
+  'statusData.createTime'?: string;
   /** The update time */
-  "statusData.updateTime"?: string;
+  'statusData.updateTime'?: string;
   /** The end time (create time + expires time) */
-  "statusData.endTime"?: string;
+  'statusData.endTime'?: string;
 }
 
 export interface UserStatusDeletedEventDataTParams {
@@ -14974,9 +14974,9 @@ export interface UserStatusUpdatedEventDataTParams {
   /** The user identify */
   userId?: string;
   /** The content of user status */
-  "statusData.content"?: string;
+  'statusData.content'?: string;
   /** The emoji status */
-  "statusData.status"?: string;
+  'statusData.status'?: string;
   /**
    * The expires time after create
    *
@@ -14988,19 +14988,19 @@ export interface UserStatusUpdatedEventDataTParams {
    *  - USER_STATUS_EXPIRES_AFTER_TIME_ENUM_NEVER: The user status never expires
    * @default "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_UNSPECIFIED"
    */
-  "statusData.expireAfterTime"?:
-    | "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_UNSPECIFIED"
-    | "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_1_HOUR"
-    | "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_4_HOUR"
-    | "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_8_HOUR"
-    | "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_24_HOUR"
-    | "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_NEVER";
+  'statusData.expireAfterTime'?:
+    | 'USER_STATUS_EXPIRES_AFTER_TIME_ENUM_UNSPECIFIED'
+    | 'USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_1_HOUR'
+    | 'USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_4_HOUR'
+    | 'USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_8_HOUR'
+    | 'USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_24_HOUR'
+    | 'USER_STATUS_EXPIRES_AFTER_TIME_ENUM_NEVER';
   /** The create time */
-  "statusData.createTime"?: string;
+  'statusData.createTime'?: string;
   /** The update time */
-  "statusData.updateTime"?: string;
+  'statusData.updateTime'?: string;
   /** The end time (create time + expires time) */
-  "statusData.endTime"?: string;
+  'statusData.endTime'?: string;
 }
 
 export interface UserUnblockedEventDataTParams {
@@ -15025,9 +15025,9 @@ export interface UserUnreadMessagesUpdatedEventDataTParams {
   /** The last seen message identify */
   lastSeenMessageId?: string;
   /** The workspace identify */
-  "destination.workspaceId"?: string;
+  'destination.workspaceId'?: string;
   /** The channel identify */
-  "destination.channelId"?: string;
+  'destination.channelId'?: string;
   /**
    * The channel type
    *
@@ -15036,14 +15036,14 @@ export interface UserUnreadMessagesUpdatedEventDataTParams {
    *  - CHANNEL_TYPE_ENUM_BROADCAST: BROADCAST: A broadcast channel consists of a single sender and multiple receivers
    * @default "CHANNEL_TYPE_ENUM_DM"
    */
-  "destination.channelType"?:
-    | "CHANNEL_TYPE_ENUM_DM"
-    | "CHANNEL_TYPE_ENUM_CHANNEL"
-    | "CHANNEL_TYPE_ENUM_BROADCAST";
+  'destination.channelType'?:
+    | 'CHANNEL_TYPE_ENUM_DM'
+    | 'CHANNEL_TYPE_ENUM_CHANNEL'
+    | 'CHANNEL_TYPE_ENUM_BROADCAST';
   /** The user identify whom receive message */
-  "destination.recipientId"?: string;
+  'destination.recipientId'?: string;
   /** The dm channel identify */
-  "destination.dmId"?: string;
+  'destination.dmId'?: string;
   /**
    * The dm message status
    *
@@ -15051,9 +15051,9 @@ export interface UserUnreadMessagesUpdatedEventDataTParams {
    *  - DIRECT_MESSAGE_STATUS_ENUM_CONTACTED: CONTACTED: The recipient has accepted the message request or they were friends
    * @default "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
    */
-  "destination.dmStatus"?:
-    | "DIRECT_MESSAGE_STATUS_ENUM_PENDING"
-    | "DIRECT_MESSAGE_STATUS_ENUM_CONTACTED";
+  'destination.dmStatus'?:
+    | 'DIRECT_MESSAGE_STATUS_ENUM_PENDING'
+    | 'DIRECT_MESSAGE_STATUS_ENUM_CONTACTED';
 }
 
 export interface UserVideoAvatarDeletedEventDataTParams {
@@ -15065,13 +15065,13 @@ export interface UserVisitedProfileEventDataTParams {
   /** User identify */
   userId?: string;
   /** The user identify */
-  "userData.userId"?: string;
+  'userData.userId'?: string;
   /** The username of user */
-  "userData.username"?: string;
+  'userData.username'?: string;
   /** The user identify whom send request */
-  "userData.friendData.requestedFromUserId"?: string;
+  'userData.friendData.requestedFromUserId'?: string;
   /** The user identify whom receive request */
-  "userData.friendData.requestedToUserId"?: string;
+  'userData.friendData.requestedToUserId'?: string;
   /**
    * The status of friend
    *
@@ -15083,27 +15083,27 @@ export interface UserVisitedProfileEventDataTParams {
    *  - FRIEND_STATUS_ENUM_FRIEND: FRIEND: Two user are friends.
    * @default "FRIEND_STATUS_ENUM_UNSPECIFIED"
    */
-  "userData.friendData.status"?:
-    | "FRIEND_STATUS_ENUM_UNSPECIFIED"
-    | "FRIEND_STATUS_ENUM_NOT_FRIEND"
-    | "FRIEND_STATUS_ENUM_REQUEST_SENT"
-    | "FRIEND_STATUS_ENUM_REQUEST_RECEIVED"
-    | "FRIEND_STATUS_ENUM_REQUEST_DELETED"
-    | "FRIEND_STATUS_ENUM_FRIEND";
+  'userData.friendData.status'?:
+    | 'FRIEND_STATUS_ENUM_UNSPECIFIED'
+    | 'FRIEND_STATUS_ENUM_NOT_FRIEND'
+    | 'FRIEND_STATUS_ENUM_REQUEST_SENT'
+    | 'FRIEND_STATUS_ENUM_REQUEST_RECEIVED'
+    | 'FRIEND_STATUS_ENUM_REQUEST_DELETED'
+    | 'FRIEND_STATUS_ENUM_FRIEND';
   /** The friend identify */
-  "userData.friendData.friendId"?: string;
+  'userData.friendData.friendId'?: string;
   /** The list participant id */
-  "userData.friendData.participantIds"?: string[];
+  'userData.friendData.participantIds'?: string[];
   /** The time has been read by the receiver. */
-  "userData.friendData.readTime"?: string;
+  'userData.friendData.readTime'?: string;
   /** The time to accept friend */
-  "userData.friendData.acceptTime"?: string;
+  'userData.friendData.acceptTime'?: string;
   /** The first time friend created */
-  "userData.friendData.createTime"?: string;
+  'userData.friendData.createTime'?: string;
   /** The time of friend updated */
-  "userData.friendData.updateTime"?: string;
+  'userData.friendData.updateTime'?: string;
   /** The timestamp when the friend request was deleted */
-  "userData.friendData.deleteTime"?: string;
+  'userData.friendData.deleteTime'?: string;
   /**
    * The media sharing permission setting of user
    *
@@ -15112,22 +15112,22 @@ export interface UserVisitedProfileEventDataTParams {
    *  - MEDIA_PERMISSION_SETTING_ENUM_NOT_ALLOW: NOT_ALLOW: au-to denied incoming media messages
    * @default "MEDIA_PERMISSION_SETTING_ENUM_ALWAYS_ASK"
    */
-  "userData.mediaPermissionSetting"?:
-    | "MEDIA_PERMISSION_SETTING_ENUM_ALWAYS_ASK"
-    | "MEDIA_PERMISSION_SETTING_ENUM_ALLOW"
-    | "MEDIA_PERMISSION_SETTING_ENUM_NOT_ALLOW";
+  'userData.mediaPermissionSetting'?:
+    | 'MEDIA_PERMISSION_SETTING_ENUM_ALWAYS_ASK'
+    | 'MEDIA_PERMISSION_SETTING_ENUM_ALLOW'
+    | 'MEDIA_PERMISSION_SETTING_ENUM_NOT_ALLOW';
   /** The create time of user */
-  "userData.createTime"?: string;
+  'userData.createTime'?: string;
   /** The update time of user */
-  "userData.updateTime"?: string;
+  'userData.updateTime'?: string;
   /** The thumbnail avatar of user */
-  "userData.profile.avatar"?: string;
+  'userData.profile.avatar'?: string;
   /** The user display name */
-  "userData.profile.displayName"?: string;
+  'userData.profile.displayName'?: string;
   /** The cover page of user */
-  "userData.profile.cover"?: string;
+  'userData.profile.cover'?: string;
   /** The avatar of user */
-  "userData.profile.originalAvatar"?: string;
+  'userData.profile.originalAvatar'?: string;
   /**
    * The avatar type
    *
@@ -15136,25 +15136,25 @@ export interface UserVisitedProfileEventDataTParams {
    *  - USER_AVATAR_TYPE_ENUM_VIDEO: User avatar type is video
    * @default "USER_AVATAR_TYPE_ENUM_UNSPECIFIED"
    */
-  "userData.profile.avatarType"?:
-    | "USER_AVATAR_TYPE_ENUM_UNSPECIFIED"
-    | "USER_AVATAR_TYPE_ENUM_PHOTO"
-    | "USER_AVATAR_TYPE_ENUM_VIDEO";
+  'userData.profile.avatarType'?:
+    | 'USER_AVATAR_TYPE_ENUM_UNSPECIFIED'
+    | 'USER_AVATAR_TYPE_ENUM_PHOTO'
+    | 'USER_AVATAR_TYPE_ENUM_VIDEO';
   /** The video avatar URL */
-  "userData.profile.videoAvatar"?: string;
+  'userData.profile.videoAvatar'?: string;
   /**
    * The user badge type
    * @default "USER_BADGE_TYPE_DEFAULT"
    */
-  "userData.profile.userBadgeType"?:
-    | "USER_BADGE_TYPE_DEFAULT"
-    | "USER_BADGE_TYPE_BLUE"
-    | "USER_BADGE_TYPE_GRAY"
-    | "USER_BADGE_TYPE_YELLOW";
+  'userData.profile.userBadgeType'?:
+    | 'USER_BADGE_TYPE_DEFAULT'
+    | 'USER_BADGE_TYPE_BLUE'
+    | 'USER_BADGE_TYPE_GRAY'
+    | 'USER_BADGE_TYPE_YELLOW';
   /** The decorated avatar */
-  "userData.profile.decoratedAvatar"?: string;
+  'userData.profile.decoratedAvatar'?: string;
   /** The original decorated avatar */
-  "userData.profile.originalDecoratedAvatar"?: string;
+  'userData.profile.originalDecoratedAvatar'?: string;
   /**
    * The type of user
    *
@@ -15163,17 +15163,17 @@ export interface UserVisitedProfileEventDataTParams {
    *  - USER_TYPE_ENUM_GHOST: User deleted
    * @default "USER_TYPE_ENUM_DEFAULT"
    */
-  "userData.userType"?:
-    | "USER_TYPE_ENUM_DEFAULT"
-    | "USER_TYPE_ENUM_BOT"
-    | "USER_TYPE_ENUM_GHOST";
+  'userData.userType'?:
+    | 'USER_TYPE_ENUM_DEFAULT'
+    | 'USER_TYPE_ENUM_BOT'
+    | 'USER_TYPE_ENUM_GHOST';
   /** The last time updated */
-  "userData.presenceData.lastUpdateTime"?: string;
+  'userData.presenceData.lastUpdateTime'?: string;
   /**
    * now - last_update_time, always greater than or equal zero, unit: seconds
    * @format int64
    */
-  "userData.presenceData.lastUpdateInSeconds"?: number;
+  'userData.presenceData.lastUpdateInSeconds'?: number;
   /**
    * The presence state's data
    *
@@ -15185,19 +15185,19 @@ export interface UserVisitedProfileEventDataTParams {
    *  - PRESENCE_STATUS_OTHER: The presence is other
    * @default "PRESENCE_STATUS_UNSPECIFIED"
    */
-  "userData.presenceData.presenceState"?:
-    | "PRESENCE_STATUS_UNSPECIFIED"
-    | "PRESENCE_STATUS_ONLINE"
-    | "PRESENCE_STATUS_IDLE"
-    | "PRESENCE_STATUS_DO_NOT_DISTURB"
-    | "PRESENCE_STATUS_OFFLINE"
-    | "PRESENCE_STATUS_OTHER";
+  'userData.presenceData.presenceState'?:
+    | 'PRESENCE_STATUS_UNSPECIFIED'
+    | 'PRESENCE_STATUS_ONLINE'
+    | 'PRESENCE_STATUS_IDLE'
+    | 'PRESENCE_STATUS_DO_NOT_DISTURB'
+    | 'PRESENCE_STATUS_OFFLINE'
+    | 'PRESENCE_STATUS_OTHER';
   /** The custom status */
-  "userData.presenceData.customStatus"?: string;
+  'userData.presenceData.customStatus'?: string;
   /** The content of user status */
-  "userData.statusData.content"?: string;
+  'userData.statusData.content'?: string;
   /** The emoji status */
-  "userData.statusData.status"?: string;
+  'userData.statusData.status'?: string;
   /**
    * The expires time after create
    *
@@ -15209,21 +15209,21 @@ export interface UserVisitedProfileEventDataTParams {
    *  - USER_STATUS_EXPIRES_AFTER_TIME_ENUM_NEVER: The user status never expires
    * @default "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_UNSPECIFIED"
    */
-  "userData.statusData.expireAfterTime"?:
-    | "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_UNSPECIFIED"
-    | "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_1_HOUR"
-    | "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_4_HOUR"
-    | "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_8_HOUR"
-    | "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_24_HOUR"
-    | "USER_STATUS_EXPIRES_AFTER_TIME_ENUM_NEVER";
+  'userData.statusData.expireAfterTime'?:
+    | 'USER_STATUS_EXPIRES_AFTER_TIME_ENUM_UNSPECIFIED'
+    | 'USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_1_HOUR'
+    | 'USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_4_HOUR'
+    | 'USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_8_HOUR'
+    | 'USER_STATUS_EXPIRES_AFTER_TIME_ENUM_AFTER_24_HOUR'
+    | 'USER_STATUS_EXPIRES_AFTER_TIME_ENUM_NEVER';
   /** The create time */
-  "userData.statusData.createTime"?: string;
+  'userData.statusData.createTime'?: string;
   /** The update time */
-  "userData.statusData.updateTime"?: string;
+  'userData.statusData.updateTime'?: string;
   /** The end time (create time + expires time) */
-  "userData.statusData.endTime"?: string;
+  'userData.statusData.endTime'?: string;
   /** Is blocked */
-  "userData.blocked"?: boolean;
+  'userData.blocked'?: boolean;
   /** The created visited profile time */
   createTime?: string;
   /** The update visited profile time */
@@ -15236,9 +15236,9 @@ export interface WebsocketResumeEventDataTParams {
 }
 
 export type QueryParamsType = Record<string | number, any>;
-export type ResponseFormat = keyof Omit<Body, "body" | "bodyUsed">;
+export type ResponseFormat = keyof Omit<Body, 'body' | 'bodyUsed'>;
 
-export interface FullRequestParams extends Omit<RequestInit, "body"> {
+export interface FullRequestParams extends Omit<RequestInit, 'body'> {
   /** set parameter to `true` for call `securityWorker` for this request */
   secure?: boolean;
   /** request path */
@@ -15259,12 +15259,12 @@ export interface FullRequestParams extends Omit<RequestInit, "body"> {
 
 export type RequestParams = Omit<
   FullRequestParams,
-  "body" | "method" | "query" | "path"
+  'body' | 'method' | 'query' | 'path'
 >;
 
 export interface ApiConfig<SecurityDataType = unknown> {
   baseUrl?: string;
-  baseApiParams?: Omit<RequestParams, "baseUrl" | "cancelToken" | "signal">;
+  baseApiParams?: Omit<RequestParams, 'baseUrl' | 'cancelToken' | 'signal'>;
   securityWorker?: (
     securityData: SecurityDataType | null,
   ) => Promise<RequestParams | void> | RequestParams | void;
@@ -15280,26 +15280,26 @@ export interface HttpResponse<D extends unknown, E extends unknown = unknown>
 type CancelToken = Symbol | string | number;
 
 export enum ContentType {
-  Json = "application/json",
-  JsonApi = "application/vnd.api+json",
-  FormData = "multipart/form-data",
-  UrlEncoded = "application/x-www-form-urlencoded",
-  Text = "text/plain",
+  Json = 'application/json',
+  JsonApi = 'application/vnd.api+json',
+  FormData = 'multipart/form-data',
+  UrlEncoded = 'application/x-www-form-urlencoded',
+  Text = 'text/plain',
 }
 
 export class HttpClient<SecurityDataType = unknown> {
-  public baseUrl: string = "";
+  public baseUrl: string = '';
   private securityData: SecurityDataType | null = null;
-  private securityWorker?: ApiConfig<SecurityDataType>["securityWorker"];
+  private securityWorker?: ApiConfig<SecurityDataType>['securityWorker'];
   private abortControllers = new Map<CancelToken, AbortController>();
   private customFetch = (...fetchParams: Parameters<typeof fetch>) =>
     fetch(...fetchParams);
 
   private baseApiParams: RequestParams = {
-    credentials: "same-origin",
+    credentials: 'same-origin',
     headers: {},
-    redirect: "follow",
-    referrerPolicy: "no-referrer",
+    redirect: 'follow',
+    referrerPolicy: 'no-referrer',
   };
 
   constructor(apiConfig: ApiConfig<SecurityDataType> = {}) {
@@ -15312,7 +15312,7 @@ export class HttpClient<SecurityDataType = unknown> {
 
   protected encodeQueryParam(key: string, value: any) {
     const encodedKey = encodeURIComponent(key);
-    return `${encodedKey}=${encodeURIComponent(typeof value === "number" ? value : `${value}`)}`;
+    return `${encodedKey}=${encodeURIComponent(typeof value === 'number' ? value : `${value}`)}`;
   }
 
   protected addQueryParam(query: QueryParamsType, key: string) {
@@ -15321,13 +15321,13 @@ export class HttpClient<SecurityDataType = unknown> {
 
   protected addArrayQueryParam(query: QueryParamsType, key: string) {
     const value = query[key];
-    return value.map((v: any) => this.encodeQueryParam(key, v)).join("&");
+    return value.map((v: any) => this.encodeQueryParam(key, v)).join('&');
   }
 
   protected toQueryString(rawQuery?: QueryParamsType): string {
     const query = rawQuery || {};
     const keys = Object.keys(query).filter(
-      (key) => "undefined" !== typeof query[key],
+      (key) => 'undefined' !== typeof query[key],
     );
     return keys
       .map((key) =>
@@ -15335,25 +15335,25 @@ export class HttpClient<SecurityDataType = unknown> {
           ? this.addArrayQueryParam(query, key)
           : this.addQueryParam(query, key),
       )
-      .join("&");
+      .join('&');
   }
 
   protected addQueryParams(rawQuery?: QueryParamsType): string {
     const queryString = this.toQueryString(rawQuery);
-    return queryString ? `?${queryString}` : "";
+    return queryString ? `?${queryString}` : '';
   }
 
   private contentFormatters: Record<ContentType, (input: any) => any> = {
     [ContentType.Json]: (input: any) =>
-      input !== null && (typeof input === "object" || typeof input === "string")
+      input !== null && (typeof input === 'object' || typeof input === 'string')
         ? JSON.stringify(input)
         : input,
     [ContentType.JsonApi]: (input: any) =>
-      input !== null && (typeof input === "object" || typeof input === "string")
+      input !== null && (typeof input === 'object' || typeof input === 'string')
         ? JSON.stringify(input)
         : input,
     [ContentType.Text]: (input: any) =>
-      input !== null && typeof input !== "string"
+      input !== null && typeof input !== 'string'
         ? JSON.stringify(input)
         : input,
     [ContentType.FormData]: (input: any) =>
@@ -15363,7 +15363,7 @@ export class HttpClient<SecurityDataType = unknown> {
           key,
           property instanceof Blob
             ? property
-            : typeof property === "object" && property !== null
+            : typeof property === 'object' && property !== null
               ? JSON.stringify(property)
               : `${property}`,
         );
@@ -15425,7 +15425,7 @@ export class HttpClient<SecurityDataType = unknown> {
     ...params
   }: FullRequestParams): Promise<HttpResponse<T, E>> => {
     const secureParams =
-      ((typeof secure === "boolean" ? secure : this.baseApiParams.secure) &&
+      ((typeof secure === 'boolean' ? secure : this.baseApiParams.secure) &&
         this.securityWorker &&
         (await this.securityWorker(this.securityData))) ||
       {};
@@ -15435,13 +15435,13 @@ export class HttpClient<SecurityDataType = unknown> {
     const responseFormat = format || requestParams.format;
 
     return this.customFetch(
-      `${baseUrl || this.baseUrl || ""}${path}${queryString ? `?${queryString}` : ""}`,
+      `${baseUrl || this.baseUrl || ''}${path}${queryString ? `?${queryString}` : ''}`,
       {
         ...requestParams,
         headers: {
           ...(requestParams.headers || {}),
           ...(type && type !== ContentType.FormData
-            ? { "Content-Type": type }
+            ? { 'Content-Type': type }
             : {}),
         },
         signal:
@@ -15449,7 +15449,7 @@ export class HttpClient<SecurityDataType = unknown> {
             ? this.createAbortSignal(cancelToken)
             : requestParams.signal) || null,
         body:
-          typeof body === "undefined" || body === null
+          typeof body === 'undefined' || body === null
             ? null
             : payloadFormatter(body),
       },
@@ -15509,9 +15509,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3AllMessagesDeletedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/AllMessagesDeletedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -15528,9 +15528,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3AllUserMessagesDeletedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/AllUserMessagesDeletedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -15547,9 +15547,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3AvatarFrameCreatedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/AvatarFrameCreatedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -15566,9 +15566,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3AvatarFrameDeletedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/AvatarFrameDeletedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -15585,9 +15585,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3CallCreatedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/CallCreatedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -15604,9 +15604,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3CallSignalUpdatedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/CallSignalUpdatedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -15623,9 +15623,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3CallUpdatedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/CallUpdatedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -15642,9 +15642,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3ChannelAvatarUploadFailedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/ChannelAvatarUploadFailedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -15661,9 +15661,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3ChannelCreatedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/ChannelCreatedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -15680,9 +15680,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3ChannelCreationCompletedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/ChannelCreationCompletedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -15699,9 +15699,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3ChannelCreationFailedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/ChannelCreationFailedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -15718,9 +15718,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3ChannelDeletedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/ChannelDeletedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -15737,9 +15737,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3ChannelDestinationCloudEvent, RpcStatus>({
         path: `/CloudEventServiceTemp/ChannelDestinationCloudEventT`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -15757,9 +15757,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
       this.http.request<V3ChannelNotificationStatusUpdatedEventData, RpcStatus>(
         {
           path: `/CloudEventServiceTemp/ChannelNotificationStatusUpdatedEventData`,
-          method: "POST",
+          method: 'POST',
           query: query,
-          format: "json",
+          format: 'json',
           ...params,
         },
       ),
@@ -15777,9 +15777,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3ChannelTypingEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/ChannelTypingEventDataT`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -15796,9 +15796,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3ChannelUpdatedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/ChannelUpdatedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -15817,8 +15817,8 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
         RpcStatus
       >({
         path: `/CloudEventServiceTemp/ClearUserVisitedProfileNotificationsEventData`,
-        method: "POST",
-        format: "json",
+        method: 'POST',
+        format: 'json',
         ...params,
       }),
 
@@ -15832,9 +15832,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     cloudEventT: (query: CloudEventTParams, params: RequestParams = {}) =>
       this.http.request<V3CloudEvent, RpcStatus>({
         path: `/CloudEventServiceTemp/CloudEventT`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -15851,9 +15851,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3CoverPhotoCreatedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/CoverPhotoCreatedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -15870,9 +15870,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3CoverPhotoDeletedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/CoverPhotoDeletedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -15889,9 +15889,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3CoverPhotoUpdatedData, RpcStatus>({
         path: `/CloudEventServiceTemp/CoverPhotoUpdatedData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -15908,9 +15908,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3DMChannelCreatedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/DMChannelCreatedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -15927,9 +15927,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3DMChannelUpdatedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/DMChannelUpdatedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -15946,9 +15946,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3DecoratedAvatarRemovedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/DecoratedAvatarRemovedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -15965,9 +15965,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3DecoratedAvatarUploadedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/DecoratedAvatarUploadedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -15984,9 +15984,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3DeleteUserVisitedProfileEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/DeleteUserVisitedProfileEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16003,9 +16003,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3DeviceLinkedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/DeviceLinkedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16022,9 +16022,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3DeviceUnlinkedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/DeviceUnlinkedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16041,9 +16041,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3FileUploadedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/FileUploadedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16060,9 +16060,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3FriendRemovedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/FriendRemovedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16079,9 +16079,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3GatewayConnectedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/GatewayConnectedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16098,9 +16098,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3IncomingFriendRequestAcceptedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/IncomingFriendRequestAcceptedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16117,9 +16117,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3IncomingFriendRequestCanceledEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/IncomingFriendRequestCanceledEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16136,9 +16136,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3IncomingFriendRequestCreatedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/IncomingFriendRequestCreatedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16155,9 +16155,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3IncomingFriendRequestDeletedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/IncomingFriendRequestDeletedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16174,9 +16174,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3IncomingMessageRequestAcceptedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/IncomingMessageRequestAcceptedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16193,9 +16193,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3IncomingMessageRequestCreatedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/IncomingMessageRequestCreatedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16212,9 +16212,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3MarkAllChannelsAsReadEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/MarkAllChannelsAsReadEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16231,9 +16231,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3MemberBannedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/MemberBannedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16250,9 +16250,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3MemberJoinedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/MemberJoinedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16269,9 +16269,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3MemberLeftEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/MemberLeftEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16288,9 +16288,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3MemberNicknameUpdatedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/MemberNicknameUpdatedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16307,9 +16307,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3MemberRemovedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/MemberRemovedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16326,9 +16326,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3MemberRoleRevokedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/MemberRoleRevokedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16345,9 +16345,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3MemberRoleUpdatedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/MemberRoleUpdatedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16364,9 +16364,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3MemberUnbannedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/MemberUnbannedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16383,9 +16383,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3MessageCreatedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/MessageCreatedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16402,9 +16402,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3MessagePinnedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/MessagePinnedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16421,9 +16421,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3MessageReactionUpdatedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/MessageReactionUpdatedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16440,9 +16440,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3MessageRequestRejectedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/MessageRequestRejectedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16459,9 +16459,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3MessageUnpinnedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/MessageUnpinnedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16478,9 +16478,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3MessageUpdatedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/MessageUpdatedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16497,9 +16497,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3MessagesDeletedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/MessagesDeletedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16516,9 +16516,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3OutgoingFriendRequestAcceptedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/OutgoingFriendRequestAcceptedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16535,9 +16535,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3OutgoingFriendRequestCanceledEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/OutgoingFriendRequestCanceledEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16554,9 +16554,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3OutgoingFriendRequestCreatedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/OutgoingFriendRequestCreatedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16573,9 +16573,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3OutgoingFriendRequestDeletedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/OutgoingFriendRequestDeletedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16592,9 +16592,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3OutgoingMessageRequestAcceptedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/OutgoingMessageRequestAcceptedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16611,9 +16611,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3OutgoingMessageRequestCreatedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/OutgoingMessageRequestCreatedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16630,9 +16630,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3PresenceUpdatedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/PresenceUpdatedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16650,9 +16650,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
       this.http.request<V3RevokeChannelsNotificationPushedEventData, RpcStatus>(
         {
           path: `/CloudEventServiceTemp/RevokeChannelsNotificationPushedEventData`,
-          method: "POST",
+          method: 'POST',
           query: query,
-          format: "json",
+          format: 'json',
           ...params,
         },
       ),
@@ -16671,9 +16671,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
       this.http.request<V3RevokeMessagesNotificationPushedEventData, RpcStatus>(
         {
           path: `/CloudEventServiceTemp/RevokeMessagesNotificationPushedEventData`,
-          method: "POST",
+          method: 'POST',
           query: query,
-          format: "json",
+          format: 'json',
           ...params,
         },
       ),
@@ -16691,9 +16691,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3RingbackToneCreatedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/RingbackToneCreatedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16710,9 +16710,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3RingbackToneDeletedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/RingbackToneDeletedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16729,9 +16729,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3RingbackToneRenamedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/RingbackToneRenamedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16748,9 +16748,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3RingbackToneSelectedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/RingbackToneSelectedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16767,9 +16767,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UserAvatarDeletedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/UserAvatarDeletedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16786,9 +16786,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UserAvatarUpdatedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/UserAvatarUpdatedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16805,9 +16805,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UserBadgeCountUpdatedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/UserBadgeCountUpdatedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16824,9 +16824,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UserBlockedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/UserBlockedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16843,9 +16843,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UserCreatedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/UserCreatedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16862,9 +16862,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UserCreationFailedData, RpcStatus>({
         path: `/CloudEventServiceTemp/UserCreationFailedData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16881,9 +16881,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UserDeletedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/UserDeletedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16900,9 +16900,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UserDisplayNameUpdatedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/UserDisplayNameUpdatedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16919,9 +16919,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UserEmailUpdatedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/UserEmailUpdatedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16941,9 +16941,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
         RpcStatus
       >({
         path: `/CloudEventServiceTemp/UserGlobalMediaPermissionSettingUpdatedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16963,9 +16963,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
         RpcStatus
       >({
         path: `/CloudEventServiceTemp/UserGlobalNotificationStatusUpdatedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -16982,9 +16982,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UserMessageReactionUpdatedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/UserMessageReactionUpdatedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -17001,9 +17001,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UserMessagesDeletedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/UserMessagesDeletedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -17020,9 +17020,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UserPhoneUpdatedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/UserPhoneUpdatedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -17039,9 +17039,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UserScopeForCallUpdatedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/UserScopeForCallUpdatedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -17058,9 +17058,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UserScopeForMessageUpdatedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/UserScopeForMessageUpdatedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -17077,9 +17077,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UserStatusCreatedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/UserStatusCreatedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -17096,9 +17096,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UserStatusDeletedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/UserStatusDeletedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -17115,9 +17115,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UserStatusUpdatedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/UserStatusUpdatedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -17134,9 +17134,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UserUnblockedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/UserUnblockedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -17153,9 +17153,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UserUnreadMessagesUpdatedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/UserUnreadMessagesUpdatedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -17172,9 +17172,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UserVideoAvatarDeletedEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/UserVideoAvatarDeletedEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -17191,9 +17191,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UserVisitedProfileEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/UserVisitedProfileEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -17210,9 +17210,9 @@ export class cloudeventHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3WebsocketResumeEventData, RpcStatus>({
         path: `/CloudEventServiceTemp/WebsocketResumeEventData`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
   };

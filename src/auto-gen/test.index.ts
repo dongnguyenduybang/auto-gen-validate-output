@@ -46,7 +46,7 @@ export const actionHandlers: Record<string, Record<string, ActionHandler[]>> = {
   },
   test: {
     k6: [runTestsK6()],
-  }
+  },
 };
 
 function runTestsK6(): ActionHandler {
@@ -87,7 +87,7 @@ export async function genAllRequests(dto: string) {
   try {
     // Đợi config initialization hoàn thành
     await initPromise;
-    
+
     await setup();
     await loadAIModel();
     const [bodyResult, testResult] = await Promise.all([
@@ -108,7 +108,7 @@ async function main(): Promise<void> {
     console.log('🚀 Initializing configuration...');
     await initPromise;
     console.log('✅ Configuration initialized successfully');
-    
+
     if (process.argv.includes('--started') || process.argv.length <= 2) {
       await interactiveCLI();
       return;

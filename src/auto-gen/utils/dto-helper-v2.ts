@@ -1,6 +1,11 @@
 import { ulid } from 'ulidx';
 import { ValidIfCondition, ValidIfOptions } from '../types/validations.types';
-import { checkRegexULID, checkURL, countEmojis, isEmoji } from '../helpers/regex-helpers';
+import {
+  checkRegexULID,
+  checkURL,
+  countEmojis,
+  isEmoji,
+} from '../helpers/regex-helpers';
 import { ErrorMessage, VAR } from './get-config';
 
 export function getUsedEnumValuesFromValidIf(
@@ -20,16 +25,12 @@ export function getUsedEnumValuesFromValidIf(
         : [validIfConditions.conditions];
 
       conditions.forEach((condition: ValidIfCondition) => {
-       
         if (condition.field === targetFieldName) {
-          
           if (['===', '==', '!==', '!='].includes(condition.operator)) {
             if (!usedValues.includes(condition.value)) {
               usedValues.push(condition.value);
             }
-          }
-        
-          else if (
+          } else if (
             condition.operator === 'in' &&
             Array.isArray(condition.value)
           ) {
@@ -52,7 +53,6 @@ export function getUsedEnumValuesFromValidIf(
 
   return usedValues;
 }
-
 
 export function generateStructuredErrorCases(
   dtoClass: any,
@@ -558,7 +558,6 @@ function checkValidIf(
   decorators: Record<string, any>,
   payload: Record<string, any>,
 ) {
-
   if (!decorators['validIf']) return null;
 
   const options: ValidIfOptions = decorators['validIf'];
@@ -692,7 +691,6 @@ function checkIsNotNull(
         addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.NULL}`);
       }
     } else {
-
       addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.NULL}`);
     }
   }
@@ -774,7 +772,7 @@ function checkULID(
   const errors: string[] = [];
   if (decorators['isULID']) {
     // if (
-    //   typeof value === 'string' && 
+    //   typeof value === 'string' &&
     //   (value === '' || value !== CONST.stickerId)
     // ) {
     //   addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_ULID}`);
@@ -786,7 +784,12 @@ function checkULID(
     // }
     const isString = typeof value === 'string';
 
-    if (!isString || value === null || value === undefined || value.trim() === '') {
+    if (
+      !isString ||
+      value === null ||
+      value === undefined ||
+      value.trim() === ''
+    ) {
       // Trường hợp không phải chuỗi, hoặc chuỗi rỗng/null → lỗi
       addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_ULID}`);
     } else {
@@ -796,19 +799,24 @@ function checkULID(
         const inner = value.slice(2, -2);
 
         if (checkRegexULID(inner)) {
-          addErrorIfNotExist(errors, null, `${field} should not contain a ULID inside a placeholder`);
+          addErrorIfNotExist(
+            errors,
+            null,
+            `${field} should not contain a ULID inside a placeholder`,
+          );
         }
       } else {
         const isULID = checkRegexULID(value);
 
         if (!isULID) {
-          addErrorIfNotExist(errors, null, `${field} ${ErrorMessage.INVALID_ULID}`);
+          addErrorIfNotExist(
+            errors,
+            null,
+            `${field} ${ErrorMessage.INVALID_ULID}`,
+          );
         }
       }
     }
-
-
-
   }
 
   return errors;
@@ -915,8 +923,6 @@ function checkTypeString(
       return errors;
     }
 
-
-
     if (decorators['isValidURL']) {
       const isInvalid =
         typeof value === 'string' && (value === '' || !checkURL(value));
@@ -930,7 +936,6 @@ function checkTypeString(
     }
 
     if (decorators['isInvalid']) {
-
       if (field === 'workspaceId' && value !== '0') {
         addErrorIfNotExist(
           errors,
@@ -938,25 +943,24 @@ function checkTypeString(
           'Invalid channel',
         );
         return errors;
-      }
-      else if (field === 'channelId' && !value.startsWith('{{')) {
+      } else if (field === 'channelId' && !value.startsWith('{{')) {
         addErrorIfNotExist(
           errors,
           decorators['isInvalidMessage'],
           'Invalid channel',
         );
         return errors;
-      }
-      else if ((field === 'userId' || field === 'targetUserId') &&
-        !(typeof value === 'string' && value.startsWith('{{'))) {
+      } else if (
+        (field === 'userId' || field === 'targetUserId') &&
+        !(typeof value === 'string' && value.startsWith('{{'))
+      ) {
         addErrorIfNotExist(
           errors,
           decorators['isInvalidMessage'],
           'Unauthorized request',
         );
         return errors;
-      }
-      else if (
+      } else if (
         field === 'stickerId' &&
         value !== VAR.stickerId &&
         value != null &&
@@ -964,16 +968,8 @@ function checkTypeString(
       ) {
         addErrorIfNotExist(errors, decorators['isInvalidMessage'], null);
         return errors;
-      }
-      else if (
-        !decorators['isInvalid'] &&
-        !value.startsWith('{{')
-      ) {
-        addErrorIfNotExist(
-          errors,
-          decorators['isInvalidMessage'],
-          null,
-        );
+      } else if (!decorators['isInvalid'] && !value.startsWith('{{')) {
+        addErrorIfNotExist(errors, decorators['isInvalidMessage'], null);
       }
     }
 
@@ -1006,7 +1002,6 @@ function checkTypeNumber(
 ): string[] {
   const errors: string[] = [];
   if (decorators['type'] === 'number') {
-
     const num = Number(value);
     if (isNaN(num)) {
       addErrorIfNotExist(
@@ -1219,7 +1214,6 @@ function checkEnum(
       ) as number[];
 
       const expectedText = enumValues.join(' | ');
-      const receivedText = typeof value === 'string' ? 'nan' : value;
 
       addErrorIfNotExist(
         errors,
@@ -1286,7 +1280,6 @@ export function mapError(
     checkEnum,
     checkValidURL,
     checkTypeBoolean,
-
   ];
 
   for (const check of checks) {
@@ -1439,10 +1432,7 @@ function checkNestedValidation(
   if (decorators['type'] === 'array' && Array.isArray(value)) {
     value.forEach((item) => {
       if (item && typeof item === 'object') {
-        const nestedErrors = validateNestedObject(
-          item,
-          nestedClass,
-        );
+        const nestedErrors = validateNestedObject(item, nestedClass);
         errors.push(...nestedErrors);
       }
     });
@@ -1463,10 +1453,7 @@ function checkNestedValidation(
   return errors;
 }
 
-function validateNestedObject(
-  obj: any,
-  nestedClass: any,
-): string[] {
+function validateNestedObject(obj: any, nestedClass: any): string[] {
   const errors: string[] = [];
   const nestedInstance = new nestedClass();
   const nestedFields = Object.keys(nestedInstance);

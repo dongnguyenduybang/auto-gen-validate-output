@@ -21,7 +21,9 @@ export default async function () {
       const config = yaml.load(configContent) as TeardownConfig;
       teardownFilePath = config.teardownRequestFile;
     } catch (error) {
-      console.warn('No teardown.config.yaml found, using default path: ./jest.teardown.request');
+      console.warn(
+        'No teardown.config.yaml found, using default path: ./jest.teardown.request',
+      );
       teardownFilePath = './jest.teardown.request';
     }
 

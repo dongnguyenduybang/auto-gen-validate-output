@@ -110,9 +110,9 @@ export interface V3SessionMetadataRequest {
    * @format isULID
    * @minLength 1
    */
-  "x-user-id": string;
+  'x-user-id': string;
   /** @minLength 1 */
-  "x-device-id": string;
+  'x-device-id': string;
   [key: string]: any;
 }
 
@@ -732,9 +732,9 @@ export interface DeleteUserVisitedProfileParams {
 }
 
 export type QueryParamsType = Record<string | number, any>;
-export type ResponseFormat = keyof Omit<Body, "body" | "bodyUsed">;
+export type ResponseFormat = keyof Omit<Body, 'body' | 'bodyUsed'>;
 
-export interface FullRequestParams extends Omit<RequestInit, "body"> {
+export interface FullRequestParams extends Omit<RequestInit, 'body'> {
   /** set parameter to `true` for call `securityWorker` for this request */
   secure?: boolean;
   /** request path */
@@ -755,12 +755,12 @@ export interface FullRequestParams extends Omit<RequestInit, "body"> {
 
 export type RequestParams = Omit<
   FullRequestParams,
-  "body" | "method" | "query" | "path"
+  'body' | 'method' | 'query' | 'path'
 >;
 
 export interface ApiConfig<SecurityDataType = unknown> {
   baseUrl?: string;
-  baseApiParams?: Omit<RequestParams, "baseUrl" | "cancelToken" | "signal">;
+  baseApiParams?: Omit<RequestParams, 'baseUrl' | 'cancelToken' | 'signal'>;
   securityWorker?: (
     securityData: SecurityDataType | null,
   ) => Promise<RequestParams | void> | RequestParams | void;
@@ -776,26 +776,26 @@ export interface HttpResponse<D extends unknown, E extends unknown = unknown>
 type CancelToken = Symbol | string | number;
 
 export enum ContentType {
-  Json = "application/json",
-  JsonApi = "application/vnd.api+json",
-  FormData = "multipart/form-data",
-  UrlEncoded = "application/x-www-form-urlencoded",
-  Text = "text/plain",
+  Json = 'application/json',
+  JsonApi = 'application/vnd.api+json',
+  FormData = 'multipart/form-data',
+  UrlEncoded = 'application/x-www-form-urlencoded',
+  Text = 'text/plain',
 }
 
 export class HttpClient<SecurityDataType = unknown> {
-  public baseUrl: string = "";
+  public baseUrl: string = '';
   private securityData: SecurityDataType | null = null;
-  private securityWorker?: ApiConfig<SecurityDataType>["securityWorker"];
+  private securityWorker?: ApiConfig<SecurityDataType>['securityWorker'];
   private abortControllers = new Map<CancelToken, AbortController>();
   private customFetch = (...fetchParams: Parameters<typeof fetch>) =>
     fetch(...fetchParams);
 
   private baseApiParams: RequestParams = {
-    credentials: "same-origin",
+    credentials: 'same-origin',
     headers: {},
-    redirect: "follow",
-    referrerPolicy: "no-referrer",
+    redirect: 'follow',
+    referrerPolicy: 'no-referrer',
   };
 
   constructor(apiConfig: ApiConfig<SecurityDataType> = {}) {
@@ -808,7 +808,7 @@ export class HttpClient<SecurityDataType = unknown> {
 
   protected encodeQueryParam(key: string, value: any) {
     const encodedKey = encodeURIComponent(key);
-    return `${encodedKey}=${encodeURIComponent(typeof value === "number" ? value : `${value}`)}`;
+    return `${encodedKey}=${encodeURIComponent(typeof value === 'number' ? value : `${value}`)}`;
   }
 
   protected addQueryParam(query: QueryParamsType, key: string) {
@@ -817,13 +817,13 @@ export class HttpClient<SecurityDataType = unknown> {
 
   protected addArrayQueryParam(query: QueryParamsType, key: string) {
     const value = query[key];
-    return value.map((v: any) => this.encodeQueryParam(key, v)).join("&");
+    return value.map((v: any) => this.encodeQueryParam(key, v)).join('&');
   }
 
   protected toQueryString(rawQuery?: QueryParamsType): string {
     const query = rawQuery || {};
     const keys = Object.keys(query).filter(
-      (key) => "undefined" !== typeof query[key],
+      (key) => 'undefined' !== typeof query[key],
     );
     return keys
       .map((key) =>
@@ -831,25 +831,25 @@ export class HttpClient<SecurityDataType = unknown> {
           ? this.addArrayQueryParam(query, key)
           : this.addQueryParam(query, key),
       )
-      .join("&");
+      .join('&');
   }
 
   protected addQueryParams(rawQuery?: QueryParamsType): string {
     const queryString = this.toQueryString(rawQuery);
-    return queryString ? `?${queryString}` : "";
+    return queryString ? `?${queryString}` : '';
   }
 
   private contentFormatters: Record<ContentType, (input: any) => any> = {
     [ContentType.Json]: (input: any) =>
-      input !== null && (typeof input === "object" || typeof input === "string")
+      input !== null && (typeof input === 'object' || typeof input === 'string')
         ? JSON.stringify(input)
         : input,
     [ContentType.JsonApi]: (input: any) =>
-      input !== null && (typeof input === "object" || typeof input === "string")
+      input !== null && (typeof input === 'object' || typeof input === 'string')
         ? JSON.stringify(input)
         : input,
     [ContentType.Text]: (input: any) =>
-      input !== null && typeof input !== "string"
+      input !== null && typeof input !== 'string'
         ? JSON.stringify(input)
         : input,
     [ContentType.FormData]: (input: any) =>
@@ -859,7 +859,7 @@ export class HttpClient<SecurityDataType = unknown> {
           key,
           property instanceof Blob
             ? property
-            : typeof property === "object" && property !== null
+            : typeof property === 'object' && property !== null
               ? JSON.stringify(property)
               : `${property}`,
         );
@@ -921,7 +921,7 @@ export class HttpClient<SecurityDataType = unknown> {
     ...params
   }: FullRequestParams): Promise<HttpResponse<T, E>> => {
     const secureParams =
-      ((typeof secure === "boolean" ? secure : this.baseApiParams.secure) &&
+      ((typeof secure === 'boolean' ? secure : this.baseApiParams.secure) &&
         this.securityWorker &&
         (await this.securityWorker(this.securityData))) ||
       {};
@@ -931,13 +931,13 @@ export class HttpClient<SecurityDataType = unknown> {
     const responseFormat = format || requestParams.format;
 
     return this.customFetch(
-      `${baseUrl || this.baseUrl || ""}${path}${queryString ? `?${queryString}` : ""}`,
+      `${baseUrl || this.baseUrl || ''}${path}${queryString ? `?${queryString}` : ''}`,
       {
         ...requestParams,
         headers: {
           ...(requestParams.headers || {}),
           ...(type && type !== ContentType.FormData
-            ? { "Content-Type": type }
+            ? { 'Content-Type': type }
             : {}),
         },
         signal:
@@ -945,7 +945,7 @@ export class HttpClient<SecurityDataType = unknown> {
             ? this.createAbortSignal(cancelToken)
             : requestParams.signal) || null,
         body:
-          typeof body === "undefined" || body === null
+          typeof body === 'undefined' || body === null
             ? null
             : payloadFormatter(body),
       },
@@ -1006,10 +1006,10 @@ export class commandsUserDataHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3RingbackToneCreateResponse, any>({
         path: `/RingbackTone/RingbackToneCreate`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1025,10 +1025,10 @@ export class commandsUserDataHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3RingbackToneRenameResponse, any>({
         path: `/RingbackTone/RingbackToneRename`,
-        method: "PUT",
+        method: 'PUT',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1044,10 +1044,10 @@ export class commandsUserDataHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3SetRingbackToneResponse, any>({
         path: `/RingbackTone/SetRingbackTone`,
-        method: "PUT",
+        method: 'PUT',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1063,9 +1063,9 @@ export class commandsUserDataHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3RingbackToneDeleteResponse, any>({
         path: `/RingbackTone/RingbackToneDelete`,
-        method: "DELETE",
+        method: 'DELETE',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
   };
@@ -1082,10 +1082,10 @@ export class commandsUserDataHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3CreateUserAvatarFrameResponse, any>({
         path: `/AvatarFrame/CreateAvatarFrame`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1101,9 +1101,9 @@ export class commandsUserDataHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3DeleteUserAvatarFrameResponse, any>({
         path: `/AvatarFrame/DeleteAvatarFrame`,
-        method: "DELETE",
+        method: 'DELETE',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1119,10 +1119,10 @@ export class commandsUserDataHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UploadDecoratedAvatarResponse, any>({
         path: `/AvatarFrame/UploadDecoratedAvatar`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1135,8 +1135,8 @@ export class commandsUserDataHttpClient<SecurityDataType extends unknown> {
     removeDecoratedAvatar: (params: RequestParams = {}) =>
       this.http.request<V3RemoveDecoratedAvatarResponse, any>({
         path: `/AvatarFrame/RemoveDecoratedAvatar`,
-        method: "DELETE",
-        format: "json",
+        method: 'DELETE',
+        format: 'json',
         ...params,
       }),
   };
@@ -1153,9 +1153,9 @@ export class commandsUserDataHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3GenerateUserConnectLinkResponse, any>({
         path: `/UserConnect/GenerateUserConnectLink`,
-        method: "POST",
+        method: 'POST',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1171,10 +1171,10 @@ export class commandsUserDataHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3DecodeUserConnectLinkResponse, any>({
         path: `/UserConnect/DecodeUserConnectLink`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
   };
@@ -1191,10 +1191,10 @@ export class commandsUserDataHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3ReportUserRequestResponse, any>({
         path: `/UserReport/ReportUser`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
   };
@@ -1208,10 +1208,10 @@ export class commandsUserDataHttpClient<SecurityDataType extends unknown> {
     addCoverPhoto: (data: V3AddCoverPhotoRequest, params: RequestParams = {}) =>
       this.http.request<V3AddCoverPhotoResponse, any>({
         path: `/UserProfile/AddCoverPhoto`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1227,10 +1227,10 @@ export class commandsUserDataHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UpdateCoverPhotoResponse, any>({
         path: `/UserProfile/UpdateCoverPhoto`,
-        method: "PUT",
+        method: 'PUT',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1243,8 +1243,8 @@ export class commandsUserDataHttpClient<SecurityDataType extends unknown> {
     deleteCoverPhoto: (params: RequestParams = {}) =>
       this.http.request<V3DeleteCoverPhotoResponse, any>({
         path: `/UserProfile/DeleteCoverPhoto`,
-        method: "DELETE",
-        format: "json",
+        method: 'DELETE',
+        format: 'json',
         ...params,
       }),
 
@@ -1257,10 +1257,10 @@ export class commandsUserDataHttpClient<SecurityDataType extends unknown> {
     addUserStatus: (data: V3AddUserStatusRequest, params: RequestParams = {}) =>
       this.http.request<V3AddUserStatusResponse, any>({
         path: `/UserProfile/AddUserStatus`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1276,10 +1276,10 @@ export class commandsUserDataHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UpdateUserStatusResponse, any>({
         path: `/UserProfile/UpdateUserStatus`,
-        method: "PUT",
+        method: 'PUT',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1292,8 +1292,8 @@ export class commandsUserDataHttpClient<SecurityDataType extends unknown> {
     deleteUserStatus: (params: RequestParams = {}) =>
       this.http.request<V3DeleteUserStatusResponse, any>({
         path: `/UserProfile/DeleteUserStatus`,
-        method: "DELETE",
-        format: "json",
+        method: 'DELETE',
+        format: 'json',
         ...params,
       }),
 
@@ -1309,10 +1309,10 @@ export class commandsUserDataHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UpdateUserDisplayNameResponse, any>({
         path: `/UserProfile/UpdateUserDisplayName`,
-        method: "PUT",
+        method: 'PUT',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1328,10 +1328,10 @@ export class commandsUserDataHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UpdateUserAvatarResponse, any>({
         path: `/UserProfile/UpdateUserAvatar`,
-        method: "PUT",
+        method: 'PUT',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1347,10 +1347,10 @@ export class commandsUserDataHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UpdateUserVideoAvatarResponse, any>({
         path: `/UserProfile/UpdateUserVideoAvatar`,
-        method: "PUT",
+        method: 'PUT',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1366,10 +1366,10 @@ export class commandsUserDataHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UpdateUserEmailResponse, any>({
         path: `/UserProfile/UpdateUserEmail`,
-        method: "PUT",
+        method: 'PUT',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1385,10 +1385,10 @@ export class commandsUserDataHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UpdateUserPhoneResponse, any>({
         path: `/UserProfile/UpdateUserPhone`,
-        method: "PUT",
+        method: 'PUT',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1404,10 +1404,10 @@ export class commandsUserDataHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3VisitedProfileResponse, any>({
         path: `/UserProfile/VisitedProfile`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1420,8 +1420,8 @@ export class commandsUserDataHttpClient<SecurityDataType extends unknown> {
     clearUserVisitedProfileNotifications: (params: RequestParams = {}) =>
       this.http.request<V3ClearUserVisitedProfileNotificationsResponse, any>({
         path: `/UserProfile/ClearUserVisitedProfileNotifications`,
-        method: "DELETE",
-        format: "json",
+        method: 'DELETE',
+        format: 'json',
         ...params,
       }),
 
@@ -1437,9 +1437,9 @@ export class commandsUserDataHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3DeleteUserVisitedProfileResponse, any>({
         path: `/UserProfile/DeleteUserVisitedProfile`,
-        method: "DELETE",
+        method: 'DELETE',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1452,8 +1452,8 @@ export class commandsUserDataHttpClient<SecurityDataType extends unknown> {
     deleteUserAvatar: (params: RequestParams = {}) =>
       this.http.request<V3DeleteUserAvatarResponse, any>({
         path: `/UserProfile/DeleteUserAvatar`,
-        method: "DELETE",
-        format: "json",
+        method: 'DELETE',
+        format: 'json',
         ...params,
       }),
 
@@ -1466,8 +1466,8 @@ export class commandsUserDataHttpClient<SecurityDataType extends unknown> {
     deleteUserVideoAvatar: (params: RequestParams = {}) =>
       this.http.request<V3DeleteUserVideoAvatarResponse, any>({
         path: `/UserProfile/DeleteUserVideoAvatar`,
-        method: "DELETE",
-        format: "json",
+        method: 'DELETE',
+        format: 'json',
         ...params,
       }),
   };
@@ -1481,10 +1481,10 @@ export class commandsUserDataHttpClient<SecurityDataType extends unknown> {
     blockUser: (data: V3BlockUserRequest, params: RequestParams = {}) =>
       this.http.request<V3BlockUserResponse, any>({
         path: `/UserSetting/BlockUser`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1497,10 +1497,10 @@ export class commandsUserDataHttpClient<SecurityDataType extends unknown> {
     unblockUser: (data: V3UnblockUserRequest, params: RequestParams = {}) =>
       this.http.request<V3UnblockUserResponse, any>({
         path: `/UserSetting/UnblockUser`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1516,10 +1516,10 @@ export class commandsUserDataHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UpdateMediaPermissionSettingResponse, any>({
         path: `/UserSetting/UpdateMediaPermissionSetting`,
-        method: "PUT",
+        method: 'PUT',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1535,10 +1535,10 @@ export class commandsUserDataHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UpdateRecoveryCodeSettingResponse, any>({
         path: `/UserSetting/UpdateRecoveryCodeSetting`,
-        method: "PUT",
+        method: 'PUT',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1554,10 +1554,10 @@ export class commandsUserDataHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UpdateUserScopeForCallResponse, any>({
         path: `/UserSetting/UpdateUserScopeForCall`,
-        method: "PUT",
+        method: 'PUT',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1573,10 +1573,10 @@ export class commandsUserDataHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UpdateUserScopeForMessageResponse, any>({
         path: `/UserSetting/UpdateUserScopeForMessage`,
-        method: "PUT",
+        method: 'PUT',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1592,10 +1592,10 @@ export class commandsUserDataHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UpdateSmartOtpSettingResponse, any>({
         path: `/UserSetting/UpdateSmartOtpSetting`,
-        method: "PUT",
+        method: 'PUT',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
   };

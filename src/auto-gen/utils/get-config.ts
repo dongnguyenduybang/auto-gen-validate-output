@@ -5,14 +5,11 @@ import get from 'lodash/get';
 import merge from 'lodash/merge';
 import set from 'lodash/set';
 import { RecentSelection } from '../types/prediction.types';
-import yargs from 'yargs';
 import { register } from 'ts-node';
-
-// Đăng ký ts-node để xử lý file .ts
 register({
   transpileOnly: true,
   compilerOptions: {
-    module: 'CommonJS', // Đổi từ ESNext sang CommonJS
+    module: 'CommonJS',
     target: 'ES2020',
     moduleResolution: 'Node',
     esModuleInterop: true,
@@ -20,7 +17,7 @@ register({
   },
 });
 
-class ConfigException extends Error { }
+class ConfigException extends Error {}
 
 function loadFromEnv(
   env: Record<string, string | undefined>,
@@ -34,16 +31,14 @@ function loadFromEnv(
 
 function loadFromYaml(env): Record<string, unknown> {
   const configFile = `env.${env}.yaml`;
-  
-  // Tìm config file từ working directory (repo cá nhân)
+
   const workingDir = process.cwd();
   const configPath = resolve(workingDir, configFile);
-  
-  // Kiểm tra file có tồn tại không
+
   if (!fs.existsSync(configPath)) {
     throw new Error(`❌ Config file not found at: ${configPath}`);
   }
-  
+
   console.log(`Loading configuration from: ${configPath}`);
   return yaml.load(readFileSync(configPath, 'utf8')) as Record<string, unknown>;
 }
@@ -75,7 +70,7 @@ export function getOrThrow<T>(key: string): T {
   if (!CONFIG_DATA) {
     setupConfiguration();
   }
-  
+
   const result = get(CONFIG_DATA, key);
   if (result === undefined) {
     throw new ConfigException(`Invalid ${key} config`);
@@ -90,11 +85,6 @@ interface ErrorMessage {
 }
 
 // Khai báo interface cho cấu hình YAML
-interface Config {
-  setupRequestFile?: string;
-  teardownRequestFile?: string;
-  errorMessageFile?: string;
-}
 
 export const MAX_RECENT_ITEMS = 20;
 export const REPORT_LENGTH = 5;
@@ -114,20 +104,16 @@ let HEADER_LIST: any;
 
 // Cache variables
 let cachedConst: any = null;
-let cachedSwagger: any = null;
 let cachedVar: any = null;
 let cachedMethod: any = null;
-let cachedSwaggerFaker: any = null;
 let cachedActionConfig: any = null;
 let cachedErrorMessage: any = null;
 let cachedHeaderList: any = null;
-let cachedClients: Record<string, string> | null = null;
 
 async function initializeConstants() {
   try {
-    // Setup configuration trước
     setupConfiguration();
-    
+
     let errorMessageFilePath: string;
     let constFilePath: string;
     let varFilePath: string;
@@ -135,9 +121,8 @@ async function initializeConstants() {
     let actionConfigFilePath: string;
     let headerListFilePath: string;
 
-    // Lấy đường dẫn từ working directory (repo cá nhân)
     const workingDir = process.cwd();
-    
+
     errorMessageFilePath = getConfig('errorMessageFile') as string;
     constFilePath = getConfig('constFilePath') as string;
     varFilePath = getConfig('varFilePath') as string;
@@ -145,14 +130,13 @@ async function initializeConstants() {
     actionConfigFilePath = getConfig('actionConfigFilePath') as string;
     headerListFilePath = getConfig('headerListFilePath') as string;
 
-    // Resolve paths tương đối với working directory
     const resolvedPaths = {
       errorMessageFilePath: path.resolve(workingDir, errorMessageFilePath),
       constFilePath: path.resolve(workingDir, constFilePath),
       varFilePath: path.resolve(workingDir, varFilePath),
       methodFilePath: path.resolve(workingDir, methodFilePath),
       actionConfigFilePath: path.resolve(workingDir, actionConfigFilePath),
-      headerListFilePath: path.resolve(workingDir, headerListFilePath)
+      headerListFilePath: path.resolve(workingDir, headerListFilePath),
     };
 
     // Resolve all constants
@@ -169,13 +153,13 @@ async function initializeConstants() {
       METHOD = await loadMethod(resolvedPaths.methodFilePath);
     }
     if (actionConfigFilePath) {
-      ACTION_CONFIG = await loadActionConfig(resolvedPaths.actionConfigFilePath);
+      ACTION_CONFIG = await loadActionConfig(
+        resolvedPaths.actionConfigFilePath,
+      );
     }
     if (headerListFilePath) {
       HEADER_LIST = await loadHeaderList(resolvedPaths.headerListFilePath);
     }
-    
-    console.log('✅ Constants initialized successfully');
   } catch (error) {
     console.error('❌ Failed to initialize constants:', error);
     throw error;
@@ -209,7 +193,9 @@ export async function loadConst(constPath: string): Promise<any> {
 
   const imported = await safeImport(constPath);
   if (!imported) {
-    throw new Error(`❌ CONST file not found or failed to import: ${constPath}`);
+    throw new Error(
+      `❌ CONST file not found or failed to import: ${constPath}`,
+    );
   }
 
   if (!imported.CONST || !imported.CONST.versionSwagger) {
@@ -237,7 +223,9 @@ export async function loadMethod(methodPath: string): Promise<any> {
 
   const imported = await safeImport(methodPath);
   if (!imported) {
-    throw new Error(`❌ METHOD file not found or failed to import: ${methodPath}`);
+    throw new Error(
+      `❌ METHOD file not found or failed to import: ${methodPath}`,
+    );
   }
 
   cachedMethod = imported.METHOD;
@@ -249,19 +237,25 @@ export async function loadActionConfig(actionConfigPath: string): Promise<any> {
 
   const imported = await safeImport(actionConfigPath);
   if (!imported) {
-    throw new Error(`❌ ACTION_CONFIG file not found or failed to import: ${actionConfigPath}`);
+    throw new Error(
+      `❌ ACTION_CONFIG file not found or failed to import: ${actionConfigPath}`,
+    );
   }
 
   cachedActionConfig = imported.ACTION_CONFIG;
   return cachedActionConfig;
 }
 
-export async function loadErrorMessage(errorMessagePath: string): Promise<ErrorMessage> {
+export async function loadErrorMessage(
+  errorMessagePath: string,
+): Promise<ErrorMessage> {
   if (cachedErrorMessage) return cachedErrorMessage;
 
   const imported = await safeImport(errorMessagePath);
   if (!imported) {
-    throw new Error(`❌ ErrorMessage file not found or failed to import: ${errorMessagePath}`);
+    throw new Error(
+      `❌ ErrorMessage file not found or failed to import: ${errorMessagePath}`,
+    );
   }
 
   cachedErrorMessage = imported.ErrorMessage;
@@ -273,7 +267,9 @@ export async function loadHeaderList(headerListPath: string): Promise<any> {
 
   const imported = await safeImport(headerListPath);
   if (!imported) {
-    throw new Error(`❌ HEADER_LIST file not found or failed to import: ${headerListPath}`);
+    throw new Error(
+      `❌ HEADER_LIST file not found or failed to import: ${headerListPath}`,
+    );
   }
 
   cachedHeaderList = imported.HEADER_LIST;
@@ -284,4 +280,13 @@ export async function loadHeaderList(headerListPath: string): Promise<any> {
 export const initPromise = initializeConstants();
 
 // Export resolved constants
-export { CONST, VAR, schemas, schemas1, METHOD, ACTION_CONFIG, ErrorMessage, HEADER_LIST };
+export {
+  CONST,
+  VAR,
+  schemas,
+  schemas1,
+  METHOD,
+  ACTION_CONFIG,
+  ErrorMessage,
+  HEADER_LIST,
+};

@@ -557,28 +557,28 @@ export interface V3UserMetadataRequest {
    * @format isULID
    * @minLength 1
    */
-  "x-user-id": string;
+  'x-user-id': string;
   /**
    * code of x-country
    * @minLength 1
    */
-  "x-country-code": string;
+  'x-country-code': string;
   /**
    * ip of x-client
    * @minLength 1
    */
-  "x-client-ip": string;
+  'x-client-ip': string;
   /**
    * data of x-geo
    * @format isJSON
    * @minLength 1
    */
-  "x-geo-data": string;
+  'x-geo-data': string;
   /**
    * x-device identify
    * @minLength 1
    */
-  "x-device-id": string;
+  'x-device-id': string;
   [key: string]: any;
 }
 
@@ -809,28 +809,28 @@ export interface V3UserMetadataResponse {
    * @format isULID
    * @minLength 1
    */
-  "x-user-id": string;
+  'x-user-id': string;
   /**
    * code of x-country
    * @minLength 1
    */
-  "x-country-code": string;
+  'x-country-code': string;
   /**
    * ip of x-client
    * @minLength 1
    */
-  "x-client-ip": string;
+  'x-client-ip': string;
   /**
    * data of x-geo
    * @format isJSON
    * @minLength 1
    */
-  "x-geo-data": string;
+  'x-geo-data': string;
   /**
    * x-device identify
    * @minLength 1
    */
-  "x-device-id": string;
+  'x-device-id': string;
   [key: string]: any;
 }
 
@@ -1313,9 +1313,9 @@ export interface RemoveFromChannelParams {
 }
 
 export type QueryParamsType = Record<string | number, any>;
-export type ResponseFormat = keyof Omit<Body, "body" | "bodyUsed">;
+export type ResponseFormat = keyof Omit<Body, 'body' | 'bodyUsed'>;
 
-export interface FullRequestParams extends Omit<RequestInit, "body"> {
+export interface FullRequestParams extends Omit<RequestInit, 'body'> {
   /** set parameter to `true` for call `securityWorker` for this request */
   secure?: boolean;
   /** request path */
@@ -1336,12 +1336,12 @@ export interface FullRequestParams extends Omit<RequestInit, "body"> {
 
 export type RequestParams = Omit<
   FullRequestParams,
-  "body" | "method" | "query" | "path"
+  'body' | 'method' | 'query' | 'path'
 >;
 
 export interface ApiConfig<SecurityDataType = unknown> {
   baseUrl?: string;
-  baseApiParams?: Omit<RequestParams, "baseUrl" | "cancelToken" | "signal">;
+  baseApiParams?: Omit<RequestParams, 'baseUrl' | 'cancelToken' | 'signal'>;
   securityWorker?: (
     securityData: SecurityDataType | null,
   ) => Promise<RequestParams | void> | RequestParams | void;
@@ -1357,26 +1357,26 @@ export interface HttpResponse<D extends unknown, E extends unknown = unknown>
 type CancelToken = Symbol | string | number;
 
 export enum ContentType {
-  Json = "application/json",
-  JsonApi = "application/vnd.api+json",
-  FormData = "multipart/form-data",
-  UrlEncoded = "application/x-www-form-urlencoded",
-  Text = "text/plain",
+  Json = 'application/json',
+  JsonApi = 'application/vnd.api+json',
+  FormData = 'multipart/form-data',
+  UrlEncoded = 'application/x-www-form-urlencoded',
+  Text = 'text/plain',
 }
 
 export class HttpClient<SecurityDataType = unknown> {
-  public baseUrl: string = "";
+  public baseUrl: string = '';
   private securityData: SecurityDataType | null = null;
-  private securityWorker?: ApiConfig<SecurityDataType>["securityWorker"];
+  private securityWorker?: ApiConfig<SecurityDataType>['securityWorker'];
   private abortControllers = new Map<CancelToken, AbortController>();
   private customFetch = (...fetchParams: Parameters<typeof fetch>) =>
     fetch(...fetchParams);
 
   private baseApiParams: RequestParams = {
-    credentials: "same-origin",
+    credentials: 'same-origin',
     headers: {},
-    redirect: "follow",
-    referrerPolicy: "no-referrer",
+    redirect: 'follow',
+    referrerPolicy: 'no-referrer',
   };
 
   constructor(apiConfig: ApiConfig<SecurityDataType> = {}) {
@@ -1389,7 +1389,7 @@ export class HttpClient<SecurityDataType = unknown> {
 
   protected encodeQueryParam(key: string, value: any) {
     const encodedKey = encodeURIComponent(key);
-    return `${encodedKey}=${encodeURIComponent(typeof value === "number" ? value : `${value}`)}`;
+    return `${encodedKey}=${encodeURIComponent(typeof value === 'number' ? value : `${value}`)}`;
   }
 
   protected addQueryParam(query: QueryParamsType, key: string) {
@@ -1398,13 +1398,13 @@ export class HttpClient<SecurityDataType = unknown> {
 
   protected addArrayQueryParam(query: QueryParamsType, key: string) {
     const value = query[key];
-    return value.map((v: any) => this.encodeQueryParam(key, v)).join("&");
+    return value.map((v: any) => this.encodeQueryParam(key, v)).join('&');
   }
 
   protected toQueryString(rawQuery?: QueryParamsType): string {
     const query = rawQuery || {};
     const keys = Object.keys(query).filter(
-      (key) => "undefined" !== typeof query[key],
+      (key) => 'undefined' !== typeof query[key],
     );
     return keys
       .map((key) =>
@@ -1412,25 +1412,25 @@ export class HttpClient<SecurityDataType = unknown> {
           ? this.addArrayQueryParam(query, key)
           : this.addQueryParam(query, key),
       )
-      .join("&");
+      .join('&');
   }
 
   protected addQueryParams(rawQuery?: QueryParamsType): string {
     const queryString = this.toQueryString(rawQuery);
-    return queryString ? `?${queryString}` : "";
+    return queryString ? `?${queryString}` : '';
   }
 
   private contentFormatters: Record<ContentType, (input: any) => any> = {
     [ContentType.Json]: (input: any) =>
-      input !== null && (typeof input === "object" || typeof input === "string")
+      input !== null && (typeof input === 'object' || typeof input === 'string')
         ? JSON.stringify(input)
         : input,
     [ContentType.JsonApi]: (input: any) =>
-      input !== null && (typeof input === "object" || typeof input === "string")
+      input !== null && (typeof input === 'object' || typeof input === 'string')
         ? JSON.stringify(input)
         : input,
     [ContentType.Text]: (input: any) =>
-      input !== null && typeof input !== "string"
+      input !== null && typeof input !== 'string'
         ? JSON.stringify(input)
         : input,
     [ContentType.FormData]: (input: any) =>
@@ -1440,7 +1440,7 @@ export class HttpClient<SecurityDataType = unknown> {
           key,
           property instanceof Blob
             ? property
-            : typeof property === "object" && property !== null
+            : typeof property === 'object' && property !== null
               ? JSON.stringify(property)
               : `${property}`,
         );
@@ -1502,7 +1502,7 @@ export class HttpClient<SecurityDataType = unknown> {
     ...params
   }: FullRequestParams): Promise<HttpResponse<T, E>> => {
     const secureParams =
-      ((typeof secure === "boolean" ? secure : this.baseApiParams.secure) &&
+      ((typeof secure === 'boolean' ? secure : this.baseApiParams.secure) &&
         this.securityWorker &&
         (await this.securityWorker(this.securityData))) ||
       {};
@@ -1512,13 +1512,13 @@ export class HttpClient<SecurityDataType = unknown> {
     const responseFormat = format || requestParams.format;
 
     return this.customFetch(
-      `${baseUrl || this.baseUrl || ""}${path}${queryString ? `?${queryString}` : ""}`,
+      `${baseUrl || this.baseUrl || ''}${path}${queryString ? `?${queryString}` : ''}`,
       {
         ...requestParams,
         headers: {
           ...(requestParams.headers || {}),
           ...(type && type !== ContentType.FormData
-            ? { "Content-Type": type }
+            ? { 'Content-Type': type }
             : {}),
         },
         signal:
@@ -1526,7 +1526,7 @@ export class HttpClient<SecurityDataType = unknown> {
             ? this.createAbortSignal(cancelToken)
             : requestParams.signal) || null,
         body:
-          typeof body === "undefined" || body === null
+          typeof body === 'undefined' || body === null
             ? null
             : payloadFormatter(body),
       },
@@ -1584,10 +1584,10 @@ export class commandsChatHttpClient<SecurityDataType extends unknown> {
     addFriend: (data: V3AddFriendRequest, params: RequestParams = {}) =>
       this.http.request<V3AddFriendResponse, any>({
         path: `/Friend/AddFriend`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1603,10 +1603,10 @@ export class commandsChatHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3AcceptFriendRequestResponse, any>({
         path: `/Friend/AcceptFriendRequest`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1622,10 +1622,10 @@ export class commandsChatHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3CancelFriendRequestResponse, any>({
         path: `/Friend/CancelFriendRequest`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1638,10 +1638,10 @@ export class commandsChatHttpClient<SecurityDataType extends unknown> {
     unfriend: (data: V3UnfriendRequest, params: RequestParams = {}) =>
       this.http.request<V3UnfriendResponse, any>({
         path: `/Friend/Unfriend`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1657,9 +1657,9 @@ export class commandsChatHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3DeleteFriendRequestResponse, any>({
         path: `/Friend/DeleteFriendRequest`,
-        method: "DELETE",
+        method: 'DELETE',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1672,10 +1672,10 @@ export class commandsChatHttpClient<SecurityDataType extends unknown> {
     markAllAsRead: (data: V3MarkAllAsReadRequest, params: RequestParams = {}) =>
       this.http.request<V3MarkAllAsReadResponse, any>({
         path: `/Friend/MarkAllAsRead`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
   };
@@ -1689,10 +1689,10 @@ export class commandsChatHttpClient<SecurityDataType extends unknown> {
     createChannel: (data: V3CreateChannelRequest, params: RequestParams = {}) =>
       this.http.request<V3CreateChannelResponse, any>({
         path: `/Channel/CreateChannel`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1708,10 +1708,10 @@ export class commandsChatHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UpdateChannelNameResponse, any>({
         path: `/Channel/UpdateChannelName`,
-        method: "PUT",
+        method: 'PUT',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1727,10 +1727,10 @@ export class commandsChatHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UpdateChannelAvatarResponse, any>({
         path: `/Channel/UpdateChannelAvatar`,
-        method: "PUT",
+        method: 'PUT',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1743,9 +1743,9 @@ export class commandsChatHttpClient<SecurityDataType extends unknown> {
     deleteChannel: (query: DeleteChannelParams, params: RequestParams = {}) =>
       this.http.request<V3DeleteChannelResponse, any>({
         path: `/Channel/DeleteChannel`,
-        method: "DELETE",
+        method: 'DELETE',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1761,9 +1761,9 @@ export class commandsChatHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3DeleteChannelAvatarResponse, any>({
         path: `/Channel/DeleteChannelAvatar`,
-        method: "DELETE",
+        method: 'DELETE',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1779,10 +1779,10 @@ export class commandsChatHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3AcceptMessageRequestResponse, any>({
         path: `/Channel/AcceptMessageRequest`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1798,10 +1798,10 @@ export class commandsChatHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3RejectMessageRequestResponse, any>({
         path: `/Channel/RejectMessageRequest`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1817,10 +1817,10 @@ export class commandsChatHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UpdateDMMediaPermissionSettingResponse, any>({
         path: `/Channel/UpdateDMMediaPermissionSetting`,
-        method: "PUT",
+        method: 'PUT',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
   };
@@ -1837,10 +1837,10 @@ export class commandsChatHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3SendInvitationResponse, any>({
         path: `/Invitation/SendInvitation`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1856,10 +1856,10 @@ export class commandsChatHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3AcceptInvitationResponse, any>({
         path: `/Invitation/AcceptInvitation`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1875,10 +1875,10 @@ export class commandsChatHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3CreateInvitationResponse, any>({
         path: `/Invitation/CreateInvitation`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1894,9 +1894,9 @@ export class commandsChatHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3RevokeInvitationResponse, any>({
         path: `/Invitation/RevokeInvitation`,
-        method: "DELETE",
+        method: 'DELETE',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
   };
@@ -1910,10 +1910,10 @@ export class commandsChatHttpClient<SecurityDataType extends unknown> {
     assignAsAdmin: (data: V3AssignAsAdminRequest, params: RequestParams = {}) =>
       this.http.request<V3AssignAsAdminResponse, any>({
         path: `/Member/AssignAsAdmin`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1929,10 +1929,10 @@ export class commandsChatHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3BanFromChannelResponse, any>({
         path: `/Member/BanFromChannel`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1948,10 +1948,10 @@ export class commandsChatHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3DismissAsAdminResponse, any>({
         path: `/Member/DismissAsAdmin`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1964,10 +1964,10 @@ export class commandsChatHttpClient<SecurityDataType extends unknown> {
     leaveChannel: (data: V3LeaveChannelRequest, params: RequestParams = {}) =>
       this.http.request<V3LeaveChannelResponse, any>({
         path: `/Member/LeaveChannel`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -1983,9 +1983,9 @@ export class commandsChatHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3RemoveFromChannelResponse, any>({
         path: `/Member/RemoveFromChannel`,
-        method: "DELETE",
+        method: 'DELETE',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2001,10 +2001,10 @@ export class commandsChatHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UpdateNicknameResponse, any>({
         path: `/Member/UpdateNickname`,
-        method: "PUT",
+        method: 'PUT',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2020,10 +2020,10 @@ export class commandsChatHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UnbanFromChannelResponse, any>({
         path: `/Member/UnbanFromChannel`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2039,10 +2039,10 @@ export class commandsChatHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3TransferOwnershipResponse, any>({
         path: `/Member/TransferOwnership`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2058,10 +2058,10 @@ export class commandsChatHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3TransferOwnershipAndLeaveResponse, any>({
         path: `/Member/TransferOwnershipAndLeaveChannel`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
   };

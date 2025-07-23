@@ -3,7 +3,11 @@ import * as fs from 'fs';
 import * as os from 'os';
 import { formatExpectErrors } from '../helpers/format-helper';
 import { pairFiles } from '../helpers/file-matching';
-import { readJsonFile, findAllFoldersWithDtoAndRequest, getMatchedFilePaths } from '../helpers/fs-helpers';
+import {
+  readJsonFile,
+  findAllFoldersWithDtoAndRequest,
+  getMatchedFilePaths,
+} from '../helpers/fs-helpers';
 import { CHUNK_SIZE, MAX_TEST_CASES_PER_FILE } from './get-config';
 
 async function generateK6Content(
@@ -87,21 +91,23 @@ export default function (data) {
       const resolvedData = resolveVariables(test.payload, setupContext);
       const headers = resolveVariables(${JSON.stringify(primaryHeaders)}, setupContext);
       
-      ${isGetRequest ?
-      `const params = Object.keys(resolvedData).map(key => \`\${key}=\${encodeURIComponent(resolvedData[key])}\`).join('&');
+      ${
+        isGetRequest
+          ? `const params = Object.keys(resolvedData).map(key => \`\${key}=\${encodeURIComponent(resolvedData[key])}\`).join('&');
       const url = 'https://api-dev.ziichat.dev${actionPath}' + (params ? \`?\${params}\` : '');
-      const response = http.get(url, { headers });` :
-      methodLowCase === 'delete' ?
-        `const response = http.del(
+      const response = http.get(url, { headers });`
+          : methodLowCase === 'delete'
+            ? `const response = http.del(
           'https://api-dev.ziichat.dev${actionPath}', 
           JSON.stringify(resolvedData), 
           { headers }
-        );` :
-        `const response = http.${methodLowCase}(
+        );`
+            : `const response = http.${methodLowCase}(
           'https://api-dev.ziichat.dev${actionPath}', 
           JSON.stringify(resolvedData), 
           { headers }
-        );`}
+        );`
+      }
 
       let expectDetails = [];
       let softExpectDetails = [];
@@ -365,19 +371,14 @@ async function genK6TestCase(
       requestConfig,
       className,
     );
-    const scriptPath = path.join(
-      os.homedir(),
-      'Documents',
-      'k6-studio',
-      'Scripts',
-      `${className}`,
-    );
-    const filePath = path.join(scriptPath, `${className}.k6.js`);
+
+    const filePath = path.join(outputDir, `${className}.k6.js`);
     const dirPath = path.dirname(filePath);
     if (!fs.existsSync(dirPath)) {
       fs.mkdirSync(dirPath, { recursive: true });
     }
     fs.writeFileSync(filePath, content, 'utf-8');
+
     console.log(`✅ Successfully created K6 test: ${filePath}`);
   }
 }

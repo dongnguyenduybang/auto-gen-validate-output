@@ -885,19 +885,19 @@ export interface V3UserMetadataRequest {
    * @format isULID
    * @minLength 1
    */
-  "x-user-id": string;
+  'x-user-id': string;
   /** The code of x-country  */
-  "x-country-code": string;
+  'x-country-code': string;
   /** the ip of x-client */
-  "x-client-ip": string;
+  'x-client-ip': string;
   /**
    * The data of x-geo
    * @format isJSON
    * @minLength 1
    */
-  "x-geo-data": string;
+  'x-geo-data': string;
   /** The x-device identify */
-  "x-device-id": string;
+  'x-device-id': string;
   [key: string]: any;
 }
 
@@ -1719,9 +1719,9 @@ export interface DeleteMessagesOnlyMeParams {
 }
 
 export type QueryParamsType = Record<string | number, any>;
-export type ResponseFormat = keyof Omit<Body, "body" | "bodyUsed">;
+export type ResponseFormat = keyof Omit<Body, 'body' | 'bodyUsed'>;
 
-export interface FullRequestParams extends Omit<RequestInit, "body"> {
+export interface FullRequestParams extends Omit<RequestInit, 'body'> {
   /** set parameter to `true` for call `securityWorker` for this request */
   secure?: boolean;
   /** request path */
@@ -1742,12 +1742,12 @@ export interface FullRequestParams extends Omit<RequestInit, "body"> {
 
 export type RequestParams = Omit<
   FullRequestParams,
-  "body" | "method" | "query" | "path"
+  'body' | 'method' | 'query' | 'path'
 >;
 
 export interface ApiConfig<SecurityDataType = unknown> {
   baseUrl?: string;
-  baseApiParams?: Omit<RequestParams, "baseUrl" | "cancelToken" | "signal">;
+  baseApiParams?: Omit<RequestParams, 'baseUrl' | 'cancelToken' | 'signal'>;
   securityWorker?: (
     securityData: SecurityDataType | null,
   ) => Promise<RequestParams | void> | RequestParams | void;
@@ -1763,26 +1763,26 @@ export interface HttpResponse<D extends unknown, E extends unknown = unknown>
 type CancelToken = Symbol | string | number;
 
 export enum ContentType {
-  Json = "application/json",
-  JsonApi = "application/vnd.api+json",
-  FormData = "multipart/form-data",
-  UrlEncoded = "application/x-www-form-urlencoded",
-  Text = "text/plain",
+  Json = 'application/json',
+  JsonApi = 'application/vnd.api+json',
+  FormData = 'multipart/form-data',
+  UrlEncoded = 'application/x-www-form-urlencoded',
+  Text = 'text/plain',
 }
 
 export class HttpClient<SecurityDataType = unknown> {
-  public baseUrl: string = "";
+  public baseUrl: string = '';
   private securityData: SecurityDataType | null = null;
-  private securityWorker?: ApiConfig<SecurityDataType>["securityWorker"];
+  private securityWorker?: ApiConfig<SecurityDataType>['securityWorker'];
   private abortControllers = new Map<CancelToken, AbortController>();
   private customFetch = (...fetchParams: Parameters<typeof fetch>) =>
     fetch(...fetchParams);
 
   private baseApiParams: RequestParams = {
-    credentials: "same-origin",
+    credentials: 'same-origin',
     headers: {},
-    redirect: "follow",
-    referrerPolicy: "no-referrer",
+    redirect: 'follow',
+    referrerPolicy: 'no-referrer',
   };
 
   constructor(apiConfig: ApiConfig<SecurityDataType> = {}) {
@@ -1795,7 +1795,7 @@ export class HttpClient<SecurityDataType = unknown> {
 
   protected encodeQueryParam(key: string, value: any) {
     const encodedKey = encodeURIComponent(key);
-    return `${encodedKey}=${encodeURIComponent(typeof value === "number" ? value : `${value}`)}`;
+    return `${encodedKey}=${encodeURIComponent(typeof value === 'number' ? value : `${value}`)}`;
   }
 
   protected addQueryParam(query: QueryParamsType, key: string) {
@@ -1804,13 +1804,13 @@ export class HttpClient<SecurityDataType = unknown> {
 
   protected addArrayQueryParam(query: QueryParamsType, key: string) {
     const value = query[key];
-    return value.map((v: any) => this.encodeQueryParam(key, v)).join("&");
+    return value.map((v: any) => this.encodeQueryParam(key, v)).join('&');
   }
 
   protected toQueryString(rawQuery?: QueryParamsType): string {
     const query = rawQuery || {};
     const keys = Object.keys(query).filter(
-      (key) => "undefined" !== typeof query[key],
+      (key) => 'undefined' !== typeof query[key],
     );
     return keys
       .map((key) =>
@@ -1818,25 +1818,25 @@ export class HttpClient<SecurityDataType = unknown> {
           ? this.addArrayQueryParam(query, key)
           : this.addQueryParam(query, key),
       )
-      .join("&");
+      .join('&');
   }
 
   protected addQueryParams(rawQuery?: QueryParamsType): string {
     const queryString = this.toQueryString(rawQuery);
-    return queryString ? `?${queryString}` : "";
+    return queryString ? `?${queryString}` : '';
   }
 
   private contentFormatters: Record<ContentType, (input: any) => any> = {
     [ContentType.Json]: (input: any) =>
-      input !== null && (typeof input === "object" || typeof input === "string")
+      input !== null && (typeof input === 'object' || typeof input === 'string')
         ? JSON.stringify(input)
         : input,
     [ContentType.JsonApi]: (input: any) =>
-      input !== null && (typeof input === "object" || typeof input === "string")
+      input !== null && (typeof input === 'object' || typeof input === 'string')
         ? JSON.stringify(input)
         : input,
     [ContentType.Text]: (input: any) =>
-      input !== null && typeof input !== "string"
+      input !== null && typeof input !== 'string'
         ? JSON.stringify(input)
         : input,
     [ContentType.FormData]: (input: any) =>
@@ -1846,7 +1846,7 @@ export class HttpClient<SecurityDataType = unknown> {
           key,
           property instanceof Blob
             ? property
-            : typeof property === "object" && property !== null
+            : typeof property === 'object' && property !== null
               ? JSON.stringify(property)
               : `${property}`,
         );
@@ -1908,7 +1908,7 @@ export class HttpClient<SecurityDataType = unknown> {
     ...params
   }: FullRequestParams): Promise<HttpResponse<T, E>> => {
     const secureParams =
-      ((typeof secure === "boolean" ? secure : this.baseApiParams.secure) &&
+      ((typeof secure === 'boolean' ? secure : this.baseApiParams.secure) &&
         this.securityWorker &&
         (await this.securityWorker(this.securityData))) ||
       {};
@@ -1918,13 +1918,13 @@ export class HttpClient<SecurityDataType = unknown> {
     const responseFormat = format || requestParams.format;
 
     return this.customFetch(
-      `${baseUrl || this.baseUrl || ""}${path}${queryString ? `?${queryString}` : ""}`,
+      `${baseUrl || this.baseUrl || ''}${path}${queryString ? `?${queryString}` : ''}`,
       {
         ...requestParams,
         headers: {
           ...(requestParams.headers || {}),
           ...(type && type !== ContentType.FormData
-            ? { "Content-Type": type }
+            ? { 'Content-Type': type }
             : {}),
         },
         signal:
@@ -1932,7 +1932,7 @@ export class HttpClient<SecurityDataType = unknown> {
             ? this.createAbortSignal(cancelToken)
             : requestParams.signal) || null,
         body:
-          typeof body === "undefined" || body === null
+          typeof body === 'undefined' || body === null
             ? null
             : payloadFormatter(body),
       },
@@ -1990,10 +1990,10 @@ export class commandsMessageHttpClient<SecurityDataType extends unknown> {
     sendDmMessage: (data: V3SendDMMessageRequest, params: RequestParams = {}) =>
       this.http.request<V3SendDMMessageResponse, any>({
         path: `/Message/SendDMMessage`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2009,10 +2009,10 @@ export class commandsMessageHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3AddDMMessageReactionResponse, any>({
         path: `/Message/AddDMMessageReaction`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2028,9 +2028,9 @@ export class commandsMessageHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3DeleteAllDMMessagesForEveryoneResponse, any>({
         path: `/Message/DeleteAllDMMessagesForEveryone`,
-        method: "DELETE",
+        method: 'DELETE',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2046,9 +2046,9 @@ export class commandsMessageHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3DeleteAllDMMessagesOnlyMeResponse, any>({
         path: `/Message/DeleteAllDMMessagesOnlyMe`,
-        method: "DELETE",
+        method: 'DELETE',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2064,9 +2064,9 @@ export class commandsMessageHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3ClearDMMessagesForEveryoneResponse, any>({
         path: `/Message/ClearDMMessageForEveryone`,
-        method: "DELETE",
+        method: 'DELETE',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2082,9 +2082,9 @@ export class commandsMessageHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3ClearDMMessagesOnlyMeResponse, any>({
         path: `/Message/ClearDMMessageOnlyMe`,
-        method: "DELETE",
+        method: 'DELETE',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2100,9 +2100,9 @@ export class commandsMessageHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3DeleteDMMessagesForEveryoneResponse, any>({
         path: `/Message/DeleteDMMessagesForEveryone`,
-        method: "DELETE",
+        method: 'DELETE',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2118,9 +2118,9 @@ export class commandsMessageHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3DeleteDMMessagesOnlyMeResponse, any>({
         path: `/Message/DeleteDMMessagesOnlyMe`,
-        method: "DELETE",
+        method: 'DELETE',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2136,10 +2136,10 @@ export class commandsMessageHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3ForwardMessagesToDMChannelResponse, any>({
         path: `/Message/ForwardMessagesToDMChannel`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2152,10 +2152,10 @@ export class commandsMessageHttpClient<SecurityDataType extends unknown> {
     markDmAsRead: (data: V3MarkDMAsReadRequest, params: RequestParams = {}) =>
       this.http.request<V3MarkDMAsReadResponse, any>({
         path: `/Message/MarkDMAsRead`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2171,10 +2171,10 @@ export class commandsMessageHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3PinUnpinDMMessageResponse, any>({
         path: `/Message/PinUnpinDMMessage`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2190,10 +2190,10 @@ export class commandsMessageHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3QuoteDMMessageResponse, any>({
         path: `/Message/QuoteDMMessage`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2209,10 +2209,10 @@ export class commandsMessageHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3ReportDMMessageResponse, any>({
         path: `/Message/ReportDMMessage`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2228,10 +2228,10 @@ export class commandsMessageHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3RevokeDMMessageReactionResponse, any>({
         path: `/Message/RevokeDMMessageReaction`,
-        method: "PUT",
+        method: 'PUT',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2247,10 +2247,10 @@ export class commandsMessageHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3SendDMLocationResponse, any>({
         path: `/Message/SendDMLocation`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2266,10 +2266,10 @@ export class commandsMessageHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3SendDmMessageMediaResponse, any>({
         path: `/Message/SendDmMessageMedia`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2285,10 +2285,10 @@ export class commandsMessageHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3SendDMMessageStickerResponse, any>({
         path: `/Message/SendDMMessageSticker`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2304,10 +2304,10 @@ export class commandsMessageHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3SendPokeMessageResponse, any>({
         path: `/Message/SendPokeMessage`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2323,10 +2323,10 @@ export class commandsMessageHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UpdateDmMediaAttachmentsResponse, any>({
         path: `/Message/UpdateDmMediaAttachments`,
-        method: "PUT",
+        method: 'PUT',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2342,10 +2342,10 @@ export class commandsMessageHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UpdateDMMessageResponse, any>({
         path: `/Message/UpdateDMMessage`,
-        method: "PUT",
+        method: 'PUT',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2358,10 +2358,10 @@ export class commandsMessageHttpClient<SecurityDataType extends unknown> {
     sendMessage: (data: V3SendMessageRequest, params: RequestParams = {}) =>
       this.http.request<V3SendMessageResponse, any>({
         path: `/Message/SendMessage`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2377,10 +2377,10 @@ export class commandsMessageHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3MarkAllChannelsAsReadResponse, any>({
         path: `/Message/MarkAllChannelsAsRead`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2393,10 +2393,10 @@ export class commandsMessageHttpClient<SecurityDataType extends unknown> {
     markAsRead: (data: V3MarkAsReadRequest, params: RequestParams = {}) =>
       this.http.request<V3MarkAsReadResponse, any>({
         path: `/Message/MarkAsRead`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2412,10 +2412,10 @@ export class commandsMessageHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3AddMessageReactionResponse, any>({
         path: `/Message/AddMessageReaction`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2431,10 +2431,10 @@ export class commandsMessageHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3RevokeMessageReactionResponse, any>({
         path: `/Message/RevokeMessageReaction`,
-        method: "PUT",
+        method: 'PUT',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2450,9 +2450,9 @@ export class commandsMessageHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3DeleteAllMessagesOnlyMeResponse, any>({
         path: `/Message/DeleteAllMessagesOnlyMe`,
-        method: "DELETE",
+        method: 'DELETE',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2468,9 +2468,9 @@ export class commandsMessageHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3DeleteMessagesForEveryoneResponse, any>({
         path: `/Message/DeleteMessagesForEveryone`,
-        method: "DELETE",
+        method: 'DELETE',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2486,9 +2486,9 @@ export class commandsMessageHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3DeleteMessagesOnlyMeResponse, any>({
         path: `/Message/DeleteMessagesOnlyMe`,
-        method: "DELETE",
+        method: 'DELETE',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2504,10 +2504,10 @@ export class commandsMessageHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3ForwardMessagesToChannelResponse, any>({
         path: `/Message/ForwardMessagesToChannel`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2523,10 +2523,10 @@ export class commandsMessageHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3PinUnpinMessageResponse, any>({
         path: `/Message/PinUnpinMessage`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2539,10 +2539,10 @@ export class commandsMessageHttpClient<SecurityDataType extends unknown> {
     quoteMessage: (data: V3QuoteMessageRequest, params: RequestParams = {}) =>
       this.http.request<V3QuoteMessageResponse, any>({
         path: `/Message/QuoteMessage`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2555,10 +2555,10 @@ export class commandsMessageHttpClient<SecurityDataType extends unknown> {
     reportMessage: (data: V3ReportMessageRequest, params: RequestParams = {}) =>
       this.http.request<V3ReportMessageResponse, any>({
         path: `/Message/ReportMessage`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2571,10 +2571,10 @@ export class commandsMessageHttpClient<SecurityDataType extends unknown> {
     sendLocation: (data: V3SendLocationRequest, params: RequestParams = {}) =>
       this.http.request<V3SendLocationResponse, any>({
         path: `/Message/SendLocation`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2590,10 +2590,10 @@ export class commandsMessageHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3SendMessageMediaResponse, any>({
         path: `/Message/SendMessageMedia`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2609,10 +2609,10 @@ export class commandsMessageHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3SendMessageStickerResponse, any>({
         path: `/Message/SendMessageSticker`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2628,10 +2628,10 @@ export class commandsMessageHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3UpdateMediaAttachmentsResponse, any>({
         path: `/Message/UpdateMediaAttachments`,
-        method: "PUT",
+        method: 'PUT',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2644,10 +2644,10 @@ export class commandsMessageHttpClient<SecurityDataType extends unknown> {
     updateMessage: (data: V3UpdateMessageRequest, params: RequestParams = {}) =>
       this.http.request<V3UpdateMessageResponse, any>({
         path: `/Message/UpdateMessage`,
-        method: "PUT",
+        method: 'PUT',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
   };

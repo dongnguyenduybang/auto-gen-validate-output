@@ -5,9 +5,17 @@ import path from 'path';
 import { actionHandlers } from '../test.index';
 import { mapOption } from './k6-help';
 import { normalizePath } from '../helpers/path-utils';
-import { addToRecentSelections, validateDtoName } from '../helpers/file-matching';
+import {
+  addToRecentSelections,
+  validateDtoName,
+} from '../helpers/file-matching';
 import { formatPaths } from '../helpers/format-helper';
-import { getConfig, MAX_RECENT_ITEMS, recentSelections, REPORT_LENGTH } from './get-config';
+import {
+  getConfig,
+  MAX_RECENT_ITEMS,
+  recentSelections,
+  REPORT_LENGTH,
+} from './get-config';
 import { PathHelper } from '../helpers/path-helper';
 
 export async function interactiveCLI(): Promise<void> {
@@ -82,12 +90,15 @@ export async function interactiveCLI(): Promise<void> {
 
         if (confirm) {
           await executeAction('report', 'single', selectedPaths);
-          addToRecentSelections({
-            action: 'report',
-            type: 'single',
-            paths: selectedPaths,
-            timestamp: Date.now(),
-          }, recentSelections);
+          addToRecentSelections(
+            {
+              action: 'report',
+              type: 'single',
+              paths: selectedPaths,
+              timestamp: Date.now(),
+            },
+            recentSelections,
+          );
         }
       } else if (reportType === 'all') {
         const { confirm } = await inquirer.prompt<{ confirm: boolean }>([
@@ -101,12 +112,15 @@ export async function interactiveCLI(): Promise<void> {
 
         if (confirm) {
           await actionHandlers.report.all[0]('');
-          addToRecentSelections({
-            action: 'report',
-            type: 'all',
-            paths: ['ALL'],
-            timestamp: Date.now(),
-          }, recentSelections);
+          addToRecentSelections(
+            {
+              action: 'report',
+              type: 'all',
+              paths: ['ALL'],
+              timestamp: Date.now(),
+            },
+            recentSelections,
+          );
         }
       } else if (reportType === 'view') {
         const selectedPaths = await selectFoldersRecursive(true);
@@ -127,12 +141,15 @@ export async function interactiveCLI(): Promise<void> {
 
         if (confirm) {
           await executeAction('report', 'view', selectedPaths);
-          addToRecentSelections({
-            action: 'report',
-            type: 'view',
-            paths: selectedPaths,
-            timestamp: Date.now(),
-          }, recentSelections);
+          addToRecentSelections(
+            {
+              action: 'report',
+              type: 'view',
+              paths: selectedPaths,
+              timestamp: Date.now(),
+            },
+            recentSelections,
+          );
         }
       }
       continue;
@@ -195,9 +212,9 @@ export async function interactiveCLI(): Promise<void> {
             recentGenItems.length > 0
               ? choices
               : [
-                { name: 'Test with k6', value: 'k6' },
-                { name: 'Manual selection', value: 'manual' },
-              ],
+                  { name: 'Test with k6', value: 'k6' },
+                  { name: 'Manual selection', value: 'manual' },
+                ],
           pageSize: 10,
         },
       ]);
@@ -211,12 +228,15 @@ export async function interactiveCLI(): Promise<void> {
 
         await executeAction('test', 'request', allPaths);
 
-        addToRecentSelections({
-          action: 'test',
-          type: 'request',
-          paths: allPaths,
-          timestamp: Date.now(),
-        }, recentSelections);
+        addToRecentSelections(
+          {
+            action: 'test',
+            type: 'request',
+            paths: allPaths,
+            timestamp: Date.now(),
+          },
+          recentSelections,
+        );
         continue;
       } else if (quickTestChoice === 'k6') {
         // Xử lý Test with k6
@@ -228,7 +248,6 @@ export async function interactiveCLI(): Promise<void> {
         const payloadPath = selectedPayloads[0]; // Chỉ lấy file đầu tiên
 
         const {
-          k6ScriptPath,
           vus,
           executor,
           stages,
@@ -238,27 +257,13 @@ export async function interactiveCLI(): Promise<void> {
         } = await inquirer.prompt([
           {
             type: 'input',
-            name: 'k6ScriptPath',
-            message: 'Enter path to k6 script:',
-            default: 'C:/Users/duy/Documents/k6-studio/Scripts/',
-            validate: (input) => {
-              try {
-                fs.accessSync(input, fs.constants.R_OK);
-                return true;
-              } catch {
-                return 'Invalid or inaccessible k6 script path';
-              }
-            },
-          },
-          {
-            type: 'input',
             name: 'executor',
             message:
               'Enter executor(per-vu-iterations, constant-vus, ramping-vus):',
             // validate: (input) => {
             //   return !input || /^\d+$/.test(input) ? true : 'VUs must be a number';
             // },
-            default: 'per-vu-iterations'
+            default: 'per-vu-iterations',
           },
           {
             type: 'input',
@@ -324,13 +329,11 @@ export async function interactiveCLI(): Promise<void> {
             // validate: (input) => {
             //   return !input || /^\d+$/.test(input) ? true : 'VUs must be a number';
             // },
-            default: '30s'
+            default: '30s',
           },
         ]);
 
-        console.log(
-          `\n🔍 Running k6 tests with payload: ${payloadPath} and script: ${k6ScriptPath}`,
-        );
+        console.log(`\n🔍 Running k6 tests with payload: ${payloadPath}`);
 
         try {
           const folderName = path.basename(payloadPath);
@@ -369,12 +372,15 @@ export async function interactiveCLI(): Promise<void> {
 
           await executeAction(action, 'k6', [targetDir]);
 
-          addToRecentSelections({
-            action: 'test',
-            type: 'k6',
-            paths: [payloadPath, k6ScriptPath],
-            timestamp: Date.now(),
-          }, recentSelections);
+          addToRecentSelections(
+            {
+              action: 'test',
+              type: 'k6',
+              paths: [payloadPath],
+              timestamp: Date.now(),
+            },
+            recentSelections,
+          );
         } catch (error) {
           console.error('❌ Error running k6 tests:', error.message);
         }
@@ -390,12 +396,15 @@ export async function interactiveCLI(): Promise<void> {
 
         await executeAction('test', selectedItem.type, selectedItem.paths);
 
-        addToRecentSelections({
-          action: 'test',
-          type: selectedItem.type,
-          paths: selectedItem.paths,
-          timestamp: Date.now(),
-        }, recentSelections);
+        addToRecentSelections(
+          {
+            action: 'test',
+            type: selectedItem.type,
+            paths: selectedItem.paths,
+            timestamp: Date.now(),
+          },
+          recentSelections,
+        );
         continue;
       }
     }
@@ -438,12 +447,15 @@ export async function interactiveCLI(): Promise<void> {
         await actionHandlers.clear[type][0]('');
         console.log('✅ Done!');
 
-        addToRecentSelections({
-          action: 'clear',
-          type,
-          paths: ['ALL'],
-          timestamp: Date.now(),
-        }, recentSelections);
+        addToRecentSelections(
+          {
+            action: 'clear',
+            type,
+            paths: ['ALL'],
+            timestamp: Date.now(),
+          },
+          recentSelections,
+        );
         continue;
       }
     }
@@ -471,12 +483,15 @@ export async function interactiveCLI(): Promise<void> {
 
     await executeAction(action, type, selectedPaths);
 
-    addToRecentSelections({
-      action,
-      type,
-      paths: selectedPaths,
-      timestamp: Date.now(),
-    }, recentSelections);
+    addToRecentSelections(
+      {
+        action,
+        type,
+        paths: selectedPaths,
+        timestamp: Date.now(),
+      },
+      recentSelections,
+    );
   }
 }
 
@@ -595,7 +610,7 @@ export async function executeAction(
           await handler(finalPath);
         }
       }
-    } catch (error) { }
+    } catch (error) {}
   } else {
     for (const filePath of filePaths) {
       const normalizedPath = normalizePath(filePath);
@@ -698,12 +713,12 @@ async function selectFoldersRecursive(
           choices: [
             ...(currentPath !== '' && type !== 'json'
               ? [
-                {
-                  name: `📁 ${isCurrentSelected ? '✓ ' : ''}[SELECT CURRENT] ${currentPath}`,
-                  value: '__CURRENT__',
-                  checked: isCurrentSelected,
-                },
-              ]
+                  {
+                    name: `📁 ${isCurrentSelected ? '✓ ' : ''}[SELECT CURRENT] ${currentPath}`,
+                    value: '__CURRENT__',
+                    checked: isCurrentSelected,
+                  },
+                ]
               : []),
             ...items.map((item) => ({
               ...item,
@@ -728,8 +743,14 @@ async function selectFoldersRecursive(
             });
             testFiles.forEach((file) => {
               // Tính đường dẫn relative từ test-requests directory
-              const testRequestsDir = getConfig<string>('testRequestsDir', './test-requests');
-              const testRequestsPath = path.resolve(workingDir, testRequestsDir);
+              const testRequestsDir = getConfig<string>(
+                'testRequestsDir',
+                './test-requests',
+              );
+              const testRequestsPath = path.resolve(
+                workingDir,
+                testRequestsDir,
+              );
               const relativePath = path
                 .relative(testRequestsPath, file)
                 .replace(/\\/g, '/');
@@ -892,7 +913,10 @@ async function selectFoldersRecursive(
 // Cập nhật hàm searchDtoInTestRequests để cũng sử dụng working directory
 async function searchDtoInTestRequests(dtoName: string): Promise<string[]> {
   const workingDir = process.cwd();
-  const testRequestsDir = getConfig<string>('testRequestsDir', './test-requests');
+  const testRequestsDir = getConfig<string>(
+    'testRequestsDir',
+    './test-requests',
+  );
   const testRequestsPath = path.resolve(workingDir, testRequestsDir);
 
   if (!fs.existsSync(testRequestsPath)) {
@@ -904,11 +928,11 @@ async function searchDtoInTestRequests(dtoName: string): Promise<string[]> {
     const pattern = path.join(testRequestsPath, `**/*${dtoName}*`);
     const matches = await glob(pattern, {
       nodir: false,
-      ignore: ['**/node_modules/**', '**/.git/**']
+      ignore: ['**/node_modules/**', '**/.git/**'],
     });
 
-    return matches.map(match =>
-      path.relative(testRequestsPath, match).replace(/\\/g, '/')
+    return matches.map((match) =>
+      path.relative(testRequestsPath, match).replace(/\\/g, '/'),
     );
   } catch (error) {
     console.error(`Error searching for DTO '${dtoName}':`, error);

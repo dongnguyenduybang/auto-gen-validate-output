@@ -1,4 +1,4 @@
-// format expect errors 
+// format expect errors
 export const formatExpectErrors = (expects) => {
   return JSON.stringify(expects)
     .replace(/'/g, "\\'")

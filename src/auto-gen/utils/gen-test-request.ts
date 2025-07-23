@@ -1,6 +1,10 @@
 import * as path from 'path';
 import * as fs from 'fs';
-import { findAllFoldersWithDtoAndRequest, getMatchedFilePaths, readJsonFile } from '../helpers/fs-helpers';
+import {
+  findAllFoldersWithDtoAndRequest,
+  getMatchedFilePaths,
+  readJsonFile,
+} from '../helpers/fs-helpers';
 import { pairFiles } from '../helpers/file-matching';
 import { formatExpectErrors } from '../helpers/format-helper';
 

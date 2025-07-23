@@ -30,14 +30,19 @@ class AIUserIdResolver {
 
   public async initializeFromSwagger(): Promise<void> {
     try {
-      const swaggerPath = path.resolve(__dirname, '../swagger/hono.swagger.json');
+      const swaggerPath = path.resolve(
+        __dirname,
+        '../swagger/hono.swagger.json',
+      );
       if (!(await exists(swaggerPath))) {
         throw new Error(`The Swagger file does not exist at: ${swaggerPath}`);
       }
       const fileContent = await readFile(swaggerPath, 'utf-8');
       const swaggerJson = JSON.parse(fileContent);
       this._trainingData = this.generateTrainingDataFromSwagger(swaggerJson);
-      console.log(`✅ Loaded ${this._trainingData.length} Swagger training sample`);
+      console.log(
+        `✅ Loaded ${this._trainingData.length} Swagger training sample`,
+      );
     } catch (error) {
       console.error('❌ Error when initializing from Swagger:', error);
       throw error;
@@ -63,47 +68,62 @@ class AIUserIdResolver {
       return trainingData;
     }
 
-    Object.entries(swaggerJson.components.schemas).forEach(([schemaName, schema]: [string, any]) => {
-      try {
-        const action = this.normalizeActionName(schemaName);
-        if (!action) {
-          console.warn(`⚠️ Ignore schema ${schemaName} due to undefined action`);
-          return;
+    Object.entries(swaggerJson.components.schemas).forEach(
+      ([schemaName, schema]: [string, any]) => {
+        try {
+          const action = this.normalizeActionName(schemaName);
+          if (!action) {
+            console.warn(
+              `⚠️ Ignore schema ${schemaName} due to undefined action`,
+            );
+            return;
+          }
+          const contextClues = this.extractContextClues(schemaName, schema);
+          const actionInfo = this.getHttp(action);
+          const apiEndpoint = actionInfo?.path || '';
+          const httpMethod = actionInfo?.method || 'POST';
+
+          // Kiểm tra các trường user-related (userId hoặc fieldName)
+          const userField = schema?.properties?.userId
+            ? 'userId'
+            : Object.keys(schema?.properties || {}).find((key) =>
+                /userId|authorId|targetUserId|recipientId/i.test(key),
+              ) || 'userId'; // Fallback to 'userId' if no user-related field
+          const userIdDescription =
+            schema?.properties?.[userField]?.description ||
+            schema.description ||
+            '';
+          const userIdMeaning = schema?.properties?.[userField]
+            ? guessUserIdMeaning(action, userIdDescription)
+            : this.inferUserIdMeaningFromContext(
+                action,
+                schema.description || '',
+                apiEndpoint,
+              );
+
+          trainingData.push({
+            action,
+            schemaId: schemaName,
+            swaggerDesc: userIdDescription,
+            contextClues,
+            apiEndpoint,
+            httpMethod,
+            fieldName: userField,
+            userIdMeaning,
+          });
+        } catch (error) {
+          console.warn(`❌ Error processing schema ${schemaName}:`, error);
         }
-        const contextClues = this.extractContextClues(schemaName, schema);
-        const actionInfo = this.getHttp(action);
-        const apiEndpoint = actionInfo?.path || '';
-        const httpMethod = actionInfo?.method || 'POST';
-
-        // Kiểm tra các trường user-related (userId hoặc fieldName)
-        const userField = schema?.properties?.userId
-          ? 'userId'
-          : Object.keys(schema?.properties || {}).find((key) =>
-            /userId|authorId|targetUserId|recipientId/i.test(key)
-          ) || 'userId'; // Fallback to 'userId' if no user-related field
-        const userIdDescription = schema?.properties?.[userField]?.description || schema.description || '';
-        const userIdMeaning = schema?.properties?.[userField]
-          ? guessUserIdMeaning(action, userIdDescription)
-          : this.inferUserIdMeaningFromContext(action, schema.description || '', apiEndpoint);
-
-        trainingData.push({
-          action,
-          schemaId: schemaName,
-          swaggerDesc: userIdDescription,
-          contextClues,
-          apiEndpoint,
-          httpMethod,
-          fieldName: userField,
-          userIdMeaning,
-        });
-      } catch (error) {
-        console.warn(`❌ Error processing schema ${schemaName}:`, error);
-      }
-    });
+      },
+    );
     return trainingData;
   }
 
-  private inferUserIdMeaningFromContext(action: string, description: string, endpoint: string): 'sender' | 'receiver' {
+  private inferUserIdMeaningFromContext(
+    action: string,
+    description: string,
+    endpoint: string,
+  ): 'sender' | 'receiver' {
     const fullText = `${action} ${description} ${endpoint}`.toLowerCase();
     const receiverPatterns = [
       /send.*to|recipient|receive|destination|message.*to|dm.*to|direct.*to/i,
@@ -169,9 +189,10 @@ class AIUserIdResolver {
     const userField = schema?.properties?.userId
       ? 'userId'
       : Object.keys(schema?.properties || {}).find((key) =>
-        /userId|authorId|targetUserId|recipientId/i.test(key)
-      ) || 'userId';
-    const desc = schema?.properties?.[userField]?.description || schema.description || '';
+          /userId|authorId|targetUserId|recipientId/i.test(key),
+        ) || 'userId';
+    const desc =
+      schema?.properties?.[userField]?.description || schema.description || '';
     desc
       .toLowerCase()
       .split(/[\s,.;]+/)
@@ -180,12 +201,16 @@ class AIUserIdResolver {
     return Array.from(clues);
   }
 
-  public async autoGenerateTrainingDataFromSchema(schemaName: string): Promise<TrainingData | null> {
+  public async autoGenerateTrainingDataFromSchema(
+    schemaName: string,
+  ): Promise<TrainingData | null> {
     if (!schemaName) {
       console.warn('⚠️ Invalid schemaName');
       return null;
     }
-    const schema = (schemas.components.schemas as Record<string, any>)[schemaName];
+    const schema = (schemas.components.schemas as Record<string, any>)[
+      schemaName
+    ];
     if (!schema || !schema.properties) {
       console.log(`ℹ️ Schema ${schemaName} not valid`);
       return null;
@@ -196,12 +221,17 @@ class AIUserIdResolver {
     const userField = schema?.properties?.userId
       ? 'userId'
       : Object.keys(schema?.properties || {}).find((key) =>
-        /userId|authorId|targetUserId|recipientId/i.test(key)
-      ) || 'userId';
-    const description = schema?.properties?.[userField]?.description || schema.description || '';
+          /userId|authorId|targetUserId|recipientId/i.test(key),
+        ) || 'userId';
+    const description =
+      schema?.properties?.[userField]?.description || schema.description || '';
     const userIdMeaning = schema?.properties?.[userField]
       ? guessUserIdMeaning(actionName, description)
-      : this.inferUserIdMeaningFromContext(actionName, description, actionInfo?.path || '');
+      : this.inferUserIdMeaningFromContext(
+          actionName,
+          description,
+          actionInfo?.path || '',
+        );
     return {
       action: actionName,
       apiEndpoint: actionInfo?.path || '',
@@ -228,7 +258,18 @@ class AIUserIdResolver {
       /accept.*invitation|join.*group|join.*channel/i,
     ];
     words.forEach((word) => {
-      if (['send', 'to', 'accept', 'from', 'block', 'unblock', 'report', 'invitation'].includes(word)) {
+      if (
+        [
+          'send',
+          'to',
+          'accept',
+          'from',
+          'block',
+          'unblock',
+          'report',
+          'invitation',
+        ].includes(word)
+      ) {
         keywords.add(word);
       }
     });
@@ -254,7 +295,13 @@ class AIUserIdResolver {
     if (!this.isModelLoaded || !this.model || !this.vocabulary) {
       throw new Error('AI is not initialized yet. Call initializeAI() first.');
     }
-    const features = createFeatureVector(actionName, swaggerDesc, endpoint, method, this.vocabulary);
+    const features = createFeatureVector(
+      actionName,
+      swaggerDesc,
+      endpoint,
+      method,
+      this.vocabulary,
+    );
     const inputTensor = tf.tensor2d([features]);
     const prediction = this.model.predict(inputTensor) as tf.Tensor;
     const probabilities = await prediction.data();
@@ -278,7 +325,7 @@ class AIUserIdResolver {
     swaggerSchema: any = {},
     endpoint: string = '',
     method: string,
-    fieldName: string = 'userId'
+    fieldName: string = 'userId',
   ): Promise<PredictionResult> {
     try {
       const normalizedMethod =
@@ -290,9 +337,12 @@ class AIUserIdResolver {
       const userField = swaggerSchema?.properties?.[fieldName]
         ? fieldName
         : Object.keys(swaggerSchema?.properties || {}).find((key) =>
-          /userId|authorId|targetUserId|recipientId/i.test(key)
-        ) || fieldName;
-      const description = swaggerSchema?.properties?.[userField]?.description || swaggerSchema.description || this.getTrainingDescription(actionName);
+            /userId|authorId|targetUserId|recipientId/i.test(key),
+          ) || fieldName;
+      const description =
+        swaggerSchema?.properties?.[userField]?.description ||
+        swaggerSchema.description ||
+        this.getTrainingDescription(actionName);
       const userIdMeaning = swaggerSchema?.properties?.[userField]
         ? guessUserIdMeaning(actionName, description)
         : this.inferUserIdMeaningFromContext(actionName, description, endpoint);
@@ -304,34 +354,62 @@ class AIUserIdResolver {
         normalizedMethod,
       );
 
-      if (aiResult.confidence < 0.8 || !swaggerSchema?.properties?.[userField]) {
-        const ruleResult = this.fallbackToRules(actionName, swaggerSchema, endpoint, userField);
+      if (
+        aiResult.confidence < 0.8 ||
+        !swaggerSchema?.properties?.[userField]
+      ) {
+        const ruleResult = this.fallbackToRules(
+          actionName,
+          swaggerSchema,
+          endpoint,
+          userField,
+        );
         return {
           userIdMeaning: ruleResult.userIdMeaning,
           confidence: ruleResult.confidence,
           reasoning: `Hybrid: ${ruleResult.reasoning} | AI: ${aiResult.reasoning}`,
           method: 'hybrid',
-          suggestedVariableName: this.generateVariableName(ruleResult.userIdMeaning),
+          suggestedVariableName: this.generateVariableName(
+            ruleResult.userIdMeaning,
+          ),
         };
       }
       return {
         ...aiResult,
         method: 'ai',
-        suggestedVariableName: this.generateVariableName(aiResult.userIdMeaning),
+        suggestedVariableName: this.generateVariableName(
+          aiResult.userIdMeaning,
+        ),
       };
     } catch (error) {
       console.error('❌ Prediction of failure:', error);
-      return this.fallbackToRules(actionName, swaggerSchema, endpoint, fieldName);
+      return this.fallbackToRules(
+        actionName,
+        swaggerSchema,
+        endpoint,
+        fieldName,
+      );
     }
   }
 
   private getTrainingDescription(action: string): string {
-    const trainingData = this._trainingData.find((data) => data.action === action);
+    const trainingData = this._trainingData.find(
+      (data) => data.action === action,
+    );
     return trainingData ? trainingData.swaggerDesc : '';
   }
 
-  private fallbackToRules(actionName: string, swaggerSchema: any, endpoint: string, fieldName: string): PredictionResult {
-    const desc = (swaggerSchema?.properties?.[fieldName]?.description || swaggerSchema.description || '').toLowerCase();
+  private fallbackToRules(
+    actionName: string,
+    swaggerSchema: any,
+    endpoint: string,
+    fieldName: string,
+  ): PredictionResult {
+    const desc = (
+      swaggerSchema?.properties?.[fieldName]?.description ||
+      swaggerSchema.description ||
+      ''
+    ).toLowerCase();
 
     const action = actionName.toLowerCase();
     const fullText = `${action} ${desc} ${endpoint}`.toLowerCase();
@@ -632,7 +710,7 @@ class AIEnhancedDTOBuilder {
       actions: result.metadata.totalActions,
       aiEnhanced: result.metadata.aiEnhanced,
     });
-    console.log(JSON.stringify(result, null, 2))
+    console.log(JSON.stringify(result, null, 2));
     return result;
   }
 
@@ -654,14 +732,18 @@ class AIEnhancedDTOBuilder {
     // First, try to get userId prediction regardless of schema
     if (AIEnhancedDTOBuilder.aiResolverInstance) {
       try {
-        userIdPrediction = await AIEnhancedDTOBuilder.aiResolverInstance.resolveUserIdContext(
-          normalizedAction,
-          { description: schema?.description || '' },
-          actionInfo.path,
-          actionInfo.method,
-        );
+        userIdPrediction =
+          await AIEnhancedDTOBuilder.aiResolverInstance.resolveUserIdContext(
+            normalizedAction,
+            { description: schema?.description || '' },
+            actionInfo.path,
+            actionInfo.method,
+          );
       } catch (error) {
-        console.error(`Failed to resolve userId context for action ${action}:`, error);
+        console.error(
+          `Failed to resolve userId context for action ${action}:`,
+          error,
+        );
       }
     }
 
@@ -669,9 +751,7 @@ class AIEnhancedDTOBuilder {
       console.warn(
         `⚠️ No schema attribute found for ${action}, use fallback description`,
       );
-      if (
-        action === 'deleteMockedUsers'
-      ) {
+      if (action === 'deleteMockedUsers') {
         processedBody.prefix = CONST.prefix;
         processedBody.metadata!.resolvedFields.prefix = {
           originalValue: 'prefix',
@@ -745,11 +825,18 @@ class AIEnhancedDTOBuilder {
               aiResult,
             };
           } catch (error) {
-            console.error(`Failed to resolve userId context for ${propKey}:`, error);
-            processedBody[propKey] = this.resolvePropertyValue(propKey, propValue, action);
-            processedBody.metadata!.resolvedFields[propKey].resolvedValue = processedBody[propKey];
+            console.error(
+              `Failed to resolve userId context for ${propKey}:`,
+              error,
+            );
+            processedBody[propKey] = this.resolvePropertyValue(
+              propKey,
+              propValue,
+              action,
+            );
+            processedBody.metadata!.resolvedFields[propKey].resolvedValue =
+              processedBody[propKey];
           }
-
         } else {
           try {
             processedBody[propKey] = this.resolvePropertyValue(
@@ -762,42 +849,47 @@ class AIEnhancedDTOBuilder {
           } catch (error) {
             console.warn(`Failed to resolve property ${propKey}:`, error);
             processedBody[propKey] = null;
-            processedBody.metadata!.resolvedFields[propKey].resolvedValue = null;
+            processedBody.metadata!.resolvedFields[propKey].resolvedValue =
+              null;
             processedBody.metadata!.resolvedFields[propKey].reasoning =
               `Failed to resolve ${propKey} due to missing constant or error`;
           }
-
         }
       }
     }
 
     const headerKey = 'x-session-token';
     let headerValue = VAR.token;
-    let reasoning = 'Default header (sender) because there is no userId or AI prediction field';
+    let reasoning =
+      'Default header (sender) because there is no userId or AI prediction field';
 
     if (userIdPrediction) {
-      headerValue = userIdPrediction.userIdMeaning === 'receiver' ? VAR.token : VAR.token1;
-      reasoning = `Header automatically added (opposite to userId): ${userIdPrediction.userIdMeaning === 'receiver' ? 'sender' : 'receiver'
-        }`;
+      headerValue =
+        userIdPrediction.userIdMeaning === 'receiver' ? VAR.token : VAR.token1;
+      reasoning = `Header automatically added (opposite to userId): ${
+        userIdPrediction.userIdMeaning === 'receiver' ? 'sender' : 'receiver'
+      }`;
     } else if (hasUserIdField) {
-
       headerValue = VAR.token1;
-      reasoning = 'Default header for receiver (because there is userId field but no AI prediction)';
+      reasoning =
+        'Default header for receiver (because there is userId field but no AI prediction)';
     } else {
       // Fallback heuristic khi không có userId field và không có prediction
       const isReceiverContext = (action: string, path: string) => {
         const receiverKeywords = ['accept', 'receive', 'invitation', 'join'];
         const lowerAction = action.toLowerCase();
         const lowerPath = path.toLowerCase();
-        return receiverKeywords.some(keyword =>
-          lowerAction.includes(keyword) || lowerPath.includes(keyword)
+        return receiverKeywords.some(
+          (keyword) =>
+            lowerAction.includes(keyword) || lowerPath.includes(keyword),
         );
       };
 
-      headerValue = isReceiverContext(action, actionInfo.path) ? VAR.token1 : VAR.token;
+      headerValue = isReceiverContext(action, actionInfo.path)
+        ? VAR.token1
+        : VAR.token;
       reasoning = `Heuristic-based Header (action: ${action}, path: ${actionInfo.path})`;
     }
-
 
     processedBody.headers = {
       ...processedBody.headers,

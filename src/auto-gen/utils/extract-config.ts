@@ -1,4 +1,4 @@
-import { ExtractConfig } from "../types/headers-payload.types";
+import { ExtractConfig } from '../types/headers-payload.types';
 
 const mockUserConfig: ExtractConfig = {
   user: {

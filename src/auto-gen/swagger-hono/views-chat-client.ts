@@ -396,7 +396,7 @@ export interface V3ListInvitationRequest {
    * The workspace identify
    * @minLength 1
    */
-  workspaceId: "0";
+  workspaceId: '0';
   /**
    * The channel identify
    * @format isULID
@@ -412,7 +412,7 @@ export interface V3GetMemberRequest {
    * The workspace identify
    * @minLength 1
    */
-  workspaceId: "0";
+  workspaceId: '0';
   /**
    * @format isULID
    * @minLength 1
@@ -443,7 +443,7 @@ export interface V3ListMembersRequest {
    * The workspace identify
    * @minLength 1
    */
-  workspaceId: "0";
+  workspaceId: '0';
   /**
    * The channel identify
    * @format isULID
@@ -536,7 +536,7 @@ export interface V3ListBannedUsersRequest {
    * The workspace identify
    * @minLength 1
    */
-  workspaceId: "0";
+  workspaceId: '0';
   /**
    * The channel identify
    * @format isULID
@@ -627,7 +627,7 @@ export interface V3UserMetadataRequest {
    * @format isULID
    * @minLength 1
    */
-  "x-user-id": string;
+  'x-user-id': string;
   [key: string]: any;
 }
 
@@ -1523,7 +1523,7 @@ export interface GetMemberParams {
    * The workspace identify
    * @minLength 1
    */
-  workspaceId?: "0";
+  workspaceId?: '0';
   /**
    * @format isULID
    * @minLength 1
@@ -1554,7 +1554,7 @@ export interface ListMembersParams {
    * The workspace identify
    * @minLength 1
    */
-  workspaceId?: "0";
+  workspaceId?: '0';
   /**
    * The channel identify
    * @format isULID
@@ -1580,7 +1580,7 @@ export interface ListBannedUsersParams {
    * The workspace identify
    * @minLength 1
    */
-  workspaceId?: "0";
+  workspaceId?: '0';
   /**
    * The channel identify
    * @format isULID
@@ -1614,7 +1614,7 @@ export interface ListInvitationParams {
    * The workspace identify
    * @minLength 1
    */
-  workspaceId?: "0";
+  workspaceId?: '0';
   /**
    * The channel identify
    * @format isULID
@@ -1898,9 +1898,9 @@ export interface GetRingbackToneParams {
 }
 
 export type QueryParamsType = Record<string | number, any>;
-export type ResponseFormat = keyof Omit<Body, "body" | "bodyUsed">;
+export type ResponseFormat = keyof Omit<Body, 'body' | 'bodyUsed'>;
 
-export interface FullRequestParams extends Omit<RequestInit, "body"> {
+export interface FullRequestParams extends Omit<RequestInit, 'body'> {
   /** set parameter to `true` for call `securityWorker` for this request */
   secure?: boolean;
   /** request path */
@@ -1921,12 +1921,12 @@ export interface FullRequestParams extends Omit<RequestInit, "body"> {
 
 export type RequestParams = Omit<
   FullRequestParams,
-  "body" | "method" | "query" | "path"
+  'body' | 'method' | 'query' | 'path'
 >;
 
 export interface ApiConfig<SecurityDataType = unknown> {
   baseUrl?: string;
-  baseApiParams?: Omit<RequestParams, "baseUrl" | "cancelToken" | "signal">;
+  baseApiParams?: Omit<RequestParams, 'baseUrl' | 'cancelToken' | 'signal'>;
   securityWorker?: (
     securityData: SecurityDataType | null,
   ) => Promise<RequestParams | void> | RequestParams | void;
@@ -1942,26 +1942,26 @@ export interface HttpResponse<D extends unknown, E extends unknown = unknown>
 type CancelToken = Symbol | string | number;
 
 export enum ContentType {
-  Json = "application/json",
-  JsonApi = "application/vnd.api+json",
-  FormData = "multipart/form-data",
-  UrlEncoded = "application/x-www-form-urlencoded",
-  Text = "text/plain",
+  Json = 'application/json',
+  JsonApi = 'application/vnd.api+json',
+  FormData = 'multipart/form-data',
+  UrlEncoded = 'application/x-www-form-urlencoded',
+  Text = 'text/plain',
 }
 
 export class HttpClient<SecurityDataType = unknown> {
-  public baseUrl: string = "";
+  public baseUrl: string = '';
   private securityData: SecurityDataType | null = null;
-  private securityWorker?: ApiConfig<SecurityDataType>["securityWorker"];
+  private securityWorker?: ApiConfig<SecurityDataType>['securityWorker'];
   private abortControllers = new Map<CancelToken, AbortController>();
   private customFetch = (...fetchParams: Parameters<typeof fetch>) =>
     fetch(...fetchParams);
 
   private baseApiParams: RequestParams = {
-    credentials: "same-origin",
+    credentials: 'same-origin',
     headers: {},
-    redirect: "follow",
-    referrerPolicy: "no-referrer",
+    redirect: 'follow',
+    referrerPolicy: 'no-referrer',
   };
 
   constructor(apiConfig: ApiConfig<SecurityDataType> = {}) {
@@ -1974,7 +1974,7 @@ export class HttpClient<SecurityDataType = unknown> {
 
   protected encodeQueryParam(key: string, value: any) {
     const encodedKey = encodeURIComponent(key);
-    return `${encodedKey}=${encodeURIComponent(typeof value === "number" ? value : `${value}`)}`;
+    return `${encodedKey}=${encodeURIComponent(typeof value === 'number' ? value : `${value}`)}`;
   }
 
   protected addQueryParam(query: QueryParamsType, key: string) {
@@ -1983,13 +1983,13 @@ export class HttpClient<SecurityDataType = unknown> {
 
   protected addArrayQueryParam(query: QueryParamsType, key: string) {
     const value = query[key];
-    return value.map((v: any) => this.encodeQueryParam(key, v)).join("&");
+    return value.map((v: any) => this.encodeQueryParam(key, v)).join('&');
   }
 
   protected toQueryString(rawQuery?: QueryParamsType): string {
     const query = rawQuery || {};
     const keys = Object.keys(query).filter(
-      (key) => "undefined" !== typeof query[key],
+      (key) => 'undefined' !== typeof query[key],
     );
     return keys
       .map((key) =>
@@ -1997,25 +1997,25 @@ export class HttpClient<SecurityDataType = unknown> {
           ? this.addArrayQueryParam(query, key)
           : this.addQueryParam(query, key),
       )
-      .join("&");
+      .join('&');
   }
 
   protected addQueryParams(rawQuery?: QueryParamsType): string {
     const queryString = this.toQueryString(rawQuery);
-    return queryString ? `?${queryString}` : "";
+    return queryString ? `?${queryString}` : '';
   }
 
   private contentFormatters: Record<ContentType, (input: any) => any> = {
     [ContentType.Json]: (input: any) =>
-      input !== null && (typeof input === "object" || typeof input === "string")
+      input !== null && (typeof input === 'object' || typeof input === 'string')
         ? JSON.stringify(input)
         : input,
     [ContentType.JsonApi]: (input: any) =>
-      input !== null && (typeof input === "object" || typeof input === "string")
+      input !== null && (typeof input === 'object' || typeof input === 'string')
         ? JSON.stringify(input)
         : input,
     [ContentType.Text]: (input: any) =>
-      input !== null && typeof input !== "string"
+      input !== null && typeof input !== 'string'
         ? JSON.stringify(input)
         : input,
     [ContentType.FormData]: (input: any) =>
@@ -2025,7 +2025,7 @@ export class HttpClient<SecurityDataType = unknown> {
           key,
           property instanceof Blob
             ? property
-            : typeof property === "object" && property !== null
+            : typeof property === 'object' && property !== null
               ? JSON.stringify(property)
               : `${property}`,
         );
@@ -2087,7 +2087,7 @@ export class HttpClient<SecurityDataType = unknown> {
     ...params
   }: FullRequestParams): Promise<HttpResponse<T, E>> => {
     const secureParams =
-      ((typeof secure === "boolean" ? secure : this.baseApiParams.secure) &&
+      ((typeof secure === 'boolean' ? secure : this.baseApiParams.secure) &&
         this.securityWorker &&
         (await this.securityWorker(this.securityData))) ||
       {};
@@ -2097,13 +2097,13 @@ export class HttpClient<SecurityDataType = unknown> {
     const responseFormat = format || requestParams.format;
 
     return this.customFetch(
-      `${baseUrl || this.baseUrl || ""}${path}${queryString ? `?${queryString}` : ""}`,
+      `${baseUrl || this.baseUrl || ''}${path}${queryString ? `?${queryString}` : ''}`,
       {
         ...requestParams,
         headers: {
           ...(requestParams.headers || {}),
           ...(type && type !== ContentType.FormData
-            ? { "Content-Type": type }
+            ? { 'Content-Type': type }
             : {}),
         },
         signal:
@@ -2111,7 +2111,7 @@ export class HttpClient<SecurityDataType = unknown> {
             ? this.createAbortSignal(cancelToken)
             : requestParams.signal) || null,
         body:
-          typeof body === "undefined" || body === null
+          typeof body === 'undefined' || body === null
             ? null
             : payloadFormatter(body),
       },
@@ -2169,9 +2169,9 @@ export class viewsChatHttpClient<SecurityDataType extends unknown> {
     getMember: (query: GetMemberParams, params: RequestParams = {}) =>
       this.http.request<V3GetMemberResponse, any>({
         path: `/MemberView/GetMember`,
-        method: "GET",
+        method: 'GET',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2184,9 +2184,9 @@ export class viewsChatHttpClient<SecurityDataType extends unknown> {
     listMembers: (query: ListMembersParams, params: RequestParams = {}) =>
       this.http.request<V3ListMembersResponse, any>({
         path: `/MemberView/ListMembers`,
-        method: "GET",
+        method: 'GET',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2202,9 +2202,9 @@ export class viewsChatHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3ListBannedUsersResponse, any>({
         path: `/MemberView/ListBannedUsers`,
-        method: "GET",
+        method: 'GET',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
   };
@@ -2218,9 +2218,9 @@ export class viewsChatHttpClient<SecurityDataType extends unknown> {
     getInvitation: (query: GetInvitationParams, params: RequestParams = {}) =>
       this.http.request<V3GetInvitationResponse, any>({
         path: `/InvitationView/GetInvitation`,
-        method: "GET",
+        method: 'GET',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2233,9 +2233,9 @@ export class viewsChatHttpClient<SecurityDataType extends unknown> {
     listInvitation: (query: ListInvitationParams, params: RequestParams = {}) =>
       this.http.request<V3ListInvitationResponse, any>({
         path: `/InvitationView/ListInvitation`,
-        method: "GET",
+        method: 'GET',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2248,8 +2248,8 @@ export class viewsChatHttpClient<SecurityDataType extends unknown> {
     listInvitableUsers: (params: RequestParams = {}) =>
       this.http.request<V3ListInvitableUsersResponse, any>({
         path: `/InvitationView/ListInvitableUsers`,
-        method: "GET",
-        format: "json",
+        method: 'GET',
+        format: 'json',
         ...params,
       }),
   };
@@ -2263,9 +2263,9 @@ export class viewsChatHttpClient<SecurityDataType extends unknown> {
     getUser: (query: GetUserParams, params: RequestParams = {}) =>
       this.http.request<V3GetUserByUserIdResponse, any>({
         path: `/UserView/GetUser`,
-        method: "GET",
+        method: 'GET',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2281,9 +2281,9 @@ export class viewsChatHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3GetUserByUsernameResponse, any>({
         path: `/UserView/GetUserByUsername`,
-        method: "GET",
+        method: 'GET',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2296,8 +2296,8 @@ export class viewsChatHttpClient<SecurityDataType extends unknown> {
     getMe: (params: RequestParams = {}) =>
       this.http.request<V3GetMeResponse, any>({
         path: `/UserView/GetMe`,
-        method: "GET",
-        format: "json",
+        method: 'GET',
+        format: 'json',
         ...params,
       }),
 
@@ -2313,9 +2313,9 @@ export class viewsChatHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3ListUserVisitedProfileResponse, any>({
         path: `/UserView/ListUserVisitedProfile`,
-        method: "GET",
+        method: 'GET',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2328,9 +2328,9 @@ export class viewsChatHttpClient<SecurityDataType extends unknown> {
     listUserStatus: (query: ListUserStatusParams, params: RequestParams = {}) =>
       this.http.request<V3ListUserStatusResponse, any>({
         path: `/UserView/ListUserStatus`,
-        method: "GET",
+        method: 'GET',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2343,8 +2343,8 @@ export class viewsChatHttpClient<SecurityDataType extends unknown> {
     getPrivateData: (params: RequestParams = {}) =>
       this.http.request<V3GetPrivateDataResponse, any>({
         path: `/UserView/GetPrivateData`,
-        method: "GET",
-        format: "json",
+        method: 'GET',
+        format: 'json',
         ...params,
       }),
 
@@ -2360,9 +2360,9 @@ export class viewsChatHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3ListPrivateDataResponse, any>({
         path: `/UserView/ListPrivateData`,
-        method: "GET",
+        method: 'GET',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2378,9 +2378,9 @@ export class viewsChatHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3ListBlockedUsersResponse, any>({
         path: `/UserView/ListBlockedUsers`,
-        method: "GET",
+        method: 'GET',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2393,9 +2393,9 @@ export class viewsChatHttpClient<SecurityDataType extends unknown> {
     syncUsers: (query: SyncUsersParams, params: RequestParams = {}) =>
       this.http.request<V3SyncUsersResponse, any>({
         path: `/UserView/SyncUsers`,
-        method: "GET",
+        method: 'GET',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
   };
@@ -2409,9 +2409,9 @@ export class viewsChatHttpClient<SecurityDataType extends unknown> {
     getChannel: (query: GetChannelParams, params: RequestParams = {}) =>
       this.http.request<V3GetChannelResponse, any>({
         path: `/ChannelView/GetChannel`,
-        method: "GET",
+        method: 'GET',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2424,9 +2424,9 @@ export class viewsChatHttpClient<SecurityDataType extends unknown> {
     getDmChannel: (query: GetDmChannelParams, params: RequestParams = {}) =>
       this.http.request<V3GetDMChannelResponse, any>({
         path: `/ChannelView/GetDMChannel`,
-        method: "GET",
+        method: 'GET',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2439,9 +2439,9 @@ export class viewsChatHttpClient<SecurityDataType extends unknown> {
     listChannels: (query: ListChannelsParams, params: RequestParams = {}) =>
       this.http.request<V3ListChannelsResponse, any>({
         path: `/ChannelView/ListChannels`,
-        method: "GET",
+        method: 'GET',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2457,9 +2457,9 @@ export class viewsChatHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3ListAllChannelsResponse, any>({
         path: `/ChannelView/ListAllChannels`,
-        method: "GET",
+        method: 'GET',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2472,9 +2472,9 @@ export class viewsChatHttpClient<SecurityDataType extends unknown> {
     listDmChannels: (query: ListDmChannelsParams, params: RequestParams = {}) =>
       this.http.request<V3ListDMChannelsResponse, any>({
         path: `/ChannelView/ListDMChannels`,
-        method: "GET",
+        method: 'GET',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2490,9 +2490,9 @@ export class viewsChatHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3ListInComingMessageRequestsResponse, any>({
         path: `/ChannelView/ListInComingMessageRequests`,
-        method: "GET",
+        method: 'GET',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2508,9 +2508,9 @@ export class viewsChatHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3ListOutGoingMessageRequestsResponse, any>({
         path: `/ChannelView/ListOutGoingMessageRequests`,
-        method: "GET",
+        method: 'GET',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
   };
@@ -2524,9 +2524,9 @@ export class viewsChatHttpClient<SecurityDataType extends unknown> {
     getAvatarFrame: (query: GetAvatarFrameParams, params: RequestParams = {}) =>
       this.http.request<V3GetAvatarFrameResponse, any>({
         path: `/AvatarFrame/GetAvatarFrame`,
-        method: "GET",
+        method: 'GET',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2542,9 +2542,9 @@ export class viewsChatHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3ListAvatarFrameCollectionResponse, any>({
         path: `/AvatarFrame/ListAvatarFrameCollection`,
-        method: "GET",
+        method: 'GET',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
   };
@@ -2558,9 +2558,9 @@ export class viewsChatHttpClient<SecurityDataType extends unknown> {
     getFriend: (query: GetFriendParams, params: RequestParams = {}) =>
       this.http.request<V3GetFriendResponse, any>({
         path: `/FriendView/GetFriend`,
-        method: "GET",
+        method: 'GET',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2573,9 +2573,9 @@ export class viewsChatHttpClient<SecurityDataType extends unknown> {
     listFriends: (query: ListFriendsParams, params: RequestParams = {}) =>
       this.http.request<V3ListFriendsResponse, any>({
         path: `/FriendView/ListFriends`,
-        method: "GET",
+        method: 'GET',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2591,9 +2591,9 @@ export class viewsChatHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3ListInComingFriendRequestsResponse, any>({
         path: `/FriendView/ListInComingFriendRequests`,
-        method: "GET",
+        method: 'GET',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2609,9 +2609,9 @@ export class viewsChatHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3ListOutGoingFriendRequestsResponse, any>({
         path: `/FriendView/ListOutGoingFriendRequests`,
-        method: "GET",
+        method: 'GET',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
   };
@@ -2628,9 +2628,9 @@ export class viewsChatHttpClient<SecurityDataType extends unknown> {
     ) =>
       this.http.request<V3GetDataUserRingbackToneResponse, any>({
         path: `/RingbackTone/GetRingbackTone`,
-        method: "GET",
+        method: 'GET',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -2643,8 +2643,8 @@ export class viewsChatHttpClient<SecurityDataType extends unknown> {
     listRingbackTones: (params: RequestParams = {}) =>
       this.http.request<V3ListRingbackTonesResponse, any>({
         path: `/RingbackTone/ListRingbackTones`,
-        method: "GET",
-        format: "json",
+        method: 'GET',
+        format: 'json',
         ...params,
       }),
   };

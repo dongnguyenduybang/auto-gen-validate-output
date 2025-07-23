@@ -1,24 +1,24 @@
-import { TestContext } from "../utils/text-context";
+import { TestContext } from '../utils/text-context';
 
-// get time 
+// get time
 export function getTime() {
-    const now = new Date();
-    const hours = String(now.getHours()).padStart(2, '0');
-    const minutes = String(now.getMinutes()).padStart(2, '0');
-    const day = String(now.getDate()).padStart(2, '0');
-    const month = String(now.getMonth() + 1).padStart(2, '0');
-    const year = now.getFullYear();
-    const formattedDate = `${hours}-${minutes}-${day}-${month}-${year}`;
-    return formattedDate;
+  const now = new Date();
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const day = String(now.getDate()).padStart(2, '0');
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const year = now.getFullYear();
+  const formattedDate = `${hours}-${minutes}-${day}-${month}-${year}`;
+  return formattedDate;
 }
 
-// transform payload structure 
+// transform payload structure
 export function transformPayload(resolved: Record<string, any>) {
-    const { headers, ...rest } = resolved;
-    return {
-        headers: headers ?? {},
-        body: rest,
-    };
+  const { headers, ...rest } = resolved;
+  return {
+    headers: headers ?? {},
+    body: rest,
+  };
 }
 
 // resolve var from context

@@ -25,14 +25,15 @@ export function mapOption(
                     "iterations": ${iterations}
                   }
                 },
-                "thresholds": ${thresholds
-      ? thresholds
-      : `{
+                "thresholds": ${
+                  thresholds
+                    ? thresholds
+                    : `{
                   "http_req_duration": ["p(95)<500"],
                   "passed_tests": ["count>=1"],
                   "failed_tests": ["count<2"]
                 }`
-    },
+                },
                 "discardResponseBodies": false
               }
             `;
@@ -91,8 +92,7 @@ export function cleanErrors(errors) {
 
 `;
 
-
-    let setupFilePath
+    let setupFilePath;
     const configPath = path.resolve(process.cwd(), 'config.yaml');
     const configContent = fs.readFileSync(configPath, 'utf8');
     const config = yaml.load(configContent) as SetupConfig;
@@ -106,13 +106,17 @@ export function cleanErrors(errors) {
         const config = yaml.load(configContent) as SetupConfig;
         setupFilePath = config.setupRequestFile;
       } catch (error) {
-        console.warn('No config.yaml found or no setupRequestFile specified, using default path');
+        console.warn(
+          'No config.yaml found or no setupRequestFile specified, using default path',
+        );
       }
     }
 
     const absolutePath = path.resolve(process.cwd(), setupFilePath);
     if (!absolutePath.startsWith(process.cwd())) {
-      throw new Error('Invalid setup file path: Path must be within the project directory');
+      throw new Error(
+        'Invalid setup file path: Path must be within the project directory',
+      );
     }
 
     const moduleSetup = await import(absolutePath);
@@ -180,4 +184,3 @@ export function cleanErrors(errors) {
     throw error;
   }
 }
-

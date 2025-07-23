@@ -43,7 +43,6 @@ export const getResponseSuccess = async <TReq, TRes>(
 export function createApiFunction(config: ApiConfig, context: TestContext) {
   return async ({ path, headers, body }: ApiFunctionParams): Promise<any> => {
     try {
-
       const url = `${globalThis.urls}`;
       const moduleName = path.split('/').filter(Boolean)[0];
       const http = new HttpClient({ baseUrl: url });
@@ -65,7 +64,7 @@ export function createApiFunction(config: ApiConfig, context: TestContext) {
       );
       return callAPI;
     } catch (error: any) {
-      console.log(error)
+      console.log(error);
       return {
         error:
           error.response?.data?.error?.details ||
@@ -91,4 +90,3 @@ function getHttpClient(moduleName: string, http: HttpClient) {
   const Client = map[moduleName] || map.default;
   return new Client(http);
 }
-

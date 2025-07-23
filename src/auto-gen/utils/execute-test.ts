@@ -42,7 +42,7 @@ async function executeSingleStep(
     body: resolveBody,
   });
 
-  console.log(JSON.stringify(response, null, 2))
+  console.log(JSON.stringify(response, null, 2));
   const hasExpectConfig = !!expectConfig;
   if (!response?.ok && !hasExpectConfig) {
     return {

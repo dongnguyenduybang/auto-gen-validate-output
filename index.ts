@@ -1,1 +1,0 @@
-export * from './src/auto-gen/test.index'
