@@ -1,0 +1,302 @@
+=== Request Test Report for revoke-invitation ===
+• Host: N/A
+• Endpoint: /Invitation/RevokeInvitation
+• Date: 02/06/2025, 12:59:21
+
+=== Execution Steps ===
+
+=== Test Summary ===
+✅ Passed: 61
+❌ Failed: 39
+📊 Total: 100
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 1
+ 🟢 201: 0
+ 🟠 400: 0
+ 🟠 403: 60
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Unique Errors ===
+ 🟣 1. Could not resolve permission type (Occurred: 36 times)
+ 🟣 2. code expected string, received number (Occurred: 1 time)
+ 🟣 3. code should not be empty (Occurred: 1 time)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #1
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":123,"code":123}
+     ├─ Missing: Invalid channel
+     ├─ Extra: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 2. Case #2
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":123,"code":"{{code}}"}
+     ├─ Missing: Invalid channel
+     ├─ Extra: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 3. Case #3
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":123}
+     ├─ Missing: Invalid channel
+     ├─ Extra: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 4. Case #4
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":123,"code":""}
+     ├─ Missing: Invalid channel
+     ├─ Extra: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 5. Case #5
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JWQKGEJD2GCPRKDY0HB50HDT","code":123}
+     ├─ Missing: Invalid channel
+     ├─ Extra: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 6. Case #6
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JWQKGEJD2GCPRKDY0HB50HDT","code":"{{code}}"}
+     ├─ Missing: Invalid channel
+     ├─ Extra: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 7. Case #7
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JWQKGEJD2GCPRKDY0HB50HDT"}
+     ├─ Missing: Invalid channel
+     ├─ Extra: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 8. Case #8
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"01JWQKGEJD2GCPRKDY0HB50HDT","code":""}
+     ├─ Missing: Invalid channel
+     ├─ Extra: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 9. Case #9
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"code":123}
+     ├─ Missing: Unsupported permission type
+     ├─ Extra: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 10. Case #10
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"code":"{{code}}"}
+     ├─ Missing: Unsupported permission type
+     ├─ Extra: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 11. Case #11
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123}
+     ├─ Missing: Unsupported permission type
+     ├─ Extra: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 12. Case #12
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"code":""}
+     ├─ Missing: Unsupported permission type
+     ├─ Extra: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 13. Case #13
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"","code":123}
+     ├─ Missing: Unsupported permission type
+     ├─ Extra: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 14. Case #14
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"","code":"{{code}}"}
+     ├─ Missing: Unsupported permission type
+     ├─ Extra: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 15. Case #15
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":""}
+     ├─ Missing: Unsupported permission type
+     ├─ Extra: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 16. Case #16
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"","code":""}
+     ├─ Missing: Unsupported permission type
+     ├─ Extra: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 17. Case #17
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"invalid_value","code":123}
+     ├─ Missing: Invalid channel
+     ├─ Extra: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 18. Case #18
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"invalid_value","code":"{{code}}"}
+     ├─ Missing: Invalid channel
+     ├─ Extra: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 19. Case #19
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"invalid_value"}
+     ├─ Missing: Invalid channel
+     ├─ Extra: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 20. Case #20
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":123,"channelId":"invalid_value","code":""}
+     ├─ Missing: Invalid channel
+     ├─ Extra: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 21. Case #21
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"code":123}
+     ├─ Missing: Invalid channel
+     ├─ Extra: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 22. Case #22
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"code":"{{code}}"}
+     ├─ Missing: Invalid channel
+     ├─ Extra: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 23. Case #23
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123}
+     ├─ Missing: Invalid channel
+     ├─ Extra: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 24. Case #24
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":123,"code":""}
+     ├─ Missing: Invalid channel
+     ├─ Extra: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 25. Case #25
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":"0","channelId":"01JWQKGEJD2GCPRKDY0HB50HDT","code":123}
+     ├─ Missing: Code: 404. Message: Data not found. Details: Data not found.
+     ├─ Extra: code expected string, received number
+     └─ Details: No details
+
+ 🟣 26. Case #26
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":"0","channelId":"01JWQKGEJD2GCPRKDY0HB50HDT","code":"{{code}}"}
+     ├─ Missing: Code: 404. Message: Data not found. Details: Data not found.
+     ├─ Extra: None
+     └─ Details: No details
+
+ 🟣 27. Case #28
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":"0","channelId":"01JWQKGEJD2GCPRKDY0HB50HDT","code":""}
+     ├─ Missing: code string must contain at least 1 character(s)
+     ├─ Extra: code should not be empty
+     └─ Details: No details
+
+ 🟣 28. Case #33
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":"","code":123}
+     ├─ Missing: Unsupported permission type
+     ├─ Extra: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 29. Case #34
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":"","code":"{{code}}"}
+     ├─ Missing: Unsupported permission type
+     ├─ Extra: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 30. Case #35
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":""}
+     ├─ Missing: Unsupported permission type
+     ├─ Extra: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 31. Case #36
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"0","channelId":"","code":""}
+     ├─ Missing: Unsupported permission type
+     ├─ Extra: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 32. Case #81
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"invalid_value","channelId":123,"code":123}
+     ├─ Missing: Invalid channel
+     ├─ Extra: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 33. Case #82
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"invalid_value","channelId":123,"code":"{{code}}"}
+     ├─ Missing: Invalid channel
+     ├─ Extra: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 34. Case #83
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"invalid_value","channelId":123}
+     ├─ Missing: Invalid channel
+     ├─ Extra: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 35. Case #84
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"invalid_value","channelId":123,"code":""}
+     ├─ Missing: Invalid channel
+     ├─ Extra: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 36. Case #93
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"invalid_value","channelId":"","code":123}
+     ├─ Missing: Unsupported permission type
+     ├─ Extra: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 37. Case #94
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"invalid_value","channelId":"","code":"{{code}}"}
+     ├─ Missing: Unsupported permission type
+     ├─ Extra: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 38. Case #95
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"invalid_value","channelId":""}
+     ├─ Missing: Unsupported permission type
+     ├─ Extra: Could not resolve permission type
+     └─ Details: No details
+
+ 🟣 39. Case #96
+     ├─ Status: 403
+     ├─ Body: {"workspaceId":"invalid_value","channelId":"","code":""}
+     ├─ Missing: Unsupported permission type
+     ├─ Extra: Could not resolve permission type
+     └─ Details: No details
+
+=== End of Report ===

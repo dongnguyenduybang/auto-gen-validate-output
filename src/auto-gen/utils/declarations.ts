@@ -1,10 +1,5 @@
-import { AcceptInvitationResponse } from "../response/accept-invitation.response";
-import { CreateChannelResponse } from "../response/create-channel.response";
-import { GetChannelResponse } from "../response/get-channel.response";
-import { MockUserResponse } from "../response/mock-user";
-import { SendDmMessageResponse } from "../response/send-dm-message.response";
-import { SendMessageResponse } from "../response/send-message.response";
-import { UpdateMessageResponse } from "../response/update-message.response";
+
+import { GetChannelResponse,MockUserResponse, AcceptInvitationResponse, CreateChannelResponse, SendDmMessageResponse, SendMessageResponse, UpdateMessageResponse } from "@responses/";
 import { TestContext } from "./text-context";
 
 export interface ValidationError {
@@ -191,4 +186,21 @@ export type ErrorItem = {
 export interface PayloadGen {
   body: Object;
   expects: string[];
+}
+
+export interface ValidIfCondition {
+  field: string;
+  operator: string;
+  value: any;
+}
+
+
+export interface ValidIfOptions {
+  conditions: ValidIfCondition | ValidIfCondition[];
+  result?: {
+    required?: boolean;
+    message?: string;
+    [key: string]: any;
+  };
+  logicalOperator?: 'AND' | 'OR';
 }

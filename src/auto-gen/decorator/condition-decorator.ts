@@ -1,4 +1,5 @@
 import 'reflect-metadata';
+import { ValidIfOptions } from '../utils/declarations';
 
 /*
     check điều kiện với condition là value filed đang set, operator là toán tử, condition 2 là value muốn so sánh 
@@ -6,34 +7,79 @@ import 'reflect-metadata';
                     number => '0'
                     var => '{{...}}'*/
 
-export function ValidIf(condition: string, operator: string, condition2: any) {
-  return (target: any, propertyKey: string) => {
-    // Lưu metadata vào target
-    Reflect.defineMetadata(
-      'validIf',
-      { condition, operator, condition2 },
-      target,
-      propertyKey,
-    );
+// export function ValidIf(condition: string, operator: string, condition2: any, result?: any) {
+//   return (target: any, propertyKey: string) => {
+//     // Lưu metadata vào target
+//     Reflect.defineMetadata(
+//       'validIf',
+//       { condition, operator, condition2, result },
+//       target,
+//       propertyKey,
+//     );
 
-    // Lưu metadata vào prototype để đảm bảo tương thích với getDecorators
-    if (typeof target === 'function') {
-      Reflect.defineMetadata(
-        'validIf',
-        { condition, operator, condition2 },
-        target.prototype,
-        propertyKey,
-      );
+//     // Lưu metadata vào prototype để đảm bảo tương thích với getDecorators
+//     if (typeof target === 'function') {
+//       Reflect.defineMetadata(
+//         'validIf',
+//         { condition, operator, condition2, result },
+//         target.prototype,
+//         propertyKey,
+//       );
+//     } else {
+//       Reflect.defineMetadata(
+//         'validIf',
+//         { condition, operator, condition2, result },
+//         target.constructor.prototype,
+//         propertyKey,
+//       );
+//     }
+//   };
+// }
+export function ValidIf(
+  conditionOrOptions: string | ValidIfOptions,
+  operator?: string,
+  value?: any,
+  result?: any
+): PropertyDecorator {
+  return (target: any, propertyKey: string | symbol) => {
+    let validIfData: ValidIfOptions;
+
+    if (typeof conditionOrOptions === 'string') {
+      // Cách sử dụng cũ: ValidIf(field, operator, value, result)
+      validIfData = {
+        conditions: {
+          field: conditionOrOptions,
+          operator: operator!,
+          value: value
+        },
+        result: result
+      };
     } else {
+      // Cách sử dụng mới: ValidIf(options)
+      validIfData = conditionOrOptions;
+    }
+
+    const defineMetadata = (target: any) => {
       Reflect.defineMetadata(
         'validIf',
-        { condition, operator, condition2 },
-        target.constructor.prototype,
-        propertyKey,
+        validIfData,
+        target,
+        propertyKey
       );
+    };
+
+    // Lưu metadata vào target
+    defineMetadata(target);
+
+    // Lưu metadata vào prototype để đảm bảo tương thích
+    if (typeof target === 'function') {
+      defineMetadata(target.prototype);
+    } else {
+      defineMetadata(target.constructor.prototype);
     }
   };
 }
+
 /*
    check chuỗi kí tự đầu tiên có bằng với value không 
    với filed là property muốn check

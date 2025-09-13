@@ -1,0 +1,42 @@
+=== Request Test Report for forward-message-channel ===
+• Host: N/A
+• Endpoint: /Message/ForwardMessagesToChannel
+• Date: 03/06/2025, 16:44:49
+
+=== Execution Steps ===
+
+=== Test Summary ===
+✅ Passed: 248
+❌ Failed: 2
+📊 Total: 250
+
+=== System Metrics ===
+▧ Status Code Distribution:
+ 🟢 200: 8
+ 🟢 201: 0
+ 🟠 400: 0
+ 🟠 403: 240
+ 🟠 404: 0
+ 🔴 500: 0
+
+=== Unique Errors ===
+ 🟣 1. originalMessageIds has element 0 expected string, received object (Occurred: 1 time)
+ 🟣 2. originalMessageIds expected array, received undefined (Occurred: 1 time)
+
+[DTO Validation Issues]
+
+ 🟣 1. Case #67
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":"0","channelId":"01JWTJQ0W04PD94TESSMGG7MXM","originalMessageIds":[null]}
+     ├─ Missing: originalMessageIds has element 0 expected string, received null
+     ├─ Extra: originalMessageIds has element 0 expected string, received object
+     └─ Details: No details
+
+ 🟣 2. Case #70
+     ├─ Status: 200
+     ├─ Body: {"workspaceId":"0","channelId":"01JWTJQ0W04PD94TESSMGG7MXM"}
+     ├─ Missing: None
+     ├─ Extra: originalMessageIds expected array, received undefined
+     └─ Details: No details
+
+=== End of Report ===

@@ -13,7 +13,7 @@ Bước 1: Định nghĩa 2 file send-message-dto và send-message-request
 
 **📄 send-message.request.ts**
 ``` 
- import { RequestTestSuite } from '../../utils/declarations';
+ import { RequestTestSuite } from '@ultils/declarations';
 import { ACTION, HEADER_LIST, VAR } from '../../enums';
 
 export const SendMessageRequest: RequestTestSuite = {

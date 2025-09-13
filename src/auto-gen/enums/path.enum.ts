@@ -1,9 +1,10 @@
-export const APIPath =  {
+export const APIPath = {
   Invitation: {
     AcceptInvitation: '/Invitation/AcceptInvitation',
     DeclineInvitation: '/Invitation/DeclineInvitation',
     CreateInvitation: '/Invitation/CreateInvitation',
     SendInvitation: '/Invitation/SendInvitation',
+    RevokeInvitation: '/Invitation/RevokeInvitation'
   },
   Message: {
     SendMessage: '/Message/SendMessage',
@@ -14,7 +15,9 @@ export const APIPath =  {
     ForwardMessagesToChannel: '/Message/ForwardMessagesToChannel',
     ReportMessage: '/Message/ReportMessage',
     MarkAsRead: '/Message/MarkAsRead',
+    MarkDmAsRead: '/Message/MarkDMAsRead',
     SendMessageSticker: '/Message/SendMessageSticker',
+    SendDmMessageSticker: '/Message/SendDMMessageSticker',
     MarkAllChannelsAsRead: '/Message/MarkAllChannelsAsRead',
     SendDMMessage: '/Message/SendDMMessage',
     SendDMMessageSticker: '/Message/SendDMMessageSticker',
@@ -26,6 +29,12 @@ export const APIPath =  {
     ReportDMMessage: '/Message/ReportDMMessage',
     MarkDMAsRead: '/Message/MarkDMAsRead',
     Translation: '/Message/Translation',
+    PinUnpinDmMessage: '/Message/PinUnpinDMMessage',
+    PinUnpinMessage: '/Message/PinUnpinMessage',
+    SendLocation: '/Message/SendLocation',
+    SendDmLocation: '/Message/SendDMLocation',
+    SendPokeMessage: '/Message/SendPokeMessage',
+
   },
   ViewChannel: {
     GetChannel: '/ChannelView/GetChannel',
@@ -59,6 +68,7 @@ export const APIPath =  {
     UpdateDMMediaPermissionSetting: '/Channel/UpdateDMMediaPermissionSetting',
     AcceptMessageRequest: '/Channel/AcceptMessageRequest',
     RejectMessageRequest: '/Channel/RejectMessageRequest',
+    DeleteChannel: '/Channel/DeleteChannel',
   },
   Search: {
     SearchChannels: '/Search/SearchChannels',
@@ -87,9 +97,25 @@ export const APIPath =  {
     CancelFriendRequest: '/Friend/CancelFriendRequest',
   },
   UserProfile: {
-    UpdateUserDisplayName: '/UserProfile/UpdateUserDisplayName'
+    UpdateUserDisplayName: '/UserProfile/UpdateUserDisplayName',
+    AddUserStatus: '/UserProfile/AddUserStatus',
+    UpdateUserStatus: '/UserProfile/UpdateUserStatus'
   },
   ViewMember: {
     ListMembers: '/MemberView/ListMembers'
+  },
+  UserReport: {
+    ReportUser: '/UserReport/ReportUser'
+  },
+  Member: {
+    UpdateNickname: '/Member/UpdateNickname',
+    AssignAsAdmin: '/Member/AssignAsAdmin',
+    DismissAsAdmin: '/Member/DismissAsAdmin',
+    BanFromChannel: '/Member/BanFromChannel',
+    UnbanFromChannel: '/Member/UnbanFromChannel',
+    TransferOwnership: '/Member/TransferOwnership',
+    TransferOwnershipAndLeaveChannel: '/Member/TransferOwnershipAndLeaveChannel',
+    LeaveChannel: '/Member/LeaveChannel',
+    RemoveFromChannel: '/Member/RemoveFromChannel',
   }
 };

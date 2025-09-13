@@ -18,8 +18,8 @@ import {
   IsDefined,
   IsObject,
   IsString,
-} from '../decorator';
-import { DirectMessageStatusEnum } from '../enums';
+} from '@decorators/';
+import { DirectMessageStatusEnum } from '@enum/';
 
 export class Profile {}
 
@@ -108,10 +108,10 @@ export class Member extends GeneralMember {
 }
 
 export class User extends GeneralUser {
-  @ValidIf('createTime', '===', 'response.updateTime')
-  @IsString()
-  @IsDefined()
-  createTime?: string;
+  // @ValidIf('createTime', '===', 'response.updateTime')
+  // @IsString()
+  // @IsDefined()
+  // createTime?: string;
 
   @ValidateNested({ each: true, always: true })
   @IsObject()

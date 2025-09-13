@@ -8,6 +8,7 @@ export * from './embed-type.enum';
 export * from './error-message.enum';
 export * from './header.enum';
 export * from './media-permission-setting.enum';
+export * from './media-dm-permission-setting.enum';
 export * from './message-status.enum';
 export * from './message-type.enum';
 export * from './method.enum';
@@ -23,3 +24,4 @@ export * from './user-status-expire-after-time.enum';
 export * from './user-type.enum';
 export * from './var-placeholder.enum';
 export * from './action';
+export * from './expire-after-time.enum'

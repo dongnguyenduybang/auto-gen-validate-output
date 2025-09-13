@@ -4,3 +4,5 @@ export { CreateChannelResponse } from './create-channel.response';
 export { SendDmMessageResponse } from './send-dm-message.response';
 export { SendMessageResponse } from './send-message.response';
 export { UpdateMessageResponse } from './update-message.response';
+export { GetChannelResponse } from './get-channel.response';
+export { MockUserResponse } from './mock-user';

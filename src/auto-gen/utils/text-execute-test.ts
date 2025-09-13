@@ -1,8 +1,8 @@
 import { getApiFunctions } from '../functions/api-registry';
 import { extractDatas } from './extract-data';
-import { Step, StepResult, ValidationError } from './declarations';
+import { Step, StepResult } from './declarations';
 import { TestContext } from './text-context';
-import { ACTION_CONFIG } from '../enums';
+import { ACTION_CONFIG } from '@enum/';
 import { handleExpectConfig } from './check-expect';
 import { checkResponse, resolveExpectConfig, resolveVariables } from './helper';
 

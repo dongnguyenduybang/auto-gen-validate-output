@@ -62,11 +62,15 @@ const acceptMessageConfig: ExtractConfig = {
 };
 
 const ejectMessageConfig: ExtractConfig = {
-  channel: {
-    path: ['data', 'channel'],
-    fields: ['name'],
+  data: {
+    path: ['data'],
+    fields: ['code'],
   },
 };
+
+const createInvitationConfig: ExtractConfig = {
+
+}
 
 // Ánh xạ action tới cấu hình
 export const configMap: Record<string, ExtractConfig> = {
@@ -79,4 +83,5 @@ export const configMap: Record<string, ExtractConfig> = {
   sendDmMessage: sendDmMessageConfig,
   acceptMessage: acceptMessageConfig,
   ejectMessage: ejectMessageConfig,
+  createInvitation: createInvitationConfig,
 };

@@ -42,9 +42,9 @@ export function genTestSaga(dtoName: string) {
     const specContent = `
       import fs from 'fs';
       import path from 'path';
-      import { getTime } from '../../utils/helper';
-      import { executeSteps } from '../../utils/text-execute-test';
-      import { TestContext } from '../../utils/text-context';
+      import { getTime } from '@ultils/helper';
+      import { executeSteps } from '@ultils/text-execute-test';
+      import { TestContext } from '@ultils/text-context';
       import { ${classNameCapitalized}Saga } from './${sagaFilePathWithoutExt}.saga';
 
       describe('Test sagas for ${sagaFilePathWithoutExt}', () => {
@@ -108,7 +108,7 @@ export function genTestSaga(dtoName: string) {
           }
           const classNames = \`${sagaFilePathWithoutExt}\`;
           const reportFileName = \`${sagaFilePathWithoutExt}-sagas-\${getTime()}.report.txt\`;
-          const { combinedReportTemplate } = await import('../../utils/report-file');
+          const { combinedReportTemplate } = await import('@ultils/report-file');
           const reportContent = combinedReportTemplate(
             classNames,
             globalThis.url,
